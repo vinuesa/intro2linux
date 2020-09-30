@@ -54,12 +54,12 @@ En consecuencia:
 
 
 #### Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux 
-- [presentaci&oacute;n - PDF](https://vinuesa.github.io/intro2linux/Intro_biocomputo_Linux_LCG.pdf)
+- [presentaci&oacute;n - PDF](https://vinuesa.github.io/intro2linux/tree/master/docs/Intro_biocomputo_Linux_LCG.pdf)
 
 #### Pr&aacute;ctica 1. Primer contacto con un sistema GNU/Linux
 - [pr&aacute;ctica1 - html](https://vinuesa.github.io/intro2linux/)
-- [pr&aacute;ctica1 - pdf](https://vinuesa.github.io/intro2linux/working_with_linux_commands.pdf)
-- [pr&aacute;ctica1 - tabla_comandos](https://vinuesa.github.io/intro2linux/linux_commands.tab)
+- [pr&aacute;ctica1 - pdf](https://vinuesa.github.io/intro2linux/tree/master/docs/working_with_linux_commands.pdf)
+- [pr&aacute;ctica1 - tabla_comandos](https://vinuesa.github.io/intro2linux/tree/master/docs/linux_commands.tab)
 
 
 <!--
