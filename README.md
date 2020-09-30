@@ -38,34 +38,34 @@ En [ubuntu](https://www.ubuntu.com/) es muy f&aacute;cil instalar git:
   <code>sudo apt install git</code>
 
 
-
+<!--
 ### ¿Horario y lugar de impartici&oacute;n de las sesiones?
 Las clases se imparten de manera remota, v&iacute;a zoom, los miércoles de 9:00 - 11:00
 
 <!--<img src="docs/pics/intro2linux_aula_UNLP_2-6Julio2018.jpg" />-->
 
+-->
 
-### Tema 0: Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux (2-07-2018)
+### Justificación del taller
 
 El trabajo en gen&oacute;mica se realiza en servidores UNIX o GNU/Linux de alto rendimiento. Es por ello 
 esencial familiarizarse con este ambiente de c&oacute;mputo al inicio de la formaci&oacute;n acad&eacute;mica. 
 En consecuencia:
 
-- todas las pr&aacute;cticas asociadas a este Taller se realizan en m&aacute;quinas GNU/Linux
-- iniciamos el Taller aprendiendo un poco de Linux. 
 
 #### Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux 
-- [presentaci&oacute;n - PDF](https://vinuesa.github.io/intro2linux/Intro2biocomputo_sistemas_en_sistemas_UNIX-Linux.pdf)
+- [presentaci&oacute;n - PDF](https://vinuesa.github.io/intro2linux/Intro_biocomputo_Linux_LCG.pdf)
 
 #### Pr&aacute;ctica 1. Primer contacto con un sistema GNU/Linux
-- [pr&aacute;ctica1 - html](https://vinuesa.github.io/intro2linux/intro2linux/)
-- [pr&aacute;ctica1 - pdf](https://vinuesa.github.io/intro2linux/intro2linux/working_with_linux_commands.pdf)
-- [pr&aacute;ctica1 - tabla_comandos](https://vinuesa.github.io/intro2linux/intro2linux/linux_commands.tab)
+- [pr&aacute;ctica1 - html](https://vinuesa.github.io/intro2linux/)
+- [pr&aacute;ctica1 - pdf](https://vinuesa.github.io/intro2linux/working_with_linux_commands.pdf)
+- [pr&aacute;ctica1 - tabla_comandos](https://vinuesa.github.io/intro2linux/linux_commands.tab)
 
 
+<!--
 #### Pr&aacute;ctica 2. Descarga de secuencias en formato FASTA de GenBank usando el sistema ENTREZ y parseo de los archivos usando herrramientas de filtrado
 - [pr&aacute;ctica2 - html](https://vinuesa.github.io/intro2linux/practica2_parseo_fastas/)
 - [pr&aacute;ctica2 - pdf](https://vinuesa.github.io/intro2linux/practica2_parseo_fastas/ejercicio_parseo_fastas_ENTREZ.pdf)
 - [pr&aacute;ctica2 - fasta](https://vinuesa.github.io/intro2linux/practica2_parseo_fastas/data/recA_Bradyrhizobium_vinuesa.fa)
-
+-->
 
