@@ -392,7 +392,7 @@ summary {
 <li><a href="#de-nuevo-dónde-estoy-imprime-directorio-actual-con-pwd"><span class="toc-section-number">2.3.1</span> de nuevo, ¿dónde estoy?: imprime directorio actual con <b>pwd</b></a></li>
 <li><a href="#sube-un-directorio-usando-ruta-relativa-cd-.."><span class="toc-section-number">2.3.2</span> sube un directorio usando RUTA RELATIVA: <b>cd ..</b></a></li>
 <li><a href="#regresa-a-tu-home-con-cd"><span class="toc-section-number">2.3.3</span> regresa a tu home con <b>cd</b></a></li>
-<li><a href="#imprime-la-estructura-de-directorios-de-tu-homo-u-otro-directorio"><span class="toc-section-number">2.3.4</span> Imprime la estructura de directorios de tu homo u otro directorio</a></li>
+<li><a href="#imprime-la-estructura-de-directorios-de-tu-home-u-otro-directorio"><span class="toc-section-number">2.3.4</span> Imprime la estructura de directorios de tu home u otro directorio</a></li>
 </ul></li>
 <li><a href="#generación-de-directorios-comando-mkdir"><span class="toc-section-number">2.4</span> Generación de directorios: comando <b>mkdir</b></a></li>
 <li><a href="#copiar-mover-renombrar-y-borrar-archivos-con-cp-mv-rm-scp-y-sftp"><span class="toc-section-number">2.5</span> Copiar, mover, renombrar y borrar archivos con: <b>cp</b>, <b>mv</b>, <b>rm</b>, <b>scp</b> y <b>sftp</b></a><ul>
@@ -409,6 +409,7 @@ summary {
 <li><a href="#uso-de-head-y-tail-para-desplegar-la-cabecera-y-cola-de-archivos"><span class="toc-section-number">2.7.1</span> uso de <b>head</b> y <b>tail</b> para desplegar la cabecera y cola de archivos</a></li>
 <li><a href="#cat-despliega-uno-o-más-archivos-concatenándolos"><span class="toc-section-number">2.7.2</span> <b>cat</b> despliega uno o más archivos, concatenándolos</a></li>
 <li><a href="#el-paginador-less-despliega-archivos-página-a-página"><span class="toc-section-number">2.7.3</span> el paginador <b>less</b> despliega archivos página a página</a></li>
+<li><a href="#zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-conpresión-gzip"><span class="toc-section-number">2.7.4</span> zcat y zless permiten visualizar el contenido de archivos de texto con conpresión gzip</a></li>
 </ul></li>
 <li><a href="#edición-de-archivos-con-los-editores-vim-o-gnedit"><span class="toc-section-number">2.8</span> Edición de archivos con los editores <b>vim</b> o <b>[g|n]edit</b></a></li>
 <li><a href="#edición-de-archivos-con-el-editor-de-flujo-sed-stream-editor"><span class="toc-section-number">2.9</span> Edición de archivos con el editor de flujo <b>sed</b> (stream editor)</a><ul>
@@ -477,13 +478,13 @@ summary {
 
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
-<p>Este apunte fue creado originalmente para el <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019 por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a>.</p>
-<p>Las versión actual (posteriores a 2 de Agosto de 2019), contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para alumnos de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para docencia en la <a href="http://www.lcg.unan.mx/">LCG-UNAM</a>.</p>
+<p>Este apunte fue creado para el <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019 por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a>.</p>
+<p>Las versión actual (posteriores a 2 de Agosto de 2019) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para alumnos de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>.</p>
 <p>Version: 2020-09-29</p>
-<p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/sesion1_intro2linux/Intro_biocomputo_Linux_pt1.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
+<p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/Intro_biocomputo_Linux_LCG.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
-<p>El material del <b>Taller de intro2linux</b> lo distribuyo públicamente a través de este <a href="https://github.com/vinuesa/intro2linux">repositorio GitHub</a> bajo la <a href="https://creativecommons.org/licenses/by-nc/4.0/"><strong>Licencia No Comercial Creative Commons 4.0</strong></a></p>
+<p>Este material didáctico lo distribuyo públicamente a través de este <a href="https://github.com/vinuesa/intro2linux">repositorio GitHub</a> bajo la <a href="https://creativecommons.org/licenses/by-nc/4.0/"><strong>Licencia No Comercial Creative Commons 4.0</strong></a></p>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="data:image/png;base64,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" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0</a></p>
 </div>
 <div id="referencias-adicionales" class="section level2">
@@ -502,7 +503,7 @@ summary {
 <h1><span class="header-section-number">2</span> Navegación del sistema y operaciones básicas - primer contacto con un sistema Linux</h1>
 <div id="conexión-a-un-servidor-y-exploración-de-sus-características-básicas" class="section level2">
 <h2><span class="header-section-number">2.1</span> Conexión a un servidor y exploración de sus características básicas</h2>
-<p>Estas prácticas están diseñadas para correr en un servidor remoto, pero puedes hacerlo también en una sesión local, es decir, en tu máquina. Sólo tienes que poner en un directorio los archivos con los que vamos a trabajar, los cuales puedes <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/sesion1_intro2linux/data">descargar del directorio sesion1_intro2linux/data del sitio GitHub</a></p>
+<p>Estas prácticas están diseñadas para correr en un servidor remoto, pero puedes hacerlo también en una sesión local, es decir, en tu máquina. Sólo tienes que poner en un directorio los archivos con los que vamos a trabajar, los cuales puedes <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/data">descargar del directorio intro2linux/data del sitio GitHub</a></p>
 <div id="ssh-establecer-sesion-remota-encriptada-segura-via-ssh-al-servidor-con-número-dado-de-ip" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> <strong>ssh</strong> establecer sesion remota encriptada (segura) via ssh al servidor con número dado de IP</h3>
 <pre><code>ssh -l $USER IP</code></pre>
@@ -537,59 +538,53 @@ htop</code></pre>
 <h3><span class="header-section-number">2.2.1</span> <strong>pwd</strong> imprime la ruta absoluta del directorio actual</h3>
 <pre class="bash"><code># dónde me encuentro en el sistema?
 pwd</code></pre>
-<pre><code>## /home/vinuesa/GitHub/cursos/intro2linux/docs</code></pre>
+<pre><code>## /home/vinuesa/cursos/intro2linux</code></pre>
 </div>
 <div id="ls-lista-contenidos-del-directorio" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> <strong>ls</strong> lista contenidos del directorio</h3>
 <pre class="bash"><code># Qué contiene el directorio actual?
 ls | head</code></pre>
-<pre><code>## 800px-Evolución_UNIX.png
-## assembly_summary.txt.gz
-## Evolución_UNIX.png
+<pre><code>## assembly_summary.txt.gz
+## docs
 ## fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## github_TIB-filoinfo_screenshot.png
+## index.html
 ## intro2linux
 ## intro_biocomputo_Linux_LCG.odp
 ## Intro_biocomputo_Linux_LCG.pdf
+## LICENSE
 ## linux_basic_commands.tab
 ## linux_commands.tab</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
-<pre><code>## total 15312
-## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 21:05 .
-## drwxr-xr-x 7 vinuesa vinuesa    4096 sep 29 20:54 ..
-## -rw-r--r-- 1 vinuesa vinuesa  110128 sep 29 20:47 800px-Evolución_UNIX.png
-## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 20:47 assembly_summary.txt.gz
-## -rw-r--r-- 1 vinuesa vinuesa  438308 sep 29 20:47 Evolución_UNIX.png
-## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 20:47 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## -rw-r--r-- 1 vinuesa vinuesa   87065 sep 29 20:47 github_TIB-filoinfo_screenshot.png
-## drwxr-xr-x 2 vinuesa vinuesa    4096 sep 29 21:05 intro2linux
-## -rw-r--r-- 1 vinuesa vinuesa 3000399 sep 29 20:47 intro_biocomputo_Linux_LCG.odp
-## -rw-r--r-- 1 vinuesa vinuesa 2695494 sep 29 20:47 Intro_biocomputo_Linux_LCG.pdf
-## -rwxr-xr-x 1 vinuesa vinuesa   10193 sep 29 20:47 linux_basic_commands.tab
-## lrwxrwxrwx 1 vinuesa vinuesa      78 sep 29 20:47 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
-## -rwxr-xr-x 1 vinuesa vinuesa    1705 sep 29 20:47 linux_very_basic_commands_table.csv
-## -rw-r--r-- 1 vinuesa vinuesa  106127 sep 29 20:47 MobaXTerm_plugins_page_screenshot.png
-## -rw-r--r-- 1 vinuesa vinuesa   77803 sep 29 20:47 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa   17704 sep 29 20:47 recA_Byuanmingense.fna
-## -rw-r--r-- 1 vinuesa vinuesa   51271 sep 29 20:47 sesion_local_capt_pantalla.png
-## -rw-r--r-- 1 vinuesa vinuesa   40746 sep 29 20:47 sesion_remota_bonampak_capt_pantalla1.png
-## -rw-r--r-- 1 vinuesa vinuesa    4468 sep 29 20:47 sesion_remota_bonampak_capt_pantalla2.png
-## -rw-r--r-- 1 vinuesa vinuesa  408580 sep 29 20:47 sesion_remota_bonampak_capt_pantalla.png
-## -rwxr-xr-x 1 vinuesa vinuesa    6047 sep 29 20:47 working_with_linux_commands.code
-## -rw-r--r-- 1 vinuesa vinuesa 1124280 sep 29 20:47 working_with_linux_commands.html
-## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 20:47 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   55099 sep 29 21:04 working_with_linux_commands.Rmd</code></pre>
+<pre><code>## total 15272
+## drwxr-xr-x 5 vinuesa vinuesa    4096 sep 29 23:32 .
+## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 22:15 ..
+## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
+## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 23:03 docs
+## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
+## drwxr-xr-x 8 vinuesa vinuesa    4096 sep 29 23:03 .git
+## -rw-r--r-- 1 vinuesa vinuesa 1124380 sep 29 22:15 index.html
+## drwxr-xr-x 4 vinuesa vinuesa    4096 sep 29 22:56 intro2linux
+## -rw-r--r-- 1 vinuesa vinuesa 3000435 sep 29 22:19 intro_biocomputo_Linux_LCG.odp
+## -rw-r--r-- 1 vinuesa vinuesa 2752202 sep 29 22:21 Intro_biocomputo_Linux_LCG.pdf
+## -rw-r--r-- 1 vinuesa vinuesa   35149 sep 29 22:15 LICENSE
+## -rwxr-xr-x 1 vinuesa vinuesa   10193 sep 29 22:18 linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa      78 sep 29 23:32 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## -rwxr-xr-x 1 vinuesa vinuesa    1705 sep 29 22:18 linux_very_basic_commands_table.csv
+## -rw-r--r-- 1 vinuesa vinuesa    3781 sep 29 22:15 README.md
+## -rw-r--r-- 1 vinuesa vinuesa   77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
+## -rw-r--r-- 1 vinuesa vinuesa   17704 sep 29 23:32 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 1125452 sep 29 23:32 working_with_linux_commands.html
+## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 22:15 working_with_linux_commands.pdf
+## -rw-r--r-- 1 vinuesa vinuesa   55619 sep 29 23:32 working_with_linux_commands.Rmd</code></pre>
 </div>
 <div id="file-nos-indica-las-propiedades-de-un-archivo" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> <strong>file</strong> nos indica las propiedades de un archivo</h3>
 <pre class="bash"><code># mostrar las características de los archivos con file
-file .Rhistory
 file assembly_summary.txt.gz
 file linux_commands.tab
 file intro2linux</code></pre>
-<pre><code>## .Rhistory: cannot open `.Rhistory&#39; (No such file or directory)
-## assembly_summary.txt.gz: gzip compressed data, was &quot;assembly_summary.txt&quot;, last modified: Mon Jul 22 00:26:11 2019, from Unix
+<pre><code>## assembly_summary.txt.gz: gzip compressed data, was &quot;assembly_summary.txt&quot;, last modified: Mon Jul 22 00:26:11 2019, from Unix
 ## linux_commands.tab: symbolic link to /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## intro2linux: directory</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
@@ -629,7 +624,7 @@ file intro2linux</code></pre>
 ## drwxr-xr-x   3 root root       4096 jun 26  2019 media
 ## drwxr-xr-x   2 root root       4096 abr 26  2018 mnt
 ## drwxr-xr-x   8 root root       4096 mar 20  2020 opt
-## dr-xr-xr-x 383 root root          0 sep 29 10:16 proc
+## dr-xr-xr-x 391 root root          0 sep 29 10:16 proc
 ## drwx------   7 root root       4096 mar 21  2020 root
 ## drwxr-xr-x  35 root root       1120 sep 29 18:28 run</code></pre>
 </div>
@@ -717,7 +712,7 @@ ls /bin/c??</code></pre>
 <div id="de-nuevo-dónde-estoy-imprime-directorio-actual-con-pwd" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> de nuevo, ¿dónde estoy?: imprime directorio actual con <b>pwd</b></h3>
 <pre class="bash"><code>pwd </code></pre>
-<pre><code>## /home/vinuesa/GitHub/cursos/intro2linux/docs</code></pre>
+<pre><code>## /home/vinuesa/cursos/intro2linux</code></pre>
 </div>
 <div id="sube-un-directorio-usando-ruta-relativa-cd-.." class="section level3">
 <h3><span class="header-section-number">2.3.2</span> sube un directorio usando RUTA RELATIVA: <b>cd ..</b></h3>
@@ -726,7 +721,7 @@ ls /bin/c??</code></pre>
 <li>¿dónde estoy?</li>
 </ul>
 <pre class="bash"><code>pwd </code></pre>
-<pre><code>## /home/vinuesa/GitHub/cursos/intro2linux/docs</code></pre>
+<pre><code>## /home/vinuesa/cursos/intro2linux</code></pre>
 </div>
 <div id="regresa-a-tu-home-con-cd" class="section level3">
 <h3><span class="header-section-number">2.3.3</span> regresa a tu home con <b>cd</b></h3>
@@ -758,23 +753,39 @@ pwd</code></pre>
 <li>y lista los contenidos</li>
 </ul>
 <pre class="bash"><code>ls | head</code></pre>
-<pre><code>## 800px-Evolución_UNIX.png
-## assembly_summary.txt.gz
-## Evolución_UNIX.png
+<pre><code>## assembly_summary.txt.gz
+## docs
 ## fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## github_TIB-filoinfo_screenshot.png
+## index.html
 ## intro2linux
 ## intro_biocomputo_Linux_LCG.odp
 ## Intro_biocomputo_Linux_LCG.pdf
+## LICENSE
 ## linux_basic_commands.tab
 ## linux_commands.tab</code></pre>
 </div>
-<div id="imprime-la-estructura-de-directorios-de-tu-homo-u-otro-directorio" class="section level3">
-<h3><span class="header-section-number">2.3.4</span> Imprime la estructura de directorios de tu homo u otro directorio</h3>
-<pre><code>tree -d $HOME/intro2phyloinfo</code></pre>
+<div id="imprime-la-estructura-de-directorios-de-tu-home-u-otro-directorio" class="section level3">
+<h3><span class="header-section-number">2.3.4</span> Imprime la estructura de directorios de tu home u otro directorio</h3>
+<pre class="bash"><code>tree -d $HOME/cursos/</code></pre>
+<pre><code>## /home/vinuesa/cursos/
+## └── intro2linux
+##     ├── docs
+##     │   └── data
+##     └── intro2linux
+##         ├── sesion1
+##         └── sesion1_linux
+## 
+## 6 directories</code></pre>
 <ul>
-<li>Nota: según el directorio que indiques, la salida puede ser copiosa. Usar con criterio.</li>
+<li>Nota: según el directorio que indiques, la salida puede ser copiosa. Usar con criterio. Puedes limitar el número de nivels (subdirectorios) a mostrar con -L #</li>
 </ul>
+<pre class="bash"><code>tree -d -L 2 $HOME/cursos/</code></pre>
+<pre><code>## /home/vinuesa/cursos/
+## └── intro2linux
+##     ├── docs
+##     └── intro2linux
+## 
+## 3 directories</code></pre>
 </div>
 </div>
 <div id="generación-de-directorios-comando-mkdir" class="section level2">
@@ -791,39 +802,39 @@ fi</code></pre>
 <li>comprueba los <strong>permisos</strong> del nuevo directorio</li>
 </ul>
 <pre class="bash"><code>ls -ld intro2linux</code></pre>
-<pre><code>## drwxr-xr-x 2 vinuesa vinuesa 4096 sep 29 21:05 intro2linux</code></pre>
+<pre><code>## drwxr-xr-x 4 vinuesa vinuesa 4096 sep 29 22:56 intro2linux</code></pre>
 <ul>
 <li>generemos un subdirectorio por debajo del que acabamos de crear:</li>
 </ul>
-<pre class="bash"><code>mkdir -p intro2linux/sesion1_linux &amp;&amp; cd intro2linux/sesion1_linux</code></pre>
+<pre class="bash"><code>mkdir -p intro2linux/sesion1 &amp;&amp; cd intro2linux/sesion1</code></pre>
 <ul>
 <li>cambiamos a /home/vinuesa e intenta crear estos mismos directorios ahí</li>
 </ul>
-<pre class="bash"><code>cd /home/vinuesa &amp;&amp; mkdir -p intro2linux/sesion1_linux</code></pre>
+<pre class="bash"><code>cd /home/vinuesa &amp;&amp; mkdir -p intro2linux/sesion1</code></pre>
 <p>No puedes escribir en mi directorio, porque no te he otorgado permiso para ello ;)</p>
 </div>
 <div id="copiar-mover-renombrar-y-borrar-archivos-con-cp-mv-rm-scp-y-sftp" class="section level2">
 <h2><span class="header-section-number">2.5</span> Copiar, mover, renombrar y borrar archivos con: <b>cp</b>, <b>mv</b>, <b>rm</b>, <b>scp</b> y <b>sftp</b></h2>
-<pre class="bash"><code># cambia a tu home, y luego a intro2linux/sesion1_linux
-cd &amp;&amp; cd intro2linux/sesion1_linux</code></pre>
+<pre class="bash"><code># cambia a tu home, y luego a intro2linux/sesion1
+cd &amp;&amp; cd intro2linux/sesion1</code></pre>
 <div id="copia-de-archivo-simple-cp-file-." class="section level3">
 <h3><span class="header-section-number">2.5.1</span> copia de archivo simple: <b> cp file .</b></h3>
 <ul>
-<li>copia el archivo /space31/PIG/vinuesa/intro2linux/sesion1_Linux/data/linux_basic_commands.tab al directorio actual</li>
+<li>copia el archivo /home/vinuesa/intro2linux/data/linux_basic_commands.tab al directorio actual</li>
 </ul>
-<pre><code>cp /space31/PIG/vinuesa/intro2linux/sesion1_Linux/data/linux_basic_commands.tab . # &lt;&lt;&lt; vean el punto, significa, dir actual</code></pre>
+<pre><code>cp /home/vinuesa/intro2linux/data/linux_basic_commands.tab . # &lt;&lt;&lt; vean el punto, significa, dir actual</code></pre>
 <ul>
 <li>otra manera, usando rutas absolutas y la variable de ambiente $HOME</li>
 </ul>
-<pre><code>cp /space31/PIG/vinuesa/intro2linux/sesion1_Linux/data/linux_basic_commands.tab $HOME/intro2linux/sesion1_linux/</code></pre>
+<pre><code>cp /home/vinuesa/intro2linux/data/linux_basic_commands.tab $HOME/intro2linux/sesion1/</code></pre>
 </div>
 <div id="copiado-de-directorio-cp--r-dir-." class="section level3">
 <h3><span class="header-section-number">2.5.2</span> copiado de directorio: <b> cp -r dir . </b></h3>
 <ul>
-<li>copiar el directorio /space31/PIG/vinuesa/intro2linux/sesion1_Linux/data/ a tu dir actual</li>
+<li>copiar el directorio /home/vinuesa/intro2linux/data/ a tu dir actual</li>
 </ul>
 <pre><code># Noten el punto &#39;.&#39; y cp -r (recursively), necesario para copiar directorios completos
-cp -r /space31/PIG/vinuesa/intro2linux/sesion1_Linux/data . </code></pre>
+cp -r /home/vinuesa/intro2linux/data/ . </code></pre>
 </div>
 <div id="eliminar-un-directorio-rm--rf-recursively--r-and-force--f" class="section level3">
 <h3><span class="header-section-number">2.5.3</span> Eliminar un directorio: <b>rm -rf</b> [recursively -r and force -f]</h3>
@@ -844,7 +855,7 @@ rm -rf borrame</code></pre>
 <div id="scp-copia-de-archivos-entre-máquinas-vía-internet" class="section level3">
 <h3><span class="header-section-number">2.5.4</span> <b>scp</b> copia de archivos entre máquinas vía Internet</h3>
 <ul>
-<li>descarga el archivo <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/sesion1_intro2linux/data/linux_basic_commands.tab">linux_basic_commands.tab</a> del repositorio GitHub a tu máquina</li>
+<li>descarga el archivo <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/data/linux_basic_commands.tab">linux_basic_commands.tab</a> del repositorio GitHub a tu máquina</li>
 <li>cópialo a tu $HOME en el servidor</li>
 </ul>
 <pre><code># asegúrate de estar en el directorio que contiene el archvo descargado:
@@ -883,26 +894,29 @@ ls </code></pre>
 if [ &quot;$hostn&quot; == &quot;Tenerife&quot; ]; then
    ln -s /home/vinuesa/Cursos/OMICAS_UAEM_genomica/clase1_intro2linux/linux_basic_commands.tab comandos_de_linux.tab
 elif [ &quot;$hostn&quot; == &quot;buluc&quot; ]; then
-     ln -s /home/vinuesa/cursos/intro2linux/sesion1_linux/data/linux_basic_commands.tab comandos_de_linux.tab
+     ln -s /home/vinuesa/cursos/intro2linux/sesion1/data/linux_basic_commands.tab comandos_de_linux.tab
 elif [ &quot;$hostn&quot; == &quot;alisio&quot; ]; then
   ln -s /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab comandos_de_linux.tab
 elif [ &quot;$hostn&quot; == &quot;bonampak&quot; ]; then 
-   ln -s /space31/PIG/vinuesa/intro2linux/sesion1_Linux/linux_basic_commands.tab comandos_de_linux.tab 
-   ln -s /space31/PIG/vinuesa/intro2linux/sesion1_Linux/data/assembly_summary.txt.gz .
+   ln -s /space31/PIG/vinuesa/intro2linux/sesion1/linux_basic_commands.tab comandos_de_linux.tab 
+   ln -s /space31/PIG/vinuesa/intro2linux/sesion1/data/assembly_summary.txt.gz .
+elif [ &quot;$hostn&quot; == &quot;tepeu&quot; ]; then 
+   ln -s /home/vinuesa/intro2linux/data/linux_basic_commands.tab comandos_de_linux.tab 
+   ln -s /home/vinuesa/intro2linux/data/assembly_summary.txt.gz .
 fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 15308
-## -rw-r--r-- 1 vinuesa vinuesa  110128 sep 29 20:47 800px-Evolución_UNIX.png
-## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 20:47 assembly_summary.txt.gz
-## lrwxrwxrwx 1 vinuesa vinuesa      78 sep 29 21:05 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
-## -rw-r--r-- 1 vinuesa vinuesa  438308 sep 29 20:47 Evolución_UNIX.png
-## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 20:47 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## -rw-r--r-- 1 vinuesa vinuesa   87065 sep 29 20:47 github_TIB-filoinfo_screenshot.png
-## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 21:05 intro2linux
-## -rw-r--r-- 1 vinuesa vinuesa 3000399 sep 29 20:47 intro_biocomputo_Linux_LCG.odp
-## -rw-r--r-- 1 vinuesa vinuesa 2695494 sep 29 20:47 Intro_biocomputo_Linux_LCG.pdf</code></pre>
+<pre><code>## total 15264
+## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
+## lrwxrwxrwx 1 vinuesa vinuesa      78 sep 29 23:32 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 23:03 docs
+## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
+## -rw-r--r-- 1 vinuesa vinuesa 1124380 sep 29 22:15 index.html
+## drwxr-xr-x 4 vinuesa vinuesa    4096 sep 29 22:56 intro2linux
+## -rw-r--r-- 1 vinuesa vinuesa 3000435 sep 29 22:19 intro_biocomputo_Linux_LCG.odp
+## -rw-r--r-- 1 vinuesa vinuesa 2752202 sep 29 22:21 Intro_biocomputo_Linux_LCG.pdf
+## -rw-r--r-- 1 vinuesa vinuesa   35149 sep 29 22:15 LICENSE</code></pre>
 <div id="renombramos-la-liga-o-cualquier-archivo-o-directorio" class="section level3">
 <h3><span class="header-section-number">2.6.1</span> renombramos la liga (o cualquier archivo o directorio)</h3>
 <pre class="bash"><code>  mv comandos_de_linux.tab linux_commands.tab</code></pre>
@@ -988,11 +1002,21 @@ less -L linux_commands.tab
 
 # usa less --help para ver más opciones</code></pre>
 </div>
+<div id="zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-conpresión-gzip" class="section level3">
+<h3><span class="header-section-number">2.7.4</span> zcat y zless permiten visualizar el contenido de archivos de texto con conpresión gzip</h3>
+<p>Los archivos usados en genómica son frecuentemente grandes y/o numerosos, por lo que es una muy buena práctica mantenerlos comprimidos para ocupar el mínimo espacio posible en disco. los comandos <span class="math inline">\(zcat\)</span> y <span class="math inline">\(zless\)</span> permiten visualizar su contenido sin tenerlos que descomprimir. Veremos más comandos, como <span class="math inline">\(zgrep\)</span> que pueden trabajar sobre archivos de texto comprimidos.</p>
+<pre class="bash"><code>zcat assembly_summary.txt.gz | head -5 | cut -f1-5</code></pre>
+<pre><code>## #   See ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt for a description of the columns in this file.
+## # assembly_accession bioproject  biosample   wgs_master  refseq_category
+## GCF_000010525.1  PRJNA224116 SAMD00060925        representative genome
+## GCF_000007365.1  PRJNA224116 SAMN02604269        representative genome
+## GCF_000007725.1  PRJNA224116 SAMN02604289        representative genome</code></pre>
+</div>
 </div>
 <div id="edición-de-archivos-con-los-editores-vim-o-gnedit" class="section level2">
 <h2><span class="header-section-number">2.8</span> Edición de archivos con los editores <b>vim</b> o <b>[g|n]edit</b></h2>
 <p><b>vim</b> (vi improved) es un poderoso editor programable presente en todos los sistemas UNIX. La principal característica tanto de Vim como de Vi consiste en que disponen de diferentes modos entre los que se alterna para realizar ciertas operaciones, lo que los diferencia de la mayoría de editores comunes, que tienen un solo modo en el que se introducen las órdenes mediante combinaciones de teclas (o interfaces gráficas). Se controla por completo mediante el teclado desde un Terminal, por lo que puede usarse sin problemas a través de conexiones remotas ya que no carga el sistema al no desplegar un entorno gráfico.</p>
-<p>Es muy recomendable aprender a usar VIM, pero no tenemos tiempo de hacerlo en el TIB, por lo que les recomiendo este <a href="https://openwebinars.net/blog/vim-manual-de-uso-basico/">tutorial de uso de VIM en español</a>, o directamente en su terminal tecleando el comando</p>
+<p>Es muy recomendable aprender a usar Vim, pero no tenemos tiempo de hacerlo en el Taller, por lo que les recomiendo este <a href="https://openwebinars.net/blog/vim-manual-de-uso-basico/">tutorial de uso de Vim en español</a>, o directamente en su terminal tecleando el comando</p>
 <pre><code> vimtutor
  
  # para salir de vim, 
@@ -1053,6 +1077,8 @@ gedit linux_commands.tab &amp;
 <h2><span class="header-section-number">2.10</span> Uso de tuberias de herramientas UNIX/Linux para filtrado de texto con <b>cut</b>, <b>grep</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> y <b>|</b></h2>
 <p>UNIX y Linux ofrecen una gran cantidad de herramientas para todo tipo de trabajos, cada una generalmente con muchas opciones. En bioinformática y genómica, los archivos de texto plano (ASCII) son los más comunes. Por ello es muy útil dominar algunas de las herramientas de filtrado de texto más comunes. Como ejemplo, trabajaremos con el archivo assembly_summary.txt, que contiene los datos de ensambles genómicos de la división RefSeq de GenBank. Lo descargué y comprimí con los siguientes comandos:</p>
 <pre><code>wget -c ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt
+
+# compresión gnu-zip del archivo
 gzip assembly_summary.txt</code></pre>
 <ul>
 <li>Exploremos el archivo comprimido (con compresión gnu zip) con usando los comandos <b>zless</b> o <b>zcat</b></li>
@@ -1303,7 +1329,7 @@ echo &quot;$archivo_de_comandos_linux&quot;</code></pre>
 date=$(date | awk &#39;{print $3,$2,$6}&#39; | sed &#39;s/ //g&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in: $wkdir at &lt;$h&gt; on &lt;$date&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/GitHub/cursos/intro2linux/docs at &lt;alisio&gt; on &lt;29sep2020&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;29sep2020&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level3">
 <h3><span class="header-section-number">3.1.2</span> Modificación de variables y operaciones con ellas</h3>
@@ -1320,10 +1346,10 @@ echo &quot;path to basedir: ${wkdir%/*}  # \${wkdir%/*}&quot;
 # 3. contar el número de caracteres (longitud) de la variable
 echo &quot;basedir has ${#basedir} characters  # \${#basedir}&quot;
 </code></pre>
-<pre><code>## wkdir: /home/vinuesa/GitHub/cursos/intro2linux/docs
-## basedir: docs  # ${wkdir##*/}
-## path to basedir: /home/vinuesa/GitHub/cursos/intro2linux  # ${wkdir%/*}
-## basedir has 4 characters  # ${#basedir}</code></pre>
+<pre><code>## wkdir: /home/vinuesa/cursos/intro2linux
+## basedir: intro2linux  # ${wkdir##*/}
+## path to basedir: /home/vinuesa/cursos  # ${wkdir%/*}
+## basedir has 11 characters  # ${#basedir}</code></pre>
 </div>
 </div>
 <div id="condicionales" class="section level2">
@@ -1389,8 +1415,8 @@ if [ -s &quot;$f&quot; ]; then
    echo &quot;$f exists and has size: $size&quot;
 fi
 </code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 0 sep 29 21:05 empty_file
-## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 20:47 assembly_summary.txt.gz
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 0 sep 29 23:32 empty_file
+## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
 ## assembly_summary.txt.gz exists and has size: 6.5M</code></pre>
@@ -1567,7 +1593,9 @@ CTRL-D</code></pre>
 <pre><code>mv ls_dir ~/bin</code></pre>
 <p>y ya puedes usarlo:</p>
 <pre class="bash"><code>ls_dir</code></pre>
-<pre><code>## intro2linux</code></pre>
+<pre><code>## .git
+## intro2linux
+## docs</code></pre>
 <p>Nota: el script <em>ls_dir</em> funciona perfectamente, pero no es la manera más eficiente de buscar directorios. La función <span class="math inline">\(find\)</span> de <span class="math inline">\(Linux\)</span> es mucho más eficiente.</p>
 </div>
 <div id="funciones-y-argumentos-posicionales-en-bash---el-script-find_dir" class="section level3">
@@ -1650,7 +1678,9 @@ find . -maxdepth $max_depth -type $type</code></pre>
 </ul>
 <pre class="bash"><code>  find_dir 1</code></pre>
 <pre><code>## .
-## ./intro2linux</code></pre>
+## ./.git
+## ./intro2linux
+## ./docs</code></pre>
 </div>
 <div id="alineamiento-múltiple-de-secuencias-e-interconversión-de-formatos-con-align_seqs_with_clustal_or_muscle.sh-y-convert_alnformats_using_clustalw.sh" class="section level3">
 <h3><span class="header-section-number">3.4.3</span> Alineamiento múltiple de secuencias e interconversión de formatos con <em>align_seqs_with_clustal_or_muscle.sh</em> y <em>convert_alnFormats_using_clustalw.sh</em></h3>
@@ -1908,9 +1938,9 @@ str(dfr)</code></pre>
 </div>
 <div id="acceso-a-las-secuencias" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Acceso a las secuencias</h3>
-<p>En primer lugar, debes estar en tu directorio $HOME/intro2linux/sesion1_linux, y desde ahí generar una liga simbólica al archivo FASTA con las secuencias</p>
+<p>En primer lugar, debes estar en tu directorio $HOME/intro2linux/sesion1, y desde ahí generar una liga simbólica al archivo FASTA con las secuencias</p>
 <pre><code>cd $HOME/intro2linux/sesion1_linu
-ln -s /space31/PIG/vinuesa/intro2linux/sesion1_Linux/data/recA_Bradyrhizobium_vinuesa.fna .
+ln -s /space31/PIG/vinuesa/intro2linux/sesion1/data/recA_Bradyrhizobium_vinuesa.fna .
 
 ls recA_Bradyrhizobium_vinuesa.fna</code></pre>
 </div>
