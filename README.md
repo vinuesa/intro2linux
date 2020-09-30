@@ -54,7 +54,7 @@ En consecuencia:
 
 
 #### Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux 
-- [presentaci&oacute;n - PDF](https://vinuesa.github.io/intro2linux/tree/master/docs/Intro_biocomputo_Linux_LCG.pdf)
+- [presentaci&oacute;n - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/Intro_biocomputo_Linux_LCG.pdf)
 
 #### Pr&aacute;ctica 1. Primer contacto con un sistema GNU/Linux
 - [pr&aacute;ctica1 - html](https://vinuesa.github.io/intro2linux/)
