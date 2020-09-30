@@ -38,13 +38,12 @@ En [ubuntu](https://www.ubuntu.com/) es muy f&aacute;cil instalar git:
   <code>sudo apt install git</code>
 
 
-<!--
-### ¿Horario y lugar de impartici&oacute;n de las sesiones?
-Las clases se imparten de manera remota, v&iacute;a zoom, los miércoles de 9:00 - 11:00
+<!--### ¿Horario y lugar de impartici&oacute;n de las sesiones?
+Las clases se imparten de manera remota, v&iacute;a zoom, los miércoles de 9:00 - 11:00-->
 
 <!--<img src="docs/pics/intro2linux_aula_UNLP_2-6Julio2018.jpg" />-->
 
--->
+
 
 ### Justificación del taller
 
