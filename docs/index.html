@@ -409,7 +409,7 @@ summary {
 <li><a href="#uso-de-head-y-tail-para-desplegar-la-cabecera-y-cola-de-archivos"><span class="toc-section-number">2.7.1</span> uso de <b>head</b> y <b>tail</b> para desplegar la cabecera y cola de archivos</a></li>
 <li><a href="#cat-despliega-uno-o-más-archivos-concatenándolos"><span class="toc-section-number">2.7.2</span> <b>cat</b> despliega uno o más archivos, concatenándolos</a></li>
 <li><a href="#el-paginador-less-despliega-archivos-página-a-página"><span class="toc-section-number">2.7.3</span> el paginador <b>less</b> despliega archivos página a página</a></li>
-<li><a href="#zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-conpresión-gzip"><span class="toc-section-number">2.7.4</span> zcat y zless permiten visualizar el contenido de archivos de texto con conpresión gzip</a></li>
+<li><a href="#zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-conpresión-gzip"><span class="toc-section-number">2.7.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con conpresión gzip</a></li>
 </ul></li>
 <li><a href="#edición-de-archivos-con-los-editores-vim-o-gnedit"><span class="toc-section-number">2.8</span> Edición de archivos con los editores <b>vim</b> o <b>[g|n]edit</b></a></li>
 <li><a href="#edición-de-archivos-con-el-editor-de-flujo-sed-stream-editor"><span class="toc-section-number">2.9</span> Edición de archivos con el editor de flujo <b>sed</b> (stream editor)</a><ul>
@@ -547,26 +547,24 @@ ls | head</code></pre>
 <pre><code>## assembly_summary.txt.gz
 ## docs
 ## fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## index.html
 ## intro2linux
 ## intro_biocomputo_Linux_LCG.odp
-## Intro_biocomputo_Linux_LCG.pdf
 ## LICENSE
 ## linux_basic_commands.tab
-## linux_commands.tab</code></pre>
+## linux_commands.tab
+## linux_very_basic_commands_table.csv
+## README.md</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
-<pre><code>## total 15272
-## drwxr-xr-x 5 vinuesa vinuesa    4096 sep 29 23:32 .
+<pre><code>## total 11484
+## drwxr-xr-x 5 vinuesa vinuesa    4096 sep 29 23:36 .
 ## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 22:15 ..
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
-## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 23:03 docs
+## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 23:36 docs
 ## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## drwxr-xr-x 8 vinuesa vinuesa    4096 sep 29 23:03 .git
-## -rw-r--r-- 1 vinuesa vinuesa 1124380 sep 29 22:15 index.html
+## drwxr-xr-x 8 vinuesa vinuesa    4096 sep 29 23:36 .git
 ## drwxr-xr-x 4 vinuesa vinuesa    4096 sep 29 22:56 intro2linux
-## -rw-r--r-- 1 vinuesa vinuesa 3000435 sep 29 22:19 intro_biocomputo_Linux_LCG.odp
-## -rw-r--r-- 1 vinuesa vinuesa 2752202 sep 29 22:21 Intro_biocomputo_Linux_LCG.pdf
+## -rw-r--r-- 1 vinuesa vinuesa 3000434 sep 29 22:32 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r-- 1 vinuesa vinuesa   35149 sep 29 22:15 LICENSE
 ## -rwxr-xr-x 1 vinuesa vinuesa   10193 sep 29 22:18 linux_basic_commands.tab
 ## lrwxrwxrwx 1 vinuesa vinuesa      78 sep 29 23:32 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
@@ -574,9 +572,9 @@ ls -al </code></pre>
 ## -rw-r--r-- 1 vinuesa vinuesa    3781 sep 29 22:15 README.md
 ## -rw-r--r-- 1 vinuesa vinuesa   77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
 ## -rw-r--r-- 1 vinuesa vinuesa   17704 sep 29 23:32 recA_Byuanmingense.fna
-## -rw-r--r-- 1 vinuesa vinuesa 1125452 sep 29 23:32 working_with_linux_commands.html
+## -rw-r--r-- 1 vinuesa vinuesa 1125569 sep 29 23:32 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   55619 sep 29 23:32 working_with_linux_commands.Rmd</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa   55633 sep 29 23:40 working_with_linux_commands.Rmd</code></pre>
 </div>
 <div id="file-nos-indica-las-propiedades-de-un-archivo" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> <strong>file</strong> nos indica las propiedades de un archivo</h3>
@@ -624,7 +622,7 @@ file intro2linux</code></pre>
 ## drwxr-xr-x   3 root root       4096 jun 26  2019 media
 ## drwxr-xr-x   2 root root       4096 abr 26  2018 mnt
 ## drwxr-xr-x   8 root root       4096 mar 20  2020 opt
-## dr-xr-xr-x 391 root root          0 sep 29 10:16 proc
+## dr-xr-xr-x 390 root root          0 sep 29 10:16 proc
 ## drwx------   7 root root       4096 mar 21  2020 root
 ## drwxr-xr-x  35 root root       1120 sep 29 18:28 run</code></pre>
 </div>
@@ -756,13 +754,13 @@ pwd</code></pre>
 <pre><code>## assembly_summary.txt.gz
 ## docs
 ## fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## index.html
 ## intro2linux
 ## intro_biocomputo_Linux_LCG.odp
-## Intro_biocomputo_Linux_LCG.pdf
 ## LICENSE
 ## linux_basic_commands.tab
-## linux_commands.tab</code></pre>
+## linux_commands.tab
+## linux_very_basic_commands_table.csv
+## README.md</code></pre>
 </div>
 <div id="imprime-la-estructura-de-directorios-de-tu-home-u-otro-directorio" class="section level3">
 <h3><span class="header-section-number">2.3.4</span> Imprime la estructura de directorios de tu home u otro directorio</h3>
@@ -907,16 +905,16 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 15264
+<pre><code>## total 11476
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
-## lrwxrwxrwx 1 vinuesa vinuesa      78 sep 29 23:32 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
-## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 23:03 docs
+## lrwxrwxrwx 1 vinuesa vinuesa      78 sep 29 23:40 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 23:36 docs
 ## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## -rw-r--r-- 1 vinuesa vinuesa 1124380 sep 29 22:15 index.html
 ## drwxr-xr-x 4 vinuesa vinuesa    4096 sep 29 22:56 intro2linux
-## -rw-r--r-- 1 vinuesa vinuesa 3000435 sep 29 22:19 intro_biocomputo_Linux_LCG.odp
-## -rw-r--r-- 1 vinuesa vinuesa 2752202 sep 29 22:21 Intro_biocomputo_Linux_LCG.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   35149 sep 29 22:15 LICENSE</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 3000434 sep 29 22:32 intro_biocomputo_Linux_LCG.odp
+## -rw-r--r-- 1 vinuesa vinuesa   35149 sep 29 22:15 LICENSE
+## -rwxr-xr-x 1 vinuesa vinuesa   10193 sep 29 22:18 linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa      78 sep 29 23:32 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
 <div id="renombramos-la-liga-o-cualquier-archivo-o-directorio" class="section level3">
 <h3><span class="header-section-number">2.6.1</span> renombramos la liga (o cualquier archivo o directorio)</h3>
 <pre class="bash"><code>  mv comandos_de_linux.tab linux_commands.tab</code></pre>
@@ -1003,7 +1001,7 @@ less -L linux_commands.tab
 # usa less --help para ver más opciones</code></pre>
 </div>
 <div id="zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-conpresión-gzip" class="section level3">
-<h3><span class="header-section-number">2.7.4</span> zcat y zless permiten visualizar el contenido de archivos de texto con conpresión gzip</h3>
+<h3><span class="header-section-number">2.7.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con conpresión gzip</h3>
 <p>Los archivos usados en genómica son frecuentemente grandes y/o numerosos, por lo que es una muy buena práctica mantenerlos comprimidos para ocupar el mínimo espacio posible en disco. los comandos <span class="math inline">\(zcat\)</span> y <span class="math inline">\(zless\)</span> permiten visualizar su contenido sin tenerlos que descomprimir. Veremos más comandos, como <span class="math inline">\(zgrep\)</span> que pueden trabajar sobre archivos de texto comprimidos.</p>
 <pre class="bash"><code>zcat assembly_summary.txt.gz | head -5 | cut -f1-5</code></pre>
 <pre><code>## #   See ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt for a description of the columns in this file.
@@ -1225,7 +1223,7 @@ zgrep -E &#39;Acinetobacter|Pseudomonas|Klebsiella&#39; assembly_summary.txt.gz 
 <h2><span class="header-section-number">2.12</span> Manual de cada comando: <b>man command</b></h2>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                                                                                     User Commands                                                                                    CUT(1)
+<pre><code>## CUT(1)                                                  User Commands                                                 CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -1250,11 +1248,10 @@ man cut | head -30</code></pre>
 ##               use DELIM instead of TAB for field delimiter
 ## 
 ##        -f, --fields=LIST
-##               select only these fields;  also print any line that contains no delimiter character, unless the -s option is specified
+##               select  only  these fields;  also print any line that contains no delimiter character, unless the -s option is
+##               specified
 ## 
-##        -n     (ignored)
-## 
-##        --complement</code></pre>
+##        -n     (ignored)</code></pre>
 </div>
 <div id="ayuda-de-cada-comando-command-help" class="section level2">
 <h2><span class="header-section-number">2.13</span> Ayuda de cada comando: <b>command –help</b></h2>
@@ -1415,7 +1412,7 @@ if [ -s &quot;$f&quot; ]; then
    echo &quot;$f exists and has size: $size&quot;
 fi
 </code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 0 sep 29 23:32 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 29 23:40 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
