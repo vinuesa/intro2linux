@@ -404,15 +404,14 @@ summary {
 <li><a href="#file-nos-indica-las-propiedades-de-un-archivo"><span class="toc-section-number">2.3.4</span> <strong>file</strong> nos indica las propiedades de un archivo</a></li>
 </ul></li>
 <li><a href="#moviéndonos-por-el-sistema-de-archivos-comando-cd"><span class="toc-section-number">2.4</span> Moviéndonos por el sistema de archivos: comando <b>cd</b></a><ul>
-<li><a href="#de-nuevo-dónde-estoy-imprime-directorio-actual-con-pwd"><span class="toc-section-number">2.4.1</span> de nuevo, ¿dónde estoy?: imprime directorio actual con <b>pwd</b></a></li>
-<li><a href="#sube-un-directorio-usando-ruta-relativa-cd-.."><span class="toc-section-number">2.4.2</span> sube un directorio usando RUTA RELATIVA: <b>cd ..</b></a></li>
-<li><a href="#regresa-a-tu-home-con-cd"><span class="toc-section-number">2.4.3</span> regresa a tu home con <b>cd</b></a></li>
+<li><a href="#la-ruta-absoluta"><span class="toc-section-number">2.4.1</span> La ruta absoluta</a></li>
+<li><a href="#la-ruta-relativa"><span class="toc-section-number">2.4.2</span> La ruta relativa</a></li>
 </ul></li>
 <li><a href="#generación-de-directorios-comando-mkdir"><span class="toc-section-number">2.5</span> Generación de directorios: comando <b>mkdir</b></a></li>
 <li><a href="#copiar-mover-renombrar-y-borrar-archivos-con-cp-mv-rm-scp-y-sftp"><span class="toc-section-number">2.6</span> Copiar, mover, renombrar y borrar archivos con: <b>cp</b>, <b>mv</b>, <b>rm</b>, <b>scp</b> y <b>sftp</b></a><ul>
 <li><a href="#copia-de-archivo-simple-cp-file-."><span class="toc-section-number">2.6.1</span> copia de archivo simple: <b> cp file .</b></a></li>
-<li><a href="#copiado-de-directorio-cp--r-dir-."><span class="toc-section-number">2.6.2</span> copiado de directorio: <b> cp -r dir . </b></a></li>
-<li><a href="#eliminar-un-directorio-rm--rf-recursively--r-and-force--f"><span class="toc-section-number">2.6.3</span> Eliminar un directorio: <b>rm -rf</b> [recursively -r and force -f]</a></li>
+<li><a href="#copiar-un-directorio-cp--r-dir-.--r-recursively-el-directorio-y-su-contenido"><span class="toc-section-number">2.6.2</span> copiar un directorio: <b> cp -r dir . </b> [-r recursively, el directorio y su contenido]</a></li>
+<li><a href="#eliminar-un-directorio-rm--rf-recursively--r-and-force--f"><span class="toc-section-number">2.6.3</span> Eliminar un directorio: <b>rm -r[f]</b> [recursively -r and force -f]</a></li>
 <li><a href="#scp-copia-de-archivos-entre-máquinas-vía-internet"><span class="toc-section-number">2.6.4</span> <b>scp</b> copia de archivos entre máquinas vía Internet</a></li>
 <li><a href="#sftp-descarga-de-archivos-de-una-máquina-remota-a-tu-laptop"><span class="toc-section-number">2.6.5</span> <b>sftp</b> descarga de archivos de una máquina remota a tu laptop</a></li>
 </ul></li>
@@ -605,7 +604,7 @@ tree -d -L 1 /
 ## ├── [01;34msnap[00m
 ## ├── [01;34msrv[00m
 ## ├── [01;34msys[00m
-## ├── [30;42mtmp[00m
+## ├── [01;34mtmp[00m
 ## ├── [01;34musr[00m
 ## └── [01;34mvar[00m
 ## 
@@ -635,28 +634,27 @@ ls | head</code></pre>
 ## participantes_Taller_CG_FC</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
-<pre><code>## total 11504
-## drwxr-xr-x 6 vinuesa vinuesa    4096 oct  6 23:58 .
+<pre><code>## total 11500
+## drwxr-xr-x 6 vinuesa vinuesa    4096 oct  7 11:51 .
 ## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 22:15 ..
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
-## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 23:36 docs
+## drwxr-xr-x 3 vinuesa vinuesa    4096 oct  7 00:24 docs
 ## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## drwxr-xr-x 8 vinuesa vinuesa    4096 sep 29 23:43 .git
+## drwxr-xr-x 8 vinuesa vinuesa    4096 oct  7 00:24 .git
 ## drwxr-xr-x 4 vinuesa vinuesa    4096 sep 29 22:56 intro2linux
 ## -rw-r--r-- 1 vinuesa vinuesa 2993606 sep 30 10:52 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r-- 1 vinuesa vinuesa   35149 sep 29 22:15 LICENSE
 ## -rwxr-xr-x 1 vinuesa vinuesa   10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx 1 vinuesa vinuesa      78 oct  6 23:58 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa      78 oct  7 11:51 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rwxr-xr-x 1 vinuesa vinuesa    1705 sep 29 22:18 linux_very_basic_commands_table.csv
-## -rw-rw-r-- 1 vinuesa vinuesa      76 oct  6 23:00 .~lock.intro_biocomputo_Linux_LCG.odp#
 ## drwxr-xr-x 2 vinuesa vinuesa    4096 oct  6 16:39 participantes_Taller_CG_FC
 ## -rw-r--r-- 1 vinuesa vinuesa    3780 sep 29 23:43 README.md
 ## -rw-r--r-- 1 vinuesa vinuesa   77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa   17704 oct  6 23:58 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa       0 oct  6 20:48 .Rhistory
-## -rw-r--r-- 1 vinuesa vinuesa 1134861 oct  6 23:58 working_with_linux_commands.html
+## -rw-r--r-- 1 vinuesa vinuesa   17704 oct  7 11:51 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa       0 oct  7 00:21 .Rhistory
+## -rw-r--r-- 1 vinuesa vinuesa 1136861 oct  7 11:51 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   61684 oct  7 00:02 working_with_linux_commands.Rmd</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa   62986 oct  7 11:59 working_with_linux_commands.Rmd</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del directorio raiz</h4>
 <ul>
@@ -679,10 +677,10 @@ ls -al </code></pre>
 <pre class="bash"><code>ls -l / | head -20</code></pre>
 <pre><code>## total 76
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
-## drwxr-xr-x   4 root root  4096 oct  4 14:55 boot
+## drwxr-xr-x   4 root root  4096 oct  7 11:25 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  20 root root  4440 oct  6 15:58 dev
-## drwxr-xr-x 151 root root 12288 oct  6 13:28 etc
+## drwxr-xr-x  21 root root  4520 oct  7 11:42 dev
+## drwxr-xr-x 153 root root 12288 oct  7 11:25 etc
 ## drwxr-xr-x   5 root root  4096 abr 15 06:09 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
 ## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib32 -&gt; usr/lib32
@@ -692,9 +690,9 @@ ls -al </code></pre>
 ## drwxr-xr-x   3 root root  4096 oct  5 20:41 media
 ## drwxr-xr-x   2 root root  4096 jul 31 11:27 mnt
 ## drwxr-xr-x   5 root root  4096 oct  5 12:26 opt
-## dr-xr-xr-x 325 root root     0 oct  6 13:19 proc
-## drwx------   7 root root  4096 oct  6 12:54 root
-## drwxr-xr-x  35 root root   940 oct  6 22:21 run
+## dr-xr-xr-x 357 root root     0 oct  7 11:41 proc
+## drwx------   7 root root  4096 oct  7 00:28 root
+## drwxr-xr-x  36 root root  1000 oct  7 11:42 run
 ## lrwxrwxrwx   1 root root     8 oct  4 14:42 sbin -&gt; usr/sbin
 ## drwxr-xr-x  10 root root  4096 oct  4 23:18 snap</code></pre>
 </div>
@@ -879,7 +877,7 @@ drwxr-xr-x 4 vinuesa vinuesa    4096 sep 29 22:56 intro2linux</code></pre>
 </tr>
 </tbody>
 </table>
-<p><span class="math inline">\(chmod a+rx script.sh\)</span> hace el archivo script.sh leíble y ejecutable para todos</p>
+<p><span class="math inline">\(chmod\ a+rx\ script.sh\)</span> hace el archivo script.sh leíble y ejecutable para todos</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Usando <b>representación octal</b></li>
 </ol>
@@ -986,22 +984,43 @@ file intro2linux</code></pre>
 </div>
 <div id="moviéndonos-por-el-sistema-de-archivos-comando-cd" class="section level2">
 <h2><span class="header-section-number">2.4</span> Moviéndonos por el sistema de archivos: comando <b>cd</b></h2>
-<div id="de-nuevo-dónde-estoy-imprime-directorio-actual-con-pwd" class="section level3">
-<h3><span class="header-section-number">2.4.1</span> de nuevo, ¿dónde estoy?: imprime directorio actual con <b>pwd</b></h3>
+<p>Para movernos por el sistema de archivos de un sistema Linux podemos hacer uso de la <b>ruta absoluta</b> o la <b>ruta relativa</b>.</p>
+<div id="la-ruta-absoluta" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> La ruta absoluta</h3>
+<p>Define la ruta a cualquier directorio o archivo en el sistema partiendo del <b>directorio raíz</b> <span class="math inline">\(/\)</span>, como indica el comando <span class="math inline">\(pwd\)</span></p>
+<div id="de-nuevo-dónde-estoy-imprime-directorio-actual-con-pwd" class="section level4">
+<h4><span class="header-section-number">2.4.1.1</span> de nuevo, ¿dónde estoy?: imprime directorio actual con <b>pwd</b></h4>
 <pre class="bash"><code>pwd </code></pre>
 <pre><code>## /home/vinuesa/cursos/intro2linux</code></pre>
 </div>
-<div id="sube-un-directorio-usando-ruta-relativa-cd-.." class="section level3">
-<h3><span class="header-section-number">2.4.2</span> sube un directorio usando RUTA RELATIVA: <b>cd ..</b></h3>
+<div id="entra-a-un-directorio-cualquiera-usando-la-ruta-absoluta" class="section level4">
+<h4><span class="header-section-number">2.4.1.2</span> entra a un directorio cualquiera usando la ruta absoluta</h4>
+<pre><code># indicamos la ruta absoluta o &quot;path&quot; al directorio al que queremos entrar
+cd /home/vinuesa/cursos/intro2linux/data</code></pre>
+</div>
+</div>
+<div id="la-ruta-relativa" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> La ruta relativa</h3>
+<p>Se define en relación al directorio actual en el que estás.</p>
+<div id="entra-a-un-subdirectorio-bajo-en-directorio-actual-usando-la-ruta-relativa" class="section level4">
+<h4><span class="header-section-number">2.4.2.1</span> entra a un subdirectorio bajo en directorio actual usando la ruta relativa</h4>
+<pre><code>cd directorio</code></pre>
+</div>
+<div id="sube-un-directorio-usando-ruta-relativa-cd-.." class="section level4">
+<h4><span class="header-section-number">2.4.2.2</span> sube un directorio usando RUTA RELATIVA: <b>cd ..</b></h4>
 <pre class="bash"><code>cd ..</code></pre>
+</div>
+<div id="sube-dos-niveles-en-la-jerarquía-de-directorios-usando-ruta-relativa-cd-...." class="section level4">
+<h4><span class="header-section-number">2.4.2.3</span> sube dos niveles en la jerarquía de directorios usando RUTA RELATIVA: <b>cd ../..</b></h4>
+<pre class="bash"><code>cd ../..</code></pre>
 <ul>
 <li>¿dónde estoy?</li>
 </ul>
 <pre class="bash"><code>pwd </code></pre>
 <pre><code>## /home/vinuesa/cursos/intro2linux</code></pre>
 </div>
-<div id="regresa-a-tu-home-con-cd" class="section level3">
-<h3><span class="header-section-number">2.4.3</span> regresa a tu home con <b>cd</b></h3>
+<div id="regresa-rápidamente-a-tu-home-desde-cualquier-punto-del-sistema-de-archivos-con-cd" class="section level4">
+<h4><span class="header-section-number">2.4.2.4</span> regresa rápidamente a tu home desde cualquier punto del sistema de archivos con <b>cd</b></h4>
 <pre class="bash"><code>cd $HOME
 
 # que es equivalente a:
@@ -1042,6 +1061,7 @@ pwd</code></pre>
 ## participantes_Taller_CG_FC</code></pre>
 </div>
 </div>
+</div>
 <div id="generación-de-directorios-comando-mkdir" class="section level2">
 <h2><span class="header-section-number">2.5</span> Generación de directorios: comando <b>mkdir</b></h2>
 <pre class="bash"><code># vamos a $HOME y generamos el directorio intro2linux
@@ -1078,12 +1098,16 @@ cd &amp;&amp; cd intro2linux/sesion1</code></pre>
 </ul>
 <pre><code>cp /home/vinuesa/intro2linux/data/linux_basic_commands.tab . # &lt;&lt;&lt; vean el punto, significa, dir actual</code></pre>
 <ul>
-<li>otra manera, usando rutas absolutas y la variable de ambiente $HOME</li>
+<li>otra manera, usando <b>rutas absolutas</b> y la <b>variable de ambiente $HOME</b></li>
 </ul>
 <pre><code>cp /home/vinuesa/intro2linux/data/linux_basic_commands.tab $HOME/intro2linux/sesion1/</code></pre>
+<ul>
+<li>otra manera, usando <b>rutas absolutas</b> y el atajo <span class="math inline">\(~\)</span> para <b>$HOME</b></li>
+</ul>
+<pre><code>cp /home/vinuesa/intro2linux/data/linux_basic_commands.tab ~/intro2linux/sesion1/</code></pre>
 </div>
-<div id="copiado-de-directorio-cp--r-dir-." class="section level3">
-<h3><span class="header-section-number">2.6.2</span> copiado de directorio: <b> cp -r dir . </b></h3>
+<div id="copiar-un-directorio-cp--r-dir-.--r-recursively-el-directorio-y-su-contenido" class="section level3">
+<h3><span class="header-section-number">2.6.2</span> copiar un directorio: <b> cp -r dir . </b> [-r recursively, el directorio y su contenido]</h3>
 <ul>
 <li>copiar el directorio /home/vinuesa/intro2linux/data/ a tu dir actual</li>
 </ul>
@@ -1091,7 +1115,7 @@ cd &amp;&amp; cd intro2linux/sesion1</code></pre>
 cp -r /home/vinuesa/intro2linux/data/ . </code></pre>
 </div>
 <div id="eliminar-un-directorio-rm--rf-recursively--r-and-force--f" class="section level3">
-<h3><span class="header-section-number">2.6.3</span> Eliminar un directorio: <b>rm -rf</b> [recursively -r and force -f]</h3>
+<h3><span class="header-section-number">2.6.3</span> Eliminar un directorio: <b>rm -r[f]</b> [recursively -r and force -f]</h3>
 <pre class="bash"><code>mkdir borrame
 
 cp linux_basic_commands.tab borrame
@@ -1103,8 +1127,11 @@ rm -rf borrame</code></pre>
 <p>Prueba ahora este comando</p>
 <pre><code>rm data</code></pre>
 <p>qué pasa?</p>
-<p>¿Cómo tengo que borrar un directorio? <code>rm -rf directorio</code></p>
+<p>¿Cómo tengo que borrar un directorio? <code>rm -r[f] directorio</code></p>
 <pre><code>rm -rf data</code></pre>
+<ul>
+<li>NOTA: en algunos sistemas la llamada a <span class="math inline">\(rm\ -r\ directorio\)</span> no permite borrar <span class="math inline">\(directorio\)</span> directamente, imprimiendo un mensaje de error. Par forzar el borrado, si el mensaje de advertencia, usamos <span class="math inline">\(rm\ -rf\ directorio\)</span></li>
+</ul>
 </div>
 <div id="scp-copia-de-archivos-entre-máquinas-vía-internet" class="section level3">
 <h3><span class="header-section-number">2.6.4</span> <b>scp</b> copia de archivos entre máquinas vía Internet</h3>
@@ -1163,14 +1190,14 @@ fi
 ls -l | head</code></pre>
 <pre><code>## total 11492
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
-## lrwxrwxrwx 1 vinuesa vinuesa      78 oct  7 00:02 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
-## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 23:36 docs
+## lrwxrwxrwx 1 vinuesa vinuesa      78 oct  7 11:59 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## drwxr-xr-x 3 vinuesa vinuesa    4096 oct  7 00:24 docs
 ## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
 ## drwxr-xr-x 4 vinuesa vinuesa    4096 sep 29 22:56 intro2linux
 ## -rw-r--r-- 1 vinuesa vinuesa 2993606 sep 30 10:52 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r-- 1 vinuesa vinuesa   35149 sep 29 22:15 LICENSE
 ## -rwxr-xr-x 1 vinuesa vinuesa   10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx 1 vinuesa vinuesa      78 oct  6 23:58 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
+## lrwxrwxrwx 1 vinuesa vinuesa      78 oct  7 11:51 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
 <div id="renombramos-la-liga-o-cualquier-archivo-o-directorio" class="section level3">
 <h3><span class="header-section-number">2.7.1</span> renombramos la liga (o cualquier archivo o directorio)</h3>
 <pre class="bash"><code>  mv comandos_de_linux.tab linux_commands.tab</code></pre>
@@ -1664,7 +1691,7 @@ if [ -s &quot;$f&quot; ]; then
    echo &quot;$f exists and has size: $size&quot;
 fi
 </code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct  7 00:02 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct  7 11:59 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
