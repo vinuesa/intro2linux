@@ -62,7 +62,7 @@ Este taller tiene por objetivos iniciarte en el camino del bioc&oacute;mputo en 
 
 Este es un tutoral muy general, que deberás leer antes de inciar las sesiones prácticas del siguiente rubro.
 
-- [presentaci&oacute;n - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/Intro_biocomputo_Linux.pdf)
+- [presentaci&oacute;n - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf)
 
 
 Tambi&eacute;n van unas notas elaboradas por la UATI de la @lcg_unam sobre instalación de mobaXterm en m&aacute;quinas Windows para
