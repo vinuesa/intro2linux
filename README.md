@@ -44,20 +44,34 @@ Las clases se imparten de manera remota, v&iacute;a zoom, los miércoles de 9:00
 <!--<img src="docs/pics/intro2linux_aula_UNLP_2-6Julio2018.jpg" />-->
 
 
+#### Descarga de archivos individuales o del repositorio como archivo zip
 
-### Justificación del taller
+Tambi&eacute;n puedes descargar la distribuci&oacute;n como archivo comprimido "zip", o descargar archivos individuales 
+desde las carpetas docs y data.
 
-El trabajo en gen&oacute;mica se realiza en servidores UNIX o GNU/Linux de alto rendimiento. Es por ello 
+
+### Justificación y objetivos del taller
+
+El trabajo en gen&oacute;mica se realiza en servidores UNIX o GNU/Linux de alto rendimiento. Consideramos por ello
 esencial familiarizarse con este ambiente de c&oacute;mputo al inicio de la formaci&oacute;n acad&eacute;mica. 
-En consecuencia:
+
+Este taller tiene por objetivos iniciarte en el camino del bioc&oacute;mputo en sistemas GNU/Linux y ayudarte a descubrir un ambiente de c&oacute;mputo mucho m&aacute;s amigable y poderoso que el que posiblemente conoces hasta ahora.
 
 
-#### Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux 
-- [presentaci&oacute;n - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/Intro_biocomputo_Linux_LCG.pdf)
+#### Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux
+
+Este es un tutoral muy general, que deberás leer antes de inciar las sesiones prácticas del siguiente rubro.
+
+- [presentaci&oacute;n - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/Intro_biocomputo_Linux.pdf)
+
+
+Tambi&eacute;n van unas notas elaboradas por la UATI de la @lcg_unam sobre instalación de mobaXterm en m&aacute;quinas Windows para
+poder establecer conexiones remotas a servidores v&iacute;a SSH.
+
+- [instalaci&oacute;n mobaXterm - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/ConexionSSHdesdeWindows_usando_mobaXterm_UATI_LCG-UNAM.pdf)
 
 #### Pr&aacute;ctica 1. Primer contacto con un sistema GNU/Linux
 - [pr&aacute;ctica1 - html](https://vinuesa.github.io/intro2linux/)
-- [pr&aacute;ctica1 - pdf](https://github.com/vinuesa/intro2linux/tree/master/docs/working_with_linux_commands.pdf)
 - [pr&aacute;ctica1 - tabla_comandos](https://github.com/vinuesa/intro2linux/tree/master/docs/linux_commands.tab)
 
 
