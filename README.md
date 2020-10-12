@@ -83,7 +83,7 @@ Si nunca has trabajado en un sistema Linux anteriormente, recomiendo leer este t
 - [Primer contacto con Linux - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf)
 
 
-Tambi&eacute;n van unas notas elaboradas por la UATI de la @lcg_unam sobre instalación de [mobaXterm - home edition](https://mobaxterm.mobatek.net/download-home-edition.html) en m&aacute;quinas Windows para poder establecer conexiones remotas a servidores v&iacute;a SSH y tener acceso a una consola Linux corriendo $bash$
+Tambi&eacute;n van unas notas elaboradas por la UATI de la @lcg_unam sobre instalación de [mobaXterm - home edition](https://mobaxterm.mobatek.net/download-home-edition.html) en m&aacute;quinas Windows para poder establecer conexiones remotas a servidores v&iacute;a SSH y tener acceso a una consola Linux corriendo <i>bash</i>
 
 - [instalaci&oacute;n mobaXterm - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/ConexionSSHdesdeWindows_usando_mobaXterm_UATI_LCG-UNAM.pdf)
 
