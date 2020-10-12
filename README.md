@@ -67,7 +67,7 @@ que te familiarices con este ambiente de c&oacute;mputo al inicio de tu formaci&
 
 Este taller tiene por objetivos iniciarte en el camino del bioc&oacute;mputo en sistemas GNU/Linux y ayudarte a descubrir un ambiente de c&oacute;mputo mucho m&aacute;s amigable y poderoso que el que posiblemente conoces hasta ahora.
 
-Aprender&aacute;s todo lo necesario para un arranque r&aacute;pido, &uacute;til, entretenido y exitoso de programaci&oacute;n/scripting del Linux Shell, usando ejemplos relevantes para el an&acute;lisis de secuencias moleculares y datos asociados.
+Aprender&aacute;s todo lo necesario para un arranque r&aacute;pido, &uacute;til, entretenido y exitoso de programaci&oacute;n/scripting del Linux Shell, usando ejemplos relevantes para el an&aacute;lisis de secuencias moleculares y datos asociados.
 
 #### Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux
 
