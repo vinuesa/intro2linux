@@ -45,7 +45,7 @@ También en [mobaXterm - plugins](https://mobaxterm.mobatek.net/plugins.html): a
 ##### Actualización del repositorio local
 Una vez clonado, puedes actualizar tu copia del repo entrando al directorio donde lo clonaste con el comando anterior y ejecutando el siguiente:
 
-<code>git pull</cod>
+<code>git pull</code>
 
 <!--### ¿Horario y lugar de impartici&oacute;n de las sesiones?
 Las clases se imparten de manera remota, v&iacute;a zoom, los miércoles de 9:00 - 11:00-->
