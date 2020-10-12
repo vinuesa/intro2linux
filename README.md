@@ -75,7 +75,7 @@ En este tutoral se describen los siguientes conceptos b&aacute;sicos:
 - Qu&eacute; es el bioc&oacute;mputo?
 - Qu&eacute; es GNU/Linux?
 - Qu&eacute; es el Shell?
-- C&oacute;mo me conecto a un servidor remoto v&iacute;a $ssh$?
+- C&oacute;mo me conecto a un servidor remoto v&iacute;a ssh?
 - Revisaremos comandos b&acute;sicos y c&oacute;mo moverte por el sistema de archivos
 
 Si nunca has trabajado en un sistema Linux anteriormente, recomiendo leer este tutoral antes de inciar las sesiones prácticas del siguiente rubro.
