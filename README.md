@@ -3,6 +3,7 @@
 ## Ediciones del Taller
 
 1a. Edición: semestre 2021-1
+
 v.2020-10-11
 
 ***
@@ -66,6 +67,7 @@ que te familiarices con este ambiente de c&oacute;mputo al inicio de tu formaci&
 
 Este taller tiene por objetivos iniciarte en el camino del bioc&oacute;mputo en sistemas GNU/Linux y ayudarte a descubrir un ambiente de c&oacute;mputo mucho m&aacute;s amigable y poderoso que el que posiblemente conoces hasta ahora.
 
+Aprender&aacute;s todo lo necesario para un arranque r&aacute;pido, &uacute;til, entretenido y exitoso de programaci&oacute;n/scripting del Linux Shell, usando ejemplos relevantes para el an&acute;lisis de secuencias moleculares y datos asociados.
 
 #### Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux
 
@@ -75,7 +77,6 @@ En este tutoral se describen los siguientes conceptos b&aacute;sicos:
 - Qu&eacute; es el Shell?
 - C&oacute;mo me conecto a un servidor remoto v&iacute;a $ssh$?
 - Revisaremos comandos b&acute;sicos y c&oacute;mo moverte por el sistema de archivos
-
 
 Si nunca has trabajado en un sistema Linux anteriormente, recomiendo leer este tutoral antes de inciar las sesiones prácticas del siguiente rubro.
 
