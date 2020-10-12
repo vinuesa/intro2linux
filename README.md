@@ -3,6 +3,7 @@
 ## Ediciones del Taller
 
 1a. Edición: semestre 2021-1
+v.2020-10-11
 
 ***
  
@@ -14,13 +15,12 @@ Hola, me llamo [Pablo Vinuesa](http://www.ccg.unam.mx/~vinuesa/). Soy investigad
 [Universidad Nacional Aut&oacute;noma de M&eacute;xico - UNAM](http://www.unam.mx/).
 
 Mis [l&iacute;neas de investigaci&oacute;n](http://www.ccg.unam.mx/~vinuesa/research.html) 
-integran la gen&oacute;mica y la bioinform&aacute;tica con la biolog&aacute;a y gen&eacute;tica molecular para entender 
+integran la gen&oacute;mica y la bioinform&aacute;tica con la biolog&iacute;a y gen&eacute;tica molecular para entender 
 la evoluci&oacute;n y emergencia de pat&oacute;genos oportunistas a partir de microbios ambientales.
 
 ### Sobre el material did&aacute;ctico
 A trav&eacute;s de estas p&aacute;ginas se distribuyen los apuntes, ejercicios y datos que se usar&aacute;n en el Taller.
-Es una recopilaci&oacute; de material desarrollado por [Pablo Vinuesa](http://www.ccg.unam.mx/~vinuesa/), instructor del Taller, 
-para diversos cursos y talleres que ha impartido principalmente en la [Universidad Nacional Aut&oacute;noma de M&eacute;xico - UNAM](https://www.unam.mx/). 
+Es una recopilaci&oacute;n del material que he desarrollado para diversos cursos y talleres que ha impartido principalmente en la [Universidad Nacional Aut&oacute;noma de M&eacute;xico - UNAM](https://www.unam.mx/), pero también en otras universidades y países, como Argentina, Brasil, España y Puerto Rico [Talleres y Cursos impartidos por Pablo Vinuesa](https://www.ccg.unam.mx/~vinuesa/cursos.html). 
 
 
 ### Licencia y términos de uso
@@ -37,6 +37,15 @@ En [ubuntu](https://www.ubuntu.com/) es muy f&aacute;cil instalar git:
 
   <code>sudo apt install git</code>
 
+También en [mobaXterm - plugins](https://mobaxterm.mobatek.net/plugins.html): abre una consola de moba y teclea
+
+  <code>sudo apt-get install git</code>
+
+
+##### Actualización del repositorio local
+Una vez clonado, puedes actualizar tu copia del repo entrando al directorio donde lo clonaste con el comando anterior y ejecutando el siguiente:
+
+<code>git pull</cod>
 
 <!--### ¿Horario y lugar de impartici&oacute;n de las sesiones?
 Las clases se imparten de manera remota, v&iacute;a zoom, los miércoles de 9:00 - 11:00-->
@@ -46,27 +55,34 @@ Las clases se imparten de manera remota, v&iacute;a zoom, los miércoles de 9:00
 
 #### Descarga de archivos individuales o del repositorio como archivo zip
 
-Tambi&eacute;n puedes descargar la distribuci&oacute;n como archivo comprimido "zip", o descargar archivos individuales 
+Tambi&eacute;n puedes descargar la distribuci&oacute;n como archivo comprimido "zip", o descargar los archivos individuales que desees
 desde las carpetas docs y data.
 
 
 ### Justificación y objetivos del taller
 
-El trabajo en gen&oacute;mica se realiza en servidores UNIX o GNU/Linux de alto rendimiento. Consideramos por ello
-esencial familiarizarse con este ambiente de c&oacute;mputo al inicio de la formaci&oacute;n acad&eacute;mica. 
+El trabajo en gen&oacute;mica se realiza en servidores UNIX o GNU/Linux de alto rendimiento. Recomiendo por tanto
+que te familiarices con este ambiente de c&oacute;mputo al inicio de tu formaci&oacute;n acad&eacute;mica. 
 
 Este taller tiene por objetivos iniciarte en el camino del bioc&oacute;mputo en sistemas GNU/Linux y ayudarte a descubrir un ambiente de c&oacute;mputo mucho m&aacute;s amigable y poderoso que el que posiblemente conoces hasta ahora.
 
 
 #### Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux
 
-Este es un tutoral muy general, que deberás leer antes de inciar las sesiones prácticas del siguiente rubro.
+En este tutoral se describen los siguientes conceptos b&aacute;sicos:
+- Qu&eacute; es el bioc&oacute;mputo?
+- Qu&eacute; es GNU/Linux?
+- Qu&eacute; es el Shell?
+- C&oacute;mo me conecto a un servidor remoto v&iacute;a $ssh$?
+- Revisaremos comandos b&acute;sicos y c&oacute;mo moverte por el sistema de archivos
 
-- [presentaci&oacute;n - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf)
+
+Si nunca has trabajado en un sistema Linux anteriormente, recomiendo leer este tutoral antes de inciar las sesiones prácticas del siguiente rubro.
+
+- [Primer contacto con Linux - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf)
 
 
-Tambi&eacute;n van unas notas elaboradas por la UATI de la @lcg_unam sobre instalación de mobaXterm en m&aacute;quinas Windows para
-poder establecer conexiones remotas a servidores v&iacute;a SSH.
+Tambi&eacute;n van unas notas elaboradas por la UATI de la @lcg_unam sobre instalación de [mobaXterm - home edition](https://mobaxterm.mobatek.net/download-home-edition.html) en m&aacute;quinas Windows para poder establecer conexiones remotas a servidores v&iacute;a SSH y tener acceso a una consola Linux corriendo $bash$
 
 - [instalaci&oacute;n mobaXterm - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/ConexionSSHdesdeWindows_usando_mobaXterm_UATI_LCG-UNAM.pdf)
 
