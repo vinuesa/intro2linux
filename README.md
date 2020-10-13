@@ -34,11 +34,13 @@ Si tienes instalado [git](https://git-scm.com/) en tu computadora, puedes clonar
 
    <code>git clone https://github.com/vinuesa/intro2linux.git</code>
 
-En [ubuntu](https://www.ubuntu.com/) es muy f&aacute;cil instalar git: 
+- En [ubuntu](https://www.ubuntu.com/) es muy f&aacute;cil instalar git: 
 
   <code>sudo apt install git</code>
 
-También en [mobaXterm - plugins](https://mobaxterm.mobatek.net/plugins.html): abre una consola de moba y teclea
+- También en [mobaXterm](https://mobaxterm.mobatek.net/) es posible instalar git como un <i>plugin</in> [mobaXterm - plugins](https://mobaxterm.mobatek.net/plugins.html)
+
+abre una consola de moba (ver instrucciones de instalación abajo) y teclea
 
   <code>sudo apt-get install git</code>
 
