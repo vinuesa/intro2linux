@@ -9,9 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM" />
+<meta name="author" content="Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; http://www.ccg.unan.mx/~vinuesa" />
 
-<meta name="date" content="2020-10-07" />
+<meta name="date" content="2020-10-12" />
 
 <title>Sesión 1. Introducción al biocómputo en sistemas GNU/Linux</title>
 
@@ -373,8 +373,8 @@ summary {
 
 
 <h1 class="title toc-ignore">Sesión 1. Introducción al biocómputo en sistemas GNU/Linux</h1>
-<h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM</h4>
-<h4 class="date">2020-10-07</h4>
+<h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a></h4>
+<h4 class="date">2020-10-12</h4>
 
 </div>
 
@@ -393,7 +393,7 @@ summary {
 </ul></li>
 <li><a href="#exploración-del-sistema-de-archivos"><span class="toc-section-number">2.2</span> Exploración del sistema de archivos</a><ul>
 <li><a href="#imprime-la-estructura-de-directorios-de-tu-home-u-otro-directorio"><span class="toc-section-number">2.2.1</span> Imprime la estructura de directorios de tu home u otro directorio</a></li>
-<li><a href="#pwd-imprime-la-ruta-absoluta-del-directorio-actual"><span class="toc-section-number">2.2.2</span> <strong>pwd</strong> imprime la ruta absoluta del directorio actual</a></li>
+<li><a href="#pwd-imprime-la-ruta-absoluta-del-directorio-actual"><span class="toc-section-number">2.2.2</span> <strong>pwd</strong> imprime la <strong>ruta absoluta</strong> del directorio actual</a></li>
 <li><a href="#ls-lista-contenidos-del-directorio"><span class="toc-section-number">2.2.3</span> <strong>ls</strong> lista contenidos del directorio</a></li>
 <li><a href="#expansión-de-caracteres-con-y"><span class="toc-section-number">2.2.4</span> Expansión de caracteres con <b>*</b> y <b>?</b></a></li>
 </ul></li>
@@ -404,8 +404,8 @@ summary {
 <li><a href="#file-nos-indica-las-propiedades-de-un-archivo"><span class="toc-section-number">2.3.4</span> <strong>file</strong> nos indica las propiedades de un archivo</a></li>
 </ul></li>
 <li><a href="#moviéndonos-por-el-sistema-de-archivos-comando-cd"><span class="toc-section-number">2.4</span> Moviéndonos por el sistema de archivos: comando <b>cd</b></a><ul>
-<li><a href="#la-ruta-absoluta"><span class="toc-section-number">2.4.1</span> La ruta absoluta</a></li>
-<li><a href="#la-ruta-relativa"><span class="toc-section-number">2.4.2</span> La ruta relativa</a></li>
+<li><a href="#la-ruta-absoluta"><span class="toc-section-number">2.4.1</span> La <strong>ruta absoluta</strong></a></li>
+<li><a href="#la-ruta-relativa"><span class="toc-section-number">2.4.2</span> La <strong>ruta relativa</strong></a></li>
 </ul></li>
 <li><a href="#generación-de-directorios-comando-mkdir"><span class="toc-section-number">2.5</span> Generación de directorios: comando <b>mkdir</b></a></li>
 <li><a href="#copiar-mover-renombrar-y-borrar-archivos-con-cp-mv-rm-scp-y-sftp"><span class="toc-section-number">2.6</span> Copiar, mover, renombrar y borrar archivos con: <b>cp</b>, <b>mv</b>, <b>rm</b>, <b>scp</b> y <b>sftp</b></a><ul>
@@ -413,47 +413,60 @@ summary {
 <li><a href="#copiar-un-directorio-cp--r-dir-.--r-recursively-el-directorio-y-su-contenido"><span class="toc-section-number">2.6.2</span> copiar un directorio: <b> cp -r dir . </b> [-r recursively, el directorio y su contenido]</a></li>
 <li><a href="#eliminar-un-directorio-rm--rf-recursively--r-and-force--f"><span class="toc-section-number">2.6.3</span> Eliminar un directorio: <b>rm -r[f]</b> [recursively -r and force -f]</a></li>
 <li><a href="#scp-copia-de-archivos-entre-máquinas-vía-internet"><span class="toc-section-number">2.6.4</span> <b>scp</b> copia de archivos entre máquinas vía Internet</a></li>
-<li><a href="#sftp-descarga-de-archivos-de-una-máquina-remota-a-tu-laptop"><span class="toc-section-number">2.6.5</span> <b>sftp</b> descarga de archivos de una máquina remota a tu laptop</a></li>
+<li><a href="#sftp-descarga-de-archivos-de-una-máquina-remota-a-tu-máquina-local-laptop-o-desktop"><span class="toc-section-number">2.6.5</span> <b>sftp</b> descarga de archivos de una máquina remota a tu máquina local (laptop o desktop)</a></li>
 </ul></li>
-<li><a href="#generación-de-ligas-simbólicas-a-archivos-comando-ln--s-rutaalarchivofuente-nombre_la_liga"><span class="toc-section-number">2.7</span> Generación de ligas simbólicas a archivos: comando <b>ln -s /ruta/al/archivo/fuente nombre_la_liga</b></a><ul>
+<li><a href="#generación-de-ligas-simbólicas-a-archivos-comando-ln--s-rutaalarchivofuente-nombre_liga"><span class="toc-section-number">2.7</span> Generación de ligas simbólicas a archivos: comando <b>ln -s /ruta/al/archivo/fuente nombre_liga</b></a><ul>
 <li><a href="#renombramos-la-liga-o-cualquier-archivo-o-directorio"><span class="toc-section-number">2.7.1</span> renombramos la liga (o cualquier archivo o directorio)</a></li>
 </ul></li>
-<li><a href="#visualización-de-contenidos-de-archivos-comando-head-tail-cat-less-more"><span class="toc-section-number">2.8</span> Visualización de contenidos de archivos: comando <b>head</b>, <b>tail</b>, <b>cat</b>, <b>less</b>, <b>more</b></a><ul>
-<li><a href="#uso-de-head-y-tail-para-desplegar-la-cabecera-y-cola-de-archivos"><span class="toc-section-number">2.8.1</span> uso de <b>head</b> y <b>tail</b> para desplegar la cabecera y cola de archivos</a></li>
-<li><a href="#cat-despliega-uno-o-más-archivos-concatenándolos"><span class="toc-section-number">2.8.2</span> <b>cat</b> despliega uno o más archivos, concatenándolos</a></li>
-<li><a href="#el-paginador-less-despliega-archivos-página-a-página"><span class="toc-section-number">2.8.3</span> el paginador <b>less</b> despliega archivos página a página</a></li>
-<li><a href="#zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-conpresión-gzip"><span class="toc-section-number">2.8.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con conpresión gzip</a></li>
+<li><a href="#nombres-de-archivos-y-directorios-y-uso-de-comillas-sencillas-y-dobles"><span class="toc-section-number">2.8</span> Nombres de archivos y directorios y uso de comillas sencillas y dobles</a><ul>
+<li><a href="#uso-de-comillas-sencillas-interpretación-literal-y-escape-de-caracteres-reservados-para-el-shell"><span class="toc-section-number">2.8.1</span> Uso de <b>comillas sencillas(<span class="math inline">\(&#39;\)</span>)</b>: interpretación literal y escape de caracteres reservados para el <i>SHELL</i></a></li>
+<li><a href="#uso-de-comillas-dobles-para-interpolación-de-variables"><span class="toc-section-number">2.8.2</span> Uso de <b>comillas dobles (<span class="math inline">\(&quot;\)</span>)</b> para interpolación de variables</a></li>
 </ul></li>
-<li><a href="#edición-de-archivos-con-los-editores-vim-o-gnedit"><span class="toc-section-number">2.9</span> Edición de archivos con los editores <b>vim</b> o <b>[g|n]edit</b></a></li>
-<li><a href="#edición-de-archivos-con-el-editor-de-flujo-sed-stream-editor"><span class="toc-section-number">2.10</span> Edición de archivos con el editor de flujo <b>sed</b> (stream editor)</a><ul>
-<li><a href="#ejemplos-de-uso-básico-de-sed"><span class="toc-section-number">2.10.1</span> Ejemplos de uso básico de <b>sed</b>:</a></li>
+<li><a href="#visualización-de-contenidos-de-archivos-comando-head-tail-cat-less-more"><span class="toc-section-number">2.9</span> Visualización de contenidos de archivos: comando <b>head</b>, <b>tail</b>, <b>cat</b>, <b>less</b>, <b>more</b></a><ul>
+<li><a href="#uso-de-head-y-tail-para-desplegar-la-cabecera-y-cola-de-archivos"><span class="toc-section-number">2.9.1</span> uso de <b>head</b> y <b>tail</b> para desplegar la cabecera y cola de archivos</a></li>
+<li><a href="#cat-despliega-uno-o-más-archivos-concatenándolos"><span class="toc-section-number">2.9.2</span> <b>cat</b> despliega uno o más archivos, concatenándolos</a></li>
+<li><a href="#el-paginador-less-despliega-archivos-página-a-página"><span class="toc-section-number">2.9.3</span> el paginador <b>less</b> despliega archivos página a página</a></li>
+<li><a href="#zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-conpresión-gzip"><span class="toc-section-number">2.9.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con conpresión gzip</a></li>
 </ul></li>
-<li><a href="#uso-de-tuberias-de-herramientas-unixlinux-para-filtrado-de-texto-con-cut-grep-sort-uniq-wc-y"><span class="toc-section-number">2.11</span> Uso de tuberias de herramientas UNIX/Linux para filtrado de texto con <b>cut</b>, <b>grep</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> y <b>|</b></a><ul>
-<li><a href="#ejemplos-de-herramientas-de-filtrado-de-texto-en-acción"><span class="toc-section-number">2.11.1</span> Ejemplos de herramientas de filtrado de texto en acción</a></li>
+<li><a href="#edición-de-archivos-con-los-editores-vim-o-gnedit"><span class="toc-section-number">2.10</span> Edición de archivos con los editores <b>vim</b> o <b>[g|n]edit</b></a></li>
+<li><a href="#edición-de-archivos-con-el-editor-de-flujo-sed-stream-editor"><span class="toc-section-number">2.11</span> Edición de archivos con el editor de flujo <b>sed</b> (stream editor)</a><ul>
+<li><a href="#ejemplos-de-uso-básico-de-sed"><span class="toc-section-number">2.11.1</span> Ejemplos de uso básico de <b>sed</b>:</a></li>
 </ul></li>
-<li><a href="#redireccionado-de-la-salida-stout-a-un-archivo-con-el-comando"><span class="toc-section-number">2.12</span> redireccionado de la salida STOUT a un archivo con el comando <b>&gt;</b></a></li>
-<li><a href="#manual-de-cada-comando-man-command"><span class="toc-section-number">2.13</span> Manual de cada comando: <b>man command</b></a></li>
-<li><a href="#ayuda-de-cada-comando-command-help"><span class="toc-section-number">2.14</span> Ayuda de cada comando: <b>command –help</b></a></li>
+<li><a href="#uso-de-tuberias-de-herramientas-unixlinux-para-filtrado-de-texto-con-cut-grep-sort-uniq-wc-y"><span class="toc-section-number">2.12</span> Uso de tuberias de herramientas UNIX/Linux para filtrado de texto con <b>cut</b>, <b>grep</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> y <b>|</b></a><ul>
+<li><a href="#ejemplos-de-herramientas-de-filtrado-de-texto-en-acción"><span class="toc-section-number">2.12.1</span> Ejemplos de herramientas de filtrado de texto en acción</a></li>
+</ul></li>
+<li><a href="#redireccionado-de-la-salida-stdout-a-un-archivo-con-el-comando"><span class="toc-section-number">2.13</span> redireccionado de la salida STDOUT a un archivo con el comando <b>&gt;</b></a></li>
+<li><a href="#qué-es-exactamente-un-comando-en-linux"><span class="toc-section-number">2.14</span> Qué es exactamente un <span class="math inline">\(comando\)</span> en Linux?</a><ul>
+<li><a href="#identificación-del-tipo-de-comando-con-type"><span class="toc-section-number">2.14.1</span> Identificación del tipo de comando con <strong>type</strong></a></li>
+<li><a href="#muestra-la-ruta-del-comando-con-which"><span class="toc-section-number">2.14.2</span> Muestra la ruta del comando con <strong>which</strong></a></li>
+<li><a href="#manual-de-cada-comando-man-command"><span class="toc-section-number">2.14.3</span> Manual de cada comando: <b>man command</b></a></li>
+<li><a href="#ayuda-de-cada-comando-integrado-en-el-shell-help-shell_builtin-para-shell-builtins"><span class="toc-section-number">2.14.4</span> Ayuda de cada comando integrado en el Shell: <b>help shell_builtin</b> para <em>shell builtins</em></a></li>
+<li><a href="#despliega-información-básica-de-uso-del-comando-command-help"><span class="toc-section-number">2.14.5</span> Despliega información básica de uso del comando: <b>command –help</b></a></li>
+<li><a href="#encuentra-comandos-adecuados-para-un-tipo-de-acción-apropos"><span class="toc-section-number">2.14.6</span> Encuentra comandos adecuados para un tipo de acción: <b>apropos</b></a></li>
+<li><a href="#imprime-desripciones-de-una-línea-de-un-comando-con-whatis"><span class="toc-section-number">2.14.7</span> Imprime desripciones de una línea de un comando con: <b>whatis</b></a></li>
+</ul></li>
 </ul></li>
 <li><a href="#inicios-de-programación-en-bash"><span class="toc-section-number">3</span> Inicios de programación en <span class="math inline">\(Bash\)</span></a><ul>
-<li><a href="#asignación-y-uso-de-variables"><span class="toc-section-number">3.1</span> Asignación y uso de <strong>variables</strong></a><ul>
-<li><a href="#captura-de-la-salida-de-un-comando-con-comando"><span class="toc-section-number">3.1.1</span> Captura de la salida de un comando con <b>$(comando)</b></a></li>
-<li><a href="#modificación-de-variables-y-operaciones-con-ellas"><span class="toc-section-number">3.1.2</span> Modificación de variables y operaciones con ellas</a></li>
+<li><a href="#asignación-y-uso-de-variables"><span class="toc-section-number">3.1</span> Asignación y uso de <strong>variables</strong></a></li>
+<li><a href="#variables-de-ambiente---printenv"><span class="toc-section-number">3.2</span> Variables de ambiente - <strong><span class="math inline">\(printenv\)</span></strong></a><ul>
+<li><a href="#cual-es-el-binario-o-script-que-estoy-usando---which"><span class="toc-section-number">3.2.1</span> Cual es el binario o script que estoy usando? - <strong>which</strong></a></li>
 </ul></li>
-<li><a href="#condicionales"><span class="toc-section-number">3.2</span> <strong>Condicionales</strong></a><ul>
-<li><a href="#comparación-de-íntegros-en-condicionales"><span class="toc-section-number">3.2.1</span> Comparación de íntegros en condicionales</a></li>
-<li><a href="#comparación-de-cadenas-de-caracteres-en-condicionales"><span class="toc-section-number">3.2.2</span> Comparación de cadenas de caracteres en condicionales</a></li>
-<li><a href="#comprobación-de-la-existencia-de-un-archivo-de-tamaño-0-bytes"><span class="toc-section-number">3.2.3</span> Comprobación de la existencia de un archivo de tamaño &gt; 0 bytes</a></li>
-<li><a href="#la-versión-corta-de-test-condición-comando1-comando2"><span class="toc-section-number">3.2.4</span> La versión corta de test <strong>[ condición ] &amp;&amp; comando1 &amp;&amp; comando2</strong> …</a></li>
-<li><a href="#if-elif-else"><span class="toc-section-number">3.2.5</span> <strong>if; elif; else</strong></a></li>
+<li><a href="#captura-de-la-salida-de-un-comando-con-comando"><span class="toc-section-number">3.3</span> Captura de la salida de un comando con <b>$(comando)</b></a></li>
+<li><a href="#modificación-de-variables-y-operaciones-con-ellas"><span class="toc-section-number">3.4</span> Modificación de variables y operaciones con ellas</a></li>
+<li><a href="#condicionales"><span class="toc-section-number">3.5</span> <strong>Condicionales</strong></a><ul>
+<li><a href="#comparación-de-íntegros-en-condicionales"><span class="toc-section-number">3.5.1</span> Comparación de íntegros en condicionales</a></li>
+<li><a href="#comparación-de-cadenas-de-caracteres-en-condicionales"><span class="toc-section-number">3.5.2</span> Comparación de cadenas de caracteres en condicionales</a></li>
+<li><a href="#comprobación-de-la-existencia-de-un-archivo-de-tamaño-0-bytes"><span class="toc-section-number">3.5.3</span> Comprobación de la existencia de un archivo de tamaño &gt; 0 bytes</a></li>
+<li><a href="#la-versión-corta-de-test-condición-comando1-comando2"><span class="toc-section-number">3.5.4</span> La versión corta de test <strong>[ condición ] &amp;&amp; comando1 &amp;&amp; comando2</strong> …</a></li>
+<li><a href="#if-elif-else"><span class="toc-section-number">3.5.5</span> <strong>if; elif; else</strong></a></li>
 </ul></li>
-<li><a href="#bucles-for"><span class="toc-section-number">3.3</span> <strong>Bucles for</strong></a><ul>
-<li><a href="#ejemplo-de-bucle-for-acoplado-a-las-herramientas-de-filtrado-y-de-manipulación-de-variables"><span class="toc-section-number">3.3.1</span> Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables</a></li>
+<li><a href="#bucles-for"><span class="toc-section-number">3.6</span> <strong>Bucles for</strong></a><ul>
+<li><a href="#ejemplo-de-bucle-for-acoplado-a-las-herramientas-de-filtrado-y-de-manipulación-de-variables"><span class="toc-section-number">3.6.1</span> Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables</a></li>
 </ul></li>
-<li><a href="#bash-scripts---primeros-pasos"><span class="toc-section-number">3.4</span> <strong><span class="math inline">\(Bash\)</span> scripts</strong> - primeros pasos</a><ul>
-<li><a href="#la-shebang-line-usrbinenv-bash-y-permisos-de-ejecución---el-script-ls_dir"><span class="toc-section-number">3.4.1</span> la “<strong>shebang line</strong>” (#!/usr/bin/env bash) y permisos de ejecución - el script <em>ls_dir</em></a></li>
-<li><a href="#funciones-y-argumentos-posicionales-en-bash---el-script-find_dir"><span class="toc-section-number">3.4.2</span> <strong>Funciones</strong> y <strong>argumentos posicionales</strong> en <span class="math inline">\(Bash\)</span> - el script <em>find_dir</em></a></li>
-<li><a href="#alineamiento-múltiple-de-secuencias-e-interconversión-de-formatos-con-align_seqs_with_clustal_or_muscle.sh-y-convert_alnformats_using_clustalw.sh"><span class="toc-section-number">3.4.3</span> Alineamiento múltiple de secuencias e interconversión de formatos con <em>align_seqs_with_clustal_or_muscle.sh</em> y <em>convert_alnFormats_using_clustalw.sh</em></a></li>
+<li><a href="#bash-scripts---primeros-pasos"><span class="toc-section-number">3.7</span> <strong><span class="math inline">\(Bash\)</span> scripts</strong> - primeros pasos</a><ul>
+<li><a href="#la-shebang-line-usrbinenv-bash-y-permisos-de-ejecución---el-script-ls_dir"><span class="toc-section-number">3.7.1</span> la “<strong>shebang line</strong>” (#!/usr/bin/env bash) y permisos de ejecución - el script <em>ls_dir</em></a></li>
+<li><a href="#funciones-y-argumentos-posicionales-en-bash---el-script-find_dir"><span class="toc-section-number">3.7.2</span> <strong>Funciones</strong> y <strong>argumentos posicionales</strong> en <span class="math inline">\(Bash\)</span> - el script <em>find_dir</em></a></li>
+<li><a href="#alineamiento-múltiple-de-secuencias-e-interconversión-de-formatos-con-align_seqs_with_clustal_or_muscle.sh-y-convert_alnformats_using_clustalw.sh"><span class="toc-section-number">3.7.3</span> Alineamiento múltiple de secuencias e interconversión de formatos con <em>align_seqs_with_clustal_or_muscle.sh</em> y <em>convert_alnFormats_using_clustalw.sh</em></a></li>
 </ul></li>
 </ul></li>
 <li><a href="#el-lenguaje-de-procesamiento-de-patrones-awk"><span class="toc-section-number">4</span> El lenguaje de procesamiento de patrones <b>AWK</b></a><ul>
@@ -491,13 +504,12 @@ summary {
 
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
-<p>Este apunte fue creado para el <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019 por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a>.</p>
-<p>Las versión actual (posteriores a 2 de Agosto de 2019) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para alumnos de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>.</p>
-<p>Version: 2020-10-07</p>
-<p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/Intro_biocomputo_Linux_LCG.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
+<p>Este apunte fue creado inicialmente por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para el <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
+<p>Las versión actual (v.2020-10-12) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para alumnos de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>.</p>
+<p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
-<p>Este material didáctico lo distribuyo públicamente a través de este <a href="https://github.com/vinuesa/intro2linux">repositorio GitHub</a> bajo la <a href="https://creativecommons.org/licenses/by-nc/4.0/"><strong>Licencia No Comercial Creative Commons 4.0</strong></a></p>
+<p>Este material didáctico lo distribuyo públicamente a través de este <a href="https://github.com/vinuesa/intro2linux">repositorio GitHub intro2linux</a> bajo la <a href="https://creativecommons.org/licenses/by-nc/4.0/"><strong>Licencia No Comercial Creative Commons 4.0</strong></a></p>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAAAfCAMAAABUFvrSAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAEZ0FNQQAAsY58+1GTAAAAAXNSR0IB2cksfwAAAblQTFRF////////////////8fHx7+/v4+Pj39/f1tXV09bS0tXS0tXR0dTR0dTQ0NTQ0NPPz9PPztLOztHNzdHNzdHMz8/PzdDMzNDMzNDLzM/Ly8/Ly8/Ky87Kys3Jyc3Jyc3IyMzIyMzHx8vHxsrGxsrFxcnFyMfHxcnExMnExMjDw8jDxMfDw8fCwsfCwcXAwMXAwMW/wMS/v8S+v8O+vsO+vsK9vcK9vcK8v7+/vMG8vMG7vMC8u8C7u8C6ur+6ur+5ub65ub64uL23t7y2urm5tru1tbq0tLqztLmzs7iysrixsrexsbewsbawsLavsLWvr7Wur7SusLOvrrStrrOtr7KvrbOsrLKrr6+vq7GqrKurn6OenqCdn5+fnp2dmpiZlpmWk5iTkZSRkZORkY+Pj4+PiYyJjIqLh4aHhIaEhIWEgoWChIGCgICAfX98fH98fnt8eXx5eHV2dnN0dXJzcHJvcHBwaGVmYGBgXV5dWldYUFFQUFBQQ0RDQEBAPj8+Pzs8NTY1MjMxMjExMDAwMS0uKSkpKCkoKCUmIx8gICAgHxscGxsbGRkZEBAQDg4ODQ4NDQwNAAAABjFVaAAAAAN0Uk5TAAoO5yEBUwAAA5NJREFUeNq1lo930lYUx7NdaUprjKZzQIlFHJtSGVarg+E6Slmx2OpwOihqt1mqm27oGJNh+VG3pbCwGvH7F+8kAUpC6Jl4+g4575xveJ933/e+d1+Y93EojWGARDwWuRyc9XlnRJfD4XKf8vr8wfnIYjyRXPv6djqdyb59Axgk4tHQxYDP4xZ4bsJunzjKC9MeX2AuFFXJqdvpzEhkBvFo6IL/jChwT2ptdRHt2mPuhNt7LvhZNJ64fjN1pxtyoaG+bhTMDEsdDGKhC36vk8/t7Ru0t8k7PGeDocX4yurNTsgPmkC9VKoDzQf9hCE6GEQu+r0OrgJAKefD4XxZAVA5/4Hn3Fwktpxc00O+9xpVloiIreJ1H2GYDgaXA2ecKlfJ20hvGwrQPO/wBuYXlhJayNlsE2UiAtTXaO4DdH1r26yDQdAn8hVAYqnXbBJQ4d2+YCi2nLxxK53JFFAd74Kpip6fBfz9PdHWqzfFMYOugmdPCzlAshEZyZsnPP5LC/Frq6k7mUwDffOyaHTHN/CP/PIP5H/CXYOugn1ubg/KSTI0m4I9btoX/DyWuK56gbqqlqEtnOroja///pssy8WxcaOugr1TT4A8mdoG8FjwBq5El5M3VHCJNCd0L0r74BLRJ0UAxXGDroJnjteg2IjC1Xo9r3cPiUhBjT+lerGydutgMNFYcVeWt78ygUWurS4wrO3g+rrWldVlt4+6z859sXRtLXWQFUR05Dsal2VZfmm0wjUJPCSS0GLDrQ0JErve2tC8mHD5gpGlxGoq3U2eHrAheSzRtry7i+LdX/81Js9pB8LqmLw+tGN3GLA7PuqCC6iS9XarEo398urN1pGB7fa/wP0HpDR4QH7cNusGK2wnW3kJktqZrRjlSHeS18laL3kltDmxl7xs9l4TkMolyVyEhujadqtAod52W69rHbVQ42f8l77Ut9soZdM7ldO8sDogn15ZXE7qVejtC/3H2pFmDz7So4BnTwv3rYpQTvDMzi/EV7QiNAoYz0T+BSD1lSFWK5viz+90TQN47jrWX+hteQX4k3M+w7uC8dRx7IXpauI+/MH0T/18QH/6df0hsgDjqYu/33+Z5ninmQvq/Ghgwo5KFmA8FwUu173+NzlBHPShWzYHJySL6bpg/PWte+o4N2m3T3K8MP3NzqBp1kZ0bRgWMYCdR1dFl9PpEq8+2rHKxvCID/D4ML4K3zsk7n9pO/RNngRtJQAAAABJRU5ErkJggg==" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0</a></p>
 </div>
 <div id="referencias-adicionales" class="section level2">
@@ -613,7 +625,7 @@ tree -d -L 1 /
 -->
 </div>
 <div id="pwd-imprime-la-ruta-absoluta-del-directorio-actual" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> <strong>pwd</strong> imprime la ruta absoluta del directorio actual</h3>
+<h3><span class="header-section-number">2.2.2</span> <strong>pwd</strong> imprime la <strong>ruta absoluta</strong> del directorio actual</h3>
 <pre class="bash"><code># dónde me encuentro en el sistema?
 pwd</code></pre>
 <pre><code>## /home/vinuesa/cursos/intro2linux</code></pre>
@@ -634,27 +646,28 @@ ls | head</code></pre>
 ## participantes_Taller_CG_FC</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
-<pre><code>## total 11500
-## drwxr-xr-x 6 vinuesa vinuesa    4096 oct  7 11:51 .
+<pre><code>## total 11708
+## drwxr-xr-x 6 vinuesa vinuesa    4096 oct 12 19:34 .
 ## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 22:15 ..
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
-## drwxr-xr-x 3 vinuesa vinuesa    4096 oct  7 00:24 docs
+## drwxr-xr-x 3 vinuesa vinuesa    4096 oct  9 21:25 docs
 ## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## drwxr-xr-x 8 vinuesa vinuesa    4096 oct  7 00:24 .git
+## drwxr-xr-x 8 vinuesa vinuesa    4096 oct 11 20:46 .git
 ## drwxr-xr-x 4 vinuesa vinuesa    4096 sep 29 22:56 intro2linux
-## -rw-r--r-- 1 vinuesa vinuesa 2993606 sep 30 10:52 intro_biocomputo_Linux_LCG.odp
+## -rw-r--r-- 1 vinuesa vinuesa 3166333 oct  9 21:12 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r-- 1 vinuesa vinuesa   35149 sep 29 22:15 LICENSE
 ## -rwxr-xr-x 1 vinuesa vinuesa   10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx 1 vinuesa vinuesa      78 oct  7 11:51 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 12 19:34 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rwxr-xr-x 1 vinuesa vinuesa    1705 sep 29 22:18 linux_very_basic_commands_table.csv
 ## drwxr-xr-x 2 vinuesa vinuesa    4096 oct  6 16:39 participantes_Taller_CG_FC
-## -rw-r--r-- 1 vinuesa vinuesa    3780 sep 29 23:43 README.md
+## -rw-r--r-- 1 vinuesa vinuesa    5839 oct 11 20:46 README.md
 ## -rw-r--r-- 1 vinuesa vinuesa   77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa   17704 oct  7 11:51 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa   17704 oct 12 19:34 recA_Byuanmingense.fna
 ## -rw-rw-r-- 1 vinuesa vinuesa       0 oct  7 00:21 .Rhistory
-## -rw-r--r-- 1 vinuesa vinuesa 1136861 oct  7 11:51 working_with_linux_commands.html
+## -rw-rw-r-- 1 vinuesa vinuesa      27 oct  7 12:21 TODO.txt
+## -rw-r--r-- 1 vinuesa vinuesa 1157557 oct 12 19:34 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   62986 oct  7 11:59 working_with_linux_commands.Rmd</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa   70968 oct 12 19:38 working_with_linux_commands.Rmd</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del directorio raiz</h4>
 <ul>
@@ -677,10 +690,10 @@ ls -al </code></pre>
 <pre class="bash"><code>ls -l / | head -20</code></pre>
 <pre><code>## total 76
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
-## drwxr-xr-x   4 root root  4096 oct  7 11:25 boot
+## drwxr-xr-x   4 root root  4096 oct 12 18:07 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4520 oct  7 11:42 dev
-## drwxr-xr-x 153 root root 12288 oct  7 11:25 etc
+## drwxr-xr-x  21 root root  4560 oct 12 18:40 dev
+## drwxr-xr-x 153 root root 12288 oct 12 18:06 etc
 ## drwxr-xr-x   5 root root  4096 abr 15 06:09 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
 ## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib32 -&gt; usr/lib32
@@ -690,9 +703,9 @@ ls -al </code></pre>
 ## drwxr-xr-x   3 root root  4096 oct  5 20:41 media
 ## drwxr-xr-x   2 root root  4096 jul 31 11:27 mnt
 ## drwxr-xr-x   5 root root  4096 oct  5 12:26 opt
-## dr-xr-xr-x 357 root root     0 oct  7 11:41 proc
+## dr-xr-xr-x 351 root root     0 oct 12 18:38 proc
 ## drwx------   7 root root  4096 oct  7 00:28 root
-## drwxr-xr-x  36 root root  1000 oct  7 11:42 run
+## drwxr-xr-x  33 root root   940 oct 12 18:40 run
 ## lrwxrwxrwx   1 root root     8 oct  4 14:42 sbin -&gt; usr/sbin
 ## drwxr-xr-x  10 root root  4096 oct  4 23:18 snap</code></pre>
 </div>
@@ -986,7 +999,7 @@ file intro2linux</code></pre>
 <h2><span class="header-section-number">2.4</span> Moviéndonos por el sistema de archivos: comando <b>cd</b></h2>
 <p>Para movernos por el sistema de archivos de un sistema Linux podemos hacer uso de la <b>ruta absoluta</b> o la <b>ruta relativa</b>.</p>
 <div id="la-ruta-absoluta" class="section level3">
-<h3><span class="header-section-number">2.4.1</span> La ruta absoluta</h3>
+<h3><span class="header-section-number">2.4.1</span> La <strong>ruta absoluta</strong></h3>
 <p>Define la ruta a cualquier directorio o archivo en el sistema partiendo del <b>directorio raíz</b> <span class="math inline">\(/\)</span>, como indica el comando <span class="math inline">\(pwd\)</span></p>
 <div id="de-nuevo-dónde-estoy-imprime-directorio-actual-con-pwd" class="section level4">
 <h4><span class="header-section-number">2.4.1.1</span> de nuevo, ¿dónde estoy?: imprime directorio actual con <b>pwd</b></h4>
@@ -1000,7 +1013,7 @@ cd /home/vinuesa/cursos/intro2linux/data</code></pre>
 </div>
 </div>
 <div id="la-ruta-relativa" class="section level3">
-<h3><span class="header-section-number">2.4.2</span> La ruta relativa</h3>
+<h3><span class="header-section-number">2.4.2</span> La <strong>ruta relativa</strong></h3>
 <p>Se define en relación al directorio actual en el que estás.</p>
 <div id="entra-a-un-subdirectorio-bajo-en-directorio-actual-usando-la-ruta-relativa" class="section level4">
 <h4><span class="header-section-number">2.4.2.1</span> entra a un subdirectorio bajo en directorio actual usando la ruta relativa</h4>
@@ -1144,8 +1157,8 @@ ls linux_basic_commands.tab
 
 scp linux_basic_commands.tab USUARIO@ip.maquina:/home/USUARIO/ruta/al/dir/destino/</code></pre>
 </div>
-<div id="sftp-descarga-de-archivos-de-una-máquina-remota-a-tu-laptop" class="section level3">
-<h3><span class="header-section-number">2.6.5</span> <b>sftp</b> descarga de archivos de una máquina remota a tu laptop</h3>
+<div id="sftp-descarga-de-archivos-de-una-máquina-remota-a-tu-máquina-local-laptop-o-desktop" class="section level3">
+<h3><span class="header-section-number">2.6.5</span> <b>sftp</b> descarga de archivos de una máquina remota a tu máquina local (laptop o desktop)</h3>
 <pre><code># asegúrate de estar en el directorio de tu máquina local donde quieres depositar el archivo a descargar del servidor:
 
 cd $HOME/ruta/dir/destino
@@ -1168,9 +1181,9 @@ quit
 ls </code></pre>
 </div>
 </div>
-<div id="generación-de-ligas-simbólicas-a-archivos-comando-ln--s-rutaalarchivofuente-nombre_la_liga" class="section level2">
-<h2><span class="header-section-number">2.7</span> Generación de ligas simbólicas a archivos: comando <b>ln -s /ruta/al/archivo/fuente nombre_la_liga</b></h2>
-<p>Esto es muy importante, ya que permite ahorrar mucho espacio en disco al evitar la multiplicación de copias fisicas en el disco duro del mismo archivo en el $HOME de uno o más usuarios</p>
+<div id="generación-de-ligas-simbólicas-a-archivos-comando-ln--s-rutaalarchivofuente-nombre_liga" class="section level2">
+<h2><span class="header-section-number">2.7</span> Generación de ligas simbólicas a archivos: comando <b>ln -s /ruta/al/archivo/fuente nombre_liga</b></h2>
+<p>Hacer ligas simbólicas en vez de copiar cada archivo es muy importante, ya que permite ahorrar mucho espacio en disco al evitar la multiplicación de copias fisicas en el disco duro del mismo archivo en el $HOME de uno o más usuarios</p>
 <pre class="bash"><code>hostn=$(hostname)
 if [ &quot;$hostn&quot; == &quot;Tenerife&quot; ]; then
    ln -s /home/vinuesa/Cursos/OMICAS_UAEM_genomica/clase1_intro2linux/linux_basic_commands.tab comandos_de_linux.tab
@@ -1188,25 +1201,63 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 11492
+<pre><code>## total 11700
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
-## lrwxrwxrwx 1 vinuesa vinuesa      78 oct  7 11:59 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
-## drwxr-xr-x 3 vinuesa vinuesa    4096 oct  7 00:24 docs
+## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 12 19:38 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## drwxr-xr-x 3 vinuesa vinuesa    4096 oct  9 21:25 docs
 ## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
 ## drwxr-xr-x 4 vinuesa vinuesa    4096 sep 29 22:56 intro2linux
-## -rw-r--r-- 1 vinuesa vinuesa 2993606 sep 30 10:52 intro_biocomputo_Linux_LCG.odp
+## -rw-r--r-- 1 vinuesa vinuesa 3166333 oct  9 21:12 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r-- 1 vinuesa vinuesa   35149 sep 29 22:15 LICENSE
 ## -rwxr-xr-x 1 vinuesa vinuesa   10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx 1 vinuesa vinuesa      78 oct  7 11:51 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
+## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 12 19:34 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
 <div id="renombramos-la-liga-o-cualquier-archivo-o-directorio" class="section level3">
 <h3><span class="header-section-number">2.7.1</span> renombramos la liga (o cualquier archivo o directorio)</h3>
 <pre class="bash"><code>  mv comandos_de_linux.tab linux_commands.tab</code></pre>
 </div>
 </div>
+<div id="nombres-de-archivos-y-directorios-y-uso-de-comillas-sencillas-y-dobles" class="section level2">
+<h2><span class="header-section-number">2.8</span> Nombres de archivos y directorios y uso de comillas sencillas y dobles</h2>
+<p>Los usuarios de Windows suelen escribir nombres de archivo con espacios: ‘mi archivo de secuencias.fasta’. Como subrayamos en el <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción a Linux</a>, en el <span class="math inline">\(Shell\)</span> los espacios separan argumentos. Por ello lo mejor es usar guiones bajos para separar las partes del nombre de un archivo: ‘recA_Bradyrhizobium.fna’. Recuerda también que en el <span class="math inline">\(Shell\)</span>, la puntuación se considera, es decir ‘recA_Bradyrhizobium.fna’ y ‘recA_bradyrhizobium.fna’ son dos archivos distintos.</p>
+<p>En las versiones modernas de Linux, los nombres de archivos con espacios son automáticamente mostrados entre comillas sencillas: ‘mi archivo de secuencias.fasta’. Así el <span class="math inline">\(Shell\)</span> considera el nombre del archivo como un solo argumento.</p>
+<div id="uso-de-comillas-sencillas-interpretación-literal-y-escape-de-caracteres-reservados-para-el-shell" class="section level3">
+<h3><span class="header-section-number">2.8.1</span> Uso de <b>comillas sencillas(<span class="math inline">\(&#39;\)</span>)</b>: interpretación literal y escape de caracteres reservados para el <i>SHELL</i></h3>
+<ul>
+<li>Para renombrar o copiar un archivo que contiene espacies, debes escaparlo con comillar sencillas (<span class="math inline">\(&#39;\)</span>)</li>
+</ul>
+<p>En el siguiente ejemplo las comillas sencillas sireven para interpretar literalmente los espacios como caracteres, por lo que el nombre de archivo es visto por el comando <span class="math inline">\(mv\)</span> como un solo argumento</p>
+<pre><code>mv &#39;mi archivo de secuencias.fasta&#39; recA_Bradyrhizobium.fna</code></pre>
+<p>En ciertas ocasiones usarás <b>comillas sencillas (<span class="math inline">\(&#39;\)</span>)</b> para la ejecución de algunos programas desde la línea de comandos como por ejemplo al pasar opciones complejas a sed, perl, awk … Estos son lenguajes interpretados, cuyo usu básico veremos más adelante</p>
+<ul>
+<li>Ejemplo de llamada del comando <span class="math inline">\(rename\)</span></li>
+</ul>
+<pre><code># rename es un script de Perl que permite renombrar archivos de manera muy eficiente 
+#   haciendo uso de expresiones regulares y expansión de nombres de archivo
+# El siguiente ejemplo renombra todos los archivos docx del directorio, 
+#   cabmiando espacios por guiones bajos
+rename &#39;s/ /_/g&#39; *.docx</code></pre>
+<ul>
+<li>Ejemplo de llamada a <span class="math inline">\(sed\)</span></li>
+</ul>
+<pre><code># con esta sentencia el editor de flujo sed cambiará todas las instancias de Windos por Linux
+#  que aparecen en el archivo txt
+sed &#39;s/Windows/Linux/g&#39; archivo.txt</code></pre>
+</div>
+<div id="uso-de-comillas-dobles-para-interpolación-de-variables" class="section level3">
+<h3><span class="header-section-number">2.8.2</span> Uso de <b>comillas dobles (<span class="math inline">\(&quot;\)</span>)</b> para interpolación de variables</h3>
+<p>Se requiren <b>comillas dobles (<span class="math inline">\(&quot;\)</span>)</b> siempre que queramos interpolar una variable (obtener su valor) contenida dentro de una cadena de texto, como muestra el siguiente ejemplo</p>
+<pre class="bash"><code># echo imprime el contenido de la cadena acotada entre comillas dobles, interpolando las variables que tenga
+echo &quot;soy el usuario $USER en la máquina $HOSTNAME&quot;</code></pre>
+<pre><code>## soy el usuario vinuesa en la máquina alisio</code></pre>
+<p>Si usáramos comillas sencillas, las variables no se interpolan y se imprime literalmente el nombre de las mismas</p>
+<pre class="bash"><code>echo &#39;soy el usuario $USER en la máquina $HOSTNAME&#39;</code></pre>
+<pre><code>## soy el usuario $USER en la máquina $HOSTNAME</code></pre>
+</div>
+</div>
 <div id="visualización-de-contenidos-de-archivos-comando-head-tail-cat-less-more" class="section level2">
-<h2><span class="header-section-number">2.8</span> Visualización de contenidos de archivos: comando <b>head</b>, <b>tail</b>, <b>cat</b>, <b>less</b>, <b>more</b></h2>
+<h2><span class="header-section-number">2.9</span> Visualización de contenidos de archivos: comando <b>head</b>, <b>tail</b>, <b>cat</b>, <b>less</b>, <b>more</b></h2>
 <div id="uso-de-head-y-tail-para-desplegar-la-cabecera-y-cola-de-archivos" class="section level3">
-<h3><span class="header-section-number">2.8.1</span> uso de <b>head</b> y <b>tail</b> para desplegar la cabecera y cola de archivos</h3>
+<h3><span class="header-section-number">2.9.1</span> uso de <b>head</b> y <b>tail</b> para desplegar la cabecera y cola de archivos</h3>
 <pre class="bash"><code>head linux_commands.tab </code></pre>
 <pre><code>## IEEE Std 1003.1-2008 utilities Name  Category    Description     First appeared
 ## admin    SCCS    Create and administer SCCS files    PWB UNIX
@@ -1239,7 +1290,7 @@ head -3 linux_commands.tab</code></pre>
 <pre><code>## zcat     Text processing     Expand and concatenate data     4.3BSD</code></pre>
 </div>
 <div id="cat-despliega-uno-o-más-archivos-concatenándolos" class="section level3">
-<h3><span class="header-section-number">2.8.2</span> <b>cat</b> despliega uno o más archivos, concatenándolos</h3>
+<h3><span class="header-section-number">2.9.2</span> <b>cat</b> despliega uno o más archivos, concatenándolos</h3>
 <pre class="bash"><code>cat linux_commands.tab | head</code></pre>
 <pre><code>## IEEE Std 1003.1-2008 utilities Name  Category    Description     First appeared
 ## admin    SCCS    Create and administer SCCS files    PWB UNIX
@@ -1265,7 +1316,7 @@ head -3 linux_commands.tab</code></pre>
 ##     10   bc  Misc    Arbitrary-precision arithmetic language     Version 6 AT&amp;T UNIX</code></pre>
 </div>
 <div id="el-paginador-less-despliega-archivos-página-a-página" class="section level3">
-<h3><span class="header-section-number">2.8.3</span> el paginador <b>less</b> despliega archivos página a página</h3>
+<h3><span class="header-section-number">2.9.3</span> el paginador <b>less</b> despliega archivos página a página</h3>
 <pre class="bash"><code>less linux_commands.tab | head</code></pre>
 <pre><code>## IEEE Std 1003.1-2008 utilities Name  Category    Description     First appeared
 ## admin    SCCS    Create and administer SCCS files    PWB UNIX
@@ -1284,7 +1335,7 @@ less -L linux_commands.tab
 # usa less --help para ver más opciones</code></pre>
 </div>
 <div id="zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-conpresión-gzip" class="section level3">
-<h3><span class="header-section-number">2.8.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con conpresión gzip</h3>
+<h3><span class="header-section-number">2.9.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con conpresión gzip</h3>
 <p>Los archivos usados en genómica son frecuentemente grandes y/o numerosos, por lo que es una muy buena práctica mantenerlos comprimidos para ocupar el mínimo espacio posible en disco. los comandos <span class="math inline">\(zcat\)</span> y <span class="math inline">\(zless\)</span> permiten visualizar su contenido sin tenerlos que descomprimir. Veremos más comandos, como <span class="math inline">\(zgrep\)</span> que pueden trabajar sobre archivos de texto comprimidos.</p>
 <pre class="bash"><code>zcat assembly_summary.txt.gz | head -5 | cut -f1-5</code></pre>
 <pre><code>## #   See ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt for a description of the columns in this file.
@@ -1295,7 +1346,7 @@ less -L linux_commands.tab
 </div>
 </div>
 <div id="edición-de-archivos-con-los-editores-vim-o-gnedit" class="section level2">
-<h2><span class="header-section-number">2.9</span> Edición de archivos con los editores <b>vim</b> o <b>[g|n]edit</b></h2>
+<h2><span class="header-section-number">2.10</span> Edición de archivos con los editores <b>vim</b> o <b>[g|n]edit</b></h2>
 <p><b>vim</b> (vi improved) es un poderoso editor programable presente en todos los sistemas UNIX. La principal característica tanto de Vim como de Vi consiste en que disponen de diferentes modos entre los que se alterna para realizar ciertas operaciones, lo que los diferencia de la mayoría de editores comunes, que tienen un solo modo en el que se introducen las órdenes mediante combinaciones de teclas (o interfaces gráficas). Se controla por completo mediante el teclado desde un Terminal, por lo que puede usarse sin problemas a través de conexiones remotas ya que no carga el sistema al no desplegar un entorno gráfico.</p>
 <p>Es muy recomendable aprender a usar Vim, pero no tenemos tiempo de hacerlo en el Taller, por lo que les recomiendo este <a href="https://openwebinars.net/blog/vim-manual-de-uso-basico/">tutorial de uso de Vim en español</a>, o directamente en su terminal tecleando el comando</p>
 <pre><code> vimtutor
@@ -1311,7 +1362,7 @@ gedit linux_commands.tab &amp;
 </code></pre>
 </div>
 <div id="edición-de-archivos-con-el-editor-de-flujo-sed-stream-editor" class="section level2">
-<h2><span class="header-section-number">2.10</span> Edición de archivos con el editor de flujo <b>sed</b> (stream editor)</h2>
+<h2><span class="header-section-number">2.11</span> Edición de archivos con el editor de flujo <b>sed</b> (stream editor)</h2>
 <p>sed (stream editor) es un editor de flujo, una potente herramienta de tratamiento de texto para el sistema operativo Unix que acepta como entrada un archivo, lo lee y modifica línea a línea de acuerdo a un script, mostrando el resultado por salida estándar (normalmente en pantalla, a menos que se realice una redirección). Sed permite manipular flujos de datos, como por ejemplo cortar líneas, buscar y reemplazar texto (con soporte de <b>xpresiones regulares</b>), entre otras cosas. Posee muchas características de ed y ex.</p>
 <p>La sintaxis general de la orden sed es:</p>
 <pre><code>$ sed [-n] [-e&#39;script&#39;] [-f archivo] archivo1 archivo2 ...</code></pre>
@@ -1320,7 +1371,7 @@ gedit linux_commands.tab &amp;
 -e indica que se ejecute el script que viene a continuación. Si no se emplea la opción -f se puede omitir -e.
 -f indica que las órdenes se tomarán de un archivo</code></pre>
 <div id="ejemplos-de-uso-básico-de-sed" class="section level3">
-<h3><span class="header-section-number">2.10.1</span> Ejemplos de uso básico de <b>sed</b>:</h3>
+<h3><span class="header-section-number">2.11.1</span> Ejemplos de uso básico de <b>sed</b>:</h3>
 <ul>
 <li>Cambia todas las minúsculas a mayúsculas de archivo:</li>
 </ul>
@@ -1355,7 +1406,7 @@ gedit linux_commands.tab &amp;
 </div>
 </div>
 <div id="uso-de-tuberias-de-herramientas-unixlinux-para-filtrado-de-texto-con-cut-grep-sort-uniq-wc-y" class="section level2">
-<h2><span class="header-section-number">2.11</span> Uso de tuberias de herramientas UNIX/Linux para filtrado de texto con <b>cut</b>, <b>grep</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> y <b>|</b></h2>
+<h2><span class="header-section-number">2.12</span> Uso de tuberias de herramientas UNIX/Linux para filtrado de texto con <b>cut</b>, <b>grep</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> y <b>|</b></h2>
 <p>UNIX y Linux ofrecen una gran cantidad de herramientas para todo tipo de trabajos, cada una generalmente con muchas opciones. En bioinformática y genómica, los archivos de texto plano (ASCII) son los más comunes. Por ello es muy útil dominar algunas de las herramientas de filtrado de texto más comunes. Como ejemplo, trabajaremos con el archivo assembly_summary.txt, que contiene los datos de ensambles genómicos de la división RefSeq de GenBank. Lo descargué y comprimí con los siguientes comandos:</p>
 <pre><code>wget -c ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt
 
@@ -1373,13 +1424,13 @@ zcat assembly_summary.txt.gz | head -5</code></pre>
 ## GCF_000007365.1  PRJNA224116 SAMN02604269        representative genome   198804  9   Buchnera aphidicola str. Sg (Schizaphis graminum)   strain=Sg       latest  Complete Genome Major   Full    2002/07/02  ASM736v1    Uppsala Univ.   GCA_000007365.1 identical   ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/007/365/GCF_000007365.1_ASM736v1     
 ## GCF_000007725.1  PRJNA224116 SAMN02604289        representative genome   224915  9   Buchnera aphidicola str. Bp (Baizongia pistaciae)   strain=Bp (Baizongia pistaciae)     latest  Complete Genome Major   Full    2003/01/29  ASM772v1    Valencia Univ.  GCA_000007725.1 identical   ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/007/725/GCF_000007725.1_ASM772v1     </code></pre>
 <div id="ejemplos-de-herramientas-de-filtrado-de-texto-en-acción" class="section level3">
-<h3><span class="header-section-number">2.11.1</span> Ejemplos de herramientas de filtrado de texto en acción</h3>
+<h3><span class="header-section-number">2.12.1</span> Ejemplos de herramientas de filtrado de texto en acción</h3>
 <ul>
-<li><p>cut corta líneas de texto/tablas por delimitadores de campo (-d) específicos (TAB por defecto), extrayendo los campos indicados con -f (cut -d’ ’ -f1-3,5,9)</p></li>
-<li><p>sort ordena (sor -u; sort -nrk2; sort -dk1)</p></li>
-<li><p>wc cuenta líneas, palabras y caracteres (wc -l)</p></li>
-<li><p>uniq regresa listas de valores únicos (uniq -c)</p></li>
-<li><p>grep Filtra las lineas de un archivo que contienen (o no) caracteres o expresiones regulares (grep -E ‘^XXX|YYY|zzz$’; grep -v ‘^#’)</p></li>
+<li><p><span class="math inline">\(cut\)</span> corta líneas de texto/tablas por delimitadores de campo (-d) específicos (TAB por defecto), extrayendo los campos indicados con -f (cut -d’ ’ -f1-3,5,9)</p></li>
+<li><p><span class="math inline">\(sort\)</span> ordena (sor -u; sort -nrk2; sort -dk1)</p></li>
+<li><p><span class="math inline">\(wc\)</span> cuenta líneas, palabras y caracteres (wc -l)</p></li>
+<li><p><span class="math inline">\(uniq\)</span> regresa listas de valores únicos (uniq -c)</p></li>
+<li><p><span class="math inline">\(grep\)</span> Filtra las lineas de un archivo que contienen (o no) caracteres o expresiones regulares (grep -E ‘^XXX|YYY|zzz$’; grep -v ‘^#’)</p></li>
 <li><p>el pipe ‘|’ conecta la salida de un comando <STDOUT> con la entrada &gt;STDIN&gt; de otro</p></li>
 <li><p>¿cuántas líneas tiene el archivo assembly_summary.txt.gz?</p></li>
 </ul>
@@ -1490,9 +1541,17 @@ zgrep -E &#39;Acinetobacter|Pseudomonas|Klebsiella&#39; assembly_summary.txt.gz 
 ##    8951 Pseudomonas</code></pre>
 </div>
 </div>
-<div id="redireccionado-de-la-salida-stout-a-un-archivo-con-el-comando" class="section level2">
-<h2><span class="header-section-number">2.12</span> redireccionado de la salida STOUT a un archivo con el comando <b>&gt;</b></h2>
+<div id="redireccionado-de-la-salida-stdout-a-un-archivo-con-el-comando" class="section level2">
+<h2><span class="header-section-number">2.13</span> redireccionado de la salida STDOUT a un archivo con el comando <b>&gt;</b></h2>
+<p>Como se explicó en el <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción a Linux</a>, la salida estándar <span class="math inline">\(STDOUT\)</span> de un comando generalmente está ligada a la consola, es decir, vemos en la pantalla la salida del mismo. Para guardarla en un archivo, necesitamos redirigir el flujo a dicho archivo con el comando <span class="math inline">\(&gt;\)</span>.</p>
 <pre class="bash"><code>zgrep Stenotrophomonas assembly_summary.txt.gz | cut -f8,20 &gt; Stenotrophomonas_complete_genomes_and_ftp_paths.txt</code></pre>
+<ul>
+<li>Qué tipo de archivo genera el comando <span class="math inline">\(&gt;\)</span> ?</li>
+</ul>
+<pre class="bash"><code>file Stenotrophomonas_complete_genomes_and_ftp_paths.txt
+ls -l Stenotrophomonas_complete_genomes_and_ftp_paths.txt</code></pre>
+<pre><code>## Stenotrophomonas_complete_genomes_and_ftp_paths.txt: ASCII text
+## -rw-rw-r-- 1 vinuesa vinuesa 47651 oct 12 19:38 Stenotrophomonas_complete_genomes_and_ftp_paths.txt</code></pre>
 <ul>
 <li>ahora podemos explorar el archivo con <span class="math inline">\(head\)</span> u otros comandos como <span class="math inline">\(less\)</span></li>
 </ul>
@@ -1502,8 +1561,38 @@ zgrep -E &#39;Acinetobacter|Pseudomonas|Klebsiella&#39; assembly_summary.txt.gz 
 ## Stenotrophomonas maltophilia JV3 ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/223/885/GCF_000223885.1_ASM22388v1</code></pre>
 <p>Veremos la gran utilidad y versatilidad de combinaciones de estos comandos para el procesamiento de archivos de secuencias en un ejercicio más adelante.</p>
 </div>
-<div id="manual-de-cada-comando-man-command" class="section level2">
-<h2><span class="header-section-number">2.13</span> Manual de cada comando: <b>man command</b></h2>
+<div id="qué-es-exactamente-un-comando-en-linux" class="section level2">
+<h2><span class="header-section-number">2.14</span> Qué es exactamente un <span class="math inline">\(comando\)</span> en Linux?</h2>
+<p>Un comando de Linux puede ser una de cuatro cosas:</p>
+<ol style="list-style-type: decimal">
+<li><p>un <strong>programa ejecutable</strong>, como los que hemos estado usando, tales como <span class="math inline">\(cut\)</span>, <span class="math inline">\(sort\)</span>, <span class="math inline">\(grep\)</span> … que están guardados en directorios del sistame tales como <span class="math inline">\(/bin\)</span>, <span class="math inline">\(/usr/bin\)</span> … Estos son <em>programas compilados</em>, escritos en lenguajes como <span class="math inline">\(C\)</span> o <span class="math inline">\(C++\)</span>. Pero un comando también puede ser un <em>script</em> escrito en un lenguaje interpretado como <span class="math inline">\(Bash\)</span>, <span class="math inline">\(Perl\)</span>, <span class="math inline">\(Phython\)</span> o <span class="math inline">\(R\)</span>, posiblemente escrito por el propio usuario. Estos frecuentemente se ubican en el directorio <span class="math inline">\(\$HOME/bin\)</span></p></li>
+<li><p>puede ser un <strong>comando del shell</strong>, un “<span class="math inline">\(shell\ builtin\)</span>”, como <span class="math inline">\(cd\)</span>, <span class="math inline">\(cp\)</span> …</p></li>
+<li><p>una <strong>función de shell</strong>. Estos son miniprogramas de shell exportadas al ambiente (environment). Veremos más adelante cómo se delcaran funciones.</p></li>
+<li><p>un <strong>alias</strong>, es decir un nombre de nuestra elección para otro comando.</p></li>
+</ol>
+<div id="identificación-del-tipo-de-comando-con-type" class="section level3">
+<h3><span class="header-section-number">2.14.1</span> Identificación del tipo de comando con <strong>type</strong></h3>
+<p>Podemos identificar a cuál de las cuatro categorías arriba enlistadas pertenece un comando particular. Veamos unos ejemplos:</p>
+<pre class="bash"><code>type grep
+type cd</code></pre>
+<pre><code>## grep is /usr/bin/grep
+## cd is a shell builtin</code></pre>
+</div>
+<div id="muestra-la-ruta-del-comando-con-which" class="section level3">
+<h3><span class="header-section-number">2.14.2</span> Muestra la ruta del comando con <strong>which</strong></h3>
+<p>Recuerda, podemos tener diferentes versiones de un mismo comando en diferentes directorios del sistema. El comando <span class="math inline">\(which\)</span> nos permite identificar la ruta absoluta del que primero ve el sistema en el <span class="math inline">\(PATH\)</span></p>
+<pre class="bash"><code>which blastn
+which perl
+which trunc_seq.pl
+which transpose_pangenome_matrix.sh</code></pre>
+<pre><code>## /usr/local/bin/blastn
+## /usr/bin/perl
+## /home/vinuesa/bin/trunc_seq.pl
+## /home/vinuesa/bin/transpose_pangenome_matrix.sh</code></pre>
+</div>
+<div id="manual-de-cada-comando-man-command" class="section level3">
+<h3><span class="header-section-number">2.14.3</span> Manual de cada comando: <b>man command</b></h3>
+<p>La mayoría de los programas ejecutables del sistema proveen un formato estandarizado de documentación que se despliega en la consola usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
 <pre><code>## CUT(1)                           User Commands                          CUT(1)
@@ -1537,56 +1626,126 @@ man cut | head -30</code></pre>
 ## 
 ##        -n     (ignored)</code></pre>
 </div>
-<div id="ayuda-de-cada-comando-command-help" class="section level2">
-<h2><span class="header-section-number">2.14</span> Ayuda de cada comando: <b>command –help</b></h2>
+<div id="ayuda-de-cada-comando-integrado-en-el-shell-help-shell_builtin-para-shell-builtins" class="section level3">
+<h3><span class="header-section-number">2.14.4</span> Ayuda de cada comando integrado en el Shell: <b>help shell_builtin</b> para <em>shell builtins</em></h3>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
-cut --help</code></pre>
-<pre><code>## Usage: cut OPTION... [FILE]...
-## Print selected parts of lines from each FILE to standard output.
-## 
-## With no FILE, or when FILE is -, read standard input.
+help cd</code></pre>
+<pre><code>## cd: cd [-L|[-P [-e]] [-@]] [dir]
+##     Change the shell working directory.
+##     
+##     Change the current directory to DIR.  The default DIR is the value of the
+##     HOME shell variable.
+##     
+##     The variable CDPATH defines the search path for the directory containing
+##     DIR.  Alternative directory names in CDPATH are separated by a colon (:).
+##     A null directory name is the same as the current directory.  If DIR begins
+##     with a slash (/), then CDPATH is not used.
+##     
+##     If the directory is not found, and the shell option `cdable_vars&#39; is set,
+##     the word is assumed to be  a variable name.  If that variable has a value,
+##     its value is used for DIR.
+##     
+##     Options:
+##       -L force symbolic links to be followed: resolve symbolic
+##          links in DIR after processing instances of `..&#39;
+##       -P use the physical directory structure without following
+##          symbolic links: resolve symbolic links in DIR before
+##          processing instances of `..&#39;
+##       -e if the -P option is supplied, and the current working
+##          directory cannot be determined successfully, exit with
+##          a non-zero status
+##       -@ on systems that support it, present a file with extended
+##          attributes as a directory containing the file attributes
+##     
+##     The default is to follow symbolic links, as if `-L&#39; were specified.
+##     `..&#39; is processed by removing the immediately previous pathname component
+##     back to a slash or the beginning of DIR.
+##     
+##     Exit Status:
+##     Returns 0 if the directory is changed, and if $PWD is set successfully when
+##     -P is used; non-zero otherwise.</code></pre>
+</div>
+<div id="despliega-información-básica-de-uso-del-comando-command-help" class="section level3">
+<h3><span class="header-section-number">2.14.5</span> Despliega información básica de uso del comando: <b>command –help</b></h3>
+<p>Muchos programas del sistema soportan la opción <span class="math inline">\(--help\)</span> que despliega la descripción de la sintaxis del comando y las opciones. Esta suele ser una descripción más corta que la que nos dan las páginas de <span class="math inline">\(man\)</span> para el comando</p>
+<pre class="bash"><code># mira las opciones de cut y sort en la manpage
+mkdir --help</code></pre>
+<pre><code>## Usage: mkdir [OPTION]... DIRECTORY...
+## Create the DIRECTORY(ies), if they do not already exist.
 ## 
 ## Mandatory arguments to long options are mandatory for short options too.
-##   -b, --bytes=LIST        select only these bytes
-##   -c, --characters=LIST   select only these characters
-##   -d, --delimiter=DELIM   use DELIM instead of TAB for field delimiter
-##   -f, --fields=LIST       select only these fields;  also print any line
-##                             that contains no delimiter character, unless
-##                             the -s option is specified
-##   -n                      (ignored)
-##       --complement        complement the set of selected bytes, characters
-##                             or fields
-##   -s, --only-delimited    do not print lines not containing delimiters
-##       --output-delimiter=STRING  use STRING as the output delimiter
-##                             the default is to use the input delimiter
-##   -z, --zero-terminated    line delimiter is NUL, not newline
+##   -m, --mode=MODE   set file mode (as in chmod), not a=rwx - umask
+##   -p, --parents     no error if existing, make parent directories as needed
+##   -v, --verbose     print a message for each created directory
+##   -Z                   set SELinux security context of each created directory
+##                          to the default type
+##       --context[=CTX]  like -Z, or if CTX is specified then set the SELinux
+##                          or SMACK security context to CTX
 ##       --help     display this help and exit
 ##       --version  output version information and exit
 ## 
-## Use one, and only one of -b, -c or -f.  Each LIST is made up of one
-## range, or many ranges separated by commas.  Selected input is written
-## in the same order that it is read, and is written exactly once.
-## Each range is one of:
-## 
-##   N     N&#39;th byte, character or field, counted from 1
-##   N-    from N&#39;th byte, character or field, to end of line
-##   N-M   from N&#39;th to M&#39;th (included) byte, character or field
-##   -M    from first to M&#39;th (included) byte, character or field
-## 
 ## GNU coreutils online help: &lt;https://www.gnu.org/software/coreutils/&gt;
-## Full documentation at: &lt;https://www.gnu.org/software/coreutils/cut&gt;
-## or available locally via: info &#39;(coreutils) cut invocation&#39;</code></pre>
-<!-- ### >>> AVANZADO -->
-<!--  ahora con un bucle for, con la sintaxis: [for ALIAS in LIST; do YOUR_CODE; done] -->
-<!-- for letter in b c d e f; do echo ">>> $letter"; ls /bin/${letter}*; echo '--------------'; done -->
-<!-- # ahora para todas las letras -->
-<!-- for letter in {a..z}; do echo ">>> $letter"; ls /bin/${letter}*; echo '--------------'; done -->
+## Full documentation at: &lt;https://www.gnu.org/software/coreutils/mkdir&gt;
+## or available locally via: info &#39;(coreutils) mkdir invocation&#39;</code></pre>
+</div>
+<div id="encuentra-comandos-adecuados-para-un-tipo-de-acción-apropos" class="section level3">
+<h3><span class="header-section-number">2.14.6</span> Encuentra comandos adecuados para un tipo de acción: <b>apropos</b></h3>
+<p>Por ejemplo, quiero saber qué distribución de Linux corre mi máquina, pero no recuerdo el comando.</p>
+<pre class="bash"><code># encuentra comandos que tienen que ver con la palabra clave distribution
+apropos distribution</code></pre>
+<pre><code>## hmmsim (1)           - collect profile score distributions on random sequences
+## bdftopcf (1)         - convert X font from Bitmap Distribution Format to Port...
+## Bio::Tools::RandomDistFunctions (3pm) - A set of routines useful for generati...
+## CPAN::Meta (3perl)   - the distribution metadata for a CPAN dist
+## CPAN::Meta::Converter (3perl) - Convert CPAN distribution metadata structures
+## CPAN::Meta::Feature (3perl) - an optional feature provided by a CPAN distribu...
+## CPAN::Meta::Prereqs (3perl) - a set of distribution prerequisites by phase an...
+## CPAN::Meta::Spec (3perl) - specification for CPAN distribution metadata
+## CPAN::Meta::Validator (3perl) - validate CPAN distribution metadata structures
+## dpkg-vendor (1)      - queries information about distribution vendors
+## iptables-extensions (8) - list of extensions in the standard iptables distrib...
+## lsb_release (1)      - print distribution-specific information
+## perlnewmod (1)       - preparing a new module for distribution
+## perlutil (1)         - utilities packaged with the Perl distribution
+## pfscale (1)          - fit parameters of an extreme-value distribution to a p...</code></pre>
+<ul>
+<li>veo que es lsb_release. Consultemos su <span class="math inline">\(--help\)</span></li>
+</ul>
+<pre class="bash"><code># primero consulto su ayuda 
+lsb_release --help</code></pre>
+<pre><code>## Usage: lsb_release [options]
+## 
+## Options:
+##   -h, --help         show this help message and exit
+##   -v, --version      show LSB modules this system supports
+##   -i, --id           show distributor ID
+##   -d, --description  show description of this distribution
+##   -r, --release      show release number of this distribution
+##   -c, --codename     show code name of this distribution
+##   -a, --all          show all of the above information
+##   -s, --short        show requested information in short format</code></pre>
+<ul>
+<li>ahora ejecuto el comando con la opción deseada</li>
+</ul>
+<pre class="bash"><code>lsb_release -a</code></pre>
+<pre><code>## No LSB modules are available.
+## Distributor ID:  Ubuntu
+## Description: Ubuntu 20.04.1 LTS
+## Release: 20.04
+## Codename:    focal</code></pre>
+</div>
+<div id="imprime-desripciones-de-una-línea-de-un-comando-con-whatis" class="section level3">
+<h3><span class="header-section-number">2.14.7</span> Imprime desripciones de una línea de un comando con: <b>whatis</b></h3>
+<p>Si no recuerdas o sabes lo que hace un comando particular, puedes obtener una respuesta rápida con <span class="math inline">\(whatis\ command\)</span></p>
+<pre class="bash"><code>whatis cron</code></pre>
+<pre><code>## cron (8)             - daemon to execute scheduled commands (Vixie Cron)</code></pre>
 <hr />
+</div>
 </div>
 </div>
 <div id="inicios-de-programación-en-bash" class="section level1">
 <h1><span class="header-section-number">3</span> Inicios de programación en <span class="math inline">\(Bash\)</span></h1>
-<p>Vamos a aprender algunos de los elementos esenciales del lenguaje <span class="math inline">\(Bash\)</span> de programación Shell</p>
+<p>Vamos a aprender algunos de los elementos esenciales del lenguaje <span class="math inline">\(Bash\)</span> de <b>programación Shell</b></p>
 <div id="asignación-y-uso-de-variables" class="section level2">
 <h2><span class="header-section-number">3.1</span> Asignación y uso de <strong>variables</strong></h2>
 <ul>
@@ -1599,16 +1758,62 @@ cut --help</code></pre>
 <pre class="bash"><code>archivo_de_comandos_linux=linux_commands.tab
 echo &quot;$archivo_de_comandos_linux&quot;</code></pre>
 <pre><code>## linux_commands.tab</code></pre>
-<div id="captura-de-la-salida-de-un-comando-con-comando" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Captura de la salida de un comando con <b>$(comando)</b></h3>
+</div>
+<div id="variables-de-ambiente---printenv" class="section level2">
+<h2><span class="header-section-number">3.2</span> Variables de ambiente - <strong><span class="math inline">\(printenv\)</span></strong></h2>
+<p>Al iniciar una <b>sesión local o remota</b>, el <span class="math inline">\(SHELL\)</span> carga en memoria una serie de <span class="math inline">\(VARIABLES\_DE\_AMBIENTE\)</span> que son parte de la configuración del sistema.</p>
+<p>Ya hemos visto algunas antes, pero aquí les muestro algunas muy importantes:</p>
+<pre class="bash"><code>echo &quot;HOME = $HOME&quot;
+echo &quot;USER = $USER&quot;
+echo &quot;SHELL = $SHELL&quot;</code></pre>
+<pre><code>## HOME = /home/vinuesa
+## USER = vinuesa
+## SHELL = /bin/bash</code></pre>
+<p>Pueden ver todas las variables de su ambiente con el comando <span class="math inline">\(printenv\)</span></p>
+<p><code>printenv | sort | less</code></p>
+<p>Como explicábamos en la <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción</a>, el <span class="math inline">\(SHELL\)</span> busca comandos en los directorios especificados en la variable de ambiente <strong>PATH</strong>. Los directorios van separados por <span class="math inline">\(:\)</span> y se leen en ese orden.</p>
+<pre class="bash"><code>echo &quot;PATH = $PATH&quot;</code></pre>
+<pre><code>## PATH = /home/vinuesa/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/rstudio/bin/postback</code></pre>
+<div id="agregando-directorios-a-la-variable-de-ambiente-path" class="section level4">
+<h4><span class="header-section-number">3.2.0.1</span> Agregando directorios a la variable de ambiente <b>PATH</b></h4>
+<p>A veces necesitamos agregar un nuevo direcotrio a la variable de ambiente <strong>PATH</strong></p>
+<ul>
+<li>Añade el directorio $HOME/bin al final de la lista de directorios de <strong>PATH</strong></li>
+</ul>
+<pre><code>PATH=$PATH:$HOME/bin</code></pre>
+<p>Nota: en versiones recientes de <span class="math inline">\(ubuntu\)</span> y otras distribuciones de Linux, el directorio ‘$HOME/bin’ se exporta automáticamente</p>
+</div>
+<div id="archivos-de-configuración-.bash_profile-y-.bashrc" class="section level4">
+<h4><span class="header-section-number">3.2.0.2</span> Archivos de configuración <strong>.bash_profile</strong> y <strong>.bashrc</strong></h4>
+<p>Si quieres agrepar un directorio permanentemente a <span class="math inline">\(PATH\)</span>, puedes agragarlo al archivo de configuración <span class="math inline">\(.bash\_profile\)</span> de tu <span class="math inline">\(HOME\)</span> en un servidor remoto o al <span class="math inline">\(.bashrc\)</span> de tu <span class="math inline">\(HOME\)</span> en una máquina local y exportarlo.</p>
+<pre><code>PATH=$PATH:$HOME/bin
+
+export PATH</code></pre>
+<p>Veremos más sobre archivos de configuración en secciones posteriores.</p>
+</div>
+<div id="cual-es-el-binario-o-script-que-estoy-usando---which" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Cual es el binario o script que estoy usando? - <strong>which</strong></h3>
+<p>A veces tenemos un <span class="math inline">\(script\)</span> o un binario (por ejemplo <span class="math inline">\(blastn\)</span>) instalado en varios directorios. Esto puede ser intencional o inadvertidamente. El comando <span class="math inline">\(which\)</span> nos indica cual es el <span class="math inline">\(PATH\)</span> del comando que ve el <span class="math inline">\(Shell\)</span>, es decir, el primero en <span class="math inline">\(PATH\)</span></p>
+<pre class="bash"><code>which blastn
+which perl
+which trunc_seq.pl
+which transpose_pangenome_matrix.sh</code></pre>
+<pre><code>## /usr/local/bin/blastn
+## /usr/bin/perl
+## /home/vinuesa/bin/trunc_seq.pl
+## /home/vinuesa/bin/transpose_pangenome_matrix.sh</code></pre>
+</div>
+</div>
+<div id="captura-de-la-salida-de-un-comando-con-comando" class="section level2">
+<h2><span class="header-section-number">3.3</span> Captura de la salida de un comando con <b>$(comando)</b></h2>
 <pre class="bash"><code>wkdir=$(pwd)
 date=$(date | awk &#39;{print $3,$2,$6}&#39; | sed &#39;s/ //g&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in: $wkdir at &lt;$h&gt; on &lt;$date&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;oct07CDT&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;oct12CDT&gt;</code></pre>
 </div>
-<div id="modificación-de-variables-y-operaciones-con-ellas" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Modificación de variables y operaciones con ellas</h3>
+<div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
+<h2><span class="header-section-number">3.4</span> Modificación de variables y operaciones con ellas</h2>
 <pre class="bash"><code>wkdir=$(pwd)
 echo &quot;wkdir: $wkdir&quot;
 
@@ -1627,9 +1832,8 @@ echo &quot;basedir has ${#basedir} characters  # \${#basedir}&quot;
 ## path to basedir: /home/vinuesa/cursos  # ${wkdir%/*}
 ## basedir has 11 characters  # ${#basedir}</code></pre>
 </div>
-</div>
 <div id="condicionales" class="section level2">
-<h2><span class="header-section-number">3.2</span> <strong>Condicionales</strong></h2>
+<h2><span class="header-section-number">3.5</span> <strong>Condicionales</strong></h2>
 <ul>
 <li>La sintaxis básica de un condicional simple en formato de una línea es así</li>
 </ul>
@@ -1646,7 +1850,7 @@ echo &quot;basedir has ${#basedir} characters  # \${#basedir}&quot;
     orden2 
 fi</code></pre>
 <div id="comparación-de-íntegros-en-condicionales" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Comparación de íntegros en condicionales</h3>
+<h3><span class="header-section-number">3.5.1</span> Comparación de íntegros en condicionales</h3>
 <pre class="bash"><code>i=5
 j=3
 
@@ -1658,7 +1862,7 @@ fi</code></pre>
 <pre><code>## 5 &gt; 3</code></pre>
 </div>
 <div id="comparación-de-cadenas-de-caracteres-en-condicionales" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> Comparación de cadenas de caracteres en condicionales</h3>
+<h3><span class="header-section-number">3.5.2</span> Comparación de cadenas de caracteres en condicionales</h3>
 <pre class="bash"><code>c=carla
 j=juan
 
@@ -1670,7 +1874,7 @@ fi</code></pre>
 <pre><code>## c:carla != j:juan</code></pre>
 </div>
 <div id="comprobación-de-la-existencia-de-un-archivo-de-tamaño-0-bytes" class="section level3">
-<h3><span class="header-section-number">3.2.3</span> Comprobación de la existencia de un archivo de tamaño &gt; 0 bytes</h3>
+<h3><span class="header-section-number">3.5.3</span> Comprobación de la existencia de un archivo de tamaño &gt; 0 bytes</h3>
 <pre class="bash"><code>touch empty_file
 ls -l empty_file
 ls -l *gz
@@ -1691,21 +1895,21 @@ if [ -s &quot;$f&quot; ]; then
    echo &quot;$f exists and has size: $size&quot;
 fi
 </code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct  7 11:59 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 12 19:38 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
 ## assembly_summary.txt.gz exists and has size: 6.5M</code></pre>
 </div>
 <div id="la-versión-corta-de-test-condición-comando1-comando2" class="section level3">
-<h3><span class="header-section-number">3.2.4</span> La versión corta de test <strong>[ condición ] &amp;&amp; comando1 &amp;&amp; comando2</strong> …</h3>
+<h3><span class="header-section-number">3.5.4</span> La versión corta de test <strong>[ condición ] &amp;&amp; comando1 &amp;&amp; comando2</strong> …</h3>
 <pre class="bash"><code># también podemos usar la versión corta del test:
 f=$(ls *gz)
 [ -s &quot;$f&quot; ] &amp;&amp; echo &quot;$f exists and is non-empty&quot;</code></pre>
 <pre><code>## assembly_summary.txt.gz exists and is non-empty</code></pre>
 </div>
 <div id="if-elif-else" class="section level3">
-<h3><span class="header-section-number">3.2.5</span> <strong>if; elif; else</strong></h3>
+<h3><span class="header-section-number">3.5.5</span> <strong>if; elif; else</strong></h3>
 <pre class="bash"><code>  if [[ &quot;$OSTYPE&quot; == &quot;linux-gnu&quot; ]]
   then
     OS=&#39;linux&#39;
@@ -1727,7 +1931,7 @@ f=$(ls *gz)
 </div>
 </div>
 <div id="bucles-for" class="section level2">
-<h2><span class="header-section-number">3.3</span> <strong>Bucles for</strong></h2>
+<h2><span class="header-section-number">3.6</span> <strong>Bucles for</strong></h2>
 <p>la sintaxis general de un bucle for en <span class="math inline">\(Bash\)</span> es:</p>
 <p><code>for ALIAS in LIST; do CMD1; CMD2; done</code></p>
 <p>donde el usuario tiene que cambiar los términos en mayúsculas por opciones concretas. ALIAS es el nombre de una variable temporal a la que se asigna secuencialmente cada valor de LIST.</p>
@@ -1735,7 +1939,7 @@ f=$(ls *gz)
 <p><code>for file in <em>.faa; do clustalo -i $file -o ${file%.</em>}_cluoAln.faa; done</code></p>
 <p>donde ALIAS=file, LIST=*.faa y CMD1 es una llamada al programa de alineamientos múltiples clustalo que veremos más adelante en este taller.</p>
 <div id="ejemplo-de-bucle-for-acoplado-a-las-herramientas-de-filtrado-y-de-manipulación-de-variables" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables</h3>
+<h3><span class="header-section-number">3.6.1</span> Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables</h3>
 <p>La idea del ejercicio es generar archivos a partir de linux_basic_commands.tab que contengan sólo los comandos de cada clase, nombrando a los archivo resultantes con el valor de dicha clase, almacenados en la segunda columna de la tabla</p>
 <pre class="bash"><code># veamos la cabecera y cola del archivo linux_basic_commands.tab
 head linux_basic_commands.tab
@@ -1826,10 +2030,10 @@ rm *.cmds</code></pre>
 </div>
 </div>
 <div id="bash-scripts---primeros-pasos" class="section level2">
-<h2><span class="header-section-number">3.4</span> <strong><span class="math inline">\(Bash\)</span> scripts</strong> - primeros pasos</h2>
+<h2><span class="header-section-number">3.7</span> <strong><span class="math inline">\(Bash\)</span> scripts</strong> - primeros pasos</h2>
 <p>Para finalizar esta sección, voy a mostrarles varios ejemplos muy sencillos de <strong>Shell scripts</strong> escritos en <span class="math inline">\(Bash\)</span> que integran varios aspectos de la sintaxis básica del lenguaje arriba descritas, así como extensiones adicionales como son <strong>argumentos posicionales</strong> y <strong>funciones</strong></p>
 <div id="la-shebang-line-usrbinenv-bash-y-permisos-de-ejecución---el-script-ls_dir" class="section level3">
-<h3><span class="header-section-number">3.4.1</span> la “<strong>shebang line</strong>” (#!/usr/bin/env bash) y permisos de ejecución - el script <em>ls_dir</em></h3>
+<h3><span class="header-section-number">3.7.1</span> la “<strong>shebang line</strong>” (#!/usr/bin/env bash) y permisos de ejecución - el script <em>ls_dir</em></h3>
 <p>Se conocen como <em>scripts</em> a archivos de texto plano (codificación ASCII) que contienen los comandos a ser ejecutados secuencialmente por un <strong>intérprete de comandos</strong> particular, como <span class="math inline">\(bash\)</span>, <span class="math inline">\(perl\)</span>, <span class="math inline">\(R\)</span> …</p>
 <p>Les muestro abajo el código del script <em>ls_dir</em>.</p>
 <pre><code>#!/usr/bin/env bash
@@ -1876,7 +2080,7 @@ CTRL-D</code></pre>
 <p>Nota: el script <em>ls_dir</em> funciona perfectamente, pero no es la manera más eficiente de buscar directorios. La función <span class="math inline">\(find\)</span> de <span class="math inline">\(Linux\)</span> es mucho más eficiente.</p>
 </div>
 <div id="funciones-y-argumentos-posicionales-en-bash---el-script-find_dir" class="section level3">
-<h3><span class="header-section-number">3.4.2</span> <strong>Funciones</strong> y <strong>argumentos posicionales</strong> en <span class="math inline">\(Bash\)</span> - el script <em>find_dir</em></h3>
+<h3><span class="header-section-number">3.7.2</span> <strong>Funciones</strong> y <strong>argumentos posicionales</strong> en <span class="math inline">\(Bash\)</span> - el script <em>find_dir</em></h3>
 <p>Los scripts pueden recibir opciones dadas por los usuarios para comportarse acorde a ellas. Esto les da gran versatilidad.</p>
 <p>La manera más sencialla de pasarle opciones al script es mediante <strong>argumentos posicionales</strong>, como los usados por <em>find_dir</em></p>
 <pre><code>#!/usr/bin/env bash
@@ -1961,7 +2165,7 @@ find . -maxdepth $max_depth -type $type</code></pre>
 ## ./docs</code></pre>
 </div>
 <div id="alineamiento-múltiple-de-secuencias-e-interconversión-de-formatos-con-align_seqs_with_clustal_or_muscle.sh-y-convert_alnformats_using_clustalw.sh" class="section level3">
-<h3><span class="header-section-number">3.4.3</span> Alineamiento múltiple de secuencias e interconversión de formatos con <em>align_seqs_with_clustal_or_muscle.sh</em> y <em>convert_alnFormats_using_clustalw.sh</em></h3>
+<h3><span class="header-section-number">3.7.3</span> Alineamiento múltiple de secuencias e interconversión de formatos con <em>align_seqs_with_clustal_or_muscle.sh</em> y <em>convert_alnFormats_using_clustalw.sh</em></h3>
 <p>Para finalizar esta sección de introducción a la programación en <span class="math inline">\(Bash\)</span>, explora el código del script <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/bin/align_seqs_with_clustal_or_muscle.sh">align_seqs_with_clustal_or_muscle.sh</a>, que permite hacer alineamientos múltiples con <span class="math inline">\(clustalw\)</span> o con <span class="math inline">\(muscle\)</span>, dos programas muy populares para este fin.</p>
 <p>Explora también el código del script <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/bin/convert_alnFormats_using_clustalw.sh">convert_alnFormats_using_clustalw.sh</a>, que permite hacer inteconversión de formatos con clustalw.</p>
 <p>Los alineamientos múltiples y las llamadas a <span class="math inline">\(clustalw\)</span> las explicaremos en la <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/sesion4_alineamientos">sesión4_alineamientos</a>.</p>
