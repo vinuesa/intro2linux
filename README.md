@@ -38,7 +38,7 @@ Si tienes instalado [git](https://git-scm.com/) en tu computadora, puedes clonar
 
   <code>sudo apt install git</code>
 
-- También en [mobaXterm](https://mobaxterm.mobatek.net/) es posible instalar git como un <i>plugin</in> [mobaXterm - plugins](https://mobaxterm.mobatek.net/plugins.html)
+- También en [mobaXterm](https://mobaxterm.mobatek.net/) es posible instalar git como un <i>plugin</i> [mobaXterm - plugins](https://mobaxterm.mobatek.net/plugins.html)
 
 abre una consola de moba (ver instrucciones de instalación abajo) y teclea
 
