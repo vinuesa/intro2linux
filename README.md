@@ -4,7 +4,7 @@
 
 1a. Edición: semestre 2021-1
 
-v.2020-10-11
+v.2020-10-13
 
 ***
  
@@ -72,7 +72,6 @@ Este taller tiene por objetivos iniciarte en el camino del bioc&oacute;mputo en 
 Aprender&aacute;s todo lo necesario para un arranque r&aacute;pido, &uacute;til, entretenido y exitoso de programaci&oacute;n/scripting del Linux Shell, usando ejemplos relevantes para el an&aacute;lisis de secuencias moleculares y datos asociados.
 
 #### Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux
-
 En este tutoral se describen los siguientes conceptos b&aacute;sicos:
 - Qu&eacute; es el bioc&oacute;mputo?
 - Qu&eacute; es GNU/Linux?
@@ -89,9 +88,9 @@ Tambi&eacute;n van unas notas elaboradas por la UATI de la @lcg_unam sobre insta
 
 - [instalaci&oacute;n mobaXterm - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/ConexionSSHdesdeWindows_usando_mobaXterm_UATI_LCG-UNAM.pdf)
 
-#### Pr&aacute;ctica 1. Primer contacto con un sistema GNU/Linux
-- [pr&aacute;ctica1 - html](https://vinuesa.github.io/intro2linux/)
-- [pr&aacute;ctica1 - tabla_comandos](https://github.com/vinuesa/intro2linux/tree/master/docs/linux_commands.tab)
+#### Tutoral de comandos GNU/Linux con aplicaciones a biocómputo
+- [Tutoral - html](https://vinuesa.github.io/intro2linux/)
+- [Tutoral - tabla_comandos](https://github.com/vinuesa/intro2linux/tree/master/docs/linux_commands.tab)
 
 
 <!--
