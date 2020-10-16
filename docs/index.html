@@ -425,9 +425,7 @@ summary {
 <li><a href="#eliminar-un-directorio-rm--rf-recursively--r-and-force--f"><span class="toc-section-number">3.3</span> Eliminar un directorio: <b>rm -r[f]</b> [recursively -r and force -f]</a></li>
 <li><a href="#scp-copia-de-archivos-entre-máquinas-vía-internet"><span class="toc-section-number">3.4</span> <b>scp</b> copia de archivos entre máquinas vía Internet</a></li>
 <li><a href="#sftp-descarga-de-archivos-de-una-máquina-remota-a-tu-máquina-local-laptop-o-desktop"><span class="toc-section-number">3.5</span> <b>sftp</b> descarga de archivos de una máquina remota a tu máquina local (laptop o desktop)</a></li>
-<li><a href="#generación-de-ligas-simbólicas-a-archivos-comando-ln--s-rutaalarchivofuente-nombre_liga"><span class="toc-section-number">3.6</span> Generación de ligas simbólicas a archivos: comando <b>ln -s /ruta/al/archivo/fuente nombre_liga</b></a><ul>
-<li><a href="#renombramos-la-liga-o-cualquier-archivo-o-directorio"><span class="toc-section-number">3.6.1</span> renombramos la liga (o cualquier archivo o directorio)</a></li>
-</ul></li>
+<li><a href="#generación-de-ligas-simbólicas-a-archivos-comando-ln--s-rutaalarchivofuente-nombre_liga"><span class="toc-section-number">3.6</span> Generación de ligas simbólicas a archivos: comando <b>ln -s /ruta/al/archivo/fuente nombre_liga</b></a></li>
 <li><a href="#nombres-de-archivos-y-directorios-y-uso-de-comillas-sencillas-y-dobles"><span class="toc-section-number">3.7</span> Nombres de archivos y directorios y uso de comillas sencillas y dobles</a><ul>
 <li><a href="#uso-de-comillas-sencillas-interpretación-literal-y-escape-de-caracteres-reservados-para-el-shell"><span class="toc-section-number">3.7.1</span> Uso de <b>comillas sencillas(<span class="math inline">\(&#39;\)</span>)</b>: interpretación literal y escape de caracteres reservados para el <i>SHELL</i></a></li>
 <li><a href="#uso-de-comillas-dobles-para-interpolación-de-variables"><span class="toc-section-number">3.7.2</span> Uso de <b>comillas dobles (<span class="math inline">\(&quot;\)</span>)</b> para interpolación de variables</a></li>
@@ -655,8 +653,8 @@ ls | head</code></pre>
 ## find_dir</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
-<pre><code>## total 11784
-## drwxr-xr-x 7 vinuesa vinuesa    4096 oct 14 23:01 .
+<pre><code>## total 11788
+## drwxr-xr-x 7 vinuesa vinuesa    4096 oct 15 20:36 .
 ## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 22:15 ..
 ## -rwxr-xr-x 1 vinuesa vinuesa    2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
@@ -668,26 +666,26 @@ ls -al </code></pre>
 ## drwxr-xr-x 3 vinuesa vinuesa    4096 oct  9 21:25 docs
 ## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
 ## -rwxr-xr-x 1 vinuesa vinuesa    1237 oct 14 22:43 find_dir
-## drwxr-xr-x 8 vinuesa vinuesa    4096 oct 15 16:30 .git
+## drwxr-xr-x 8 vinuesa vinuesa    4096 oct 15 16:47 .git
 ## drwxr-xr-x 4 vinuesa vinuesa    4096 sep 29 22:56 intro2linux
 ## -rw-r--r-- 1 vinuesa vinuesa 3163754 oct 13 13:39 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r-- 1 vinuesa vinuesa   35149 sep 29 22:15 LICENSE
 ## -rwxr-xr-x 1 vinuesa vinuesa   10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 14 23:01 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 15 20:36 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rwxr-xr-x 1 vinuesa vinuesa    1705 sep 29 22:18 linux_very_basic_commands_table.csv
 ## -rwxr-xr-x 1 vinuesa vinuesa     493 oct 14 22:43 ls_dir
 ## drwxr-xr-x 2 vinuesa vinuesa    4096 oct  6 16:39 participantes_Taller_CG_FC
 ## -rwxr-xr-x 1 vinuesa vinuesa    2884 oct 14 22:43 prot2cdnAlns.pl
 ## -rw-r--r-- 1 vinuesa vinuesa    5957 oct 13 13:42 README.md
 ## -rw-r--r-- 1 vinuesa vinuesa   77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa   17704 oct 14 23:01 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa   17704 oct 15 20:36 recA_Byuanmingense.fna
 ## -rw-rw-r-- 1 vinuesa vinuesa       0 oct  7 00:21 .Rhistory
 ## -rwxr-xr-x 1 vinuesa vinuesa     239 oct 14 22:43 split_fasta.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      27 oct  7 12:21 TODO.txt
 ## -rwxr-xr-x 1 vinuesa vinuesa    3402 oct 14 22:43 translate_fastas.pl
-## -rw-r--r-- 1 vinuesa vinuesa 1173039 oct 14 23:01 working_with_linux_commands.html
+## -rw-r--r-- 1 vinuesa vinuesa 1174536 oct 15 20:36 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   81267 oct 15 16:44 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa   82633 oct 15 20:37 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa      41 oct 13 19:24 zoom.url</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del directorio raiz</h4>
@@ -725,7 +723,7 @@ ls -al </code></pre>
 ## drwxr-xr-x   3 root root      4096 oct  5 20:41 media
 ## drwxr-xr-x   2 root root      4096 jul 31 11:27 mnt
 ## drwxr-xr-x   5 root root      4096 oct  5 12:26 opt
-## dr-xr-xr-x 375 root root         0 oct 15 16:24 proc
+## dr-xr-xr-x 370 root root         0 oct 15 16:24 proc
 ## drwx------   7 root root      4096 oct  7 00:28 root
 ## drwxr-xr-x  34 root root      1020 oct 15 16:29 run
 ## lrwxrwxrwx   1 root root         8 oct  4 14:42 sbin -&gt; usr/sbin</code></pre>
@@ -1014,7 +1012,6 @@ file intro2linux</code></pre>
 <pre><code>## assembly_summary.txt.gz: gzip compressed data, was &quot;assembly_summary.txt&quot;, last modified: Mon Jul 22 00:26:11 2019, from Unix, original size modulo 2^32 48497020
 ## linux_commands.tab: symbolic link to /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## intro2linux: directory</code></pre>
-<p>s</p>
 </div>
 </div>
 <div id="moviéndonos-por-el-sistema-de-archivos-comando-cd" class="section level2">
@@ -1041,8 +1038,8 @@ cd /home/vinuesa/cursos/intro2linux/data</code></pre>
 <h4><span class="header-section-number">2.4.2.1</span> entra a un subdirectorio bajo en directorio actual usando la ruta relativa</h4>
 <pre><code>cd directorio</code></pre>
 </div>
-<div id="sube-un-directorio-usando-ruta-relativa-cd-.." class="section level4">
-<h4><span class="header-section-number">2.4.2.2</span> sube un directorio usando RUTA RELATIVA: <b>cd ..</b></h4>
+<div id="sube-un-nivel-de-directorio-usando-ruta-relativa-cd-.." class="section level4">
+<h4><span class="header-section-number">2.4.2.2</span> sube un nivel de directorio usando RUTA RELATIVA: <b>cd ..</b></h4>
 <pre class="bash"><code>cd ..</code></pre>
 </div>
 <div id="sube-dos-niveles-en-la-jerarquía-de-directorios-usando-ruta-relativa-cd-...." class="section level4">
@@ -1398,13 +1395,21 @@ rm -rf borrame</code></pre>
 <li><strong>Ejercicio</strong> con <span class="math inline">\(scp\)</span>
 <ol style="list-style-type: decimal">
 <li>descarga el archivo <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/data/linux_basic_commands.tab">linux_basic_commands.tab</a> del repositorio GitHub a tu máquina</li>
-<li>cópialo a tu $HOME en el servidor</li>
+<li>cópialo a tu <span class="math inline">\(\$HOME\)</span> en el servidor</li>
 </ol></li>
 </ul>
 <pre><code># asegúrate de estar en el directorio que contiene el archvo descargado:
 ls linux_basic_commands.tab
 
 scp linux_basic_commands.tab USUARIO@ip.maquina:/home/USUARIO/ruta/al/dir/destino/</code></pre>
+<ul>
+<li><strong>NOTAS sobre scp</strong>:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Si queremos copiar un directorio podemos usar la sintaxis <code>scp -r dir <a href="mailto:USUARIO@ip.maquina" class="email">USUARIO@ip.maquina</a>:/home/USUARIO/ruta/al/dir/destino/</code></li>
+<li>Usa <code>scp -r dir destino</code> sólo si <span class="math inline">\(dir\)</span> contiene pocos archivos pequeños.</li>
+<li>Si necesitas copiar archivos grandes o directorios con muchos archivos, comprímelos primero con <span class="math inline">\(gzip\)</span> y <span class="math inline">\(tar\)</span> (ver más adelante)s</li>
+</ol>
 </div>
 <div id="sftp-descarga-de-archivos-de-una-máquina-remota-a-tu-máquina-local-laptop-o-desktop" class="section level2">
 <h2><span class="header-section-number">3.5</span> <b>sftp</b> descarga de archivos de una máquina remota a tu máquina local (laptop o desktop)</h2>
@@ -1440,7 +1445,13 @@ ls </code></pre>
 </div>
 <div id="generación-de-ligas-simbólicas-a-archivos-comando-ln--s-rutaalarchivofuente-nombre_liga" class="section level2">
 <h2><span class="header-section-number">3.6</span> Generación de ligas simbólicas a archivos: comando <b>ln -s /ruta/al/archivo/fuente nombre_liga</b></h2>
-<p>Hacer ligas simbólicas en vez de copiar cada archivo es muy importante, ya que permite ahorrar mucho espacio en disco al evitar la multiplicación de copias fisicas en el disco duro del mismo archivo en el $HOME de uno o más usuarios</p>
+<p>Hacer ligas simbólicas en vez de copiar cada archivo es muy importante, ya que permite ahorrar mucho espacio en disco al evitar la multiplicación de copias fisicas en el disco duro del mismo archivo en el $HOME de uno o más usuarios.</p>
+<p>Sintaxis básica:</p>
+<ul>
+<li><code>ln -s /path/to/file .</code> # que genera una liga simbólica a /path/to/file, llamada file, en el directorio de trabajo</li>
+<li><code>ln -s /path/to/file nombre_nuevo</code> # que genera una liga simbólica a /path/to/file, llamada nombre_nuevo, en el directorio de trabajo</li>
+<li><code>ln -s /path/to/dir_with_many_files/*fastq.gz .</code> # que genera una liga simbólica en el directorio actual para cada archivo fastq.gz ubicado en /path/to/dir_with_many_files</li>
+</ul>
 <pre class="bash"><code>hostn=$(hostname)
 if [ &quot;$hostn&quot; == &quot;Tenerife&quot; ]; then
    ln -s /home/vinuesa/Cursos/OMICAS_UAEM_genomica/clase1_intro2linux/linux_basic_commands.tab comandos_de_linux.tab
@@ -1458,20 +1469,28 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 11776
+<pre><code>## total 11780
 ## -rwxr-xr-x 1 vinuesa vinuesa    2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
 ## -rw-r--r-- 1 vinuesa vinuesa    5499 oct 14 22:24 bash_script_template_with_getopts.sh
 ## drwxrwxr-x 2 vinuesa vinuesa    4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa    5406 oct 14 22:43 blast-imager.pl
-## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 15 16:44 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 15 20:37 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rwxr-xr-x 1 vinuesa vinuesa    2731 oct 14 22:43 convert_aln_format_batch_bp.pl
 ## -rwxr-xr-x 1 vinuesa vinuesa    1812 oct 14 22:43 convert_alnFormats_using_clustalw.sh
 ## drwxr-xr-x 3 vinuesa vinuesa    4096 oct  9 21:25 docs</code></pre>
-<div id="renombramos-la-liga-o-cualquier-archivo-o-directorio" class="section level3">
-<h3><span class="header-section-number">3.6.1</span> renombramos la liga (o cualquier archivo o directorio)</h3>
+<ul>
+<li>renombramos la liga (o cualquier archivo o directorio)</li>
+</ul>
 <pre class="bash"><code>  mv comandos_de_linux.tab linux_commands.tab</code></pre>
-</div>
+<ul>
+<li>podemos elegir el nombre el apuntador que nos convenga</li>
+</ul>
+<pre><code>  ln -s nombre_largo_de_archivo.tgz arch_tmp.tgz</code></pre>
+<ul>
+<li>podemos generar ligas simbólicas a todos los archivos de un directorio (por ej. lecturas fastq comprimidas de un secuenciador illumina) en el directorio de trabajo (actual) con un comando como éste:</li>
+</ul>
+<pre><code>  ln -s /export/data3/illumina_reads/run_stenos_2020-10-14/*fastq.gz .</code></pre>
 </div>
 <div id="nombres-de-archivos-y-directorios-y-uso-de-comillas-sencillas-y-dobles" class="section level2">
 <h2><span class="header-section-number">3.7</span> Nombres de archivos y directorios y uso de comillas sencillas y dobles</h2>
@@ -1491,14 +1510,14 @@ ls -l | head</code></pre>
 <pre><code># rename es un script de Perl que permite renombrar archivos de manera muy eficiente 
 #   haciendo uso de expresiones regulares y expansión de nombres de archivo
 # El siguiente ejemplo renombra todos los archivos docx del directorio, 
-#   cabmiando espacios por guiones bajos
+#   cabmiando todas las instancias (globalmente) de espacios por guiones bajos
 rename &#39;s/ /_/g&#39; *.docx</code></pre>
 <ul>
 <li>Ejemplo de llamada a <span class="math inline">\(sed\)</span></li>
 </ul>
 <pre><code># con esta sentencia el editor de flujo sed cambiará todas las instancias de Windos por Linux
 #  que aparecen en el archivo txt
-sed &#39;s/Windows/Linux/g&#39; archivo.txt</code></pre>
+sed &#39;s/Windows/Linux/g&#39; archivo.txt # cambia Windows por linux globalmente ;)</code></pre>
 </div>
 <div id="uso-de-comillas-dobles-para-interpolación-de-variables" class="section level3">
 <h3><span class="header-section-number">3.7.2</span> Uso de <b>comillas dobles (<span class="math inline">\(&quot;\)</span>)</b> para interpolación de variables</h3>
@@ -1848,7 +1867,7 @@ zgrep -E &#39;Acinetobacter|Pseudomonas|Klebsiella&#39; assembly_summary.txt.gz 
 <pre class="bash"><code>file Stenotrophomonas_complete_genomes_and_ftp_paths.txt
 ls -l Stenotrophomonas_complete_genomes_and_ftp_paths.txt</code></pre>
 <pre><code>## Stenotrophomonas_complete_genomes_and_ftp_paths.txt: ASCII text
-## -rw-rw-r-- 1 vinuesa vinuesa 47651 oct 15 16:44 Stenotrophomonas_complete_genomes_and_ftp_paths.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 47651 oct 15 20:37 Stenotrophomonas_complete_genomes_and_ftp_paths.txt</code></pre>
 <ul>
 <li>ahora podemos explorar el archivo con <span class="math inline">\(head\)</span> u otros comandos como <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2012,7 +2031,7 @@ if [ -s &quot;$f&quot; ]; then
    echo &quot;$f exists and has size: $size&quot;
 fi
 </code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 15 16:44 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 15 20:37 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
