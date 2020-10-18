@@ -11,7 +11,7 @@
 
 <meta name="author" content="Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; http://www.ccg.unan.mx/~vinuesa" />
 
-<meta name="date" content="2020-10-15" />
+<meta name="date" content="2020-10-17" />
 
 <title>Sesión 1. Introducción al biocómputo en sistemas GNU/Linux</title>
 
@@ -374,7 +374,7 @@ summary {
 
 <h1 class="title toc-ignore">Sesión 1. Introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a></h4>
-<h4 class="date">2020-10-15</h4>
+<h4 class="date">2020-10-17</h4>
 
 </div>
 
@@ -396,6 +396,8 @@ summary {
 <li><a href="#pwd-imprime-la-ruta-absoluta-del-directorio-actual"><span class="toc-section-number">2.2.2</span> <strong>pwd</strong> imprime la <strong>ruta absoluta</strong> del directorio actual</a></li>
 <li><a href="#ls-lista-contenidos-del-directorio"><span class="toc-section-number">2.2.3</span> <strong>ls</strong> lista contenidos del directorio</a></li>
 <li><a href="#expansión-de-caracteres-con-y"><span class="toc-section-number">2.2.4</span> Expansión de caracteres con <b>*</b> y <b>?</b></a></li>
+<li><a href="#opciones-más-comunes-e-importantes-del-comando-ls"><span class="toc-section-number">2.2.5</span> Opciones más comunes e importantes del comando <span class="math inline">\(ls\)</span></a></li>
+<li><a href="#ejemplos-de-opciones-del-comando-ls"><span class="toc-section-number">2.2.6</span> Ejemplos de opciones del comando <span class="math inline">\(ls\)</span></a></li>
 </ul></li>
 <li><a href="#permisos-modo-de-un-archivo"><span class="toc-section-number">2.3</span> <strong>Permisos</strong> (modo de un archivo)</a><ul>
 <li><a href="#usuario-grupo-y-resto-del-mundo-user-group-others-y-permisos-rwx"><span class="toc-section-number">2.3.1</span> Usuario, grupo y resto del mundo (User, Group, Others …) y permisos <span class="math inline">\(rwx\)</span></a></li>
@@ -443,66 +445,70 @@ summary {
 <li><a href="#ejemplos-de-uso-básico-de-sed"><span class="toc-section-number">4.3.1</span> Ejemplos de uso básico de <b>sed</b>:</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#tuberias-de-herramientas-unixlinux-para-filtrado-de-texto-conectadas-mediante-pipes"><span class="toc-section-number">5</span> Tuberias de herramientas UNIX/Linux para filtrado de texto conectadas mediante “pipes” <em>|</em></a><ul>
-<li><a href="#el-comando-pipe"><span class="toc-section-number">5.1</span> El comando <strong>|</strong> (<em>pipe</em>:)</a></li>
-<li><a href="#ejemplos-de-herramientas-de-filtrado-de-texto-cut-grep-sort-uniq-wc-y-en-acción"><span class="toc-section-number">5.2</span> Ejemplos de herramientas de filtrado de texto: <b>cut</b>, <b>grep</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> y <b>|</b> en acción</a></li>
-<li><a href="#redireccionado-de-la-salida-stdout-a-un-archivo-con-el-comando"><span class="toc-section-number">5.3</span> redireccionado de la salida STDOUT a un archivo con el comando <b>&gt;</b></a></li>
+<li><a href="#trabajando-con-archivos-creación-de-tarros-con-tar-y-compresión-gzip"><span class="toc-section-number">5</span> Trabajando con archivos: creación de tarros con <strong>tar</strong> y compresión <strong>gzip</strong></a><ul>
+<li><a href="#compresión-gnuzip-de-archivos-ascii-comandos-gzip-y-gunzip"><span class="toc-section-number">5.1</span> Compresión gnuzip de archivos ASCII: comandos <strong>gzip</strong> y <strong>gunzip</strong></a></li>
+<li><a href="#generación-de-tarros-comprimidos-y-extracción-de-archivos-de-ellos-con-el-comando-tar"><span class="toc-section-number">5.2</span> Generación de ‘tarros’ comprimidos y extracción de archivos de ellos con el comando <strong>tar</strong></a></li>
 </ul></li>
-<li><a href="#inicios-de-programación-en-bash"><span class="toc-section-number">6</span> Inicios de programación en <span class="math inline">\(Bash\)</span></a><ul>
-<li><a href="#asignación-y-uso-de-variables"><span class="toc-section-number">6.1</span> Asignación y uso de <strong>variables</strong></a></li>
-<li><a href="#variables-de-ambiente---printenv"><span class="toc-section-number">6.2</span> Variables de ambiente - <strong><span class="math inline">\(printenv\)</span></strong></a><ul>
-<li><a href="#agregando-directorios-a-la-variable-de-ambiente-path"><span class="toc-section-number">6.2.1</span> Agregando directorios a la variable de ambiente <b>PATH</b></a></li>
-<li><a href="#archivos-de-configuración-.bash_profile-y-.bashrc"><span class="toc-section-number">6.2.2</span> Archivos de configuración <strong>.bash_profile</strong> y <strong>.bashrc</strong></a></li>
-<li><a href="#cuál-es-el-binario-o-script-que-estoy-usando---which"><span class="toc-section-number">6.2.3</span> ¿Cuál es el binario o script que estoy usando? - <strong>which</strong></a></li>
+<li><a href="#tuberias-de-herramientas-unixlinux-para-filtrado-de-texto-conectadas-mediante-pipes"><span class="toc-section-number">6</span> Tuberias de herramientas UNIX/Linux para filtrado de texto conectadas mediante “pipes” <em>|</em></a><ul>
+<li><a href="#el-comando-pipe"><span class="toc-section-number">6.1</span> El comando <strong>|</strong> (<em>pipe</em>:)</a></li>
+<li><a href="#ejemplos-de-herramientas-de-filtrado-de-texto-cut-grep-sort-uniq-wc-y-en-acción"><span class="toc-section-number">6.2</span> Ejemplos de herramientas de filtrado de texto: <b>cut</b>, <b>grep</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> y <b>|</b> en acción</a></li>
+<li><a href="#redireccionado-de-la-salida-stdout-a-un-archivo-con-el-comando"><span class="toc-section-number">6.3</span> redireccionado de la salida STDOUT a un archivo con el comando <b>&gt;</b></a></li>
 </ul></li>
-<li><a href="#captura-de-la-salida-de-un-comando-con-comando"><span class="toc-section-number">6.3</span> Captura de la salida de un comando con <b>$(comando)</b></a></li>
-<li><a href="#modificación-de-variables-y-operaciones-con-ellas"><span class="toc-section-number">6.4</span> Modificación de variables y operaciones con ellas</a></li>
-<li><a href="#condicionales"><span class="toc-section-number">6.5</span> <strong>Condicionales</strong></a><ul>
-<li><a href="#comparación-de-íntegros-en-condicionales"><span class="toc-section-number">6.5.1</span> Comparación de íntegros en condicionales</a></li>
-<li><a href="#comparación-de-cadenas-de-caracteres-en-condicionales"><span class="toc-section-number">6.5.2</span> Comparación de cadenas de caracteres en condicionales</a></li>
-<li><a href="#comprobación-de-la-existencia-de-un-archivo-de-tamaño-0-bytes"><span class="toc-section-number">6.5.3</span> Comprobación de la existencia de un archivo de tamaño &gt; 0 bytes</a></li>
-<li><a href="#la-versión-corta-de-test-condición-comando1-comando2"><span class="toc-section-number">6.5.4</span> La versión corta de test <strong>[ condición ] &amp;&amp; comando1 &amp;&amp; comando2</strong> …</a></li>
-<li><a href="#if-elif-else"><span class="toc-section-number">6.5.5</span> <strong>if; elif; else</strong></a></li>
+<li><a href="#inicios-de-programación-en-bash"><span class="toc-section-number">7</span> Inicios de programación en <span class="math inline">\(Bash\)</span></a><ul>
+<li><a href="#asignación-y-uso-de-variables"><span class="toc-section-number">7.1</span> Asignación y uso de <strong>variables</strong></a></li>
+<li><a href="#variables-de-ambiente---printenv"><span class="toc-section-number">7.2</span> Variables de ambiente - <strong><span class="math inline">\(printenv\)</span></strong></a><ul>
+<li><a href="#agregando-directorios-a-la-variable-de-ambiente-path"><span class="toc-section-number">7.2.1</span> Agregando directorios a la variable de ambiente <b>PATH</b></a></li>
+<li><a href="#archivos-de-configuración-.bash_profile-y-.bashrc"><span class="toc-section-number">7.2.2</span> Archivos de configuración <strong>.bash_profile</strong> y <strong>.bashrc</strong></a></li>
+<li><a href="#cuál-es-el-binario-o-script-que-estoy-usando---which"><span class="toc-section-number">7.2.3</span> ¿Cuál es el binario o script que estoy usando? - <strong>which</strong></a></li>
 </ul></li>
-<li><a href="#bucles-for"><span class="toc-section-number">6.6</span> <strong>Bucles for</strong></a><ul>
-<li><a href="#ejemplo-de-bucle-for-acoplado-a-las-herramientas-de-filtrado-y-de-manipulación-de-variables"><span class="toc-section-number">6.6.1</span> Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables</a></li>
+<li><a href="#captura-de-la-salida-de-un-comando-con-comando"><span class="toc-section-number">7.3</span> Captura de la salida de un comando con <b>$(comando)</b></a></li>
+<li><a href="#modificación-de-variables-y-operaciones-con-ellas"><span class="toc-section-number">7.4</span> Modificación de variables y operaciones con ellas</a></li>
+<li><a href="#condicionales"><span class="toc-section-number">7.5</span> <strong>Condicionales</strong></a><ul>
+<li><a href="#comparación-de-íntegros-en-condicionales"><span class="toc-section-number">7.5.1</span> Comparación de íntegros en condicionales</a></li>
+<li><a href="#comparación-de-cadenas-de-caracteres-en-condicionales"><span class="toc-section-number">7.5.2</span> Comparación de cadenas de caracteres en condicionales</a></li>
+<li><a href="#comprobación-de-la-existencia-de-un-archivo-de-tamaño-0-bytes"><span class="toc-section-number">7.5.3</span> Comprobación de la existencia de un archivo de tamaño &gt; 0 bytes</a></li>
+<li><a href="#la-versión-corta-de-test-condición-comando1-comando2"><span class="toc-section-number">7.5.4</span> La versión corta de test <strong>[ condición ] &amp;&amp; comando1 &amp;&amp; comando2</strong> …</a></li>
+<li><a href="#if-elif-else"><span class="toc-section-number">7.5.5</span> <strong>if; elif; else</strong></a></li>
 </ul></li>
-</ul></li>
-<li><a href="#bash-scripting---primeros-pasos"><span class="toc-section-number">7</span> <strong><span class="math inline">\(Bash\)</span> scripting</strong> - primeros pasos</a><ul>
-<li><a href="#la-shebang-line-usrbinenv-bash-y-permisos-de-ejecución---el-script-ls_dir"><span class="toc-section-number">7.1</span> la “<strong>shebang line</strong>” (#!/usr/bin/env bash) y permisos de ejecución - el script <em>ls_dir</em></a></li>
-<li><a href="#funciones-y-argumentos-posicionales-en-bash---el-script-find_dir"><span class="toc-section-number">7.2</span> <strong>Funciones</strong> y <strong>argumentos posicionales</strong> en <span class="math inline">\(Bash\)</span> - el script <em>find_dir</em></a></li>
-<li><a href="#scripts-que-reciben-argumentosparámetros-posicionales-con-interfaz-de-usario-simple"><span class="toc-section-number">7.3</span> Scripts que reciben argumentos|parámetros posicionales con interfaz de usario simple</a></li>
-<li><a href="#scripts-con-interfaz-de-usuario-paso-de-opciones-y-su-parseo-con-getopts"><span class="toc-section-number">7.4</span> Scripts con interfaz de usuario, paso de opciones y su parseo con <strong>getopts</strong></a></li>
-</ul></li>
-<li><a href="#el-lenguaje-de-procesamiento-de-patrones-awk"><span class="toc-section-number">8</span> El lenguaje de procesamiento de patrones <b>AWK</b></a><ul>
-<li><a href="#estructura-de-los-programas-awk"><span class="toc-section-number">8.1</span> Estructura de los programas AWK</a><ul>
-<li><a href="#estructura-básica---ejemplos-genéricos"><span class="toc-section-number">8.1.1</span> Estructura básica - ejemplos genéricos</a></li>
-<li><a href="#formas-alternativas-del-código-awk"><span class="toc-section-number">8.1.2</span> Formas alternativas del código AWK:</a></li>
-<li><a href="#sintaxis-condensada-de-awk"><span class="toc-section-number">8.1.3</span> Sintaxis condensada de AWK</a></li>
-</ul></li>
-<li><a href="#ejemplos-básicos-pero-muy-útiles-de-uso-de-awk"><span class="toc-section-number">8.2</span> Ejemplos básicos pero muy útiles de uso de AWK</a><ul>
-<li><a href="#filtrado-de-archivos-con-awk"><span class="toc-section-number">8.2.1</span> filtrado de archivos con AWK</a></li>
+<li><a href="#bucles-for"><span class="toc-section-number">7.6</span> <strong>Bucles for</strong></a><ul>
+<li><a href="#ejemplo-de-bucle-for-acoplado-a-las-herramientas-de-filtrado-y-de-manipulación-de-variables"><span class="toc-section-number">7.6.1</span> Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#ejercicios-integrativos-de-uso-de-herramientas-de-filtrado-del-shell"><span class="toc-section-number">9</span> Ejercicios integrativos de uso de herramientas de filtrado del Shell</a><ul>
-<li><a href="#filtrado-de-archivos-separados-por-tabuladores-tablas-con-awk-y-su-graficado-con-r"><span class="toc-section-number">9.1</span> Filtrado de archivos separados por tabuladores (tablas) con AWK y su graficado con R</a><ul>
-<li><a href="#reto-de-programación-awk-y-r"><span class="toc-section-number">9.1.1</span> Reto de programación <span class="math inline">\(awk\)</span> y <span class="math inline">\(R\)</span></a></li>
+<li><a href="#bash-scripting---primeros-pasos"><span class="toc-section-number">8</span> <strong><span class="math inline">\(Bash\)</span> scripting</strong> - primeros pasos</a><ul>
+<li><a href="#la-shebang-line-usrbinenv-bash-y-permisos-de-ejecución---el-script-ls_dir"><span class="toc-section-number">8.1</span> la “<strong>shebang line</strong>” (#!/usr/bin/env bash) y permisos de ejecución - el script <em>ls_dir</em></a></li>
+<li><a href="#funciones-y-argumentos-posicionales-en-bash---el-script-find_dir"><span class="toc-section-number">8.2</span> <strong>Funciones</strong> y <strong>argumentos posicionales</strong> en <span class="math inline">\(Bash\)</span> - el script <em>find_dir</em></a></li>
+<li><a href="#scripts-que-reciben-argumentosparámetros-posicionales-con-interfaz-de-usario-simple"><span class="toc-section-number">8.3</span> Scripts que reciben argumentos|parámetros posicionales con interfaz de usario simple</a></li>
+<li><a href="#scripts-con-interfaz-de-usuario-paso-de-opciones-y-su-parseo-con-getopts"><span class="toc-section-number">8.4</span> Scripts con interfaz de usuario, paso de opciones y su parseo con <strong>getopts</strong></a></li>
 </ul></li>
-<li><a href="#ejercicios-de-exploración-y-parseo-de-archivos-fasta"><span class="toc-section-number">9.2</span> Ejercicios de exploración y parseo de archivos FASTA</a><ul>
-<li><a href="#búsqueda-y-descarga-de-secuencias-en-genbank-usando-el-sistema-entrez"><span class="toc-section-number">9.2.1</span> Búsqueda y descarga de secuencias en GenBank usando el sistema ENTREZ</a></li>
-<li><a href="#acceso-a-las-secuencias"><span class="toc-section-number">9.2.2</span> Acceso a las secuencias</a></li>
-<li><a href="#inspección-y-estadísticas-básicas-de-las-secuencias-descargadas"><span class="toc-section-number">9.2.3</span> Inspección y estadísticas básicas de las secuencias descargadas</a></li>
-<li><a href="#edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix"><span class="toc-section-number">9.2.4</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</a></li>
+<li><a href="#el-lenguaje-de-procesamiento-de-patrones-awk"><span class="toc-section-number">9</span> El lenguaje de procesamiento de patrones <b>AWK</b></a><ul>
+<li><a href="#estructura-de-los-programas-awk"><span class="toc-section-number">9.1</span> Estructura de los programas AWK</a><ul>
+<li><a href="#estructura-básica---ejemplos-genéricos"><span class="toc-section-number">9.1.1</span> Estructura básica - ejemplos genéricos</a></li>
+<li><a href="#formas-alternativas-del-código-awk"><span class="toc-section-number">9.1.2</span> Formas alternativas del código AWK:</a></li>
+<li><a href="#sintaxis-condensada-de-awk"><span class="toc-section-number">9.1.3</span> Sintaxis condensada de AWK</a></li>
 </ul></li>
-<li><a href="#solución-a-la-práctica-y-un-ejercicio-adicional"><span class="toc-section-number">9.3</span> Solución a la práctica y un ejercicio adicional</a><ul>
-<li><a href="#inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-1"><span class="toc-section-number">9.3.1</span> Inspección y estadísticas básicas de las secuencias descargadas</a></li>
-<li><a href="#edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-1"><span class="toc-section-number">9.3.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</a></li>
-<li><a href="#generación-automática-de-archivos-fasta-especie-específicos-avanzado"><span class="toc-section-number">9.3.3</span> Generación automática de archivos FASTA especie-específicos (avanzado)</a></li>
+<li><a href="#ejemplos-básicos-pero-muy-útiles-de-uso-de-awk"><span class="toc-section-number">9.2</span> Ejemplos básicos pero muy útiles de uso de AWK</a><ul>
+<li><a href="#filtrado-de-archivos-con-awk"><span class="toc-section-number">9.2.1</span> filtrado de archivos con AWK</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#reto-de-programación---ejercicio-de-parseo-de-archivos-fasta"><span class="toc-section-number">10</span> Reto de programación - ejercicio de parseo de archivos FASTA</a><ul>
-<li><a href="#inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-2"><span class="toc-section-number">10.1</span> Inspección y estadísticas básicas de las secuencias descargadas</a></li>
-<li><a href="#edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-2"><span class="toc-section-number">10.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</a></li>
+<li><a href="#ejercicios-integrativos-de-uso-de-herramientas-de-filtrado-del-shell"><span class="toc-section-number">10</span> Ejercicios integrativos de uso de herramientas de filtrado del Shell</a><ul>
+<li><a href="#filtrado-de-archivos-separados-por-tabuladores-tablas-con-awk-y-su-graficado-con-r"><span class="toc-section-number">10.1</span> Filtrado de archivos separados por tabuladores (tablas) con AWK y su graficado con R</a><ul>
+<li><a href="#reto-de-programación-awk-y-r"><span class="toc-section-number">10.1.1</span> Reto de programación <span class="math inline">\(awk\)</span> y <span class="math inline">\(R\)</span></a></li>
+</ul></li>
+<li><a href="#ejercicios-de-exploración-y-parseo-de-archivos-fasta"><span class="toc-section-number">10.2</span> Ejercicios de exploración y parseo de archivos FASTA</a><ul>
+<li><a href="#búsqueda-y-descarga-de-secuencias-en-genbank-usando-el-sistema-entrez"><span class="toc-section-number">10.2.1</span> Búsqueda y descarga de secuencias en GenBank usando el sistema ENTREZ</a></li>
+<li><a href="#acceso-a-las-secuencias"><span class="toc-section-number">10.2.2</span> Acceso a las secuencias</a></li>
+<li><a href="#inspección-y-estadísticas-básicas-de-las-secuencias-descargadas"><span class="toc-section-number">10.2.3</span> Inspección y estadísticas básicas de las secuencias descargadas</a></li>
+<li><a href="#edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix"><span class="toc-section-number">10.2.4</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</a></li>
+</ul></li>
+<li><a href="#solución-a-la-práctica-y-un-ejercicio-adicional"><span class="toc-section-number">10.3</span> Solución a la práctica y un ejercicio adicional</a><ul>
+<li><a href="#inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-1"><span class="toc-section-number">10.3.1</span> Inspección y estadísticas básicas de las secuencias descargadas</a></li>
+<li><a href="#edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-1"><span class="toc-section-number">10.3.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</a></li>
+<li><a href="#generación-automática-de-archivos-fasta-especie-específicos-avanzado"><span class="toc-section-number">10.3.3</span> Generación automática de archivos FASTA especie-específicos (avanzado)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#reto-de-programación---ejercicio-de-parseo-de-archivos-fasta"><span class="toc-section-number">11</span> Reto de programación - ejercicio de parseo de archivos FASTA</a><ul>
+<li><a href="#inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-2"><span class="toc-section-number">11.1</span> Inspección y estadísticas básicas de las secuencias descargadas</a></li>
+<li><a href="#edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-2"><span class="toc-section-number">11.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</a></li>
 </ul></li>
 </ul>
 </div>
@@ -510,7 +516,7 @@ summary {
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
 <p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2020-10-15) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>.</p>
+<p>Las versión actual (v.2020-10-17) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
@@ -525,6 +531,7 @@ summary {
 <li><a href="https://tiswww.case.edu/php/chet/bash/bashref.html">Bash Reference Manual</a></li>
 <li><a href="http://tldp.org/LDP/abs/html/">Advanced Bash Scripting Guide</a></li>
 <li><a href="http://freecomputerbooks.com/Bioinformatics-Data-Skills.html">Bioinformatics Data Skills: Reproducible and Robust Research with Open Source Tools. Vince Buffalo. O’Reilly Media 2014</a></li>
+<li><a href="https://www.muylinux.com/tag/guias-ubuntu/">guías-ubuntu de muylinux</a></li>
 </ul>
 <hr />
 </div>
@@ -623,7 +630,7 @@ tree -d -L 1 /
 ## ├── [01;34msnap[00m
 ## ├── [01;34msrv[00m
 ## ├── [01;34msys[00m
-## ├── [01;34mtmp[00m
+## ├── [30;42mtmp[00m
 ## ├── [01;34musr[00m
 ## └── [01;34mvar[00m
 ## 
@@ -653,8 +660,8 @@ ls | head</code></pre>
 ## find_dir</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
-<pre><code>## total 11788
-## drwxr-xr-x 7 vinuesa vinuesa    4096 oct 15 20:36 .
+<pre><code>## total 11800
+## drwxr-xr-x 7 vinuesa vinuesa    4096 oct 17 20:54 .
 ## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 22:15 ..
 ## -rwxr-xr-x 1 vinuesa vinuesa    2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
@@ -666,26 +673,26 @@ ls -al </code></pre>
 ## drwxr-xr-x 3 vinuesa vinuesa    4096 oct  9 21:25 docs
 ## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
 ## -rwxr-xr-x 1 vinuesa vinuesa    1237 oct 14 22:43 find_dir
-## drwxr-xr-x 8 vinuesa vinuesa    4096 oct 15 16:47 .git
+## drwxr-xr-x 8 vinuesa vinuesa    4096 oct 15 20:39 .git
 ## drwxr-xr-x 4 vinuesa vinuesa    4096 sep 29 22:56 intro2linux
 ## -rw-r--r-- 1 vinuesa vinuesa 3163754 oct 13 13:39 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r-- 1 vinuesa vinuesa   35149 sep 29 22:15 LICENSE
 ## -rwxr-xr-x 1 vinuesa vinuesa   10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 15 20:36 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 17 20:54 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rwxr-xr-x 1 vinuesa vinuesa    1705 sep 29 22:18 linux_very_basic_commands_table.csv
 ## -rwxr-xr-x 1 vinuesa vinuesa     493 oct 14 22:43 ls_dir
 ## drwxr-xr-x 2 vinuesa vinuesa    4096 oct  6 16:39 participantes_Taller_CG_FC
 ## -rwxr-xr-x 1 vinuesa vinuesa    2884 oct 14 22:43 prot2cdnAlns.pl
 ## -rw-r--r-- 1 vinuesa vinuesa    5957 oct 13 13:42 README.md
 ## -rw-r--r-- 1 vinuesa vinuesa   77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa   17704 oct 15 20:36 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa   17704 oct 17 20:54 recA_Byuanmingense.fna
 ## -rw-rw-r-- 1 vinuesa vinuesa       0 oct  7 00:21 .Rhistory
 ## -rwxr-xr-x 1 vinuesa vinuesa     239 oct 14 22:43 split_fasta.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      27 oct  7 12:21 TODO.txt
 ## -rwxr-xr-x 1 vinuesa vinuesa    3402 oct 14 22:43 translate_fastas.pl
-## -rw-r--r-- 1 vinuesa vinuesa 1174536 oct 15 20:36 working_with_linux_commands.html
+## -rw-r--r-- 1 vinuesa vinuesa 1182117 oct 17 20:54 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   82633 oct 15 20:37 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa   86503 oct 17 20:54 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa      41 oct 13 19:24 zoom.url</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del directorio raiz</h4>
@@ -696,37 +703,37 @@ ls -al </code></pre>
 <pre><code>## bin
 ## boot
 ## cdrom
-## core
 ## dev
 ## etc
 ## home
 ## lib
 ## lib32
-## lib64</code></pre>
+## lib64
+## libx32</code></pre>
 <ul>
 <li>mucha más información obtenemos con el formato largo de ls: <span class="math inline">\(ls -l\)</span></li>
 </ul>
 <pre class="bash"><code>ls -l / | head -20</code></pre>
-<pre><code>## total 103988
-## lrwxrwxrwx   1 root root         7 oct  4 14:42 bin -&gt; usr/bin
-## drwxr-xr-x   4 root root      4096 oct 15 16:26 boot
-## drwxr-xr-x   2 root root      4096 oct  4 14:46 cdrom
-## -rw-------   1 root root 106405888 oct 14 17:21 core
-## drwxr-xr-x  20 root root      4500 oct 15 16:24 dev
-## drwxr-xr-x 153 root root     12288 oct 15 16:27 etc
-## drwxr-xr-x   5 root root      4096 abr 15  2020 home
-## lrwxrwxrwx   1 root root         7 oct  4 14:42 lib -&gt; usr/lib
-## lrwxrwxrwx   1 root root         9 oct  4 14:42 lib32 -&gt; usr/lib32
-## lrwxrwxrwx   1 root root         9 oct  4 14:42 lib64 -&gt; usr/lib64
-## lrwxrwxrwx   1 root root        10 oct  4 14:42 libx32 -&gt; usr/libx32
-## drwx------   2 root root     16384 oct  4 14:42 lost+found
-## drwxr-xr-x   3 root root      4096 oct  5 20:41 media
-## drwxr-xr-x   2 root root      4096 jul 31 11:27 mnt
-## drwxr-xr-x   5 root root      4096 oct  5 12:26 opt
-## dr-xr-xr-x 370 root root         0 oct 15 16:24 proc
-## drwx------   7 root root      4096 oct  7 00:28 root
-## drwxr-xr-x  34 root root      1020 oct 15 16:29 run
-## lrwxrwxrwx   1 root root         8 oct  4 14:42 sbin -&gt; usr/sbin</code></pre>
+<pre><code>## total 76
+## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
+## drwxr-xr-x   4 root root  4096 oct 15 16:26 boot
+## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
+## drwxr-xr-x  21 root root  4540 oct 17 13:59 dev
+## drwxr-xr-x 153 root root 12288 oct 17 12:41 etc
+## drwxr-xr-x   5 root root  4096 abr 15  2020 home
+## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
+## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib32 -&gt; usr/lib32
+## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib64 -&gt; usr/lib64
+## lrwxrwxrwx   1 root root    10 oct  4 14:42 libx32 -&gt; usr/libx32
+## drwx------   2 root root 16384 oct  4 14:42 lost+found
+## drwxr-xr-x   3 root root  4096 oct  5 20:41 media
+## drwxr-xr-x   2 root root  4096 jul 31 11:27 mnt
+## drwxr-xr-x   5 root root  4096 oct  5 12:26 opt
+## dr-xr-xr-x 359 root root     0 oct 17 13:33 proc
+## drwx------   8 root root  4096 oct 16 19:12 root
+## drwxr-xr-x  34 root root   980 oct 17 20:23 run
+## lrwxrwxrwx   1 root root     8 oct  4 14:42 sbin -&gt; usr/sbin
+## drwxr-xr-x  10 root root  4096 oct 16 19:40 snap</code></pre>
 </div>
 <div id="veamos-las-primeras-5-entradas-y-últimas-5-del-directorio-bin" class="section level4">
 <h4><span class="header-section-number">2.2.3.2</span> Veamos las primeras 5 entradas y últimas 5 del directorio /bin</h4>
@@ -749,11 +756,11 @@ ls -ltr /bin | head -20</code></pre>
 <pre class="bash"><code># lista los archivos en /bin que empiezan por las letras b y c
 ls /bin/b* | head -5
 ls /bin/c* | head -5</code></pre>
-<pre><code>## /bin/b2sum
+<pre><code>## /bin/b2
+## /bin/b2sum
 ## /bin/backtranambig
 ## /bin/backtranseq
 ## /bin/bamToBed
-## /bin/bamToFastq
 ## /bin/c++
 ## /bin/c89
 ## /bin/c89-gcc
@@ -774,6 +781,32 @@ ls /bin/c?? | head -5</code></pre>
 <!-- for letter in b c d e f; do echo ">>> $letter"; ls /bin/${letter}*; echo '--------------'; done -->
 <!-- # ahora para todas las letras -->
 <!-- for letter in {a..z}; do echo ">>> $letter"; ls /bin/${letter}*; echo '--------------'; done -->
+</div>
+<div id="opciones-más-comunes-e-importantes-del-comando-ls" class="section level3">
+<h3><span class="header-section-number">2.2.5</span> Opciones más comunes e importantes del comando <span class="math inline">\(ls\)</span></h3>
+<p>Es fundamental que domines estas opciones básicas de <span class="math inline">\(ls\)</span></p>
+<ul>
+<li>-a list all (lista archivo ocultos tipo .directorio o .archivo)</li>
+<li>-l long format (muestra permisos y otros atributos como usuario, grupo, tamaño del archivo y fecha de modificación)</li>
+<li>-t time sort (ordena por tiempo)</li>
+<li>-r reverse sort</li>
+<li>-S size sort (ordena por tamaño)</li>
+<li>-h human readable (indica Kb, Mb, Gb …)</li>
+</ul>
+</div>
+<div id="ejemplos-de-opciones-del-comando-ls" class="section level3">
+<h3><span class="header-section-number">2.2.6</span> Ejemplos de opciones del comando <span class="math inline">\(ls\)</span></h3>
+<p>Recuerda que podemos indicar múltiples opciones usando un solo guión y que el orden de las opciones no importa.</p>
+<p>Es decir <code>ls -la</code> == <code>ls -l -a</code> == <code>ls -a -l</code></p>
+<p>Prueba los siguientes comandos y aprende bien estas opciones básicas de <span class="math inline">\(ls\)</span></p>
+<ul>
+<li><code>ls -a</code></li>
+<li><code>ls -lt</code></li>
+<li><code>ls -ltr</code></li>
+<li><code>ls -altrh</code></li>
+<li><code>ls -lS</code></li>
+<li><code>ls -lh</code></li>
+</ul>
 </div>
 </div>
 <div id="permisos-modo-de-un-archivo" class="section level2">
@@ -1190,7 +1223,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 <p>La mayoría de los programas ejecutables del sistema proveen un formato estandarizado de documentación que se despliega en la consola usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                           User Commands                          CUT(1)
+<pre><code>## CUT(1)                                                                                      User Commands                                                                                      CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -1203,8 +1236,7 @@ man cut | head -30</code></pre>
 ## 
 ##        With no FILE, or when FILE is -, read standard input.
 ## 
-##        Mandatory  arguments  to  long  options are mandatory for short options
-##        too.
+##        Mandatory arguments to long options are mandatory for short options too.
 ## 
 ##        -b, --bytes=LIST
 ##               select only these bytes
@@ -1216,10 +1248,11 @@ man cut | head -30</code></pre>
 ##               use DELIM instead of TAB for field delimiter
 ## 
 ##        -f, --fields=LIST
-##               select only these fields;  also print any line that contains  no
-##               delimiter character, unless the -s option is specified
+##               select only these fields;  also print any line that contains no delimiter character, unless the -s option is specified
 ## 
-##        -n     (ignored)</code></pre>
+##        -n     (ignored)
+## 
+##        --complement</code></pre>
 </div>
 <div id="ayuda-de-cada-comando-integrado-en-el-shell-help-shell_builtin-para-shell-builtins" class="section level3">
 <h3><span class="header-section-number">2.6.5</span> Ayuda de cada comando integrado en el Shell: <b>help shell_builtin</b> para <em>shell builtins</em></h3>
@@ -1289,20 +1322,20 @@ mkdir --help</code></pre>
 <pre class="bash"><code># encuentra comandos que tienen que ver con la palabra clave distribution
 apropos distribution</code></pre>
 <pre><code>## hmmsim (1)           - collect profile score distributions on random sequences
-## bdftopcf (1)         - convert X font from Bitmap Distribution Format to Port...
-## Bio::Tools::RandomDistFunctions (3pm) - A set of routines useful for generati...
+## bdftopcf (1)         - convert X font from Bitmap Distribution Format to Portable Compiled Format
+## Bio::Tools::RandomDistFunctions (3pm) - A set of routines useful for generating random data in different distributions
 ## CPAN::Meta (3perl)   - the distribution metadata for a CPAN dist
 ## CPAN::Meta::Converter (3perl) - Convert CPAN distribution metadata structures
-## CPAN::Meta::Feature (3perl) - an optional feature provided by a CPAN distribu...
-## CPAN::Meta::Prereqs (3perl) - a set of distribution prerequisites by phase an...
+## CPAN::Meta::Feature (3perl) - an optional feature provided by a CPAN distribution
+## CPAN::Meta::Prereqs (3perl) - a set of distribution prerequisites by phase and type
 ## CPAN::Meta::Spec (3perl) - specification for CPAN distribution metadata
 ## CPAN::Meta::Validator (3perl) - validate CPAN distribution metadata structures
 ## dpkg-vendor (1)      - queries information about distribution vendors
-## iptables-extensions (8) - list of extensions in the standard iptables distrib...
+## iptables-extensions (8) - list of extensions in the standard iptables distribution
 ## lsb_release (1)      - print distribution-specific information
 ## perlnewmod (1)       - preparing a new module for distribution
 ## perlutil (1)         - utilities packaged with the Perl distribution
-## pfscale (1)          - fit parameters of an extreme-value distribution to a p...</code></pre>
+## pfscale (1)          - fit parameters of an extreme-value distribution to a profile score list</code></pre>
 <ul>
 <li>veo que es lsb_release. Consultemos su <span class="math inline">\(--help\)</span></li>
 </ul>
@@ -1356,6 +1389,10 @@ cd &amp;&amp; cd intro2linux/sesion1</code></pre>
 <li>otra variante, usando <b>rutas absolutas</b> y la tilde <span class="math inline">\(~\)</span> como abreviación de <b>$HOME</b></li>
 </ul>
 <pre><code>cp /home/vinuesa/intro2linux/data/linux_basic_commands.tab ~/intro2linux/sesion1/</code></pre>
+<ul>
+<li>copia un archivo a otro directorio renombrando la copia</li>
+</ul>
+<pre><code>cp ~/tmp/working_with_linux_commands.html ~/cursos/docs/index.html</code></pre>
 </div>
 <div id="copiar-un-directorio-cp--r-dir-.--r-recursively-el-directorio-y-su-contenido" class="section level2">
 <h2><span class="header-section-number">3.2</span> copiar un directorio: <b> cp -r dir . </b> [-r recursively, el directorio y su contenido]</h2>
@@ -1469,13 +1506,13 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 11780
+<pre><code>## total 11792
 ## -rwxr-xr-x 1 vinuesa vinuesa    2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
 ## -rw-r--r-- 1 vinuesa vinuesa    5499 oct 14 22:24 bash_script_template_with_getopts.sh
 ## drwxrwxr-x 2 vinuesa vinuesa    4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa    5406 oct 14 22:43 blast-imager.pl
-## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 15 20:37 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 17 20:56 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rwxr-xr-x 1 vinuesa vinuesa    2731 oct 14 22:43 convert_aln_format_batch_bp.pl
 ## -rwxr-xr-x 1 vinuesa vinuesa    1812 oct 14 22:43 convert_alnFormats_using_clustalw.sh
 ## drwxr-xr-x 3 vinuesa vinuesa    4096 oct  9 21:25 docs</code></pre>
@@ -1505,7 +1542,7 @@ ls -l | head</code></pre>
 <pre><code>mv &#39;mi archivo de secuencias.fasta&#39; recA_Bradyrhizobium.fna</code></pre>
 <p>En ciertas ocasiones usarás <b>comillas sencillas (<span class="math inline">\(&#39;\)</span>)</b> para la ejecución de algunos programas desde la línea de comandos como por ejemplo al pasar opciones complejas a sed, perl, awk … Estos son lenguajes interpretados, cuyo usu básico veremos más adelante</p>
 <ul>
-<li>Ejemplo de llamada del comando <span class="math inline">\(rename\)</span></li>
+<li>Ejemplo de llamada del comando <span class="math inline">\(rename\)</span> para eliminar espacios en nombres de archivos y directorios</li>
 </ul>
 <pre><code># rename es un script de Perl que permite renombrar archivos de manera muy eficiente 
 #   haciendo uso de expresiones regulares y expansión de nombres de archivo
@@ -1528,6 +1565,7 @@ echo &quot;soy el usuario $USER en la máquina $HOSTNAME&quot;</code></pre>
 <p>Si usáramos comillas sencillas, las variables no se interpolan y se imprime literalmente el nombre de las mismas</p>
 <pre class="bash"><code>echo &#39;soy el usuario $USER en la máquina $HOSTNAME&#39;</code></pre>
 <pre><code>## soy el usuario $USER en la máquina $HOSTNAME</code></pre>
+<hr />
 </div>
 </div>
 </div>
@@ -1700,12 +1738,53 @@ gedit linux_commands.tab &amp;
 ##      2   Category 
 ##      3   Description 
 ##      4   First appeared</code></pre>
+</div>
+</div>
+</div>
+<div id="trabajando-con-archivos-creación-de-tarros-con-tar-y-compresión-gzip" class="section level1">
+<h1><span class="header-section-number">5</span> Trabajando con archivos: creación de tarros con <strong>tar</strong> y compresión <strong>gzip</strong></h1>
+<p>Vimos en la sección anterior cómo leer archivos de texto comprimidos con compresión GNUzip, que convencionalmente llevan la extensión <span class="math inline">\(.gz\)</span>. En ésta veremos cómo comprimir y descomprimir archivos y directorios.</p>
+<div id="compresión-gnuzip-de-archivos-ascii-comandos-gzip-y-gunzip" class="section level2">
+<h2><span class="header-section-number">5.1</span> Compresión gnuzip de archivos ASCII: comandos <strong>gzip</strong> y <strong>gunzip</strong></h2>
+<p>El comando <span class="math inline">\(gzip\)</span> se usa principalmente para comprimir archivos con caracteres ASCII, y les agrega la extensión <span class="math inline">\(.gz\)</span> automáticamente. Para descomprimir archivos <span class="math inline">\(*.gz\)</span> usamos el comando <span class="math inline">\(gunzip\)</span></p>
+<ul>
+<li>sintaxis <span class="math inline">\(gzip\)</span>: <code>gzip file</code> o también <code>gzip *.gbk</code></li>
+<li>sintaxis <span class="math inline">\(gunzip\)</span>: <code>gunzip file.gz</code></li>
+</ul>
+</div>
+<div id="generación-de-tarros-comprimidos-y-extracción-de-archivos-de-ellos-con-el-comando-tar" class="section level2">
+<h2><span class="header-section-number">5.2</span> Generación de ‘tarros’ comprimidos y extracción de archivos de ellos con el comando <strong>tar</strong></h2>
+<p>Cuando necesitamos agrupar muchos archivos y comprimirlos, o comprimir un directorio y sus contenidos, el comando ideal es <span class="math inline">\(tar\)</span> (tape archive) que puede combinarse con gzip usando pipes, o más convenientemente aún, usando la opción -z, como se muestra abajo.</p>
+<p>La convención es añadir la extensión <strong>tgz</strong>, o <strong>tar.gz</strong> a los tarros comprimidos con <span class="math inline">\(gzip\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>Generación de tarros comprimidos</li>
+</ol>
+<ul>
+<li>sintaxis <span class="math inline">\(tar\)</span> para múltiples archivos (genbank, por ejemplo): <code>tar -czf tarro_de_archivos_genbank_comprimidos.tgz *.gbk </code></li>
+<li>sintaxis <span class="math inline">\(tar\)</span> para archivos con compresión <strong>bz2</strong>: <code>tar -cjvf tarro_de_archivos_genbank_comprimidos.tar.bz2 *.gbk </code></li>
+<li>sintaxis <span class="math inline">\(tar\)</span> para un directorio: <code>tar -czvf tarro_de_directorio.tgz mi_directorio</code></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Extracción de tarros comprimidos</li>
+</ol>
+<ul>
+<li>sintaxis para extraer archivos de un <span class="math inline">\(tar.gz\)</span>: <code>tar -xzvf tarro_de_directorio.tgz</code></li>
+</ul>
+<p>Resumen de las opciones básicas de <span class="math inline">\(tar\)</span>:</p>
+<ul>
+<li>-c create: <strong>esta opción es obligatoria si se quiere crear un tarro</strong></li>
+<li>-x extract: <strong>esta opción es obligatoria si se quiere extraer archivos de un tarro</strong></li>
+<li>-z use gzip compression. La compresión gnuzip estándar, con archivos terminados en <span class="math inline">\(gz\)</span></li>
+<li>-j use bz2 compression. Esta compresión es todavía más compacta, y los archivos resultantes clásicamente llevan la extensión <span class="math inline">\(.bz2\)</span></li>
+<li>-v verbose command output, es decir, va imprimiendo a STDOUT los archivos que va procesando</li>
+<li>-f file; <strong>esta opción es obligatoria y tiene que ir al final del comando</strong></li>
+</ul>
+<p>Es muy importante dominar <span class="math inline">\(tar\)</span> y <span class="math inline">\(gzip\)</span> y usarlos para: - ocupar el mínimo espacio posible en disco, un recurso siembre limitado en un ambiente multiusuario - comprimir archivos y directorios antes de moverlos entre máquinas mediante <span class="math inline">\(scp\)</span> o <span class="math inline">\(sftp\)</span> - poder desempacar y descomprimir distribuciones de código, las cuales casi invariablemente se distribuyen como tarros comprimidos.</p>
 <hr />
 </div>
 </div>
-</div>
 <div id="tuberias-de-herramientas-unixlinux-para-filtrado-de-texto-conectadas-mediante-pipes" class="section level1">
-<h1><span class="header-section-number">5</span> Tuberias de herramientas UNIX/Linux para filtrado de texto conectadas mediante “pipes” <em>|</em></h1>
+<h1><span class="header-section-number">6</span> Tuberias de herramientas UNIX/Linux para filtrado de texto conectadas mediante “pipes” <em>|</em></h1>
 <p>UNIX y Linux ofrecen una gran cantidad de herramientas para todo tipo de trabajos, cada una generalmente con muchas opciones. En bioinformática y genómica, los archivos de texto plano (ASCII) son los más comunes. Por ello es muy útil dominar algunas de las herramientas de filtrado de texto más comunes. Como ejemplo, trabajaremos con el archivo assembly_summary.txt, que contiene los datos de ensambles genómicos de la división RefSeq de GenBank. Lo descargué y comprimí con los siguientes comandos:</p>
 <pre><code>wget -c ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt
 
@@ -1723,7 +1802,7 @@ zcat assembly_summary.txt.gz | head -5</code></pre>
 ## GCF_000007365.1  PRJNA224116 SAMN02604269        representative genome   198804  9   Buchnera aphidicola str. Sg (Schizaphis graminum)   strain=Sg       latest  Complete Genome Major   Full    2002/07/02  ASM736v1    Uppsala Univ.   GCA_000007365.1 identical   ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/007/365/GCF_000007365.1_ASM736v1     
 ## GCF_000007725.1  PRJNA224116 SAMN02604289        representative genome   224915  9   Buchnera aphidicola str. Bp (Baizongia pistaciae)   strain=Bp (Baizongia pistaciae)     latest  Complete Genome Major   Full    2003/01/29  ASM772v1    Valencia Univ.  GCA_000007725.1 identical   ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/007/725/GCF_000007725.1_ASM772v1     </code></pre>
 <div id="el-comando-pipe" class="section level2">
-<h2><span class="header-section-number">5.1</span> El comando <strong>|</strong> (<em>pipe</em>:)</h2>
+<h2><span class="header-section-number">6.1</span> El comando <strong>|</strong> (<em>pipe</em>:)</h2>
 <p>Como explicamos en el <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción</a> y has comprobado en la práctica, el resultado de un comando ejectuado en la consola se despliega en la pantalla, la cual está asociada por defecto a la salida estándar o <strong>STDOUT</strong>. Lo genial del diseño de los sistemas operativos UNIX y Linux, es que las diferentes utilerías pueden combinarse según se requiera, lo cual confiere un enorme poder y versatilidad para múltiples tareas.</p>
 <p>Para ello se conecta la salida de un comando (su <strong>STDOUT</strong>) con la entrada estándar (<strong>STDIN</strong>) del siguiente gracias al uso del comando <strong>|</strong> o <em>pipe</em>, siguiendo esta sintaxis:</p>
 <p><code>comando1 | comando2 -opcion1 | comando3 …</code></p>
@@ -1732,16 +1811,16 @@ zcat assembly_summary.txt.gz | head -5</code></pre>
 <li>cuenta el número de archivos en el directorio <span class="math inline">\(/bin\)</span></li>
 </ul>
 <pre class="bash"><code>ls /bin | wc -l</code></pre>
-<pre><code>## 2987</code></pre>
+<pre><code>## 2997</code></pre>
 <ul>
 <li>cuenta el número de subdirectorios en tu <span class="math inline">\(\$HOME\)</span></li>
 </ul>
 <pre class="bash"><code>ls -d $HOME/*  | wc -l</code></pre>
-<pre><code>## 46</code></pre>
+<pre><code>## 47</code></pre>
 <p>La selección inteligente de secuencias de comandos y sus opciones permite hacer operaciones muy específicas y de complejidad arbitraria</p>
 </div>
 <div id="ejemplos-de-herramientas-de-filtrado-de-texto-cut-grep-sort-uniq-wc-y-en-acción" class="section level2">
-<h2><span class="header-section-number">5.2</span> Ejemplos de herramientas de filtrado de texto: <b>cut</b>, <b>grep</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> y <b>|</b> en acción</h2>
+<h2><span class="header-section-number">6.2</span> Ejemplos de herramientas de filtrado de texto: <b>cut</b>, <b>grep</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> y <b>|</b> en acción</h2>
 <ul>
 <li><p><span class="math inline">\(cut\)</span> corta líneas de texto/tablas por delimitadores de campo (-d) específicos (TAB por defecto), extrayendo los campos indicados con -f (cut -d’ ’ -f1-3,5,9)</p></li>
 <li><p><span class="math inline">\(sort\)</span> ordena (sor -u; sort -nrk2; sort -dk1)</p></li>
@@ -1858,7 +1937,7 @@ zgrep -E &#39;Acinetobacter|Pseudomonas|Klebsiella&#39; assembly_summary.txt.gz 
 ##    8951 Pseudomonas</code></pre>
 </div>
 <div id="redireccionado-de-la-salida-stdout-a-un-archivo-con-el-comando" class="section level2">
-<h2><span class="header-section-number">5.3</span> redireccionado de la salida STDOUT a un archivo con el comando <b>&gt;</b></h2>
+<h2><span class="header-section-number">6.3</span> redireccionado de la salida STDOUT a un archivo con el comando <b>&gt;</b></h2>
 <p>Como se explicó en el <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción a Linux</a>, la salida estándar <span class="math inline">\(STDOUT\)</span> de un comando generalmente está ligada a la consola, es decir, vemos en la pantalla la salida del mismo. Para guardarla en un archivo, necesitamos redirigir el flujo a dicho archivo con el comando <span class="math inline">\(&gt;\)</span>.</p>
 <pre class="bash"><code>zgrep Stenotrophomonas assembly_summary.txt.gz | cut -f8,20 &gt; Stenotrophomonas_complete_genomes_and_ftp_paths.txt</code></pre>
 <ul>
@@ -1867,7 +1946,7 @@ zgrep -E &#39;Acinetobacter|Pseudomonas|Klebsiella&#39; assembly_summary.txt.gz 
 <pre class="bash"><code>file Stenotrophomonas_complete_genomes_and_ftp_paths.txt
 ls -l Stenotrophomonas_complete_genomes_and_ftp_paths.txt</code></pre>
 <pre><code>## Stenotrophomonas_complete_genomes_and_ftp_paths.txt: ASCII text
-## -rw-rw-r-- 1 vinuesa vinuesa 47651 oct 15 20:37 Stenotrophomonas_complete_genomes_and_ftp_paths.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 47651 oct 17 20:56 Stenotrophomonas_complete_genomes_and_ftp_paths.txt</code></pre>
 <ul>
 <li>ahora podemos explorar el archivo con <span class="math inline">\(head\)</span> u otros comandos como <span class="math inline">\(less\)</span></li>
 </ul>
@@ -1880,10 +1959,10 @@ ls -l Stenotrophomonas_complete_genomes_and_ftp_paths.txt</code></pre>
 </div>
 </div>
 <div id="inicios-de-programación-en-bash" class="section level1">
-<h1><span class="header-section-number">6</span> Inicios de programación en <span class="math inline">\(Bash\)</span></h1>
+<h1><span class="header-section-number">7</span> Inicios de programación en <span class="math inline">\(Bash\)</span></h1>
 <p>Vamos a aprender algunos de los elementos esenciales del lenguaje <span class="math inline">\(Bash\)</span> de <b>programación Shell</b></p>
 <div id="asignación-y-uso-de-variables" class="section level2">
-<h2><span class="header-section-number">6.1</span> Asignación y uso de <strong>variables</strong></h2>
+<h2><span class="header-section-number">7.1</span> Asignación y uso de <strong>variables</strong></h2>
 <ul>
 <li>La sintaxis básica de asignación es:</li>
 </ul>
@@ -1896,7 +1975,7 @@ echo &quot;$archivo_de_comandos_linux&quot;</code></pre>
 <pre><code>## linux_commands.tab</code></pre>
 </div>
 <div id="variables-de-ambiente---printenv" class="section level2">
-<h2><span class="header-section-number">6.2</span> Variables de ambiente - <strong><span class="math inline">\(printenv\)</span></strong></h2>
+<h2><span class="header-section-number">7.2</span> Variables de ambiente - <strong><span class="math inline">\(printenv\)</span></strong></h2>
 <p>Al iniciar una <b>sesión local o remota</b>, el <span class="math inline">\(SHELL\)</span> carga en memoria una serie de <span class="math inline">\(VARIABLES\_DE\_AMBIENTE\)</span> que son parte de la configuración del sistema.</p>
 <p>Ya hemos visto algunas antes, pero aquí les muestro algunas muy importantes:</p>
 <pre class="bash"><code>echo &quot;HOME = $HOME&quot;
@@ -1909,9 +1988,9 @@ echo &quot;SHELL = $SHELL&quot;</code></pre>
 <p><code>printenv | sort | less</code></p>
 <p>Como explicábamos en la <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción</a>, el <span class="math inline">\(SHELL\)</span> busca comandos en los directorios especificados en la variable de ambiente <strong>PATH</strong>. Los directorios van separados por <span class="math inline">\(:\)</span> y se leen en ese orden.</p>
 <pre class="bash"><code>echo &quot;PATH = $PATH&quot;</code></pre>
-<pre><code>## PATH = /home/vinuesa/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/rstudio/bin/postback</code></pre>
+<pre><code>## PATH = /home/vinuesa/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vinuesa/edirect:/home/vinuesa/soft_download/get_homologues-x86_64-20190805:/home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin:/home/vinuesa/soft_download/Fiji.app:/home/vinuesa/soft_download/circos/current/bin:/usr/local/genome/bin:/usr/lib/rstudio/bin/postback</code></pre>
 <div id="agregando-directorios-a-la-variable-de-ambiente-path" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Agregando directorios a la variable de ambiente <b>PATH</b></h3>
+<h3><span class="header-section-number">7.2.1</span> Agregando directorios a la variable de ambiente <b>PATH</b></h3>
 <p>A veces necesitamos agregar un nuevo direcotrio a la variable de ambiente <strong>PATH</strong></p>
 <ul>
 <li>Añade el directorio $HOME/bin al final de la lista de directorios de <strong>PATH</strong></li>
@@ -1920,7 +1999,7 @@ echo &quot;SHELL = $SHELL&quot;</code></pre>
 <p>Nota: en versiones recientes de <span class="math inline">\(ubuntu\)</span> y otras distribuciones de Linux, el directorio ‘$HOME/bin’ se exporta automáticamente</p>
 </div>
 <div id="archivos-de-configuración-.bash_profile-y-.bashrc" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> Archivos de configuración <strong>.bash_profile</strong> y <strong>.bashrc</strong></h3>
+<h3><span class="header-section-number">7.2.2</span> Archivos de configuración <strong>.bash_profile</strong> y <strong>.bashrc</strong></h3>
 <p>Si quieres agrepar un directorio permanentemente a <span class="math inline">\(PATH\)</span>, puedes agragarlo al archivo de configuración <span class="math inline">\(.bash\_profile\)</span> de tu <span class="math inline">\(HOME\)</span> en un servidor remoto o al <span class="math inline">\(.bashrc\)</span> de tu <span class="math inline">\(HOME\)</span> en una máquina local y exportarlo.</p>
 <pre><code>PATH=$PATH:$HOME/bin
 
@@ -1928,7 +2007,7 @@ export PATH</code></pre>
 <p>Veremos más sobre archivos de configuración en secciones posteriores.</p>
 </div>
 <div id="cuál-es-el-binario-o-script-que-estoy-usando---which" class="section level3">
-<h3><span class="header-section-number">6.2.3</span> ¿Cuál es el binario o script que estoy usando? - <strong>which</strong></h3>
+<h3><span class="header-section-number">7.2.3</span> ¿Cuál es el binario o script que estoy usando? - <strong>which</strong></h3>
 <p>A veces tenemos un <span class="math inline">\(script\)</span> o un binario (por ejemplo <span class="math inline">\(blastn\)</span>) instalado en varios directorios. Esto puede ser intencional o inadvertidamente. El comando <span class="math inline">\(which\)</span> nos indica cual es el <span class="math inline">\(PATH\)</span> del comando que ve el <span class="math inline">\(Shell\)</span>, es decir, el primero en <span class="math inline">\(PATH\)</span></p>
 <pre class="bash"><code>which blastn
 which perl
@@ -1941,15 +2020,15 @@ which transpose_pangenome_matrix.sh</code></pre>
 </div>
 </div>
 <div id="captura-de-la-salida-de-un-comando-con-comando" class="section level2">
-<h2><span class="header-section-number">6.3</span> Captura de la salida de un comando con <b>$(comando)</b></h2>
+<h2><span class="header-section-number">7.3</span> Captura de la salida de un comando con <b>$(comando)</b></h2>
 <pre class="bash"><code>wkdir=$(pwd)
 date=$(date | awk &#39;{print $3,$2,$6}&#39; | sed &#39;s/ //g&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in: $wkdir at &lt;$h&gt; on &lt;$date&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;oct15CDT&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;oct17CDT&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
-<h2><span class="header-section-number">6.4</span> Modificación de variables y operaciones con ellas</h2>
+<h2><span class="header-section-number">7.4</span> Modificación de variables y operaciones con ellas</h2>
 <pre class="bash"><code>wkdir=$(pwd)
 echo &quot;wkdir: $wkdir&quot;
 
@@ -1969,7 +2048,7 @@ echo &quot;basedir has ${#basedir} characters  # \${#basedir}&quot;
 ## basedir has 11 characters  # ${#basedir}</code></pre>
 </div>
 <div id="condicionales" class="section level2">
-<h2><span class="header-section-number">6.5</span> <strong>Condicionales</strong></h2>
+<h2><span class="header-section-number">7.5</span> <strong>Condicionales</strong></h2>
 <ul>
 <li>La sintaxis básica de un condicional simple en formato de una línea es así</li>
 </ul>
@@ -1986,7 +2065,7 @@ echo &quot;basedir has ${#basedir} characters  # \${#basedir}&quot;
     orden2 
 fi</code></pre>
 <div id="comparación-de-íntegros-en-condicionales" class="section level3">
-<h3><span class="header-section-number">6.5.1</span> Comparación de íntegros en condicionales</h3>
+<h3><span class="header-section-number">7.5.1</span> Comparación de íntegros en condicionales</h3>
 <pre class="bash"><code>i=5
 j=3
 
@@ -1998,7 +2077,7 @@ fi</code></pre>
 <pre><code>## 5 &gt; 3</code></pre>
 </div>
 <div id="comparación-de-cadenas-de-caracteres-en-condicionales" class="section level3">
-<h3><span class="header-section-number">6.5.2</span> Comparación de cadenas de caracteres en condicionales</h3>
+<h3><span class="header-section-number">7.5.2</span> Comparación de cadenas de caracteres en condicionales</h3>
 <pre class="bash"><code>c=carla
 j=juan
 
@@ -2010,7 +2089,7 @@ fi</code></pre>
 <pre><code>## c:carla != j:juan</code></pre>
 </div>
 <div id="comprobación-de-la-existencia-de-un-archivo-de-tamaño-0-bytes" class="section level3">
-<h3><span class="header-section-number">6.5.3</span> Comprobación de la existencia de un archivo de tamaño &gt; 0 bytes</h3>
+<h3><span class="header-section-number">7.5.3</span> Comprobación de la existencia de un archivo de tamaño &gt; 0 bytes</h3>
 <pre class="bash"><code>touch empty_file
 ls -l empty_file
 ls -l *gz
@@ -2031,21 +2110,21 @@ if [ -s &quot;$f&quot; ]; then
    echo &quot;$f exists and has size: $size&quot;
 fi
 </code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 15 20:37 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 17 20:56 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
 ## assembly_summary.txt.gz exists and has size: 6.5M</code></pre>
 </div>
 <div id="la-versión-corta-de-test-condición-comando1-comando2" class="section level3">
-<h3><span class="header-section-number">6.5.4</span> La versión corta de test <strong>[ condición ] &amp;&amp; comando1 &amp;&amp; comando2</strong> …</h3>
+<h3><span class="header-section-number">7.5.4</span> La versión corta de test <strong>[ condición ] &amp;&amp; comando1 &amp;&amp; comando2</strong> …</h3>
 <pre class="bash"><code># también podemos usar la versión corta del test:
 f=$(ls *gz)
 [ -s &quot;$f&quot; ] &amp;&amp; echo &quot;$f exists and is non-empty&quot;</code></pre>
 <pre><code>## assembly_summary.txt.gz exists and is non-empty</code></pre>
 </div>
 <div id="if-elif-else" class="section level3">
-<h3><span class="header-section-number">6.5.5</span> <strong>if; elif; else</strong></h3>
+<h3><span class="header-section-number">7.5.5</span> <strong>if; elif; else</strong></h3>
 <pre class="bash"><code>  if [[ &quot;$OSTYPE&quot; == &quot;linux-gnu&quot; ]]
   then
     OS=&#39;linux&#39;
@@ -2067,7 +2146,7 @@ f=$(ls *gz)
 </div>
 </div>
 <div id="bucles-for" class="section level2">
-<h2><span class="header-section-number">6.6</span> <strong>Bucles for</strong></h2>
+<h2><span class="header-section-number">7.6</span> <strong>Bucles for</strong></h2>
 <p>la sintaxis general de un bucle for en <span class="math inline">\(Bash\)</span> es:</p>
 <p><code>for ALIAS in LIST; do CMD1; CMD2; done</code></p>
 <p>donde el usuario tiene que cambiar los términos en mayúsculas por opciones concretas. ALIAS es el nombre de una variable temporal a la que se asigna secuencialmente cada valor de LIST.</p>
@@ -2075,7 +2154,7 @@ f=$(ls *gz)
 <p><code>for file in <em>.faa; do clustalo -i $file -o ${file%.</em>}_cluoAln.faa; done</code></p>
 <p>donde ALIAS=file, LIST=*.faa y CMD1 es una llamada al programa de alineamientos múltiples clustalo que veremos más adelante en este taller.</p>
 <div id="ejemplo-de-bucle-for-acoplado-a-las-herramientas-de-filtrado-y-de-manipulación-de-variables" class="section level3">
-<h3><span class="header-section-number">6.6.1</span> Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables</h3>
+<h3><span class="header-section-number">7.6.1</span> Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables</h3>
 <p>La idea del ejercicio es generar archivos a partir de linux_basic_commands.tab que contengan sólo los comandos de cada clase, nombrando a los archivo resultantes con el valor de dicha clase, almacenados en la segunda columna de la tabla</p>
 <pre class="bash"><code># veamos la cabecera y cola del archivo linux_basic_commands.tab
 head linux_basic_commands.tab
@@ -2167,10 +2246,10 @@ rm *.cmds</code></pre>
 </div>
 </div>
 <div id="bash-scripting---primeros-pasos" class="section level1">
-<h1><span class="header-section-number">7</span> <strong><span class="math inline">\(Bash\)</span> scripting</strong> - primeros pasos</h1>
+<h1><span class="header-section-number">8</span> <strong><span class="math inline">\(Bash\)</span> scripting</strong> - primeros pasos</h1>
 <p>En esta sección veremos ejemplos muy sencillos de <strong>Shell scripts</strong> escritos en <span class="math inline">\(Bash\)</span> que integran varios aspectos de la sintaxis básica del lenguaje descritas en la sección anterior, así como extensiones adicionales como son <strong>argumentos posicionales</strong> y <strong>funciones</strong></p>
 <div id="la-shebang-line-usrbinenv-bash-y-permisos-de-ejecución---el-script-ls_dir" class="section level2">
-<h2><span class="header-section-number">7.1</span> la “<strong>shebang line</strong>” (#!/usr/bin/env bash) y permisos de ejecución - el script <em>ls_dir</em></h2>
+<h2><span class="header-section-number">8.1</span> la “<strong>shebang line</strong>” (#!/usr/bin/env bash) y permisos de ejecución - el script <em>ls_dir</em></h2>
 <p>Se conocen como <em>scripts</em> a archivos de texto plano (codificación ASCII) que contienen los comandos a ser ejecutados secuencialmente por un <strong>intérprete de comandos</strong> particular, como <span class="math inline">\(bash\)</span>, <span class="math inline">\(perl\)</span>, <span class="math inline">\(R\)</span> …</p>
 <p>Les muestro abajo el código del script <em>ls_dir</em>, que pueden descargar desde el <a href="https://github.com/vinuesa/intro2linux/blob/master/ls_dir">repositorio githut de intro2linux</a></p>
 <pre><code>#!/usr/bin/env bash
@@ -2218,7 +2297,7 @@ CTRL-D</code></pre>
 <p>Nota: el script <em>ls_dir</em> funciona perfectamente, pero no es la manera más eficiente de buscar directorios. La función <span class="math inline">\(find\)</span> de <span class="math inline">\(Linux\)</span> es mucho más eficiente.</p>
 </div>
 <div id="funciones-y-argumentos-posicionales-en-bash---el-script-find_dir" class="section level2">
-<h2><span class="header-section-number">7.2</span> <strong>Funciones</strong> y <strong>argumentos posicionales</strong> en <span class="math inline">\(Bash\)</span> - el script <em>find_dir</em></h2>
+<h2><span class="header-section-number">8.2</span> <strong>Funciones</strong> y <strong>argumentos posicionales</strong> en <span class="math inline">\(Bash\)</span> - el script <em>find_dir</em></h2>
 <p>Los scripts pueden recibir opciones dadas por los usuarios para comportarse acorde a ellas. Esto les da gran versatilidad.</p>
 <p>La manera más sencialla de pasarle opciones al script es mediante <strong>argumentos posicionales</strong>, como los usados por <em>find_dir</em>, que pueden descargar desde el <a href="https://github.com/vinuesa/intro2linux/blob/master/find_dir">repositorio githut de intro2linux</a></p>
 <pre><code>#!/usr/bin/env bash
@@ -2304,7 +2383,7 @@ find . -maxdepth $max_depth -type $type</code></pre>
 ## ./docs</code></pre>
 </div>
 <div id="scripts-que-reciben-argumentosparámetros-posicionales-con-interfaz-de-usario-simple" class="section level2">
-<h2><span class="header-section-number">7.3</span> Scripts que reciben argumentos|parámetros posicionales con interfaz de usario simple</h2>
+<h2><span class="header-section-number">8.3</span> Scripts que reciben argumentos|parámetros posicionales con interfaz de usario simple</h2>
 <p>En el <a href="https://github.com/vinuesa/intro2linux/">repositorio githut de intro2linux</a> encontrarán los scripts <em>align_seqs_with_clustal_or_muscle.sh</em> y <em>convert_alnFormats_using_clustalw.sh</em> para alineamiento múltiple de secuencias e interconversión de formatos. Son ejemplos de <span class="math inline">\(scripts\)</span> que reciben parámetros posicionales y que despliegan un mensaje de ayuda, indicando los argumentos posicionales requeridos.</p>
 <pre><code>  ./align_seqs_with_clustal_or_muscle.sh</code></pre>
 <p>que imprime lo siguiente a <strong>STDOUT</strong></p>
@@ -2329,7 +2408,7 @@ find . -maxdepth $max_depth -type $type</code></pre>
 <p>Vuelve a explorar ambos scripts después de haber revisado la <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/sesion4_alineamientos">sesión4_alineamientos</a>.</p>
 </div>
 <div id="scripts-con-interfaz-de-usuario-paso-de-opciones-y-su-parseo-con-getopts" class="section level2">
-<h2><span class="header-section-number">7.4</span> Scripts con interfaz de usuario, paso de opciones y su parseo con <strong>getopts</strong></h2>
+<h2><span class="header-section-number">8.4</span> Scripts con interfaz de usuario, paso de opciones y su parseo con <strong>getopts</strong></h2>
 <p>Para scripts más complejos, que pueden recibir muchas opciones, es mejor escribir una interfaz de usuario que permita el parseo de opciones pasadas al script desde la línea de comandos y describir adecuadamente estas opciones en un menú de ayuda que se despliega en pantalla.</p>
 <p>Les presento seguidamente secciones del archivo de templado o machote para escribir scripts con parseo de opciones llamado <em>bash_script_template_with_getopts.sh</em> disponible en el <a href="https://github.com/vinuesa/intro2linux/blob/master/bash_script_template_with_getopts.sh">repositorio githut de intro2linux</a></p>
 <pre><code>function print_help()
@@ -2464,17 +2543,17 @@ fi
 </div>
 </div>
 <div id="el-lenguaje-de-procesamiento-de-patrones-awk" class="section level1">
-<h1><span class="header-section-number">8</span> El lenguaje de procesamiento de patrones <b>AWK</b></h1>
+<h1><span class="header-section-number">9</span> El lenguaje de procesamiento de patrones <b>AWK</b></h1>
 <p><b>AWK</b> es un lenguaje de programación diseñado para procesar datos de texto, ya sean ficheros o flujos de datos. El nombre <b>AWK</b> deriva de las iniciales de los apellidos de sus autores: Alfred <b>A</b>ho, Peter <b>W</b>einberger, y Brian <b>K</b>ernighan. <b><span class="math inline">\(awk\)</span></b>, cuando está escrito todo en minúsculas, hace referencia al programa de Unix que interpreta programas escritos en el lenguaje de programación AWK. Es decir <b>AWK</b> es un lenguaje interpretado por el intérprete de comando <b><span class="math inline">\(awk\)</span></b>.</p>
 <p><b>AWK</b> fue creado como un reemplazo a los algoritmos escritos en C para análisis de texto. Fue una de las primeras herramientas en aparecer en Unix (en la versión 3). Ganó popularidad rápidamente por la gran funcionalidad permitía añadir a las tuberías de comandos de Unix. Por ello se considera como una de las utilidades necesarias de este sistema operativo y de Linux.</p>
 <p>Debido a su densa notación, todos estos lenguajes son frecuentemente usados para escribir programas de una línea, como veremos seguidamente.</p>
 <div id="estructura-de-los-programas-awk" class="section level2">
-<h2><span class="header-section-number">8.1</span> Estructura de los programas AWK</h2>
+<h2><span class="header-section-number">9.1</span> Estructura de los programas AWK</h2>
 <p>En general, a <span class="math inline">\(awk\)</span> se le dan dos piezas de datos: <b>un fichero de órdenes</b> y <b>un archivo de entrada</b>.</p>
 <p>Un fichero de órdenes (que puede ser un fichero real, o puede ser incluido en la invocación de <span class="math inline">\(awk\)</span> desde la línea de comandos) contiene una serie de sentencias que le indican a <span class="math inline">\(awk\)</span> cómo procesar el fichero de entrada.</p>
 <p>El fichero primario de entrada es normalmente texto estructurado con un formato particular, como archivos con campos separados por tabuladores (tablas).</p>
 <div id="estructura-básica---ejemplos-genéricos" class="section level3">
-<h3><span class="header-section-number">8.1.1</span> Estructura básica - ejemplos genéricos</h3>
+<h3><span class="header-section-number">9.1.1</span> Estructura básica - ejemplos genéricos</h3>
 <ul>
 <li>Un programa AWK típico consiste en una serie de líneas, cada una de la forma:</li>
 </ul>
@@ -2495,7 +2574,7 @@ fi
 <p><code> STDOUT_programaX | awk ‘CODIGO AWK’ &gt; output_file.txt </code></p>
 </div>
 <div id="formas-alternativas-del-código-awk" class="section level3">
-<h3><span class="header-section-number">8.1.2</span> Formas alternativas del código AWK:</h3>
+<h3><span class="header-section-number">9.1.2</span> Formas alternativas del código AWK:</h3>
 <p><code>BEGIN { acción }</code> Ejecuta las órdenes de acción al comienzo de la ejecución, antes de que los datos comiencen a ser procesados.</p>
 <p><code>END { acción }</code> Similar a la forma previa, pero ejecuta las órdenes de acción después de que todos los datos sean procesados.</p>
 <p><code>/patrón/</code> Imprime las líneas que contienen al patrón.</p>
@@ -2503,7 +2582,7 @@ fi
 <p>Cada una de estas formas pueden ser incluidas varias veces en un archivo o script de AWK. El script es procesado de manera progresiva, línea por línea, de izquierda a dercha. Entonces, si hubiera dos declaraciones “BEGIN”, sus contenidos serán ejecutados en orden de aparición. Las declaraciones “BEGIN” y “END” no necesitan estar en forma ordenada.</p>
 </div>
 <div id="sintaxis-condensada-de-awk" class="section level3">
-<h3><span class="header-section-number">8.1.3</span> Sintaxis condensada de AWK</h3>
+<h3><span class="header-section-number">9.1.3</span> Sintaxis condensada de AWK</h3>
 <ul>
 <li>AWK, al ser un lenguaje de programación completo, contiene sintaxis para escribir:
 <ul>
@@ -2527,10 +2606,10 @@ ORS      separador de registro de la salida (\n por defecto)</code></pre>
 </div>
 </div>
 <div id="ejemplos-básicos-pero-muy-útiles-de-uso-de-awk" class="section level2">
-<h2><span class="header-section-number">8.2</span> Ejemplos básicos pero muy útiles de uso de AWK</h2>
+<h2><span class="header-section-number">9.2</span> Ejemplos básicos pero muy útiles de uso de AWK</h2>
 <p>No podemos aprender aquí más que algunos idiomas de AWK muy útiles, como veremos seguidamente</p>
 <div id="filtrado-de-archivos-con-awk" class="section level3">
-<h3><span class="header-section-number">8.2.1</span> filtrado de archivos con AWK</h3>
+<h3><span class="header-section-number">9.2.1</span> filtrado de archivos con AWK</h3>
 <ul>
 <li>Cuenta el número de procesadores de tu sistema:</li>
 </ul>
@@ -2569,9 +2648,9 @@ head -20 /proc/cpuinfo | awk &#39;length &lt;= 12&#39;</code></pre>
 </div>
 </div>
 <div id="ejercicios-integrativos-de-uso-de-herramientas-de-filtrado-del-shell" class="section level1">
-<h1><span class="header-section-number">9</span> Ejercicios integrativos de uso de herramientas de filtrado del Shell</h1>
+<h1><span class="header-section-number">10</span> Ejercicios integrativos de uso de herramientas de filtrado del Shell</h1>
 <div id="filtrado-de-archivos-separados-por-tabuladores-tablas-con-awk-y-su-graficado-con-r" class="section level2">
-<h2><span class="header-section-number">9.1</span> Filtrado de archivos separados por tabuladores (tablas) con AWK y su graficado con R</h2>
+<h2><span class="header-section-number">10.1</span> Filtrado de archivos separados por tabuladores (tablas) con AWK y su graficado con R</h2>
 <ul>
 <li>Asocia cada nombre de columna de la tabla assembly_summary.txt.gz con su número de campo</li>
 </ul>
@@ -2687,18 +2766,18 @@ str(dfr)</code></pre>
 <pre class="r"><code>dotchart(dfr$num_genomas, labels = dfr$Especie, main = &quot;Número de genomas por especie&quot;)</code></pre>
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUAAAAPACAMAAADDuCPrAAADAFBMVEUAAAABAQECAgIDAwMEBAQFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQlJSUmJiYnJycoKCgpKSkqKiorKyssLCwtLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6Ojo7Ozs8PDw9PT0+Pj4/Pz9AQEBBQUFCQkJDQ0NERERFRUVGRkZHR0dISEhJSUlKSkpLS0tMTExNTU1OTk5PT09QUFBRUVFSUlJTU1NUVFRVVVVWVlZXV1dYWFhZWVlaWlpbW1tcXFxdXV1eXl5fX19gYGBhYWFiYmJjY2NkZGRlZWVmZmZnZ2doaGhpaWlqampra2tsbGxtbW1ubm5vb29wcHBxcXFycnJzc3N0dHR1dXV2dnZ3d3d4eHh5eXl6enp7e3t8fHx9fX1+fn5/f3+AgICBgYGCgoKDg4OEhISFhYWGhoaHh4eIiIiJiYmKioqLi4uMjIyNjY2Ojo6Pj4+QkJCRkZGSkpKTk5OUlJSVlZWWlpaXl5eYmJiZmZmampqbm5ucnJydnZ2enp6fn5+goKChoaGioqKjo6OkpKSlpaWmpqanp6eoqKipqamqqqqrq6usrKytra2urq6vr6+wsLCxsbGysrKzs7O0tLS1tbW2tra3t7e4uLi5ubm6urq7u7u8vLy9vb2+vr6/v7/AwMDBwcHCwsLDw8PExMTFxcXGxsbHx8fIyMjJycnKysrLy8vMzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3u7u7v7+/w8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7////isF19AAAACXBIWXMAAB2HAAAdhwGP5fFlAAAgAElEQVR4nOydeXwV1fn/n5tAQiAhZDESEhVlESlLCItFAyoSAWOoIiiupRUBNS6UgCCyVFEpxb1a4evC4v7tz1pRsBZR6orWr4BYV0TLUiQsQYMkQDK/s8zMvXfOmXvDzSS51/t5/8GZOfPMOc9MXvNmljNzyQAAABAR1NwJAABArAKBAgBAhECgAAAQIRAoAABECAQKAAARAoECAECEQKAAABAhECgAAEQIBAoAABECgQIAQIRAoAAAECEQKAAARAgECgAAEQKBAgBAhECgAAAQIRAoAABECAQKAAARAoECAECEQKAAABAhECgAAEQIBAoAABECgQIAQIRAoAAAECEQKAAARAgECgAAEQKBAgBAhECgAAAQIRAoAABECAQKAAARAoECAECEQKAAABAhECgAAEQIBAoAABECgQIAQIRAoAAAECEQKAAARAgECgAAEQKBAgBAhECgAAAQIRAoAABECAQKAAARAoECAECEQKAAABAhECgAAEQIBAoAABECgQIAQIRAoAAAECEQKAAARAgECgAAEQKBAgBAhECgAAAQIRAoAABECAQKAAARAoECAECEQKAAABAhECgAAEQIBAoAABECgQIAQIRAoAAAECEQKAAARAgECgAAEQKBAgBAhECgoBmoZPzY3EkA0GAgUND0vExEvmebOwsAGgwECjzlUeL0q7UrloiKJUFBRazm902dWTALeVbZzZsD8HMf/3u0a+4sjh4IFHiKFCg9aldoBPoOq7ikyTMLBgKNLiBQAAxboDmVVoVGoKVEvzzY9KkFAYFGFxAoAIYtUPqdVaEKdJOPTtjZDKkFAYFGFxAoAIZfoC0/MytUgT52/vkbmyO1ICDQ6OKpAsag5s7i6IFAgadYAqXhZoXuIVIUAIECL4BAgafYAqWXZMVRCPTI4cbMLJjoEmhTbjnwEggUeIpfoJ1rREWAQH/JpyaZgeP5TBGfOo9PXW58cl4KJZ00djWv2lB2clrm6Vd/GtDwe1P6HNuq67m3brcqJvHVfmkYe6f1avV/sqr25Wt7t2+Z3f3XT/3kkt7HZae0yexz2/cOgSqNO6i6e2C7jNOX1BqX89Xmh0/qg4knt80eNOHDgDY0ydVry6vuveT0/JbpJ5X+cau/8siTV511fErXcyb+pU7N1tzPR548u0OrzqP/36HQSWj2YwDaPaP2HqJLbQsVD5d2btsq75wF1usUjnug4f4gUQMECjxFCrSV3zP1FehzSaZ4f1tj3NbCvJF6s3WAfjvS8nLSb/fKKvPA/78sVvxL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CCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQhFCghhDiEAiWEEIdQoIQQ4hAKlBBCHEKBEkKIQyhQQghxCAVKCCEOoUAJIcQh/z+AaAsfEZG35QAAAABJRU5ErkJggg==" width="672" /></p>
 <div id="reto-de-programación-awk-y-r" class="section level3">
-<h3><span class="header-section-number">9.1.1</span> Reto de programación <span class="math inline">\(awk\)</span> y <span class="math inline">\(R\)</span></h3>
+<h3><span class="header-section-number">10.1.1</span> Reto de programación <span class="math inline">\(awk\)</span> y <span class="math inline">\(R\)</span></h3>
 <p>Repite el ejercicio anterior, incluyendo el graficado del número de genomas por especie para el género <i>Acinetobacter</i>, pero graficando sólo aquellas especies con mínimo 5 y máximo 100 genomas</p>
 <p><b>¡Felicidades, ya estás aprendiendo a programar! No es tan difícil, ¿verdad?</b></p>
 </div>
 </div>
 <div id="ejercicios-de-exploración-y-parseo-de-archivos-fasta" class="section level2">
-<h2><span class="header-section-number">9.2</span> Ejercicios de exploración y parseo de archivos FASTA</h2>
+<h2><span class="header-section-number">10.2</span> Ejercicios de exploración y parseo de archivos FASTA</h2>
 <p>Te propongo el siguiente ejercicio con un archivo de secuencias de DNA en formato FASTA para practicar algunos aspectos de lo aprendido en esta primera sesión.</p>
 <p>Para correr los ejercicios, asegúrate de tener el archivo recA_Bradyrhizobium_vinuesa.fna en el directorio actual de trabajo.</p>
 <p>El archivo recA_Bradyrhizobium_vinuesa.fna contiene secuencias del gen <em>recA</em> de bacterias del género <em>Bradyrhizobium</em> depositadas en GenBank por P. Vinuesa.</p>
 <div id="búsqueda-y-descarga-de-secuencias-en-genbank-usando-el-sistema-entrez" class="section level3">
-<h3><span class="header-section-number">9.2.1</span> Búsqueda y descarga de secuencias en GenBank usando el sistema ENTREZ</h3>
+<h3><span class="header-section-number">10.2.1</span> Búsqueda y descarga de secuencias en GenBank usando el sistema ENTREZ</h3>
 <p>Este bloque muestra el comando que usé para descargarlas usando el sistema ENTREZ de NCBI. El comando debe pegarse en la ventana superior del sistema <a href="https://www.ncbi.nlm.nih.gov/nucleotide?cmd=search">ENTREZ</a>.</p>
 <pre><code># pega esta sentencia en la ventana de captura para interrogar la base de datos 
 # de nucleótidos de NCBI mediante el sistema ENTREZ
@@ -2707,7 +2786,7 @@ str(dfr)</code></pre>
 <p>No hace falta que las descarges de NCBI. Para facilitar el acceso a las mismas, usa el siguiente código</p>
 </div>
 <div id="acceso-a-las-secuencias" class="section level3">
-<h3><span class="header-section-number">9.2.2</span> Acceso a las secuencias</h3>
+<h3><span class="header-section-number">10.2.2</span> Acceso a las secuencias</h3>
 <p>En primer lugar, debes estar en tu directorio $HOME/intro2linux/sesion1, y desde ahí generar una liga simbólica al archivo FASTA con las secuencias</p>
 <pre><code>cd $HOME/intro2linux/sesion1_linu
 ln -s /space31/PIG/vinuesa/intro2linux/sesion1/data/recA_Bradyrhizobium_vinuesa.fna .
@@ -2715,7 +2794,7 @@ ln -s /space31/PIG/vinuesa/intro2linux/sesion1/data/recA_Bradyrhizobium_vinuesa.
 ls recA_Bradyrhizobium_vinuesa.fna</code></pre>
 </div>
 <div id="inspección-y-estadísticas-básicas-de-las-secuencias-descargadas" class="section level3">
-<h3><span class="header-section-number">9.2.3</span> Inspección y estadísticas básicas de las secuencias descargadas</h3>
+<h3><span class="header-section-number">10.2.3</span> Inspección y estadísticas básicas de las secuencias descargadas</h3>
 <ol style="list-style-type: decimal">
 <li>¿Cuántas secuencias hay en el archivo recA_Bradyrhizobium_vinuesa.fna?</li>
 <li>Explora la cabecera y cola del archivo con head y tail</li>
@@ -2726,7 +2805,7 @@ ls recA_Bradyrhizobium_vinuesa.fna</code></pre>
 </ol>
 </div>
 <div id="edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix" class="section level3">
-<h3><span class="header-section-number">9.2.4</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</h3>
+<h3><span class="header-section-number">10.2.4</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</h3>
 <ol style="list-style-type: decimal">
 <li>Explora nuevamente todas las cabeceras FASTA del archivo recA_Bradyrhizobium_vinuesa.fna usando <strong>grep</strong> y less</li>
 <li>Simplifica las cabeceras FASTA usando el comando <strong>sed</strong> (stream editor)</li>
@@ -2741,10 +2820,10 @@ ls recA_Bradyrhizobium_vinuesa.fna</code></pre>
 </div>
 </div>
 <div id="solución-a-la-práctica-y-un-ejercicio-adicional" class="section level2">
-<h2><span class="header-section-number">9.3</span> Solución a la práctica y un ejercicio adicional</h2>
+<h2><span class="header-section-number">10.3</span> Solución a la práctica y un ejercicio adicional</h2>
 <p>Este ejercicio está basado en un capítulo que escribí para el manual de <a href="https://tienda.fciencias.unam.mx/es/home/279-sistematica-molecular-y-bioinformatica-guia-practica.html">Sistemática Molecular y Bioinformática. Guía práctica</a>, editado por la Facultad de Ciencias.</p>
 <div id="inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-1" class="section level3">
-<h3><span class="header-section-number">9.3.1</span> Inspección y estadísticas básicas de las secuencias descargadas</h3>
+<h3><span class="header-section-number">10.3.1</span> Inspección y estadísticas básicas de las secuencias descargadas</h3>
 <ol style="list-style-type: decimal">
 <li>¿Cuántas secuencias hay en el archivo recA_Bradyrhizobium_vinuesa.fna?</li>
 </ol>
@@ -2783,7 +2862,7 @@ ls recA_Bradyrhizobium_vinuesa.fna</code></pre>
 ##       6 Bradyrhizobium genosp.</code></pre>
 </div>
 <div id="edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-1" class="section level3">
-<h3><span class="header-section-number">9.3.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</h3>
+<h3><span class="header-section-number">10.3.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</h3>
 <ol start="5" style="list-style-type: decimal">
 <li>Exploremos todas las cabeceras FASTA del archivo recA_Bradyrhizobium_vinuesa.fna usando <strong>grep</strong></li>
 </ol>
@@ -2824,7 +2903,7 @@ sed &#39;s/ Bra/ [Bra/; s/|gb.*| /|/; s/Bradyrhizobium /B/; s/genosp\. //; s/ re
 </code></pre>
 </div>
 <div id="generación-automática-de-archivos-fasta-especie-específicos-avanzado" class="section level3">
-<h3><span class="header-section-number">9.3.3</span> Generación automática de archivos FASTA especie-específicos (avanzado)</h3>
+<h3><span class="header-section-number">10.3.3</span> Generación automática de archivos FASTA especie-específicos (avanzado)</h3>
 <ol start="9" style="list-style-type: decimal">
 <li>Convertir archivos FASTA a formato “FASTAB” usando <strong>perl</strong> 1-liners.</li>
 </ol>
@@ -2919,11 +2998,11 @@ done</code></pre>
 </div>
 </div>
 <div id="reto-de-programación---ejercicio-de-parseo-de-archivos-fasta" class="section level1">
-<h1><span class="header-section-number">10</span> Reto de programación - ejercicio de parseo de archivos FASTA</h1>
+<h1><span class="header-section-number">11</span> Reto de programación - ejercicio de parseo de archivos FASTA</h1>
 <p>Como ejercicio, para repasar lo que hemos aprendido en esta sesión les propongo repetir el ejercicio de parseo de archivos FASTA pero con secuencias del gen <i>rpoB</i> de <i>Bradyrhizobium</i></p>
 <p>Los que no tengan instalado MobaXterm, tendrán el reto adicional de instalarlo y familiarizarse con él.</p>
 <div id="inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-2" class="section level2">
-<h2><span class="header-section-number">10.1</span> Inspección y estadísticas básicas de las secuencias descargadas</h2>
+<h2><span class="header-section-number">11.1</span> Inspección y estadísticas básicas de las secuencias descargadas</h2>
 <ol style="list-style-type: decimal">
 <li>Descargar las secuencias de NCBI usando el portal ENTREZ nucleotides con: ‘Bradyrhizobium[orgn] AND vinuesa[auth] AND rpoB[gene]’</li>
 <li>Renombra el archivo descargado a rpoB_Bradyrhizobium_vinuesa.fna</li>
@@ -2936,7 +3015,7 @@ done</code></pre>
 </ol>
 </div>
 <div id="edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-2" class="section level2">
-<h2><span class="header-section-number">10.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</h2>
+<h2><span class="header-section-number">11.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</h2>
 <ol style="list-style-type: decimal">
 <li>Explora nuevamente todas las cabeceras FASTA del archivo rpoB_Bradyrhizobium_vinuesa.fna usando <strong>grep</strong> y less</li>
 <li>Simplifica las cabeceras FASTA usando el comando <strong>sed</strong> (stream editor)</li>
