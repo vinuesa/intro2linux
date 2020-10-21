@@ -11,7 +11,7 @@
 
 <meta name="author" content="Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; http://www.ccg.unan.mx/~vinuesa" />
 
-<meta name="date" content="2020-10-19" />
+<meta name="date" content="2020-10-20" />
 
 <title>Sesión 1. Introducción al biocómputo en sistemas GNU/Linux</title>
 
@@ -374,7 +374,7 @@ summary {
 
 <h1 class="title toc-ignore">Sesión 1. Introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a></h4>
-<h4 class="date">2020-10-19</h4>
+<h4 class="date">2020-10-20</h4>
 
 </div>
 
@@ -438,7 +438,7 @@ summary {
 <li><a href="#usa-head-y-tail-para-desplegar-la-cabecera-y-cola-de-archivos"><span class="toc-section-number">4.1.1</span> Usa <b>head</b> y <b>tail</b> para desplegar la cabecera y cola de archivos</a></li>
 <li><a href="#cat-despliega-uno-o-más-archivos-concatenándolos-si-son-varios"><span class="toc-section-number">4.1.2</span> <b>cat</b> despliega uno o más archivos, concatenándolos si son varios</a></li>
 <li><a href="#el-paginador-less-despliega-archivos-página-a-página"><span class="toc-section-number">4.1.3</span> el paginador <b>less</b> despliega archivos página a página</a></li>
-<li><a href="#zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-conpresión-gzip"><span class="toc-section-number">4.1.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con conpresión gzip</a></li>
+<li><a href="#zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-compresión-gzip"><span class="toc-section-number">4.1.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con compresión gzip</a></li>
 </ul></li>
 <li><a href="#edición-de-archivos-con-los-editores-vim-o-gnedit"><span class="toc-section-number">4.2</span> Edición de archivos con los editores <b>vim</b> o <b>[g|n]edit</b></a></li>
 <li><a href="#edición-de-archivos-con-el-editor-de-flujo-sed-stream-editor"><span class="toc-section-number">4.3</span> Edición de archivos con el editor de flujo <b>sed</b> (stream editor)</a><ul>
@@ -499,7 +499,7 @@ summary {
 <li><a href="#ejemplo-de-bucle-for-acoplado-a-las-herramientas-de-filtrado-y-de-manipulación-de-variables"><span class="toc-section-number">10.6.1</span> Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#bash-scripting---primeros-pasos"><span class="toc-section-number">11</span> <strong><span class="math inline">\(Bash\)</span> scripting</strong> - primeros pasos</a><ul>
+<li><a href="#bash-scripting---siguientes-pasos"><span class="toc-section-number">11</span> <strong><span class="math inline">\(Bash\)</span> scripting</strong> - siguientes pasos</a><ul>
 <li><a href="#la-shebang-line-usrbinenv-bash-y-permisos-de-ejecución---el-script-ls_dir"><span class="toc-section-number">11.1</span> la “<strong>shebang line</strong>” (#!/usr/bin/env bash) y permisos de ejecución - el script <em>ls_dir</em></a></li>
 <li><a href="#funciones-y-argumentos-posicionales-en-bash---el-script-find_dir"><span class="toc-section-number">11.2</span> <strong>Funciones</strong> y <strong>argumentos posicionales</strong> en <span class="math inline">\(Bash\)</span> - el script <em>find_dir</em></a></li>
 <li><a href="#scripts-que-reciben-argumentosparámetros-posicionales-con-interfaz-de-usario-simple"><span class="toc-section-number">11.3</span> Scripts que reciben argumentos|parámetros posicionales con interfaz de usario simple</a></li>
@@ -531,7 +531,7 @@ summary {
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
 <p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2020-10-19) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>.</p>
+<p>Las versión actual (v.2020-10-20) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
@@ -577,7 +577,7 @@ hostname -i</code></pre>
 <pre class="bash"><code>uname
 uname -a</code></pre>
 <pre><code>## Linux
-## Linux alisio 5.4.0-51-generic #56-Ubuntu SMP Mon Oct 5 14:28:49 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
+## Linux alisio 5.4.0-52-generic #57-Ubuntu SMP Thu Oct 15 10:57:00 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
 </div>
 <div id="top-o-htop-muestran-los-procesos-en-ejecución-y-los-recursos-que-consumen" class="section level3">
 <h3><span class="header-section-number">2.1.4</span> <strong>top</strong> o <strong>htop</strong> muestran los procesos en ejecución y los recursos que consumen</h3>
@@ -664,52 +664,51 @@ pwd</code></pre>
 <pre class="bash"><code># Qué contiene el directorio actual?
 ls | head</code></pre>
 <pre><code>## align_seqs_with_clustal_or_muscle.sh
+## assembly_summary.txt
 ## assembly_summary.txt.gz
 ## bash_script_template_with_getopts.sh
 ## bin
 ## blast-imager.pl
-## convert_aln_format_batch_bp.pl
-## convert_alnFormats_using_clustalw.sh
 ## docs
 ## fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## find_dir</code></pre>
+## find_dir
+## intro2linux</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
-<pre><code>## total 11860
-## drwxr-xr-x 7 vinuesa vinuesa    4096 oct 19 23:16 .
-## drwxr-xr-x 3 vinuesa vinuesa    4096 sep 29 22:15 ..
-## -rwxr-xr-x 1 vinuesa vinuesa    2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
-## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
-## -rw-r--r-- 1 vinuesa vinuesa    5499 oct 14 22:24 bash_script_template_with_getopts.sh
-## drwxrwxr-x 2 vinuesa vinuesa    4096 oct 13 13:50 bin
-## -rwxr-xr-x 1 vinuesa vinuesa    5406 oct 14 22:43 blast-imager.pl
-## -rwxr-xr-x 1 vinuesa vinuesa    2731 oct 14 22:43 convert_aln_format_batch_bp.pl
-## -rwxr-xr-x 1 vinuesa vinuesa    1812 oct 14 22:43 convert_alnFormats_using_clustalw.sh
-## drwxr-xr-x 3 vinuesa vinuesa    4096 oct  9 21:25 docs
-## -rw-r--r-- 1 vinuesa vinuesa  222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## -rwxr-xr-x 1 vinuesa vinuesa    1237 oct 14 22:43 find_dir
-## drwxr-xr-x 8 vinuesa vinuesa    4096 oct 18 23:11 .git
-## drwxr-xr-x 4 vinuesa vinuesa    4096 sep 29 22:56 intro2linux
-## -rw-r--r-- 1 vinuesa vinuesa 3163754 oct 13 13:39 intro_biocomputo_Linux_LCG.odp
-## -rw-r--r-- 1 vinuesa vinuesa   35149 sep 29 22:15 LICENSE
-## -rwxr-xr-x 1 vinuesa vinuesa   10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 19 23:16 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
-## -rwxr-xr-x 1 vinuesa vinuesa    1705 sep 29 22:18 linux_very_basic_commands_table.csv
-## -rwxr-xr-x 1 vinuesa vinuesa     493 oct 14 22:43 ls_dir
-## drwxr-xr-x 2 vinuesa vinuesa    4096 oct  6 16:39 participantes_Taller_CG_FC
-## -rwxr-xr-x 1 vinuesa vinuesa    2884 oct 14 22:43 prot2cdnAlns.pl
-## -rw-r--r-- 1 vinuesa vinuesa    5957 oct 13 13:42 README.md
-## -rw-r--r-- 1 vinuesa vinuesa   77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa   17704 oct 19 23:16 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa   28497 oct 19 23:16 recA_Byuanmingense_muscle.aln
-## -rw-rw-r-- 1 vinuesa vinuesa       0 oct 17 21:49 .Rhistory
-## -rwxr-xr-x 1 vinuesa vinuesa     239 oct 14 22:43 split_fasta.pl
-## -rw-rw-r-- 1 vinuesa vinuesa      27 oct  7 12:21 TODO.txt
-## -rwxr-xr-x 1 vinuesa vinuesa    3402 oct 14 22:43 translate_fastas.pl
-## -rw-r--r-- 1 vinuesa vinuesa 1208306 oct 19 23:16 working_with_linux_commands.html
-## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   98200 oct 19 23:16 working_with_linux_commands.Rmd
-## -rw-rw-r-- 1 vinuesa vinuesa      41 oct 13 19:24 zoom.url</code></pre>
+<pre><code>## total 59228
+## drwxr-xr-x 7 vinuesa vinuesa     4096 oct 20 19:48 .
+## drwxr-xr-x 3 vinuesa vinuesa     4096 sep 29 22:15 ..
+## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
+## -rw-r--r-- 1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
+## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
+## -rw-r--r-- 1 vinuesa vinuesa     5499 oct 14 22:24 bash_script_template_with_getopts.sh
+## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
+## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
+## drwxr-xr-x 3 vinuesa vinuesa     4096 oct  9 21:25 docs
+## -rw-r--r-- 1 vinuesa vinuesa   222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
+## -rwxr-xr-x 1 vinuesa vinuesa     1237 oct 14 22:43 find_dir
+## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 19 23:19 .git
+## drwxr-xr-x 4 vinuesa vinuesa     4096 sep 29 22:56 intro2linux
+## -rw-r--r-- 1 vinuesa vinuesa  3163754 oct 13 13:39 intro_biocomputo_Linux_LCG.odp
+## -rw-r--r-- 1 vinuesa vinuesa    35149 sep 29 22:15 LICENSE
+## -rw-r--r-- 1 vinuesa vinuesa    10193 sep 29 22:18 linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 20 19:48 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## -rw-r--r-- 1 vinuesa vinuesa     1705 sep 29 22:18 linux_very_basic_commands_table.csv
+## -rwxr-xr-x 1 vinuesa vinuesa      493 oct 14 22:43 ls_dir
+## drwxr-xr-x 2 vinuesa vinuesa     4096 oct  6 16:39 participantes_Taller_CG_FC
+## -rwxr-xr-x 1 vinuesa vinuesa     2884 oct 14 22:43 prot2cdnAlns.pl
+## -rw-r--r-- 1 vinuesa vinuesa     5957 oct 13 13:42 README.md
+## -rw-r--r-- 1 vinuesa vinuesa    77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
+## -rw-r--r-- 1 vinuesa vinuesa    17704 oct 20 19:48 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa    28497 oct 20 19:48 recA_Byuanmingense_muscle.aln
+## -rw-rw-r-- 1 vinuesa vinuesa        0 oct 19 23:23 .Rhistory
+## -rwxr-xr-x 1 vinuesa vinuesa      239 oct 14 22:43 split_fasta.pl
+## -rw-rw-r-- 1 vinuesa vinuesa       27 oct  7 12:21 TODO.txt
+## -rwxr-xr-x 1 vinuesa vinuesa     3402 oct 14 22:43 translate_fastas.pl
+## -rw-r--r-- 1 vinuesa vinuesa  1208947 oct 20 19:48 working_with_linux_commands.html
+## -rw-r--r-- 1 vinuesa vinuesa   382402 sep 29 22:15 working_with_linux_commands.pdf
+## -rw-r--r-- 1 vinuesa vinuesa    99166 oct 20 19:52 working_with_linux_commands.Rmd
+## -rw-rw-r-- 1 vinuesa vinuesa       41 oct 13 19:24 zoom.url</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del directorio raiz</h4>
 <ul>
@@ -732,10 +731,10 @@ ls -al </code></pre>
 <pre class="bash"><code>ls -l / | head -20</code></pre>
 <pre><code>## total 76
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
-## drwxr-xr-x   4 root root  4096 oct 15 16:26 boot
+## drwxr-xr-x   4 root root  4096 oct 20 16:52 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4520 oct 19 10:02 dev
-## drwxr-xr-x 155 root root 12288 oct 19 19:18 etc
+## drwxr-xr-x  21 root root  4560 oct 20 16:52 dev
+## drwxr-xr-x 155 root root 12288 oct 20 09:18 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
 ## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib32 -&gt; usr/lib32
@@ -745,9 +744,9 @@ ls -al </code></pre>
 ## drwxr-xr-x   3 root root  4096 oct  5 20:41 media
 ## drwxr-xr-x   2 root root  4096 jul 31 11:27 mnt
 ## drwxr-xr-x   5 root root  4096 oct  5 12:26 opt
-## dr-xr-xr-x 380 root root     0 oct 19 09:49 proc
+## dr-xr-xr-x 382 root root     0 oct 20 16:51 proc
 ## drwx------   8 root root  4096 oct 16 19:12 root
-## drwxr-xr-x  34 root root  1020 oct 19 19:17 run
+## drwxr-xr-x  34 root root   980 oct 20 17:23 run
 ## lrwxrwxrwx   1 root root     8 oct  4 14:42 sbin -&gt; usr/sbin
 ## drwxr-xr-x  10 root root  4096 oct 16 19:40 snap</code></pre>
 </div>
@@ -1131,15 +1130,15 @@ pwd</code></pre>
 </ul>
 <pre class="bash"><code>ls | head</code></pre>
 <pre><code>## align_seqs_with_clustal_or_muscle.sh
+## assembly_summary.txt
 ## assembly_summary.txt.gz
 ## bash_script_template_with_getopts.sh
 ## bin
 ## blast-imager.pl
-## convert_aln_format_batch_bp.pl
-## convert_alnFormats_using_clustalw.sh
 ## docs
 ## fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## find_dir</code></pre>
+## find_dir
+## intro2linux</code></pre>
 </div>
 </div>
 </div>
@@ -1239,7 +1238,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 <p>La mayoría de los programas ejecutables del sistema proveen un formato estandarizado de documentación que se despliega en la consola usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                                                                                  User Commands                                                                                  CUT(1)
+<pre><code>## CUT(1)                                                                            User Commands                                                                           CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -1515,16 +1514,16 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 11852
-## -rwxr-xr-x 1 vinuesa vinuesa    2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
-## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
-## -rw-r--r-- 1 vinuesa vinuesa    5499 oct 14 22:24 bash_script_template_with_getopts.sh
-## drwxrwxr-x 2 vinuesa vinuesa    4096 oct 13 13:50 bin
-## -rwxr-xr-x 1 vinuesa vinuesa    5406 oct 14 22:43 blast-imager.pl
-## lrwxrwxrwx 1 vinuesa vinuesa      78 oct 19 23:16 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
-## -rwxr-xr-x 1 vinuesa vinuesa    2731 oct 14 22:43 convert_aln_format_batch_bp.pl
-## -rwxr-xr-x 1 vinuesa vinuesa    1812 oct 14 22:43 convert_alnFormats_using_clustalw.sh
-## drwxr-xr-x 3 vinuesa vinuesa    4096 oct  9 21:25 docs</code></pre>
+<pre><code>## total 59220
+## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
+## -rw-r--r-- 1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
+## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
+## -rw-r--r-- 1 vinuesa vinuesa     5499 oct 14 22:24 bash_script_template_with_getopts.sh
+## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
+## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
+## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 20 19:52 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## drwxr-xr-x 3 vinuesa vinuesa     4096 oct  9 21:25 docs
+## -rw-r--r-- 1 vinuesa vinuesa   222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
 </ul>
@@ -1703,8 +1702,8 @@ q</code></pre>
 less -L linux_commands.tab </code></pre>
 <p><span class="math inline">\(less\)</span> tiene muchas más opciones: explóraras con <code>less –help</code></p>
 </div>
-<div id="zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-conpresión-gzip" class="section level3">
-<h3><span class="header-section-number">4.1.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con conpresión gzip</h3>
+<div id="zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-compresión-gzip" class="section level3">
+<h3><span class="header-section-number">4.1.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con compresión gzip</h3>
 <p>Los archivos usados en genómica son frecuentemente grandes y/o numerosos, por lo que es una muy buena práctica mantenerlos comprimidos para ocupar el mínimo espacio posible en disco. los comandos <span class="math inline">\(zcat\)</span> y <span class="math inline">\(zless\)</span> permiten visualizar su contenido sin tenerlos que descomprimir. Veremos más comandos, como <span class="math inline">\(zgrep\)</span> que pueden trabajar sobre archivos de texto comprimidos.</p>
 <ul>
 <li><span class="math inline">\(zcat\)</span> desplegará todo el archivo, pudiéndolo pasar a otras herramientas de filtrado</li>
@@ -1869,7 +1868,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 oct 19 23:16 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 oct 20 19:52 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -1888,7 +1887,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 19 23:16 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 20 19:52 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -1921,6 +1920,7 @@ rm texto_arbitrario.txt borrame.txt
 <div id="ejemplo-de-alineamiento-generación-de-alineamiento-múltiple-con-el-alineador-muscle" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Ejemplo de alineamiento generación de alineamiento múltiple con el alineador <span class="math inline">\(muscle\)</span></h3>
 <p><span class="math inline">\(muscle\)</span> es un programa para hacer alineamientos múltiples. Por tanto no es una herramienta estándar de UNIX o GNU/Linux. Es un programa bioinformático que debermos descargar e instalar en nuestro sistema. Está instalado en tepeu. Lo usaremos aquí como ejemplo de llamadas del tipo <code>programa &lt; archivo_a_leer &gt; archivo_a_escribir</code>. Pasaremos la opción <span class="math inline">\(-clw\)</span> para escribir el alineamiento resultante en en formato <em>clustal</em>, más conveniente para su visualización en una terminal.</p>
+<p>Nota: si quieres aprender más sobre alineamientos múltiples y alineadores, puedes consultar el <a href="https://github.com/vinuesa/TIB-filoinfo#sesi%C3%B3n-4-alineamientos-m%C3%BAltiples-teor%C3%ADa-y-pr%C3%A1cticas">tutorial sobre alineamientos múltiples</a> que preparé para los <a href="https://github.com/vinuesa/TIB-filoinfo">Talleres Internacionales de Bioinformática - 2019 (TIB19)</a>.</p>
 <pre class="bash"><code># Noten el uso de los descriptores de archivo 1&gt; y 2&gt; /dev/null, para eliminar los mensajes de progreso de muscle
 # Explicaremos descriptores de archivo en la siguiente sección
 # podían haber escrito simplemente:
@@ -2016,15 +2016,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 19 23:16 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 19 23:16 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 20 19:53 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 20 19:53 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 19 23:16 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 20 19:53 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2055,6 +2055,7 @@ muscle -clw &lt; recA_Byuanmingense.fna &gt; recA_Byuanmingense_muscle.aln</code
 <pre><code># con uso de los descriptores de archivo 1&gt; y 2&gt; /dev/null, para eliminar los mensajes de progreso
 muscle -clw &lt; recA_Byuanmingense.fna 1&gt; recA_Byuanmingense_muscle.aln 2&gt; /dev/null</code></pre></li>
 </ul>
+<p>Nota: si quieres aprender más sobre alineamientos múltiples y alineadores, puedes consultar mi <a href="https://github.com/vinuesa/TIB-filoinfo#sesi%C3%B3n-4-alineamientos-m%C3%BAltiples-teor%C3%ADa-y-pr%C3%A1cticas">tutorial sobre alineamientos múltiples</a></p>
 <hr />
 </div>
 </div>
@@ -2087,6 +2088,12 @@ muscle -clw &lt; recA_Byuanmingense.fna 1&gt; recA_Byuanmingense_muscle.aln 2&gt
 <ul>
 <li>sintaxis para extraer archivos de un <span class="math inline">\(tar.gz\)</span>: <code>tar -xzvf tarro_de_directorio.tgz</code></li>
 </ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Listar contenidos de tarros comprimidos con la opción <strong>-t</strong></li>
+</ol>
+<ul>
+<li><code> tar -tzvf tarro_de_directorio.tgz</code></li>
+</ul>
 <p>Resumen de las opciones básicas de <span class="math inline">\(tar\)</span>:</p>
 <ul>
 <li>-c create: <strong>esta opción es obligatoria si se quiere crear un tarro</strong></li>
@@ -2095,6 +2102,7 @@ muscle -clw &lt; recA_Byuanmingense.fna 1&gt; recA_Byuanmingense_muscle.aln 2&gt
 <li>-j use bz2 compression. Esta compresión es todavía más compacta, y los archivos resultantes clásicamente llevan la extensión <span class="math inline">\(.bz2\)</span></li>
 <li>-v verbose command output, es decir, va imprimiendo a STDOUT los archivos que va procesando</li>
 <li>-f file; <strong>esta opción es obligatoria y tiene que ir al final del comando</strong></li>
+<li>-t List the contents of an archive.</li>
 </ul>
 <p>Es muy importante dominar <span class="math inline">\(tar\)</span> y <span class="math inline">\(gzip\)</span> y usarlos para: - ocupar el mínimo espacio posible en disco, un recurso siembre limitado en un ambiente multiusuario - comprimir archivos y directorios antes de moverlos entre máquinas mediante <span class="math inline">\(scp\)</span> o <span class="math inline">\(sftp\)</span> - poder desempacar y descomprimir distribuciones de código, las cuales casi invariablemente se distribuyen como tarros comprimidos.</p>
 <p>Ejemplos:</p>
@@ -2110,13 +2118,19 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 19 23:16 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 20 19:48 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4726 oct 19 23:16 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4728 oct 20 19:53 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
 ## ----------------------------</code></pre>
+<ul>
+<li>listar contenidos de un tarro comprimido</li>
+</ul>
+<pre class="bash"><code>tar -tzf fna_files.tgz      # la opción -t permite listar el contenido de un tarro</code></pre>
+<pre><code>## recA_Bradyrhizobium_vinuesa.fna
+## recA_Byuanmingense.fna</code></pre>
 <ul>
 <li>desempacado de un tarro comprimido</li>
 </ul>
@@ -2127,24 +2141,24 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 19 23:16 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 20 19:48 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4726 oct 19 23:16 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4728 oct 20 19:53 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
-<li>generación de archivos con compresión gnuzip mediante comando <span class="math inline">\(gzip\)</span></li>
+<li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
 </ul>
 <pre class="bash"><code>ls -l *fna                    # listamos archivos *fna 
 gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 19 23:16 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 20 19:48 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  879 oct 19 23:16 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  879 oct 20 19:48 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
-<li>descompresión de archivos *.gz con el comando <span class="math inline">\(gunzip\)</span></li>
+<li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
 <pre class="bash"><code>ls -l *fna*                  # listamos archivos *fna* (*fna.gz)
 echo &#39;----------------------------&#39;
@@ -2152,23 +2166,23 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  879 oct 19 23:16 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  879 oct 20 19:48 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 19 23:16 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 20 19:48 recA_Byuanmingense.fna</code></pre>
 <hr />
 </div>
 </div>
 <div id="tuberias-de-herramientas-unixlinux-para-filtrado-de-texto-conectadas-mediante-pipes" class="section level1">
 <h1><span class="header-section-number">8</span> Tuberias de herramientas UNIX/Linux para filtrado de texto conectadas mediante “pipes” <em>|</em></h1>
-<p>UNIX y Linux ofrecen una gran cantidad de herramientas para todo tipo de trabajos, cada una generalmente con muchas opciones. En bioinformática y genómica, los archivos de texto plano (ASCII) son los más comunes. Por ello es muy útil dominar algunas de las herramientas de filtrado de texto más comunes. Como ejemplo, trabajaremos con el archivo assembly_summary.txt, que contiene los datos de ensambles genómicos de la división RefSeq de GenBank. Lo descargué y comprimí con los siguientes comandos:</p>
+<p>UNIX y Linux ofrecen una gran cantidad de herramientas para todo tipo de funciones o labores, cada una generalmente con muchas opciones. En bioinformática y genómica, los archivos de texto plano (ASCII) son los más comunes. Por ello es muy útil dominar al menos algunas de las herramientas de filtrado de texto que ofrece el entorno GNU/Linux. Como ejemplo, trabajaremos con el archivo assembly_summary.txt.gz, que contiene los datos de ensambles genómicos de la división RefSeq de GenBank. Lo descargué y comprimí en Julio de 2019 con los siguientes comandos:</p>
 <pre><code>wget -c ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt
 
 # compresión gnu-zip del archivo
 gzip assembly_summary.txt</code></pre>
 <ul>
-<li>Exploremos el archivo comprimido (con compresión gnu zip) con usando los comandos <b>zless</b> o <b>zcat</b></li>
+<li>Exploremos el archivo comprimido (con compresión gnuzip) con usando los comandos <b>zless</b> o <b>zcat</b></li>
 </ul>
 <pre><code>zless assembly_summary.txt.gz </code></pre>
 <pre class="bash"><code># veamos las 5 primeras líneas del archivo
@@ -2488,7 +2502,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 dat=$(date | awk &#39;{print $3,$2,$6}&#39; | sed &#39;s/ //g&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in: $wkdir at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;oct19CDT&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;oct20CDT&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
 <h2><span class="header-section-number">10.4</span> Modificación de variables y operaciones con ellas</h2>
@@ -2573,8 +2587,8 @@ if [ -s &quot;$f&quot; ]; then
    echo &quot;$f exists and has size: $size&quot;
 fi
 </code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 19 23:17 empty_file
-## -rw-r--r-- 1 vinuesa vinuesa 6780296 sep 29 22:29 assembly_summary.txt.gz
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 20 19:53 empty_file
+## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
 ## assembly_summary.txt.gz exists and has size: 6.5M</code></pre>
@@ -2708,8 +2722,8 @@ rm *.cmds</code></pre>
 </div>
 </div>
 </div>
-<div id="bash-scripting---primeros-pasos" class="section level1">
-<h1><span class="header-section-number">11</span> <strong><span class="math inline">\(Bash\)</span> scripting</strong> - primeros pasos</h1>
+<div id="bash-scripting---siguientes-pasos" class="section level1">
+<h1><span class="header-section-number">11</span> <strong><span class="math inline">\(Bash\)</span> scripting</strong> - siguientes pasos</h1>
 <p>En esta sección veremos ejemplos muy sencillos de <strong>Shell scripts</strong> escritos en <span class="math inline">\(Bash\)</span> que integran varios aspectos de la sintaxis básica del lenguaje descritas en la sección anterior, así como extensiones adicionales como son <strong>argumentos posicionales</strong> y <strong>funciones</strong></p>
 <div id="la-shebang-line-usrbinenv-bash-y-permisos-de-ejecución---el-script-ls_dir" class="section level2">
 <h2><span class="header-section-number">11.1</span> la “<strong>shebang line</strong>” (#!/usr/bin/env bash) y permisos de ejecución - el script <em>ls_dir</em></h2>
