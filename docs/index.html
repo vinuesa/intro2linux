@@ -11,7 +11,7 @@
 
 <meta name="author" content="Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; http://www.ccg.unan.mx/~vinuesa" />
 
-<meta name="date" content="2020-10-21" />
+<meta name="date" content="2020-10-22" />
 
 <title>Sesión 1. Introducción al biocómputo en sistemas GNU/Linux</title>
 
@@ -374,7 +374,7 @@ summary {
 
 <h1 class="title toc-ignore">Sesión 1. Introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a></h4>
-<h4 class="date">2020-10-21</h4>
+<h4 class="date">2020-10-22</h4>
 
 </div>
 
@@ -477,8 +477,13 @@ summary {
 <li><a href="#sintaxis-condensada-de-awk"><span class="toc-section-number">9.1.3</span> Sintaxis condensada de AWK</a></li>
 </ul></li>
 <li><a href="#ejemplos-básicos-pero-muy-útiles-de-uso-de-awk"><span class="toc-section-number">9.2</span> Ejemplos básicos pero muy útiles de uso de AWK</a><ul>
-<li><a href="#filtrado-de-archivos-con-awk"><span class="toc-section-number">9.2.1</span> filtrado de archivos con AWK</a></li>
-<li><a href="#tutoriales-recomendados-para-profundizar-en-awk"><span class="toc-section-number">9.2.2</span> Tutoriales recomendados para profundizar en AWK</a></li>
+<li><a href="#filtrado-de-archivos-con-awk---procesadores-en-proccpuinfo"><span class="toc-section-number">9.2.1</span> filtrado de archivos con AWK - procesadores en /proc/cpuinfo</a></li>
+<li><a href="#filtrado-de-archivos-con-awk---suma-de-tamaños-de-archivos-en-kb-y-mb"><span class="toc-section-number">9.2.2</span> filtrado de archivos con AWK - suma de tamaños de archivos en Kb y Mb</a></li>
+<li><a href="#uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla"><span class="toc-section-number">9.2.3</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</a></li>
+<li><a href="#transforma-la-salida-del-comando-uniq--c-en-un-formato-de-campos-separados-por-comas-archivo-csv-con-cabecera"><span class="toc-section-number">9.2.4</span> Transforma la salida del comando <span class="math inline">\(uniq\ -c\)</span> en un formato de campos separados por comas (archivo <span class="math inline">\(csv\)</span>) con cabecera</a></li>
+<li><a href="#uso-de-awk-para-trabajar-con-secuencias-fasta"><span class="toc-section-number">9.2.5</span> Uso de <span class="math inline">\(awk\)</span> para trabajar con secuencias fasta</a></li>
+<li><a href="#el-scritp-filter_fasta_sequences.awk"><span class="toc-section-number">9.2.6</span> el scritp filter_fasta_sequences.awk</a></li>
+<li><a href="#tutoriales-recomendados-para-profundizar-en-awk"><span class="toc-section-number">9.2.7</span> Tutoriales recomendados para profundizar en AWK</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#inicios-de-programación-en-bash"><span class="toc-section-number">10</span> Inicios de programación en <span class="math inline">\(Bash\)</span></a><ul>
@@ -534,7 +539,7 @@ summary {
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
 <p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2020-10-21) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>.</p>
+<p>Las versión actual (v.2020-10-22) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
@@ -674,12 +679,12 @@ ls | head</code></pre>
 ## blast-imager.pl
 ## docs
 ## fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## find_dir
-## intro2linux</code></pre>
+## filter_fasta_sequences.awk
+## find_dir</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
-<pre><code>## total 59240
-## drwxr-xr-x 7 vinuesa vinuesa     4096 oct 21 23:04 .
+<pre><code>## total 59260
+## drwxr-xr-x 7 vinuesa vinuesa     4096 oct 22 12:20 .
 ## drwxr-xr-x 3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
@@ -689,28 +694,29 @@ ls -al </code></pre>
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## drwxr-xr-x 3 vinuesa vinuesa     4096 oct 21 09:35 docs
 ## -rw-r--r-- 1 vinuesa vinuesa   222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
+## -rwxr-xr-x 1 vinuesa vinuesa      857 oct 22 12:14 filter_fasta_sequences.awk
 ## -rwxr-xr-x 1 vinuesa vinuesa     1237 oct 14 22:43 find_dir
-## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 21 22:06 .git
+## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 22 11:39 .git
 ## drwxr-xr-x 4 vinuesa vinuesa     4096 sep 29 22:56 intro2linux
 ## -rw-r--r-- 1 vinuesa vinuesa  3163754 oct 13 13:39 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r-- 1 vinuesa vinuesa    35149 sep 29 22:15 LICENSE
 ## -rw-r--r-- 1 vinuesa vinuesa    10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 21 23:04 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 22 12:20 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-r--r-- 1 vinuesa vinuesa     1705 sep 29 22:18 linux_very_basic_commands_table.csv
 ## -rwxr-xr-x 1 vinuesa vinuesa      493 oct 14 22:43 ls_dir
 ## drwxr-xr-x 2 vinuesa vinuesa     4096 oct  6 16:39 participantes_Taller_CG_FC
 ## -rwxr-xr-x 1 vinuesa vinuesa     2884 oct 14 22:43 prot2cdnAlns.pl
 ## -rw-r--r-- 1 vinuesa vinuesa     6006 oct 20 20:03 README.md
 ## -rw-r--r-- 1 vinuesa vinuesa    77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa    17704 oct 21 23:04 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa    28497 oct 21 23:04 recA_Byuanmingense_muscle.aln
-## -rw-rw-r-- 1 vinuesa vinuesa        0 oct 20 19:53 .Rhistory
+## -rw-r--r-- 1 vinuesa vinuesa    17704 oct 22 12:20 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa    28497 oct 22 12:20 recA_Byuanmingense_muscle.aln
+## -rw-rw-r-- 1 vinuesa vinuesa        0 oct 22 11:30 .Rhistory
 ## -rwxr-xr-x 1 vinuesa vinuesa      239 oct 14 22:43 split_fasta.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa       27 oct  7 12:21 TODO.txt
 ## -rwxr-xr-x 1 vinuesa vinuesa     3402 oct 14 22:43 translate_fastas.pl
-## -rw-r--r-- 1 vinuesa vinuesa  1220455 oct 21 23:04 working_with_linux_commands.html
+## -rw-r--r-- 1 vinuesa vinuesa  1231960 oct 22 12:20 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa   382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   105722 oct 21 23:05 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa   108115 oct 22 12:24 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa       41 oct 13 19:24 zoom.url</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del directorio raiz</h4>
@@ -736,8 +742,8 @@ ls -al </code></pre>
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
 ## drwxr-xr-x   4 root root  4096 oct 20 16:52 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4560 oct 21 17:30 dev
-## drwxr-xr-x 155 root root 12288 oct 21 17:40 etc
+## drwxr-xr-x  21 root root  4560 oct 22 12:44 dev
+## drwxr-xr-x 155 root root 12288 oct 22 13:39 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
 ## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib32 -&gt; usr/lib32
@@ -747,9 +753,9 @@ ls -al </code></pre>
 ## drwxr-xr-x   3 root root  4096 oct  5 20:41 media
 ## drwxr-xr-x   2 root root  4096 jul 31 11:27 mnt
 ## drwxr-xr-x   5 root root  4096 oct  5 12:26 opt
-## dr-xr-xr-x 365 root root     0 oct 21 17:28 proc
+## dr-xr-xr-x 391 root root     0 oct 22 09:35 proc
 ## drwx------   8 root root  4096 oct 16 19:12 root
-## drwxr-xr-x  34 root root   960 oct 21 17:37 run
+## drwxr-xr-x  34 root root  1000 oct 22 10:34 run
 ## lrwxrwxrwx   1 root root     8 oct  4 14:42 sbin -&gt; usr/sbin
 ## drwxr-xr-x  10 root root  4096 oct 16 19:40 snap</code></pre>
 </div>
@@ -1140,8 +1146,8 @@ pwd</code></pre>
 ## blast-imager.pl
 ## docs
 ## fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## find_dir
-## intro2linux</code></pre>
+## filter_fasta_sequences.awk
+## find_dir</code></pre>
 </div>
 </div>
 </div>
@@ -1241,7 +1247,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 <p>La mayoría de los programas ejecutables del sistema proveen un formato estandarizado de documentación que se despliega en la consola usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                                                                                  User Commands                                                                                 CUT(1)
+<pre><code>## CUT(1)                                                                            User Commands                                                                           CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -1517,14 +1523,14 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 59232
+<pre><code>## total 59252
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-r--r-- 1 vinuesa vinuesa     5499 oct 14 22:24 bash_script_template_with_getopts.sh
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
-## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 21 23:05 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 22 13:39 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## drwxr-xr-x 3 vinuesa vinuesa     4096 oct 21 09:35 docs
 ## -rw-r--r-- 1 vinuesa vinuesa   222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png</code></pre>
 <ul>
@@ -1906,7 +1912,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 oct 21 23:05 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 oct 22 13:39 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -1925,7 +1931,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 21 23:05 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 22 13:39 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2054,15 +2060,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 21 23:05 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 21 23:05 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 22 13:39 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 22 13:39 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 21 23:05 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 22 13:39 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2156,9 +2162,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 21 23:04 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 22 12:20 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4728 oct 21 23:05 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4728 oct 22 13:39 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2179,9 +2185,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 21 23:04 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 22 12:20 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4728 oct 21 23:05 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4728 oct 22 13:39 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2191,10 +2197,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 21 23:04 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 22 12:20 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  879 oct 21 23:04 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  879 oct 22 12:20 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2204,11 +2210,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  879 oct 21 23:04 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  879 oct 22 12:20 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 21 23:04 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 22 12:20 recA_Byuanmingense.fna</code></pre>
 <hr />
 </div>
 </div>
@@ -2440,8 +2446,8 @@ ORS      (Output Return Separator) separador de registro de la salida (\n por de
 <div id="ejemplos-básicos-pero-muy-útiles-de-uso-de-awk" class="section level2">
 <h2><span class="header-section-number">9.2</span> Ejemplos básicos pero muy útiles de uso de AWK</h2>
 <p>No podemos aprender aquí más que algunos idiomas de <span class="math inline">\(AWK\)</span> muy útiles, como veremos seguidamente, que les mostrarán la implementación de algunas de las variables y elementos de sintaxis listados arriba. Pero serán suficientes para apreciar la lógica, simpleza y utilidad de <span class="math inline">\(AWK\)</span></p>
-<div id="filtrado-de-archivos-con-awk" class="section level3">
-<h3><span class="header-section-number">9.2.1</span> filtrado de archivos con AWK</h3>
+<div id="filtrado-de-archivos-con-awk---procesadores-en-proccpuinfo" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> filtrado de archivos con AWK - procesadores en /proc/cpuinfo</h3>
 <ul>
 <li>Cuenta el número de procesadores de tu sistema:</li>
 </ul>
@@ -2497,16 +2503,22 @@ head -20 /proc/cpuinfo | awk &#39;length &lt;= 12&#39;</code></pre>
 <pre class="bash"><code># como ven en la salida anterior, el campo 4 contiene el tamaño de caché de cada procesador
 awk &#39;/cache size/{size+=$4}END{print &quot;total chache size: &quot;, size, &quot;Kb, &quot;, size/1000, &quot;Mb&quot;}&#39;  /proc/cpuinfo</code></pre>
 <pre><code>## total chache size:  147456 Kb,  147.456 Mb</code></pre>
+</div>
+<div id="filtrado-de-archivos-con-awk---suma-de-tamaños-de-archivos-en-kb-y-mb" class="section level3">
+<h3><span class="header-section-number">9.2.2</span> filtrado de archivos con AWK - suma de tamaños de archivos en Kb y Mb</h3>
 <ul>
 <li>Suma el tamaño en Mb de los archivos working_with_linux_commands.* en el directorio actual</li>
 </ul>
 <pre class="bash"><code># Noten que puedo partir líneas de comandos muy largas usando \ antes de introducir un salto de línea ;)
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{print &quot;total size of working_with_linux_commands.* files is:&quot;, s/1000000, &quot;Mb&quot;}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1220455 oct 21 23:04 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1231960 oct 22 12:20 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa  105722 oct 21 23:05 working_with_linux_commands.Rmd
-## total size of working_with_linux_commands.* files is: 1.70858 Mb</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  108115 oct 22 12:24 working_with_linux_commands.Rmd
+## total size of working_with_linux_commands.* files is: 1.72248 Mb</code></pre>
+</div>
+<div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
+<h3><span class="header-section-number">9.2.3</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
 <ul>
 <li>Cuenta las entradas para el género <em>Stenotropohomonas</em> en la tabla assembly_summary.txt.gz</li>
 </ul>
@@ -2515,11 +2527,12 @@ ls -l working_with_linux_commands.* | \
 zcat assembly_summary.txt.gz | \
  awk &#39;/\sStenotrophomonas\s/{c++}; END{print &quot;Hay&quot;, c, &quot;genomas de Stenotrophomonas&quot;}&#39;</code></pre>
 <pre><code>## Hay 422 genomas de Stenotrophomonas</code></pre>
-<ul>
-<li>Transforma la salida del comando <span class="math inline">\(uniq\ -c\)</span> en un formato de campos separados por comas (archivo <span class="math inline">\(csv\)</span>) con cabecera
+</div>
+<div id="transforma-la-salida-del-comando-uniq--c-en-un-formato-de-campos-separados-por-comas-archivo-csv-con-cabecera" class="section level3">
+<h3><span class="header-section-number">9.2.4</span> Transforma la salida del comando <span class="math inline">\(uniq\ -c\)</span> en un formato de campos separados por comas (archivo <span class="math inline">\(csv\)</span>) con cabecera</h3>
+<p>Vamos a trabajar con el archivo assembly_summary.txt.gz usando herramientas de filtrado que ya conocemos, pero la salida de la tubería la vamos a editar con <span class="math inline">\(AWK\)</span> para generar un formato tabular</p>
 <ul>
 <li>veamos primero la salida a modificar con <span class="math inline">\(AWK\)</span></li>
-</ul></li>
 </ul>
 <pre class="bash"><code># Primero les muestro la salida que quiero transformar con AWK a formato tabular, 
 #  generada por herramientas estándar de filtrado que culminando con un sort | uniq -c 
@@ -2572,20 +2585,171 @@ awk &#39;BEGIN{print &quot;species,count&quot;; OFS=&quot;,&quot;}{print $2 &quo
 ## Stenotrophomonas_daejeonensis,1
 ## Stenotrophomonas_chelatiphaga,1
 ## Stenotrophomonas_bentonitica,1</code></pre>
-<ul>
-<li>cuenta el número de secuencias en recA_Bradyrhizobium_vinuesa.fna</li>
-</ul>
+</div>
+<div id="uso-de-awk-para-trabajar-con-secuencias-fasta" class="section level3">
+<h3><span class="header-section-number">9.2.5</span> Uso de <span class="math inline">\(awk\)</span> para trabajar con secuencias fasta</h3>
+<p>Awk es muy poderoso y adecuado para trabajar con secuencias en archivos multifasta. Veamos unos ejemplos.</p>
+<div id="cuenta-el-número-de-secuencias-en-reca_bradyrhizobium_vinuesa.fna" class="section level4">
+<h4><span class="header-section-number">9.2.5.1</span> cuenta el número de secuencias en recA_Bradyrhizobium_vinuesa.fna</h4>
 <pre class="bash"><code>awk &#39;/^&gt;/{s++}; END{print FILENAME, &quot;has&quot;, s, &quot;sequences&quot;}&#39; recA_Bradyrhizobium_vinuesa.fna</code></pre>
 <pre><code>## recA_Bradyrhizobium_vinuesa.fna has 125 sequences</code></pre>
-<ul>
-<li>¿cuántos nucleótidos hay en recA_Bradyrhizobium_vinuesa.fna?</li>
-</ul>
+</div>
+<div id="cuántos-nucleótidos-hay-en-reca_bradyrhizobium_vinuesa.fna" class="section level4">
+<h4><span class="header-section-number">9.2.5.2</span> ¿cuántos nucleótidos hay en recA_Bradyrhizobium_vinuesa.fna?</h4>
 <pre class="bash"><code>awk &#39;{if(! /^&gt;/)l+=length($0)}; END{print FILENAME, &quot;has&quot;, l, &quot;nts or&quot;, l/1000, &quot;kb&quot;}&#39; recA_Bradyrhizobium_vinuesa.fna</code></pre>
 <pre><code>## recA_Bradyrhizobium_vinuesa.fna has 63795 nts or 63.795 kb</code></pre>
 </div>
+</div>
+<div id="el-scritp-filter_fasta_sequences.awk" class="section level3">
+<h3><span class="header-section-number">9.2.6</span> el scritp filter_fasta_sequences.awk</h3>
+<p>Para finalizar veamos un <span class="math inline">\(script\)</span> muy sencillo pero sin duda últil escrito en <span class="math inline">\(AWK\)</span> para filtrar secuencias de un archivo multifasta, pasándole una cadena de cadena de caracteres que el <span class="math inline">\(script\)</span> usará para filtrar el archivo, imprimiendo sólo aquellas secuencias que coinciden con la cadena de filtrado.</p>
+<p>Veamos el <span class="math inline">\(script\)</span> <a href="https://github.com/vinuesa/intro2linux/blob/master/filter_fasta_sequences.awk">filter_fasta_sequences.awk</a>, disponible en el repositorio <a href="https://github.com/vinuesa/intro2linux">GitHub - intro2linux</a>.</p>
+<ul>
+<li>sus permisos</li>
+</ul>
+<pre class="bash"><code>[ -s filter_fasta_sequences.awk ] &amp;&amp; ls -l filter_fasta_sequences.awk</code></pre>
+<pre><code>## -rwxr-xr-x 1 vinuesa vinuesa 857 oct 22 12:14 filter_fasta_sequences.awk</code></pre>
+<ul>
+<li>el código</li>
+</ul>
+<pre class="bash"><code>[ -s filter_fasta_sequences.awk ] &amp;&amp; cat filter_fasta_sequences.awk</code></pre>
+<pre><code>## #!/usr/bin/awk -f
+## 
+## # AUTHOR: Pablo Vinuesa, @pvinmex, https://www.ccg.unam.mx/~vinuesa/
+## # source: https://github.com/vinuesa/intro2linux
+## # VERSION:0.1
+## # Usage:  filter_fasta_sequences.awk  &lt;filtering_string&gt;  &lt;multifasta_file&gt;
+## #   Read a string from STDIN to filter fasta_file, 
+## #   to print out only the subset of the fasta_file 
+## #   matching the filtering string
+## 
+## 
+## BEGIN   {
+##          if  (ARGC &lt; 3)
+##              Usage_Exit();
+## 
+## 
+##          s = ARGV [1];
+##          delete ARGV [1];
+## 
+## 
+##   RS=&quot;&gt;&quot;
+##         }
+## 
+## 
+## # MAIN; if line matches filtering string, print record ;)
+## $0~s{print &quot;&gt;&quot;$0}
+## 
+## 
+## # function definition
+## function  Usage_Exit  ()
+##   {
+##    print &quot;# Usage:  filter_fasta_sequences.awk &lt;filtering_string&gt;  &lt;multifasta_file&gt;&quot;;
+##    print &quot;#   Read a string from STDIN to filter fasta_file,&quot;;
+##    print &quot;#   to print out only the subset of the fasta_file&quot;;
+##    exit;
+##   }</code></pre>
+<ul>
+<li>Llamada al <span class="math inline">\(script\)</span> sin argumentos imprime su ayuda</li>
+</ul>
+<pre class="bash"><code># como el directorio donde vive el script no está en el path, a pesar de ser ejecutable, 
+#  hay que llamarlo indicando el path absoluto o relativo al mismo
+./filter_fasta_sequences.awk
+</code></pre>
+<pre><code>## # Usage:  filter_fasta_sequences.awk &lt;filtering_string&gt;  &lt;multifasta_file&gt;
+## #   Read a string from STDIN to filter fasta_file,
+## #   to print out only the subset of the fasta_file</code></pre>
+<ul>
+<li>Llamada al <span class="math inline">\(script\)</span> con los <strong>argumentos posicionales</strong> <cadena_de_filtrado> <nombre_archivo_fasta_a_filtrar></li>
+</ul>
+<pre class="bash"><code># como el directorio donde vive el script no está en el path, a pesar de ser ejecutable, 
+#  hay que llamarlo indicando el path absoluto o relativo al mismo
+# Le pasamos el nombre de la cepa BES-1 que está en el archivo recA_Bradyrhizobium_vinuesa.fna
+./filter_fasta_sequences.awk BES-1 recA_Bradyrhizobium_vinuesa.fna</code></pre>
+<pre><code>## &gt;AY591548.1 Bradyrhizobium canariense bv. genistearum strain BES-1 recombination protein A (recA) gene, partial cds
+## ATGAAGCTCGGCAAGAACGACCGCTCGATGGACGTCGAGGCGGTCTCCTCGGGCTCGCTCGGGCTCGACA
+## TCGCGCTCGGGATCGGCGGCCTGCCGAAGGGGCGCGTCGTGGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCGCTGCACACGGTGGCGGAAGGGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCC
+## GAACACGCGCTCGACCCGGTCTATGCGCGCAAGCTGGGCGTCAATATCGACGAACTCCTGATTTCCCAGC
+## CGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCCGGCGCGGTCGACGTGCTGGT
+## GATCGATTCGGTCGCGGCCCTGGTGCCGAAGGCCGAGCTCGAGGGCGAAATGGGCGATGCGCTGCCGGGT
+## CTGCAGGCGCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCGTCCATCAACAAGTCCAACACCATGG
+## TGATCTTCTTCAACCAGATCC</code></pre>
+<ul>
+<li>Filtra las secuencias sin clasificar (genosp)</li>
+</ul>
+<pre class="bash"><code># como el directorio donde vive el script no está en el path, a pesar de ser ejecutable, 
+#  hay que llamarlo indicando el path absoluto o relativo al mismo
+# Le pasamos el nombre de la cepa BES-1 que está en el archivo recA_Bradyrhizobium_vinuesa.fna
+./filter_fasta_sequences.awk genosp recA_Bradyrhizobium_vinuesa.fna </code></pre>
+<pre><code>## &gt;AY653750.1 Bradyrhizobium genosp. beta strain BC-MK1 recombination protein A (recA) gene, partial cds
+## ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCAGTGTCCTCCGGTTCGCTCGGGCTCGATA
+## TCGCGCTCGGCATCGGCGGCCTGCCCAAGGGACGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCGCTGCATACGGTGGCGGAAGCACAGAAGAAGGGTGGTATCTGCGCTTTCATCGACGCC
+## GAGCACGCGCTCGACCCGGTCTATGCGAGGAAGCTCGGGGTCAACATCGACGAGCTCCTGATCTCGCAGC
+## CGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGATCGGGCGCGGTCGACGTGATGGT
+## GATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTTGAAGGCGAGATGGGCGATGCGCTGCCGGGA
+## CTTCAAGCGCGGTTGATGAGCCAGGCGCTGCGGAAGCTGACGGCCTCGATCAACAAGTCCAACACCATGG
+## TGATCTTCATCAACCAGATCC
+## 
+## 
+## &gt;AY591567.1 Bradyrhizobium genosp. alpha strain CIAT3101 recombination protein A (recA) gene, partial cds
+## ATGAAGCTCGGCAAGAACGACCGTTCGATGGATATCGAGGCGGTGTCGTCCGGGTCGCTCGGGCTGGATA
+## TCGCGCTCGGCATCGGCGGCTTACCGAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCGTCAGGCAA
+## GACCACGCTGGCGCTGCACACGGTGGCGGAAGCCCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCC
+## GAACACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCCCAGC
+## CCGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTCGACGTGCTGGT
+## GGTCGATTCGGTCGCGGCACTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGT
+## CTGCAGGCGCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGG
+## TGATCTTCATCAACCAGATCC
+## 
+## 
+## &gt;AY591554.1 Bradyrhizobium genosp. beta strain BC-MK6 recombination protein A (recA) gene, partial cds
+## ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGCCTCGATA
+## TCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACGACGCTGGCGCTGCATACGGTGGCGGAAGCACAGAAGAAGGGCGGAATTTGCGCCTTCATCGACGCC
+## GAGCACGCGCTCGACCCGGTCTATGCGAGGAAGCTCGGCGTCAACATCGACGAGCTGCTGATCTCGCAGC
+## CCGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGCGCCGTCGACGTGTTGGT
+## GATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGA
+## CTTCAAGCGCGGTTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCGATCAACAAGTCCAACACCATGG
+## TGATCTTCATCAACCAGATCC
+## 
+## 
+## &gt;AY591551.1 Bradyrhizobium genosp. beta strain BRE-1 recombination protein A (recA) gene, partial cds
+## ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCAGTGTCCTCCGGCTCGCTCGGGCTCGATA
+## TCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCC
+## GAGCACGCGCTCGACCCGGTCTATGCGAGGAAGCTCGGGGTCAACATCGACGAGCTCCTGATCTCTCAGC
+## CGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGTTCGGGCGCGGTCGACGTGATGGT
+## GATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGACGCGCTGCCGGGA
+## CTTCAAGCGCGGTTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCGATCAACAAGTCCAACACCATGG
+## TGATCTTCATCAACCAGATCC
+## 
+## 
+## &gt;AY591543.1 Bradyrhizobium genosp. beta strain BC-P6 recombination protein A (recA) gene, partial cds
+## ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCAGTGTCCTCCGGTTCGCTCGGGCTCGATA
+## TCGCGCTCGGCATCGGCGGCCTGCCCAAGGGACGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCGCTGCATACGGTGGCGGAAGCACAGAAGAAGGGTGGTATCTGCGCTTTCATCGACGCC
+## GAGCACGCGCTCGACCCGGTCTATGCGAGGAAGCTCGGGGTCAACATCGACGAGCTCCTGATCTCGCAGC
+## CGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGATCGGGCGCGGTCGACGTGATGGT
+## GATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTTGAAGGCGAGATGGGCGATGCGCTGCCGGGA
+## CTTCAAGCGCGGTTGATGAGCCAGGCGCTGCGGAAGCTGACGGCCTCGATCAACAAGTCCAACACCATGG
+## TGATCTTCATCAACCAGATCC
+## 
+## 
+## &gt;AY591540.1 Bradyrhizobium genosp. alpha bv. genistearum strain BC-C1 recombination protein A (recA) gene, partial cds
+## ATGAAGCTTGGCAAGAACGACCGCTCGATGGATGTCGAGGCGGTGTCGTCCGGGTCGCTTGGGCTGGATA
+## TCGCACTCGGCATCGGCGGCCTGCCCAAGGGCCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCGCTGCATACGGTGGCGGAGGCCCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCC
+## GAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGGGTCAACATCGACGAACTCCTGATCTCGCAAC
+## CGGATACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGTTCGGGCGCGGTCGACGTGCTGGT
+## GATCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGT
+## CTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTCACGGCCTCGATCAACAAGTCCAACACCATGG
+## TGATCTTTATCAACCAGATCC</code></pre>
+</div>
 <div id="tutoriales-recomendados-para-profundizar-en-awk" class="section level3">
-<h3><span class="header-section-number">9.2.2</span> Tutoriales recomendados para profundizar en AWK</h3>
-<p>Te aseguro que aprender <span class="math inline">\(AWK\)</span> vale la pena absolutamente. Es un lenguaje compacto que puedes aprender en un fin de semana dedicado a ello. No sólo te convertirá rápidamente en un usuario avanzado del <span class="math inline">\(Shell\)</span>, sino que te permitirá apreciar y aprovechar mucho mejor su poder, versatilidad y belleza.</p>
+<h3><span class="header-section-number">9.2.7</span> Tutoriales recomendados para profundizar en AWK</h3>
+<p>Aprender <span class="math inline">\(AWK\)</span> es muy valioso y redituable. Es un lenguaje compacto que puedes aprender en un fin de semana dedicado a ello. No sólo te convertirá rápidamente en un usuario avanzado del <span class="math inline">\(Shell\)</span>, sino que te permitirá apreciar y aprovechar mucho mejor su poder, versatilidad y belleza.</p>
 <ul>
 <li><a href="https://ferd.ca/awk-in-20-minutes.html">tutorial de unos 20 min</a></li>
 <li><a href="https://www.grymoire.com/Unix/Awk.html">tutorial extenso, excelente</a></li>
@@ -2661,7 +2825,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 dat=$(date | awk &#39;{print $3,$2,$6}&#39; | sed &#39;s/ //g&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in: $wkdir at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;oct21CDT&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;oct22CDT&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
 <h2><span class="header-section-number">10.4</span> Modificación de variables y operaciones con ellas</h2>
@@ -2746,7 +2910,7 @@ if [ -s &quot;$f&quot; ]; then
    echo &quot;$f exists and has size: $size&quot;
 fi
 </code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 21 23:05 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 22 13:39 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
