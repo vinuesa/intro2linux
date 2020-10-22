@@ -10,7 +10,7 @@
 
 
 BEGIN   {
-         if  (ARGC < 1)
+         if  (ARGC < 2)
              Usage_Exit();
 
 
