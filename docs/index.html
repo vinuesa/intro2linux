@@ -9,11 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; http://www.ccg.unan.mx/~vinuesa" />
+<meta name="author" content="Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; http://www.ccg.unan.mx/~vinuesa; @pvinmex" />
 
-<meta name="date" content="2020-10-22" />
+<meta name="date" content="2020-10-23" />
 
-<title>Sesión 1. Introducción al biocómputo en sistemas GNU/Linux</title>
+<title>Tutorial de introducción al biocómputo en sistemas GNU/Linux</title>
 
 <script>/*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
 !function(a,b){"object"==typeof module&&"object"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error("jQuery requires a window with a document");return b(a)}:b(a)}("undefined"!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l="1.11.3",m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:"",length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0>a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0>a?b:0);return this.pushStack(c>=0&&b>c?[this[c]]:[])},end:function(){return this.prevObject||this.constructor(null)},push:f,sort:c.sort,splice:c.splice},m.extend=m.fn.extend=function(){var a,b,c,d,e,f,g=arguments[0]||{},h=1,i=arguments.length,j=!1;for("boolean"==typeof g&&(j=g,g=arguments[h]||{},h++),"object"==typeof g||m.isFunction(g)||(g={}),h===i&&(g=this,h--);i>h;h++)if(null!=(e=arguments[h]))for(d in e)a=g[d],c=e[d],g!==c&&(j&&c&&(m.isPlainObject(c)||(b=m.isArray(c)))?(b?(b=!1,f=a&&m.isArray(a)?a:[]):f=a&&m.isPlainObject(a)?a:{},g[d]=m.extend(j,f,c)):void 0!==c&&(g[d]=c));return g},m.extend({expando:"jQuery"+(l+Math.random()).replace(/\D/g,""),isReady:!0,error:function(a){throw new Error(a)},noop:function(){},isFunction:function(a){return"function"===m.type(a)},isArray:Array.isArray||function(a){return"array"===m.type(a)},isWindow:function(a){return null!=a&&a==a.window},isNumeric:function(a){return!m.isArray(a)&&a-parseFloat(a)+1>=0},isEmptyObject:function(a){var b;for(b in a)return!1;return!0},isPlainObject:function(a){var b;if(!a||"object"!==m.type(a)||a.nodeType||m.isWindow(a))return!1;try{if(a.constructor&&!j.call(a,"constructor")&&!j.call(a.constructor.prototype,"isPrototypeOf"))return!1}catch(c){return!1}if(k.ownLast)for(b in a)return j.call(a,b);for(b in a);return void 0===b||j.call(a,b)},type:function(a){return null==a?a+"":"object"==typeof a||"function"==typeof a?h[i.call(a)]||"object":typeof a},globalEval:function(b){b&&m.trim(b)&&(a.execScript||function(b){a.eval.call(a,b)})(b)},camelCase:function(a){return a.replace(o,"ms-").replace(p,q)},nodeName:function(a,b){return a.nodeName&&a.nodeName.toLowerCase()===b.toLowerCase()},each:function(a,b,c){var d,e=0,f=a.length,g=r(a);if(c){if(g){for(;f>e;e++)if(d=b.apply(a[e],c),d===!1)break}else for(e in a)if(d=b.apply(a[e],c),d===!1)break}else if(g){for(;f>e;e++)if(d=b.call(a[e],e,a[e]),d===!1)break}else for(e in a)if(d=b.call(a[e],e,a[e]),d===!1)break;return a},trim:function(a){return null==a?"":(a+"").replace(n,"")},makeArray:function(a,b){var c=b||[];return null!=a&&(r(Object(a))?m.merge(c,"string"==typeof a?[a]:a):f.call(c,a)),c},inArray:function(a,b,c){var d;if(b){if(g)return g.call(b,a,c);for(d=b.length,c=c?0>c?Math.max(0,d+c):c:0;d>c;c++)if(c in b&&b[c]===a)return c}return-1},merge:function(a,b){var c=+b.length,d=0,e=a.length;while(c>d)a[e++]=b[d++];if(c!==c)while(void 0!==b[d])a[e++]=b[d++];return a.length=e,a},grep:function(a,b,c){for(var d,e=[],f=0,g=a.length,h=!c;g>f;f++)d=!b(a[f],f),d!==h&&e.push(a[f]);return e},map:function(a,b,c){var d,f=0,g=a.length,h=r(a),i=[];if(h)for(;g>f;f++)d=b(a[f],f,c),null!=d&&i.push(d);else for(f in a)d=b(a[f],f,c),null!=d&&i.push(d);return e.apply([],i)},guid:1,proxy:function(a,b){var c,e,f;return"string"==typeof b&&(f=a[b],b=a,a=f),m.isFunction(a)?(c=d.call(arguments,2),e=function(){return a.apply(b||this,c.concat(d.call(arguments)))},e.guid=a.guid=a.guid||m.guid++,e):void 0},now:function(){return+new Date},support:k}),m.each("Boolean Number String Function Array Date RegExp Object Error".split(" "),function(a,b){h["[object "+b+"]"]=b.toLowerCase()});function r(a){var b="length"in a&&a.length,c=m.type(a);return"function"===c||m.isWindow(a)?!1:1===a.nodeType&&b?!0:"array"===c||0===b||"number"==typeof b&&b>0&&b-1 in a}var s=function(a){var b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u="sizzle"+1*new Date,v=a.document,w=0,x=0,y=ha(),z=ha(),A=ha(),B=function(a,b){return a===b&&(l=!0),0},C=1<<31,D={}.hasOwnProperty,E=[],F=E.pop,G=E.push,H=E.push,I=E.slice,J=function(a,b){for(var c=0,d=a.length;d>c;c++)if(a[c]===b)return c;return-1},K="checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",L="[\\x20\\t\\r\\n\\f]",M="(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",N=M.replace("w","w#"),O="\\["+L+"*("+M+")(?:"+L+"*([*^$|!~]?=)"+L+"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|("+N+"))|)"+L+"*\\]",P=":("+M+")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|"+O+")*)|.*)\\)|)",Q=new RegExp(L+"+","g"),R=new RegExp("^"+L+"+|((?:^|[^\\\\])(?:\\\\.)*)"+L+"+$","g"),S=new RegExp("^"+L+"*,"+L+"*"),T=new RegExp("^"+L+"*([>+~]|"+L+")"+L+"*"),U=new RegExp("="+L+"*([^\\]'\"]*?)"+L+"*\\]","g"),V=new RegExp(P),W=new RegExp("^"+N+"$"),X={ID:new RegExp("^#("+M+")"),CLASS:new RegExp("^\\.("+M+")"),TAG:new RegExp("^("+M.replace("w","w*")+")"),ATTR:new RegExp("^"+O),PSEUDO:new RegExp("^"+P),CHILD:new RegExp("^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\("+L+"*(even|odd|(([+-]|)(\\d*)n|)"+L+"*(?:([+-]|)"+L+"*(\\d+)|))"+L+"*\\)|)","i"),bool:new RegExp("^(?:"+K+")$","i"),needsContext:new RegExp("^"+L+"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\("+L+"*((?:-\\d)?\\d*)"+L+"*\\)|)(?=[^-]|$)","i")},Y=/^(?:input|select|textarea|button)$/i,Z=/^h\d$/i,$=/^[^{]+\{\s*\[native \w/,_=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,aa=/[+~]/,ba=/'|\\/g,ca=new RegExp("\\\\([\\da-f]{1,6}"+L+"?|("+L+")|.)","ig"),da=function(a,b,c){var d="0x"+b-65536;return d!==d||c?b:0>d?String.fromCharCode(d+65536):String.fromCharCode(d>>10|55296,1023&d|56320)},ea=function(){m()};try{H.apply(E=I.call(v.childNodes),v.childNodes),E[v.childNodes.length].nodeType}catch(fa){H={apply:E.length?function(a,b){G.apply(a,I.call(b))}:function(a,b){var c=a.length,d=0;while(a[c++]=b[d++]);a.length=c-1}}}function ga(a,b,d,e){var f,h,j,k,l,o,r,s,w,x;if((b?b.ownerDocument||b:v)!==n&&m(b),b=b||n,d=d||[],k=b.nodeType,"string"!=typeof a||!a||1!==k&&9!==k&&11!==k)return d;if(!e&&p){if(11!==k&&(f=_.exec(a)))if(j=f[1]){if(9===k){if(h=b.getElementById(j),!h||!h.parentNode)return d;if(h.id===j)return d.push(h),d}else if(b.ownerDocument&&(h=b.ownerDocument.getElementById(j))&&t(b,h)&&h.id===j)return d.push(h),d}else{if(f[2])return H.apply(d,b.getElementsByTagName(a)),d;if((j=f[3])&&c.getElementsByClassName)return H.apply(d,b.getElementsByClassName(j)),d}if(c.qsa&&(!q||!q.test(a))){if(s=r=u,w=b,x=1!==k&&a,1===k&&"object"!==b.nodeName.toLowerCase()){o=g(a),(r=b.getAttribute("id"))?s=r.replace(ba,"\\$&"):b.setAttribute("id",s),s="[id='"+s+"'] ",l=o.length;while(l--)o[l]=s+ra(o[l]);w=aa.test(a)&&pa(b.parentNode)||b,x=o.join(",")}if(x)try{return H.apply(d,w.querySelectorAll(x)),d}catch(y){}finally{r||b.removeAttribute("id")}}}return i(a.replace(R,"$1"),b,d,e)}function ha(){var a=[];function b(c,e){return a.push(c+" ")>d.cacheLength&&delete b[a.shift()],b[c+" "]=e}return b}function ia(a){return a[u]=!0,a}function ja(a){var b=n.createElement("div");try{return!!a(b)}catch(c){return!1}finally{b.parentNode&&b.parentNode.removeChild(b),b=null}}function ka(a,b){var c=a.split("|"),e=a.length;while(e--)d.attrHandle[c[e]]=b}function la(a,b){var c=b&&a,d=c&&1===a.nodeType&&1===b.nodeType&&(~b.sourceIndex||C)-(~a.sourceIndex||C);if(d)return d;if(c)while(c=c.nextSibling)if(c===b)return-1;return a?1:-1}function ma(a){return function(b){var c=b.nodeName.toLowerCase();return"input"===c&&b.type===a}}function na(a){return function(b){var c=b.nodeName.toLowerCase();return("input"===c||"button"===c)&&b.type===a}}function oa(a){return ia(function(b){return b=+b,ia(function(c,d){var e,f=a([],c.length,b),g=f.length;while(g--)c[e=f[g]]&&(c[e]=!(d[e]=c[e]))})})}function pa(a){return a&&"undefined"!=typeof a.getElementsByTagName&&a}c=ga.support={},f=ga.isXML=function(a){var b=a&&(a.ownerDocument||a).documentElement;return b?"HTML"!==b.nodeName:!1},m=ga.setDocument=function(a){var b,e,g=a?a.ownerDocument||a:v;return g!==n&&9===g.nodeType&&g.documentElement?(n=g,o=g.documentElement,e=g.defaultView,e&&e!==e.top&&(e.addEventListener?e.addEventListener("unload",ea,!1):e.attachEvent&&e.attachEvent("onunload",ea)),p=!f(g),c.attributes=ja(function(a){return a.className="i",!a.getAttribute("className")}),c.getElementsByTagName=ja(function(a){return a.appendChild(g.createComment("")),!a.getElementsByTagName("*").length}),c.getElementsByClassName=$.test(g.getElementsByClassName),c.getById=ja(function(a){return o.appendChild(a).id=u,!g.getElementsByName||!g.getElementsByName(u).length}),c.getById?(d.find.ID=function(a,b){if("undefined"!=typeof b.getElementById&&p){var c=b.getElementById(a);return c&&c.parentNode?[c]:[]}},d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){return a.getAttribute("id")===b}}):(delete d.find.ID,d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){var c="undefined"!=typeof a.getAttributeNode&&a.getAttributeNode("id");return c&&c.value===b}}),d.find.TAG=c.getElementsByTagName?function(a,b){return"undefined"!=typeof b.getElementsByTagName?b.getElementsByTagName(a):c.qsa?b.querySelectorAll(a):void 0}:function(a,b){var c,d=[],e=0,f=b.getElementsByTagName(a);if("*"===a){while(c=f[e++])1===c.nodeType&&d.push(c);return d}return f},d.find.CLASS=c.getElementsByClassName&&function(a,b){return p?b.getElementsByClassName(a):void 0},r=[],q=[],(c.qsa=$.test(g.querySelectorAll))&&(ja(function(a){o.appendChild(a).innerHTML="<a id='"+u+"'></a><select id='"+u+"-\f]' msallowcapture=''><option selected=''></option></select>",a.querySelectorAll("[msallowcapture^='']").length&&q.push("[*^$]="+L+"*(?:''|\"\")"),a.querySelectorAll("[selected]").length||q.push("\\["+L+"*(?:value|"+K+")"),a.querySelectorAll("[id~="+u+"-]").length||q.push("~="),a.querySelectorAll(":checked").length||q.push(":checked"),a.querySelectorAll("a#"+u+"+*").length||q.push(".#.+[+~]")}),ja(function(a){var b=g.createElement("input");b.setAttribute("type","hidden"),a.appendChild(b).setAttribute("name","D"),a.querySelectorAll("[name=d]").length&&q.push("name"+L+"*[*^$|!~]?="),a.querySelectorAll(":enabled").length||q.push(":enabled",":disabled"),a.querySelectorAll("*,:x"),q.push(",.*:")})),(c.matchesSelector=$.test(s=o.matches||o.webkitMatchesSelector||o.mozMatchesSelector||o.oMatchesSelector||o.msMatchesSelector))&&ja(function(a){c.disconnectedMatch=s.call(a,"div"),s.call(a,"[s!='']:x"),r.push("!=",P)}),q=q.length&&new RegExp(q.join("|")),r=r.length&&new RegExp(r.join("|")),b=$.test(o.compareDocumentPosition),t=b||$.test(o.contains)?function(a,b){var c=9===a.nodeType?a.documentElement:a,d=b&&b.parentNode;return a===d||!(!d||1!==d.nodeType||!(c.contains?c.contains(d):a.compareDocumentPosition&&16&a.compareDocumentPosition(d)))}:function(a,b){if(b)while(b=b.parentNode)if(b===a)return!0;return!1},B=b?function(a,b){if(a===b)return l=!0,0;var d=!a.compareDocumentPosition-!b.compareDocumentPosition;return d?d:(d=(a.ownerDocument||a)===(b.ownerDocument||b)?a.compareDocumentPosition(b):1,1&d||!c.sortDetached&&b.compareDocumentPosition(a)===d?a===g||a.ownerDocument===v&&t(v,a)?-1:b===g||b.ownerDocument===v&&t(v,b)?1:k?J(k,a)-J(k,b):0:4&d?-1:1)}:function(a,b){if(a===b)return l=!0,0;var c,d=0,e=a.parentNode,f=b.parentNode,h=[a],i=[b];if(!e||!f)return a===g?-1:b===g?1:e?-1:f?1:k?J(k,a)-J(k,b):0;if(e===f)return la(a,b);c=a;while(c=c.parentNode)h.unshift(c);c=b;while(c=c.parentNode)i.unshift(c);while(h[d]===i[d])d++;return d?la(h[d],i[d]):h[d]===v?-1:i[d]===v?1:0},g):n},ga.matches=function(a,b){return ga(a,null,null,b)},ga.matchesSelector=function(a,b){if((a.ownerDocument||a)!==n&&m(a),b=b.replace(U,"='$1']"),!(!c.matchesSelector||!p||r&&r.test(b)||q&&q.test(b)))try{var d=s.call(a,b);if(d||c.disconnectedMatch||a.document&&11!==a.document.nodeType)return d}catch(e){}return ga(b,n,null,[a]).length>0},ga.contains=function(a,b){return(a.ownerDocument||a)!==n&&m(a),t(a,b)},ga.attr=function(a,b){(a.ownerDocument||a)!==n&&m(a);var e=d.attrHandle[b.toLowerCase()],f=e&&D.call(d.attrHandle,b.toLowerCase())?e(a,b,!p):void 0;return void 0!==f?f:c.attributes||!p?a.getAttribute(b):(f=a.getAttributeNode(b))&&f.specified?f.value:null},ga.error=function(a){throw new Error("Syntax error, unrecognized expression: "+a)},ga.uniqueSort=function(a){var b,d=[],e=0,f=0;if(l=!c.detectDuplicates,k=!c.sortStable&&a.slice(0),a.sort(B),l){while(b=a[f++])b===a[f]&&(e=d.push(f));while(e--)a.splice(d[e],1)}return k=null,a},e=ga.getText=function(a){var b,c="",d=0,f=a.nodeType;if(f){if(1===f||9===f||11===f){if("string"==typeof a.textContent)return a.textContent;for(a=a.firstChild;a;a=a.nextSibling)c+=e(a)}else if(3===f||4===f)return a.nodeValue}else while(b=a[d++])c+=e(b);return c},d=ga.selectors={cacheLength:50,createPseudo:ia,match:X,attrHandle:{},find:{},relative:{">":{dir:"parentNode",first:!0}," ":{dir:"parentNode"},"+":{dir:"previousSibling",first:!0},"~":{dir:"previousSibling"}},preFilter:{ATTR:function(a){return a[1]=a[1].replace(ca,da),a[3]=(a[3]||a[4]||a[5]||"").replace(ca,da),"~="===a[2]&&(a[3]=" "+a[3]+" "),a.slice(0,4)},CHILD:function(a){return a[1]=a[1].toLowerCase(),"nth"===a[1].slice(0,3)?(a[3]||ga.error(a[0]),a[4]=+(a[4]?a[5]+(a[6]||1):2*("even"===a[3]||"odd"===a[3])),a[5]=+(a[7]+a[8]||"odd"===a[3])):a[3]&&ga.error(a[0]),a},PSEUDO:function(a){var b,c=!a[6]&&a[2];return X.CHILD.test(a[0])?null:(a[3]?a[2]=a[4]||a[5]||"":c&&V.test(c)&&(b=g(c,!0))&&(b=c.indexOf(")",c.length-b)-c.length)&&(a[0]=a[0].slice(0,b),a[2]=c.slice(0,b)),a.slice(0,3))}},filter:{TAG:function(a){var b=a.replace(ca,da).toLowerCase();return"*"===a?function(){return!0}:function(a){return a.nodeName&&a.nodeName.toLowerCase()===b}},CLASS:function(a){var b=y[a+" "];return b||(b=new RegExp("(^|"+L+")"+a+"("+L+"|$)"))&&y(a,function(a){return b.test("string"==typeof a.className&&a.className||"undefined"!=typeof a.getAttribute&&a.getAttribute("class")||"")})},ATTR:function(a,b,c){return function(d){var e=ga.attr(d,a);return null==e?"!="===b:b?(e+="","="===b?e===c:"!="===b?e!==c:"^="===b?c&&0===e.indexOf(c):"*="===b?c&&e.indexOf(c)>-1:"$="===b?c&&e.slice(-c.length)===c:"~="===b?(" "+e.replace(Q," ")+" ").indexOf(c)>-1:"|="===b?e===c||e.slice(0,c.length+1)===c+"-":!1):!0}},CHILD:function(a,b,c,d,e){var f="nth"!==a.slice(0,3),g="last"!==a.slice(-4),h="of-type"===b;return 1===d&&0===e?function(a){return!!a.parentNode}:function(b,c,i){var j,k,l,m,n,o,p=f!==g?"nextSibling":"previousSibling",q=b.parentNode,r=h&&b.nodeName.toLowerCase(),s=!i&&!h;if(q){if(f){while(p){l=b;while(l=l[p])if(h?l.nodeName.toLowerCase()===r:1===l.nodeType)return!1;o=p="only"===a&&!o&&"nextSibling"}return!0}if(o=[g?q.firstChild:q.lastChild],g&&s){k=q[u]||(q[u]={}),j=k[a]||[],n=j[0]===w&&j[1],m=j[0]===w&&j[2],l=n&&q.childNodes[n];while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if(1===l.nodeType&&++m&&l===b){k[a]=[w,n,m];break}}else if(s&&(j=(b[u]||(b[u]={}))[a])&&j[0]===w)m=j[1];else while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if((h?l.nodeName.toLowerCase()===r:1===l.nodeType)&&++m&&(s&&((l[u]||(l[u]={}))[a]=[w,m]),l===b))break;return m-=e,m===d||m%d===0&&m/d>=0}}},PSEUDO:function(a,b){var c,e=d.pseudos[a]||d.setFilters[a.toLowerCase()]||ga.error("unsupported pseudo: "+a);return e[u]?e(b):e.length>1?(c=[a,a,"",b],d.setFilters.hasOwnProperty(a.toLowerCase())?ia(function(a,c){var d,f=e(a,b),g=f.length;while(g--)d=J(a,f[g]),a[d]=!(c[d]=f[g])}):function(a){return e(a,0,c)}):e}},pseudos:{not:ia(function(a){var b=[],c=[],d=h(a.replace(R,"$1"));return d[u]?ia(function(a,b,c,e){var f,g=d(a,null,e,[]),h=a.length;while(h--)(f=g[h])&&(a[h]=!(b[h]=f))}):function(a,e,f){return b[0]=a,d(b,null,f,c),b[0]=null,!c.pop()}}),has:ia(function(a){return function(b){return ga(a,b).length>0}}),contains:ia(function(a){return a=a.replace(ca,da),function(b){return(b.textContent||b.innerText||e(b)).indexOf(a)>-1}}),lang:ia(function(a){return W.test(a||"")||ga.error("unsupported lang: "+a),a=a.replace(ca,da).toLowerCase(),function(b){var c;do if(c=p?b.lang:b.getAttribute("xml:lang")||b.getAttribute("lang"))return c=c.toLowerCase(),c===a||0===c.indexOf(a+"-");while((b=b.parentNode)&&1===b.nodeType);return!1}}),target:function(b){var c=a.location&&a.location.hash;return c&&c.slice(1)===b.id},root:function(a){return a===o},focus:function(a){return a===n.activeElement&&(!n.hasFocus||n.hasFocus())&&!!(a.type||a.href||~a.tabIndex)},enabled:function(a){return a.disabled===!1},disabled:function(a){return a.disabled===!0},checked:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&!!a.checked||"option"===b&&!!a.selected},selected:function(a){return a.parentNode&&a.parentNode.selectedIndex,a.selected===!0},empty:function(a){for(a=a.firstChild;a;a=a.nextSibling)if(a.nodeType<6)return!1;return!0},parent:function(a){return!d.pseudos.empty(a)},header:function(a){return Z.test(a.nodeName)},input:function(a){return Y.test(a.nodeName)},button:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&"button"===a.type||"button"===b},text:function(a){var b;return"input"===a.nodeName.toLowerCase()&&"text"===a.type&&(null==(b=a.getAttribute("type"))||"text"===b.toLowerCase())},first:oa(function(){return[0]}),last:oa(function(a,b){return[b-1]}),eq:oa(function(a,b,c){return[0>c?c+b:c]}),even:oa(function(a,b){for(var c=0;b>c;c+=2)a.push(c);return a}),odd:oa(function(a,b){for(var c=1;b>c;c+=2)a.push(c);return a}),lt:oa(function(a,b,c){for(var d=0>c?c+b:c;--d>=0;)a.push(d);return a}),gt:oa(function(a,b,c){for(var d=0>c?c+b:c;++d<b;)a.push(d);return a})}},d.pseudos.nth=d.pseudos.eq;for(b in{radio:!0,checkbox:!0,file:!0,password:!0,image:!0})d.pseudos[b]=ma(b);for(b in{submit:!0,reset:!0})d.pseudos[b]=na(b);function qa(){}qa.prototype=d.filters=d.pseudos,d.setFilters=new qa,g=ga.tokenize=function(a,b){var c,e,f,g,h,i,j,k=z[a+" "];if(k)return b?0:k.slice(0);h=a,i=[],j=d.preFilter;while(h){(!c||(e=S.exec(h)))&&(e&&(h=h.slice(e[0].length)||h),i.push(f=[])),c=!1,(e=T.exec(h))&&(c=e.shift(),f.push({value:c,type:e[0].replace(R," ")}),h=h.slice(c.length));for(g in d.filter)!(e=X[g].exec(h))||j[g]&&!(e=j[g](e))||(c=e.shift(),f.push({value:c,type:g,matches:e}),h=h.slice(c.length));if(!c)break}return b?h.length:h?ga.error(a):z(a,i).slice(0)};function ra(a){for(var b=0,c=a.length,d="";c>b;b++)d+=a[b].value;return d}function sa(a,b,c){var d=b.dir,e=c&&"parentNode"===d,f=x++;return b.first?function(b,c,f){while(b=b[d])if(1===b.nodeType||e)return a(b,c,f)}:function(b,c,g){var h,i,j=[w,f];if(g){while(b=b[d])if((1===b.nodeType||e)&&a(b,c,g))return!0}else while(b=b[d])if(1===b.nodeType||e){if(i=b[u]||(b[u]={}),(h=i[d])&&h[0]===w&&h[1]===f)return j[2]=h[2];if(i[d]=j,j[2]=a(b,c,g))return!0}}}function ta(a){return a.length>1?function(b,c,d){var e=a.length;while(e--)if(!a[e](b,c,d))return!1;return!0}:a[0]}function ua(a,b,c){for(var d=0,e=b.length;e>d;d++)ga(a,b[d],c);return c}function va(a,b,c,d,e){for(var f,g=[],h=0,i=a.length,j=null!=b;i>h;h++)(f=a[h])&&(!c||c(f,d,e))&&(g.push(f),j&&b.push(h));return g}function wa(a,b,c,d,e,f){return d&&!d[u]&&(d=wa(d)),e&&!e[u]&&(e=wa(e,f)),ia(function(f,g,h,i){var j,k,l,m=[],n=[],o=g.length,p=f||ua(b||"*",h.nodeType?[h]:h,[]),q=!a||!f&&b?p:va(p,m,a,h,i),r=c?e||(f?a:o||d)?[]:g:q;if(c&&c(q,r,h,i),d){j=va(r,n),d(j,[],h,i),k=j.length;while(k--)(l=j[k])&&(r[n[k]]=!(q[n[k]]=l))}if(f){if(e||a){if(e){j=[],k=r.length;while(k--)(l=r[k])&&j.push(q[k]=l);e(null,r=[],j,i)}k=r.length;while(k--)(l=r[k])&&(j=e?J(f,l):m[k])>-1&&(f[j]=!(g[j]=l))}}else r=va(r===g?r.splice(o,r.length):r),e?e(null,g,r,i):H.apply(g,r)})}function xa(a){for(var b,c,e,f=a.length,g=d.relative[a[0].type],h=g||d.relative[" "],i=g?1:0,k=sa(function(a){return a===b},h,!0),l=sa(function(a){return J(b,a)>-1},h,!0),m=[function(a,c,d){var e=!g&&(d||c!==j)||((b=c).nodeType?k(a,c,d):l(a,c,d));return b=null,e}];f>i;i++)if(c=d.relative[a[i].type])m=[sa(ta(m),c)];else{if(c=d.filter[a[i].type].apply(null,a[i].matches),c[u]){for(e=++i;f>e;e++)if(d.relative[a[e].type])break;return wa(i>1&&ta(m),i>1&&ra(a.slice(0,i-1).concat({value:" "===a[i-2].type?"*":""})).replace(R,"$1"),c,e>i&&xa(a.slice(i,e)),f>e&&xa(a=a.slice(e)),f>e&&ra(a))}m.push(c)}return ta(m)}function ya(a,b){var c=b.length>0,e=a.length>0,f=function(f,g,h,i,k){var l,m,o,p=0,q="0",r=f&&[],s=[],t=j,u=f||e&&d.find.TAG("*",k),v=w+=null==t?1:Math.random()||.1,x=u.length;for(k&&(j=g!==n&&g);q!==x&&null!=(l=u[q]);q++){if(e&&l){m=0;while(o=a[m++])if(o(l,g,h)){i.push(l);break}k&&(w=v)}c&&((l=!o&&l)&&p--,f&&r.push(l))}if(p+=q,c&&q!==p){m=0;while(o=b[m++])o(r,s,g,h);if(f){if(p>0)while(q--)r[q]||s[q]||(s[q]=F.call(i));s=va(s)}H.apply(i,s),k&&!f&&s.length>0&&p+b.length>1&&ga.uniqueSort(i)}return k&&(w=v,j=t),r};return c?ia(f):f}return h=ga.compile=function(a,b){var c,d=[],e=[],f=A[a+" "];if(!f){b||(b=g(a)),c=b.length;while(c--)f=xa(b[c]),f[u]?d.push(f):e.push(f);f=A(a,ya(e,d)),f.selector=a}return f},i=ga.select=function(a,b,e,f){var i,j,k,l,m,n="function"==typeof a&&a,o=!f&&g(a=n.selector||a);if(e=e||[],1===o.length){if(j=o[0]=o[0].slice(0),j.length>2&&"ID"===(k=j[0]).type&&c.getById&&9===b.nodeType&&p&&d.relative[j[1].type]){if(b=(d.find.ID(k.matches[0].replace(ca,da),b)||[])[0],!b)return e;n&&(b=b.parentNode),a=a.slice(j.shift().value.length)}i=X.needsContext.test(a)?0:j.length;while(i--){if(k=j[i],d.relative[l=k.type])break;if((m=d.find[l])&&(f=m(k.matches[0].replace(ca,da),aa.test(j[0].type)&&pa(b.parentNode)||b))){if(j.splice(i,1),a=f.length&&ra(j),!a)return H.apply(e,f),e;break}}}return(n||h(a,o))(f,b,!p,e,aa.test(a)&&pa(b.parentNode)||b),e},c.sortStable=u.split("").sort(B).join("")===u,c.detectDuplicates=!!l,m(),c.sortDetached=ja(function(a){return 1&a.compareDocumentPosition(n.createElement("div"))}),ja(function(a){return a.innerHTML="<a href='#'></a>","#"===a.firstChild.getAttribute("href")})||ka("type|href|height|width",function(a,b,c){return c?void 0:a.getAttribute(b,"type"===b.toLowerCase()?1:2)}),c.attributes&&ja(function(a){return a.innerHTML="<input/>",a.firstChild.setAttribute("value",""),""===a.firstChild.getAttribute("value")})||ka("value",function(a,b,c){return c||"input"!==a.nodeName.toLowerCase()?void 0:a.defaultValue}),ja(function(a){return null==a.getAttribute("disabled")})||ka(K,function(a,b,c){var d;return c?void 0:a[b]===!0?b.toLowerCase():(d=a.getAttributeNode(b))&&d.specified?d.value:null}),ga}(a);m.find=s,m.expr=s.selectors,m.expr[":"]=m.expr.pseudos,m.unique=s.uniqueSort,m.text=s.getText,m.isXMLDoc=s.isXML,m.contains=s.contains;var t=m.expr.match.needsContext,u=/^<(\w+)\s*\/?>(?:<\/\1>|)$/,v=/^.[^:#\[\.,]*$/;function w(a,b,c){if(m.isFunction(b))return m.grep(a,function(a,d){return!!b.call(a,d,a)!==c});if(b.nodeType)return m.grep(a,function(a){return a===b!==c});if("string"==typeof b){if(v.test(b))return m.filter(b,a,c);b=m.filter(b,a)}return m.grep(a,function(a){return m.inArray(a,b)>=0!==c})}m.filter=function(a,b,c){var d=b[0];return c&&(a=":not("+a+")"),1===b.length&&1===d.nodeType?m.find.matchesSelector(d,a)?[d]:[]:m.find.matches(a,m.grep(b,function(a){return 1===a.nodeType}))},m.fn.extend({find:function(a){var b,c=[],d=this,e=d.length;if("string"!=typeof a)return this.pushStack(m(a).filter(function(){for(b=0;e>b;b++)if(m.contains(d[b],this))return!0}));for(b=0;e>b;b++)m.find(a,d[b],c);return c=this.pushStack(e>1?m.unique(c):c),c.selector=this.selector?this.selector+" "+a:a,c},filter:function(a){return this.pushStack(w(this,a||[],!1))},not:function(a){return this.pushStack(w(this,a||[],!0))},is:function(a){return!!w(this,"string"==typeof a&&t.test(a)?m(a):a||[],!1).length}});var x,y=a.document,z=/^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,A=m.fn.init=function(a,b){var c,d;if(!a)return this;if("string"==typeof a){if(c="<"===a.charAt(0)&&">"===a.charAt(a.length-1)&&a.length>=3?[null,a,null]:z.exec(a),!c||!c[1]&&b)return!b||b.jquery?(b||x).find(a):this.constructor(b).find(a);if(c[1]){if(b=b instanceof m?b[0]:b,m.merge(this,m.parseHTML(c[1],b&&b.nodeType?b.ownerDocument||b:y,!0)),u.test(c[1])&&m.isPlainObject(b))for(c in b)m.isFunction(this[c])?this[c](b[c]):this.attr(c,b[c]);return this}if(d=y.getElementById(c[2]),d&&d.parentNode){if(d.id!==c[2])return x.find(a);this.length=1,this[0]=d}return this.context=y,this.selector=a,this}return a.nodeType?(this.context=this[0]=a,this.length=1,this):m.isFunction(a)?"undefined"!=typeof x.ready?x.ready(a):a(m):(void 0!==a.selector&&(this.selector=a.selector,this.context=a.context),m.makeArray(a,this))};A.prototype=m.fn,x=m(y);var B=/^(?:parents|prev(?:Until|All))/,C={children:!0,contents:!0,next:!0,prev:!0};m.extend({dir:function(a,b,c){var d=[],e=a[b];while(e&&9!==e.nodeType&&(void 0===c||1!==e.nodeType||!m(e).is(c)))1===e.nodeType&&d.push(e),e=e[b];return d},sibling:function(a,b){for(var c=[];a;a=a.nextSibling)1===a.nodeType&&a!==b&&c.push(a);return c}}),m.fn.extend({has:function(a){var b,c=m(a,this),d=c.length;return this.filter(function(){for(b=0;d>b;b++)if(m.contains(this,c[b]))return!0})},closest:function(a,b){for(var c,d=0,e=this.length,f=[],g=t.test(a)||"string"!=typeof a?m(a,b||this.context):0;e>d;d++)for(c=this[d];c&&c!==b;c=c.parentNode)if(c.nodeType<11&&(g?g.index(c)>-1:1===c.nodeType&&m.find.matchesSelector(c,a))){f.push(c);break}return this.pushStack(f.length>1?m.unique(f):f)},index:function(a){return a?"string"==typeof a?m.inArray(this[0],m(a)):m.inArray(a.jquery?a[0]:a,this):this[0]&&this[0].parentNode?this.first().prevAll().length:-1},add:function(a,b){return this.pushStack(m.unique(m.merge(this.get(),m(a,b))))},addBack:function(a){return this.add(null==a?this.prevObject:this.prevObject.filter(a))}});function D(a,b){do a=a[b];while(a&&1!==a.nodeType);return a}m.each({parent:function(a){var b=a.parentNode;return b&&11!==b.nodeType?b:null},parents:function(a){return m.dir(a,"parentNode")},parentsUntil:function(a,b,c){return m.dir(a,"parentNode",c)},next:function(a){return D(a,"nextSibling")},prev:function(a){return D(a,"previousSibling")},nextAll:function(a){return m.dir(a,"nextSibling")},prevAll:function(a){return m.dir(a,"previousSibling")},nextUntil:function(a,b,c){return m.dir(a,"nextSibling",c)},prevUntil:function(a,b,c){return m.dir(a,"previousSibling",c)},siblings:function(a){return m.sibling((a.parentNode||{}).firstChild,a)},children:function(a){return m.sibling(a.firstChild)},contents:function(a){return m.nodeName(a,"iframe")?a.contentDocument||a.contentWindow.document:m.merge([],a.childNodes)}},function(a,b){m.fn[a]=function(c,d){var e=m.map(this,b,c);return"Until"!==a.slice(-5)&&(d=c),d&&"string"==typeof d&&(e=m.filter(d,e)),this.length>1&&(C[a]||(e=m.unique(e)),B.test(a)&&(e=e.reverse())),this.pushStack(e)}});var E=/\S+/g,F={};function G(a){var b=F[a]={};return m.each(a.match(E)||[],function(a,c){b[c]=!0}),b}m.Callbacks=function(a){a="string"==typeof a?F[a]||G(a):m.extend({},a);var b,c,d,e,f,g,h=[],i=!a.once&&[],j=function(l){for(c=a.memory&&l,d=!0,f=g||0,g=0,e=h.length,b=!0;h&&e>f;f++)if(h[f].apply(l[0],l[1])===!1&&a.stopOnFalse){c=!1;break}b=!1,h&&(i?i.length&&j(i.shift()):c?h=[]:k.disable())},k={add:function(){if(h){var d=h.length;!function f(b){m.each(b,function(b,c){var d=m.type(c);"function"===d?a.unique&&k.has(c)||h.push(c):c&&c.length&&"string"!==d&&f(c)})}(arguments),b?e=h.length:c&&(g=d,j(c))}return this},remove:function(){return h&&m.each(arguments,function(a,c){var d;while((d=m.inArray(c,h,d))>-1)h.splice(d,1),b&&(e>=d&&e--,f>=d&&f--)}),this},has:function(a){return a?m.inArray(a,h)>-1:!(!h||!h.length)},empty:function(){return h=[],e=0,this},disable:function(){return h=i=c=void 0,this},disabled:function(){return!h},lock:function(){return i=void 0,c||k.disable(),this},locked:function(){return!i},fireWith:function(a,c){return!h||d&&!i||(c=c||[],c=[a,c.slice?c.slice():c],b?i.push(c):j(c)),this},fire:function(){return k.fireWith(this,arguments),this},fired:function(){return!!d}};return k},m.extend({Deferred:function(a){var b=[["resolve","done",m.Callbacks("once memory"),"resolved"],["reject","fail",m.Callbacks("once memory"),"rejected"],["notify","progress",m.Callbacks("memory")]],c="pending",d={state:function(){return c},always:function(){return e.done(arguments).fail(arguments),this},then:function(){var a=arguments;return m.Deferred(function(c){m.each(b,function(b,f){var g=m.isFunction(a[b])&&a[b];e[f[1]](function(){var a=g&&g.apply(this,arguments);a&&m.isFunction(a.promise)?a.promise().done(c.resolve).fail(c.reject).progress(c.notify):c[f[0]+"With"](this===d?c.promise():this,g?[a]:arguments)})}),a=null}).promise()},promise:function(a){return null!=a?m.extend(a,d):d}},e={};return d.pipe=d.then,m.each(b,function(a,f){var g=f[2],h=f[3];d[f[1]]=g.add,h&&g.add(function(){c=h},b[1^a][2].disable,b[2][2].lock),e[f[0]]=function(){return e[f[0]+"With"](this===e?d:this,arguments),this},e[f[0]+"With"]=g.fireWith}),d.promise(e),a&&a.call(e,e),e},when:function(a){var b=0,c=d.call(arguments),e=c.length,f=1!==e||a&&m.isFunction(a.promise)?e:0,g=1===f?a:m.Deferred(),h=function(a,b,c){return function(e){b[a]=this,c[a]=arguments.length>1?d.call(arguments):e,c===i?g.notifyWith(b,c):--f||g.resolveWith(b,c)}},i,j,k;if(e>1)for(i=new Array(e),j=new Array(e),k=new Array(e);e>b;b++)c[b]&&m.isFunction(c[b].promise)?c[b].promise().done(h(b,k,c)).fail(g.reject).progress(h(b,j,i)):--f;return f||g.resolveWith(k,c),g.promise()}});var H;m.fn.ready=function(a){return m.ready.promise().done(a),this},m.extend({isReady:!1,readyWait:1,holdReady:function(a){a?m.readyWait++:m.ready(!0)},ready:function(a){if(a===!0?!--m.readyWait:!m.isReady){if(!y.body)return setTimeout(m.ready);m.isReady=!0,a!==!0&&--m.readyWait>0||(H.resolveWith(y,[m]),m.fn.triggerHandler&&(m(y).triggerHandler("ready"),m(y).off("ready")))}}});function I(){y.addEventListener?(y.removeEventListener("DOMContentLoaded",J,!1),a.removeEventListener("load",J,!1)):(y.detachEvent("onreadystatechange",J),a.detachEvent("onload",J))}function J(){(y.addEventListener||"load"===event.type||"complete"===y.readyState)&&(I(),m.ready())}m.ready.promise=function(b){if(!H)if(H=m.Deferred(),"complete"===y.readyState)setTimeout(m.ready);else if(y.addEventListener)y.addEventListener("DOMContentLoaded",J,!1),a.addEventListener("load",J,!1);else{y.attachEvent("onreadystatechange",J),a.attachEvent("onload",J);var c=!1;try{c=null==a.frameElement&&y.documentElement}catch(d){}c&&c.doScroll&&!function e(){if(!m.isReady){try{c.doScroll("left")}catch(a){return setTimeout(e,50)}I(),m.ready()}}()}return H.promise(b)};var K="undefined",L;for(L in m(k))break;k.ownLast="0"!==L,k.inlineBlockNeedsLayout=!1,m(function(){var a,b,c,d;c=y.getElementsByTagName("body")[0],c&&c.style&&(b=y.createElement("div"),d=y.createElement("div"),d.style.cssText="position:absolute;border:0;width:0;height:0;top:0;left:-9999px",c.appendChild(d).appendChild(b),typeof b.style.zoom!==K&&(b.style.cssText="display:inline;margin:0;border:0;padding:1px;width:1px;zoom:1",k.inlineBlockNeedsLayout=a=3===b.offsetWidth,a&&(c.style.zoom=1)),c.removeChild(d))}),function(){var a=y.createElement("div");if(null==k.deleteExpando){k.deleteExpando=!0;try{delete a.test}catch(b){k.deleteExpando=!1}}a=null}(),m.acceptData=function(a){var b=m.noData[(a.nodeName+" ").toLowerCase()],c=+a.nodeType||1;return 1!==c&&9!==c?!1:!b||b!==!0&&a.getAttribute("classid")===b};var M=/^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,N=/([A-Z])/g;function O(a,b,c){if(void 0===c&&1===a.nodeType){var d="data-"+b.replace(N,"-$1").toLowerCase();if(c=a.getAttribute(d),"string"==typeof c){try{c="true"===c?!0:"false"===c?!1:"null"===c?null:+c+""===c?+c:M.test(c)?m.parseJSON(c):c}catch(e){}m.data(a,b,c)}else c=void 0}return c}function P(a){var b;for(b in a)if(("data"!==b||!m.isEmptyObject(a[b]))&&"toJSON"!==b)return!1;
@@ -372,9 +372,9 @@ summary {
 
 
 
-<h1 class="title toc-ignore">Sesión 1. Introducción al biocómputo en sistemas GNU/Linux</h1>
-<h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a></h4>
-<h4 class="date">2020-10-22</h4>
+<h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
+<h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a>; <span class="citation">@pvinmex</span></h4>
+<h4 class="date">2020-10-23</h4>
 
 </div>
 
@@ -382,9 +382,12 @@ summary {
 <ul>
 <li><a href="#presentación"><span class="toc-section-number">1</span> Presentación</a><ul>
 <li><a href="#licencia-y-términos-de-uso"><span class="toc-section-number">1.1</span> Licencia y términos de uso</a></li>
-<li><a href="#referencias-adicionales"><span class="toc-section-number">1.2</span> Referencias adicionales</a></li>
+<li><a href="#el-proyecto-de-software-libre-gnu"><span class="toc-section-number">1.2</span> El Proyecto de <span>Software Libre GNU</span></a><ul>
+<li><a href="#documentación-y-recursos"><span class="toc-section-number">1.2.1</span> Documentación y recursos <a rel="GNU.org" href="https://www.gnu.org/"><img alt="GNU" style="border-width:0" src="data:image/png;base64,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" /></a></a></li>
 </ul></li>
-<li><a href="#primer-contacto-con-un-sistema-linux---navegación-del-sistema"><span class="toc-section-number">2</span> Primer contacto con un sistema Linux - navegación del sistema</a><ul>
+<li><a href="#referencias-adicionales"><span class="toc-section-number">1.3</span> Referencias adicionales</a></li>
+</ul></li>
+<li><a href="#primer-contacto-con-un-sistema-gnulinux---navegación-del-sistema"><span class="toc-section-number">2</span> Primer contacto con un sistema GNU/Linux - navegación del sistema</a><ul>
 <li><a href="#conexión-a-un-servidor-y-exploración-de-sus-características-básicas"><span class="toc-section-number">2.1</span> Conexión a un servidor y exploración de sus características básicas</a><ul>
 <li><a href="#ssh-establecer-sesion-remota-encriptada-segura-via-ssh-al-servidor-con-número-dado-de-ip"><span class="toc-section-number">2.1.1</span> <strong>ssh</strong> establecer sesion remota encriptada (segura) via ssh al servidor con número dado de IP</a></li>
 <li><a href="#hostname-muestra-el-nombre-del-host-la-máquina-a-la-que-estoy-conectado-y-la-ip"><span class="toc-section-number">2.1.2</span> <strong>hostname</strong> muestra el nombre del host (la máquina a la que estoy conectado) y la IP</a></li>
@@ -410,7 +413,7 @@ summary {
 <li><a href="#la-ruta-relativa"><span class="toc-section-number">2.4.2</span> La <strong>ruta relativa</strong></a></li>
 </ul></li>
 <li><a href="#generación-de-directorios-comando-mkdir"><span class="toc-section-number">2.5</span> Generación de directorios: comando <b>mkdir</b></a></li>
-<li><a href="#qué-es-exactamente-un-comando-en-linux"><span class="toc-section-number">2.6</span> Qué es exactamente un <span class="math inline">\(comando\)</span> en Linux?</a><ul>
+<li><a href="#qué-es-exactamente-un-comando-en-gnulinux"><span class="toc-section-number">2.6</span> Qué es exactamente un <span class="math inline">\(comando\)</span> en GNU/Linux?</a><ul>
 <li><a href="#genera-tu-propio-comando-con-un-alias"><span class="toc-section-number">2.6.1</span> Genera tu propio comando con un <strong>alias</strong></a></li>
 <li><a href="#identificación-del-tipo-de-comando-con-type"><span class="toc-section-number">2.6.2</span> Identificación del tipo de comando con <strong>type</strong></a></li>
 <li><a href="#muestra-la-ruta-del-comando-con-which"><span class="toc-section-number">2.6.3</span> Muestra la ruta del comando con <strong>which</strong></a></li>
@@ -542,15 +545,36 @@ summary {
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
 <p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2020-10-22) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>.</p>
+<p>Las versión actual (v.2020-10-23) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
 <p>Este material didáctico lo distribuyo públicamente a través de este <a href="https://github.com/vinuesa/intro2linux">repositorio GitHub intro2linux</a> bajo la <a href="https://creativecommons.org/licenses/by-nc/4.0/"><strong>Licencia No Comercial Creative Commons 4.0</strong></a></p>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="data:image/png;base64,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" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0</a></p>
+<p><a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html"><img alt="GNU General Public License v3" style="border-width:0" src="data:image/png;base64,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" /></a><br /> El código se distribuye bajo la licencia <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a></p>
+</div>
+<div id="el-proyecto-de-software-libre-gnu" class="section level2">
+<h2><span class="header-section-number">1.2</span> El Proyecto de <a href="https://audio-video.gnu.org/video/rms-education-es-high-sub.en.ogv">Software Libre GNU</a></h2>
+<p><a href="mailto:Bienvenid@s" class="email">Bienvenid@s</a> al mundo de cómputo y software libre del <a href="https://www.gnu.org/">proyecto GNU de software libre</a>. Antes de empezar este tutorial, te sugiero que te informes sobre lo que es el proyecto <a href="https://www.gnu.org/">GNU</a>, iniciado por <a href="https://stallman.org/">Richard Stallman</a> en 1983 <a href="https://en.wikipedia.org/wiki/Richard_Stallman">Richard Stallman - Wikipedia</a> y desarrollado por una enorme comunidad de programadores, y su relación con Linux, para formar el sistema de cómputo libre <a href="https://www.gnu.org/gnu/linux-and-gnu.html">GNU/Linux</a>.</p>
+<p>Este lo explica <em>Richard Stallman</em> en su artículo <a href="https://www.gnu.org/gnu/linux-and-gnu.es.html">Linux y el sistema GNU</a>, del que cito los primeros dos párrafos abajo:</p>
+<p><em> Muchos usuarios de ordenadores ejecutan a diario, sin saberlo, una versión modificada del sistema GNU. Debido a un peculiar giro de los acontecimientos, a la versión de GNU ampliamente utilizada hoy en día se la llama a menudo «Linux», y muchos de quienes la usan no se dan cuenta de que básicamente se trata del sistema GNU, desarrollado por el proyecto GNU.</p>
+<p>Efectivamente existe un Linux, y estas personas lo usan, pero constituye solo una parte del sistema que utilizan. <b>Linux es el núcleo</b>: el programa del sistema que se encarga de asignar los recursos de la máquina a los demás programas que el usuario ejecuta. El núcleo es una parte esencial de un sistema operativo, pero inútil por sí mismo, sólo puede funcionar en el marco de un sistema operativo completo. <b>Linux se utiliza normalmente en combinación con el sistema operativo GNU: el sistema completo es básicamente GNU al que se le ha añadido Linux</b>, es decir, <b>GNU/Linux</b>. Todas las distribuciones denominadas «Linux» son en realidad distribuciones GNU/Linux. </em></p>
+<p>– <cite>Richard Stallman</cite></p>
+<div id="documentación-y-recursos" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Documentación y recursos <a rel="GNU.org" href="https://www.gnu.org/"><img alt="GNU" style="border-width:0" src="data:image/png;base64,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" /></a></h3>
+<ul>
+<li><a href="https://www.gnu.org/gnu/gnu-history.html">The GNU project</a></li>
+<li><a href="https://www.gnu.org/education/education.html">Free Software Education</a></li>
+<li><a href="https://audio-video.gnu.org/video/rms-education-es-high-sub.en.ogv">Free Software - Richard Stallman</a> &lt;== NO DEJES DE ESCUCHAR Y DIFUNDIR ESTE VIDEO!!!</li>
+<li><a href="https://www.gnu.org/software/software.html">GNU software</a></li>
+<li><a href="https://www.gnu.org/software/gawk/manual/gawk.html">GNU - awk manual</a></li>
+<li><a href="https://www.gnu.org/software/bash/manual/bash.html">GNU - bash manual</a></li>
+<li><a href="https://www.gnu.org/gnu/linux-and-gnu.html">la relación entre GNU y Linux</a></li>
+</ul>
+</div>
 </div>
 <div id="referencias-adicionales" class="section level2">
-<h2><span class="header-section-number">1.2</span> Referencias adicionales</h2>
+<h2><span class="header-section-number">1.3</span> Referencias adicionales</h2>
 <p>Una vez que domines los comandos básicos que se presentarán seguidamente, recomiendo revisar tutoriales mucho más detallados y completos como los siguientes:</p>
 <ul>
 <li><a href="http://linuxcommand.org/lc3_learning_the_shell.php#contents">The Linux Command Line - a complete introduction. William E. Shotts, Jr. No Starch Press</a></li>
@@ -562,8 +586,8 @@ summary {
 <hr />
 </div>
 </div>
-<div id="primer-contacto-con-un-sistema-linux---navegación-del-sistema" class="section level1">
-<h1><span class="header-section-number">2</span> Primer contacto con un sistema Linux - navegación del sistema</h1>
+<div id="primer-contacto-con-un-sistema-gnulinux---navegación-del-sistema" class="section level1">
+<h1><span class="header-section-number">2</span> Primer contacto con un sistema GNU/Linux - navegación del sistema</h1>
 <div id="conexión-a-un-servidor-y-exploración-de-sus-características-básicas" class="section level2">
 <h2><span class="header-section-number">2.1</span> Conexión a un servidor y exploración de sus características básicas</h2>
 <p>Estas prácticas están diseñadas para correr en un servidor remoto, pero puedes hacerlo también en una sesión local, es decir, en tu máquina. Sólo tienes que poner en un directorio los archivos con los que vamos a trabajar, los cuales puedes <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/data">descargar del directorio intro2linux/data del sitio GitHub</a></p>
@@ -598,7 +622,7 @@ htop</code></pre>
 </div>
 <div id="exploración-del-sistema-de-archivos" class="section level2">
 <h2><span class="header-section-number">2.2</span> Exploración del sistema de archivos</h2>
-<p>El <b>sistema de archivos de Linux</b> tiene una estructura jerárquica de directorios y subdirectorios que penden del <b>directorio raíz</b> <span class="math inline">\(/\)</span>. Esta estructura puede ser visualizada convenientemente con el comando <span class="math inline">\(tree\)</span>. (Nota: <span class="math inline">\(tree\)</span> tal vez no esté instalado en tu sistema).</p>
+<p>El <b>sistema de archivos de GNU/Linux</b> tiene una estructura jerárquica de directorios y subdirectorios que penden del <b>directorio raíz</b> <span class="math inline">\(/\)</span>. Esta estructura puede ser visualizada convenientemente con el comando <span class="math inline">\(tree\)</span>. (Nota: <span class="math inline">\(tree\)</span> tal vez no esté instalado en tu sistema).</p>
 <div id="imprime-la-estructura-de-directorios-de-tu-home-u-otro-directorio" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Imprime la estructura de directorios de tu home u otro directorio</h3>
 <pre class="bash"><code>tree -d $HOME/cursos/</code></pre>
@@ -610,9 +634,10 @@ htop</code></pre>
 ##     ├── [01;34mintro2linux[00m
 ##     │   ├── [01;34msesion1[00m
 ##     │   └── [01;34msesion1_linux[00m
-##     └── [01;34mparticipantes_Taller_CG_FC[00m
+##     ├── [01;34mparticipantes_Taller_CG_FC[00m
+##     └── [01;34mpics[00m
 ## 
-## 8 directories</code></pre>
+## 9 directories</code></pre>
 <ul>
 <li>Nota: según el directorio que indiques, la salida puede ser copiosa. Usar con criterio. Puedes limitar el número de nivels (subdirectorios) a mostrar con -L # (Level number)</li>
 </ul>
@@ -622,9 +647,10 @@ htop</code></pre>
 ##     ├── [01;34mbin[00m
 ##     ├── [01;34mdocs[00m
 ##     ├── [01;34mintro2linux[00m
-##     └── [01;34mparticipantes_Taller_CG_FC[00m
+##     ├── [01;34mparticipantes_Taller_CG_FC[00m
+##     └── [01;34mpics[00m
 ## 
-## 5 directories</code></pre>
+## 6 directories</code></pre>
 <!--
 Y este es el sistema de archivos que pende del <b>directorio raíz</b> $/$
 
@@ -656,7 +682,7 @@ tree -d -L 1 /
 ## ├── [01;34msnap[00m
 ## ├── [01;34msrv[00m
 ## ├── [01;34msys[00m
-## ├── [01;34mtmp[00m
+## ├── [30;42mtmp[00m
 ## ├── [01;34musr[00m
 ## └── [01;34mvar[00m
 ## 
@@ -686,8 +712,8 @@ ls | head</code></pre>
 ## filter_fasta_sequences.awk</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
-<pre><code>## total 59272
-## drwxr-xr-x 7 vinuesa vinuesa     4096 oct 22 21:08 .
+<pre><code>## total 59316
+## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 23 18:37 .
 ## drwxr-xr-x 3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
@@ -696,32 +722,33 @@ ls -al </code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      267 oct 22 19:18 clases_avance.txt
-## drwxr-xr-x 3 vinuesa vinuesa     4096 oct 21 09:35 docs
+## drwxr-xr-x 3 vinuesa vinuesa     4096 oct 23 17:12 docs
 ## -rw-r--r-- 1 vinuesa vinuesa   222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
 ## -rwxr-xr-x 1 vinuesa vinuesa      857 oct 22 12:14 filter_fasta_sequences.awk
 ## -rwxr-xr-x 1 vinuesa vinuesa     1237 oct 14 22:43 find_dir
-## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 22 14:24 .git
+## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 23 17:15 .git
 ## -rwxrwxr-x 1 vinuesa vinuesa      563 oct 22 14:17 hist.awk
 ## drwxr-xr-x 4 vinuesa vinuesa     4096 sep 29 22:56 intro2linux
 ## -rw-r--r-- 1 vinuesa vinuesa  3163754 oct 13 13:39 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r-- 1 vinuesa vinuesa    35149 sep 29 22:15 LICENSE
 ## -rw-r--r-- 1 vinuesa vinuesa    10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 22 21:08 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 23 18:37 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-r--r-- 1 vinuesa vinuesa     1705 sep 29 22:18 linux_very_basic_commands_table.csv
 ## -rwxr-xr-x 1 vinuesa vinuesa      493 oct 14 22:43 ls_dir
 ## drwxr-xr-x 2 vinuesa vinuesa     4096 oct  6 16:39 participantes_Taller_CG_FC
+## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 23 18:06 pics
 ## -rwxr-xr-x 1 vinuesa vinuesa     2884 oct 14 22:43 prot2cdnAlns.pl
 ## -rw-r--r-- 1 vinuesa vinuesa     6006 oct 20 20:03 README.md
 ## -rw-r--r-- 1 vinuesa vinuesa    77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa    17704 oct 22 21:08 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa    28497 oct 22 21:08 recA_Byuanmingense_muscle.aln
+## -rw-r--r-- 1 vinuesa vinuesa    17704 oct 23 18:37 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa    28497 oct 23 18:37 recA_Byuanmingense_muscle.aln
 ## -rw-rw-r-- 1 vinuesa vinuesa        0 oct 22 16:51 .Rhistory
 ## -rwxr-xr-x 1 vinuesa vinuesa      239 oct 14 22:43 split_fasta.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      158 oct 22 19:13 TODO.txt
 ## -rwxr-xr-x 1 vinuesa vinuesa     3402 oct 14 22:43 translate_fastas.pl
-## -rw-r--r-- 1 vinuesa vinuesa  1235343 oct 22 21:08 working_with_linux_commands.html
+## -rw-r--r-- 1 vinuesa vinuesa  1272063 oct 23 18:37 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa   382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   110546 oct 22 21:10 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa   114333 oct 23 18:38 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa       41 oct 13 19:24 zoom.url</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del directorio raiz</h4>
@@ -747,8 +774,8 @@ ls -al </code></pre>
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
 ## drwxr-xr-x   4 root root  4096 oct 20 16:52 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4560 oct 22 17:10 dev
-## drwxr-xr-x 155 root root 12288 oct 22 13:39 etc
+## drwxr-xr-x  21 root root  4560 oct 23 17:11 dev
+## drwxr-xr-x 155 root root 12288 oct 23 17:10 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
 ## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib32 -&gt; usr/lib32
@@ -758,9 +785,9 @@ ls -al </code></pre>
 ## drwxr-xr-x   3 root root  4096 oct  5 20:41 media
 ## drwxr-xr-x   2 root root  4096 jul 31 11:27 mnt
 ## drwxr-xr-x   5 root root  4096 oct  5 12:26 opt
-## dr-xr-xr-x 369 root root     0 oct 22 09:35 proc
+## dr-xr-xr-x 368 root root     0 oct 23 17:09 proc
 ## drwx------   8 root root  4096 oct 16 19:12 root
-## drwxr-xr-x  34 root root  1000 oct 22 10:34 run
+## drwxr-xr-x  34 root root  1020 oct 23 17:59 run
 ## lrwxrwxrwx   1 root root     8 oct  4 14:42 sbin -&gt; usr/sbin
 ## drwxr-xr-x  10 root root  4096 oct 16 19:40 snap</code></pre>
 </div>
@@ -1078,7 +1105,7 @@ file intro2linux</code></pre>
 </div>
 <div id="moviéndonos-por-el-sistema-de-archivos-comando-cd" class="section level2">
 <h2><span class="header-section-number">2.4</span> Moviéndonos por el sistema de archivos: comando <b>cd</b></h2>
-<p>Para movernos por el sistema de archivos de un sistema Linux podemos hacer uso de la <b>ruta absoluta</b> o la <b>ruta relativa</b>.</p>
+<p>Para movernos por el sistema de archivos de un sistema GNU/Linux podemos hacer uso de la <b>ruta absoluta</b> o la <b>ruta relativa</b>.</p>
 <div id="la-ruta-absoluta" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> La <strong>ruta absoluta</strong></h3>
 <p>Define la ruta a cualquier directorio o archivo en el sistema partiendo del <b>directorio raíz</b> <span class="math inline">\(/\)</span>, como indica el comando <span class="math inline">\(pwd\)</span></p>
@@ -1181,9 +1208,9 @@ fi</code></pre>
 <pre class="bash"><code>cd /home/vinuesa &amp;&amp; mkdir -p intro2linux/sesion1</code></pre>
 <p>No puedes escribir en mi directorio, porque no te he otorgado permiso para ello ;)</p>
 </div>
-<div id="qué-es-exactamente-un-comando-en-linux" class="section level2">
-<h2><span class="header-section-number">2.6</span> Qué es exactamente un <span class="math inline">\(comando\)</span> en Linux?</h2>
-<p>Un comando de Linux puede ser una de cuatro cosas:</p>
+<div id="qué-es-exactamente-un-comando-en-gnulinux" class="section level2">
+<h2><span class="header-section-number">2.6</span> Qué es exactamente un <span class="math inline">\(comando\)</span> en GNU/Linux?</h2>
+<p>Un comando de GNU/Linux puede ser una de cuatro cosas:</p>
 <ol style="list-style-type: decimal">
 <li><p>un <strong>programa ejecutable</strong>, como los que hemos estado usando, tales como <span class="math inline">\(cut\)</span>, <span class="math inline">\(sort\)</span>, <span class="math inline">\(grep\)</span> … que están guardados en directorios del sistame tales como <span class="math inline">\(/bin\)</span>, <span class="math inline">\(/usr/bin\)</span> … Estos son <em>programas compilados</em>, escritos en lenguajes como <span class="math inline">\(C\)</span> o <span class="math inline">\(C++\)</span>. Pero un comando también puede ser un <em>script</em> escrito en un lenguaje interpretado como <span class="math inline">\(Bash\)</span>, <span class="math inline">\(Perl\)</span>, <span class="math inline">\(Phython\)</span> o <span class="math inline">\(R\)</span>, posiblemente escrito por el propio usuario. Estos frecuentemente se ubican en el directorio <em>$HOME/bin</em></p></li>
 <li><p>puede ser un <strong>comando del shell</strong>, un “<span class="math inline">\(shell\ builtin\)</span>”, como <span class="math inline">\(cd\)</span>, <span class="math inline">\(cp\)</span> …</p></li>
@@ -1206,7 +1233,7 @@ alias tep=&quot;ssh -X vinuesa@tepeu.*.*.*&quot;</code></pre>
 vinuesa@132.**.**.**&#39;s password:</code></pre>
 <div id="el-archivo-home.bash_aliases" class="section level4">
 <h4><span class="header-section-number">2.6.1.1</span> El archivo <strong>$HOME/.bash_aliases</strong></h4>
-<p>Si quieres guardar una lista personal de aliases de manera permanente, puedes escribirlos en el archivo <span class="math inline">\(\$HOME/.bash\_aliases\)</span>, <em>uno de los archivos de configuración del ambiente</em> que los usuarios avanzados de Linux gardan en su <span class="math inline">\(\$HOME\)</span></p>
+<p>Si quieres guardar una lista personal de aliases de manera permanente, puedes escribirlos en el archivo <span class="math inline">\(\$HOME/.bash\_aliases\)</span>, <em>uno de los archivos de configuración del ambiente</em> que los usuarios avanzados de GNU/Linux gardan en su <span class="math inline">\(\$HOME\)</span></p>
 <p>Cada vez que inicias tu máquina o que estableces una sesión remota, se lee este archivo en memoria, quedando los aliases como parte del <em>ambiente</em> (<span class="math inline">\(environment\)</span>).</p>
 <p>Van unas líneas de mi archivo <span class="math inline">\(\$HOME/.bash\_aliases\)</span> como ejemplos (los asteriscos los pongo para no hacer públicas las IPs)</p>
 <pre><code># ssh aliases
@@ -1223,7 +1250,7 @@ alias figtree=&quot;java -Xms128m -Xmx512m -jar /home/vinuesa/soft_download/FigT
 alias seaview=&quot;/home/vinuesa/soft_download/seaview/seaview&quot;
 
 ...</code></pre>
-<p>El archivo <span class="math inline">\(\$HOME/.bash_aliases\)</span> es leído por los archivos de configuración <span class="math inline">\(\$HOME/.bashrc\)</span> cuando iniciamos nuestra máquina local, o <span class="math inline">\(\$HOME/.bash\_profile\)</span> cuando establecemos una sesión remota vía <span class="math inline">\(ssh\)</span>. Hablaremos más de estos archivo en la sección de administración básica de un sistema Linux.</p>
+<p>El archivo <span class="math inline">\(\$HOME/.bash_aliases\)</span> es leído por los archivos de configuración <span class="math inline">\(\$HOME/.bashrc\)</span> cuando iniciamos nuestra máquina local, o <span class="math inline">\(\$HOME/.bash\_profile\)</span> cuando establecemos una sesión remota vía <span class="math inline">\(ssh\)</span>. Hablaremos más de estos archivo en la sección de administración básica de un sistema GNU/Linux.</p>
 <p>Como ejercicio te sugiero que busques y leas estos archivos. Recuerda que tienes que usar <span class="math inline">\(ls\ -a\)</span> para poderlos ver, ya que el nombre de archivo está precedido por un <strong>.</strong> para ocultarlos a una llamada de <span class="math inline">\(ls\)</span> estándar.</p>
 </div>
 </div>
@@ -1252,7 +1279,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 <p>La mayoría de los programas ejecutables del sistema proveen un formato estandarizado de documentación que se despliega en la consola usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                           User Commands                          CUT(1)
+<pre><code>## CUT(1)                                                                              User Commands                                                                              CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -1265,8 +1292,7 @@ man cut | head -30</code></pre>
 ## 
 ##        With no FILE, or when FILE is -, read standard input.
 ## 
-##        Mandatory  arguments  to  long  options are mandatory for short options
-##        too.
+##        Mandatory arguments to long options are mandatory for short options too.
 ## 
 ##        -b, --bytes=LIST
 ##               select only these bytes
@@ -1278,10 +1304,11 @@ man cut | head -30</code></pre>
 ##               use DELIM instead of TAB for field delimiter
 ## 
 ##        -f, --fields=LIST
-##               select only these fields;  also print any line that contains  no
-##               delimiter character, unless the -s option is specified
+##               select only these fields;  also print any line that contains no delimiter character, unless the -s option is specified
 ## 
-##        -n     (ignored)</code></pre>
+##        -n     (ignored)
+## 
+##        --complement</code></pre>
 </div>
 <div id="ayuda-de-cada-comando-integrado-en-el-shell-help-shell_builtin-para-shell-builtins" class="section level3">
 <h3><span class="header-section-number">2.6.5</span> Ayuda de cada comando integrado en el Shell: <b>help shell_builtin</b> para <em>shell builtins</em></h3>
@@ -1347,24 +1374,24 @@ mkdir --help</code></pre>
 </div>
 <div id="encuentra-comandos-adecuados-para-un-tipo-de-acción-apropos" class="section level3">
 <h3><span class="header-section-number">2.6.7</span> Encuentra comandos adecuados para un tipo de acción: <b>apropos</b></h3>
-<p>Por ejemplo, quiero saber qué distribución de Linux corre mi máquina, pero no recuerdo el comando.</p>
+<p>Por ejemplo, quiero saber qué distribución de GNU/Linux corre mi máquina, pero no recuerdo el comando.</p>
 <pre class="bash"><code># encuentra comandos que tienen que ver con la palabra clave distribution
 apropos distribution</code></pre>
 <pre><code>## hmmsim (1)           - collect profile score distributions on random sequences
-## bdftopcf (1)         - convert X font from Bitmap Distribution Format to Port...
-## Bio::Tools::RandomDistFunctions (3pm) - A set of routines useful for generati...
+## bdftopcf (1)         - convert X font from Bitmap Distribution Format to Portable Compiled Format
+## Bio::Tools::RandomDistFunctions (3pm) - A set of routines useful for generating random data in different distributions
 ## CPAN::Meta (3perl)   - the distribution metadata for a CPAN dist
 ## CPAN::Meta::Converter (3perl) - Convert CPAN distribution metadata structures
-## CPAN::Meta::Feature (3perl) - an optional feature provided by a CPAN distribu...
-## CPAN::Meta::Prereqs (3perl) - a set of distribution prerequisites by phase an...
+## CPAN::Meta::Feature (3perl) - an optional feature provided by a CPAN distribution
+## CPAN::Meta::Prereqs (3perl) - a set of distribution prerequisites by phase and type
 ## CPAN::Meta::Spec (3perl) - specification for CPAN distribution metadata
 ## CPAN::Meta::Validator (3perl) - validate CPAN distribution metadata structures
 ## dpkg-vendor (1)      - queries information about distribution vendors
-## iptables-extensions (8) - list of extensions in the standard iptables distrib...
+## iptables-extensions (8) - list of extensions in the standard iptables distribution
 ## lsb_release (1)      - print distribution-specific information
 ## perlnewmod (1)       - preparing a new module for distribution
 ## perlutil (1)         - utilities packaged with the Perl distribution
-## pfscale (1)          - fit parameters of an extreme-value distribution to a p...</code></pre>
+## pfscale (1)          - fit parameters of an extreme-value distribution to a profile score list</code></pre>
 <ul>
 <li>veo que es lsb_release. Consultemos su <span class="math inline">\(--help\)</span></li>
 </ul>
@@ -1528,7 +1555,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 59264
+<pre><code>## total 59308
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -1536,8 +1563,8 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      267 oct 22 19:18 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 22 21:10 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
-## drwxr-xr-x 3 vinuesa vinuesa     4096 oct 21 09:35 docs</code></pre>
+## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 23 18:38 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## drwxr-xr-x 3 vinuesa vinuesa     4096 oct 23 17:12 docs</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
 </ul>
@@ -1553,8 +1580,8 @@ ls -l | head</code></pre>
 </div>
 <div id="nombres-de-archivos-y-directorios-y-uso-de-comillas-sencillas-y-dobles" class="section level2">
 <h2><span class="header-section-number">3.7</span> Nombres de archivos y directorios y uso de comillas sencillas y dobles</h2>
-<p>Los usuarios de Windows suelen escribir nombres de archivo con espacios: ‘mi archivo de secuencias.fasta’. Como subrayamos en el <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción a Linux</a>, en el <span class="math inline">\(Shell\)</span> los espacios separan argumentos. Por ello lo mejor es usar guiones bajos para separar las partes del nombre de un archivo: ‘recA_Bradyrhizobium.fna’. Recuerda también que en el <span class="math inline">\(Shell\)</span>, la puntuación se considera, es decir ‘recA_Bradyrhizobium.fna’ y ‘recA_bradyrhizobium.fna’ son dos archivos distintos.</p>
-<p>En las versiones modernas de Linux, los nombres de archivos con espacios son automáticamente mostrados entre comillas sencillas: ‘mi archivo de secuencias.fasta’. Así el <span class="math inline">\(Shell\)</span> considera el nombre del archivo como un solo argumento.</p>
+<p>Los usuarios de Windows suelen escribir nombres de archivo con espacios: ‘mi archivo de secuencias.fasta’. Como subrayamos en el <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción a GNU/Linux</a>, en el <span class="math inline">\(Shell\)</span> los espacios separan argumentos. Por ello lo mejor es usar guiones bajos para separar las partes del nombre de un archivo: ‘recA_Bradyrhizobium.fna’. Recuerda también que en el <span class="math inline">\(Shell\)</span>, la puntuación se considera, es decir ‘recA_Bradyrhizobium.fna’ y ‘recA_bradyrhizobium.fna’ son dos archivos distintos.</p>
+<p>En las versiones modernas de GNU/Linux, los nombres de archivos con espacios son automáticamente mostrados entre comillas sencillas: ‘mi archivo de secuencias.fasta’. Así el <span class="math inline">\(Shell\)</span> considera el nombre del archivo como un solo argumento.</p>
 <div id="uso-de-comillas-sencillas-interpretación-literal-y-escape-de-caracteres-reservados-para-el-shell" class="section level3">
 <h3><span class="header-section-number">3.7.1</span> Uso de <b>comillas sencillas(<span class="math inline">\(&#39;\)</span>)</b>: interpretación literal y escape de caracteres reservados para el <i>SHELL</i></h3>
 <ul>
@@ -1574,13 +1601,13 @@ rename &#39;s/ /_/g&#39; *.docx</code></pre>
 <ul>
 <li>Ejemplo de llamada a <span class="math inline">\(sed\)</span></li>
 </ul>
-<pre><code># con esta sentencia el editor de flujo sed cambiará todas las instancias de Windos por Linux
+<pre><code># con esta sentencia el editor de flujo sed cambiará todas las instancias de Windos por GNU-Linux
 #  que aparecen en el archivo txt
-sed &#39;s/Windows/Linux/g&#39; archivo.txt # cambia Windows por linux globalmente ;)</code></pre>
+sed &#39;s/Windows/GNU-Linux/g&#39; archivo.txt # cambia Windows por linux globalmente ;)</code></pre>
 </div>
 <div id="uso-de-comillas-dobles-para-interpolación-de-variables" class="section level3">
 <h3><span class="header-section-number">3.7.2</span> Uso de <b>comillas dobles (<span class="math inline">\(&quot;\)</span>)</b> para interpolación de variables</h3>
-<p>Se requiren <b>comillas dobles (<span class="math inline">\(&quot;\)</span>)</b> siempre que queramos interpolar una variable (obtener su valor) contenida dentro de una cadena de texto, como muestra el siguiente ejemplo</p>
+<p>Se requieren <b>comillas dobles (<span class="math inline">\(&quot;\)</span>)</b> siempre que queramos interpolar una variable (obtener su valor) contenida dentro de una cadena de texto, como muestra el siguiente ejemplo</p>
 <pre class="bash"><code># echo imprime el contenido de la cadena acotada entre comillas dobles, interpolando las variables que tenga
 echo &quot;soy el usuario $USER en la máquina $HOSTNAME&quot;</code></pre>
 <pre><code>## soy el usuario vinuesa en la máquina alisio</code></pre>
@@ -1778,7 +1805,7 @@ echo &amp;&amp; echo &quot;# &gt;&gt;&gt; con modificador global &lt;&lt;&lt;&qu
 echo $PATH | sed &#39;s/:/\n/g&#39; # con modificador global</code></pre>
 <pre><code>## # &gt;&gt;&gt; sin modificador global &lt;&lt;&lt;
 ## /home/vinuesa/bin
-## /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/rstudio/bin/postback
+## /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vinuesa/edirect:/home/vinuesa/soft_download/get_homologues-x86_64-20190805:/home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin:/home/vinuesa/soft_download/Fiji.app:/home/vinuesa/soft_download/circos/current/bin:/usr/local/genome/bin:/usr/lib/rstudio/bin/postback
 ## 
 ## # &gt;&gt;&gt; con modificador global &lt;&lt;&lt;
 ## /home/vinuesa/bin
@@ -1791,6 +1818,12 @@ echo $PATH | sed &#39;s/:/\n/g&#39; # con modificador global</code></pre>
 ## /usr/games
 ## /usr/local/games
 ## /snap/bin
+## /home/vinuesa/edirect
+## /home/vinuesa/soft_download/get_homologues-x86_64-20190805
+## /home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin
+## /home/vinuesa/soft_download/Fiji.app
+## /home/vinuesa/soft_download/circos/current/bin
+## /usr/local/genome/bin
 ## /usr/lib/rstudio/bin/postback</code></pre>
 <ul>
 <li>cambia espacios sencillos por guiones bajos</li>
@@ -1863,7 +1896,7 @@ sed &#39;1d&#39; linux_commands.tab | head -4</code></pre>
 </div>
 <div id="salida-estándar-o-standard-output-stdout" class="section level1">
 <h1><span class="header-section-number">5</span> Salida estándar o standard output <strong>STDOUT</strong></h1>
-<p>Como se explicó en el <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción a Linux</a>, la salida estándar <span class="math inline">\(STDOUT\)</span> de un comando o programa generalmente está ligada a la consola, es decir, vemos en la pantalla la salida del mismo.</p>
+<p>Como se explicó en el <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción a GNU/Linux</a>, la salida estándar <span class="math inline">\(STDOUT\)</span> de un comando o programa generalmente está ligada a la consola, es decir, vemos en la pantalla la salida del mismo.</p>
 <div id="imprimir-texto-a-stdout-con-echo" class="section level2">
 <h2><span class="header-section-number">5.1</span> Imprimir texto a STDOUT con <strong>echo</strong></h2>
 <p>Para imprimir texto simple a la consola o archivo usa el comando <span class="math inline">\(echo\)</span></p>
@@ -1911,7 +1944,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 oct 22 21:10 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 oct 23 18:38 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -1930,12 +1963,12 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 22 21:10 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 23 18:38 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
 <h2><span class="header-section-number">5.3</span> ¿Cómo indicar a un comando o programa que lea de un archivo y escriba a otro? - combinación de <strong>&lt;</strong> y <strong>&gt;</strong></h2>
-<p>Muchas veces un programa debe leer un archivo para procesarlo e imprimir el resultado a un archivo. Esto es muy fácil en Unix y Linux, combinando <strong>&lt;</strong> con <strong>&gt;</strong>.</p>
+<p>Muchas veces un programa debe leer un archivo para procesarlo e imprimir el resultado a un archivo. Esto es muy fácil en GNU/Linux, combinando <strong>&lt;</strong> con <strong>&gt;</strong>.</p>
 <p>Para ello usa la sintaxis: <code>programa &lt; archivo_a_leer &gt; archivo_a_escribir</code></p>
 <p>Pero recuerden, no podemos leer y escribir al mismo archivo simultáneamente, como mostramos arriba.</p>
 <pre class="bash"><code>echo -e &quot;texto arbitrario\nmás texto\ny otra línea&quot; &gt; texto_arbitrario.txt
@@ -2043,7 +2076,7 @@ rm tmp1.txt</code></pre>
 </div>
 <div id="descriptores-de-archivo-0-stdin-1-stdout-2-stderr" class="section level1">
 <h1><span class="header-section-number">6</span> Descriptores de archivo: 0 == STDIN, 1 == STDOUT, 2 == STDERR</h1>
-<p>En Unix y Linux cada proceso típicamente inicia abriendo tres descriptores de archivo: 0 == STDIN, 1 == STDOUT, 2 == STDERR. Es responsabilidad del programador adherirse a estas convenciones, es decir, indicarle a los programas que escribe que imprima los resultados del programa a STDOUT y los posibles mensajes de error a STDOUT.</p>
+<p>En GNU/Linux cada proceso típicamente inicia abriendo tres descriptores de archivo: 0 == STDIN, 1 == STDOUT, 2 == STDERR. Es responsabilidad del programador adherirse a estas convenciones, es decir, indicarle a los programas que escribe que imprima los resultados del programa a STDOUT y los posibles mensajes de error a STDOUT.</p>
 <p>Copia y ejecuta los siguientes comandos en tu consola, para que lo entiendas. Le estamos pidiendo a</p>
 <ul>
 <li>aquí <span class="math inline">\(ls\)</span> intenta escribir su STDOUT a salida_no_existo.txt, pero no puede ya que el archivo no_existo.txt no existe en el directorio actual.</li>
@@ -2059,15 +2092,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 22 21:10 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 22 21:10 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 23 18:38 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 23 18:38 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 22 21:10 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 23 18:38 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2161,9 +2194,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 22 21:08 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 23 18:37 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4728 oct 22 21:10 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4727 oct 23 18:38 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2184,9 +2217,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 22 21:08 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 23 18:37 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4728 oct 22 21:10 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4727 oct 23 18:38 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2196,10 +2229,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 22 21:08 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 23 18:37 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  879 oct 22 21:08 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  879 oct 23 18:37 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2209,11 +2242,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  879 oct 22 21:08 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  879 oct 23 18:37 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 22 21:08 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 23 18:37 recA_Byuanmingense.fna</code></pre>
 <hr />
 </div>
 </div>
@@ -2234,7 +2267,7 @@ zcat assembly_summary.txt.gz | less -L</code></pre>
 <p>Veamos en detalle el uso del comando <strong>|</strong> y de algunas herramientas de filtrado trabajando sobre el archivo assembly_summary.txt</p>
 <div id="el-comando-pipe" class="section level2">
 <h2><span class="header-section-number">8.1</span> El comando <strong>|</strong> (<em>pipe</em>:)</h2>
-<p>Como explicamos en el <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción</a> y detallamos en la sección de <a href="#salida-estándar-o-standard-output-stdout">STDOUT</a>, el resultado de un comando ejecutado en la consola se despliega en la pantalla. Es decir, la salida estándar o <strong>STDOUT</strong> de un comando está asociada por defecto a la terminal o pantalla. Hemos podido comprobar también que cada comando hace por lo general una sola función, pero con muchas opciones. Las herramientas de Linux siguen fielmente este principio de modularidad, fundamental en la ingeniería de código.</p>
+<p>Como explicamos en el <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción</a> y detallamos en la sección de <a href="#salida-estándar-o-standard-output-stdout">STDOUT</a>, el resultado de un comando ejecutado en la consola se despliega en la pantalla. Es decir, la salida estándar o <strong>STDOUT</strong> de un comando está asociada por defecto a la terminal o pantalla. Hemos podido comprobar también que cada comando hace por lo general una sola función, pero con muchas opciones. Las herramientas de GNU/Linux siguen fielmente este principio de modularidad, fundamental en la ingeniería de código.</p>
 <p>Lo genial del diseño de los sistemas operativos UNIX y GNU/Linux, es que las diferentes utilerías pueden combinarse según se requiera, lo cual confiere una gran versatilidad al usuario para diseñar soluciones específicas para esencialmente cualquier tarea o problema. Para ello se conecta la salida estándar de un comando (<strong>STDOUT</strong>) con la entrada estándar (<strong>STDIN</strong>) del siguiente mediante el comando <strong>|</strong> o <em>pipe</em>, siguiendo esta sintaxis:</p>
 <p><code>comando1 [-opcion1 …] | comando2 [-opcion1 …] | comando3 [-opcion1 …] …</code></p>
 <p>como se muestra en los siguientes ejemplos básicos, que ilustran el principio:</p>
@@ -2345,7 +2378,7 @@ zcat assembly_summary.txt.gz | grep Acinetobacter | grep Complete | wc -l
 zgrep Acinetobacter assembly_summary.txt.gz | grep Complete | wc -l</code></pre>
 <pre><code>## 220
 ## 220</code></pre>
-<pre><code># Ojo: recuerda que Linux es sensible a mayúsculas y minúsculas: prueba este comando para comprobarlo
+<pre><code># Ojo: recuerda que GNU/Linux es sensible a mayúsculas y minúsculas: prueba este comando para comprobarlo
 zgrep acinetobacter assembly_summary.txt.gz | grep Complete | wc -l # no encuentra nada</code></pre>
 <pre class="bash"><code># grep -i lo hace insensible a la fuente
 zgrep -i acinetobacter assembly_summary.txt.gz | grep Complete | wc -l</code></pre>
@@ -2528,10 +2561,10 @@ awk &#39;/cache size/{size+=$4}END{print &quot;total chache size: &quot;, size, 
 <pre class="bash"><code># Noten que puedo partir líneas de comandos muy largas usando \ antes de introducir un salto de línea ;)
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{print &quot;total size of working_with_linux_commands.* files is:&quot;, s/1000000, &quot;Mb&quot;}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1235343 oct 22 21:08 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1272063 oct 23 18:37 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa  110546 oct 22 21:10 working_with_linux_commands.Rmd
-## total size of working_with_linux_commands.* files is: 1.72829 Mb</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  114333 oct 23 18:38 working_with_linux_commands.Rmd
+## total size of working_with_linux_commands.* files is: 1.7688 Mb</code></pre>
 </div>
 <div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
 <h3><span class="header-section-number">9.2.3</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
@@ -2762,6 +2795,99 @@ awk &#39;BEGIN{print &quot;species,count&quot;; OFS=&quot;,&quot;}{print $2 &quo
 ## GATCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGT
 ## CTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTCACGGCCTCGATCAACAAGTCCAACACCATGG
 ## TGATCTTTATCAACCAGATCC</code></pre>
+<ul>
+<li>uso de <em>filter_fasta_sequences.awk</em> dentro de una tubería de comandos</li>
+</ul>
+<pre class="bash"><code># el script se puede llamar también desde dentro de una tubería, es decir,
+# pasándole el STDOUT de un comando previo entubado con | al STDIN del script
+cat genosp recA_Bradyrhizobium_vinuesa.fna | filter_fasta_sequences.awk MAM</code></pre>
+<pre><code>## cat: genosp: No such file or directory
+## &gt;AY653749.1 Bradyrhizobium canariense strain BC-MAM12 recombination protein A (recA) gene, partial cds
+## ATGAAGCTCGGCAAGAACGACCGTTCGATGGATGTCGAGGCGGTCTCTTCGGGTTCGTTGGGGCTCGATA
+## TCGCGCTCGGGATCGGCGGCCTGCCGAAGGGGCGTGTCGTGGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCGCTGCACACGGTGGCGGAAGGGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCC
+## GAGCACGCGCTTGACCCGGTCTATGCACGCAAACTGGGCGTCAACATCGACGAGCTCCTGATCTCGCAGC
+## CGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCCGGCGCGGTCGACGTGCTGGT
+## GATCGATTCGGTCGCGGCCCTGGTGCCGAAGGCCGAACTCGAGGGTGAGATGGGCGATGCGCTGCCGGGT
+## CTGCAGGCGCGTCTGATGAGCCAAGCGCTGCGCAAGCTGACGGCGTCCATCAACAAGTCCAATACCATGG
+## TGATCTTCATCAACCAGATCC
+## 
+## 
+## &gt;AY653748.1 Bradyrhizobium canariense strain BC-MAM11 recombination protein A (recA) gene, partial cds
+## ATGAAGCTCGGCAAGAACGACCGCTCGATGGACGTCGAGGCGGTCTCCTCGGGCTCGCTCGGGCTCGACA
+## TCGCGCTCGGGATCGGCGGCCTGCCGAAGGGGCGCGTCGTGGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCGCTGCACACGGTGGCGGAAGGGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCC
+## GAACACGCGCTCGACCCGGTCTATGCGCGCAAGCTGGGCGTCAATATCGACGAACTCCTGATTTCCCAGC
+## CGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCCGGCGCGGTCGACGTGCTGGT
+## GATCGATTCGGTCGCGGCCCTGGTGCCGAAGGCCGAGCTCGAGGGCGAAATGGGCGATGCGCTGCCGGGT
+## CTGCAGGCGCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCGTCCATCAACAAGTCCAACACCATGG
+## TGATCTTCATCAACCAGATCC
+## 
+## 
+## &gt;AY653747.1 Bradyrhizobium canariense strain BC-MAM9 recombination protein A (recA) gene, partial cds
+## ATGAAGCTCGGCAAGAACGACCGTTCGATGGATGTCGAGGCGGTCTCTTCGGGTTCGTTGGGGCTCGATA
+## TCGCGCTCGGGATCGGCGGCCTGCCGAAGGGGCGTGTCGTGGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCGCTGCACACGGTGGCGGAAGGGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCC
+## GAGCACGCGCTTGACCCGGTCTATGCACGCAAACTGGGCGTCAACATCGACGAGCTCCTGATCTCGCAGC
+## CGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCCGGCGCGGTCGACGTGCTGGT
+## GATCGATTCGGTCGCGGCCCTGGTGCCGAAGGCCGAACTCGAGGGTGAGATGGGCGATGCGCTGCCGGGT
+## CTGCAGGCGCGTCTGATGAGCCAAGCGCTGCGCAAGCTGACGGCGTCCATCAACAAGTCCAATACCATGG
+## TGATCTTCATCAACCAGATCC
+## 
+## 
+## &gt;AY653746.1 Bradyrhizobium canariense strain BC-MAM8 recombination protein A (recA) gene, partial cds
+## ATGAAGCTCGGCAAGAACGACCGTTCGATGGATGTCGAGGCGGTCTCCTCGGGCTCGCTCGGGCTCGATA
+## TCGCGCTCGGGATCGGCGGCCTGCCGAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCGCTGCACACGGTTGCGGAAGGGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCC
+## GAGCACGCGCTCGACCCGGTCTATGCGCGCAAGCTGGGCGTCAACATCGACGAGCTCCTGATCTCGCAGC
+## CGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCCGGCGCGGTCGACGTGCTGGT
+## GATCGATTCGGTCGCGGCCCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGT
+## CTGCAGGCGCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCGTCCATCAACAAGTCCAATACCATGG
+## TGATCTTCATCAACCAGATCC
+## 
+## 
+## &gt;AY653745.1 Bradyrhizobium canariense strain BC-MAM6 recombination protein A (recA) gene, partial cds
+## ATGAAGCTTGGCAAGAACGACCGTTCGATGGATGTCGAGGCGGTTTCTTCGGGCTCGTTGGGGCTTGATA
+## TCGCGCTCGGGATCGGCGGCCTGCCGAAGGGGCGCGTTGTGGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCACTGCACACGGTGGCGGAAGGGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCC
+## GAGCACGCGCTCGACCCGGTCTATGCGCGCAAGCTGGGCGTCAATATCGACGAGCTCCTGATCTCCCAGC
+## CGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCCGGCGCGGTCGACGTGCTGGT
+## GATCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGT
+## CTGCAGGCGCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCGTCCATCAACAAATCCAATACGATGG
+## TGATCTTCATCAACCAGATCC
+## 
+## 
+## &gt;AY653744.1 Bradyrhizobium canariense strain BC-MAM2 recombination protein A (recA) gene, partial cds
+## ATGAAGCTTGGCAAGAACGACCGTTCGATGGATGTCGAGGCGGTTTCTTCGGGCTCGTTGGGGCTTGATA
+## TCGCGCTCGGGATCGGCGGCCTGCCGAAGGGGCGCGTTGTGGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCACTGCACACGGTGGCGGAAGGGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCC
+## GAGCACGCGCTCGACCCGGTCTATGCGCGCAAGCTGGGCGTCAATATCGACGAGCTCCTGATCTCCCAGC
+## CGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCCGGCGCGGTCGACGTGCTGGT
+## GATCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGT
+## CTGCAGGCGCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCGTCCATCAACAAATCCAATACGATGG
+## TGATCTTCATCAACCAGATCC
+## 
+## 
+## &gt;AY591547.1 Bradyrhizobium canariense bv. genistearum strain BC-MAM5 recombination protein A (recA) gene, partial cds
+## ATGAAGCTTGGCAAGAACGACCGTTCGATGGATGTCGAGGCGGTCTCTTCGGGCTCGTTGGGGCTTGATA
+## TCGCGCTCGGGATCGGCGGCCTGCCGAAGGGGCGCGTTGTGGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCACTGCACACGGTGGCGGAAGGGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCC
+## GAGCACGCGCTCGACCCGGTCTATGCGCGCAAGCTGGGCGTCAATATCGACGAGCTCCTGATCTCCCAGC
+## CGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCCGGCGCGGTCGACGTGCTGGT
+## GATCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGT
+## CTGCAGGCGCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCGTCCATCAACAAGTCCAATACGATGG
+## TGATCTTCATCAACCAGATCC
+## 
+## 
+## &gt;AY591546.1 Bradyrhizobium canariense bv. genistearum strain BC-MAM1 recombination protein A (recA) gene, partial cds
+## ATGAAGCTTGGCAAGAACGACCGTTCGATGGATGTCGAGGCGGTCTCTTCGGGCTCGTTGGGGCTTGATA
+## TCGCGCTCGGGATCGGCGGCCTGCCGAAGGGGCGCGTCGTGGAGATCTACGGGCCGGAATCCTCGGGCAA
+## GACCACGCTGGCGCTGCACACGGTGGCGGAAGGGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCC
+## GAGCACGCGCTCGACCCGGTCTATGCGCGCAAGCTGGGCGTCAATATCGACGAGCTCCTGATCTCCCAGC
+## CGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCCGGCGCGGTCGACGTGCTGGT
+## GATCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGT
+## CTGCAGGCGCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCGTCCATCAACAAGTCCAATACGATGG
+## TGATCTTCATCAACCAGATCC</code></pre>
 </div>
 <div id="tutoriales-recomendados-para-profundizar-en-awk" class="section level3">
 <h3><span class="header-section-number">9.2.7</span> Tutoriales recomendados para profundizar en AWK</h3>
@@ -2769,8 +2895,8 @@ awk &#39;BEGIN{print &quot;species,count&quot;; OFS=&quot;,&quot;}{print $2 &quo
 <ul>
 <li><a href="https://ferd.ca/awk-in-20-minutes.html">tutorial de unos 20 min</a></li>
 <li><a href="https://www.grymoire.com/Unix/Awk.html">tutorial extenso, excelente</a></li>
+<li><a href="https://www.gnu.org/software/gawk/manual/">GAWK manual, la guía definitiva</a> ******</li>
 </ul>
-<hr />
 </div>
 </div>
 </div>
@@ -3172,7 +3298,7 @@ echo &quot;$archivo_de_comandos_linux&quot;</code></pre>
 <h2><span class="header-section-number">11.2</span> Dónde debo guardar mis scripts para que sean visibles desde cualquier directorio del sitema</h2>
 <p>Como explicábamos en la <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción</a>, el <span class="math inline">\(Shell\)</span> busca comandos en los directorios especificados en la variable de ambiente <strong>PATH</strong>. Los directorios van separados por <span class="math inline">\(:\)</span> y se leen en ese orden.</p>
 <pre class="bash"><code>echo &quot;PATH = $PATH&quot;</code></pre>
-<pre><code>## PATH = /home/vinuesa/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/rstudio/bin/postback</code></pre>
+<pre><code>## PATH = /home/vinuesa/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vinuesa/edirect:/home/vinuesa/soft_download/get_homologues-x86_64-20190805:/home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin:/home/vinuesa/soft_download/Fiji.app:/home/vinuesa/soft_download/circos/current/bin:/usr/local/genome/bin:/usr/lib/rstudio/bin/postback</code></pre>
 <p>Recuerda, es fácile generar una lista de estos directorios más legible con un comando como ésta</p>
 <pre class="bash"><code>echo &quot;$PATH&quot; | sed &#39;s/:/\n/g&#39;</code></pre>
 <pre><code>## /home/vinuesa/bin
@@ -3185,6 +3311,12 @@ echo &quot;$archivo_de_comandos_linux&quot;</code></pre>
 ## /usr/games
 ## /usr/local/games
 ## /snap/bin
+## /home/vinuesa/edirect
+## /home/vinuesa/soft_download/get_homologues-x86_64-20190805
+## /home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin
+## /home/vinuesa/soft_download/Fiji.app
+## /home/vinuesa/soft_download/circos/current/bin
+## /usr/local/genome/bin
 ## /usr/lib/rstudio/bin/postback</code></pre>
 <div id="agregando-directorios-a-la-variable-de-ambiente-path" class="section level3">
 <h3><span class="header-section-number">11.2.1</span> Agregando directorios a la variable de ambiente <b>PATH</b></h3>
@@ -3193,7 +3325,7 @@ echo &quot;$archivo_de_comandos_linux&quot;</code></pre>
 <li>Añade el directorio $HOME/bin al final de la lista de directorios de <strong>PATH</strong></li>
 </ul>
 <pre><code>PATH=$PATH:$HOME/bin</code></pre>
-<p>Nota: en versiones recientes de <span class="math inline">\(Ubuntu\)</span> y otras distribuciones de Linux, el directorio <em><span class="math inline">\(HOME/bin* se exporta automáticamente. Revisa tu archivo *\)</span>HOME/.bashrc</em>. Ya que estamos con archivos de configuración, profundicemos un poco más en este tópico.</p>
+<p>Nota: en versiones recientes de <span class="math inline">\(Ubuntu\)</span> y otras distribuciones de GNU/Linux, el directorio <em><span class="math inline">\(HOME/bin* se exporta automáticamente. Revisa tu archivo *\)</span>HOME/.bashrc</em>. Ya que estamos con archivos de configuración, profundicemos un poco más en este tópico.</p>
 </div>
 </div>
 <div id="variables-de-ambiente---printenv" class="section level2">
@@ -3235,7 +3367,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 dat=$(date | awk &#39;{print $3,$2,$6}&#39; | sed &#39;s/ //g&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in: $wkdir at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;oct22CDT&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;oct23CDT&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
 <h2><span class="header-section-number">11.5</span> Modificación de variables y operaciones con ellas</h2>
@@ -3320,7 +3452,7 @@ if [ -s &quot;$f&quot; ]; then
    echo &quot;$f exists and has size: $size&quot;
 fi
 </code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 22 21:10 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 23 18:38 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -3349,7 +3481,7 @@ f=$(ls *gz)
     echo &quot;running on $host under $OS with $no_cores cores :)&quot;
   else
        OS=&#39;windows&#39;
-       echo &quot;oh no! another windows box :( ... you should better change to linux :) &quot;
+       echo &quot;oh no! another windows box :( ... you should better change to GNU/linux :) &quot;
   fi
 </code></pre>
 <pre><code>## running on alisio under linux with 12 cores :)</code></pre>
@@ -3505,6 +3637,7 @@ CTRL-D</code></pre>
 <p>y ya puedes usarlo:</p>
 <pre class="bash"><code>ls_dir</code></pre>
 <pre><code>## .git
+## pics
 ## participantes_Taller_CG_FC
 ## intro2linux
 ## bin
@@ -3593,6 +3726,7 @@ find . -maxdepth $max_depth -type $type</code></pre>
 <pre class="bash"><code>  find_dir 1</code></pre>
 <pre><code>## .
 ## ./.git
+## ./pics
 ## ./participantes_Taller_CG_FC
 ## ./intro2linux
 ## ./bin
@@ -3762,9 +3896,11 @@ fi
 <div id="consideraciones-finales-y-referencias-recomendadas-para-continuar-aprendiendo-bash" class="section level1">
 <h1><span class="header-section-number">13</span> Consideraciones finales y referencias recomendadas para continuar aprendiendo Bash</h1>
 <p>Llegamos al final de este tutorial, enhorabuena!!! Has aprendido mucho, pero queda todavía queda mucho camino por andar. Bash sin duda es muy útil si vas a usarlo como <em>lenguaje pegamento</em> para conectar múltiples utilerías o programas, pero no es el apropiado para escribir programas complejos que tienen que hacer procesamiento numérico, gráfico, estadístico de datos, interactuar con bases de datos, parsear archivos de estructura compleja, etc. Para ello deberás aprender otros lenguajes más poderosos, capaces de manejar estructuras de datos complejas y librerías o paquetes especializados de código para ello. Pero aprender primero Shell es sin duda lo mejor que puedes hacer para iniciarte en la programación en sistemas UNIX o GNU/Linux. Te facilitará el camino posterior y te permitirá dominar el sistema operativo ya que el <span class="math inline">\(Shell\)</span> es su interfaz programática.</p>
-<p>Recomiendo las siguientes guías para apoyarte en tu proceso de aprendizaje de Bash. Disfruta el camino, saludos!</p>
+<p>Recomiendo las siguientes guías para apoyarte en tu proceso de aprendizaje de <a href="https://www.gnu.org/software/gawk/">gawk</a> y <a href="https://www.gnu.org/software/bash/">bash</a>. Disfruta el camino, saludos!</p>
 <ul>
-<li><a href="https://tldp.org/">The Linux Documentation Project - LDP</a></li>
+<li><a href="https://www.gnu.org/software/gawk/manual/gawk.html">The GNU Awk User’s Guide</a></li>
+<li><a href="https://www.gnu.org/software/bash/manual/bash.html">The GNU Bash Reference Manual</a></li>
+<li><a href="https://tldp.org/">The GNU/Linux Documentation Project - LDP</a></li>
 <li><a href="https://tldp.org/LDP/abs/abs-guide.pdf">Advanced Bash-Scripting Guide - LDP, Mendel Cooper</a></li>
 <li><a href="https://michael-herbst.com/teaching/advanced-bash-scripting-2017/advanced-bash-scripting-2017/notes.pdf">Advanced Bash Scripting, Michael F. Herbst, Uni Heidelberg</a></li>
 </ul>
