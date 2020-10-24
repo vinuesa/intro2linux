@@ -475,7 +475,7 @@ summary {
 <li><a href="#el-comando-pipe"><span class="toc-section-number">8.1</span> El comando <strong>|</strong> (<em>pipe</em>:)</a></li>
 <li><a href="#ejemplos-de-herramientas-de-filtrado-de-texto-cut-grep-sort-uniq-wc-y-en-acción"><span class="toc-section-number">8.2</span> Ejemplos de herramientas de filtrado de texto: <b>cut</b>, <b>grep</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> y <b>|</b> en acción</a></li>
 </ul></li>
-<li><a href="#el-lenguaje-de-procesamiento-de-patrones-awk"><span class="toc-section-number">9</span> El lenguaje de procesamiento de patrones <b>AWK</b></a><ul>
+<li><a href="#el-lenguaje-de-procesamiento-de-patrones-awk-y-su-sucesor-gnu-gawk"><span class="toc-section-number">9</span> El lenguaje de procesamiento de patrones <b>AWK</b> y su sucesor GNU <b>gawk</b></a><ul>
 <li><a href="#estructura-de-los-programas-awk"><span class="toc-section-number">9.1</span> Estructura de los programas AWK</a><ul>
 <li><a href="#estructura-básica---ejemplos-genéricos"><span class="toc-section-number">9.1.1</span> Estructura básica - ejemplos genéricos</a></li>
 <li><a href="#formas-alternativas-del-código-awk"><span class="toc-section-number">9.1.2</span> Formas alternativas del código AWK:</a></li>
@@ -732,8 +732,8 @@ ls | head</code></pre>
 ## filter_fasta_sequences.awk</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
-<pre><code>## total 59328
-## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 24 13:27 .
+<pre><code>## total 59332
+## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 24 18:55 .
 ## drwxr-xr-x 3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
@@ -746,13 +746,13 @@ ls -al </code></pre>
 ## -rw-r--r-- 1 vinuesa vinuesa   222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
 ## -rwxr-xr-x 1 vinuesa vinuesa      857 oct 22 12:14 filter_fasta_sequences.awk
 ## -rwxr-xr-x 1 vinuesa vinuesa     1237 oct 14 22:43 find_dir
-## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 24 13:29 .git
+## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 24 13:34 .git
 ## -rwxrwxr-x 1 vinuesa vinuesa      563 oct 22 14:17 hist.awk
 ## drwxr-xr-x 4 vinuesa vinuesa     4096 sep 29 22:56 intro2linux
 ## -rw-r--r-- 1 vinuesa vinuesa  3163754 oct 13 13:39 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r-- 1 vinuesa vinuesa    35149 sep 29 22:15 LICENSE
 ## -rw-r--r-- 1 vinuesa vinuesa    10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 24 13:27 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 24 18:55 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-r--r-- 1 vinuesa vinuesa     1705 sep 29 22:18 linux_very_basic_commands_table.csv
 ## -rwxr-xr-x 1 vinuesa vinuesa      493 oct 14 22:43 ls_dir
 ## drwxr-xr-x 2 vinuesa vinuesa     4096 oct  6 16:39 participantes_Taller_CG_FC
@@ -760,15 +760,15 @@ ls -al </code></pre>
 ## -rwxr-xr-x 1 vinuesa vinuesa     2884 oct 14 22:43 prot2cdnAlns.pl
 ## -rw-r--r-- 1 vinuesa vinuesa     6006 oct 20 20:03 README.md
 ## -rw-r--r-- 1 vinuesa vinuesa    77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa    17704 oct 24 13:27 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa    28497 oct 24 13:27 recA_Byuanmingense_muscle.aln
+## -rw-r--r-- 1 vinuesa vinuesa    17704 oct 24 18:55 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa    28497 oct 24 18:55 recA_Byuanmingense_muscle.aln
 ## -rw-rw-r-- 1 vinuesa vinuesa        0 oct 23 22:46 .Rhistory
 ## -rwxr-xr-x 1 vinuesa vinuesa      239 oct 14 22:43 split_fasta.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      158 oct 22 19:13 TODO.txt
 ## -rwxr-xr-x 1 vinuesa vinuesa     3402 oct 14 22:43 translate_fastas.pl
-## -rw-r--r-- 1 vinuesa vinuesa  1277449 oct 24 13:27 working_with_linux_commands.html
+## -rw-r--r-- 1 vinuesa vinuesa  1280736 oct 24 18:55 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa   382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   118809 oct 24 13:32 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa   120635 oct 24 18:57 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa       41 oct 13 19:24 zoom.url</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del directorio raiz</h4>
@@ -805,7 +805,7 @@ ls -al </code></pre>
 ## drwxr-xr-x   3 root root  4096 oct  5 20:41 media
 ## drwxr-xr-x   2 root root  4096 jul 31 11:27 mnt
 ## drwxr-xr-x   5 root root  4096 oct  5 12:26 opt
-## dr-xr-xr-x 363 root root     0 oct 24 11:11 proc
+## dr-xr-xr-x 360 root root     0 oct 24 11:11 proc
 ## drwx------   8 root root  4096 oct 16 19:12 root
 ## drwxr-xr-x  34 root root  1000 oct 24 11:52 run
 ## lrwxrwxrwx   1 root root     8 oct  4 14:42 sbin -&gt; usr/sbin
@@ -1575,7 +1575,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 59320
+<pre><code>## total 59324
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -1583,7 +1583,7 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      267 oct 22 19:18 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 24 13:33 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 24 18:58 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## drwxr-xr-x 3 vinuesa vinuesa     4096 oct 23 17:12 docs</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
@@ -1964,7 +1964,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 oct 24 13:33 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 oct 24 18:58 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -1983,7 +1983,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 24 13:33 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 24 18:58 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2112,15 +2112,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 24 13:33 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 24 13:33 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 24 18:58 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 24 18:58 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 24 13:33 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 24 18:58 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2214,9 +2214,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 13:27 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 18:55 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4728 oct 24 13:33 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4726 oct 24 18:58 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2237,9 +2237,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 13:27 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 18:55 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4728 oct 24 13:33 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4726 oct 24 18:58 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2249,10 +2249,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 13:27 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 18:55 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  879 oct 24 13:27 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  879 oct 24 18:55 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2262,11 +2262,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  879 oct 24 13:27 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  879 oct 24 18:55 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 13:27 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 18:55 recA_Byuanmingense.fna</code></pre>
 <hr />
 </div>
 </div>
@@ -2445,17 +2445,52 @@ zgrep -E &#39;Acinetobacter|Pseudomonas|Klebsiella&#39; assembly_summary.txt.gz 
 <pre><code>##    4747 Acinetobacter
 ##    8515 Klebsiella
 ##    8951 Pseudomonas</code></pre>
-<p>Veremos la gran utilidad y versatilidad de combinaciones de estos comandos para el procesamiento de archivos de secuencias en un ejercicio posterior.</p>
+<p>Veremos la gran utilidad y versatilidad de combinaciones de estos comandos para el procesamiento de archivos de secuencias en un ejercicio integrativo posterior.</p>
 <hr />
 </div>
 </div>
-<div id="el-lenguaje-de-procesamiento-de-patrones-awk" class="section level1">
-<h1><span class="header-section-number">9</span> El lenguaje de procesamiento de patrones <b>AWK</b></h1>
-<p><b>AWK</b> es un lenguaje de programación diseñado para procesar datos de texto, ya sean ficheros o flujos de datos. El nombre <b>AWK</b> deriva de las iniciales de los apellidos de sus autores: Alfred <b>A</b>ho, Peter <b>W</b>einberger, y Brian <b>K</b>ernighan. <b><span class="math inline">\(awk\)</span></b>, cuando está escrito todo en minúsculas, hace referencia al programa de Unix que interpreta programas escritos en el lenguaje de programación AWK. Es decir, <b>AWK</b> es un lenguaje interpretado por el intérprete de comando <b><span class="math inline">\(awk\)</span></b>.</p>
-<p><b>AWK</b> fue creado como un reemplazo a los algoritmos escritos en C para análisis de texto. Fue una de las primeras herramientas en aparecer en Unix (en la versión 3). Ganó popularidad rápidamente por la gran funcionalidad permitía añadir a las tuberías de comandos de Unix. Por ello se considera como una de las utilidades necesarias de este sistema operativo, así como de GNU/Linux.</p>
-<p>Debido a su densa notación, todos estos lenguajes son frecuentemente usados para escribir programas de una línea (“oneliners”), como veremos seguidamente.</p>
+<div id="el-lenguaje-de-procesamiento-de-patrones-awk-y-su-sucesor-gnu-gawk" class="section level1">
+<h1><span class="header-section-number">9</span> El lenguaje de procesamiento de patrones <b>AWK</b> y su sucesor GNU <b>gawk</b></h1>
+<p><b>AWK</b> es un lenguaje de programación diseñado para procesar datos de texto, ya sean ficheros o flujos de datos. El nombre <b>AWK</b> deriva de las iniciales de los apellidos de sus autores: Alfred <b>A</b>ho, Peter <b>W</b>einberger, y Brian <b>K</b>ernighan. <b><span class="math inline">\(awk\)</span></b>, cuando está escrito todo en minúsculas, hace referencia al programa de UNIX que interpreta programas escritos en el lenguaje de programación AWK. Es decir, <b>AWK</b> es un lenguaje interpretado por el intérprete de comando <b><span class="math inline">\(awk\)</span></b>.</p>
+<p><b>AWK</b> fue creado como un reemplazo a los algoritmos escritos en C para análisis de texto. Fue una de las primeras herramientas en aparecer en Unix (en la versión 3). Ganó popularidad rápidamente por la gran funcionalidad permitía añadir a las tuberías de comandos de Unix. Por ello se considera como una de las utilidades necesarias de este sistema operativo. <span class="math inline">\(awk\)</span> fue portado originalmente al proyecto GNU por Paul Rubin en 1986, llamándolo <span class="math inline">\(gawk\)</span>. Desde entonces <span class="math inline">\(gawk\)</span> ha ganado mucha funcionalidad adicional, siendo actualmente <strong>Arnold Robins</strong> el principal mantenedor del código y su extraordinaria <a href="https://www.gnu.org/software/gawk/manual/gawk.html">documentación</a>.</p>
+<p>En sistemas modernos de GNU/Linux la llamada al intérprete de comandos <span class="math inline">\(awk\)</span> está ligada a <span class="math inline">\(gawk\)</span>, como podemos ver en las siguientes salidas de una máquina que corre <em>ubuntu 20.04.1</em>.</p>
+<ul>
+<li>veamos qué versión imprime <span class="math inline">\(awk\)</span></li>
+</ul>
+<pre class="bash"><code>awk --version | head -2</code></pre>
+<pre><code>## GNU Awk 5.0.1, API: 2.0 (GNU MPFR 4.0.2, GNU MP 6.2.0)
+## Copyright (C) 1989, 1991-2019 Free Software Foundation.</code></pre>
+<ul>
+<li>¿dónde vive en el sistema?</li>
+</ul>
+<pre class="bash"><code>which awk</code></pre>
+<pre><code>## /usr/bin/awk</code></pre>
+<ul>
+<li>¿qué tiempo de archivo es awk?</li>
+</ul>
+<pre class="bash"><code>ls -l /usr/bin/awk</code></pre>
+<pre><code>## lrwxrwxrwx 1 root root 21 oct  4 14:43 /usr/bin/awk -&gt; /etc/alternatives/awk</code></pre>
+<ul>
+<li>¿a dónde apunta esta liga simbólica?</li>
+</ul>
+<pre class="bash"><code>ls -l /etc/alternatives/awk </code></pre>
+<pre><code>## lrwxrwxrwx 1 root root 13 oct  4 20:54 /etc/alternatives/awk -&gt; /usr/bin/gawk</code></pre>
+<ul>
+<li>¿y a dónde apunta la siguiente?</li>
+</ul>
+<pre class="bash"><code>ls -l /usr/bin/gawk</code></pre>
+<pre><code>## -rwxr-xr-x 1 root root 711136 nov  3  2019 /usr/bin/gawk</code></pre>
+<ul>
+<li>y para terminar de convencernos, veamos qué versión imprime <span class="math inline">\(gawk\)</span></li>
+</ul>
+<pre class="bash"><code>gawk --version | head -2</code></pre>
+<pre><code>## GNU Awk 5.0.1, API: 2.0 (GNU MPFR 4.0.2, GNU MP 6.2.0)
+## Copyright (C) 1989, 1991-2019 Free Software Foundation.</code></pre>
+<p>Sin duda, en mi sistema <span class="math inline">\(awk\)</span> es una liga simbólica a <span class="math inline">\(gawk\)</span>, lo cual no debe sorprender al tratarse de una máquina GNU/Linux. Por tanto, las llamadas que veremos seguidamente a <span class="math inline">\(awk\)</span> en realidad ejecutan <span class="math inline">\(gawk\)</span>.</p>
+<p><span class="math inline">\(gawk\)</span>, cuya versión más reciente es la 5.1, es la variante de los “nuevos awks” derivados del viejo <span class="math inline">\(AWK\)</span> con más funcionalidad integrada, como pueden consultar en la excelente <a href="https://www.gnu.org/software/gawk/manual/gawk.html">guía del usuario de GAWK</a>.</p>
 <div id="estructura-de-los-programas-awk" class="section level2">
 <h2><span class="header-section-number">9.1</span> Estructura de los programas AWK</h2>
+<p>Debido a su densa notación, todos estos lenguajes son frecuentemente usados para escribir programas de una línea (“<strong>oneliners</strong>”), como veremos seguidamente.</p>
 <p>En general, a <span class="math inline">\(awk\)</span> se le pasan dos piezas de datos: <b>un fichero de órdenes</b> y <b>un archivo de entrada</b>.</p>
 <p>Un fichero de órdenes (que puede ser un fichero real, o puede ser incluido en la invocación de <span class="math inline">\(awk\)</span> desde la línea de comandos) contiene una serie de sentencias que le indican a <span class="math inline">\(awk\)</span> cómo procesar el fichero de entrada.</p>
 <p>El fichero primario de entrada es normalmente texto estructurado con un formato particular, como archivos con campos separados por tabuladores (tablas).</p>
@@ -2491,7 +2526,7 @@ zgrep -E &#39;Acinetobacter|Pseudomonas|Klebsiella&#39; assembly_summary.txt.gz 
 <div id="sintaxis-condensada-de-awk" class="section level3">
 <h3><span class="header-section-number">9.1.3</span> Sintaxis condensada de AWK</h3>
 <ul>
-<li>AWK, al ser un lenguaje de programación completo, contiene sintaxis para escribir:
+<li><span class="math inline">\(gawk\)</span>, al ser un lenguaje de programación completo, contiene sintaxis para escribir:
 <ul>
 <li>condicionales y bucles <code>for$ y $wile</code></li>
 <li>operadores aritméticos <code>+, -, *, /, %, =, ++, –, +=, -=, …)</code></li>
@@ -2579,12 +2614,15 @@ awk &#39;/cache size/{size+=$4}END{print &quot;total chache size: &quot;, size, 
 <li>Suma el tamaño en Mb de los archivos working_with_linux_commands.* en el directorio actual</li>
 </ul>
 <pre class="bash"><code># Noten que puedo partir líneas de comandos muy largas usando \ antes de introducir un salto de línea ;)
+# sumamos el valor del campo #5 de la salida de ls -l a la variable s (s+=$5);
+# hacemos algo de aritmética, para convertir los bytes a Mega-bytes (Mb=s/1024^2)
+# usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
- awk &#39;s+=$5; END{print &quot;total size of working_with_linux_commands.* files is:&quot;, s/1024 * 1024, &quot;Mb&quot;}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1277449 oct 24 13:27 working_with_linux_commands.html
+ awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1280736 oct 24 18:55 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa  118809 oct 24 13:32 working_with_linux_commands.Rmd
-## total size of working_with_linux_commands.* files is: 1778660 Mb</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  120635 oct 24 18:57 working_with_linux_commands.Rmd
+## total size of working_with_linux_commands.* files is: 1.70 Mb</code></pre>
 </div>
 <div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
 <h3><span class="header-section-number">9.2.3</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
@@ -2594,7 +2632,7 @@ ls -l working_with_linux_commands.* | \
 <pre class="bash"><code># aquí usamos la expresión regular /\sStenotrophomonas/ para filtrar las líneas desadas, 
 #  y contamos las occurrencias con la variable c que autoincrementamos con el operador ++
 zcat assembly_summary.txt.gz | \
- awk &#39;/\sStenotrophomonas\s/{c++}; END{print &quot;Hay&quot;, c, &quot;genomas de Stenotrophomonas&quot;}&#39;</code></pre>
+ awk &#39;/\sStenotrophomonas\s/{c++}; END{printf &quot;%s %i %s\n&quot;, &quot;Hay&quot;, c, &quot;genomas de Stenotrophomonas&quot;}&#39;</code></pre>
 <pre><code>## Hay 422 genomas de Stenotrophomonas</code></pre>
 </div>
 <div id="transforma-la-salida-del-comando-uniq--c-en-un-formato-de-campos-separados-por-comas-archivo-csv-con-cabecera" class="section level3">
@@ -2915,8 +2953,9 @@ cat genosp recA_Bradyrhizobium_vinuesa.fna | filter_fasta_sequences.awk MAM</cod
 <ul>
 <li><a href="https://ferd.ca/awk-in-20-minutes.html">tutorial de unos 20 min</a></li>
 <li><a href="https://www.grymoire.com/Unix/Awk.html">tutorial extenso, excelente</a></li>
-<li><a href="https://www.gnu.org/software/gawk/manual/">GAWK manual, la guía definitiva</a> ******</li>
+<li><a href="https://www.gnu.org/software/gawk/manual/">GAWK manual, la guía definitiva</a></li>
 </ul>
+<hr />
 </div>
 </div>
 </div>
@@ -3472,7 +3511,7 @@ if [ -s &quot;$f&quot; ]; then
    echo &quot;$f exists and has size: $size&quot;
 fi
 </code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 24 13:33 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 24 18:58 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
