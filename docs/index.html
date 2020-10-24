@@ -746,7 +746,7 @@ ls -al </code></pre>
 ## -rw-r--r-- 1 vinuesa vinuesa   222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
 ## -rwxr-xr-x 1 vinuesa vinuesa      857 oct 22 12:14 filter_fasta_sequences.awk
 ## -rwxr-xr-x 1 vinuesa vinuesa     1237 oct 14 22:43 find_dir
-## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 23 22:44 .git
+## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 24 13:29 .git
 ## -rwxrwxr-x 1 vinuesa vinuesa      563 oct 22 14:17 hist.awk
 ## drwxr-xr-x 4 vinuesa vinuesa     4096 sep 29 22:56 intro2linux
 ## -rw-r--r-- 1 vinuesa vinuesa  3163754 oct 13 13:39 intro_biocomputo_Linux_LCG.odp
@@ -766,9 +766,9 @@ ls -al </code></pre>
 ## -rwxr-xr-x 1 vinuesa vinuesa      239 oct 14 22:43 split_fasta.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      158 oct 22 19:13 TODO.txt
 ## -rwxr-xr-x 1 vinuesa vinuesa     3402 oct 14 22:43 translate_fastas.pl
-## -rw-r--r-- 1 vinuesa vinuesa  1277442 oct 24 13:27 working_with_linux_commands.html
+## -rw-r--r-- 1 vinuesa vinuesa  1277449 oct 24 13:27 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa   382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   118805 oct 24 13:27 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa   118809 oct 24 13:32 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa       41 oct 13 19:24 zoom.url</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del directorio raiz</h4>
@@ -805,7 +805,7 @@ ls -al </code></pre>
 ## drwxr-xr-x   3 root root  4096 oct  5 20:41 media
 ## drwxr-xr-x   2 root root  4096 jul 31 11:27 mnt
 ## drwxr-xr-x   5 root root  4096 oct  5 12:26 opt
-## dr-xr-xr-x 359 root root     0 oct 24 11:11 proc
+## dr-xr-xr-x 363 root root     0 oct 24 11:11 proc
 ## drwx------   8 root root  4096 oct 16 19:12 root
 ## drwxr-xr-x  34 root root  1000 oct 24 11:52 run
 ## lrwxrwxrwx   1 root root     8 oct  4 14:42 sbin -&gt; usr/sbin
@@ -1583,7 +1583,7 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      267 oct 22 19:18 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 24 13:27 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 24 13:33 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## drwxr-xr-x 3 vinuesa vinuesa     4096 oct 23 17:12 docs</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
@@ -1908,7 +1908,7 @@ sed &#39;1d&#39; linux_commands.tab | head -4</code></pre>
 </div>
 <div id="tutorial-extenso-de-sed" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> Tutorial extenso de <span class="math inline">\(sed\)</span></h3>
-<p>Esta fue una presentación minimalista de <span class="math inline">\(sed\)</span>, que no le hace justicia. Les recomiendo mucho el siguient turorial para profundizar:</p>
+<p>Esta fue una presentación minimalista de <span class="math inline">\(sed\)</span>, que no le hace justicia. Les recomiendo mucho el siguiente tutorial para profundizar:</p>
 <p><a href="https://www.grymoire.com/Unix/Sed.html">grymoire’s sed tutorial</a></p>
 <hr />
 </div>
@@ -1964,7 +1964,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 oct 24 13:27 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 oct 24 13:33 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -1983,7 +1983,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 24 13:27 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 24 13:33 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2112,15 +2112,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 24 13:27 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 24 13:27 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 24 13:33 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 24 13:33 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 24 13:27 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 24 13:33 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2216,7 +2216,7 @@ rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
 ## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 13:27 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4727 oct 24 13:27 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4728 oct 24 13:33 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2239,7 +2239,7 @@ rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
 ## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 13:27 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4727 oct 24 13:27 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4728 oct 24 13:33 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2570,8 +2570,8 @@ head -20 /proc/cpuinfo | awk &#39;length &lt;= 12&#39;</code></pre>
 <li>Suma el tamaño de cache total del caché de los procesadores</li>
 </ul>
 <pre class="bash"><code># como ven en la salida anterior, el campo 4 contiene el tamaño de caché de cada procesador
-awk &#39;/cache size/{size+=$4}END{print &quot;total chache size: &quot;, size, &quot;Kb, &quot;, size/1000, &quot;Mb&quot;}&#39;  /proc/cpuinfo</code></pre>
-<pre><code>## total chache size:  147456 Kb,  147.456 Mb</code></pre>
+awk &#39;/cache size/{size+=$4}END{print &quot;total chache size: &quot;, size, &quot;Kb, &quot;, size/1024, &quot;Mb&quot;}&#39;  /proc/cpuinfo</code></pre>
+<pre><code>## total chache size:  147456 Kb,  144 Mb</code></pre>
 </div>
 <div id="filtrado-de-archivos-con-awk---suma-de-tamaños-de-archivos-en-kb-y-mb" class="section level3">
 <h3><span class="header-section-number">9.2.2</span> filtrado de archivos con AWK - suma de tamaños de archivos en Kb y Mb</h3>
@@ -2580,16 +2580,16 @@ awk &#39;/cache size/{size+=$4}END{print &quot;total chache size: &quot;, size, 
 </ul>
 <pre class="bash"><code># Noten que puedo partir líneas de comandos muy largas usando \ antes de introducir un salto de línea ;)
 ls -l working_with_linux_commands.* | \
- awk &#39;s+=$5; END{print &quot;total size of working_with_linux_commands.* files is:&quot;, s/1000000, &quot;Mb&quot;}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1277442 oct 24 13:27 working_with_linux_commands.html
+ awk &#39;s+=$5; END{print &quot;total size of working_with_linux_commands.* files is:&quot;, s/1024 * 1024, &quot;Mb&quot;}&#39;</code></pre>
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1277449 oct 24 13:27 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa  118805 oct 24 13:27 working_with_linux_commands.Rmd
-## total size of working_with_linux_commands.* files is: 1.77865 Mb</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  118809 oct 24 13:32 working_with_linux_commands.Rmd
+## total size of working_with_linux_commands.* files is: 1778660 Mb</code></pre>
 </div>
 <div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
 <h3><span class="header-section-number">9.2.3</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
 <ul>
-<li>Cuenta las entradas para el género <em>Stenotropohomonas</em> en la tabla assembly_summary.txt.gz</li>
+<li>Cuenta las entradas para el género <em>Stenotrophomonas</em> en la tabla assembly_summary.txt.gz</li>
 </ul>
 <pre class="bash"><code># aquí usamos la expresión regular /\sStenotrophomonas/ para filtrar las líneas desadas, 
 #  y contamos las occurrencias con la variable c que autoincrementamos con el operador ++
@@ -3472,7 +3472,7 @@ if [ -s &quot;$f&quot; ]; then
    echo &quot;$f exists and has size: $size&quot;
 fi
 </code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 24 13:27 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 24 13:33 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
