@@ -1,16 +1,27 @@
-# Taller de introducci&oacute;n al biocómputo en sistemas Linux
+# Taller de introducci&oacute;n al biocómputo en sistemas GNU/Linux
+
+¡Bienvenid@s al Taller de introducción al biocómputo en sistemas GNU/Linux!
+
+## Justificación y objetivos del taller
+
+El trabajo en gen&oacute;mica se realiza en servidores UNIX o GNU/Linux de alto rendimiento. Recomiendo por tanto
+que te familiarices con este ambiente de c&oacute;mputo al inicio de tu formaci&oacute;n acad&eacute;mica. 
+
+Este taller tiene por objetivos iniciarte en el camino del bioc&oacute;mputo en sistemas GNU/Linux y ayudarte a descubrir un ambiente de c&oacute;mputo mucho m&aacute;s amigable y poderoso que el que posiblemente conoces hasta ahora.
+
+Aprender&aacute;s todo lo necesario para un arranque r&aacute;pido, &uacute;til, entretenido y exitoso de programaci&oacute;n/scripting del Linux Shell, usando ejemplos relevantes para el an&aacute;lisis de secuencias moleculares y datos asociados.
 
 ## Ediciones del Taller
 
 1a. Edición: semestre 2021-1
 
-v.2020-10-20
+v.2020-10-25
 
 ***
  
-## Presentaci&oacute;n
+# Presentaci&oacute;n
 
-### El profesor
+## El profesor
 Hola, me llamo [Pablo Vinuesa](http://www.ccg.unam.mx/~vinuesa/). Soy investigador titular del 
 [Centro de Ciencias Gen&oacute;micas](http://www.ccg.unam.mx) de la 
 [Universidad Nacional Aut&oacute;noma de M&eacute;xico - UNAM](http://www.unam.mx/).
@@ -19,7 +30,7 @@ Mis [l&iacute;neas de investigaci&oacute;n](http://www.ccg.unam.mx/~vinuesa/rese
 integran la gen&oacute;mica y la bioinform&aacute;tica con la biolog&iacute;a y gen&eacute;tica molecular para entender 
 la evoluci&oacute;n y emergencia de pat&oacute;genos oportunistas a partir de microbios ambientales.
 
-### Sobre el material did&aacute;ctico
+## Sobre el material did&aacute;ctico
 A trav&eacute;s de estas p&aacute;ginas se distribuyen los apuntes, ejercicios y datos que se usar&aacute;n en el Taller.
 Es una recopilaci&oacute;n del material que he desarrollado para diversos cursos y talleres que ha impartido principalmente en la [Universidad Nacional Aut&oacute;noma de M&eacute;xico - UNAM](https://www.unam.mx/), pero también en otras universidades y países, como Argentina, Brasil, España y Puerto Rico, enlistados en esta p&aacute;gina: [Talleres y Cursos impartidos por Pablo Vinuesa](https://www.ccg.unam.mx/~vinuesa/cursos.html). 
 
@@ -28,6 +39,9 @@ Es una recopilaci&oacute;n del material que he desarrollado para diversos cursos
 El material docente del curso [**intro2linux**](https://github.com/vinuesa/intro2linux) lo distribuyo p&uacute;blicamente a trav&eacute;s de este [repositorio GitHub](https://github.com/vinuesa/intro2linux) bajo la [**Licencia No Comercial Creative Commons 4.0**](https://creativecommons.org/licenses/by-nc/4.0/) 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 
+
+<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html"><img alt="GNU General Public License v3" style="border-width:0" src="https://www.gnu.org/graphics/gplv3-127x51.png" /></a><br />
+El código asociado a este Taller se distribuye bajo la licencia <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a>
 
 ### Clonaci&oacute;n del repositorio
 Si tienes instalado [git](https://git-scm.com/) en tu computadora, puedes clonar el repositorio con el comando:
@@ -67,16 +81,8 @@ Les comparto unas notas elaboradas por la UATI de la @lcg_unam sobre instalació
 - [instalaci&oacute;n mobaXterm - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/ConexionSSHdesdeWindows_usando_mobaXterm_UATI_LCG-UNAM.pdf)
 
 
-## Justificación y objetivos del taller
 
-El trabajo en gen&oacute;mica se realiza en servidores UNIX o GNU/Linux de alto rendimiento. Recomiendo por tanto
-que te familiarices con este ambiente de c&oacute;mputo al inicio de tu formaci&oacute;n acad&eacute;mica. 
-
-Este taller tiene por objetivos iniciarte en el camino del bioc&oacute;mputo en sistemas GNU/Linux y ayudarte a descubrir un ambiente de c&oacute;mputo mucho m&aacute;s amigable y poderoso que el que posiblemente conoces hasta ahora.
-
-Aprender&aacute;s todo lo necesario para un arranque r&aacute;pido, &uacute;til, entretenido y exitoso de programaci&oacute;n/scripting del Linux Shell, usando ejemplos relevantes para el an&aacute;lisis de secuencias moleculares y datos asociados.
-
-### Contenidos del Taller de Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux
+# Contenidos del Taller de Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux
 En este tutoral se describen los siguientes conceptos b&aacute;sicos:
 - Qu&eacute; es el bioc&oacute;mputo?
 - Qu&eacute; es GNU/Linux?
@@ -88,7 +94,7 @@ Si nunca has trabajado en un sistema Linux anteriormente, recomiendo leer este t
 
 - [Primer contacto con Linux - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf)
 
-#### Tutoral extenso de comandos GNU/Linux con aplicaciones a biocómputo
+## Tutoral extenso de comandos GNU/Linux con aplicaciones a biocómputo
 - [Tutoral - html](https://vinuesa.github.io/intro2linux/)
 
 <!--
