@@ -510,12 +510,6 @@ summary {
 <li><a href="#solución-a-la-práctica-y-un-ejercicio-adicional"><span class="toc-section-number">10.3</span> Solución a la práctica y un ejercicio adicional</a><ul>
 <li><a href="#inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-1"><span class="toc-section-number">10.3.1</span> Inspección y estadísticas básicas de las secuencias descargadas</a></li>
 <li><a href="#edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-1"><span class="toc-section-number">10.3.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</a></li>
-<li><a href="#generación-automática-de-archivos-fasta-especie-específicos-avanzado"><span class="toc-section-number">10.3.3</span> Generación automática de archivos FASTA especie-específicos (avanzado)</a></li>
-</ul></li>
-<li><a href="#reto-de-programación---ejercicio-de-parseo-de-archivos-fasta"><span class="toc-section-number">10.4</span> Reto de programación - ejercicio de parseo de archivos FASTA</a><ul>
-<li><a href="#inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-2"><span class="toc-section-number">10.4.1</span> Inspección y estadísticas básicas de las secuencias descargadas</a></li>
-<li><a href="#edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-2"><span class="toc-section-number">10.4.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</a></li>
-<li><a href="#generación-de-archivos-especie-específicos"><span class="toc-section-number">10.4.3</span> Generación de archivos especie específicos</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#inicios-de-programación-en-bash"><span class="toc-section-number">11</span> Inicios de programación en <span class="math inline">\(Bash\)</span></a><ul>
@@ -537,7 +531,14 @@ summary {
 <li><a href="#if-elif-else"><span class="toc-section-number">11.6.5</span> <strong>if; elif; else</strong></a></li>
 </ul></li>
 <li><a href="#bucles-for"><span class="toc-section-number">11.7</span> <strong>Bucles for</strong></a><ul>
-<li><a href="#ejemplo-de-bucle-for-acoplado-a-las-herramientas-de-filtrado-y-de-manipulación-de-variables"><span class="toc-section-number">11.7.1</span> Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables</a></li>
+<li><a href="#sintaxis-y-ejemplo-de-bucle-for-en-una-línea"><span class="toc-section-number">11.7.1</span> Sintaxis y ejemplo de bucle for en una línea</a></li>
+<li><a href="#sintaxis-y-ejemplo-de-bucle-for-en-múltiples-líneas-con-indentación"><span class="toc-section-number">11.7.2</span> Sintaxis y ejemplo de bucle for en múltiples líneas con indentación</a></li>
+<li><a href="#generación-de-archivos-fasta-especie-específicos-combinando-bucle-for-con-herramientas-de-filtardo"><span class="toc-section-number">11.7.3</span> Generación de archivos FASTA especie-específicos combinando bucle <span class="math inline">\(for\)</span> con herramientas de filtardo</a></li>
+</ul></li>
+<li><a href="#reto-de-programación---ejercicio-de-parseo-de-archivos-fasta"><span class="toc-section-number">11.8</span> Reto de programación - ejercicio de parseo de archivos FASTA</a><ul>
+<li><a href="#inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-2"><span class="toc-section-number">11.8.1</span> Inspección y estadísticas básicas de las secuencias descargadas</a></li>
+<li><a href="#edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-2"><span class="toc-section-number">11.8.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</a></li>
+<li><a href="#generación-de-archivos-especie-específicos-de-secuencias-rpob"><span class="toc-section-number">11.8.3</span> Generación de archivos especie específicos de secuencias <em>rpoB</em></a></li>
 </ul></li>
 </ul></li>
 <li><a href="#bash-scripting---siguientes-pasos"><span class="toc-section-number">12</span> <strong><span class="math inline">\(Bash\)</span> scripting</strong> - siguientes pasos</a><ul>
@@ -655,6 +656,7 @@ htop</code></pre>
 <pre><code>## [01;34m/home/vinuesa/cursos/[00m
 ## └── [01;34mintro2linux[00m
 ##     ├── [01;34mbin[00m
+##     ├── [01;34mdata[00m
 ##     ├── [01;34mdocs[00m
 ##     │   └── [01;34mdata[00m
 ##     ├── [01;34mintro2linux[00m
@@ -663,7 +665,7 @@ htop</code></pre>
 ##     ├── [01;34mparticipantes_Taller_CG_FC[00m
 ##     └── [01;34mpics[00m
 ## 
-## 9 directories</code></pre>
+## 10 directories</code></pre>
 <ul>
 <li>Nota: según el directorio que indiques, la salida puede ser copiosa. Usar con criterio. Puedes limitar el número de nivels (subdirectorios) a mostrar con -L # (Level number)</li>
 </ul>
@@ -671,12 +673,13 @@ htop</code></pre>
 <pre><code>## [01;34m/home/vinuesa/cursos/[00m
 ## └── [01;34mintro2linux[00m
 ##     ├── [01;34mbin[00m
+##     ├── [01;34mdata[00m
 ##     ├── [01;34mdocs[00m
 ##     ├── [01;34mintro2linux[00m
 ##     ├── [01;34mparticipantes_Taller_CG_FC[00m
 ##     └── [01;34mpics[00m
 ## 
-## 6 directories</code></pre>
+## 7 directories</code></pre>
 <!--
 Y este es el sistema de archivos que pende del <b>directorio raíz</b> $/$
 
@@ -733,13 +736,13 @@ ls | head</code></pre>
 ## bin
 ## blast-imager.pl
 ## clases_avance.txt
+## data
 ## docs
-## fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## filter_fasta_sequences.awk</code></pre>
+## fasta_filtering_pipeline.cmd</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
-<pre><code>## total 59340
-## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 24 23:59 .
+<pre><code>## total 59376
+## drwxr-xr-x 9 vinuesa vinuesa    20480 oct 25 20:30 .
 ## drwxr-xr-x 3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
@@ -748,33 +751,35 @@ ls -al </code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      267 oct 22 19:18 clases_avance.txt
+## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 25 20:31 data
 ## drwxr-xr-x 3 vinuesa vinuesa     4096 oct 23 17:12 docs
+## -rw-rw-r-- 1 vinuesa vinuesa      415 oct 25 19:22 fasta_filtering_pipeline.cmd
 ## -rw-r--r-- 1 vinuesa vinuesa   222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
 ## -rwxr-xr-x 1 vinuesa vinuesa      857 oct 22 12:14 filter_fasta_sequences.awk
 ## -rwxr-xr-x 1 vinuesa vinuesa     1237 oct 14 22:43 find_dir
-## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 24 18:59 .git
+## drwxr-xr-x 8 vinuesa vinuesa     4096 oct 25 18:51 .git
 ## -rwxrwxr-x 1 vinuesa vinuesa      563 oct 22 14:17 hist.awk
 ## drwxr-xr-x 4 vinuesa vinuesa     4096 sep 29 22:56 intro2linux
 ## -rw-r--r-- 1 vinuesa vinuesa  3163754 oct 13 13:39 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r-- 1 vinuesa vinuesa    35149 sep 29 22:15 LICENSE
 ## -rw-r--r-- 1 vinuesa vinuesa    10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 24 23:59 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 25 20:21 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-r--r-- 1 vinuesa vinuesa     1705 sep 29 22:18 linux_very_basic_commands_table.csv
 ## -rwxr-xr-x 1 vinuesa vinuesa      493 oct 14 22:43 ls_dir
 ## drwxr-xr-x 2 vinuesa vinuesa     4096 oct  6 16:39 participantes_Taller_CG_FC
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 23 18:06 pics
 ## -rwxr-xr-x 1 vinuesa vinuesa     2884 oct 14 22:43 prot2cdnAlns.pl
-## -rw-r--r-- 1 vinuesa vinuesa     6006 oct 20 20:03 README.md
+## -rw-r--r-- 1 vinuesa vinuesa     6445 oct 25 18:54 README.md
 ## -rw-r--r-- 1 vinuesa vinuesa    77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa    17704 oct 24 23:59 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa    28497 oct 24 23:59 recA_Byuanmingense_muscle.aln
+## -rw-r--r-- 1 vinuesa vinuesa    17736 oct 25 20:21 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa    21963 oct 25 20:21 recA_Byuanmingense_muscle.aln
 ## -rw-rw-r-- 1 vinuesa vinuesa        0 oct 24 21:05 .Rhistory
 ## -rwxr-xr-x 1 vinuesa vinuesa      239 oct 14 22:43 split_fasta.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      158 oct 22 19:13 TODO.txt
 ## -rwxr-xr-x 1 vinuesa vinuesa     3402 oct 14 22:43 translate_fastas.pl
-## -rw-r--r-- 1 vinuesa vinuesa  1285520 oct 24 23:59 working_with_linux_commands.html
+## -rw-r--r-- 1 vinuesa vinuesa  1294390 oct 25 20:21 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa   382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa   122935 oct 25 00:00 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa   125896 oct 25 20:41 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa       41 oct 13 19:24 zoom.url</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del directorio raiz</h4>
@@ -800,7 +805,7 @@ ls -al </code></pre>
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
 ## drwxr-xr-x   4 root root  4096 oct 20 16:52 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4560 oct 24 11:13 dev
+## drwxr-xr-x  21 root root  4560 oct 25 10:52 dev
 ## drwxr-xr-x 155 root root 12288 oct 23 17:10 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
@@ -811,9 +816,9 @@ ls -al </code></pre>
 ## drwxr-xr-x   3 root root  4096 oct  5 20:41 media
 ## drwxr-xr-x   2 root root  4096 jul 31 11:27 mnt
 ## drwxr-xr-x   5 root root  4096 oct  5 12:26 opt
-## dr-xr-xr-x 360 root root     0 oct 24 11:11 proc
+## dr-xr-xr-x 364 root root     0 oct 25 10:51 proc
 ## drwx------   8 root root  4096 oct 16 19:12 root
-## drwxr-xr-x  34 root root  1000 oct 24 23:11 run
+## drwxr-xr-x  34 root root  1000 oct 25 14:01 run
 ## lrwxrwxrwx   1 root root     8 oct  4 14:42 sbin -&gt; usr/sbin
 ## drwxr-xr-x  10 root root  4096 oct 16 19:40 snap</code></pre>
 </div>
@@ -1203,9 +1208,9 @@ pwd</code></pre>
 ## bin
 ## blast-imager.pl
 ## clases_avance.txt
+## data
 ## docs
-## fetch_recA_bradys_vinuesa_nuccore_screenshot.png
-## filter_fasta_sequences.awk</code></pre>
+## fasta_filtering_pipeline.cmd</code></pre>
 </div>
 </div>
 </div>
@@ -1581,7 +1586,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 59332
+<pre><code>## total 59348
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -1589,8 +1594,8 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      267 oct 22 19:18 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 25 00:00 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
-## drwxr-xr-x 3 vinuesa vinuesa     4096 oct 23 17:12 docs</code></pre>
+## lrwxrwxrwx 1 vinuesa vinuesa       78 oct 25 20:41 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 25 20:31 data</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
 </ul>
@@ -1964,7 +1969,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 oct 25 00:00 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 oct 25 20:41 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -1983,7 +1988,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 25 00:00 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 25 20:41 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2027,39 +2032,39 @@ muscle -clw &lt; recA_Byuanmingense.fna 1&gt; recA_Byuanmingense_muscle.aln 2&gt
 <pre><code>## MUSCLE (3.8) multiple sequence alignment
 ## 
 ## 
-## EU574297.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## AY591565.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574319.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574318.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574294.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574293.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574291.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574290.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574289.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574288.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574287.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574286.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574283.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574279.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574249.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574255.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGGTCGCTC
-## EU574254.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGGTCGCTC
-## EU574253.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGGTCGCTC
-## EU574250.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGGTCGCTC
-## EU574248.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGGTCGCTC
-## EU574292.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574282.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574296.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTCTCCTCCGGCTCGCTC
-## AY591573.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574295.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574285.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574284.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574281.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574280.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574278.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## EU574277.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-## AY591566.1_[Byuanmingense_strain      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
-##                                       ******************** *********************** ******** ******</code></pre>
+## EU574297.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## AY591565.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574319.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574318.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574294.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574293.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574291.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574290.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574289.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574288.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574287.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574286.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574283.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574279.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574249.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574255.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGGTCGCTC
+## EU574254.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGGTCGCTC
+## EU574253.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGGTCGCTC
+## EU574250.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGGTCGCTC
+## EU574248.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGGTCGCTC
+## EU574292.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574282.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574296.1      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTCTCCTCCGGCTCGCTC
+## AY591573.1      ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574295.1      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574285.1      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574284.1      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574281.1      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574280.1      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574278.1      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## EU574277.1      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+## AY591566.1      ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTC
+##                 ******************** *********************** ******** ******</code></pre>
 </div>
 </div>
 <div id="concatenación-o-pegado-de-salidas-de-varios-comandos-a-un-solo-archivo-con" class="section level2">
@@ -2112,15 +2117,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 25 00:00 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 25 00:00 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 25 20:41 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 25 20:41 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 25 00:00 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 oct 25 20:41 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2214,9 +2219,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 23:59 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 oct 25 20:21 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4727 oct 25 00:00 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 oct 25 20:41 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2237,9 +2242,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 23:59 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 oct 25 20:21 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4727 oct 25 00:00 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 oct 25 20:41 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2249,10 +2254,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 23:59 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 oct 25 20:21 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  879 oct 24 23:59 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 oct 25 20:21 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2262,11 +2267,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  879 oct 24 23:59 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 oct 25 20:21 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17704 oct 24 23:59 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 oct 25 20:21 recA_Byuanmingense.fna</code></pre>
 <hr />
 </div>
 </div>
@@ -2710,16 +2715,16 @@ awk &#39;/cache size/{size+=$4}END{print &quot;total chache size: &quot;, size, 
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1285520 oct 24 23:59 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1294390 oct 25 20:21 working_with_linux_commands.html
 ## -rw-r--r-- 1 vinuesa vinuesa  382402 sep 29 22:15 working_with_linux_commands.pdf
-## -rw-r--r-- 1 vinuesa vinuesa  122935 oct 25 00:00 working_with_linux_commands.Rmd
-## total size of working_with_linux_commands.* files is: 1.71 Mb</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  125896 oct 25 20:41 working_with_linux_commands.Rmd
+## total size of working_with_linux_commands.* files is: 1.72 Mb</code></pre>
 <ul>
 <li>vean y entiendan la diferencia del comando anterior con el del siguiente:</li>
 </ul>
 <pre class="bash"><code>ls -l working_with_linux_commands.* | \
  awk &#39;{s+=$5}; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## total size of working_with_linux_commands.* files is: 1.71 Mb</code></pre>
+<pre><code>## total size of working_with_linux_commands.* files is: 1.72 Mb</code></pre>
 </div>
 <div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
 <h3><span class="header-section-number">9.2.7</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
@@ -3297,149 +3302,45 @@ grep &#39;^&gt;&#39; recA_Bradyrhizobium_vinuesa.fna  | head # para no hacer muy
 <p>El objetivo es eliminar redundancia y los campos gb|no.de.acceso, así como todos los caracteres ‘( , ; : )’ que impedirían el despliegue de un árbol filogenético, al tratarse de caracteres reservados del formato NEWICK. Dejar solo el numero de accesión, así como el género, especie y cepa indicados entre corchetes.</p>
 <p>Es decir vamos a: - reducir Bradyrhizobium a ‘B.’ - eliminar ’ recombination …’ y reemplazarlo por ‘]’ - eliminar ‘genosp.’ - sustituir espacios por guiones bajos</p>
 <p>Noten el uso de expresiones regulares como ’.*’ y ‘[[:space:]]’</p>
-<pre class="bash"><code>sed &#39;s/ Bra/ [Bra/; s/|gb.*| /|/; s/Bradyrhizobium /B/; s/genosp\. //; s/ recomb.*/]/; s/[[:space:]]/_/g;&#39; recA_Bradyrhizobium_vinuesa.fna | grep &#39;&gt;&#39; | head -5
-sed &#39;s/ Bra/ [Bra/; s/|gb.*| /|/; s/Bradyrhizobium /B/; s/genosp\. //; s/ recomb.*/]/; s/[[:space:]]/_/g;&#39; recA_Bradyrhizobium_vinuesa.fna | grep &#39;&gt;&#39; | tail -5</code></pre>
-<pre><code>## &gt;EU574327.1_[Bliaoningense_strain_ViHaR5]
-## &gt;EU574326.1_[Bliaoningense_strain_ViHaR4]
-## &gt;EU574325.1_[Bliaoningense_strain_ViHaR3]
-## &gt;EU574324.1_[Bliaoningense_strain_ViHaR2]
-## &gt;EU574323.1_[Bliaoningense_strain_ViHaR1]
-## &gt;AY591544.1_[Bjaponicum_bv._genistearum_strain_BC-P14]
-## &gt;AY591543.1_[Bbeta_strain_BC-P6]
-## &gt;AY591542.1_[Bcanariense_bv._genistearum_strain_BC-P5]
-## &gt;AY591541.1_[Bcanariense_bv._genistearum_strain_BC-C2]
-## &gt;AY591540.1_[Balpha_bv._genistearum_strain_BC-C1]</code></pre>
-<ol start="8" style="list-style-type: decimal">
+<pre class="bash"><code>sed &#39;s/ Bra/ [Bra/; s/|gb.*| /|/; s/Bradyrhizobium /B_/; s/genosp\. //; s/ recomb.*/]/; s/[[:space:]]/_/g; s/_/ /&#39; recA_Bradyrhizobium_vinuesa.fna | grep &#39;&gt;&#39; | head -5
+sed &#39;s/ Bra/ [Bra/; s/|gb.*| /|/; s/Bradyrhizobium /B_/; s/genosp\. //; s/ recomb.*/]/; s/[[:space:]]/_/g; s/_/ /&#39; recA_Bradyrhizobium_vinuesa.fna | grep &#39;&gt;&#39; | tail -5</code></pre>
+<pre><code>## &gt;EU574327.1 [B_liaoningense_strain_ViHaR5]
+## &gt;EU574326.1 [B_liaoningense_strain_ViHaR4]
+## &gt;EU574325.1 [B_liaoningense_strain_ViHaR3]
+## &gt;EU574324.1 [B_liaoningense_strain_ViHaR2]
+## &gt;EU574323.1 [B_liaoningense_strain_ViHaR1]
+## &gt;AY591544.1 [B_japonicum_bv._genistearum_strain_BC-P14]
+## &gt;AY591543.1 [B_beta_strain_BC-P6]
+## &gt;AY591542.1 [B_canariense_bv._genistearum_strain_BC-P5]
+## &gt;AY591541.1 [B_canariense_bv._genistearum_strain_BC-C2]
+## &gt;AY591540.1 [B_alpha_bv._genistearum_strain_BC-C1]</code></pre>
+<ol start="7" style="list-style-type: decimal">
 <li>Cuando estamos satisfechos con el resultado, guardamos la salida del comando en un archivo usando ‘&gt;’ para redirigir el flujo de STDOUT a un archivo de texto</li>
 </ol>
-<pre class="bash"><code>sed &#39;s/ Bra/ [Bra/; s/|gb.*| /|/; s/Bradyrhizobium /B/; s/genosp\. //; s/ recomb.*/]/; s/[[:space:]]/_/g;&#39; recA_Bradyrhizobium_vinuesa.fna &gt; recA_Bradyrhizobium_vinuesa.fnaed
-</code></pre>
-</div>
-<div id="generación-automática-de-archivos-fasta-especie-específicos-avanzado" class="section level3">
-<h3><span class="header-section-number">10.3.3</span> Generación automática de archivos FASTA especie-específicos (avanzado)</h3>
-<ol start="9" style="list-style-type: decimal">
-<li>Convertir archivos FASTA a formato “FASTAB” usando <strong>perl</strong> 1-liners.</li>
-</ol>
-<p>Vamos a transformar los FASTAS de tal manera que las secuencias queden en la misma línea que su cabecera, separada de ésta por un tabulador. Esto puede ser muy útil para filtrar el archivo resultante con grep. Veamos un ejemplo:</p>
-<pre class="bash"><code>perl -pe &#39;unless(/^&gt;/){s/\n//g}; if(/&gt;/){s/\n/\t/g}; s/&gt;/\n&gt;/&#39; recA_Bradyrhizobium_vinuesa.fnaed | head</code></pre>
-<pre><code>## 
-## &gt;EU574327.1_[Bliaoningense_strain_ViHaR5]    ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGACTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCAGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574326.1_[Bliaoningense_strain_ViHaR4]    ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574325.1_[Bliaoningense_strain_ViHaR3]    ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574324.1_[Bliaoningense_strain_ViHaR2]    ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574323.1_[Bliaoningense_strain_ViHaR1]    ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574322.1_[Bliaoningense_strain_ViHaG8]    ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574321.1_[Bliaoningense_strain_ViHaG7]    ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574320.1_[Bliaoningense_strain_ViHaG6]    ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574319.1_[Byuanmingense_strain_ViHaG5]    ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCTTGCCCAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCCGTCGACGTTCTCGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGACTTCAAGCACGGTTGATGAGCCAGGCGCTGCGCAAGCTCACGGCCTCCATCAACAAATCCAACACGATGGTGATCTTCATCAACCAGATC</code></pre>
-<pre class="bash"><code>perl -pe &#39;unless(/^&gt;/){s/\n//g}; if(/&gt;/){s/\n/\t/g}; s/&gt;/\n&gt;/&#39; recA_Bradyrhizobium_vinuesa.fnaed &gt; recA_Bradyrhizobium_vinuesa.fnaedtab</code></pre>
-<ol start="10" style="list-style-type: decimal">
-<li>Filtrar el archivo fnaedtab generado en 9 para obtener solo las secuencias de B._yuanmingense del mismo, guardarlo en un archivo y convertirlo de nuevo a formato FASTA.</li>
-</ol>
-<pre class="bash"><code>grep yuanmingense recA_Bradyrhizobium_vinuesa.fnaedtab | head -5</code></pre>
-<pre><code>## &gt;EU574319.1_[Byuanmingense_strain_ViHaG5]    ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCTTGCCCAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCCGTCGACGTTCTCGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGACTTCAAGCACGGTTGATGAGCCAGGCGCTGCGCAAGCTCACGGCCTCCATCAACAAATCCAACACGATGGTGATCTTCATCAACCAGATC
-## &gt;EU574318.1_[Byuanmingense_strain_ViHaG4]    ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCTTGCCCAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCCGTCGACGTTCTCGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGACTTCAAGCACGGTTGATGAGCCAGGCGCTGCGCAAGCTCACGGCCTCCATCAACAAATCCAACACGATGGTGATCTTCATCAACCAGATC
-## &gt;EU574297.1_[Byuanmingense_strain_InRo02]    ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTGGGCATCGGCGGCCTGCCCAAGGGACGCATCGTCGAGATCTACGGGCCGGAATCTTCGGGCAAGACCACGCTCGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGTGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCCGTCGATGTTCTGGTGGTCGATTCGGTGGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGTGACGCGCTGCCTGGCCTGCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCATCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574296.1_[Byuanmingense_strain_InKo02]    ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTCTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGACGCATCGTCGAGATCTACGGGCCGGAATCCTCCGGCAAGACCACGCTCGCGCTGCATACGGTGGCGGAGGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGTTCGGGCGCCGTCGACGTTCTCGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGCCTGCAGGCGCGGTTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574295.1_[Byuanmingense_strain_InKo01]    ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGACGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCCCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCGGTCGATGTTCTCGTGGTCGATTCGGTGGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC</code></pre>
-<pre class="bash"><code>grep yuanmingense recA_Bradyrhizobium_vinuesa.fnaedtab &gt; recA_Byuanmingense.fnaedtab</code></pre>
-<ol start="11" style="list-style-type: decimal">
-<li>Estas dos lineas no contienen nada nuevo en cuanto a sintaxis. Simplemente llamamos a perl para sustituir los tabuladores por saltos de linea y asi reconstituir el FASTA.</li>
-</ol>
-<pre class="bash"><code>perl -pe &#39;if(/^&gt;/){s/\t/\n/}&#39; recA_Byuanmingense.fnaedtab | head -5</code></pre>
-<pre><code>## &gt;EU574319.1_[Byuanmingense_strain_ViHaG5]
-## ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCTTGCCCAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCCGTCGACGTTCTCGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGACTTCAAGCACGGTTGATGAGCCAGGCGCTGCGCAAGCTCACGGCCTCCATCAACAAATCCAACACGATGGTGATCTTCATCAACCAGATC
-## &gt;EU574318.1_[Byuanmingense_strain_ViHaG4]
-## ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCTTGCCCAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCCGTCGACGTTCTCGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGACTTCAAGCACGGTTGATGAGCCAGGCGCTGCGCAAGCTCACGGCCTCCATCAACAAATCCAACACGATGGTGATCTTCATCAACCAGATC
-## &gt;EU574297.1_[Byuanmingense_strain_InRo02]</code></pre>
-<pre class="bash"><code>perl -pe &#39;if(/^&gt;/){s/\t/\n/}&#39; recA_Byuanmingense.fnaedtab &gt; recA_Byuanmingense.fna</code></pre>
-<ol start="12" style="list-style-type: decimal">
-<li>Llamar a un bucle for de shell para generar archivos fastab para todas las especies</li>
-</ol>
-<pre class="bash"><code>for sp in $(grep &#39;^&gt;&#39; recA_Bradyrhizobium_vinuesa.fnaedtab | cut -d_ -f2 | sort -u | sed &#39;s/\[//&#39;); do 
-   grep &quot;$sp&quot; recA_Bradyrhizobium_vinuesa.fnaedtab &gt; &quot;recA_${sp}.fnaedtab&quot;
-done</code></pre>
-<ol start="13" style="list-style-type: decimal">
-<li>Veamos el resultado</li>
-</ol>
-<pre class="bash"><code>ls *fnaedtab</code></pre>
-<pre><code>## recA_Balpha.fnaedtab
-## recA_Bbeta.fnaedtab
-## recA_Bcanariense.fnaedtab
-## recA_Belkanii.fnaedtab
-## recA_Bjaponicum.fnaedtab
-## recA_Bliaoningense.fnaedtab
-## recA_Bradyrhizobium_vinuesa.fnaedtab
-## recA_Bsp..fnaedtab
-## recA_Byuanmingense.fnaedtab</code></pre>
-<pre class="bash"><code>head -5 recA_Bjaponicum.fnaedtab</code></pre>
-<pre><code>## &gt;EU574316.1_[Bjaponicum_strain_NeRa16]   ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCGGGTTCTCTCGGGCTCGACATTGCACTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCACGCAAGCTCGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574315.1_[Bjaponicum_strain_NeRa15]   ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCCGGTTCTCTCGGGCTCGACATTGCACTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCACGCAAGCTCGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574314.1_[Bjaponicum_strain_NeRa14]   ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCCGGTTCTCTCGGGCTCGACATTGCGCTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGAATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCGCGCAAGCTGGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACGGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGYCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574313.1_[Bjaponicum_strain_NeRa12]   ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCCGGTTCTCTCGGGCTCGACATTGCACTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCACGCAAGCTCGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574312.1_[Bjaponicum_strain_NeRa11]   ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCCGGTTCTCTCGGGCTCGACATTGCACTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCACGCAAGCTCGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC</code></pre>
-<ol start="14" style="list-style-type: decimal">
-<li>Finalmente convertimos todos los archivos fnatabed a FASTA con el siguiente bucle for:</li>
-</ol>
-<pre class="bash"><code>for file in $(ls *fnaedtab | grep -v vinuesa); do perl -pe &#39;if(/^&gt;/){s/\t/\n/}&#39; $file &gt; ${file%.*}.fas; done</code></pre>
-<ol start="15" style="list-style-type: decimal">
-<li>Visualicemos las cabeceras de dos archivos FASTA especie-específicos</li>
-</ol>
-<pre class="bash"><code>grep &#39;&gt;&#39; recA_Bjaponicum.fas | head -5</code></pre>
-<pre><code>## &gt;EU574316.1_[Bjaponicum_strain_NeRa16]
-## &gt;EU574315.1_[Bjaponicum_strain_NeRa15]
-## &gt;EU574314.1_[Bjaponicum_strain_NeRa14]
-## &gt;EU574313.1_[Bjaponicum_strain_NeRa12]
-## &gt;EU574312.1_[Bjaponicum_strain_NeRa11]</code></pre>
-<ol start="16" style="list-style-type: decimal">
-<li>y confirmemos que son fastas regulares</li>
-</ol>
-<pre class="bash"><code>head -6 recA_Bjaponicum.fas</code></pre>
-<pre><code>## &gt;EU574316.1_[Bjaponicum_strain_NeRa16]
-## ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCGGGTTCTCTCGGGCTCGACATTGCACTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCACGCAAGCTCGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574315.1_[Bjaponicum_strain_NeRa15]
-## ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCCGGTTCTCTCGGGCTCGACATTGCACTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCACGCAAGCTCGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
-## &gt;EU574314.1_[Bjaponicum_strain_NeRa14]
-## ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCCGGTTCTCTCGGGCTCGACATTGCGCTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGAATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCGCGCAAGCTGGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACGGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGYCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC</code></pre>
-</div>
-</div>
-<div id="reto-de-programación---ejercicio-de-parseo-de-archivos-fasta" class="section level2">
-<h2><span class="header-section-number">10.4</span> Reto de programación - ejercicio de parseo de archivos FASTA</h2>
-<p>Como ejercicio, para repasar lo que hemos aprendido en esta sesión les propongo repetir el ejercicio de parseo de archivos FASTA pero con secuencias del gen <i>rpoB</i> de <i>Bradyrhizobium</i></p>
-<div id="inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-2" class="section level3">
-<h3><span class="header-section-number">10.4.1</span> Inspección y estadísticas básicas de las secuencias descargadas</h3>
-<ol style="list-style-type: decimal">
-<li>Descargar las secuencias de NCBI usando el portal ENTREZ nucleotides con: ‘Bradyrhizobium[orgn] AND vinuesa[auth] AND rpoB[gene]’</li>
-<li>Renombra el archivo descargado a rpoB_Bradyrhizobium_vinuesa.fna</li>
-<li>¿Cuántas secuencias hay en el archivo rpoB_Bradyrhizobium_vinuesa.fna?</li>
-<li>Explora la cabecera y cola del archivo con head y tail</li>
-<li>Despliega las 5 primeras lineas de cabeceras fasta usando <strong>grep</strong> y <strong>head</strong> para explorar su estructura en detalle</li>
-<li>Calcula el número de generos que contiene el archivo FASTA</li>
-<li>Calcula el número de especies que contiene el archivo FASTA</li>
-<li>Imprime una lista ordenada de mayor a menor, del numero de especies que contiene el archivo FASTA</li>
-</ol>
-</div>
-<div id="edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-2" class="section level3">
-<h3><span class="header-section-number">10.4.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</h3>
-<ol style="list-style-type: decimal">
-<li>Explora nuevamente todas las cabeceras FASTA del archivo rpoB_Bradyrhizobium_vinuesa.fna usando <strong>grep</strong> y less</li>
-<li>Simplifica las cabeceras FASTA usando el comando <strong>sed</strong> (stream editor)</li>
-</ol>
-<p>El objetivo es eliminar redundancia y longitud excesiva de las cabeceras FASTA, así como todos los caracteres ‘( , ; : )’ que impedirían el despliegue de un árbol filogenético, al tratarse de caracteres reservados del formato NEWICK. Dejar solo el numero de accesión, así como el género, especie y cepa indicados entre corchetes.</p>
-<ol start="3" style="list-style-type: decimal">
-<li>Cuando estén satisfechos con el resultado, guarden la salida del comando en un archivo llamado rpoB_Bradyrhizobium_vinuesa.fnaed</li>
-</ol>
-</div>
-<div id="generación-de-archivos-especie-específicos" class="section level3">
-<h3><span class="header-section-number">10.4.3</span> Generación de archivos especie específicos</h3>
-<p>Al igual que en el ejemplo con secuencias <em>recA</em>, genera una lista de nombres de especie únicos y usa un bucle <span class="math inline">\(for\)</span> para pasarle los elementos de la misma en esta ocasión al script <em>filter_fasta_sequences.awk</em> que discutimos en la <a href="#el-scritp-filter_fasta_sequences.awk">sección de <span class="math inline">\(AWK\)</span></a>, para generar los archivos especie-específicos de secuencias <em>rpoB</em>.</p>
+<pre class="bash"><code>sed &#39;s/ Bra/ [Bra/; s/|gb.*| /|/; s/Bradyrhizobium /B_/; s/genosp\. //; s/ recomb.*/]/; s/[[:space:]]/_/g; s/_/ /&#39; recA_Bradyrhizobium_vinuesa.fna &gt; recA_Bradyrhizobium_vinuesa.fnaed</code></pre>
+<ul>
+<li>revisemos la salida</li>
+</ul>
+<pre class="bash"><code>grep &#39;^&gt;&#39; recA_Bradyrhizobium_vinuesa.fnaed | head -5 &amp;&amp; grep &#39;^&gt;&#39; recA_Bradyrhizobium_vinuesa.fnaed | tail -5</code></pre>
+<pre><code>## &gt;EU574327.1 [B_liaoningense_strain_ViHaR5]
+## &gt;EU574326.1 [B_liaoningense_strain_ViHaR4]
+## &gt;EU574325.1 [B_liaoningense_strain_ViHaR3]
+## &gt;EU574324.1 [B_liaoningense_strain_ViHaR2]
+## &gt;EU574323.1 [B_liaoningense_strain_ViHaR1]
+## &gt;AY591544.1 [B_japonicum_bv._genistearum_strain_BC-P14]
+## &gt;AY591543.1 [B_beta_strain_BC-P6]
+## &gt;AY591542.1 [B_canariense_bv._genistearum_strain_BC-P5]
+## &gt;AY591541.1 [B_canariense_bv._genistearum_strain_BC-C2]
+## &gt;AY591540.1 [B_alpha_bv._genistearum_strain_BC-C1]</code></pre>
+<p>Excelente, ésto ha funcionado perfectamente. Ya pueden decir que dominan las herramientas de filtrado básicas y su combinación en pipelines - ¡¡¡enhorabuena!!!</p>
+<p>Pasemos al siguiente nivel.</p>
 <hr />
 </div>
 </div>
 </div>
 <div id="inicios-de-programación-en-bash" class="section level1">
 <h1><span class="header-section-number">11</span> Inicios de programación en <span class="math inline">\(Bash\)</span></h1>
-<p>Vamos a aprender algunos de los elementos esenciales del lenguaje <span class="math inline">\(Bash\)</span> de <b>programación Shell</b></p>
+<p>Vamos a aprender algunos de los elementos esenciales del lenguaje <span class="math inline">\(Bash\)</span>, el más poderoso y usado para la <b>programación Shell</b></p>
 <div id="asignación-y-uso-de-variables" class="section level2">
 <h2><span class="header-section-number">11.1</span> Asignación y uso de <strong>variables</strong></h2>
 <ul>
@@ -3499,7 +3400,7 @@ echo &quot;SHELL = $SHELL&quot;</code></pre>
 <pre><code>PATH=$PATH:$HOME/bin
 
 export PATH</code></pre>
-<p>Cualquier <span class="math inline">\(script\)</span> o programa que pongas ahí con permisos de ejecución (<code>chmod 755 script</code>) será ejecutable desde cualquier direcotrio del sistema.</p>
+<p>Cualquier <span class="math inline">\(script\)</span> o programa que pongas ahí con permisos de ejecución (<code>chmod 755 script</code>) será ejecutable desde cualquier directorio del sistema.</p>
 </div>
 <div id="cuál-es-el-binario-o-script-que-estoy-usando---which" class="section level3">
 <h3><span class="header-section-number">11.3.2</span> ¿Cuál es el binario o script que estoy usando? - <strong>which</strong></h3>
@@ -3517,10 +3418,10 @@ which transpose_pangenome_matrix.sh</code></pre>
 <div id="captura-en-una-varialbe-de-la-salida-de-un-comando-con-varcomando" class="section level2">
 <h2><span class="header-section-number">11.4</span> Captura en una varialbe de la salida de un comando con <b>var=$(comando)</b></h2>
 <pre class="bash"><code>wkdir=$(pwd)
-dat=$(date | awk &#39;{print $3,$2,$6}&#39; | sed &#39;s/ //g&#39;)
+dat=$(date | awk &#39;{print $3$2$6}&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in: $wkdir at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;oct25CDT&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;oct25CST&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
 <h2><span class="header-section-number">11.5</span> Modificación de variables y operaciones con ellas</h2>
@@ -3603,9 +3504,8 @@ if [ -s &quot;$f&quot; ]; then
    # o tambien 
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
-fi
-</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 25 00:00 empty_file
+fi</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 oct 25 20:41 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -3635,8 +3535,7 @@ f=$(ls *gz)
   else
        OS=&#39;windows&#39;
        echo &quot;oh no! another windows box :( ... you should better change to GNU/linux :) &quot;
-  fi
-</code></pre>
+  fi</code></pre>
 <pre><code>## running on alisio under linux with 12 cores :)</code></pre>
 </div>
 </div>
@@ -3646,55 +3545,402 @@ f=$(ls *gz)
 <p><code>for ALIAS in LIST; do CMD1; CMD2; done</code></p>
 <p>donde el usuario tiene que cambiar los términos en mayúsculas por opciones concretas. ALIAS es el nombre de una variable temporal a la que se asigna secuencialmente cada valor de LIST.</p>
 <p>Así por ejemplo, si tuviéramos en un directorio muchos archivos en formato FASTA con secuencias homólogas y extensión *.faa, podríamos alinearlas secuencialmente con <span class="math inline">\(clustalo\)</span>, un excelente alineador, con un comando como el siguiente:</p>
-<pre><code>for file in *.faa; do clustalo -i $file -o ${file%.*}_cluoAln.faa; done&lt;/code&gt;</code></pre>
+<div id="sintaxis-y-ejemplo-de-bucle-for-en-una-línea" class="section level3">
+<h3><span class="header-section-number">11.7.1</span> Sintaxis y ejemplo de bucle for en una línea</h3>
+<pre><code># sintaxis de bucle for en una línea
+for file in *.faa; do clustalo -i $file -o ${file%.*}_cluoAln.faa; done</code></pre>
+</div>
+<div id="sintaxis-y-ejemplo-de-bucle-for-en-múltiples-líneas-con-indentación" class="section level3">
+<h3><span class="header-section-number">11.7.2</span> Sintaxis y ejemplo de bucle for en múltiples líneas con indentación</h3>
+<pre><code># sintaxis de bucle for en múltiples líneas, como se escribiría normalmente en un script
+for file in *.faa
+do 
+    # llamada estándar a clustalo: -i &lt;infile&gt; -o &lt;outfile&gt;
+    clustalo -i $file -o ${file%.*}_cluoAln.faa
+done</code></pre>
 <p>Nota 1: Genera un directorio temporal fuera del directorio de la distribución <span class="math inline">\(intro2linux\)</span> y pon en él ligas simbólicas a los archivos <em>.faa</em> que hay en el directorio <em>data/faa_files</em> de la distribución. En dicho directorio corre el comando indicado arriba.</p>
 <p>Nota 2: si quieres aprender más sobre alineamientos múltiples y alineadores, puedes consultar el <a href="https://github.com/vinuesa/TIB-filoinfo#sesi%C3%B3n-4-alineamientos-m%C3%BAltiples-teor%C3%ADa-y-pr%C3%A1cticas">tutorial sobre alineamientos múltiples</a> que preparé para los <a href="https://github.com/vinuesa/TIB-filoinfo">Talleres Internacionales de Bioinformática - 2019 (TIB19)</a>.</p>
-<div id="ejemplo-de-bucle-for-acoplado-a-las-herramientas-de-filtrado-y-de-manipulación-de-variables" class="section level3">
-<h3><span class="header-section-number">11.7.1</span> Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables</h3>
-<p>La idea del ejercicio es generar archivos a partir de linux_basic_commands.tab que contengan sólo los comandos de cada clase, nombrando a los archivo resultantes con el valor de dicha clase, almacenados en la segunda columna de la tabla</p>
-<pre class="bash"><code># veamos la cabecera y cola del archivo linux_basic_commands.tab
+</div>
+<div id="generación-de-archivos-fasta-especie-específicos-combinando-bucle-for-con-herramientas-de-filtardo" class="section level3">
+<h3><span class="header-section-number">11.7.3</span> Generación de archivos FASTA especie-específicos combinando bucle <span class="math inline">\(for\)</span> con herramientas de filtardo</h3>
+<p>En este ejercicio continuaremos procesando el archivo <em>recA_Bradyrhizobium_vinuesa.fnaed</em> que generamos en la sección de <a href="https://vinuesa.github.io/intro2linux/#edici%C3%B3n-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-1">filtrado de cabeceras de archivos FASTA</a>.</p>
+<p>El reto que les planteo es escribir archivos FASTA especie-específicos en base a <em>recA_Bradyrhizobium_vinuesa.fnaed</em>.</p>
+<p>Es decir, necesitamos escribir tantos archivos FASTA como especies diferentes tenemos en el archivo fuente. Para ello nos va a ser muy útil el <span class="math inline">\(script\)</span> <a href="#generaci%C3%B3n-de-archivos-especie-espec%C3%ADficos"><strong>filter_fasta_sequences.awk</strong></a> que escribimos al final de la sección de <span class="math inline">\(gawk\)</span>.</p>
+<p>Vamos por partes: - recordemos la estructura del archivo fuente</p>
+<pre class="bash"><code>grep &#39;^&gt;&#39; recA_Bradyrhizobium_vinuesa.fnaed | head -5
+grep &#39;^&gt;&#39; recA_Bradyrhizobium_vinuesa.fnaed | tail -5</code></pre>
+<pre><code>## &gt;EU574327.1 [B_liaoningense_strain_ViHaR5]
+## &gt;EU574326.1 [B_liaoningense_strain_ViHaR4]
+## &gt;EU574325.1 [B_liaoningense_strain_ViHaR3]
+## &gt;EU574324.1 [B_liaoningense_strain_ViHaR2]
+## &gt;EU574323.1 [B_liaoningense_strain_ViHaR1]
+## &gt;AY591544.1 [B_japonicum_bv._genistearum_strain_BC-P14]
+## &gt;AY591543.1 [B_beta_strain_BC-P6]
+## &gt;AY591542.1 [B_canariense_bv._genistearum_strain_BC-P5]
+## &gt;AY591541.1 [B_canariense_bv._genistearum_strain_BC-C2]
+## &gt;AY591540.1 [B_alpha_bv._genistearum_strain_BC-C1]</code></pre>
+<ul>
+<li>tenemos que generar la lista no redundante de especies en base al patrón de las cabeceras FASTA que desplegamos arriba</li>
+</ul>
+<pre class="bash"><code>for sp in $(grep &#39;^&gt;&#39; recA_Bradyrhizobium_vinuesa.fnaed | cut -d_ -f2 | sort -u | sed &#39;s/\[//&#39;)
+do 
+  echo &quot;processing species $sp ...&quot;
+done</code></pre>
+<pre><code>## processing species alpha ...
+## processing species beta ...
+## processing species canariense ...
+## processing species elkanii ...
+## processing species japonicum ...
+## processing species liaoningense ...
+## processing species sp. ...
+## processing species yuanmingense ...</code></pre>
+<ul>
+<li>ahora es trivial insertar nuestra herramienta de <span class="math inline">\(gawk\)</span>, diseñada justo para filtrar secuencias usando nombres de especies</li>
+</ul>
+<pre class="bash"><code>for sp in $(grep &#39;^&gt;&#39; recA_Bradyrhizobium_vinuesa.fnaed | cut -d_ -f2 | sort -u | sed &#39;s/\[//&#39;)
+do 
+  echo &quot;processing species $sp ...&quot;
+  ./filter_fasta_sequences.awk &quot;$sp&quot; recA_Bradyrhizobium_vinuesa.fnaed &gt; &quot;recA_B_${sp}.fasta&quot;
+done</code></pre>
+<pre><code>## processing species alpha ...
+## processing species beta ...
+## processing species canariense ...
+## processing species elkanii ...
+## processing species japonicum ...
+## processing species liaoningense ...
+## processing species sp. ...
+## processing species yuanmingense ...</code></pre>
+<ul>
+<li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
+</ul>
+<pre class="bash"><code>ls -ltr *fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 oct 25 20:41 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 oct 25 20:41 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 oct 25 20:41 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 oct 25 20:41 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 oct 25 20:41 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 oct 25 20:41 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 oct 25 20:41 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 oct 25 20:41 recA_B_yuanmingense.fasta</code></pre>
+<ul>
+<li>ahora nos aseguramos que son especie-específicos</li>
+</ul>
+<pre class="bash"><code>for sp in $(grep &#39;^&gt;&#39; recA_Bradyrhizobium_vinuesa.fnaed | cut -d_ -f2 | sort -u | sed &#39;s/\[//&#39;)
+do 
+  echo &quot;processing species $sp ...&quot;
+  grep &quot;$sp&quot; &quot;recA_B_${sp}.fasta&quot; | head -2
+  echo &#39;-------------------------------------&#39;
+  grep &quot;$sp&quot; &quot;recA_B_${sp}.fasta&quot; | tail -2
+  echo &#39;.....................................&#39;
+done
+</code></pre>
+<pre><code>## processing species alpha ...
+## &gt;AY591567.1 [B_alpha_strain_CIAT3101]
+## &gt;AY591540.1 [B_alpha_bv._genistearum_strain_BC-C1]
+## -------------------------------------
+## &gt;AY591567.1 [B_alpha_strain_CIAT3101]
+## &gt;AY591540.1 [B_alpha_bv._genistearum_strain_BC-C1]
+## .....................................
+## processing species beta ...
+## &gt;AY653750.1 [B_beta_strain_BC-MK1]
+## &gt;AY591554.1 [B_beta_strain_BC-MK6]
+## -------------------------------------
+## &gt;AY591551.1 [B_beta_strain_BRE-1]
+## &gt;AY591543.1 [B_beta_strain_BC-P6]
+## .....................................
+## processing species canariense ...
+## &gt;AY653749.1 [B_canariense_strain_BC-MAM12]
+## &gt;AY653748.1 [B_canariense_strain_BC-MAM11]
+## -------------------------------------
+## &gt;AY591542.1 [B_canariense_bv._genistearum_strain_BC-P5]
+## &gt;AY591541.1 [B_canariense_bv._genistearum_strain_BC-C2]
+## .....................................
+## processing species elkanii ...
+## &gt;EU574276.1 [B_elkanii_strain_BuNoR4]
+## &gt;EU574275.1 [B_elkanii_strain_BuNoR3]
+## -------------------------------------
+## &gt;AY591569.1 [B_elkanii_strain_USDA94]
+## &gt;AY591568.1 [B_elkanii_strain_USDA76]
+## .....................................
+## processing species japonicum ...
+## &gt;EU574316.1 [B_japonicum_strain_NeRa16]
+## &gt;EU574315.1 [B_japonicum_strain_NeRa15]
+## -------------------------------------
+## &gt;AY591555.1 [B_japonicum_bv._glycinearum_strain_DSMZ30131]
+## &gt;AY591544.1 [B_japonicum_bv._genistearum_strain_BC-P14]
+## .....................................
+## processing species liaoningense ...
+## &gt;EU574327.1 [B_liaoningense_strain_ViHaR5]
+## &gt;EU574326.1 [B_liaoningense_strain_ViHaR4]
+## -------------------------------------
+## &gt;AY591574.1 [B_liaoningense_strain_Spr3-7]
+## &gt;AY591564.1 [B_liaoningense_bv._glycinearum_strain_LMG18230]
+## .....................................
+## processing species sp. ...
+## &gt;EU574272.1 [B_sp._BuNoG5]
+## &gt;EU574262.1 [B_sp._BuMiT10]
+## -------------------------------------
+## &gt;AY591570.1 [B_sp._BTAi1]
+## &gt;AY591561.1 [B_sp._CICS70]
+## .....................................
+## processing species yuanmingense ...
+## &gt;EU574319.1 [B_yuanmingense_strain_ViHaG5]
+## &gt;EU574318.1 [B_yuanmingense_strain_ViHaG4]
+## -------------------------------------
+## &gt;AY591566.1 [B_yuanmingense_strain_CCBAU_10071]
+## &gt;AY591565.1 [B_yuanmingense_strain_TAL760]
+## .....................................</code></pre>
+<!--
+
+### Otra solución al problema: convertir archivos FASTA a formato "FASTAB" usando **perl** 1-liners
+
+Vamos a transformar los FASTAS de tal manera que las secuencias queden en la 
+misma línea que su cabecera, separada de ésta por un tabulador. Esto puede ser muy útil para 
+filtrar el archivo resultante con grep. Veamos un ejemplo:
+
+
+```bash
+perl -pe 'unless(/^>/){s/\n//g}; if(/>/){s/\n/\t/g}; s/>/\n>/' recA_Bradyrhizobium_vinuesa.fnaed | head
+```
+
+```
+## 
+## >EU574327.1 [B_liaoningense_strain_ViHaR5]   ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGACTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCAGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
+## >EU574326.1 [B_liaoningense_strain_ViHaR4]   ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
+## >EU574325.1 [B_liaoningense_strain_ViHaR3]   ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
+## >EU574324.1 [B_liaoningense_strain_ViHaR2]   ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
+## >EU574323.1 [B_liaoningense_strain_ViHaR1]   ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
+## >EU574322.1 [B_liaoningense_strain_ViHaG8]   ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
+## >EU574321.1 [B_liaoningense_strain_ViHaG7]   ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
+## >EU574320.1 [B_liaoningense_strain_ViHaG6]   ATGAAGCTCGGCAAGAACGACCGGTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGACATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGGCGTATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACGCTGGTGCGCTCGGGCGCTGTCGATGTGCTGGTGATCGATTCGGTTGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
+## >EU574319.1 [B_yuanmingense_strain_ViHaG5]   ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCTTGCCCAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCCGTCGACGTTCTCGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGACTTCAAGCACGGTTGATGAGCCAGGCGCTGCGCAAGCTCACGGCCTCCATCAACAAATCCAACACGATGGTGATCTTCATCAACCAGATC
+```
+
+
+```bash
+perl -pe 'unless(/^>/){s/\n//g}; if(/>/){s/\n/\t/g}; s/>/\n>/' recA_Bradyrhizobium_vinuesa.fnaed > recA_Bradyrhizobium_vinuesa.fnaedtab
+```
+
+- Filtrar  el archivo fnaedtab generado en 9 para obtener solo las secuencias de B._yuanmingense del mismo, guardarlo en un archivo y convertirlo de nuevo a formato FASTA.  
+
+
+```bash
+grep yuanmingense recA_Bradyrhizobium_vinuesa.fnaedtab | head -5
+```
+
+```
+## >EU574319.1 [B_yuanmingense_strain_ViHaG5]   ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCTTGCCCAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCCGTCGACGTTCTCGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGACTTCAAGCACGGTTGATGAGCCAGGCGCTGCGCAAGCTCACGGCCTCCATCAACAAATCCAACACGATGGTGATCTTCATCAACCAGATC
+## >EU574318.1 [B_yuanmingense_strain_ViHaG4]   ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCTTGCCCAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCCGTCGACGTTCTCGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGACTTCAAGCACGGTTGATGAGCCAGGCGCTGCGCAAGCTCACGGCCTCCATCAACAAATCCAACACGATGGTGATCTTCATCAACCAGATC
+## >EU574297.1 [B_yuanmingense_strain_InRo02]   ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTGGGCATCGGCGGCCTGCCCAAGGGACGCATCGTCGAGATCTACGGGCCGGAATCTTCGGGCAAGACCACGCTCGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGTGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCCGTCGATGTTCTGGTGGTCGATTCGGTGGCGGCGCTGGTGCCGAAGGCCGAGCTCGAAGGCGAGATGGGTGACGCGCTGCCTGGCCTGCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCATCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
+## >EU574296.1 [B_yuanmingense_strain_InKo02]   ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTCTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGACGCATCGTCGAGATCTACGGGCCGGAATCCTCCGGCAAGACCACGCTCGCGCTGCATACGGTGGCGGAGGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGTTCGGGCGCCGTCGACGTTCTCGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGCCTGCAGGCGCGGTTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
+## >EU574295.1 [B_yuanmingense_strain_InKo01]   ATGAAGCTCGGCAAGAACGATCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCCTGCCCAAGGGACGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCCCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCGGTCGATGTTCTCGTGGTCGATTCGGTGGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGCTTGCAGGCCCGTCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCAACACCATGGTGATCTTCATCAACCAGATC
+```
+
+
+
+```bash
+grep yuanmingense recA_Bradyrhizobium_vinuesa.fnaedtab > recA_Byuanmingense.fnaedtab
+```
+
+- Estas dos lineas no contienen nada nuevo en cuanto a sintaxis. Simplemente llamamos a perl para sustituir los tabuladores por saltos de linea y asi reconstituir el FASTA.  
+
+```bash
+perl -pe 'if(/^>/){s/\t/\n/}' recA_Byuanmingense.fnaedtab | head -5
+```
+
+```
+## >EU574319.1 [B_yuanmingense_strain_ViHaG5]
+## ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCTTGCCCAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCCGTCGACGTTCTCGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGACTTCAAGCACGGTTGATGAGCCAGGCGCTGCGCAAGCTCACGGCCTCCATCAACAAATCCAACACGATGGTGATCTTCATCAACCAGATC
+## >EU574318.1 [B_yuanmingense_strain_ViHaG4]
+## ATGAAGCTCGGCAAGAACGACCGCTCCATGGACATCGAGGCGGTGTCCTCCGGCTCGCTCGGGCTCGATATCGCGCTCGGCATCGGCGGCTTGCCCAAGGGGCGCATCGTCGAGATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCATACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGCGCCTTCATCGACGCCGAGCACGCGCTCGATCCGGTCTATGCCCGCAAGCTCGGCGTCAACATCGACGAGCTCCTGATCTCGCAGCCCGACACCGGCGAGCAGGCGCTGGAGATCTGCGACACCCTGGTGCGCTCGGGCGCCGTCGACGTTCTCGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAGCTCGAGGGCGAGATGGGCGATGCGCTGCCGGGACTTCAAGCACGGTTGATGAGCCAGGCGCTGCGCAAGCTCACGGCCTCCATCAACAAATCCAACACGATGGTGATCTTCATCAACCAGATC
+## >EU574297.1 [B_yuanmingense_strain_InRo02]
+```
+
+
+```bash
+perl -pe 'if(/^>/){s/\t/\n/}' recA_Byuanmingense.fnaedtab > recA_Byuanmingense.fna
+```
+
+
+- Llamar a un bucle for de shell para generar archivos fastab para todas las especies
+
+```bash
+for sp in $(grep '^>' recA_Bradyrhizobium_vinuesa.fnaedtab | cut -d_ -f2 | sort -u | sed 's/\[//'); do 
+   grep "$sp" recA_Bradyrhizobium_vinuesa.fnaedtab > "recA_B_${sp}.fnaedtab"
+done
+```
+
+- Veamos el resultado
+
+```bash
+ls *fnaedtab
+```
+
+```
+## recA_B_alpha.fnaedtab
+## recA_B_beta.fnaedtab
+## recA_B_canariense.fnaedtab
+## recA_B_elkanii.fnaedtab
+## recA_B_japonicum.fnaedtab
+## recA_B_liaoningense.fnaedtab
+## recA_Bradyrhizobium_vinuesa.fnaedtab
+## recA_B_sp..fnaedtab
+## recA_B_yuanmingense.fnaedtab
+## recA_Byuanmingense.fnaedtab
+```
+
+
+```bash
+head -5 recA_B_japonicum.fnaedtab
+```
+
+```
+## >EU574316.1 [B_japonicum_strain_NeRa16]  ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCGGGTTCTCTCGGGCTCGACATTGCACTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCACGCAAGCTCGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
+## >EU574315.1 [B_japonicum_strain_NeRa15]  ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCCGGTTCTCTCGGGCTCGACATTGCACTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCACGCAAGCTCGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
+## >EU574314.1 [B_japonicum_strain_NeRa14]  ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCCGGTTCTCTCGGGCTCGACATTGCGCTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGAATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCGCGCAAGCTGGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACGGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGYCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
+## >EU574313.1 [B_japonicum_strain_NeRa12]  ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCCGGTTCTCTCGGGCTCGACATTGCACTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCACGCAAGCTCGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
+## >EU574312.1 [B_japonicum_strain_NeRa11]  ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCCGGTTCTCTCGGGCTCGACATTGCACTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCACGCAAGCTCGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
+```
+
+
+- Finalmente convertimos todos los archivos fnatabed a FASTA con el siguiente bucle for
+
+```bash
+for file in $(ls *fnaedtab | grep -v vinuesa); do perl -pe 'if(/^>/){s/\t/\n/}' $file > ${file%.*}.fas; done
+```
+
+- Visualicemos las cabeceras de dos archivos FASTA especie-específicos
+
+```bash
+grep '>' recA_B_japonicum.fas | head -5
+```
+
+```
+## >EU574316.1 [B_japonicum_strain_NeRa16]
+## >EU574315.1 [B_japonicum_strain_NeRa15]
+## >EU574314.1 [B_japonicum_strain_NeRa14]
+## >EU574313.1 [B_japonicum_strain_NeRa12]
+## >EU574312.1 [B_japonicum_strain_NeRa11]
+```
+
+- y confirmemos que son fastas regulares
+
+```bash
+head -6 recA_B_japonicum.fas
+```
+
+```
+## >EU574316.1 [B_japonicum_strain_NeRa16]
+## ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCGGGTTCTCTCGGGCTCGACATTGCACTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCACGCAAGCTCGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
+## >EU574315.1 [B_japonicum_strain_NeRa15]
+## ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCCGGTTCTCTCGGGCTCGACATTGCACTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGCATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCACGCAAGCTCGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACCGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGCCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
+## >EU574314.1 [B_japonicum_strain_NeRa14]
+## ATGAAGCTCGGCAAGAACGACCGGTCGATGGATGTCGAGGCGGTGTCCTCCGGTTCTCTCGGGCTCGACATTGCGCTGGGGATCGGCGGTCTGCCCAAGGGGCGCGTCGTGGAAATCTACGGGCCGGAATCCTCGGGCAAGACCACGCTGGCGCTGCACACGGTGGCGGAAGCGCAGAAGAAGGGCGGAATCTGTGCCTTCATCGACGCCGAGCACGCGCTCGACCCGGTCTATGCGCGCAAGCTGGGGGTCAATATCGACGAGCTGCTGATTTCGCAGCCGGACACGGGCGAGCAGGCGCTGGAAATCTGCGACACGCTGGTGCGCTCGGGTGCGGTGGACGTTCTGGTGGTCGATTCGGTCGCGGCGCTGGTGCCGAAGGCCGAACTCGAGGGCGAGATGGGCGATGCGCTGCCGGGTCTCCAGGCCCGYCTGATGAGCCAGGCGCTGCGCAAGCTGACGGCCTCCATCAACAAGTCCCACACCATGGTGATCTTCATCAACCAGATC
+```
+
+Esta segunda solución es sin duda más engorrosa. 
+
+-->
+</div>
+</div>
+<div id="reto-de-programación---ejercicio-de-parseo-de-archivos-fasta" class="section level2">
+<h2><span class="header-section-number">11.8</span> Reto de programación - ejercicio de parseo de archivos FASTA</h2>
+<p>Como ejercicio, para repasar lo que hemos aprendido en esta sesión les propongo repetir el ejercicio de parseo de archivos FASTA pero con secuencias del gen <i>rpoB</i> de <i>Bradyrhizobium</i></p>
+<div id="inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-2" class="section level3">
+<h3><span class="header-section-number">11.8.1</span> Inspección y estadísticas básicas de las secuencias descargadas</h3>
+<ol style="list-style-type: decimal">
+<li>Descargar las secuencias de NCBI usando el portal ENTREZ nucleotides con: ‘Bradyrhizobium[orgn] AND vinuesa[auth] AND rpoB[gene]’</li>
+<li>Renombra el archivo descargado a rpoB_Bradyrhizobium_vinuesa.fna</li>
+<li>¿Cuántas secuencias hay en el archivo rpoB_Bradyrhizobium_vinuesa.fna?</li>
+<li>Explora la cabecera y cola del archivo con <span class="math inline">\(head\)</span> y <span class="math inline">\(tail\)</span></li>
+<li>Despliega las 5 primeras lineas de cabeceras fasta usando <span class="math inline">\(grep\)</span> y <span class="math inline">\(head\)</span> para explorar su estructura en detalle</li>
+<li>Calcula el número de géneros que contiene el archivo FASTA</li>
+<li>Calcula el número de especies que contiene el archivo FASTA</li>
+<li>Imprime una lista ordenada de mayor a menor, del numero de especies que contiene el archivo FASTA</li>
+</ol>
+</div>
+<div id="edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-2" class="section level3">
+<h3><span class="header-section-number">11.8.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</h3>
+<ol style="list-style-type: decimal">
+<li>Explora nuevamente todas las cabeceras FASTA del archivo rpoB_Bradyrhizobium_vinuesa.fna usando <span class="math inline">\(grep\)</span> y <span class="math inline">\(less\)</span></li>
+<li>Simplifica las cabeceras FASTA usando el comando <span class="math inline">\(sed\)</span> (stream editor)</li>
+</ol>
+<p>El objetivo es eliminar redundancia y longitud excesiva de las cabeceras FASTA, así como todos los caracteres ‘( , ; : )’ que impedirían el despliegue de un árbol filogenético, al tratarse de caracteres reservados del formato NEWICK. Dejar solo el numero de accesión, así como el género, especie y cepa indicados entre corchetes.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Cuando estén satisfechos con el resultado, guarden la salida del comando en un archivo llamado rpoB_Bradyrhizobium_vinuesa.fnaed</li>
+</ol>
+</div>
+<div id="generación-de-archivos-especie-específicos-de-secuencias-rpob" class="section level3">
+<h3><span class="header-section-number">11.8.3</span> Generación de archivos especie específicos de secuencias <em>rpoB</em></h3>
+<p>Al igual que en el ejemplo con secuencias <em>recA</em>, genera una lista de nombres de especie únicos y usa un bucle <span class="math inline">\(for\)</span> para pasar los elementos de la misma al <span class="math inline">\(script\)</span> <em>filter_fasta_sequences.awk</em> que discutimos en la <a href="#el-scritp-filter_fasta_sequences.awk">sección de <span class="math inline">\(AWK\)</span></a>, para generar los archivos especie-específicos de secuencias.</p>
+<!--
+
+### Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables
+La idea del ejercicio es generar archivos a partir de linux_basic_commands.tab que contengan sólo los comandos de cada clase, nombrando a los archivo resultantes con el valor de dicha clase, almacenados en la segunda columna de la tabla
+
+
+```bash
+# veamos la cabecera y cola del archivo linux_basic_commands.tab
 head linux_basic_commands.tab
-echo &#39;--------------------------------------------------&#39;
-tail linux_basic_commands.tab</code></pre>
-<pre><code>## IEEE Std 1003.1-2008 utilities Name  Category    Description     First appeared
+echo '--------------------------------------------------'
+tail linux_basic_commands.tab
+```
+
+```
+## IEEE Std 1003.1-2008 utilities Name  Category    Description     First appeared
 ## admin    SCCS    Create and administer SCCS files    PWB UNIX
 ## alias    Misc    Define or display aliases   
-## ar   Misc    Create and maintain library archives    Version 1 AT&amp;T UNIX
+## ar   Misc    Create and maintain library archives    Version 1 AT&T UNIX
 ## asa  Text processing     Interpret carriage-control characters   System V
-## at   Process management  Execute commands at a later time    Version 7 AT&amp;T UNIX
-## awk  Text processing     Pattern scanning and processing language    Version 7 AT&amp;T UNIX
-## basename     Filesystem  Return non-directory portion of a pathname; see also dirname    Version 7 AT&amp;T UNIX
+## at   Process management  Execute commands at a later time    Version 7 AT&T UNIX
+## awk  Text processing     Pattern scanning and processing language    Version 7 AT&T UNIX
+## basename     Filesystem  Return non-directory portion of a pathname; see also dirname    Version 7 AT&T UNIX
 ## batch    Process management  Schedule commands to be executed in a batch queue   
-## bc   Misc    Arbitrary-precision arithmetic language     Version 6 AT&amp;T UNIX
+## bc   Misc    Arbitrary-precision arithmetic language     Version 6 AT&T UNIX
 ## --------------------------------------------------
 ## val  SCCS    Validate SCCS files     System III
 ## vi   Text processing     Screen-oriented (visual) display editor     1BSD
-## wait     Process management  Await process completion    Version 4 AT&amp;T UNIX
-## wc   Text processing     Line, word and byte or character count  Version 1 AT&amp;T UNIX
+## wait     Process management  Await process completion    Version 4 AT&T UNIX
+## wc   Text processing     Line, word and byte or character count  Version 1 AT&T UNIX
 ## what     SCCS    Identify SCCS files     PWB UNIX
-## who  System administration   Display who is on the system    Version 1 AT&amp;T UNIX
-## write    Misc    Write to another user&#39;s terminal    Version 1 AT&amp;T UNIX
+## who  System administration   Display who is on the system    Version 1 AT&T UNIX
+## write    Misc    Write to another user's terminal    Version 1 AT&T UNIX
 ## xargs    Shell programming   Construct argument lists and invoke utility     PWB UNIX
 ## yacc     C programming   Yet another compiler compiler   PWB UNIX
-## zcat     Text processing     Expand and concatenate data     4.3BSD</code></pre>
-<p>Antes de correr el bucle, lista los archivos en el directorio de trabajo</p>
-<pre><code># veamos el contenido del directorio antes de correr el bucle
-ls</code></pre>
-<p>Ahora el bucle. En este caso ALIAS=type y LIST corresponde a la lista de valores únicos almacenados en la segunda columna de la tabla:</p>
-<p><code>$(cut -f2 linux_basic_commands.tab | sort -u)</code></p>
-<pre class="bash"><code>#&gt;&gt;&gt; Ejemplo integrativo: usa un bucle for, acoplado a las herramientas de filtrado arriba mostradas,
+## zcat     Text processing     Expand and concatenate data     4.3BSD
+```
+
+Antes de correr el bucle, lista los archivos en el directorio de trabajo
+```
+# veamos el contenido del directorio antes de correr el bucle
+ls
+```
+
+Ahora el bucle. En este caso ALIAS=type y LIST corresponde a la lista de valores únicos almacenados en la segunda columna de la tabla: 
+
+<code>$(cut -f2 linux_basic_commands.tab | sort -u)</code>
+
+```bash
+#>>> Ejemplo integrativo: usa un bucle for, acoplado a las herramientas de filtrado arriba mostradas,
 #    para generar archivos que contengan solo los comandos de las diferentes categorias
 #    nombrando a los archivos por estas
 
-# for type in $(cut -f2 linux_basic_commands.tab | sort -u); do grep &quot;$type&quot; linux_basic_commands.tab &gt; ${type}.cmds; done
+# for type in $(cut -f2 linux_basic_commands.tab | sort -u); do grep "$type" linux_basic_commands.tab > ${type}.cmds; done
 for type in $(cut -f2 linux_basic_commands.tab | cut -d_ -f1 | grep -v Category); do
-    grep -w &quot;$type&quot; linux_basic_commands.tab &gt; ${type}.cmds
+    grep -w "$type" linux_basic_commands.tab > ${type}.cmds
 done
-</code></pre>
-<p>Y voilà:</p>
-<pre class="bash"><code># veamos el contenido del directorio después de correr el bucle
-ls *.cmds</code></pre>
-<pre><code>## administration.cmds
+
+```
+
+Y voilà:
+
+```bash
+# veamos el contenido del directorio después de correr el bucle
+ls *.cmds
+```
+
+```
+## administration.cmds
 ## Batch.cmds
 ## C.cmds
 ## Filesystem.cmds
@@ -3710,37 +3956,48 @@ ls *.cmds</code></pre>
 ## Shell.cmds
 ## System.cmds
 ## Text.cmds
-## utilities.cmds</code></pre>
-<pre class="bash"><code># veamos el contenido de uno de los nuevos archivos generados
-cat programming.cmds</code></pre>
-<pre><code>## cc/c99   C programming   Compile standard C programs     IEEE Std 1003.1-2001
+## utilities.cmds
+```
+
+
+```bash
+# veamos el contenido de uno de los nuevos archivos generados
+cat programming.cmds
+
+```
+
+```
+## cc/c99   C programming   Compile standard C programs     IEEE Std 1003.1-2001
 ## cflow    C programming   Generate a C-language call graph    System V
 ## command  Shell programming   Execute a simple command    
 ## ctags    C programming   Create a tags file  3BSD
 ## cxref    C programming   Generate a C-language program cross-reference table     System V
-## echo     Shell programming   Write arguments to standard output  Version 2 AT&amp;T UNIX
-## expr     Shell programming   Evaluate arguments as an expression     Version 7 AT&amp;T UNIX
-## false    Shell programming   Return false value  Version 7 AT&amp;T UNIX
+## echo     Shell programming   Write arguments to standard output  Version 2 AT&T UNIX
+## expr     Shell programming   Evaluate arguments as an expression     Version 7 AT&T UNIX
+## false    Shell programming   Return false value  Version 7 AT&T UNIX
 ## fort77   FORTRAN77 programming   FORTRAN compiler    XPG4
 ## getopts  Shell programming   Parse utility options   
-## lex  C programming   Generate programs for lexical tasks     Version 7 AT&amp;T UNIX
+## lex  C programming   Generate programs for lexical tasks     Version 7 AT&T UNIX
 ## logger   Shell programming   Log messages    4.3BSD
-## nm   C programming   Write the name list of an object file   Version 1 AT&amp;T UNIX
+## nm   C programming   Write the name list of an object file   Version 1 AT&T UNIX
 ## printf   Shell programming   Write formatted output  4.3BSD-Reno
 ## read     Shell programming   Read a line from standard input     
-## sh   Shell programming   Shell, the standard command language interpreter    Version 7 AT&amp;T UNIX (in earlier versions, sh was either the Thompson shell or the PWB shell)
-## sleep    Shell programming   Suspend execution for an interval   Version 4 AT&amp;T UNIX
+## sh   Shell programming   Shell, the standard command language interpreter    Version 7 AT&T UNIX (in earlier versions, sh was either the Thompson shell or the PWB shell)
+## sleep    Shell programming   Suspend execution for an interval   Version 4 AT&T UNIX
 ## strings  C programming   Find printable strings in files     2BSD
-## strip    C programming   Remove unnecessary information from executable files    Version 1 AT&amp;T UNIX
-## tee  Shell programming   Duplicate the standard output   Version 5 AT&amp;T UNIX
-## test     Shell programming   Evaluate expression     Version 7 AT&amp;T UNIX
-## true     Shell programming   Return true value   Version 7 AT&amp;T UNIX
+## strip    C programming   Remove unnecessary information from executable files    Version 1 AT&T UNIX
+## tee  Shell programming   Duplicate the standard output   Version 5 AT&T UNIX
+## test     Shell programming   Evaluate expression     Version 7 AT&T UNIX
+## true     Shell programming   Return true value   Version 7 AT&T UNIX
 ## xargs    Shell programming   Construct argument lists and invoke utility     PWB UNIX
-## yacc     C programming   Yet another compiler compiler   PWB UNIX</code></pre>
+## yacc     C programming   Yet another compiler compiler   PWB UNIX
+```
+
+-->
 <pre class="bash"><code># finalmente borremos los nuevos archivos generados en los ejercicios anteriores 
 #   para mantener limpio nuestro directorio de trabajo ;)
 rm *.cmds
-rm *fnaed *fnaedtab *fas empty_file Pseudomonas_species*</code></pre>
+rm *fnaed *.fnaedtab *.fas empty_file Pseudomonas_species* *.fasta</code></pre>
 <hr />
 </div>
 </div>
@@ -3790,6 +4047,7 @@ CTRL-D</code></pre>
 <p>y ya puedes usarlo:</p>
 <pre class="bash"><code>ls_dir</code></pre>
 <pre><code>## .git
+## data
 ## pics
 ## participantes_Taller_CG_FC
 ## intro2linux
@@ -3879,6 +4137,7 @@ find . -maxdepth $max_depth -type $type</code></pre>
 <pre class="bash"><code>  find_dir 1</code></pre>
 <pre><code>## .
 ## ./.git
+## ./data
 ## ./pics
 ## ./participantes_Taller_CG_FC
 ## ./intro2linux
