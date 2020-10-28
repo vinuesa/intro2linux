@@ -95,7 +95,7 @@ Si nunca has trabajado en un sistema Linux anteriormente, recomiendo leer este t
 - [Primer contacto con Linux - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf)
 
 ## Tutoral extenso de comandos GNU/Linux con aplicaciones a biocómputo
-- [Tutoral - html](https://vinuesa.github.io/intro2linux/)
+- [Tutoral - html](https://vinuesa.github.io/intro2linux/tree/master/docs/)
 
 <!--
 #### Pr&aacute;ctica 2. Descarga de secuencias en formato FASTA de GenBank usando el sistema ENTREZ y parseo de los archivos usando herrramientas de filtrado
