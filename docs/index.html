@@ -565,7 +565,7 @@ summary {
 <li><a href="#uso-de-awk-para-trabajar-con-archivos-de-secuencias-en-formato-fasta"><span class="toc-section-number">9.8</span> Uso de <span class="math inline">\(awk\)</span> para trabajar con archivos de secuencias en formato FASTA</a><ul>
 <li><a href="#cuenta-el-número-de-secuencias-en-reca_bradyrhizobium_vinuesa.fna"><span class="toc-section-number">9.8.1</span> cuenta el número de secuencias en recA_Bradyrhizobium_vinuesa.fna</a></li>
 <li><a href="#cuántos-nucleótidos-hay-en-reca_bradyrhizobium_vinuesa.fna"><span class="toc-section-number">9.8.2</span> ¿cuántos nucleótidos hay en recA_Bradyrhizobium_vinuesa.fna?</a></li>
-<li><a href="#el-script-filter_fasta_sequences.awk"><span class="toc-section-number">9.8.3</span> el <span class="math inline">\(script\)</span> <strong>filter_fasta_sequences.awk</strong></a></li>
+<li><a href="#shebang-line-usrbinawk-y-scripts-autocontenidos-el-script-filter_fasta_sequences.awk"><span class="toc-section-number">9.8.3</span> Shebang line #!/usr/bin/awk y scripts autocontenidos: el <span class="math inline">\(script\)</span> <strong>filter_fasta_sequences.awk</strong></a></li>
 <li><a href="#filtra-un-archivo-multifasta-usando-un-hash-y-una-lista-de-etiquetas"><span class="toc-section-number">9.8.4</span> Filtra un archivo multifasta usando un <span class="math inline">\(hash\)</span> y una lista de etiquetas</a></li>
 <li><a href="#ordenar-las-secuencias-de-un-archivo-en-formato-fastab-según-las-entradas-de-una-lista-en-un-bucle-while"><span class="toc-section-number">9.8.5</span> Ordenar las secuencias de un archivo en formato <strong>FASTAB</strong> según las entradas de una lista en un bucle <span class="math inline">\(while\)</span></a></li>
 <li><a href="#uso-de-hashes-para-concatenar-secuencias-en-dos-o-más-archivos-fasta"><span class="toc-section-number">9.8.6</span> Uso de <span class="math inline">\(hashes\)</span> para concatenar secuencias en dos o más archivos FASTA</a></li>
@@ -820,7 +820,7 @@ ls | head</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
 <pre><code>## total 59576
-## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  2 12:54 .
+## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  2 13:10 .
 ## drwxr-xr-x  3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rw-rw-r--  1 vinuesa vinuesa      114 nov  1 23:01 0
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
@@ -840,17 +840,17 @@ ls -al </code></pre>
 ## -rwxr-xr-x  1 vinuesa vinuesa      857 oct 29 16:07 filter_fasta_sequences.awk
 ## -rwxr-xr-x  1 vinuesa vinuesa     1237 oct 14 22:43 find_dir
 ## -rw-rw-r--  1 vinuesa vinuesa      548 oct 31 23:19 get_sequences_from_list.awk
-## drwxr-xr-x  8 vinuesa vinuesa     4096 nov  2 13:01 .git
+## drwxr-xr-x  8 vinuesa vinuesa     4096 nov  2 13:02 .git
 ## -rwxrwxr-x  1 vinuesa vinuesa      563 oct 22 14:17 hist.awk
 ## drwxr-xr-x  4 vinuesa vinuesa     4096 sep 29 22:56 intro2linux
 ## -rw-r--r--  1 vinuesa vinuesa  3163754 oct 13 13:39 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r--  1 vinuesa vinuesa    35149 sep 29 22:15 LICENSE
 ## -rw-r--r--  1 vinuesa vinuesa    10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx  1 vinuesa vinuesa       78 nov  2 12:54 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx  1 vinuesa vinuesa       78 nov  2 13:10 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-r--r--  1 vinuesa vinuesa     1705 sep 29 22:18 linux_very_basic_commands_table.csv
 ## -rwxr-xr-x  1 vinuesa vinuesa      493 oct 14 22:43 ls_dir
 ## -rw-rw-r--  1 vinuesa vinuesa      250 oct 31 20:25 mini_fasta2.fst
-## -rw-rw-r--  1 vinuesa vinuesa      245 nov  2 12:54 mini_fasta.fastab
+## -rw-rw-r--  1 vinuesa vinuesa      245 nov  2 13:10 mini_fasta.fastab
 ## -rw-rw-r--  1 vinuesa vinuesa      250 oct 31 20:11 mini_fasta.fst
 ## -rw-rw-r--  1 vinuesa vinuesa      241 nov  1 14:51 mini_tabla_parte1.tsv
 ## -rw-rw-r--  1 vinuesa vinuesa      582 nov  1 14:56 mini_tabla_parte2.tsv
@@ -863,8 +863,8 @@ ls -al </code></pre>
 ## -rwxr-xr-x  1 vinuesa vinuesa     2884 oct 14 22:43 prot2cdnAlns.pl
 ## -rw-r--r--  1 vinuesa vinuesa     6445 oct 29 23:53 README.md
 ## -rw-r--r--  1 vinuesa vinuesa    77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r--  1 vinuesa vinuesa    17736 nov  2 12:54 recA_Byuanmingense.fna
-## -rw-rw-r--  1 vinuesa vinuesa    21963 nov  2 12:54 recA_Byuanmingense_muscle.aln
+## -rw-r--r--  1 vinuesa vinuesa    17736 nov  2 13:10 recA_Byuanmingense.fna
+## -rw-rw-r--  1 vinuesa vinuesa    21963 nov  2 13:10 recA_Byuanmingense_muscle.aln
 ## -rw-rw-r--  1 vinuesa vinuesa        0 nov  1 22:52 .Rhistory
 ## -rw-rw-r--  1 vinuesa vinuesa       18 oct 31 22:57 seq.list
 ## -rw-rw-r--  1 vinuesa vinuesa      150 nov  1 15:05 showargs.awk
@@ -874,9 +874,9 @@ ls -al </code></pre>
 ## -rwxr-xr-x  1 vinuesa vinuesa     3402 oct 14 22:43 translate_fastas.pl
 ## drwxrwxr-x  3 vinuesa vinuesa     4096 oct 30 18:50 tutorials
 ## -rw-rw-r--  1 vinuesa vinuesa      804 oct 30 23:26 understand_NR_FNR_NF_in_awk.cmd
-## -rw-r--r--  1 vinuesa vinuesa  1385113 nov  2 12:54 working_with_linux_commands.html
+## -rw-r--r--  1 vinuesa vinuesa  1386412 nov  2 13:10 working_with_linux_commands.html
 ## -rw-rw-r--  1 vinuesa vinuesa    58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r--  1 vinuesa vinuesa   169872 nov  2 13:00 working_with_linux_commands.Rmd
+## -rw-r--r--  1 vinuesa vinuesa   170140 nov  2 13:11 working_with_linux_commands.Rmd
 ## -rw-rw-r--  1 vinuesa vinuesa   306038 oct 31 19:08 working_with_linux_commands.tex
 ## -rw-rw-r--  1 vinuesa vinuesa       41 oct 13 19:24 zoom.url</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
@@ -914,7 +914,7 @@ ls -al </code></pre>
 ## drwxr-xr-x   3 root root  4096 oct  5 20:41 media
 ## drwxr-xr-x   2 root root  4096 jul 31 11:27 mnt
 ## drwxr-xr-x   5 root root  4096 oct  5 12:26 opt
-## dr-xr-xr-x 364 root root     0 nov  2 09:51 proc
+## dr-xr-xr-x 362 root root     0 nov  2 09:51 proc
 ## drwx------   8 root root  4096 oct 16 19:12 root
 ## drwxr-xr-x  34 root root  1000 nov  2 12:14 run
 ## lrwxrwxrwx   1 root root     8 oct  4 14:42 sbin -&gt; usr/sbin
@@ -2084,7 +2084,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  2 13:01 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  2 13:11 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2103,7 +2103,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 13:01 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 13:11 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2232,15 +2232,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 13:01 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  2 13:01 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 13:11 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  2 13:11 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  2 13:01 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  2 13:11 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2334,9 +2334,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 12:54 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 13:10 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  2 13:01 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  2 13:11 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2357,9 +2357,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 12:54 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 13:10 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  2 13:01 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  2 13:11 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2369,10 +2369,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 12:54 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 13:10 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  2 12:54 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  2 13:10 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2382,11 +2382,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  2 12:54 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  2 13:10 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 12:54 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 13:10 recA_Byuanmingense.fna</code></pre>
 <hr />
 </div>
 </div>
@@ -3529,9 +3529,9 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1385113 nov  2 12:54 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1386412 nov  2 13:10 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  169872 nov  2 13:00 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  170140 nov  2 13:11 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  306038 oct 31 19:08 working_with_linux_commands.tex
 ## total size of working_with_linux_commands.* files is: 1.83 Mb</code></pre>
 <ul>
@@ -3905,7 +3905,10 @@ awk &#39;BEGIN { FS=OFS=&quot;\t&quot; } NR==FNR { a[$1]=$0; next } { if ($1 in 
 <ul>
 <li><code>if(condición){acción}else if(condición){acción}else if(condición){acción} …</code></li>
 </ul>
-<p>De no cumplirse ninguna de ellas, podemos indicar una acción a realizarse en dicho caso con la siguiente sintaxis - <code>if(condición){acción}else if(condición){acción}else if(condición){acción}else{acción}</code></p>
+<p>De no cumplirse ninguna de ellas, podemos indicar una acción a realizarse en dicho caso con la siguiente sintaxis:</p>
+<ul>
+<li><code>if(condición){acción}else if(condición){acción}else if(condición){acción}else{acción}</code></li>
+</ul>
 <p>Veamos un ejemplo sencillo:</p>
 <pre class="bash"><code>awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == arg) { print n, &quot;==&quot;, arg } else { print n, &quot;!=&quot;, arg }} &#39; n=2
 awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == arg) { print n, &quot;==&quot;, arg } else { print n, &quot;!=&quot;, arg }} &#39; n=3</code></pre>
@@ -3914,7 +3917,14 @@ awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == ar
 </div>
 <div id="el-script-count_genome_features_for_taxon.awk" class="section level3">
 <h3><span class="header-section-number">9.7.3</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></h3>
-<p>El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> tiene por finalidad mostrarles un ejemplo de código un poco más complejo y extenso con el fin de: 1. integrar y revisar los diferentes aspectos sintácticos del lenguaje discutidos hasta ahora 2. mostrar cómo llamar un <span class="math inline">\(script\)</span> y pasarle argumentos desde la línea de comandos usando la siguiente sintaxis: - <code>awk -f <span class="math inline">\(script\)</span> arg=x arg2=y</code></p>
+<p>El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> tiene por finalidad mostrarles un ejemplo de código un poco más complejo y extenso con el fin de:</p>
+<ol style="list-style-type: decimal">
+<li>integrar y revisar los diferentes aspectos sintácticos del lenguaje discutidos hasta ahora</li>
+<li>mostrar cómo llamar un <span class="math inline">\(script\)</span> y pasarle argumentos desde la línea de comandos usando la siguiente sintaxis:</li>
+</ol>
+<ul>
+<li><code>awk -f script_name arg=x arg2=y</code></li>
+</ul>
 <p>Veamos el <span class="math inline">\(script\)</span> completo y estudiemos sus secciones:</p>
 <pre class="bash"><code>cat ./count_genome_features_for_taxon.awk</code></pre>
 <pre><code>## # AUTHOR: Pablo Vinuesa, CCG-UNAM; https://www.ccg.unam.mx/~vinuesa/; twitter: @pvinmex
@@ -4021,9 +4031,18 @@ awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == ar
 <ul>
 <li>el <span class="math inline">\(script\)</span> sólo se ejecuta si le pasamos los índices (números de columnas) adecuados de la tabla assembly_summary.txt.gz</li>
 </ul>
-<pre class="bash"><code>zcat assembly_summary.txt.gz | awk -f ./count_genome_features_for_taxon.awk tax=Pseudomonas -f 1</code></pre>
-<pre><code>## ERROR: you need to provide f=&lt;table_field_number&gt; as the second argument to the script!
-##        ==&gt; you provided  -f
+<pre class="bash"><code>zcat assembly_summary.txt.gz | awk -f ./count_genome_features_for_taxon.awk tax=Pseudomonas f=1</code></pre>
+<pre><code>## # USAGE: zcat assembly_summary.txt.gz | awk -f count_genome_features_for_taxon.awk tax=Pseudomonas f=12
+## #    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt; as positional arguments at the end of the awk call, as shown
+## #    note2: if using the gzip-compressed source file, you need to pipe it into awk with zcat, as shown above
+## # AIM: print a table with the the number of features found in assembly_summary.txt.gz for a taxon
+## #      both provided as arguments to the program in the format tax=TAXON f=feature_field_number</code></pre>
+<ul>
+<li>el <span class="math inline">\(script\)</span> sólo revisa que el usuario use la sintaxis requerida para pasar argumentos desde la línea de comandos</li>
+</ul>
+<pre class="bash"><code>zcat assembly_summary.txt.gz | awk -f ./count_genome_features_for_taxon.awk Pseudomonas 5</code></pre>
+<pre><code>## ERROR: you need to provide tax=TAXON as the first argument to the script!
+##        ==&gt; you provided  Pseudomonas
 ## 
 ## # USAGE: zcat assembly_summary.txt.gz | awk -f count_genome_features_for_taxon.awk tax=Pseudomonas f=12
 ## #    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt; as positional arguments at the end of the awk call, as shown
@@ -4033,39 +4052,41 @@ awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == ar
 <ul>
 <li>el campo #5 imprime conteos de <em>refseq_category</em></li>
 </ul>
-<pre class="bash"><code>zcat assembly_summary.txt.gz | awk -f ./count_genome_features_for_taxon.awk tax=Pseudomonas -f 5</code></pre>
-<pre><code>## ERROR: you need to provide f=&lt;table_field_number&gt; as the second argument to the script!
-##        ==&gt; you provided  -f
-## 
-## # USAGE: zcat assembly_summary.txt.gz | awk -f count_genome_features_for_taxon.awk tax=Pseudomonas f=12
-## #    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt; as positional arguments at the end of the awk call, as shown
-## #    note2: if using the gzip-compressed source file, you need to pipe it into awk with zcat, as shown above
-## # AIM: print a table with the the number of features found in assembly_summary.txt.gz for a taxon
-## #      both provided as arguments to the program in the format tax=TAXON f=feature_field_number</code></pre>
+<pre class="bash"><code>zcat assembly_summary.txt.gz | awk -f ./count_genome_features_for_taxon.awk tax=Pseudomonas f=5</code></pre>
+<pre><code>## taxon    refseq_category n_genomes
+## Pseudomonas  reference genome    4
+## Pseudomonas  representative genome   49
+## Pseudomonas  na  8906</code></pre>
 <ul>
 <li>el campo #12 imprime conteos de <em>assembly_level</em></li>
 </ul>
-<pre class="bash"><code>zcat assembly_summary.txt.gz | awk -f ./count_genome_features_for_taxon.awk tax=Pseudomonas -f 12</code></pre>
-<pre><code>## ERROR: you need to provide f=&lt;table_field_number&gt; as the second argument to the script!
-##        ==&gt; you provided  -f
-## 
-## # USAGE: zcat assembly_summary.txt.gz | awk -f count_genome_features_for_taxon.awk tax=Pseudomonas f=12
-## #    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt; as positional arguments at the end of the awk call, as shown
-## #    note2: if using the gzip-compressed source file, you need to pipe it into awk with zcat, as shown above
-## # AIM: print a table with the the number of features found in assembly_summary.txt.gz for a taxon
-## #      both provided as arguments to the program in the format tax=TAXON f=feature_field_number</code></pre>
+<pre class="bash"><code>zcat assembly_summary.txt.gz | awk -f ./count_genome_features_for_taxon.awk tax=Pseudomonas f=12</code></pre>
+<pre><code>## taxon    assembly_level  n_genomes
+## Pseudomonas  Chromosome  120
+## Pseudomonas  Complete Genome 502
+## Pseudomonas  Scaffold    2494
+## Pseudomonas  Contig  5830</code></pre>
 <ul>
 <li>el campo #15 imprime conteos de <em>seq_rel_date</em></li>
 </ul>
-<pre class="bash"><code>zcat assembly_summary.txt.gz | awk -f ./count_genome_features_for_taxon.awk tax=Pseudomonas -f 12</code></pre>
-<pre><code>## ERROR: you need to provide f=&lt;table_field_number&gt; as the second argument to the script!
-##        ==&gt; you provided  -f
-## 
-## # USAGE: zcat assembly_summary.txt.gz | awk -f count_genome_features_for_taxon.awk tax=Pseudomonas f=12
-## #    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt; as positional arguments at the end of the awk call, as shown
-## #    note2: if using the gzip-compressed source file, you need to pipe it into awk with zcat, as shown above
-## # AIM: print a table with the the number of features found in assembly_summary.txt.gz for a taxon
-## #      both provided as arguments to the program in the format tax=TAXON f=feature_field_number</code></pre>
+<pre class="bash"><code>zcat assembly_summary.txt.gz | awk -f ./count_genome_features_for_taxon.awk tax=Pseudomonas f=15</code></pre>
+<pre><code>## taxon    seq_rel_date    n_genomes
+## Pseudomonas  2003    1
+## Pseudomonas  2005    3
+## Pseudomonas  2007    4
+## Pseudomonas  2008    4
+## Pseudomonas  2006    6
+## Pseudomonas  2009    6
+## Pseudomonas  2010    15
+## Pseudomonas  2011    31
+## Pseudomonas  2012    94
+## Pseudomonas  2013    274
+## Pseudomonas  2014    612
+## Pseudomonas  2017    861
+## Pseudomonas  2019    873
+## Pseudomonas  2016    1111
+## Pseudomonas  2015    1218
+## Pseudomonas  2018    3833</code></pre>
 </div>
 </div>
 <div id="uso-de-awk-para-trabajar-con-archivos-de-secuencias-en-formato-fasta" class="section level2">
@@ -4132,8 +4153,8 @@ awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == ar
 <pre><code>## recA_Bradyrhizobium_vinuesa.fna has 63795 nts or 63.795 kb</code></pre>
 <p>Notas: 1. También pudimos haber usado l+=length($0), ya que cada registro (línea en este caso) tiene un solo campo: la cadena de nucleótidos correspondiente. 2. El código <span class="math inline">\(awk\)</span> del ejemplo de arriba no cuenta los saltos de línea ni líneas en blanco, ya que la función <span class="math inline">\(length()\)</span> sólo contabiliza caracteres</p>
 </div>
-<div id="el-script-filter_fasta_sequences.awk" class="section level3">
-<h3><span class="header-section-number">9.8.3</span> el <span class="math inline">\(script\)</span> <strong>filter_fasta_sequences.awk</strong></h3>
+<div id="shebang-line-usrbinawk-y-scripts-autocontenidos-el-script-filter_fasta_sequences.awk" class="section level3">
+<h3><span class="header-section-number">9.8.3</span> Shebang line #!/usr/bin/awk y scripts autocontenidos: el <span class="math inline">\(script\)</span> <strong>filter_fasta_sequences.awk</strong></h3>
 <p>Para finalizar veamos un <span class="math inline">\(script\)</span> muy sencillo pero sin duda últil escrito en <span class="math inline">\(AWK\)</span> para filtrar secuencias de un archivo multifasta, pasándole una cadena de cadena de caracteres que el <span class="math inline">\(script\)</span> usará para filtrar el archivo, imprimiendo sólo aquellas secuencias que coinciden con la cadena de filtrado.</p>
 <p>Veamos el <span class="math inline">\(script\)</span> <a href="https://github.com/vinuesa/intro2linux/blob/master/filter_fasta_sequences.awk">filter_fasta_sequences.awk</a>, disponible en el repositorio <a href="https://github.com/vinuesa/intro2linux">GitHub - intro2linux</a>.</p>
 <ul>
@@ -4365,7 +4386,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 <li><a href="https://www.grymoire.com/Unix/Awk.html">tutorial extenso, excelente</a> práctica](<a href="https://tienda.fciencias.unam.mx/es/home/279-sistematica-molecular-y-bioinformatica-guia-practica.html" class="uri">https://tienda.fciencias.unam.mx/es/home/279-sistematica-molecular-y-bioinformatica-guia-practica.html</a>)</li>
 <li><a href="https://www.gnu.org/software/gawk/manual/">gawk manual, la guía definitiva</a></li>
 </ul>
-<p>Veremos más ejemplos de 𝑔𝑎𝑤𝑘 en la sección de ejercicios integrativos que sigue a continuación.</p>
+<p>Veremos más ejemplos de <span class="math inline">\(gawk\)</span> en la sección de ejercicios integrativos que sigue a continuación.</p>
 <hr />
 </div>
 </div>
@@ -4813,7 +4834,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 13:01 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 13:12 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -4922,14 +4943,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  2 13:01 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  2 13:01 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  2 13:01 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  2 13:01 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  2 13:01 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  2 13:01 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  2 13:01 recA_B_yuanmingense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  2 13:01 recA_B_sp..fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  2 13:12 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  2 13:12 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  2 13:12 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  2 13:12 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  2 13:12 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  2 13:12 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  2 13:12 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  2 13:12 recA_B_yuanmingense.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
