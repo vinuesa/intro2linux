@@ -550,15 +550,17 @@ summary {
 <li><a href="#uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla"><span class="toc-section-number">9.5.7</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</a></li>
 <li><a href="#transforma-la-salida-del-comando-uniq--c-en-un-formato-de-campos-separados-por-comas-archivo-csv-con-cabecera"><span class="toc-section-number">9.5.8</span> Transforma la salida del comando <span class="math inline">\(uniq\ -c\)</span> en un formato de campos separados por comas (archivo <span class="math inline">\(csv\)</span>) con cabecera</a></li>
 </ul></li>
-<li><a href="#arreglos-asociativos-en-awk"><span class="toc-section-number">9.6</span> <strong>Arreglos (asociativos)</strong> en <span class="math inline">\(awk\)</span></a><ul>
-<li><a href="#modelado-de-archivos-fasta-mini_fasta.fst-con-hashes-de-awk"><span class="toc-section-number">9.6.1</span> Modelado de archivos FASTA (mini_fasta.fst) con <span class="math inline">\(hashes\)</span> de <span class="math inline">\(awk\)</span></a></li>
-<li><a href="#juntar-dos-tablas-que-comparten-un-campo-común-llave-primaria-usando-un-hash"><span class="toc-section-number">9.6.2</span> Juntar dos tablas que comparten un campo común (<strong>llave primaria</strong>) usando un <span class="math inline">\(hash\)</span></a></li>
-<li><a href="#hashes-y-conteo-de-instancias-de-cadenas-específicas-usadas-como-llaves"><span class="toc-section-number">9.6.3</span> <span class="math inline">\(hashes\)</span> y conteo de instancias de cadenas específicas usadas como llaves</a></li>
-<li><a href="#ordenamiento-de-la-salida-de-un-hash-de-gawk-por-llave-o-valor-manipulando-la-variable-de-ambiente-procinfosorted_in"><span class="toc-section-number">9.6.4</span> Ordenamiento de la salida de un <span class="math inline">\(hash\)</span> de <span class="math inline">\(gawk\)</span> por <em>llave</em> o <em>valor</em> manipulando la variable de ambiente <strong>PROCINFO[“sorted_in”]</strong></a></li>
+<li><a href="#arreglos-asociativos-hashes-en-awk"><span class="toc-section-number">9.6</span> <strong>Arreglos asociativos (hashes)</strong> en <span class="math inline">\(awk\)</span></a><ul>
+<li><a href="#uso-de-la-funciones-básicas-de-manipulación-de-arreglos-en-awk-split-delete"><span class="toc-section-number">9.6.1</span> Uso de la funciones básicas de manipulación de <span class="math inline">\(arreglos\)</span> en <span class="math inline">\(awk\)</span>: <strong>split()</strong>, <strong>delete()</strong> …</a></li>
+<li><a href="#modelado-de-archivos-fasta-mini_fasta.fst-con-hashes-de-awk"><span class="toc-section-number">9.6.2</span> Modelado de archivos FASTA (mini_fasta.fst) con <span class="math inline">\(hashes\)</span> de <span class="math inline">\(awk\)</span></a></li>
+<li><a href="#juntar-dos-tablas-que-comparten-un-campo-común-llave-primaria-usando-un-hash"><span class="toc-section-number">9.6.3</span> Juntar dos tablas que comparten un campo común (<strong>llave primaria</strong>) usando un <span class="math inline">\(hash\)</span></a></li>
+<li><a href="#hashes-y-conteo-de-instancias-de-cadenas-específicas-usadas-como-llaves"><span class="toc-section-number">9.6.4</span> <span class="math inline">\(hashes\)</span> y conteo de instancias de cadenas específicas usadas como llaves</a></li>
+<li><a href="#ordenamiento-de-la-salida-de-un-hash-de-gawk-por-llave-o-valor-manipulando-la-variable-de-ambiente-procinfosorted_in"><span class="toc-section-number">9.6.5</span> Ordenamiento de la salida de un <span class="math inline">\(hash\)</span> de <span class="math inline">\(gawk\)</span> por <em>llave</em> o <em>valor</em> manipulando la variable de ambiente <strong>PROCINFO[“sorted_in”]</strong></a></li>
 </ul></li>
-<li><a href="#awk-scripts"><span class="toc-section-number">9.7</span> <strong>awk scripts</strong></a><ul>
+<li><a href="#awk-scripts"><span class="toc-section-number">9.7</span> <strong><span class="math inline">\(awk\)</span> scripts</strong></a><ul>
 <li><a href="#argumentos-y-arreglos-argc-y-argv"><span class="toc-section-number">9.7.1</span> Argumentos y arreglos ARGC y ARGV</a></li>
-<li><a href="#el-script-count_genome_features_for_taxon.awk"><span class="toc-section-number">9.7.2</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></a></li>
+<li><a href="#condicionales-if-if-else-if-if-else-if-else"><span class="toc-section-number">9.7.2</span> Condicionales: if; if-else if; if-else if-else</a></li>
+<li><a href="#el-script-count_genome_features_for_taxon.awk"><span class="toc-section-number">9.7.3</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></a></li>
 </ul></li>
 <li><a href="#uso-de-awk-para-trabajar-con-archivos-de-secuencias-en-formato-fasta"><span class="toc-section-number">9.8</span> Uso de <span class="math inline">\(awk\)</span> para trabajar con archivos de secuencias en formato FASTA</a><ul>
 <li><a href="#cuenta-el-número-de-secuencias-en-reca_bradyrhizobium_vinuesa.fna"><span class="toc-section-number">9.8.1</span> cuenta el número de secuencias en recA_Bradyrhizobium_vinuesa.fna</a></li>
@@ -817,8 +819,8 @@ ls | head</code></pre>
 ## count_genome_features_for_taxon.awk</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al </code></pre>
-<pre><code>## total 59564
-## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  2 11:05 .
+<pre><code>## total 59572
+## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  2 12:25 .
 ## drwxr-xr-x  3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rw-rw-r--  1 vinuesa vinuesa      114 nov  1 23:01 0
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
@@ -838,17 +840,17 @@ ls -al </code></pre>
 ## -rwxr-xr-x  1 vinuesa vinuesa      857 oct 29 16:07 filter_fasta_sequences.awk
 ## -rwxr-xr-x  1 vinuesa vinuesa     1237 oct 14 22:43 find_dir
 ## -rw-rw-r--  1 vinuesa vinuesa      548 oct 31 23:19 get_sequences_from_list.awk
-## drwxr-xr-x  8 vinuesa vinuesa     4096 nov  2 10:35 .git
+## drwxr-xr-x  8 vinuesa vinuesa     4096 nov  2 11:47 .git
 ## -rwxrwxr-x  1 vinuesa vinuesa      563 oct 22 14:17 hist.awk
 ## drwxr-xr-x  4 vinuesa vinuesa     4096 sep 29 22:56 intro2linux
 ## -rw-r--r--  1 vinuesa vinuesa  3163754 oct 13 13:39 intro_biocomputo_Linux_LCG.odp
 ## -rw-r--r--  1 vinuesa vinuesa    35149 sep 29 22:15 LICENSE
 ## -rw-r--r--  1 vinuesa vinuesa    10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx  1 vinuesa vinuesa       78 nov  2 11:05 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx  1 vinuesa vinuesa       78 nov  2 12:25 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-r--r--  1 vinuesa vinuesa     1705 sep 29 22:18 linux_very_basic_commands_table.csv
 ## -rwxr-xr-x  1 vinuesa vinuesa      493 oct 14 22:43 ls_dir
 ## -rw-rw-r--  1 vinuesa vinuesa      250 oct 31 20:25 mini_fasta2.fst
-## -rw-rw-r--  1 vinuesa vinuesa      245 nov  2 11:05 mini_fasta.fastab
+## -rw-rw-r--  1 vinuesa vinuesa      245 nov  2 12:25 mini_fasta.fastab
 ## -rw-rw-r--  1 vinuesa vinuesa      250 oct 31 20:11 mini_fasta.fst
 ## -rw-rw-r--  1 vinuesa vinuesa      241 nov  1 14:51 mini_tabla_parte1.tsv
 ## -rw-rw-r--  1 vinuesa vinuesa      582 nov  1 14:56 mini_tabla_parte2.tsv
@@ -861,8 +863,8 @@ ls -al </code></pre>
 ## -rwxr-xr-x  1 vinuesa vinuesa     2884 oct 14 22:43 prot2cdnAlns.pl
 ## -rw-r--r--  1 vinuesa vinuesa     6445 oct 29 23:53 README.md
 ## -rw-r--r--  1 vinuesa vinuesa    77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r--  1 vinuesa vinuesa    17736 nov  2 11:05 recA_Byuanmingense.fna
-## -rw-rw-r--  1 vinuesa vinuesa    21963 nov  2 11:05 recA_Byuanmingense_muscle.aln
+## -rw-r--r--  1 vinuesa vinuesa    17736 nov  2 12:25 recA_Byuanmingense.fna
+## -rw-rw-r--  1 vinuesa vinuesa    21963 nov  2 12:25 recA_Byuanmingense_muscle.aln
 ## -rw-rw-r--  1 vinuesa vinuesa        0 nov  1 22:52 .Rhistory
 ## -rw-rw-r--  1 vinuesa vinuesa       18 oct 31 22:57 seq.list
 ## -rw-rw-r--  1 vinuesa vinuesa      150 nov  1 15:05 showargs.awk
@@ -872,9 +874,9 @@ ls -al </code></pre>
 ## -rwxr-xr-x  1 vinuesa vinuesa     3402 oct 14 22:43 translate_fastas.pl
 ## drwxrwxr-x  3 vinuesa vinuesa     4096 oct 30 18:50 tutorials
 ## -rw-rw-r--  1 vinuesa vinuesa      804 oct 30 23:26 understand_NR_FNR_NF_in_awk.cmd
-## -rw-r--r--  1 vinuesa vinuesa  1377169 nov  2 11:05 working_with_linux_commands.html
+## -rw-r--r--  1 vinuesa vinuesa  1383459 nov  2 12:25 working_with_linux_commands.html
 ## -rw-rw-r--  1 vinuesa vinuesa    58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r--  1 vinuesa vinuesa   166733 nov  2 11:42 working_with_linux_commands.Rmd
+## -rw-r--r--  1 vinuesa vinuesa   169460 nov  2 12:54 working_with_linux_commands.Rmd
 ## -rw-rw-r--  1 vinuesa vinuesa   306038 oct 31 19:08 working_with_linux_commands.tex
 ## -rw-rw-r--  1 vinuesa vinuesa       41 oct 13 19:24 zoom.url</code></pre>
 <div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
@@ -912,9 +914,9 @@ ls -al </code></pre>
 ## drwxr-xr-x   3 root root  4096 oct  5 20:41 media
 ## drwxr-xr-x   2 root root  4096 jul 31 11:27 mnt
 ## drwxr-xr-x   5 root root  4096 oct  5 12:26 opt
-## dr-xr-xr-x 360 root root     0 nov  2 09:51 proc
+## dr-xr-xr-x 362 root root     0 nov  2 09:51 proc
 ## drwx------   8 root root  4096 oct 16 19:12 root
-## drwxr-xr-x  34 root root  1000 nov  2 10:31 run
+## drwxr-xr-x  34 root root  1000 nov  2 12:14 run
 ## lrwxrwxrwx   1 root root     8 oct  4 14:42 sbin -&gt; usr/sbin
 ## drwxr-xr-x  10 root root  4096 oct 16 19:40 snap</code></pre>
 </div>
@@ -1693,7 +1695,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 59536
+<pre><code>## total 59544
 ## -rw-rw-r-- 1 vinuesa vinuesa      114 nov  1 23:01 0
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
@@ -2082,7 +2084,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  2 11:43 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  2 12:54 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2101,7 +2103,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 11:43 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 12:54 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2230,15 +2232,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 11:43 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  2 11:43 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 12:54 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  2 12:54 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  2 11:43 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  2 12:54 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2332,9 +2334,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 11:05 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 12:25 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  2 11:43 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  2 12:54 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2355,9 +2357,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 11:05 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 12:25 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  2 11:43 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  2 12:54 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2367,10 +2369,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 11:05 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 12:25 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  2 11:05 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  2 12:25 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2380,11 +2382,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  2 11:05 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  2 12:25 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 11:05 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 12:25 recA_Byuanmingense.fna</code></pre>
 <hr />
 </div>
 </div>
@@ -3527,17 +3529,17 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1377169 nov  2 11:05 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1383459 nov  2 12:25 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  166733 nov  2 11:42 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  169460 nov  2 12:54 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  306038 oct 31 19:08 working_with_linux_commands.tex
-## total size of working_with_linux_commands.* files is: 1.82 Mb</code></pre>
+## total size of working_with_linux_commands.* files is: 1.83 Mb</code></pre>
 <ul>
 <li>comparen y entiendan la diferencia del comando anterior con el del siguiente:</li>
 </ul>
 <pre class="bash"><code>ls -l working_with_linux_commands.* | \
  awk &#39;{s+=$5}; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## total size of working_with_linux_commands.* files is: 1.82 Mb</code></pre>
+<pre><code>## total size of working_with_linux_commands.* files is: 1.83 Mb</code></pre>
 </div>
 <div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
 <h3><span class="header-section-number">9.5.7</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
@@ -3609,8 +3611,8 @@ awk &#39;BEGIN{print &quot;species,count&quot;; OFS=&quot;,&quot;} {print $2 &qu
 ## Stenotrophomonas_bentonitica,1</code></pre>
 </div>
 </div>
-<div id="arreglos-asociativos-en-awk" class="section level2">
-<h2><span class="header-section-number">9.6</span> <strong>Arreglos (asociativos)</strong> en <span class="math inline">\(awk\)</span></h2>
+<div id="arreglos-asociativos-hashes-en-awk" class="section level2">
+<h2><span class="header-section-number">9.6</span> <strong>Arreglos asociativos (hashes)</strong> en <span class="math inline">\(awk\)</span></h2>
 <p>Los arreglos son un tipo de variable que permite guardar a uno o varios elementos. Al arreglo (o <span class="math inline">\(array\)</span>), como a cualquier otra variable, la nombramos con un nombre corto pero informativo, y accedemos a los valores almacenados en él mediante un <strong>índice</strong>. Éste puede ser numérico o una cadena de caracteres. Es decir, <strong>en <span class="math inline">\(awk\)</span> todos los arreglos son <em>asociativos</em>!</strong></p>
 <ul>
 <li>sintaxis de asignación y recuperación de valores de un <strong>arreglo</strong> de <span class="math inline">\(awk\)</span></li>
@@ -3622,18 +3624,69 @@ nombre_arreglo[índice] = value
 print nombre_arreglo[índice]
 
 # 3. comprobar la existencia de un índice o llave en un arreglo
-if (i in nombre_arreglo) {haz algo con i}
+if (índice in nombre_arreglo) {haz algo con índice}
 
 también puede usarse una notación más corta:
-(i in nombre_arreglo) {haz algo con i}
+(índice in nombre_arreglo) {haz algo con índice}
 
 # 4. extraer todos los valores del arreglo
 for (i in nombre_arreglo) print &quot;índice &quot;, i , &quot; guarda valor &quot;, nombre_arreglo[índice]
-&lt;/code&gt;</code></pre>
+&lt;/code&gt;
+
+# 5. eliminar un elemento del arreglo (el par llave-valor)
+delete arreglo[índice]
+
+# 6. vaciar un arreglo completamente
+delete arreglo
+
+# 7. llenar un arreglo con la función split()
+split(cadena, arreglo [,separador_de_campo [, seps]])</code></pre>
 <p>En la mayoría de los lenguajes los arreglos tienen índices numéricos, los cuales definen la posición en el arreglo en el que se guardó el elemento correspondiente. Es decir, en ese caso se trata de listar ordenadas posicionalmente en el orden en el que los elementos fueron agregados a la lista.</p>
-<p>Los <strong>arreglos asociativos</strong> o <strong>hashes</strong> establecen una <em>asociación</em> entre los <span class="math inline">\(índices\)</span> y los <span class="math inline">\(elementos\)</span> del arreglo. Es decir, para cada elemento del arreglo se mantienen un par de valores: el índice el elemento y su valor. Es importante notar que bajo este esquema, los elementos del arreglo no se guardan en ningún orden predeterminado, es decir, los <strong>arreglos asociativos</strong> son <em>arreglos desordenados</em>. Por ello, si bien podemos usar índices numéricos, éstos no definen un orden en una lista ordenada. Son simples etiquetas. No obstante, si se asignan índices numéricos consecutivos a los valores que se guardan en un arreglo, se pueden recuperar en dicho orden al correr un bucle iterativo. Esto se ilustra en el siguiente ejemplo:</p>
+<p>Los <strong>arreglos asociativos</strong> o <strong>hashes</strong> establecen una <em>asociación</em> entre los <span class="math inline">\(índices\)</span> y los <span class="math inline">\(elementos\)</span> del arreglo. Es decir, para cada elemento del arreglo se mantienen un par de valores: el índice el elemento y su valor. Es importante notar que bajo este esquema, los elementos del arreglo no se guardan en ningún orden predeterminado, es decir, los <strong>arreglos asociativos</strong> son <em>arreglos desordenados</em>. Por ello, si bien podemos usar índices numéricos, éstos no definen un orden en una lista ordenada. Son simples etiquetas. No obstante, si se asignan índices numéricos consecutivos a los valores que se guardan en un arreglo, se pueden recuperar en dicho orden al correr un bucle iterativo.</p>
+<p>Veamos unos ejemplos de estos conceptos y del uso de las funciones de manipulación de arreglos en <span class="math inline">\(awk\)</span></p>
+<div id="uso-de-la-funciones-básicas-de-manipulación-de-arreglos-en-awk-split-delete" class="section level3">
+<h3><span class="header-section-number">9.6.1</span> Uso de la funciones básicas de manipulación de <span class="math inline">\(arreglos\)</span> en <span class="math inline">\(awk\)</span>: <strong>split()</strong>, <strong>delete()</strong> …</h3>
+<p>La función <span class="math inline">\(split()\)</span> divide una <em>cadena</em> en unidades separadas por el <em>separador de campo</em>, guardándolas en <em>arreglo</em> y las cadenas separadoras en el arreglo <em>seps</em>, acorde a la siguiente sintaxis:</p>
+<ul>
+<li><code>split(cadena, arreglo [,separador_de_campo [, seps]])</code></li>
+</ul>
+<p>Veamos un ejemplo que implementa <span class="math inline">\(split()\)</span> y otras funciones básicas de manipulación de <em>arreglos</em>, como asignaciones, eliminación de valores e impresión de todos los pares llave-valor guardados en un arreglo.</p>
+<pre class="bash"><code># 1. llenado del hash features con nombres de los campos de la tabla assembly_summary.txt.gz,
+#     que quedarán indexados por números consecutivos, que corresponden a su número de columna
+#     usando la función split(), aplicada al segundo registro de la tabla (la cabecerea) 
+#      features[1] = &quot;assembly_accession&quot;; features[2] = &quot;bioproject&quot;; ...
+zcat assembly_summary.txt.gz | awk &#39;NR==2 { split( $0, features, &quot;\t&quot;, seps ) } END { print features[8]; delete features[8]; print &quot;ahora features[8] está vacío: [&quot;,features[8],&quot;]\n\n&quot;; for (f in features) print f, features[f];  features[8] = &quot;taxon&quot;; print &quot;\nahora features[8] fue reasignado: &quot;, features[8]}&#39;</code></pre>
+<pre><code>## organism_name
+## ahora features[8] está vacío: [  ]
+## 
+## 
+## 1 # assembly_accession
+## 2 bioproject
+## 3 biosample
+## 4 wgs_master
+## 5 refseq_category
+## 6 taxid
+## 7 species_taxid
+## 8 
+## 9 infraspecific_name
+## 10 isolate
+## 11 version_status
+## 12 assembly_level
+## 13 release_type
+## 14 genome_rep
+## 15 seq_rel_date
+## 16 asm_name
+## 17 submitter
+## 18 gbrs_paired_asm
+## 19 paired_asm_comp
+## 20 ftp_path
+## 21 excluded_from_refseq
+## 22 relation_to_type_material
+## 
+## ahora features[8] fue reasignado:  taxon</code></pre>
+</div>
 <div id="modelado-de-archivos-fasta-mini_fasta.fst-con-hashes-de-awk" class="section level3">
-<h3><span class="header-section-number">9.6.1</span> Modelado de archivos FASTA (mini_fasta.fst) con <span class="math inline">\(hashes\)</span> de <span class="math inline">\(awk\)</span></h3>
+<h3><span class="header-section-number">9.6.2</span> Modelado de archivos FASTA (mini_fasta.fst) con <span class="math inline">\(hashes\)</span> de <span class="math inline">\(awk\)</span></h3>
 <ul>
 <li>Primero vamos a desplegar el archivo FASTA</li>
 </ul>
@@ -3701,7 +3754,7 @@ rm selected_seqs.fa*</code></pre>
 ## GGGGTACCCATTTAGGCCCCCCCCCCCCTTTTTATTATAAGG</code></pre>
 </div>
 <div id="juntar-dos-tablas-que-comparten-un-campo-común-llave-primaria-usando-un-hash" class="section level3">
-<h3><span class="header-section-number">9.6.2</span> Juntar dos tablas que comparten un campo común (<strong>llave primaria</strong>) usando un <span class="math inline">\(hash\)</span></h3>
+<h3><span class="header-section-number">9.6.3</span> Juntar dos tablas que comparten un campo común (<strong>llave primaria</strong>) usando un <span class="math inline">\(hash\)</span></h3>
 <p>Como hemos venido discutiendo, en el campo de la bioinformática y de bases de datos en general, las relaciones entre las variables asociadas a un registro se modelan frecuentemente usando tablas. Siguiendo un principio básico del modelo relacional, se usan distintas tablas para guardar variables relacionadas entre ellas. Para evitar excesiva redundancia entre las tablas, éstas contienen típicamente una llave común o <strong>llave primaria</strong> que las asocia inequívocamente con un registro particular. Columnas particulares de las diferentes tablas pueden relacionarse a través de la <strong>llave primaria</strong>. Esto se modela fácilmente con <span class="math inline">\(hashes\)</span> indexándolos con las <strong>llaves primarias</strong> de las tablas. Cabe mencionar que <span class="math inline">\(gawk\)</span> maneja también arreglos multidimensionales, por lo que se podrían usar para indexarlos con <strong>llaves primarias y secundarias</strong>, pero no veremos aquí estos casos más complejos.</p>
 <p>Veamos el siguiente ejemplo, en el que juntamos dos tablas con información no redundante sobre ensambles de genomas, pero que comparten el número de accesión de los mismos como <strong>llave primaria</strong>. La primera tabla contiene la información taxonómica y la segunda información relativa al ensamble en sí.</p>
 <pre class="bash"><code>echo &quot;&gt;&gt;&gt; mini_tabla_parte1.tsv &lt;&lt;&lt;&quot;
@@ -3740,7 +3793,7 @@ awk &#39;BEGIN { FS=OFS=&quot;\t&quot; } NR==FNR { a[$1]=$0; next } { if ($1 in 
 ## GCF_000284595.1  Stenotrophomonas maltophilia D457   2012/04/11  ASM28459v1  University of Valencia</code></pre>
 </div>
 <div id="hashes-y-conteo-de-instancias-de-cadenas-específicas-usadas-como-llaves" class="section level3">
-<h3><span class="header-section-number">9.6.3</span> <span class="math inline">\(hashes\)</span> y conteo de instancias de cadenas específicas usadas como llaves</h3>
+<h3><span class="header-section-number">9.6.4</span> <span class="math inline">\(hashes\)</span> y conteo de instancias de cadenas específicas usadas como llaves</h3>
 <p>Sigue otro ejemplo de la versátil estructura de datos conocida como <span class="math inline">\(arreglo\ asociativo\)</span> o <span class="math inline">\(hash\)</span>, la cual es muy útil para contar las instancias de ocurrencia de cadenas específicas al usarlas como <strong>llave del</strong> <span class="math inline">\(hash\)</span> y usando el <strong>operador ++</strong>, como muestra el siguiente código genérico:</p>
 <p>-<code>h[llave]++</code></p>
 <p>Veamos uno ejemplo:</p>
@@ -3759,7 +3812,7 @@ awk &#39;BEGIN { FS=OFS=&quot;\t&quot; } NR==FNR { a[$1]=$0; next } { if ($1 in 
 ## Pseudomonas  Chromosome  120</code></pre>
 </div>
 <div id="ordenamiento-de-la-salida-de-un-hash-de-gawk-por-llave-o-valor-manipulando-la-variable-de-ambiente-procinfosorted_in" class="section level3">
-<h3><span class="header-section-number">9.6.4</span> Ordenamiento de la salida de un <span class="math inline">\(hash\)</span> de <span class="math inline">\(gawk\)</span> por <em>llave</em> o <em>valor</em> manipulando la variable de ambiente <strong>PROCINFO[“sorted_in”]</strong></h3>
+<h3><span class="header-section-number">9.6.5</span> Ordenamiento de la salida de un <span class="math inline">\(hash\)</span> de <span class="math inline">\(gawk\)</span> por <em>llave</em> o <em>valor</em> manipulando la variable de ambiente <strong>PROCINFO[“sorted_in”]</strong></h3>
 <p>Noten que el resultado anterior no sale ordenado ni por la llave ni por el valor. Como ya mencionamos, internamente los <span class="math inline">\(hashes\)</span> de <span class="math inline">\(gawk\)</span> se procesan arbitrariamente por ser <strong>arreglos asociativos</strong>.</p>
 <p>Pero en <span class="math inline">\(gawk\)</span> podemos manejar la <em>variable de ambiente</em> <strong>PROCINFO[“sorted_in”]</strong> para pasarle instrucciones predeterminadas de ordenar la salida como <strong>“<span class="citation">@ind_str_asc</span>”</strong>, <strong>“<span class="citation">@ind_num_asc</span>”</strong>, <strong>“<span class="citation">@val_str_asc</span>”</strong> o <strong>“<span class="citation">@val_num_asc</span>”</strong>, entre otros, como podrás consultar en el <a href="https://www.gnu.org/software/gawk/manual/gawk.html"><span class="math inline">\(gawk\)</span> manual</a></p>
 <p>Para ello tenemos que asignarle estas funciones internas de ordenamiento a <span class="math inline">\(PROCINFO[&quot;sorted\_in&quot;]\)</span> dentro de un bloque <span class="math inline">\(BEGIN{}\)</span>, como muestran los ejemplos que siguen abajo.</p>
@@ -3810,11 +3863,11 @@ awk &#39;BEGIN { FS=OFS=&quot;\t&quot; } NR==FNR { a[$1]=$0; next } { if ($1 in 
 </div>
 </div>
 <div id="awk-scripts" class="section level2">
-<h2><span class="header-section-number">9.7</span> <strong>awk scripts</strong></h2>
+<h2><span class="header-section-number">9.7</span> <strong><span class="math inline">\(awk\)</span> scripts</strong></h2>
 <p>Cuando el programa que escribimos es un poco largo y sea de interés general, es decir, que se vaya a usar regularmente, conviene guardarlo en un archivo. En este bloque les presentaré un primer <span class="math inline">\(script\)</span> que integra múltiples aspectos presenados anteriormente y varios elementos nuevos del lenguaje. Pero más importante aún, el <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> es un primer ejemplo de los aspectos que como programadores debemos cuidar para que el código sea robusto y amigable con el usuario, para facilitarle su uso.</p>
 <p>Para que un programa sea útil, debe resolver adecuadamente una clase o tipo de problemas o acciones que se realicen rutinariamente. En secciones anteriores hemos mostrado múltiples ejemplos de uso de <span class="math inline">\(awk\)</span> para parsear la tabla assembly_summary.txt.gz. Dado que esta tabla provee información clave sobre los ensambles disponibles en la división RefSeq de GenBank, podría ser útil tener un <span class="math inline">\(script\)</span> que nos provea de estadísticas de resumen (conteos) para campos específicos de la misma y para un taxon de nuestro interés particular.</p>
 <p>En la sección sobre <a href="#uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla">uso del operador ++ para contar ocurrencias de un patrón</a> vimos dos ejemplos muy parecidos, uno para contar el número de ensambles liberados por año para un taxon y otro para contar el nivel del ensamble. Estos programas anteriores se parecen mucho y no sería una buena práctica guardarlos como <span class="math inline">\(scripts\)</span> individuales. Más bien debemos pensar en cómo generalizarlos para que puedan calcular estas estadísticas de resumen sobre cualquier campo relevante de la tabla. El <span class="math inline">\(script\)</span> lo llamaremos <em>count_genome_features_for_taxon.awk</em> y haremos su uso flexible y práctico al pasarle dos argumentos desde la línea de comandos: <em>&lt;tax=TAXON&gt; <numero_de_columna></em>.</p>
-<p>Este <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> implementa varios elementos sintácticos, como funciones integradas y variables reservadas, que no hemos visto aún en acción. Estos se explican brevemente en las siguientes subsecciones y en los comentarios del propio <span class="math inline">\(script\)</span>.</p>
+<p>Este <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> implementa una gama de elementos sintácticos, como funciones integradas y variables reservadas, la mayoría de las cuales hemos descrito en secciones previas. Las siguientes subsecciones explican brevemente los que no hemos visto en detalle aún, como estructuras de control.</p>
 <div id="argumentos-y-arreglos-argc-y-argv" class="section level3">
 <h3><span class="header-section-number">9.7.1</span> Argumentos y arreglos ARGC y ARGV</h3>
 <p><span class="math inline">\(awk\)</span> define automáticamente las variables <strong>ARGC</strong> y <strong>ARGV</strong> para proveer de información al programa que las usa sobre los argumentos pasados al mismo.</p>
@@ -3842,8 +3895,25 @@ awk &#39;BEGIN { FS=OFS=&quot;\t&quot; } NR==FNR { a[$1]=$0; next } { if ($1 in 
 ##  ARGV[2] = mini_fasta.fst
 ## A=1, B=2</code></pre>
 </div>
+<div id="condicionales-if-if-else-if-if-else-if-else" class="section level3">
+<h3><span class="header-section-number">9.7.2</span> Condicionales: if; if-else if; if-else if-else</h3>
+<p>Los <em>condicionales</em> son estructuras de control fundamentales para controlar el flujo de un programa en función de si son ciertas o falsas determinadas condiciones. Sólo si una condición es cierta, se ejecuta la acción subsiguiente, según la siguiente sintaxis:</p>
+<ul>
+<li><code>if(condición){acción}</code></li>
+</ul>
+<p>Se pueden evaluar varias condiciones secuencialmente con la siguiente sintaxis:</p>
+<ul>
+<li><code>if(condición){acción}else if(condición){acción}else if(condición){acción} …</code></li>
+</ul>
+<p>De no cumplirse ninguna de ellas, podemos indicar una acción a realizarse en dicho caso con la siguiente sintaxis - <code>if(condición){acción}else if(condición){acción}else if(condición){acción}else{acción}</code></p>
+<p>Veamos un ejemplo sencillo:</p>
+<pre class="bash"><code>awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == arg) { print n, &quot;==&quot;, arg } else { print n, &quot;!=&quot;, arg }} &#39; n=2
+awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == arg) { print n, &quot;==&quot;, arg } else { print n, &quot;!=&quot;, arg }} &#39; n=3</code></pre>
+<pre><code>## 3 != 2
+## 3 == 3</code></pre>
+</div>
 <div id="el-script-count_genome_features_for_taxon.awk" class="section level3">
-<h3><span class="header-section-number">9.7.2</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></h3>
+<h3><span class="header-section-number">9.7.3</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></h3>
 <ul>
 <li>El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></li>
 </ul>
@@ -4744,7 +4814,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 11:43 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 12:54 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -4853,14 +4923,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  2 11:43 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  2 11:43 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  2 11:43 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  2 11:43 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  2 11:43 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  2 11:43 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  2 11:43 recA_B_yuanmingense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  2 11:43 recA_B_sp..fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  2 12:54 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  2 12:54 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  2 12:54 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  2 12:54 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  2 12:54 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  2 12:54 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  2 12:54 recA_B_yuanmingense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  2 12:54 recA_B_sp..fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
