@@ -482,7 +482,7 @@ summary {
 <li><a href="#usa-head-y-tail-para-desplegar-la-cabecera-y-cola-de-archivos"><span class="toc-section-number">4.1.1</span> Usa <b>head</b> y <b>tail</b> para desplegar la cabecera y cola de archivos</a></li>
 <li><a href="#cat-despliega-uno-o-más-archivos-concatenándolos-si-son-varios"><span class="toc-section-number">4.1.2</span> <b>cat</b> despliega uno o más archivos, concatenándolos si son varios</a></li>
 <li><a href="#el-paginador-less-despliega-archivos-página-a-página"><span class="toc-section-number">4.1.3</span> el paginador <b>less</b> despliega archivos página a página</a></li>
-<li><a href="#zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-compresión-gzip"><span class="toc-section-number">4.1.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con compresión gzip</a></li>
+<li><a href="#zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-compresión-gzip-gnuzip"><span class="toc-section-number">4.1.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con compresión gzip (gnuzip)</a></li>
 </ul></li>
 <li><a href="#edición-de-archivos-con-los-editores-vim-o-gnedit"><span class="toc-section-number">4.2</span> Edición de archivos con los editores <b>vim</b> o <b>[g|n]edit</b></a></li>
 <li><a href="#edición-de-archivos-con-el-editor-de-flujo-sed-stream-editor"><span class="toc-section-number">4.3</span> Edición de archivos con el editor de flujo <b>sed</b> (stream editor)</a><ul>
@@ -804,6 +804,10 @@ pwd</code></pre>
 <div id="ls-lista-contenidos-del-directorio" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> <strong>ls</strong> lista contenidos del directorio</h3>
 <pre class="bash"><code># Qué contiene el directorio actual?
+#  =&gt; Nota: muchos comandos los preced con &#39;| head&#39; para listar sólo las primeras (10) líneas 
+#           de la salida del primer comando, con el fin de que ésta no sea demasiado larga. 
+#     Veremos el uso de pipes &#39;|&#39; en detalle más adelante. 
+#           Por ahora ignóralo y teclea simplemente ls
 ls | head</code></pre>
 <pre><code>## 0
 ## align_seqs_with_clustal_or_muscle.sh
@@ -816,9 +820,9 @@ ls | head</code></pre>
 ## clases_avance.txt
 ## count_genome_features_for_taxon.awk</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
-ls -al </code></pre>
+ls -al | head -20</code></pre>
 <pre><code>## total 59576
-## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  2 13:36 .
+## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  2 17:21 .
 ## drwxr-xr-x  3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rw-rw-r--  1 vinuesa vinuesa      114 nov  1 23:01 0
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
@@ -836,49 +840,9 @@ ls -al </code></pre>
 ## -rw-rw-r--  1 vinuesa vinuesa      415 oct 25 19:22 fasta_filtering_pipeline.cmd
 ## -rw-r--r--  1 vinuesa vinuesa   222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
 ## -rwxr-xr-x  1 vinuesa vinuesa      857 oct 29 16:07 filter_fasta_sequences.awk
-## -rwxr-xr-x  1 vinuesa vinuesa     1237 oct 14 22:43 find_dir
-## -rw-rw-r--  1 vinuesa vinuesa      548 oct 31 23:19 get_sequences_from_list.awk
-## drwxr-xr-x  8 vinuesa vinuesa     4096 nov  2 13:31 .git
-## -rwxrwxr-x  1 vinuesa vinuesa      563 oct 22 14:17 hist.awk
-## drwxr-xr-x  4 vinuesa vinuesa     4096 sep 29 22:56 intro2linux
-## -rw-r--r--  1 vinuesa vinuesa  3163754 oct 13 13:39 intro_biocomputo_Linux_LCG.odp
-## -rw-r--r--  1 vinuesa vinuesa    35149 sep 29 22:15 LICENSE
-## -rw-r--r--  1 vinuesa vinuesa    10193 sep 29 22:18 linux_basic_commands.tab
-## lrwxrwxrwx  1 vinuesa vinuesa       78 nov  2 13:36 linux_commands.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
-## -rw-r--r--  1 vinuesa vinuesa     1705 sep 29 22:18 linux_very_basic_commands_table.csv
-## -rwxr-xr-x  1 vinuesa vinuesa      493 oct 14 22:43 ls_dir
-## -rw-rw-r--  1 vinuesa vinuesa      250 oct 31 20:25 mini_fasta2.fst
-## -rw-rw-r--  1 vinuesa vinuesa      245 nov  2 13:36 mini_fasta.fastab
-## -rw-rw-r--  1 vinuesa vinuesa      250 oct 31 20:11 mini_fasta.fst
-## -rw-rw-r--  1 vinuesa vinuesa      241 nov  1 14:51 mini_tabla_parte1.tsv
-## -rw-rw-r--  1 vinuesa vinuesa      582 nov  1 14:56 mini_tabla_parte2.tsv
-## -rw-rw-r--  1 vinuesa vinuesa      920 nov  1 13:58 mini_tabla.tsv
-## -rw-rw-r--  1 vinuesa vinuesa     9972 oct 28 09:19 muscle_stderr.out
-## -rw-rw-r--  1 vinuesa vinuesa       85 oct 27 23:15 nice_awk_arrays_and_hashes_unix_geekstuff.url
-## drwxr-xr-x  2 vinuesa vinuesa     4096 oct  6 16:39 participantes_Taller_CG_FC
-## drwxrwxr-x  2 vinuesa vinuesa     4096 oct 23 18:06 pics
-## -rw-rw-r--  1 vinuesa vinuesa     1532 oct 30 23:24 print_sequence_stats.awk
-## -rwxr-xr-x  1 vinuesa vinuesa     2884 oct 14 22:43 prot2cdnAlns.pl
-## -rw-r--r--  1 vinuesa vinuesa     6445 oct 29 23:53 README.md
-## -rw-r--r--  1 vinuesa vinuesa    77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r--  1 vinuesa vinuesa    17736 nov  2 13:36 recA_Byuanmingense.fna
-## -rw-rw-r--  1 vinuesa vinuesa    21963 nov  2 13:36 recA_Byuanmingense_muscle.aln
-## -rw-rw-r--  1 vinuesa vinuesa        0 nov  1 22:52 .Rhistory
-## -rw-rw-r--  1 vinuesa vinuesa       18 oct 31 22:57 seq.list
-## -rw-rw-r--  1 vinuesa vinuesa      150 nov  1 15:05 showargs.awk
-## -rwxr-xr-x  1 vinuesa vinuesa      239 oct 14 22:43 split_fasta.pl
-## -rwxr-xr-x  1 vinuesa vinuesa      589 oct 26 19:16 tab2fas.pl
-## -rw-rw-r--  1 vinuesa vinuesa      158 oct 22 19:13 TODO.txt
-## -rwxr-xr-x  1 vinuesa vinuesa     3402 oct 14 22:43 translate_fastas.pl
-## drwxrwxr-x  3 vinuesa vinuesa     4096 oct 30 18:50 tutorials
-## -rw-rw-r--  1 vinuesa vinuesa      804 oct 30 23:26 understand_NR_FNR_NF_in_awk.cmd
-## -rw-r--r--  1 vinuesa vinuesa  1385728 nov  2 13:36 working_with_linux_commands.html
-## -rw-rw-r--  1 vinuesa vinuesa    58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r--  1 vinuesa vinuesa   170713 nov  2 13:45 working_with_linux_commands.Rmd
-## -rw-rw-r--  1 vinuesa vinuesa   306038 oct 31 19:08 working_with_linux_commands.tex
-## -rw-rw-r--  1 vinuesa vinuesa       41 oct 13 19:24 zoom.url</code></pre>
-<div id="veamos-el-contenido-del-directorio-raiz" class="section level4">
-<h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del directorio raiz</h4>
+## -rwxr-xr-x  1 vinuesa vinuesa     1237 oct 14 22:43 find_dir</code></pre>
+<div id="veamos-el-contenido-del-directorio-raíz" class="section level4">
+<h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del <strong>directorio raíz /</strong></h4>
 <ul>
 <li>corramos un <span class="math inline">\(ls\)</span> sin argumentos</li>
 </ul>
@@ -896,7 +860,7 @@ ls -al </code></pre>
 <ul>
 <li>mucha más información obtenemos con el formato largo de ls: <span class="math inline">\(ls -l\)</span></li>
 </ul>
-<pre class="bash"><code>ls -l / | head -20</code></pre>
+<pre class="bash"><code>ls -l / | head</code></pre>
 <pre><code>## total 76
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
 ## drwxr-xr-x   4 root root  4096 oct 27 10:21 boot
@@ -906,32 +870,45 @@ ls -al </code></pre>
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
 ## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib32 -&gt; usr/lib32
-## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib64 -&gt; usr/lib64
-## lrwxrwxrwx   1 root root    10 oct  4 14:42 libx32 -&gt; usr/libx32
-## drwx------   2 root root 16384 oct  4 14:42 lost+found
-## drwxr-xr-x   3 root root  4096 oct  5 20:41 media
-## drwxr-xr-x   2 root root  4096 jul 31 11:27 mnt
-## drwxr-xr-x   5 root root  4096 oct  5 12:26 opt
-## dr-xr-xr-x 372 root root     0 nov  2 09:51 proc
-## drwx------   8 root root  4096 oct 16 19:12 root
-## drwxr-xr-x  34 root root  1000 nov  2 12:14 run
-## lrwxrwxrwx   1 root root     8 oct  4 14:42 sbin -&gt; usr/sbin
-## drwxr-xr-x  10 root root  4096 oct 16 19:40 snap</code></pre>
+## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib64 -&gt; usr/lib64</code></pre>
 </div>
 <div id="veamos-las-primeras-5-entradas-y-últimas-5-del-directorio-bin" class="section level4">
 <h4><span class="header-section-number">2.2.3.2</span> Veamos las primeras 5 entradas y últimas 5 del directorio /bin</h4>
-<pre class="bash"><code>ls /bin | head -5</code></pre>
-<pre><code>## [
-## 2ft
-## 2to3-2.7
-## 411toppm
-## 6ft</code></pre>
+<pre class="bash"><code>ls /usr/local/bin | head</code></pre>
+<pre><code>## alimask
+## blastdb_aliastool
+## blastdbcheck
+## blastdbcmd
+## blast_formatter
+## blastn
+## blastp
+## blastx
+## cleanup-blastdb-volumes.py
+## clustalo</code></pre>
 <pre class="bash"><code># idem, pero con detalles de permisos etc
-ls -l /bin | tail -5 </code></pre>
-<pre><code>## lrwxrwxrwx 1 root root 7 oct  4 14:42 /bin -&gt; usr/bin</code></pre>
+ls -l /usr/local/bin | head </code></pre>
+<pre><code>## total 34516
+## -rwxr-xr-x 1 root root   464792 oct  4 22:37 alimask
+## lrwxrwxrwx 1 root root       68 oct  4 22:31 blastdb_aliastool -&gt; /home/vinuesa/soft_download/ncbi-blast-2.10.1+/bin/blastdb_aliastool
+## lrwxrwxrwx 1 root root       63 oct  4 22:31 blastdbcheck -&gt; /home/vinuesa/soft_download/ncbi-blast-2.10.1+/bin/blastdbcheck
+## lrwxrwxrwx 1 root root       61 oct  4 22:31 blastdbcmd -&gt; /home/vinuesa/soft_download/ncbi-blast-2.10.1+/bin/blastdbcmd
+## lrwxrwxrwx 1 root root       66 oct  4 22:31 blast_formatter -&gt; /home/vinuesa/soft_download/ncbi-blast-2.10.1+/bin/blast_formatter
+## lrwxrwxrwx 1 root root       57 oct  4 22:31 blastn -&gt; /home/vinuesa/soft_download/ncbi-blast-2.10.1+/bin/blastn
+## lrwxrwxrwx 1 root root       57 oct  4 22:31 blastp -&gt; /home/vinuesa/soft_download/ncbi-blast-2.10.1+/bin/blastp
+## lrwxrwxrwx 1 root root       57 oct  4 22:31 blastx -&gt; /home/vinuesa/soft_download/ncbi-blast-2.10.1+/bin/blastx
+## lrwxrwxrwx 1 root root       77 oct  4 22:31 cleanup-blastdb-volumes.py -&gt; /home/vinuesa/soft_download/ncbi-blast-2.10.1+/bin/cleanup-blastdb-volumes.py</code></pre>
 <pre class="bash"><code># idem, pero ordenando los archivos por fechas de modificacion (-t), listando los mas recientes al final (-r), es decir, en orden reverso
-ls -ltr /bin | head -20</code></pre>
-<pre><code>## lrwxrwxrwx 1 root root 7 oct  4 14:42 /bin -&gt; usr/bin</code></pre>
+ls -ltr /usr/local/bin | tail</code></pre>
+<pre><code>## lrwxrwxrwx 1 root root        7 oct  4 22:44 iqtree -&gt; iqtree2
+## -rwxr-xr-x 1 root root     8623 oct  4 22:51 nw_support
+## -rwxr-xr-x 1 root root     8601 oct  4 22:51 nw_reroot
+## -rwxr-xr-x 1 root root   413458 oct  4 22:51 FastTree
+## -rwxr-xr-x 1 root root  3304650 oct  4 22:51 paup
+## -rwxr-xr-x 1 root root   204918 oct  4 22:51 pars
+## -rwxr-xr-x 1 root root    58336 oct  4 22:51 Phi
+## -rwxr-xr-x 1 root root   210263 oct  4 22:51 seqboot
+## -rwxr-xr-x 1 root root    96584 oct  4 22:51 consense
+## -rwxr-xr-x 1 root root  4921774 oct  4 22:51 clustalo</code></pre>
 </div>
 </div>
 <div id="expansión-de-caracteres-con-y" class="section level3">
@@ -969,12 +946,13 @@ ls /bin/c?? | head -5</code></pre>
 <h3><span class="header-section-number">2.2.5</span> Opciones más comunes e importantes del comando <span class="math inline">\(ls\)</span></h3>
 <p>Es fundamental que domines estas opciones básicas de <span class="math inline">\(ls\)</span></p>
 <ul>
-<li>-a list all (lista archivo ocultos tipo .directorio o .archivo)</li>
-<li>-l long format (muestra permisos y otros atributos como usuario, grupo, tamaño del archivo y fecha de modificación)</li>
-<li>-t time sort (ordena por tiempo)</li>
-<li>-r reverse sort</li>
-<li>-S size sort (ordena por tamaño)</li>
-<li>-h human readable (indica Kb, Mb, Gb …)</li>
+<li><strong>-a</strong> list all (lista archivo ocultos tipo .directorio o .archivo)</li>
+<li><strong>-l</strong> long format (muestra permisos y otros atributos como usuario, grupo, tamaño del archivo y fecha de modificación)</li>
+<li><strong>-t</strong> time sort (ordena por tiempo)</li>
+<li><strong>-r</strong> reverse sort</li>
+<li><strong>-R</strong> list subdirectories recursively</li>
+<li><strong>-S</strong> size sort (ordena por tamaño)</li>
+<li><strong>-h</strong> human readable (indica Kb, Mb, Gb …)</li>
 </ul>
 </div>
 <div id="ejemplos-de-opciones-del-comando-ls" class="section level3">
@@ -994,10 +972,10 @@ ls /bin/c?? | head -5</code></pre>
 </div>
 <div id="permisos-modo-de-un-archivo" class="section level2">
 <h2><span class="header-section-number">2.3</span> <strong>Permisos</strong> (modo de un archivo)</h2>
-<p>Los sistemas Unix y GNU/Linux, al contrario que los basados en MS-DOS, están diseñados desde un inicio para operar en modo <b>multiusuario</b> y <b>multitarea</b> (multitasking). Por ello el sistema operativo debe asegurar la privacidad de los archivos y directorios de cada usuario del sistema.</p>
+<p>Los sistemas UNIX y GNU/Linux, al contrario que los basados en MS-DOS, están diseñados desde un inicio para operar en modo <b>multiusuario</b> y <b>multitarea</b> (multitasking). Por ello el sistema operativo debe asegurar la privacidad de los archivos y directorios de cada usuario del sistema.</p>
 <div id="usuario-grupo-y-resto-del-mundo-user-group-others-y-permisos-rwx" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Usuario, grupo y resto del mundo (User, Group, Others …) y permisos <span class="math inline">\(rwx\)</span></h3>
-<p>En sistemas Unix y GNU/Linux cada archivo y directorio tiene unos permisos determinados de <b>lectura=<span class="math inline">\(r\)</span></b> <b>escritura=<span class="math inline">\(w\)</span></b> y <b>ejecución=<span class="math inline">\(x\)</span></b> para el usuario, grupo y resto del mundo, asignados en ese orden (UGO).</p>
+<p>En sistemas UNIX y GNU/Linux cada archivo y directorio tiene unos permisos determinados de <b>lectura=<span class="math inline">\(r\)</span></b> <b>escritura=<span class="math inline">\(w\)</span></b> y <b>ejecución=<span class="math inline">\(x\)</span></b> para el usuario, grupo y resto del mundo, asignados en ese orden (UGO).</p>
 <p>Un <b>archivo regular</b>, escrito por el usuario tiene los siguientes permisos por defecto, como muestra el comando <span class="math inline">\(ls -l\)</span></p>
 <pre><code>ls -l | grep odp
 -rw-r--r-- 1 vinuesa vinuesa 2993606 sep 30 10:52 intro_biocomputo_Linux_LCG.odp</code></pre>
@@ -1276,8 +1254,15 @@ cd /home/vinuesa/cursos/intro2linux/data</code></pre>
 <pre class="bash"><code>pwd </code></pre>
 <pre><code>## /home/vinuesa/cursos/intro2linux</code></pre>
 </div>
-<div id="regresa-rápidamente-a-tu-home-desde-cualquier-punto-del-sistema-de-archivos-con-cd" class="section level4">
-<h4><span class="header-section-number">2.4.2.4</span> regresa rápidamente a tu home desde cualquier punto del sistema de archivos con <b>cd</b></h4>
+<div id="regresa-al-directorio-en-el-que-estabas-justo-antes-con-cd--" class="section level4">
+<h4><span class="header-section-number">2.4.2.4</span> regresa al directorio en el que estabas justo antes con <b>cd -</b></h4>
+<pre class="bash"><code>cd -
+pwd</code></pre>
+<pre><code>## bash: line 0: cd: OLDPWD not set
+## /home/vinuesa/cursos/intro2linux</code></pre>
+</div>
+<div id="regresa-a-tu-home-desde-cualquier-punto-del-sistema-de-archivos-con-cd" class="section level4">
+<h4><span class="header-section-number">2.4.2.5</span> regresa a tu home desde cualquier punto del sistema de archivos con <b>cd</b></h4>
 <pre class="bash"><code>cd $HOME
 
 # que es equivalente a:
@@ -1295,9 +1280,10 @@ pwd</code></pre>
 <ul>
 <li>cambia de nuevo a tu home</li>
 </ul>
-<pre class="bash"><code>cd
+<pre class="bash"><code>cd -
 pwd</code></pre>
-<pre><code>## /home/vinuesa</code></pre>
+<pre><code>## bash: line 0: cd: OLDPWD not set
+## /home/vinuesa/cursos/intro2linux</code></pre>
 <ul>
 <li>sube al directorio home/ usando la ruta relativa</li>
 </ul>
@@ -1366,16 +1352,16 @@ alias tep=&quot;ssh -X vinuesa@tepeu.*.*.*&quot;</code></pre>
 <p>Noten que el uso de comillas dobles encerrando el comando para el cual vamos a generar un <em>alias</em></p>
 <p>Una vez generado, puedo teclear <span class="math inline">\(tep\)</span>, que me permite conectarme al servidor.</p>
 <pre><code>vinuesa@alisio:~$ tep
-vinuesa@132.**.**.**&#39;s password:</code></pre>
+vinuesa@132.*.*.*&#39;s password:</code></pre>
 <div id="el-archivo-home.bash_aliases" class="section level4">
 <h4><span class="header-section-number">2.6.1.1</span> El archivo <strong>$HOME/.bash_aliases</strong></h4>
 <p>Si quieres guardar una lista personal de aliases de manera permanente, puedes escribirlos en el archivo <span class="math inline">\(\$HOME/.bash\_aliases\)</span>, <em>uno de los archivos de configuración del ambiente</em> que los usuarios avanzados de GNU/Linux guardan en su <span class="math inline">\(\$HOME\)</span></p>
 <p>Cada vez que inicias tu máquina o que estableces una sesión remota, se lee este archivo en memoria, quedando los aliases como parte del <em>ambiente</em> (<span class="math inline">\(environment\)</span>).</p>
 <p>Van unas líneas de mi archivo <span class="math inline">\(\$HOME/.bash\_aliases\)</span> como ejemplos (los asteriscos los pongo para no hacer públicas las IPs)</p>
 <pre><code># ssh aliases
-alias puma=&quot;ssh -X vinuesa@132.**.**.**&quot;            # desktop
-alias ix=&quot;ssh -X vinuesa@132.**.**.**&quot;              # ixchel ubuntu linux server
-alias tep=&quot;ssh -X vinuesa@132.**.**.**&quot;             # tepeu@lcg.unam.mx
+alias puma=&quot;ssh -X vinuesa@132.*.*.*&quot;            # desktop
+alias ix=&quot;ssh -X vinuesa@132.*.*.*&quot;              # ixchel ubuntu Linux server
+alias tep=&quot;ssh -X vinuesa@132.*.*.*&quot;             # tepeu Linux server
 
 # fetch (sftp) data from servers
 alias fyax=&quot;echo &#39;sftp vinuesa@*.*.unam.mx:&#39;&quot;
@@ -1392,7 +1378,7 @@ alias seaview=&quot;/home/vinuesa/soft_download/seaview/seaview&quot;
 </div>
 <div id="identificación-del-tipo-de-comando-con-type" class="section level3">
 <h3><span class="header-section-number">2.6.2</span> Identificación del tipo de comando con <strong>type</strong></h3>
-<p>Podemos identificar a cuál de las cuatro categorías arriba enlistadas pertenece un comando particular. Veamos unos ejemplos:</p>
+<p>Podemos identificar a cuál de las cuatro categorías arriba listadas pertenece un comando particular. Veamos unos ejemplos:</p>
 <pre class="bash"><code>type grep
 type alias</code></pre>
 <pre><code>## grep is /usr/bin/grep
@@ -1637,7 +1623,7 @@ scp linux_basic_commands.tab USUARIO@ip.maquina:/home/USUARIO/ruta/al/dir/destin
 <ol style="list-style-type: decimal">
 <li>Si queremos copiar un directorio podemos usar la sintaxis <code>scp -r dir <a href="mailto:USUARIO@ip.maquina" class="email">USUARIO@ip.maquina</a>:/home/USUARIO/ruta/al/dir/destino/</code></li>
 <li>Usa <code>scp -r dir destino</code> sólo si <span class="math inline">\(dir\)</span> contiene pocos archivos pequeños.</li>
-<li>Si necesitas copiar archivos grandes o directorios con muchos archivos, comprímelos primero con <span class="math inline">\(gzip\)</span> y <span class="math inline">\(tar\)</span> (ver más adelante)s</li>
+<li>Si necesitas copiar archivos grandes o directorios con muchos archivos, comprímelos primero con <span class="math inline">\(gzip\)</span> y <span class="math inline">\(tar\)</span> (ver más adelante)</li>
 </ol>
 </div>
 <div id="sftp-descarga-de-archivos-de-una-máquina-remota-a-tu-máquina-local-laptop-o-desktop" class="section level2">
@@ -1727,7 +1713,7 @@ ls -l | head</code></pre>
 </ul>
 <p>En el siguiente ejemplo las comillas sencillas sireven para interpretar literalmente los espacios como caracteres, por lo que el nombre de archivo es visto por el comando <span class="math inline">\(mv\)</span> como un solo argumento</p>
 <pre><code>mv &#39;mi archivo de secuencias.fasta&#39; recA_Bradyrhizobium.fna</code></pre>
-<p>En ciertas ocasiones usarás <b>comillas sencillas (<span class="math inline">\(&#39;\)</span>)</b> para la ejecución de algunos programas desde la línea de comandos como por ejemplo al pasar opciones complejas a sed, perl, awk … Estos son lenguajes interpretados, cuyo usu básico veremos más adelante</p>
+<p>En ciertas ocasiones usarás <b>comillas sencillas (<span class="math inline">\(&#39;\)</span>)</b> para la ejecución de algunos programas desde la línea de comandos como por ejemplo al pasar opciones complejas a sed, perl, awk … Estos son lenguajes interpretados, cuyo uso básico veremos más adelante</p>
 <ul>
 <li>Ejemplo de llamada del comando <span class="math inline">\(rename\)</span> para eliminar espacios en nombres de archivos y directorios</li>
 </ul>
@@ -1840,7 +1826,7 @@ tail -n +2 linux_commands.tab | head -2</code></pre>
 <div id="cat-también-permite-generar-contenidos-copiados-con-el-ratón-o-tecleando" class="section level4">
 <h4><span class="header-section-number">4.1.2.1</span> <strong>cat</strong> también permite generar contenidos copiados con el ratón o tecleando</h4>
 <p>A veces queremos copiar o teclear algún texto corto a un archivo. Esto podemos hacerlo abriendo un editor de textos como <span class="math inline">\(vim\)</span> o <span class="math inline">\(gedit\)</span>, pero lo más rápido es hacerlo con <span class="math inline">\(cat\)</span> usando esta sintaxis:</p>
-<pre><code>cat &gt; nombre_te_archivo.txt
+<pre><code>cat &gt; archivo.txt
 AQUI PEGO O TECLEO EL TEXTO
 Va otra línea
 y otra
@@ -1859,7 +1845,7 @@ CTRL-d</code></pre>
 </div>
 <div id="el-paginador-less-despliega-archivos-página-a-página" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> el paginador <b>less</b> despliega archivos página a página</h3>
-<p>El paginador <span class="math inline">\(less\)</span> es el más poderoso (otra alternativa el <span class="math inline">\(more\)</span>, pero extrañamente: <span class="math inline">\(less\)</span> is more!)</p>
+<p>El paginador <span class="math inline">\(less\)</span> es el más poderoso (otra alternativa ess <span class="math inline">\(more\)</span>, pero extrañamente: <span class="math inline">\(less\)</span> is more!)</p>
 <ul>
 <li>sintaxis: <code>less archivo</code></li>
 <li>opciones más comunes
@@ -1875,14 +1861,14 @@ CTRL-d</code></pre>
 <pre><code>less linux_commands.tab
 /grep
 q</code></pre>
-<p>Nota: con <span class="math inline">\(q\)</span> salimos del paginador less</p>
+<p>Nota: con <span class="math inline">\(q\)</span> salimos del paginador <span class="math inline">\(less\)</span></p>
 <p>Ejemplo 2:</p>
 <pre><code># less -L archivo nos permitiría navegar horizontalmente archivos con líneas largas, como tablas grandes
 less -L linux_commands.tab </code></pre>
-<p><span class="math inline">\(less\)</span> tiene muchas más opciones: explóraras con <code>less –help</code></p>
+<p><span class="math inline">\(less\)</span> tiene muchas más opciones: explóralas con <code>less –help</code></p>
 </div>
-<div id="zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-compresión-gzip" class="section level3">
-<h3><span class="header-section-number">4.1.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con compresión gzip</h3>
+<div id="zcat-y-zless-permiten-visualizar-el-contenido-de-archivos-de-texto-con-compresión-gzip-gnuzip" class="section level3">
+<h3><span class="header-section-number">4.1.4</span> <b>zcat</b> y <b>zless</b> permiten visualizar el contenido de archivos de texto con compresión gzip (gnuzip)</h3>
 <p>Los archivos usados en genómica son frecuentemente grandes y/o numerosos, por lo que es una muy buena práctica mantenerlos comprimidos para ocupar el mínimo espacio posible en disco. los comandos <span class="math inline">\(zcat\)</span> y <span class="math inline">\(zless\)</span> permiten visualizar su contenido sin tenerlos que descomprimir. Veremos más comandos, como <span class="math inline">\(zgrep\)</span> que pueden trabajar sobre archivos de texto comprimidos.</p>
 <ul>
 <li><span class="math inline">\(zcat\)</span> desplegará todo el archivo, pudiéndolo pasar a otras herramientas de filtrado</li>
@@ -1910,7 +1896,7 @@ less -L linux_commands.tab </code></pre>
  
  &lt;ESC&gt; # para estar seguros que estamos en modo ex 
  :q</code></pre>
-<p>En el taller usaremos generalmente el editor con ambiente gráfico <b>gedit</b>, de uso muy sencillo y simiar al block de notas de Windows o similar</p>
+<p>En el taller usaremos generalmente el editor con ambiente gráfico <b>gedit</b>, de uso muy sencillo.</p>
 <pre><code># noten el uso de &amp; al final de la sentencia para enviar el proceso al fondo
 # para evitar que bloquee la terminal
 gedit linux_commands.tab &amp;
@@ -1918,7 +1904,7 @@ gedit linux_commands.tab &amp;
 </div>
 <div id="edición-de-archivos-con-el-editor-de-flujo-sed-stream-editor" class="section level2">
 <h2><span class="header-section-number">4.3</span> Edición de archivos con el editor de flujo <b>sed</b> (stream editor)</h2>
-<p><span class="math inline">\(sed\)</span> (stream editor) es un <strong>editor de flujo</strong>, una potente herramienta de tratamiento de texto para el sistema operativo Unix que acepta como entrada un archivo, lo lee y modifica línea a línea de acuerdo a un script, mostrando el resultado por salida estándar (normalmente en pantalla, a menos que se realice una redirección). Sed permite manipular flujos de datos, como por ejemplo cortar líneas, buscar y reemplazar texto (con soporte de <b><a href="https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular">expresiones regulares</a></b> ), entre otras cosas. Posee muchas características de <span class="math inline">\(ed\)</span> y <span class="math inline">\(ex\)</span>.</p>
+<p><span class="math inline">\(sed\)</span> (stream editor) es un <strong>editor de flujo</strong>, una potente herramienta de tratamiento de texto para el sistema operativo UNIX que acepta como entrada un archivo, lo lee y modifica línea a línea de acuerdo a un script, mostrando el resultado por salida estándar (normalmente en pantalla, a menos que se realice una redirección). Sed permite manipular flujos de datos, como por ejemplo cortar líneas, buscar y reemplazar texto (con soporte de <b><a href="https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular">expresiones regulares</a></b> ), entre otras cosas. Posee muchas características de <span class="math inline">\(ed\)</span> y <span class="math inline">\(ex\)</span>.</p>
 <p>Pueden consultar esta página para aprender lo básico de <b><a href="https://www.rexegg.com/regex-quickstart.html">expresiones regulares</a></b></p>
 <p>La sintaxis general de la orden <span class="math inline">\(sed\)</span> es:</p>
 <pre><code>$ sed [-n] [-e&#39;script&#39;] [-f archivo] archivo1 archivo2 ...</code></pre>
@@ -2027,7 +2013,7 @@ sed &#39;1d&#39; linux_commands.tab | head -4</code></pre>
 <div id="tutorial-extenso-de-sed" class="section level3">
 <h3><span class="header-section-number">4.3.4</span> Tutorial extenso de <span class="math inline">\(sed\)</span></h3>
 <p>Esta fue una presentación minimalista de <span class="math inline">\(sed\)</span>, que no le hace justicia. Les recomiendo mucho el siguiente tutorial para profundizar:</p>
-<p><a href="https://www.grymoire.com/Unix/Sed.html">grymoire’s sed tutorial</a></p>
+<p><a href="https://www.grymoire.com/UNIX/Sed.html">grymoire’s sed tutorial</a></p>
 <hr />
 </div>
 </div>
@@ -2082,7 +2068,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  2 13:45 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  2 17:33 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2101,7 +2087,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 13:45 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 17:33 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2230,15 +2216,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 13:45 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  2 13:45 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 17:33 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  2 17:33 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  2 13:45 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  2 17:33 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2259,7 +2245,7 @@ ls no_existo.txt 2&gt; /dev/null</code></pre>
 <ul>
 <li>Revisemos el ejemplo de alineamiento múltiple con <span class="math inline">\(muscle\)</span> que mostramos en la sección anterior usando:
 <ul>
-<li>Una llamada estándar a <span class="math inline">\(muscle\)</span>, que imprime muchas líenas de mensaje de progreso a STDERR</li>
+<li>Una llamada estándar a <span class="math inline">\(muscle\)</span>, que imprime muchas líneas de mensaje de progreso a STDERR</li>
 </ul>
 <pre><code># llamada estándar a muscle, que imprime a STDERR líneas documentando el progreso del programa ...
 muscle -clw &lt; recA_Byuanmingense.fna &gt; recA_Byuanmingense_muscle.aln</code></pre>
@@ -2332,9 +2318,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 13:36 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 17:21 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  2 13:45 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  2 17:33 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2355,9 +2341,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 13:36 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 17:21 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  2 13:45 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  2 17:33 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2367,10 +2353,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 13:36 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 17:21 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  2 13:36 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  2 17:21 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2380,11 +2366,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  2 13:36 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  2 17:21 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 13:36 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  2 17:21 recA_Byuanmingense.fna</code></pre>
 <hr />
 </div>
 </div>
@@ -2528,7 +2514,7 @@ zgrep -i acinetobacter assembly_summary.txt.gz | grep Complete | wc -l</code></p
 zgrep -E &#39;Acinetobacter|Stenotrophomonas&#39; assembly_summary.txt.gz | wc -l</code></pre>
 <pre><code>## 5170</code></pre>
 <ul>
-<li>Cuenta los genomas de Acinetobacter, Pseudomonas y Klebsiella (por género) y presenta una lista ordenada por número decreciente de genomas</li>
+<li>Cuenta los genomas de <em>Acinetobacter</em>, <em>Pseudomonas</em> y <em>Klebsiella</em> (por género) y presenta una lista ordenada por número decreciente de genomas</li>
 </ul>
 <pre class="bash"><code># Cuenta los genomas de Acinetobacter, Pseudomonas y Klebsiella (por género) y presenta una lista ordenada por número decreciente de genomas
 zgrep -E &#39;Acinetobacter|Pseudomonas|Klebsiella&#39; assembly_summary.txt.gz | cut -f 8 | cut -d&#39; &#39; -f1 |sort -d | uniq -c |sort -nrk1</code></pre>
@@ -2555,7 +2541,7 @@ zgrep -E &#39;Acinetobacter|Pseudomonas|Klebsiella&#39; assembly_summary.txt.gz 
 ##    8515 Klebsiella
 ##    4747 Acinetobacter</code></pre>
 <ul>
-<li>Cuenta los genomas de Acinetobacter, Pseudomonas y Klebsiella (por género), con salida ordenada alfabéticamente por género</li>
+<li>Cuenta los genomas de <em>Acinetobacter</em>, <em>Pseudomonas</em> y <em>Klebsiella</em> (por género), con salida ordenada alfabéticamente por género</li>
 </ul>
 <pre class="bash"><code># filtra las lineas que contienen Filesystem o Text processing y ordénalas alfabéticamente según las entradas de la segunda columna
 # eliminando las entradas de Candidatus y [Pseudomonas]
@@ -2694,7 +2680,7 @@ cat mini_fasta.fst</code></pre>
 ## mini_fasta.fst 15 18</code></pre>
 <p>¿Qué está haciendo el programa? Dado que por defecto <code>RS=“”</code>, <span class="math inline">\(awk\)</span> está leyendo cada uno de los dos archivos secuencialmente, línea por línea, imprimiendo los valores actualizados de las variables FILENAME, FNR, NR.</p>
 <ul>
-<li>El siguiente programa imprime también los valores de <span class="math inline">\(RS\)</span> y <span class="math inline">\(FS\)</span>, que por defecto son “RS=” y “FS=[[:space:]]”, que es una <span class="math inline">\(regex\)</span> que encuentra espacios, tabuladores y saltos de línea.</li>
+<li>El siguiente programa imprime también los valores de <span class="math inline">\(RS\)</span> y <span class="math inline">\(FS\)</span>, que por defecto son “RS=” y “FS=[[:space:]]”, que es una <span class="math inline">\(regexp\)</span> que encuentra espacios, tabuladores y saltos de línea.</li>
 </ul>
 <pre class="bash"><code>awk  &#39;{print FILENAME, FNR, NR, &quot;[&quot;RS&quot;]&quot; , &quot;[&quot;FS&quot;]&quot;}&#39; seq.list mini_fasta.fst</code></pre>
 <pre><code>## seq.list 1 1 [
@@ -3182,12 +3168,12 @@ ORS      (Output Return Separator) separador de registro de la salida (\n por de
 </tr>
 <tr class="even">
 <td>^</td>
-<td align="center">machea la regex al inicio de la línea o cadena de caracteres</td>
+<td align="center">machea la regexp al inicio de la línea o cadena de caracteres</td>
 <td align="center">AMBAS</td>
 </tr>
 <tr class="odd">
 <td>$</td>
-<td align="center">machea la regex al final de la línea o cadena de caracteres</td>
+<td align="center">machea la regexp al final de la línea o cadena de caracteres</td>
 <td align="center">AMBAS</td>
 </tr>
 <tr class="even">
@@ -3202,17 +3188,17 @@ ORS      (Output Return Separator) separador de registro de la salida (\n por de
 </tr>
 <tr class="even">
 <td>+</td>
-<td align="center">machea una o más instancias de la regex precedente</td>
+<td align="center">machea una o más instancias de la regexp precedente</td>
 <td align="center">ERE</td>
 </tr>
 <tr class="odd">
 <td>?</td>
-<td align="center">machea cero o una instancia de la regex precedente</td>
+<td align="center">machea cero o una instancia de la regexp precedente</td>
 <td align="center">ERE</td>
 </tr>
 <tr class="even">
 <td>|</td>
-<td align="center">machea regex especificada antes o después de | (esto|aquello)</td>
+<td align="center">machea regexp especificada antes o después de | (esto|aquello)</td>
 <td align="center">ERE</td>
 </tr>
 <tr class="odd">
@@ -3527,9 +3513,9 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1385728 nov  2 13:36 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1386277 nov  2 17:21 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  170713 nov  2 13:45 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  171166 nov  2 17:31 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  306038 oct 31 19:08 working_with_linux_commands.tex
 ## total size of working_with_linux_commands.* files is: 1.83 Mb</code></pre>
 <ul>
@@ -3673,7 +3659,7 @@ awk &#39;BEGIN{print &quot;species,count&quot;; OFS=&quot;,&quot;} {print $2 &qu
 </div>
 <div id="arreglos-asociativos-hashes-en-awk---una-estructura-de-datos-muy-poderosa-y-versátil" class="section level2">
 <h2><span class="header-section-number">9.6</span> <strong>Arreglos asociativos (hashes)</strong> en <span class="math inline">\(awk\)</span> - una estructura de datos muy poderosa y versátil</h2>
-<p>Los arreglos son un tipo de variable que permite guardar a uno o varios elementos. Al arreglo (o <span class="math inline">\(array\)</span>), como a cualquier otra variable, la nombramos con un nombre corto pero informativo, y accedemos a los valores almacenados en él mediante un <strong>índice</strong>. Éste puede ser numérico o una cadena de caracteres. Es decir, <strong>en <span class="math inline">\(awk\)</span> todos los arreglos son <em>asociativos</em>!</strong>. PUedes imaginarlos como una tabla no rígida de <strong>asociaciones llave-varlo</strong>.</p>
+<p>Los arreglos son un tipo de variable que permite guardar a uno o varios elementos. Al arreglo (o <span class="math inline">\(array\)</span>), como a cualquier otra variable, la nombramos con un nombre corto pero informativo, y accedemos a los valores almacenados en él mediante un <strong>índice</strong>. Éste puede ser numérico o una cadena de caracteres. Es decir, <strong>en <span class="math inline">\(awk\)</span> todos los arreglos son <em>asociativos</em>!</strong>. PUedes imaginarlos como una tabla no rígida de <strong>asociaciones llave-valor</strong>.</p>
 <ul>
 <li>Sintaxis de asignación, recuperación y eliminación de valores de un <strong>arreglo</strong> de <span class="math inline">\(awk\)</span></li>
 </ul>
@@ -4379,7 +4365,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 <p>Aprender <span class="math inline">\(AWK\)</span> es muy valioso y redituable. Es un lenguaje compacto que puedes aprender en un fin de semana dedicado a ello. No sólo te convertirá rápidamente en un usuario avanzado del <span class="math inline">\(Shell\)</span>, sino que te permitirá apreciar y aprovechar mucho mejor su poder, versatilidad y belleza.</p>
 <ul>
 <li><a href="https://ferd.ca/awk-in-20-minutes.html">tutorial de unos 20 min</a></li>
-<li><a href="https://www.grymoire.com/Unix/Awk.html">tutorial extenso, excelente</a></li>
+<li><a href="https://www.grymoire.com/UNIX/Awk.html">tutorial extenso, excelente</a></li>
 <li><a href="https://www.gnu.org/software/gawk/manual/">gawk manual, la guía definitiva</a></li>
 </ul>
 <p>Veremos más ejemplos de <span class="math inline">\(gawk\)</span> en la sección de ejercicios integrativos que sigue a continuación.</p>
@@ -4847,7 +4833,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 13:46 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  2 17:33 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -4905,7 +4891,7 @@ done</code></pre>
 </div>
 <div id="generación-de-archivos-fasta-especie-específicos-combinando-bucle-for-con-herramientas-de-filtardo" class="section level3">
 <h3><span class="header-section-number">11.7.3</span> Generación de archivos FASTA especie-específicos combinando bucle <span class="math inline">\(for\)</span> con herramientas de filtardo</h3>
-<p>En este ejercicio continuaremos procesando el archivo <em>recA_Bradyrhizobium_vinuesa.fnaed</em> que generamos en la sección de <a href="https://vinuesa.github.io/intro2linux/#edici%C3%B3n-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-1">filtrado de cabeceras de archivos FASTA</a>.</p>
+<p>En este ejercicio continuaremos procesando el archivo <em>recA_Bradyrhizobium_vinuesa.fnaed</em> que generamos en la sección de <a href="https://vinuesa.github.io/intro2linux/#edici%C3%B3n-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-UNIX-1">filtrado de cabeceras de archivos FASTA</a>.</p>
 <p>El reto que les planteo es escribir archivos FASTA especie-específicos en base a <em>recA_Bradyrhizobium_vinuesa.fnaed</em>.</p>
 <p>Es decir, necesitamos escribir tantos archivos FASTA como especies diferentes tenemos en el archivo fuente. Para ello nos va a ser muy útil el <span class="math inline">\(script\)</span> <a href="#generaci%C3%B3n-de-archivos-especie-espec%C3%ADficos"><strong>filter_fasta_sequences.awk</strong></a> que escribimos al final de la sección de <span class="math inline">\(gawk\)</span>.</p>
 <p>Vamos por partes: - recordemos la estructura del archivo fuente</p>
@@ -4956,14 +4942,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  2 13:46 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  2 13:46 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  2 13:46 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  2 13:46 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  2 13:46 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  2 13:46 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  2 13:46 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  2 13:46 recA_B_yuanmingense.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  2 17:33 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  2 17:33 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  2 17:33 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  2 17:33 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  2 17:33 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  2 17:33 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  2 17:33 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  2 17:33 recA_B_yuanmingense.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
