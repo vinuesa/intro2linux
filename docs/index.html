@@ -11,7 +11,7 @@
 
 <meta name="author" content="Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; http://www.ccg.unan.mx/~vinuesa; @pvinmex" />
 
-<meta name="date" content="2020-11-03" />
+<meta name="date" content="2020-11-04" />
 
 <title>Tutorial de introducción al biocómputo en sistemas GNU/Linux</title>
 
@@ -413,7 +413,7 @@ summary {
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a>; <span class="citation">@pvinmex</span></h4>
-<h4 class="date">2020-11-03</h4>
+<h4 class="date">2020-11-04</h4>
 
 </div>
 
@@ -627,7 +627,7 @@ summary {
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
 <p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2020-11-03) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
+<p>Las versión actual (v.2020-11-04) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
@@ -788,7 +788,7 @@ tree -d -L 1 /
 ## ├── [01;34msnap[00m
 ## ├── [01;34msrv[00m
 ## ├── [01;34msys[00m
-## ├── [01;34mtmp[00m
+## ├── [30;42mtmp[00m
 ## ├── [01;34musr[00m
 ## └── [01;34mvar[00m
 ## 
@@ -810,8 +810,7 @@ pwd</code></pre>
 #     Veremos el uso de pipes &#39;|&#39; en detalle más adelante. 
 #           Por ahora ignóralo y teclea simplemente ls
 ls | head</code></pre>
-<pre><code>## 0
-## align_seqs_with_clustal_or_muscle.sh
+<pre><code>## align_seqs_with_clustal_or_muscle.sh
 ## assembly_summary.txt
 ## assembly_summary.txt.gz
 ## awk.hash
@@ -819,13 +818,13 @@ ls | head</code></pre>
 ## bin
 ## blast-imager.pl
 ## clases_avance.txt
-## count_genome_features_for_taxon.awk</code></pre>
+## count_genome_features_for_taxon.awk
+## data</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 59584
-## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  3 22:32 .
+<pre><code>## total 59588
+## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  4 12:58 .
 ## drwxr-xr-x  3 vinuesa vinuesa     4096 sep 29 22:15 ..
-## -rw-rw-r--  1 vinuesa vinuesa      114 nov  1 23:01 0
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r--  1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -833,7 +832,7 @@ ls -al | head -20</code></pre>
 ## -rw-r--r--  1 vinuesa vinuesa     5499 oct 14 22:24 bash_script_template_with_getopts.sh
 ## drwxrwxr-x  2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x  1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
-## -rw-rw-r--  1 vinuesa vinuesa      508 oct 28 20:35 clases_avance.txt
+## -rw-rw-r--  1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
 ## -rw-rw-r--  1 vinuesa vinuesa     3663 nov  2 18:22 count_genome_features_for_taxon.awk
 ## drwxrwxr-x  2 vinuesa vinuesa     4096 oct 29 19:01 data
 ## drwxr-xr-x  3 vinuesa vinuesa     4096 nov  1 15:42 docs
@@ -841,7 +840,8 @@ ls -al | head -20</code></pre>
 ## -rw-rw-r--  1 vinuesa vinuesa      415 oct 25 19:22 fasta_filtering_pipeline.cmd
 ## -rw-r--r--  1 vinuesa vinuesa   222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
 ## -rwxr-xr-x  1 vinuesa vinuesa      857 oct 29 16:07 filter_fasta_sequences.awk
-## -rwxr-xr-x  1 vinuesa vinuesa     1237 oct 14 22:43 find_dir</code></pre>
+## -rwxr-xr-x  1 vinuesa vinuesa     1237 oct 14 22:43 find_dir
+## -rw-rw-r--  1 vinuesa vinuesa      548 oct 31 23:19 get_sequences_from_list.awk</code></pre>
 <div id="veamos-el-contenido-del-directorio-raíz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del <strong>directorio raíz /</strong></h4>
 <ul>
@@ -864,10 +864,10 @@ ls -al | head -20</code></pre>
 <pre class="bash"><code>ls -l / | head</code></pre>
 <pre><code>## total 76
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
-## drwxr-xr-x   4 root root  4096 oct 27 10:21 boot
+## drwxr-xr-x   4 root root  4096 nov  4 08:57 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4580 nov  3 16:27 dev
-## drwxr-xr-x 155 root root 12288 nov  3 16:30 etc
+## drwxr-xr-x  21 root root  4580 nov  4 11:22 dev
+## drwxr-xr-x 155 root root 12288 nov  4 08:57 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
 ## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib32 -&gt; usr/lib32
@@ -1259,8 +1259,8 @@ cd /home/vinuesa/cursos/intro2linux/data</code></pre>
 <h4><span class="header-section-number">2.4.2.4</span> regresa al directorio en el que estabas justo antes con <b>cd -</b></h4>
 <pre class="bash"><code>cd -
 pwd</code></pre>
-<pre><code>## bash: line 0: cd: OLDPWD not set
-## /home/vinuesa/cursos/intro2linux</code></pre>
+<pre><code>## /home/vinuesa
+## /home/vinuesa</code></pre>
 </div>
 <div id="regresa-a-tu-home-desde-cualquier-punto-del-sistema-de-archivos-con-cd" class="section level4">
 <h4><span class="header-section-number">2.4.2.5</span> regresa a tu home desde cualquier punto del sistema de archivos con <b>cd</b></h4>
@@ -1283,8 +1283,8 @@ pwd</code></pre>
 </ul>
 <pre class="bash"><code>cd -
 pwd</code></pre>
-<pre><code>## bash: line 0: cd: OLDPWD not set
-## /home/vinuesa/cursos/intro2linux</code></pre>
+<pre><code>## /home/vinuesa
+## /home/vinuesa</code></pre>
 <ul>
 <li>sube al directorio home/ usando la ruta relativa</li>
 </ul>
@@ -1293,8 +1293,7 @@ pwd</code></pre>
 <li>y lista los contenidos</li>
 </ul>
 <pre class="bash"><code>ls | head</code></pre>
-<pre><code>## 0
-## align_seqs_with_clustal_or_muscle.sh
+<pre><code>## align_seqs_with_clustal_or_muscle.sh
 ## assembly_summary.txt
 ## assembly_summary.txt.gz
 ## awk.hash
@@ -1302,7 +1301,8 @@ pwd</code></pre>
 ## bin
 ## blast-imager.pl
 ## clases_avance.txt
-## count_genome_features_for_taxon.awk</code></pre>
+## count_genome_features_for_taxon.awk
+## data</code></pre>
 </div>
 </div>
 </div>
@@ -1402,7 +1402,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 <p>La mayoría de los programas ejecutables del sistema proveen un formato estandarizado de documentación que se despliega en la consola usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                           User Commands                          CUT(1)
+<pre><code>## CUT(1)                                                                         User Commands                                                                         CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -1415,8 +1415,7 @@ man cut | head -30</code></pre>
 ## 
 ##        With no FILE, or when FILE is -, read standard input.
 ## 
-##        Mandatory  arguments  to  long  options are mandatory for short options
-##        too.
+##        Mandatory arguments to long options are mandatory for short options too.
 ## 
 ##        -b, --bytes=LIST
 ##               select only these bytes
@@ -1428,10 +1427,11 @@ man cut | head -30</code></pre>
 ##               use DELIM instead of TAB for field delimiter
 ## 
 ##        -f, --fields=LIST
-##               select only these fields;  also print any line that contains  no
-##               delimiter character, unless the -s option is specified
+##               select only these fields;  also print any line that contains no delimiter character, unless the -s option is specified
 ## 
-##        -n     (ignored)</code></pre>
+##        -n     (ignored)
+## 
+##        --complement</code></pre>
 </div>
 <div id="ayuda-de-cada-comando-integrado-en-el-shell-help-shell_builtin-para-shell-builtins" class="section level3">
 <h3><span class="header-section-number">2.6.5</span> Ayuda de cada comando integrado en el Shell: <b>help shell_builtin</b> para <em>shell builtins</em></h3>
@@ -1501,20 +1501,20 @@ mkdir --help</code></pre>
 <pre class="bash"><code># encuentra comandos que tienen que ver con la palabra clave distribution
 apropos distribution</code></pre>
 <pre><code>## hmmsim (1)           - collect profile score distributions on random sequences
-## bdftopcf (1)         - convert X font from Bitmap Distribution Format to Port...
-## Bio::Tools::RandomDistFunctions (3pm) - A set of routines useful for generati...
+## bdftopcf (1)         - convert X font from Bitmap Distribution Format to Portable Compiled Format
+## Bio::Tools::RandomDistFunctions (3pm) - A set of routines useful for generating random data in different distributions
 ## CPAN::Meta (3perl)   - the distribution metadata for a CPAN dist
 ## CPAN::Meta::Converter (3perl) - Convert CPAN distribution metadata structures
-## CPAN::Meta::Feature (3perl) - an optional feature provided by a CPAN distribu...
-## CPAN::Meta::Prereqs (3perl) - a set of distribution prerequisites by phase an...
+## CPAN::Meta::Feature (3perl) - an optional feature provided by a CPAN distribution
+## CPAN::Meta::Prereqs (3perl) - a set of distribution prerequisites by phase and type
 ## CPAN::Meta::Spec (3perl) - specification for CPAN distribution metadata
 ## CPAN::Meta::Validator (3perl) - validate CPAN distribution metadata structures
 ## dpkg-vendor (1)      - queries information about distribution vendors
-## iptables-extensions (8) - list of extensions in the standard iptables distrib...
+## iptables-extensions (8) - list of extensions in the standard iptables distribution
 ## lsb_release (1)      - print distribution-specific information
 ## perlnewmod (1)       - preparing a new module for distribution
 ## perlutil (1)         - utilities packaged with the Perl distribution
-## pfscale (1)          - fit parameters of an extreme-value distribution to a p...</code></pre>
+## pfscale (1)          - fit parameters of an extreme-value distribution to a profile score list</code></pre>
 <ul>
 <li>veo que es lsb_release. Consultemos su <span class="math inline">\(--help\)</span></li>
 </ul>
@@ -1680,8 +1680,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 59556
-## -rw-rw-r-- 1 vinuesa vinuesa      114 nov  1 23:01 0
+<pre><code>## total 59560
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa 48497020 sep 29 22:29 assembly_summary.txt
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -1689,7 +1688,8 @@ ls -l | head</code></pre>
 ## -rw-r--r-- 1 vinuesa vinuesa     5499 oct 14 22:24 bash_script_template_with_getopts.sh
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
-## -rw-rw-r-- 1 vinuesa vinuesa      508 oct 28 20:35 clases_avance.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
+## lrwxrwxrwx 1 vinuesa vinuesa       78 nov  4 12:58 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
 </ul>
@@ -1930,7 +1930,7 @@ echo &amp;&amp; echo &quot;# &gt;&gt;&gt; con modificador global &lt;&lt;&lt;&qu
 echo $PATH | sed &#39;s/:/\n/g&#39; # con modificador global</code></pre>
 <pre><code>## # &gt;&gt;&gt; sin modificador global &lt;&lt;&lt;
 ## /home/vinuesa/bin
-## /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/rstudio/bin/postback
+## /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vinuesa/edirect:/home/vinuesa/soft_download/get_homologues-x86_64-20190805:/home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin:/home/vinuesa/soft_download/Fiji.app:/home/vinuesa/soft_download/circos/current/bin:/usr/local/genome/bin:/usr/lib/rstudio/bin/postback
 ## 
 ## # &gt;&gt;&gt; con modificador global &lt;&lt;&lt;
 ## /home/vinuesa/bin
@@ -1943,6 +1943,12 @@ echo $PATH | sed &#39;s/:/\n/g&#39; # con modificador global</code></pre>
 ## /usr/games
 ## /usr/local/games
 ## /snap/bin
+## /home/vinuesa/edirect
+## /home/vinuesa/soft_download/get_homologues-x86_64-20190805
+## /home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin
+## /home/vinuesa/soft_download/Fiji.app
+## /home/vinuesa/soft_download/circos/current/bin
+## /usr/local/genome/bin
 ## /usr/lib/rstudio/bin/postback</code></pre>
 <ul>
 <li>cambia espacios sencillos por guiones bajos</li>
@@ -2069,7 +2075,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  3 22:41 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  4 12:58 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2088,7 +2094,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  3 22:41 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  4 12:58 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2217,15 +2223,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  3 22:41 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  3 22:41 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  4 12:58 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  4 12:58 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  3 22:41 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  4 12:58 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2319,9 +2325,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  3 22:32 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  4 12:58 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  3 22:41 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  4 12:58 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2342,9 +2348,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  3 22:32 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  4 12:58 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  3 22:41 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  4 12:58 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2354,10 +2360,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  3 22:32 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  4 12:58 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  3 22:32 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  4 12:58 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2367,11 +2373,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  3 22:32 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  4 12:58 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  3 22:32 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  4 12:58 recA_Byuanmingense.fna</code></pre>
 <hr />
 </div>
 </div>
@@ -2847,46 +2853,25 @@ echo ">5blablabla"; echo -ne ">5blablabla" | awk 'BEGIN{RS =">"} /[[:space:]]+/ 
 <ul>
 <li>Define exactamente qué está haciendo el programa, es decir, interpreta o explica con precisión la salida observada
 <ul>
-<li>parseo estándar de un registro y sus campos en <span class="math inline">\(gawk\)</span></li>
+<li><em>parseo</em> estándar de un registro y sus campos en <span class="math inline">\(gawk\)</span></li>
 </ul></li>
 </ul>
-<pre class="bash"><code>echo  &quot;campo1 campo2 campo3&quot; | awk &#39;{print NF, $1}&#39;
-echo  &quot;campo1 campo2 campo3&quot; | awk &#39;{print NF, $3, $1}&#39;
-echo  &quot;campo1 campo2 campo3&quot; | awk &#39;{print NF, $NF}&#39;
-echo  &quot;campo1 campo2 campo3&quot; | awk &#39;{print NF, $0}&#39;</code></pre>
-<pre><code>## 3 campo1
-## 3 campo3 campo1
-## 3 campo3
-## 3 campo1 campo2 campo3</code></pre>
-<!--
-  - parseo de las mismas líneas, pero usando <code>RS=">"</code>
-
-```bash
-echo  ">1 bla>2ble>3 bla" | awk 'BEGIN{RS=">"} {print NF, $1}'
-echo  ">1 bla>2ble>3 bla" | awk 'BEGIN{RS=">"} {print NF, $1, $2}'
-echo  ">1 bla>2ble>3 bla" | awk 'BEGIN{RS=">"} {print NF, $1, $2, $3}'
-echo  ">1 bla>2ble>3 bla" | awk 'BEGIN{RS=">"} {print NF, $0}'
-```
-
-```
-## 0 
-## 2 1
-## 1 2ble
-## 2 3
-## 0  
-## 2 1 bla
-## 1 2ble 
-## 2 3 bla
-## 0   
-## 2 1 bla 
-## 1 2ble  
-## 2 3 bla 
-## 0 
-## 2 1 bla
-## 1 2ble
-## 2 3 bla
-```
--->
+<pre class="bash"><code>echo -e  &quot; campo1  campo2\tcampo3,-#%...  &quot; | awk &#39;{print NF, &quot;[&quot;$1&quot;]&quot;}&#39;
+echo -e  &quot; campo1  campo2\tcampo3,-#%...  &quot; | awk &#39;{print NF, &quot;[&quot;$3&quot;]&quot;, &quot;[&quot;$1&quot;]&quot;}&#39;
+echo -e  &quot; campo1  campo2\tcampo3,-#%...  &quot; | awk &#39;{print NF, $NF}&#39;
+echo -e  &quot; campo1  campo2\tcampo3,-#%...  &quot; | awk &#39;{print NF, &quot;[&quot;$0&quot;]&quot;}&#39;</code></pre>
+<pre><code>## 3 [campo1]
+## 3 [campo3,-#%...] [campo1]
+## 3 campo3,-#%...
+## 3 [ campo1  campo2   campo3,-#%...  ]</code></pre>
+<p>Noten los siguientes puntos clave sobre el manejo que <span class="math inline">\(awk\)</span> hace de los espacios en blanco:</p>
+<ol style="list-style-type: decimal">
+<li>Múltiples espacios en blanco (incluyendo tabuladores) separando campos de texto se ignoran, colapsándose, por lo que <span class="math inline">\(NF\)</span> vale 3, es decir, <span class="math inline">\(awk\)</span> ve tres campos con la configuración por defecto de las variables <span class="math inline">\(RS\)</span> y <span class="math inline">\(FS\)</span>.<br />
+</li>
+<li>Por lo explicado en 1, las variables <em>$1 … $n</em> sólo llevan el valor del campo delimitado por los espacios, como muestran las salidas de las líneas 1 a 3.</li>
+<li>En cambio la variable <em>$0</em>, que lleva un registro completo, imprime los separadores de campo del mismo, como muestra la línea 4 de la salida mostrada arriba.</li>
+<li>Finalmente aclarar que <span class="math inline">\(print\)</span> imprime los argumentos que se le pasan separados por comas, dejando por defecto un espacio sencillo entre ellos (OFS=&quot; “). Las variables se escriben sin comillas, los caracteres literales entre comillas dobles. Si omitimos las comas entre argumentos, se concatenan, como muestra la salida de <code>{print NF,”[“$1”]&quot;}</code>.</li>
+</ol>
 <!--
 
 ```bash
@@ -2961,7 +2946,7 @@ awk  '{print FILENAME, NR, $1, $NF}' mini_tabla.tsv
 </ul>
 <p><code>/patrón/ { acción }</code>, donde:</p>
 <ul>
-<li>la <strong>acción por defecto</strong> es imprimir <code>{print}</code></li>
+<li>la <strong>acción por defecto</strong> es imprimir <code>{print}</code>. Como explicamos en el ejemplo anterior, <span class="math inline">\(print\)</span> imprime los argumentos que se le pasan separados por comas, dejando por defecto un espacio sencillo entre ellos (OFS=&quot; &quot;). Las variables se escriben sin comillas, los caracteres literales entre comillas dobles. Si omitimos las comas entre argumentos, se concatenan, como muestra la salida de ‘{print NF, “[&quot;$1&quot;]”}’</li>
 <li>patrón es una <b><a href="https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular">expresión regular</a></b>, como explicaremos con mayor detalle en una sección posterior</li>
 <li><strong>acción</strong> es una orden o programa, que puede ser todo un <em>script</em> te AWK de cientos o miles de líneas</li>
 </ul>
@@ -3760,17 +3745,17 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1391617 nov  3 22:32 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1394338 nov  4 12:58 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  175856 nov  3 22:41 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  176964 nov  4 12:58 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  306038 oct 31 19:08 working_with_linux_commands.tex
-## total size of working_with_linux_commands.* files is: 1.84 Mb</code></pre>
+## total size of working_with_linux_commands.* files is: 1.85 Mb</code></pre>
 <ul>
 <li>comparen y entiendan la diferencia del comando anterior con el del siguiente:</li>
 </ul>
 <pre class="bash"><code>ls -l working_with_linux_commands.* | \
  awk &#39;{s+=$5}; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## total size of working_with_linux_commands.* files is: 1.84 Mb</code></pre>
+<pre><code>## total size of working_with_linux_commands.* files is: 1.85 Mb</code></pre>
 </div>
 <div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
 <h3><span class="header-section-number">9.5.7</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
@@ -4933,7 +4918,7 @@ echo &quot;$archivo_de_comandos_linux&quot;</code></pre>
 <h2><span class="header-section-number">11.2</span> Dónde debo guardar mis scripts para que sean visibles desde cualquier directorio del sitema</h2>
 <p>Como explicábamos en la <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción</a>, el <span class="math inline">\(Shell\)</span> busca comandos en los directorios especificados en la variable de ambiente <strong>PATH</strong>. Los directorios van separados por <span class="math inline">\(:\)</span> y se leen en ese orden.</p>
 <pre class="bash"><code>echo &quot;PATH = $PATH&quot;</code></pre>
-<pre><code>## PATH = /home/vinuesa/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/rstudio/bin/postback</code></pre>
+<pre><code>## PATH = /home/vinuesa/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vinuesa/edirect:/home/vinuesa/soft_download/get_homologues-x86_64-20190805:/home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin:/home/vinuesa/soft_download/Fiji.app:/home/vinuesa/soft_download/circos/current/bin:/usr/local/genome/bin:/usr/lib/rstudio/bin/postback</code></pre>
 <p>Recuerda, es fácile generar una lista de estos directorios más legible con un comando como ésta</p>
 <pre class="bash"><code>echo &quot;$PATH&quot; | sed &#39;s/:/\n/g&#39;</code></pre>
 <pre><code>## /home/vinuesa/bin
@@ -4946,6 +4931,12 @@ echo &quot;$archivo_de_comandos_linux&quot;</code></pre>
 ## /usr/games
 ## /usr/local/games
 ## /snap/bin
+## /home/vinuesa/edirect
+## /home/vinuesa/soft_download/get_homologues-x86_64-20190805
+## /home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin
+## /home/vinuesa/soft_download/Fiji.app
+## /home/vinuesa/soft_download/circos/current/bin
+## /usr/local/genome/bin
 ## /usr/lib/rstudio/bin/postback</code></pre>
 <div id="agregando-directorios-a-la-variable-de-ambiente-path" class="section level3">
 <h3><span class="header-section-number">11.2.1</span> Agregando directorios a la variable de ambiente <b>PATH</b></h3>
@@ -4996,7 +4987,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 dat=$(date | awk &#39;{print $3$2$6}&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in: $wkdir at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;nov03CST&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;nov04CST&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
 <h2><span class="header-section-number">11.5</span> Modificación de variables y operaciones con ellas</h2>
@@ -5080,7 +5071,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  3 22:42 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  4 12:58 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -5189,14 +5180,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  3 22:42 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  3 22:42 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  3 22:42 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  3 22:42 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  3 22:42 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  3 22:42 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  3 22:42 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  3 22:42 recA_B_yuanmingense.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  4 12:58 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  4 12:58 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  4 12:58 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  4 12:58 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  4 12:58 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  4 12:58 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  4 12:58 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  4 12:58 recA_B_yuanmingense.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
