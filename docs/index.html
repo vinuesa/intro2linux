@@ -1850,6 +1850,12 @@ awk 'BEGIN{RS=">"} {print NR, NF, $1, $2, $3}' mini_fasta.fst
 ```{bash}
 awk 'BEGIN{RS=">"} {print NR, NF, $0}' mini_fasta.fst
 ```
+   - esta es la salida con $RS=">"$, imprimiendo el registro completo para registros mayores al primero ($NR>1$)
+```{bash}
+awk 'BEGIN{RS=">"} NR > 1 {print NR, NF, $0}' mini_fasta.fst
+```
+
+<!-- 
   - esta es la salida con $RS=">"$ y $FS="\n"$, imprimiendo campo 1
 ```{bash}
 awk 'BEGIN{RS=">"; FS="\n"} {print NR, NF, $1}' mini_fasta.fst
@@ -1871,6 +1877,8 @@ awk 'BEGIN{RS=">"; FS="\n"} {print NR, NF, $0}' mini_fasta.fst
 ```{bash}
 awk 'BEGIN{RS=">"; FS="\n"} NR > 1 {print NR, NF, $0}' mini_fasta.fst
 ```
+
+-->
 
 Si quieres dominar $awk$, es crítico que sepas manejar las variables  $NR$, $FS$, $OFS$ adecuadamente. Los ejemplos precedentes, si los estudias con cuidado, deben darte un buen nivel de comprensión de su comportamiento por defecto y cómo manipularlas para modelar adecuadamente la estructura de los registros (datos).  
 
