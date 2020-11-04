@@ -822,7 +822,7 @@ ls | head</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
 <pre><code>## total 59584
-## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  3 21:44 .
+## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  3 22:08 .
 ## drwxr-xr-x  3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rw-rw-r--  1 vinuesa vinuesa      114 nov  1 23:01 0
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
@@ -2068,7 +2068,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  3 21:45 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  3 22:21 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2087,7 +2087,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  3 21:45 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  3 22:21 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2216,15 +2216,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  3 21:45 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  3 21:45 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  3 22:21 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  3 22:21 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  3 21:45 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  3 22:21 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2318,9 +2318,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  3 21:44 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  3 22:08 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  3 21:45 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  3 22:21 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2341,9 +2341,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  3 21:44 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  3 22:08 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  3 21:45 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  3 22:21 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2353,10 +2353,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  3 21:44 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  3 22:08 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  3 21:44 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  3 22:08 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2366,11 +2366,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  3 21:44 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  3 22:08 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  3 21:44 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  3 22:08 recA_Byuanmingense.fna</code></pre>
 <hr />
 </div>
 </div>
@@ -2849,10 +2849,10 @@ echo ">5blablabla"; echo -ne ">5blablabla" | awk 'BEGIN{RS =">"} /[[:space:]]+/ 
 <li>parseo estándar de un registro y sus campos en <span class="math inline">\(gawk\)</span></li>
 </ul></li>
 </ul>
-<pre class="bash"><code>echo  &quot;campo1 campo2 campo3&quot; | awk &#39;BEGIN{} {print NF, $1}&#39;
-echo  &quot;campo1 campo2 campo3&quot; | awk &#39;BEGIN{} {print NF, $3, $1}&#39;
-echo  &quot;campo1 campo2 campo3&quot; | awk &#39;BEGIN{} {print NF, $NF}&#39;
-echo  &quot;campo1 campo2 campo3&quot; | awk &#39;BEGIN{} {print NF, $0}&#39;</code></pre>
+<pre class="bash"><code>echo  &quot;campo1 campo2 campo3&quot; | awk &#39;{print NF, $1}&#39;
+echo  &quot;campo1 campo2 campo3&quot; | awk &#39;{print NF, $3, $1}&#39;
+echo  &quot;campo1 campo2 campo3&quot; | awk &#39;{print NF, $NF}&#39;
+echo  &quot;campo1 campo2 campo3&quot; | awk &#39;{print NF, $0}&#39;</code></pre>
 <pre><code>## 3 campo1
 ## 3 campo3 campo1
 ## 3 campo3
@@ -3061,7 +3061,7 @@ awk  '{print FILENAME, NR, $1, $NF}' mini_tabla.tsv
 </div>
 <div id="análisis-de-archivos-fasta---registros-delimitados-por" class="section level3">
 <h3><span class="header-section-number">9.2.2</span> Análisis de archivos FASTA - registros delimitados por ‘&gt;’</h3>
-<p>Veamos ahora cómo modelar de manera más adecuada un archivo FASTA, para lo cual volveremos a trabajar con <em>mini_fasta.fst</em>. Visualicemos su estructura:</p>
+<p>Veamos ahora cómo modelar de manera más adecuada un archivo FASTA, para lo cual volveremos a trabajar con <em>mini_fasta.fst</em>. Recordemos su estructura:</p>
 <pre class="bash"><code>cat  mini_fasta.fst</code></pre>
 <pre><code>## &gt;seq1
 ## ATACCGACCATTACAGGCATT
@@ -3290,15 +3290,15 @@ awk 'BEGIN{RS=">"; FS="\n"} NR > 1 {print NR, NF, $0}' mini_fasta.fst
 
 -->
 <p>Si quieres dominar <span class="math inline">\(awk\)</span>, es crítico que sepas manejar las variables <span class="math inline">\(NR\)</span>, <span class="math inline">\(FS\)</span>, <span class="math inline">\(OFS\)</span> adecuadamente. Los ejemplos precedentes, si los estudias con cuidado, deben darte un buen nivel de comprensión de su comportamiento por defecto y cómo manipularlas para modelar adecuadamente la estructura de los registros (datos).</p>
-<p>Revisado en detalle este aspecto clave, podemos pasar a aprender los elementos fundamentales del lenguaje AWK.</p>
+<p>Una vez revisado en detalle este aspecto clave, podemos pasar a aprender los elementos fundamentales del lenguaje AWK.</p>
 </div>
 </div>
 <div id="sintaxis-condensada-de-awk" class="section level2">
 <h2><span class="header-section-number">9.3</span> Sintaxis condensada de AWK</h2>
-<p>AWK no es sólo una herramienta de filtrado de texto estructurado. Es un <strong>lenguaje de programación completo</strong>, con estructuras de control de flujo, bucles, diversos operadores y funciones integradas para trabajar con cadenas de caracteres o con números, controlar el formato de la salida impresa, estructuras de datos y posibilidad de escribir funciones <em>ad hoc</em>.</p>
+<p>AWK no es sólo una herramienta de filtrado de texto estructurado. Es un <strong>lenguaje de programación completo</strong>, con estructuras de control de flujo, bucles, diversos operadores y funciones integradas para trabajar con cadenas de caracteres o con números, controlar el formato de la salida impresa, estructuras de datos y posibilidad de escribir funciones <em>ad hoc</em>. La combinación juiciosa de estos elementos permit escribir programas para realizar complejas transformaciones de archivos de texto, como veremos en múltiples ejemplos.</p>
 <div id="condicionales-bucles-operadores-boleanos-y-relacionales-funciones-integradas-y-definidad-por-el-usuario-arreglos" class="section level3">
 <h3><span class="header-section-number">9.3.1</span> Condicionales, bucles, operadores boleanos y relacionales, funciones integradas y definidad por el usuario, arreglos</h3>
-<p><span class="math inline">\(gawk\)</span>, al ser un lenguaje de programación completo, contiene sintaxis para escribir:</p>
+<p>La siguiente lista presenta algunos de los elementos y estructuras sintácticas fundamentales del lenguaje de programación <span class="math inline">\(gawk\)</span></p>
 <ul>
 <li><strong>condicionales</strong> <code>if(condicion1){code1}else if(condición2){code2}else{code3}</code></li>
 <li><strong>bucles for</strong> <code>for (i in array){code}</code>; <code>for(initialization;condition;increment|decrement)</code></li>
@@ -3310,11 +3310,11 @@ awk 'BEGIN{RS=">"; FS="\n"} NR > 1 {print NR, NF, $0}' mini_fasta.fst
 <li><strong>funciones escritas por el usuario</strong> <code>function FUNNAME (arg1, arg1){code}</code></li>
 <li><strong>estructuras de datos</strong> (<span class="math inline">\(hashes\)</span> o <span class="math inline">\(arreglos\ asociativos\)</span>): <code>array[string]=value</code>.</li>
 </ul>
-<p>Esta lista no es exhaustiva en absoluto, pero contiene muchos de los elementos del lenguaje más frecuentemente usados. En los ejemplos que siguen en el resto de la sección de <span class="math inline">\(AWK\)</span> veremos implementaciones prácticas de la mayoría de éstos, explicando su sintaxis a medida que aparezcan.</p>
+<p>Esta lista no es exhaustiva en absoluto, pero contiene muchos de los elementos del lenguaje más frecuentemente usados. En los ejemplos que siguen veremos implementaciones prácticas de la mayoría de éstos, explicando su sintaxis a medida que aparezcan.</p>
 </div>
 <div id="resumen-de-variables-internas-más-usadas" class="section level3">
 <h3><span class="header-section-number">9.3.2</span> Resumen de variables internas más usadas:</h3>
-<p>La mayoría de las variables internas listadas seguidamente ya las explicamos y vimos en acción en ejemplos precedentes. Las presento abajo en un solo bloque para facilitar su referenciado.</p>
+<p>La mayoría de las variables internas listadas seguidamente ya las explicamos y vimos en acción en ejemplos precedentes. Las presento abajo en un solo bloque para facilitar su localización y repaso.</p>
 <pre>
 $0       guarda el valor de la fila actual en memoria de un archivo de entrada
 $1-$n    guarda los contenidos de los campos de una fila
@@ -3331,14 +3331,23 @@ ORS      (Output Return Separator) separador de registro de la salida (\n por de
 </div>
 <div id="expresiones-regulares---una-breve-introducción" class="section level2">
 <h2><span class="header-section-number">9.4</span> Expresiones regulares - una breve introducción</h2>
-<p><strong>Una expresión regular</strong> (<em>regex</em>) define un conjunto o más de cadenas de caracteres. Una cadena literal de caracteres es una <em>regex</em> que define a una sola cadena: a sí misma. Una expresión regular más compleja, usando la notación adecuada, que incluye letras, números (<strong>caracteres ordinarios</strong>) y una gran cantidad de caracteres adicionales (<strong>caracteres especiales</strong> o <strong>metacaracteres</strong>), puede definir a un conjunto más amplio, pero específico, de cadenas de caracteres.</p>
+<p>Dado que <span class="math inline">\(AWK\)</span> es un lenguaje especializado en el procesamiento de archivos de texto en base a patrones, es imprescindible presentar una sección sobre expresiones regulares.</p>
+<p><strong>Una expresión regular</strong> (<em>regex</em> o <em>regexp</em>) define uno o varios conjuntos de cadenas de caracteres usando una notación específica:</p>
 <ul>
-<li>Los <strong>caracteres ordinarios</strong> usados en *regexes son: <code> _, A-Z, a-z, 0-9</code></li>
-<li>Los <strong>metacaracteres</strong> usados en <em>regexes</em> son: <code>.*[]^${}+?|()</code></li>
+<li><p>Una <strong>cadena literal de caracteres</strong> es una <em>regex</em> que define a una sola cadena: a sí misma.</p></li>
+<li><p>Una <strong>expresión regular</strong> más compleja, usando la notación adecuada, que incluye letras, números (<strong>caracteres ordinarios</strong>) y una gran cantidad de caracteres adicionales (<strong>caracteres especiales</strong> o <strong>metacaracteres</strong>), puede definir a un conjunto más amplio, pero específico, de cadenas de caracteres.</p></li>
+<li><p>Los <strong>caracteres ordinarios</strong> usados en *regexes son:</p>
+<ul>
+<li><code> _, A-Z, a-z, 0-9</code></li>
+</ul></li>
+<li><p>Los <strong>metacaracteres</strong> usados en <em>regexes</em> son:</p>
+<ul>
+<li><code>.*[]^${}+?|()</code></li>
+</ul></li>
 </ul>
-<p>Las <em>regexes</em> se utilizan para encontrar patrones específicos en archivos de texto. Programas como <span class="math inline">\(ed\)</span>, <span class="math inline">\(vim\)</span>, <span class="math inline">\(grep\)</span>, <span class="math inline">\(sed\)</span>, <span class="math inline">\(awk\)</span>, <span class="math inline">\(perl\)</span>, entre otros muchos, hacen uso de <em>regexes</em> para buscar dichos patrones en archivos de texto. Cuando los encuentra, se dice que la <em>regexp</em> encontró un <em>match</em> o concordancia.</p>
+<p>Las <em>regexes</em> se utilizan para encontrar patrones específicos en archivos de texto. Programas como <span class="math inline">\(ed\)</span>, <span class="math inline">\(vim\)</span>, <span class="math inline">\(grep\)</span>, <span class="math inline">\(sed\)</span>, <span class="math inline">\(awk\)</span>, <span class="math inline">\(perl\)</span>, entre otros muchos, hacen uso de <em>regexes</em> para buscar dichos patrones en archivos de texto. Cuando los encuentra, se dice que la <em>regexp</em> encontró un <em>match</em> o <em>concordancia</em>.</p>
 <p>Hay diversas implementaciones del lenguaje de expresiones regulares. Aquí sólo veremos las <em>regexes</em> del estándar <em>POSIX</em> que usan la mayoría de los programas de <em>GNU/Linux</em>.</p>
-<p>Además, hay dos motores de búsqueda de patrones mediante expresiones regulares:</p>
+<p>Además, hay dos <strong>motores de búsqueda</strong> de patrones mediante expresiones regulares:</p>
 <ul>
 <li>el motor Básico de Expresiones Regulares (<strong>BRE</strong>) por sus siglas en inglés, usado por ejemplo por <span class="math inline">\(sed\)</span> y <span class="math inline">\(grep\)</span></li>
 <li>el motor Extendido de Expresiones Regulares (<strong>ERE</strong>), usado por ejemplo por <span class="math inline">\(gawk\)</span> y <span class="math inline">\(perl\)</span></li>
@@ -3524,7 +3533,8 @@ ORS      (Output Return Separator) separador de registro de la salida (\n por de
 </div>
 <div id="un-ejemplo-de-expresión-regular-compleja-validación-de-un-correo-electrónico" class="section level3">
 <h3><span class="header-section-number">9.4.5</span> Un ejemplo de expresión regular compleja: validación de un correo electrónico</h3>
-<pre class="bash"><code>echo &quot;usuario@entidad.unam.mx&quot; | awk &#39;/^([a-zA-Z0-9_\-\.\+]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/ {print $0}&#39;</code></pre>
+<p>Este es un ejemplo relativamente complejo que integra la mayoría de los elementos del lenguaje de expresiones regulares descrito arriba. El <span class="math inline">\(awk\)</span> recibe una cadena de caracteres en su <em>STDIN</em> y revisa si tiene la estructura esperada de un correo electrónico, imprimiéndolo si dicha cadena es modelada por la <em>regexp</em></p>
+<pre class="bash"><code>echo &quot;usuario@entidad.unam.mx&quot; | awk &#39;/^([a-zA-Z0-9_\-\.\+]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/&#39;</code></pre>
 <pre><code>## usuario@entidad.unam.mx</code></pre>
 </div>
 <div id="manipulación-de-cadenas-de-caracteres-con-las-funciones-sub-gsub-substr-y-expresiones-regulares" class="section level3">
@@ -3733,9 +3743,9 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1389547 nov  3 21:44 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1390120 nov  3 22:08 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  174483 nov  3 21:45 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  175208 nov  3 22:21 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  306038 oct 31 19:08 working_with_linux_commands.tex
 ## total size of working_with_linux_commands.* files is: 1.84 Mb</code></pre>
 <ul>
@@ -5053,7 +5063,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  3 21:45 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  3 22:21 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -5162,14 +5172,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  3 21:45 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  3 21:45 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  3 21:45 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  3 21:45 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  3 21:45 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  3 21:45 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  3 21:45 recA_B_yuanmingense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  3 21:45 recA_B_sp..fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  3 22:21 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  3 22:21 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  3 22:21 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  3 22:21 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  3 22:21 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  3 22:21 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  3 22:21 recA_B_yuanmingense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  3 22:21 recA_B_sp..fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
