@@ -31,7 +31,7 @@ $0~s{print ">"$0}
 function  Usage_Exit  (prog, vers) {
  
    print "# USAGE FOR", prog, "v"vers > "/dev/stderr"
-   print  p, "<filtering_string>  <multifasta_file>" > "/dev/stderr"
+   print  prog, "<filtering_string>  <multifasta_file>" > "/dev/stderr"
    print "#   Pass a string as first argument to filter the FASTA_file," > "/dev/stderr"
    print "#   provided as second argument, printing only records matching the string" > "/dev/stderr"
    exit;
