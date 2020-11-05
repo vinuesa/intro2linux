@@ -9,13 +9,15 @@ que te familiarices con este ambiente de c&oacute;mputo al inicio de tu formaci&
 
 Este taller tiene por objetivos iniciarte en el camino del bioc&oacute;mputo en sistemas GNU/Linux y ayudarte a descubrir un ambiente de c&oacute;mputo mucho m&aacute;s amigable y poderoso que el que posiblemente conoces hasta ahora.
 
-Aprender&aacute;s todo lo necesario para un arranque r&aacute;pido, &uacute;til, entretenido y exitoso de programaci&oacute;n/scripting del Linux Shell, usando ejemplos relevantes para el an&aacute;lisis de secuencias moleculares y datos asociados.
+Aprender&aacute;s todo lo necesario para un arranque r&aacute;pido, &uacute;til, entretenido y exitoso de programaci&oacute;n/scripting del Linux Shell, usando ejemplos relevantes para el an&aacute;lisis de secuencias moleculares y datos asociados. Se pondrá especial énfasis en el parseo de archivos tabulares y en formato FASTA usando las herramientas de filtrado del <i>Shell</i> y mediante el uso de <i>scripts</i> escritos principalmente en los lenguajes <i>AWK</i> y <i>Bash</i>, con algún ejemplo de <i>Perl</i>. Se presentan muchos ejemplos de código completo, cuidadosamente comentado y de complejidad creciente, con los que se ilustra paso a paso el funcionamiento del <i>Shell</i>, así como la construcción de <i>tuberías</i> de comandos y una detallada introducción a la programación en <i>AWK</i> y <i>Bash</i>, incluyendo la construcción de <b>pipelines bioinformáticos</b>. 
 
 ## Ediciones del Taller
 
-1a. Edición: semestre 2021-1
+1a. Edición: semestre 2021-1, impartido para alumnos de:
+- [Licenciatura en Ciencias Genómicas LCG-UNAM](https://www.lcg.unam.mx)
+- [Taller de Ciencias Genómicas, Facultad de Ciencias UNAM](https://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/)
 
-v.2020-10-25
+v.2020-11-05
 
 ***
  
