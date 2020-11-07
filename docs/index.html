@@ -512,7 +512,10 @@ summary {
 <li><a href="#compresión-gnuzip-de-archivos-ascii-comandos-gzip-y-gunzip"><span class="toc-section-number">7.1</span> Compresión gnuzip de archivos ASCII: comandos <strong>gzip</strong> y <strong>gunzip</strong></a></li>
 <li><a href="#generación-de-tarros-comprimidos-y-extracción-de-archivos-de-ellos-con-el-comando-tar"><span class="toc-section-number">7.2</span> Generación de ‘tarros’ comprimidos y extracción de archivos de ellos con el comando <strong>tar</strong></a></li>
 </ul></li>
-<li><a href="#trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comanod-locate-y-find"><span class="toc-section-number">8</span> Trabajando con archivos - buscando archivos en el sistema con los comanod <strong>locate</strong> y <strong>find</strong></a></li>
+<li><a href="#trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-locate-y-find"><span class="toc-section-number">8</span> Trabajando con archivos - buscando archivos en el sistema con los comandos <strong>locate</strong> y <strong>find</strong></a><ul>
+<li><a href="#locate"><span class="toc-section-number">8.1</span> <span class="math inline">\(locate\)</span></a></li>
+<li><a href="#find"><span class="toc-section-number">8.2</span> <span class="math inline">\(find\)</span></a></li>
+</ul></li>
 <li><a href="#cuánto-espacio-queda-en-disco---comandos-df-y-du"><span class="toc-section-number">9</span> ¿Cuánto espacio queda en disco? - comandos <strong>df</strong> y <strong>du</strong></a><ul>
 <li><a href="#la-utilidad-df-disc-free"><span class="toc-section-number">9.1</span> La utilidad <span class="math inline">\(df\)</span> (disc free)</a><ul>
 <li><a href="#opciones-más-comunes-de-df"><span class="toc-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></a></li>
@@ -521,15 +524,27 @@ summary {
 <li><a href="#opciones-clave-de-du---du--shc"><span class="toc-section-number">9.2.1</span> Opciones clave de <span class="math inline">\(du\)</span> - <em>du -shc</em></a></li>
 </ul></li>
 </ul></li>
-<li><a href="#tuberias-de-herramientas-unixlinux-para-filtrado-de-texto-conectadas-mediante-pipes"><span class="toc-section-number">10</span> Tuberias de herramientas UNIX/Linux para filtrado de texto conectadas mediante “pipes” <strong>|</strong></a><ul>
-<li><a href="#el-comando-pipe"><span class="toc-section-number">10.1</span> El comando <strong>|</strong> (<em>pipe</em>:)</a><ul>
-<li><a href="#grep-filtra-las-lineas-de-un-archivo-que-contienen-o-no-caracteres-o-expresiones-regulares"><span class="toc-section-number">10.1.1</span> <strong><span class="math inline">\(grep\)</span></strong> Filtra las lineas de un archivo que contienen (o no) caracteres o expresiones regulares</a></li>
-<li><a href="#cut-corta-las-líneas-por-delimitadores-de-campo--d-imprimiendo-sólo-los-campos--f-deseados"><span class="toc-section-number">10.1.2</span> <span class="math inline">\(cut\)</span> corta las líneas por delimitadores de campo (-d) imprimiendo sólo los campos (-f) deseados</a></li>
-<li><a href="#sort-ordena-las-salidas-atendiendo-a-diversos-criterios"><span class="toc-section-number">10.1.3</span> <strong><span class="math inline">\(sort\)</span></strong> ordena las salidas atendiendo a diversos criterios</a></li>
-<li><a href="#wc-cuenta-líneas-palabras-y-caracteres"><span class="toc-section-number">10.1.4</span> <strong><span class="math inline">\(wc\)</span></strong> cuenta líneas, palabras y caracteres</a></li>
-<li><a href="#uniq---reporta-u-omite-líneas-repetidas"><span class="toc-section-number">10.1.5</span> <strong><span class="math inline">\(uniq\)</span></strong> - reporta u omite líneas repetidas</a></li>
+<li><a href="#tuberias-pipelines-de-comandos-para-filtrado-de-texto-conectados-mediante-pipes"><span class="toc-section-number">10</span> Tuberias (<em>pipelines</em>) de comandos para filtrado de texto conectados mediante “pipes” <strong>|</strong></a><ul>
+<li><a href="#el-comando-pipe"><span class="toc-section-number">10.1</span> El comando <strong>|</strong> (<em>pipe</em>:)</a></li>
+<li><a href="#grep-filtra-las-lineas-de-un-archivo-que-contienen-o-no-caracteres-o-expresiones-regulares"><span class="toc-section-number">10.2</span> <strong><span class="math inline">\(grep\)</span></strong> Filtra las lineas de un archivo que contienen (o no) caracteres o expresiones regulares</a><ul>
+<li><a href="#grep---control-de-sintaxis-del-patrón"><span class="toc-section-number">10.2.1</span> <span class="math inline">\(grep\)</span> - control de sintaxis del patrón</a></li>
+<li><a href="#grep---control-del-modo-de-los-apareamientos-matching-control"><span class="toc-section-number">10.2.2</span> <span class="math inline">\(grep\)</span> - control del modo de los apareamientos (<em>matching control</em>)</a></li>
+<li><a href="#grep---control-de-la-salida"><span class="toc-section-number">10.2.3</span> <span class="math inline">\(grep\)</span> - control de la salida</a></li>
+<li><a href="#grep---control-del-contexto-de-la-línea-que-aparea-con-el-patrón-context-line-control"><span class="toc-section-number">10.2.4</span> <span class="math inline">\(grep\)</span> - control del contexto de la línea que aparea con el patrón (<em>Context Line Control</em>)</a></li>
 </ul></li>
-<li><a href="#ejemplos-de-herramientas-de-filtrado-de-texto-cut-grep-sort-uniq-wc-y-en-acción"><span class="toc-section-number">10.2</span> Ejemplos de herramientas de filtrado de texto: <b>cut</b>, <b>grep</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> y <b>|</b> en acción</a></li>
+<li><a href="#cut-corta-las-líneas-por-delimitadores-de-campo--d-imprimiendo-sólo-los-campos--f-deseados"><span class="toc-section-number">10.3</span> <span class="math inline">\(cut\)</span> corta las líneas por delimitadores de campo (-d) imprimiendo sólo los campos (-f) deseados</a><ul>
+<li><a href="#opciones-de-cut"><span class="toc-section-number">10.3.1</span> Opciones de <span class="math inline">\(cut\)</span></a></li>
+</ul></li>
+<li><a href="#sort-ordena-las-salidas-atendiendo-a-diversos-criterios"><span class="toc-section-number">10.4</span> <strong><span class="math inline">\(sort\)</span></strong> ordena las salidas atendiendo a diversos criterios</a><ul>
+<li><a href="#opciones-frecuentemente-usadas-de-sort"><span class="toc-section-number">10.4.1</span> Opciones frecuentemente usadas de <span class="math inline">\(sort\)</span></a></li>
+</ul></li>
+<li><a href="#wc-cuenta-líneas-palabras-y-caracteres"><span class="toc-section-number">10.5</span> <strong><span class="math inline">\(wc\)</span></strong> cuenta líneas, palabras y caracteres</a><ul>
+<li><a href="#opciones-de-wc"><span class="toc-section-number">10.5.1</span> Opciones de <span class="math inline">\(wc\)</span></a></li>
+</ul></li>
+<li><a href="#uniq---reporta-u-omite-líneas-repetidas"><span class="toc-section-number">10.6</span> <strong><span class="math inline">\(uniq\)</span></strong> - reporta u omite líneas repetidas</a><ul>
+<li><a href="#opciones-de-uniq"><span class="toc-section-number">10.6.1</span> Opciones de <span class="math inline">\(uniq\)</span></a></li>
+</ul></li>
+<li><a href="#ejemplos-de-herramientas-de-filtrado-de-texto-pipelines-con-grep-cut-sort-uniq-wc-en-acción"><span class="toc-section-number">10.7</span> Ejemplos de herramientas de filtrado de texto: <em>pipelines</em> con <b>grep</b>, <b>cut</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> en acción</a></li>
 </ul></li>
 <li><a href="#el-lenguaje-de-procesamiento-de-patrones-awk-y-su-sucesor-gnu-gawk"><span class="toc-section-number">11</span> El lenguaje de procesamiento de patrones <b>AWK</b> y su sucesor GNU <b>gawk</b></a><ul>
 <li><a href="#conceptos-fundamentales-sobre-la-estructura-variables-internas-y-funcionamiento-de-los-programas-awk"><span class="toc-section-number">11.1</span> Conceptos fundamentales sobre la estructura, variables internas y funcionamiento de los programas AWK</a><ul>
@@ -838,7 +853,7 @@ ls | head</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
 <pre><code>## total 99672
-## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  6 21:15 .
+## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  6 21:29 .
 ## drwxr-xr-x  3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -1703,7 +1718,7 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 nov  6 21:16 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 nov  6 21:31 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-rw-r-- 1 vinuesa vinuesa     3663 nov  2 18:22 count_genome_features_for_taxon.awk</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
@@ -2090,7 +2105,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  6 21:16 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  6 21:31 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2109,7 +2124,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  6 21:16 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  6 21:31 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2238,15 +2253,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  6 21:16 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  6 21:16 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  6 21:31 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  6 21:31 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  6 21:16 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  6 21:31 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2340,9 +2355,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  6 21:14 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  6 21:29 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  6 21:16 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  6 21:31 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2363,9 +2378,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  6 21:14 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  6 21:29 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  6 21:16 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  6 21:31 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2375,10 +2390,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  6 21:14 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  6 21:29 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  6 21:14 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  6 21:29 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2388,15 +2403,23 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  6 21:14 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  6 21:29 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  6 21:14 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  6 21:29 recA_Byuanmingense.fna</code></pre>
 </div>
 </div>
-<div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comanod-locate-y-find" class="section level1">
-<h1><span class="header-section-number">8</span> Trabajando con archivos - buscando archivos en el sistema con los comanod <strong>locate</strong> y <strong>find</strong></h1>
+<div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-locate-y-find" class="section level1">
+<h1><span class="header-section-number">8</span> Trabajando con archivos - buscando archivos en el sistema con los comandos <strong>locate</strong> y <strong>find</strong></h1>
+<div id="locate" class="section level2">
+<h2><span class="header-section-number">8.1</span> <span class="math inline">\(locate\)</span></h2>
+<p>TODO</p>
+</div>
+<div id="find" class="section level2">
+<h2><span class="header-section-number">8.2</span> <span class="math inline">\(find\)</span></h2>
+<p>TODO</p>
+</div>
 </div>
 <div id="cuánto-espacio-queda-en-disco---comandos-df-y-du" class="section level1">
 <h1><span class="header-section-number">9</span> ¿Cuánto espacio queda en disco? - comandos <strong>df</strong> y <strong>du</strong></h1>
@@ -2409,7 +2432,7 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 ## udev             16381352         0   16381352   0% /dev
 ## tmpfs             3281908      2000    3279908   1% /run
 ## /dev/nvme0n1p3  465889936  18476116  423678168   5% /
-## tmpfs            16409528    102020   16307508   1% /dev/shm
+## tmpfs            16409528    102820   16306708   1% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409528         0   16409528   0% /sys/fs/cgroup
 ## /dev/loop2         166784    166784          0 100% /snap/gnome-3-28-1804/145
@@ -2421,14 +2444,14 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 ## /dev/loop6          31744     31744          0 100% /snap/snapd/9607
 ## /dev/nvme0n1p1    1994928      7984    1986944   1% /boot/efi
 ## /dev/loop7         223232    223232          0 100% /snap/gnome-3-34-1804/60
-## /dev/sda1      1921802432 428103076 1396007300  24% /home
+## /dev/sda1      1921802432 428103772 1396006604  24% /home
 ## /dev/loop8          64896     64896          0 100% /snap/standard-notes/23
 ## /dev/loop9          44288     44288          0 100% /snap/snap-store/415
 ## /dev/loop10        261760    261760          0 100% /snap/gnome-3-34-1804/36
 ## /dev/loop11         51968     51968          0 100% /snap/snap-store/481
 ## /dev/loop12         31744     31744          0 100% /snap/snapd/9721
 ## tmpfs             3281904        20    3281884   1% /run/user/125
-## tmpfs             3281904        44    3281860   1% /run/user/1000</code></pre>
+## tmpfs             3281904        48    3281856   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
@@ -2464,7 +2487,7 @@ df -h /home</code></pre>
 ## udev              15998M      0M    15998M   0% /dev
 ## tmpfs              3205M      2M     3204M   1% /run
 ## /dev/nvme0n1p3   454971M  18044M   413749M   5% /
-## tmpfs             16025M    100M    15926M   1% /dev/shm
+## tmpfs             16025M    101M    15925M   1% /dev/shm
 ## tmpfs                 5M      1M        5M   1% /run/lock
 ## tmpfs             16025M      0M    16025M   0% /sys/fs/cgroup
 ## /dev/loop2          163M    163M        0M 100% /snap/gnome-3-28-1804/145
@@ -2476,7 +2499,7 @@ df -h /home</code></pre>
 ## /dev/loop6           31M     31M        0M 100% /snap/snapd/9607
 ## /dev/nvme0n1p1     1949M      8M     1941M   1% /boot/efi
 ## /dev/loop7          218M    218M        0M 100% /snap/gnome-3-34-1804/60
-## /dev/sda1       1876761M 418070M  1363289M  24% /home
+## /dev/sda1       1876761M 418071M  1363288M  24% /home
 ## /dev/loop8           64M     64M        0M 100% /snap/standard-notes/23
 ## /dev/loop9           44M     44M        0M 100% /snap/snap-store/415
 ## /dev/loop10         256M    256M        0M 100% /snap/gnome-3-34-1804/36
@@ -2484,7 +2507,7 @@ df -h /home</code></pre>
 ## /dev/loop12          31M     31M        0M 100% /snap/snapd/9721
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392600M 437476M  1836543M  20% -
+## total           2392600M 437477M  1836542M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2504,8 +2527,8 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 171632   .
-## 168M .</code></pre>
+<pre><code>## 172304   .
+## 169M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
 </ul>
@@ -2546,8 +2569,8 @@ sys 0m8.524s
 </div>
 </div>
 </div>
-<div id="tuberias-de-herramientas-unixlinux-para-filtrado-de-texto-conectadas-mediante-pipes" class="section level1">
-<h1><span class="header-section-number">10</span> Tuberias de herramientas UNIX/Linux para filtrado de texto conectadas mediante “pipes” <strong>|</strong></h1>
+<div id="tuberias-pipelines-de-comandos-para-filtrado-de-texto-conectados-mediante-pipes" class="section level1">
+<h1><span class="header-section-number">10</span> Tuberias (<em>pipelines</em>) de comandos para filtrado de texto conectados mediante “pipes” <strong>|</strong></h1>
 <p>UNIX y GNU/Linux ofrecen una gran cantidad de herramientas para todo tipo de funciones o labores, cada una generalmente con muchas opciones. En bioinformática y genómica, los archivos de texto plano (ASCII) son los más comunes. Por ello es muy útil dominar al menos algunas de las herramientas de filtrado de texto que ofrece el entorno GNU/Linux. Como ejemplo, trabajaremos con el archivo assembly_summary.txt.gz, que contiene los datos de ensambles genómicos de la división RefSeq de GenBank. Lo descargué y comprimí en Julio de 2019 con los siguientes comandos:</p>
 <pre><code># descargamos con el comando wget
 wget -c ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt
@@ -2587,8 +2610,9 @@ zcat assembly_summary.txt.gz | less -L</code></pre>
 <p>Una secuencia de comandos típica tendría una estructura como la siguiente:</p>
 <p><code>grep ‘patrón’ ARCHIVO.tsv | cut -f 1,3-5,9-11 | sort -dk1</code></p>
 <p>Veamos ahora las opciones más comunes de los comandos <b>grep</b>, <b>cut</b>, <b>sort</b>, <b>wc</b> y <b>uniq</b>, en ese orden.</p>
-<div id="grep-filtra-las-lineas-de-un-archivo-que-contienen-o-no-caracteres-o-expresiones-regulares" class="section level3">
-<h3><span class="header-section-number">10.1.1</span> <strong><span class="math inline">\(grep\)</span></strong> Filtra las lineas de un archivo que contienen (o no) caracteres o expresiones regulares</h3>
+</div>
+<div id="grep-filtra-las-lineas-de-un-archivo-que-contienen-o-no-caracteres-o-expresiones-regulares" class="section level2">
+<h2><span class="header-section-number">10.2</span> <strong><span class="math inline">\(grep\)</span></strong> Filtra las lineas de un archivo que contienen (o no) caracteres o expresiones regulares</h2>
 <p>Como muestra el ejemplo genérico anterior, el comando <span class="math inline">\(grep\)</span> frecuentemente es el primero en un <span class="math inline">\(pipeline\)</span>, ya que permite seleccionar las entradas de interés al filtrar las líneas del archivo o <em>STDIN</em> que contienen un patrón o término particular que las identifica.</p>
 <p>El ‘patrón’ se pasa a <span class="math inline">\(grep\)</span> como argumento (o en un archivo, si son muchos) y puede ser una cadena literal de caracteres (entre comillas sencillas si contiene espacios o caracteres que pueden reservados del <span class="math inline">\(Shell\)</span> como por ejemplo el ‘&gt;’) o una <em>expresión regular</em>, según la sintaxis:</p>
 <pre>
@@ -2602,15 +2626,15 @@ SYNOPSIS
 <p>Veremos el uso de <a href="#expresiones-regulares---una-breve-introducción"><strong>expresiones regulares</strong></a> posteriormente, cuando les presente <span class="math inline">\(awk\)</span>.</p>
 <p><span class="math inline">\(grep\)</span> es una herramienta sumamente poderosa, con una gran cantidad de opciones. Listo abajo algunas de las más usadas, agrupadas por el tipo de control que ejercen.</p>
 <p>Recomiendo revisar el manual con <span class="math inline">\(man\ grep\)</span> para que vayas ampliando tu conocimiento de las mismas.</p>
-<div id="grep---control-de-sintaxis-del-patrón" class="section level4">
-<h4><span class="header-section-number">10.1.1.1</span> <span class="math inline">\(grep\)</span> - control de sintaxis del patrón</h4>
+<div id="grep---control-de-sintaxis-del-patrón" class="section level3">
+<h3><span class="header-section-number">10.2.1</span> <span class="math inline">\(grep\)</span> - control de sintaxis del patrón</h3>
 <ul>
 <li>-E hace uso de expresiones regulares extendidas <code>grep -E ‘^XXX|YYY|zzz$’ FILE</code></li>
 <li>-P hace uso de expresiones regulares compatiblesc on <em>Perl</em> (PCREs).</li>
 </ul>
 </div>
-<div id="grep---control-del-modo-de-los-apareamientos-matching-control" class="section level4">
-<h4><span class="header-section-number">10.1.1.2</span> <span class="math inline">\(grep\)</span> - control del modo de los apareamientos (<em>matching control</em>)</h4>
+<div id="grep---control-del-modo-de-los-apareamientos-matching-control" class="section level3">
+<h3><span class="header-section-number">10.2.2</span> <span class="math inline">\(grep\)</span> - control del modo de los apareamientos (<em>matching control</em>)</h3>
 <ul>
 <li>-f FILE obtiene los patrones (uno por línea) del archivo FILE</li>
 <li>-i ignora mayúsculas y minúsculas</li>
@@ -2618,39 +2642,39 @@ SYNOPSIS
 <li>-w usa el ‘patrón’ como palabra completa</li>
 </ul>
 </div>
-<div id="grep---control-de-la-salida" class="section level4">
-<h4><span class="header-section-number">10.1.1.3</span> <span class="math inline">\(grep\)</span> - control de la salida</h4>
+<div id="grep---control-de-la-salida" class="section level3">
+<h3><span class="header-section-number">10.2.3</span> <span class="math inline">\(grep\)</span> - control de la salida</h3>
 <ul>
 <li>-c cuenta el número de líneas que contienen ‘patrón’ en vez de imprimir las líneas</li>
 <li>-l imprime los nombres de archivo que contienen ‘patrón’, no sus líneas</li>
 </ul>
 </div>
-<div id="grep---control-del-contexto-de-la-línea-que-aparea-con-el-patrón-context-line-control" class="section level4">
-<h4><span class="header-section-number">10.1.1.4</span> <span class="math inline">\(grep\)</span> - control del contexto de la línea que aparea con el patrón (<em>Context Line Control</em>)</h4>
+<div id="grep---control-del-contexto-de-la-línea-que-aparea-con-el-patrón-context-line-control" class="section level3">
+<h3><span class="header-section-number">10.2.4</span> <span class="math inline">\(grep\)</span> - control del contexto de la línea que aparea con el patrón (<em>Context Line Control</em>)</h3>
 <ul>
 <li>-A NUM imprime también las NUM líneas que siguen (after) al <em>match</em></li>
 <li>-B NUM imprime también las NUM líneas que anteceden (before) al <em>match</em></li>
 </ul>
 </div>
 </div>
-<div id="cut-corta-las-líneas-por-delimitadores-de-campo--d-imprimiendo-sólo-los-campos--f-deseados" class="section level3">
-<h3><span class="header-section-number">10.1.2</span> <span class="math inline">\(cut\)</span> corta las líneas por delimitadores de campo (-d) imprimiendo sólo los campos (-f) deseados</h3>
+<div id="cut-corta-las-líneas-por-delimitadores-de-campo--d-imprimiendo-sólo-los-campos--f-deseados" class="section level2">
+<h2><span class="header-section-number">10.3</span> <span class="math inline">\(cut\)</span> corta las líneas por delimitadores de campo (-d) imprimiendo sólo los campos (-f) deseados</h2>
 <p>Si trabajamos con tablas, después de extraer las líneas que no interesan usando <span class="math inline">\(grep\)</span>, frecuentemente querremos concentrarnos en algunos campos de la tabla. Para ello la herramienta ideal es <span class="math inline">\(cut\)</span>, que corta campos de líneas de texto/tablas por elimitadores de campo específicos (TAB por defecto), extrayendo los campos indicados (-f), como muestra el siguiente ejemplo genérico</p>
 <p><code>grep ‘patrón’ ARCHIVO.tsv | cut -f 1,3-5</code></p>
-<div id="opciones-de-cut" class="section level4">
-<h4><span class="header-section-number">10.1.2.1</span> Opciones de <span class="math inline">\(cut\)</span></h4>
+<div id="opciones-de-cut" class="section level3">
+<h3><span class="header-section-number">10.3.1</span> Opciones de <span class="math inline">\(cut\)</span></h3>
 <ul>
 <li>-d DELIMITADOR_DE_CAMPO, que por defeto es el tabulador (<TAB>). Para cambiarlo a un espacio usamos <code>cut -d’ ’</code></li>
 <li>-f NUM,NUM-NUM indica los números de campo a extraer, separados por comas (1,3) o indicando rangos de campos (3-5)</li>
 </ul>
 </div>
 </div>
-<div id="sort-ordena-las-salidas-atendiendo-a-diversos-criterios" class="section level3">
-<h3><span class="header-section-number">10.1.3</span> <strong><span class="math inline">\(sort\)</span></strong> ordena las salidas atendiendo a diversos criterios</h3>
+<div id="sort-ordena-las-salidas-atendiendo-a-diversos-criterios" class="section level2">
+<h2><span class="header-section-number">10.4</span> <strong><span class="math inline">\(sort\)</span></strong> ordena las salidas atendiendo a diversos criterios</h2>
 <p>Una vez seleccionadas las filas del archivo con <span class="math inline">\(grep\)</span> y corados los campos de interés con <span class="math inline">\(cut\)</span>, frecuentemente querremos usar <span class="math inline">\(sort\)</span> para ordenar la salida atendiendo a algún criterio.</p>
 <p><span class="math inline">\(sort\)</span> también tiene muchas opciones. Listo abajo sólo algunas de las más usadas. Debes revisar el manual con <span class="math inline">\(man\ sort\)</span> para que vayas ampliando tu conocimiento de las mismas.</p>
-<div id="opciones-frecuentemente-usadas-de-sort" class="section level4">
-<h4><span class="header-section-number">10.1.3.1</span> Opciones frecuentemente usadas de <span class="math inline">\(sort\)</span></h4>
+<div id="opciones-frecuentemente-usadas-de-sort" class="section level3">
+<h3><span class="header-section-number">10.4.1</span> Opciones frecuentemente usadas de <span class="math inline">\(sort\)</span></h3>
 <ul>
 <li>-u da una salida no redundante, es decir, una sola instancia de elementos repetidos</li>
 <li>-n hace ordenamiento numérico</li>
@@ -2666,12 +2690,12 @@ SYNOPSIS
 </ul>
 </div>
 </div>
-<div id="wc-cuenta-líneas-palabras-y-caracteres" class="section level3">
-<h3><span class="header-section-number">10.1.4</span> <strong><span class="math inline">\(wc\)</span></strong> cuenta líneas, palabras y caracteres</h3>
+<div id="wc-cuenta-líneas-palabras-y-caracteres" class="section level2">
+<h2><span class="header-section-number">10.5</span> <strong><span class="math inline">\(wc\)</span></strong> cuenta líneas, palabras y caracteres</h2>
 <p><span class="math inline">\(wc\)</span> es un comando muy sencillo que cuenta líneas, palabras y caracteres de un archivo o del <STDIN> que recibió. Tiene sólo tres opciones, para imprimir sólo alguna de esta información.</p>
 <p>El comando <span class="math inline">\(wcq\)</span> suele ir al final de un <em>pipeline</em> para generar un resumen numérico.</p>
-<div id="opciones-de-wc" class="section level4">
-<h4><span class="header-section-number">10.1.4.1</span> Opciones de <span class="math inline">\(wc\)</span></h4>
+<div id="opciones-de-wc" class="section level3">
+<h3><span class="header-section-number">10.5.1</span> Opciones de <span class="math inline">\(wc\)</span></h3>
 <ul>
 <li>-l cuenta líneas</li>
 <li>-w cuena palabras</li>
@@ -2679,16 +2703,16 @@ SYNOPSIS
 </ul>
 </div>
 </div>
-<div id="uniq---reporta-u-omite-líneas-repetidas" class="section level3">
-<h3><span class="header-section-number">10.1.5</span> <strong><span class="math inline">\(uniq\)</span></strong> - reporta u omite líneas repetidas</h3>
+<div id="uniq---reporta-u-omite-líneas-repetidas" class="section level2">
+<h2><span class="header-section-number">10.6</span> <strong><span class="math inline">\(uniq\)</span></strong> - reporta u omite líneas repetidas</h2>
 <pre>
 SYNOPSIS
        uniq [OPTION]... [INPUT [OUTPUT]]
 </pre>
 <p><span class="math inline">\(uniq\)</span> filtra líneas adyacentes iguales en INPUT (o <STDIN>), escribiendo a OUTPUT (o <STDOUT>).</p>
 <p>Por ello, para usar <span class="math inline">\(uniq\)</span> efectivamente, necesitamos que <span class="math inline">\(sort\)</span> ordene previamente las entradas.</p>
-<div id="opciones-de-uniq" class="section level4">
-<h4><span class="header-section-number">10.1.5.1</span> Opciones de <span class="math inline">\(uniq\)</span></h4>
+<div id="opciones-de-uniq" class="section level3">
+<h3><span class="header-section-number">10.6.1</span> Opciones de <span class="math inline">\(uniq\)</span></h3>
 <p><span class="math inline">\(uniq\)</span> tiene también una gama de opciones que controlan cómo contar las instancias, pero la opción <span class="math inline">\(-c\)</span> es posiblemente la más usada en <em>pipelines</em>, donde se usa al final para generar estadísticas de resumen.</p>
 <ul>
 <li>-c cuenta las instancias únicas, añadiendo la cuenta al inicio de las líneas repetidas</li>
@@ -2700,10 +2724,9 @@ SYNOPSIS
 </ul>
 </div>
 </div>
-</div>
-<div id="ejemplos-de-herramientas-de-filtrado-de-texto-cut-grep-sort-uniq-wc-y-en-acción" class="section level2">
-<h2><span class="header-section-number">10.2</span> Ejemplos de herramientas de filtrado de texto: <b>cut</b>, <b>grep</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> y <b>|</b> en acción</h2>
-<p>Veamos ahora los comandos más usados en tuberías de filtrado de texto en acción:</p>
+<div id="ejemplos-de-herramientas-de-filtrado-de-texto-pipelines-con-grep-cut-sort-uniq-wc-en-acción" class="section level2">
+<h2><span class="header-section-number">10.7</span> Ejemplos de herramientas de filtrado de texto: <em>pipelines</em> con <b>grep</b>, <b>cut</b>, <b>sort</b>, <b>uniq</b>, <b>wc</b> en acción</h2>
+<p>Veamos ahora los comandos más usados en tuberías de filtrado de texto en acción, haciendo uso de sólo algunas de las opciones más frecuentes listados en la sección anterior.</p>
 <ul>
 <li>¿cuántas líneas tiene el archivo assembly_summary.txt.gz?</li>
 </ul>
@@ -2776,7 +2799,7 @@ zcat assembly_summary.txt.gz | grep -v &quot;^#&quot; | cut -f8 | sort | uniq -c
 ##    2173 Salmonella enterica subsp. enterica serovar Typhi
 ##    1792 Clostridioides difficile</code></pre>
 <ul>
-<li>¿Cuántos genomas completos hay del género Acinetobacter?</li>
+<li>¿Cuántos genomas completos hay del género <em>Acinetobacter</em>?</li>
 </ul>
 <pre class="bash"><code># ¿Cuántos genomas completos hay del género Acinetobacter?
 zcat assembly_summary.txt.gz | grep Acinetobacter | grep Complete | wc -l
@@ -2791,7 +2814,7 @@ zgrep acinetobacter assembly_summary.txt.gz | grep Complete | wc -l # no encuent
 zgrep -i acinetobacter assembly_summary.txt.gz | grep Complete | wc -l</code></pre>
 <pre><code>## 220</code></pre>
 <ul>
-<li>filtra y cuenta las lineas que contienen Acinetobacter o Stenotrophomonas</li>
+<li>filtra y cuenta las lineas que contienen <em>Acinetobacter</em> o <em>Stenotrophomonas</em></li>
 </ul>
 <pre class="bash"><code># filtra y cuenta las lineas que contienen Acinetobacter o Stenotrophomonas
 zgrep -E &#39;Acinetobacter|Stenotrophomonas&#39; assembly_summary.txt.gz | wc -l</code></pre>
@@ -4032,9 +4055,9 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1426334 nov  6 21:15 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1428211 nov  6 21:29 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  188859 nov  6 21:16 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  188986 nov  6 21:30 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  306038 oct 31 19:08 working_with_linux_commands.tex
 ## total size of working_with_linux_commands.* files is: 1.89 Mb</code></pre>
 <ul>
@@ -5516,7 +5539,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  6 21:16 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  6 21:31 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -5625,14 +5648,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  6 21:16 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  6 21:16 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  6 21:16 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  6 21:16 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  6 21:16 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  6 21:16 recA_B_yuanmingense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  6 21:16 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  6 21:16 recA_B_liaoningense.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  6 21:31 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  6 21:31 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  6 21:31 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  6 21:31 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  6 21:31 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  6 21:31 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  6 21:31 recA_B_yuanmingense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  6 21:31 recA_B_sp..fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
