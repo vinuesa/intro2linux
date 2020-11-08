@@ -11,7 +11,7 @@
 
 <meta name="author" content="Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; http://www.ccg.unan.mx/~vinuesa; @pvinmex" />
 
-<meta name="date" content="2020-11-06" />
+<meta name="date" content="2020-11-07" />
 
 <title>Tutorial de introducción al biocómputo en sistemas GNU/Linux</title>
 
@@ -413,7 +413,7 @@ summary {
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a>; <span class="citation">@pvinmex</span></h4>
-<h4 class="date">2020-11-06</h4>
+<h4 class="date">2020-11-07</h4>
 
 </div>
 
@@ -614,34 +614,28 @@ summary {
 <li><a href="#solución-a-la-práctica-y-un-ejercicio-adicional"><span class="toc-section-number">12.3</span> Solución a la práctica y un ejercicio adicional</a><ul>
 <li><a href="#edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-1"><span class="toc-section-number">12.3.1</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</a></li>
 </ul></li>
+<li><a href="#reto-de-programación---ejercicio-de-parseo-de-archivos-fasta"><span class="toc-section-number">12.4</span> Reto de programación - ejercicio de parseo de archivos FASTA</a></li>
 </ul></li>
-<li><a href="#inicios-de-programación-en-bash"><span class="toc-section-number">13</span> Inicios de programación en <span class="math inline">\(Bash\)</span></a><ul>
+<li><a href="#fundamentos-de-programación-en-bash"><span class="toc-section-number">13</span> Fundamentos de programación en <span class="math inline">\(Bash\)</span></a><ul>
 <li><a href="#asignación-y-uso-de-variables"><span class="toc-section-number">13.1</span> Asignación y uso de <strong>variables</strong></a></li>
-<li><a href="#dónde-debo-guardar-mis-scripts-para-que-sean-visibles-desde-cualquier-directorio-del-sitema"><span class="toc-section-number">13.2</span> Dónde debo guardar mis scripts para que sean visibles desde cualquier directorio del sitema</a><ul>
-<li><a href="#agregando-directorios-a-la-variable-de-ambiente-path"><span class="toc-section-number">13.2.1</span> Agregando directorios a la variable de ambiente <b>PATH</b></a></li>
+<li><a href="#captura-en-una-varialbe-de-la-salida-de-un-comando-con-varcomando"><span class="toc-section-number">13.2</span> Captura en una varialbe de la salida de un comando con <b>var=$(comando)</b></a></li>
+<li><a href="#modificación-de-variables-y-operaciones-con-ellas"><span class="toc-section-number">13.3</span> Modificación de variables y operaciones con ellas</a></li>
+<li><a href="#condicionales"><span class="toc-section-number">13.4</span> <strong>Condicionales</strong></a><ul>
+<li><a href="#comparación-de-íntegros-en-condicionales"><span class="toc-section-number">13.4.1</span> Comparación de íntegros en condicionales</a></li>
+<li><a href="#comparación-de-cadenas-de-caracteres-en-condicionales"><span class="toc-section-number">13.4.2</span> Comparación de cadenas de caracteres en condicionales</a></li>
+<li><a href="#comprobación-de-la-existencia-de-un-archivo-de-tamaño-0-bytes"><span class="toc-section-number">13.4.3</span> Comprobación de la existencia de un archivo de tamaño &gt; 0 bytes</a></li>
+<li><a href="#la-versión-corta-de-test-condición-comando1-comando2"><span class="toc-section-number">13.4.4</span> La versión corta de test <strong>[ condición ] &amp;&amp; comando1 &amp;&amp; comando2</strong> …</a></li>
+<li><a href="#versión-moderna-de-test-para-evaluar-expresiones-expresión-o-expresiones-regulares-var-regexp"><span class="toc-section-number">13.4.5</span> Versión moderna de <span class="math inline">\(test\)</span> para evaluar expresiones <strong>[[ $(expresión) ]]</strong> o expresiones regulares <strong>[[ $var =~ regexp ]]</strong></a></li>
+<li><a href="#if-elif-else-con-la-versión-moderna-de-test-para-evaluar-expresiones-regulares-var-regexp"><span class="toc-section-number">13.4.6</span> <strong>if; elif; else</strong> con la versión moderna de test para evaluar expresiones regulares <strong>[[ “$var” =~ regexp ]]</strong></a></li>
 </ul></li>
-<li><a href="#variables-de-ambiente---printenv"><span class="toc-section-number">13.3</span> Variables de ambiente - <strong><span class="math inline">\(printenv\)</span></strong></a><ul>
-<li><a href="#archivos-de-configuración-.bash_profile-y-.bashrc"><span class="toc-section-number">13.3.1</span> Archivos de configuración <strong>.bash_profile</strong> y <strong>.bashrc</strong></a></li>
-<li><a href="#cuál-es-el-binario-o-script-que-estoy-usando---which"><span class="toc-section-number">13.3.2</span> ¿Cuál es el binario o script que estoy usando? - <strong>which</strong></a></li>
+<li><a href="#bucles-for"><span class="toc-section-number">13.5</span> <strong>Bucles for</strong></a><ul>
+<li><a href="#sintaxis-y-ejemplo-de-bucle-for-en-una-línea"><span class="toc-section-number">13.5.1</span> Sintaxis y ejemplo de bucle for en una línea</a></li>
+<li><a href="#sintaxis-y-ejemplo-de-bucle-for-en-múltiples-líneas-con-indentación"><span class="toc-section-number">13.5.2</span> Sintaxis y ejemplo de bucle for en múltiples líneas con indentación</a></li>
+<li><a href="#generación-de-archivos-fasta-especie-específicos-combinando-bucle-for-con-herramientas-de-filtrado-y-awk-script"><span class="toc-section-number">13.5.3</span> Generación de archivos FASTA especie-específicos combinando bucle <span class="math inline">\(for\)</span> con herramientas de filtrado y <span class="math inline">\(awk\)</span> script</a></li>
 </ul></li>
-<li><a href="#captura-en-una-varialbe-de-la-salida-de-un-comando-con-varcomando"><span class="toc-section-number">13.4</span> Captura en una varialbe de la salida de un comando con <b>var=$(comando)</b></a></li>
-<li><a href="#modificación-de-variables-y-operaciones-con-ellas"><span class="toc-section-number">13.5</span> Modificación de variables y operaciones con ellas</a></li>
-<li><a href="#condicionales"><span class="toc-section-number">13.6</span> <strong>Condicionales</strong></a><ul>
-<li><a href="#comparación-de-íntegros-en-condicionales"><span class="toc-section-number">13.6.1</span> Comparación de íntegros en condicionales</a></li>
-<li><a href="#comparación-de-cadenas-de-caracteres-en-condicionales"><span class="toc-section-number">13.6.2</span> Comparación de cadenas de caracteres en condicionales</a></li>
-<li><a href="#comprobación-de-la-existencia-de-un-archivo-de-tamaño-0-bytes"><span class="toc-section-number">13.6.3</span> Comprobación de la existencia de un archivo de tamaño &gt; 0 bytes</a></li>
-<li><a href="#la-versión-corta-de-test-condición-comando1-comando2"><span class="toc-section-number">13.6.4</span> La versión corta de test <strong>[ condición ] &amp;&amp; comando1 &amp;&amp; comando2</strong> …</a></li>
-<li><a href="#if-elif-else"><span class="toc-section-number">13.6.5</span> <strong>if; elif; else</strong></a></li>
-</ul></li>
-<li><a href="#bucles-for"><span class="toc-section-number">13.7</span> <strong>Bucles for</strong></a><ul>
-<li><a href="#sintaxis-y-ejemplo-de-bucle-for-en-una-línea"><span class="toc-section-number">13.7.1</span> Sintaxis y ejemplo de bucle for en una línea</a></li>
-<li><a href="#sintaxis-y-ejemplo-de-bucle-for-en-múltiples-líneas-con-indentación"><span class="toc-section-number">13.7.2</span> Sintaxis y ejemplo de bucle for en múltiples líneas con indentación</a></li>
-<li><a href="#generación-de-archivos-fasta-especie-específicos-combinando-bucle-for-con-herramientas-de-filtrado-y-awk-script"><span class="toc-section-number">13.7.3</span> Generación de archivos FASTA especie-específicos combinando bucle <span class="math inline">\(for\)</span> con herramientas de filtrado y <span class="math inline">\(awk\)</span> script</a></li>
-</ul></li>
-<li><a href="#reto-de-programación---ejercicio-de-parseo-de-archivos-fasta"><span class="toc-section-number">13.8</span> Reto de programación - ejercicio de parseo de archivos FASTA</a><ul>
-<li><a href="#inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-1"><span class="toc-section-number">13.8.1</span> Inspección y estadísticas básicas de las secuencias descargadas</a></li>
-<li><a href="#edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-2"><span class="toc-section-number">13.8.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</a></li>
-<li><a href="#generación-de-archivos-especie-específicos-de-secuencias-rpob"><span class="toc-section-number">13.8.3</span> Generación de archivos especie específicos de secuencias <em>rpoB</em></a></li>
+<li><a href="#bucles-while"><span class="toc-section-number">13.6</span> <strong>Bucles <span class="math inline">\(while\)</span></strong></a><ul>
+<li><a href="#contador-en-bucle-while-con-condicional"><span class="toc-section-number">13.6.1</span> Contador en bucle <span class="math inline">\(while\)</span> con condicional</a></li>
+<li><a href="#bucle-while-leyendo-de-un-archivo-doble-condicional-para-evaluar-dos-expresiones-regulares-y-builtin-let-para-incrementar-contador"><span class="toc-section-number">13.6.2</span> Bucle <span class="math inline">\(while\)</span> leyendo de un archivo, doble condicional para evaluar dos expresiones regulares y builtin <strong>let</strong> para incrementar contador</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#bash-scripting---siguientes-pasos"><span class="toc-section-number">14</span> <strong><span class="math inline">\(Bash\)</span> scripting</strong> - siguientes pasos</a><ul>
@@ -649,6 +643,13 @@ summary {
 <li><a href="#funciones-y-argumentos-posicionales-en-bash---el-script-find_dir"><span class="toc-section-number">14.2</span> <strong>Funciones</strong> y <strong>argumentos posicionales</strong> en <span class="math inline">\(Bash\)</span> - el script <em>find_dir</em></a></li>
 <li><a href="#scripts-que-reciben-argumentosparámetros-posicionales-con-interfaz-de-usario-simple"><span class="toc-section-number">14.3</span> Scripts que reciben argumentos|parámetros posicionales con interfaz de usario simple</a></li>
 <li><a href="#scripts-con-interfaz-de-usuario-paso-de-opciones-y-su-parseo-con-getopts"><span class="toc-section-number">14.4</span> Scripts con interfaz de usuario, paso de opciones y su parseo con <strong>getopts</strong></a></li>
+<li><a href="#dónde-debo-guardar-mis-scripts-para-que-sean-visibles-desde-cualquier-directorio-del-sitema"><span class="toc-section-number">14.5</span> Dónde debo guardar mis scripts para que sean visibles desde cualquier directorio del sitema</a><ul>
+<li><a href="#agregando-directorios-a-la-variable-de-ambiente-path"><span class="toc-section-number">14.5.1</span> Agregando directorios a la variable de ambiente <b>PATH</b></a></li>
+</ul></li>
+<li><a href="#variables-de-ambiente---printenv"><span class="toc-section-number">14.6</span> Variables de ambiente - <strong><span class="math inline">\(printenv\)</span></strong></a><ul>
+<li><a href="#archivos-de-configuración-.bash_profile-y-.bashrc"><span class="toc-section-number">14.6.1</span> Archivos de configuración <strong>.bash_profile</strong> y <strong>.bashrc</strong></a></li>
+<li><a href="#cuál-es-el-binario-o-script-que-estoy-usando---which"><span class="toc-section-number">14.6.2</span> ¿Cuál es el binario o script que estoy usando? - <strong>which</strong></a></li>
+</ul></li>
 </ul></li>
 <li><a href="#consideraciones-finales-y-referencias-recomendadas-para-continuar-aprendiendo-bash"><span class="toc-section-number">15</span> Consideraciones finales y referencias recomendadas para continuar aprendiendo Bash</a></li>
 </ul>
@@ -657,7 +658,7 @@ summary {
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
 <p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2020-11-06) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
+<p>Las versión actual (v.2020-11-07) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
@@ -818,7 +819,7 @@ tree -d -L 1 /
 ## ├── [01;34msnap[00m
 ## ├── [01;34msrv[00m
 ## ├── [01;34msys[00m
-## ├── [30;42mtmp[00m
+## ├── [01;34mtmp[00m
 ## ├── [01;34musr[00m
 ## └── [01;34mvar[00m
 ## 
@@ -848,12 +849,12 @@ ls | head</code></pre>
 ## blast-imager.pl
 ## clases_avance.txt
 ## count_genome_features_for_taxon.awk
-## data
-## dna_string.txt</code></pre>
+## count_genome_features_for_taxon_V2.awk
+## data</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 99672
-## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  6 21:29 .
+<pre><code>## total 99680
+## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  7 19:18 .
 ## drwxr-xr-x  3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -862,7 +863,8 @@ ls -al | head -20</code></pre>
 ## drwxrwxr-x  2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x  1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r--  1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## -rw-rw-r--  1 vinuesa vinuesa     3663 nov  2 18:22 count_genome_features_for_taxon.awk
+## -rw-rw-r--  1 vinuesa vinuesa     3663 nov  7 10:33 count_genome_features_for_taxon.awk
+## -rw-rw-r--  1 vinuesa vinuesa     3460 nov  7 11:26 count_genome_features_for_taxon_V2.awk
 ## drwxrwxr-x  2 vinuesa vinuesa     4096 oct 29 19:01 data
 ## -rw-rw-r--  1 vinuesa vinuesa       43 nov  4 19:20 dna_string.txt
 ## drwxr-xr-x  3 vinuesa vinuesa     4096 nov  5 09:40 docs
@@ -870,8 +872,7 @@ ls -al | head -20</code></pre>
 ## -rw-rw-r--  1 vinuesa vinuesa      415 oct 25 19:22 fasta_filtering_pipeline.cmd
 ## -rw-r--r--  1 vinuesa vinuesa   222602 sep 29 22:29 fetch_recA_bradys_vinuesa_nuccore_screenshot.png
 ## -rwxr-xr-x  1 vinuesa vinuesa     1298 nov  4 21:42 filter_fasta_sequences.awk
-## -rwxr-xr-x  1 vinuesa vinuesa     1238 nov  6 19:31 find_dir
-## -rw-rw-r--  1 vinuesa vinuesa      548 oct 31 23:19 get_sequences_from_list.awk</code></pre>
+## -rwxr-xr-x  1 vinuesa vinuesa     1238 nov  6 19:31 find_dir</code></pre>
 <div id="veamos-el-contenido-del-directorio-raíz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del <strong>directorio raíz /</strong></h4>
 <ul>
@@ -896,7 +897,7 @@ ls -al | head -20</code></pre>
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
 ## drwxr-xr-x   4 root root  4096 nov  4 08:57 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4580 nov  6 18:13 dev
+## drwxr-xr-x  21 root root  4580 nov  7 10:18 dev
 ## drwxr-xr-x 155 root root 12288 nov  6 18:17 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
@@ -1289,8 +1290,8 @@ cd /home/vinuesa/cursos/intro2linux/data</code></pre>
 <h4><span class="header-section-number">2.4.2.4</span> regresa al directorio en el que estabas justo antes con <b>cd -</b></h4>
 <pre class="bash"><code>cd -
 pwd</code></pre>
-<pre><code>## /home/vinuesa/cursos/intro2linux/participantes_Taller_CG_FC
-## /home/vinuesa/cursos/intro2linux/participantes_Taller_CG_FC</code></pre>
+<pre><code>## bash: line 0: cd: OLDPWD not set
+## /home/vinuesa/cursos/intro2linux</code></pre>
 </div>
 <div id="regresa-a-tu-home-desde-cualquier-punto-del-sistema-de-archivos-con-cd" class="section level4">
 <h4><span class="header-section-number">2.4.2.5</span> regresa a tu home desde cualquier punto del sistema de archivos con <b>cd</b></h4>
@@ -1313,8 +1314,8 @@ pwd</code></pre>
 </ul>
 <pre class="bash"><code>cd -
 pwd</code></pre>
-<pre><code>## /home/vinuesa/cursos/intro2linux/participantes_Taller_CG_FC
-## /home/vinuesa/cursos/intro2linux/participantes_Taller_CG_FC</code></pre>
+<pre><code>## bash: line 0: cd: OLDPWD not set
+## /home/vinuesa/cursos/intro2linux</code></pre>
 <ul>
 <li>sube al directorio home/ usando la ruta relativa</li>
 </ul>
@@ -1331,8 +1332,8 @@ pwd</code></pre>
 ## blast-imager.pl
 ## clases_avance.txt
 ## count_genome_features_for_taxon.awk
-## data
-## dna_string.txt</code></pre>
+## count_genome_features_for_taxon_V2.awk
+## data</code></pre>
 </div>
 </div>
 </div>
@@ -1432,7 +1433,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 <p>La mayoría de los programas ejecutables del sistema proveen un formato estandarizado de documentación que se despliega en la consola usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                                                                  User Commands                                                                 CUT(1)
+<pre><code>## CUT(1)                           User Commands                          CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -1445,7 +1446,8 @@ man cut | head -30</code></pre>
 ## 
 ##        With no FILE, or when FILE is -, read standard input.
 ## 
-##        Mandatory arguments to long options are mandatory for short options too.
+##        Mandatory  arguments  to  long  options are mandatory for short options
+##        too.
 ## 
 ##        -b, --bytes=LIST
 ##               select only these bytes
@@ -1457,11 +1459,10 @@ man cut | head -30</code></pre>
 ##               use DELIM instead of TAB for field delimiter
 ## 
 ##        -f, --fields=LIST
-##               select only these fields;  also print any line that contains no delimiter character, unless the -s option is specified
+##               select only these fields;  also print any line that contains  no
+##               delimiter character, unless the -s option is specified
 ## 
-##        -n     (ignored)
-## 
-##        --complement</code></pre>
+##        -n     (ignored)</code></pre>
 </div>
 <div id="ayuda-de-cada-comando-integrado-en-el-shell-help-shell_builtin-para-shell-builtins" class="section level3">
 <h3><span class="header-section-number">2.6.5</span> Ayuda de cada comando integrado en el Shell: <b>help shell_builtin</b> para <em>shell builtins</em></h3>
@@ -1531,20 +1532,20 @@ mkdir --help</code></pre>
 <pre class="bash"><code># encuentra comandos que tienen que ver con la palabra clave distribution
 apropos distribution</code></pre>
 <pre><code>## hmmsim (1)           - collect profile score distributions on random sequences
-## bdftopcf (1)         - convert X font from Bitmap Distribution Format to Portable Compiled Format
-## Bio::Tools::RandomDistFunctions (3pm) - A set of routines useful for generating random data in different distributions
+## bdftopcf (1)         - convert X font from Bitmap Distribution Format to Port...
+## Bio::Tools::RandomDistFunctions (3pm) - A set of routines useful for generati...
 ## CPAN::Meta (3perl)   - the distribution metadata for a CPAN dist
 ## CPAN::Meta::Converter (3perl) - Convert CPAN distribution metadata structures
-## CPAN::Meta::Feature (3perl) - an optional feature provided by a CPAN distribution
-## CPAN::Meta::Prereqs (3perl) - a set of distribution prerequisites by phase and type
+## CPAN::Meta::Feature (3perl) - an optional feature provided by a CPAN distribu...
+## CPAN::Meta::Prereqs (3perl) - a set of distribution prerequisites by phase an...
 ## CPAN::Meta::Spec (3perl) - specification for CPAN distribution metadata
 ## CPAN::Meta::Validator (3perl) - validate CPAN distribution metadata structures
 ## dpkg-vendor (1)      - queries information about distribution vendors
-## iptables-extensions (8) - list of extensions in the standard iptables distribution
+## iptables-extensions (8) - list of extensions in the standard iptables distrib...
 ## lsb_release (1)      - print distribution-specific information
 ## perlnewmod (1)       - preparing a new module for distribution
 ## perlutil (1)         - utilities packaged with the Perl distribution
-## pfscale (1)          - fit parameters of an extreme-value distribution to a profile score list</code></pre>
+## pfscale (1)          - fit parameters of an extreme-value distribution to a p...</code></pre>
 <ul>
 <li>veo que es lsb_release. Consultemos su <span class="math inline">\(--help\)</span></li>
 </ul>
@@ -1710,7 +1711,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 99644
+<pre><code>## total 99652
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-rw-r-- 1 vinuesa vinuesa      361 oct 29 22:15 awk.hash
@@ -1718,8 +1719,8 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 nov  6 21:31 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
-## -rw-rw-r-- 1 vinuesa vinuesa     3663 nov  2 18:22 count_genome_features_for_taxon.awk</code></pre>
+## lrwxrwxrwx 1 vinuesa vinuesa       78 nov  7 19:20 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## -rw-rw-r-- 1 vinuesa vinuesa     3663 nov  7 10:33 count_genome_features_for_taxon.awk</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
 </ul>
@@ -1960,7 +1961,7 @@ echo &amp;&amp; echo &quot;# &gt;&gt;&gt; con modificador global &lt;&lt;&lt;&qu
 echo $PATH | sed &#39;s/:/\n/g&#39; # con modificador global</code></pre>
 <pre><code>## # &gt;&gt;&gt; sin modificador global &lt;&lt;&lt;
 ## /home/vinuesa/bin
-## /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vinuesa/edirect:/home/vinuesa/soft_download/get_homologues-x86_64-20190805:/home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin:/home/vinuesa/soft_download/Fiji.app:/home/vinuesa/soft_download/circos/current/bin:/usr/local/genome/bin:/usr/lib/rstudio/bin/postback
+## /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/rstudio/bin/postback
 ## 
 ## # &gt;&gt;&gt; con modificador global &lt;&lt;&lt;
 ## /home/vinuesa/bin
@@ -1973,12 +1974,6 @@ echo $PATH | sed &#39;s/:/\n/g&#39; # con modificador global</code></pre>
 ## /usr/games
 ## /usr/local/games
 ## /snap/bin
-## /home/vinuesa/edirect
-## /home/vinuesa/soft_download/get_homologues-x86_64-20190805
-## /home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin
-## /home/vinuesa/soft_download/Fiji.app
-## /home/vinuesa/soft_download/circos/current/bin
-## /usr/local/genome/bin
 ## /usr/lib/rstudio/bin/postback</code></pre>
 <ul>
 <li>cambia espacios sencillos por guiones bajos</li>
@@ -2105,7 +2100,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  6 21:31 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  7 19:20 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2124,7 +2119,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  6 21:31 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  7 19:20 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2253,15 +2248,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  6 21:31 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  6 21:31 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  7 19:20 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  7 19:20 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  6 21:31 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  7 19:20 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2355,9 +2350,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  6 21:29 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  7 19:18 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  6 21:31 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  7 19:20 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2378,9 +2373,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  6 21:29 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  7 19:18 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov  6 21:31 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  7 19:20 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2390,10 +2385,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  6 21:29 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  7 19:18 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  6 21:29 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  7 19:18 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2403,11 +2398,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  6 21:29 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  7 19:18 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  6 21:29 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  7 19:18 recA_Byuanmingense.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-locate-y-find" class="section level1">
@@ -2431,31 +2426,31 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 <pre><code>## Filesystem      1K-blocks      Used  Available Use% Mounted on
 ## udev             16381352         0   16381352   0% /dev
 ## tmpfs             3281908      2000    3279908   1% /run
-## /dev/nvme0n1p3  465889936  18476116  423678168   5% /
-## tmpfs            16409528    102820   16306708   1% /dev/shm
+## /dev/nvme0n1p3  465889936  18491088  423663196   5% /
+## tmpfs            16409528     47440   16362088   1% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409528         0   16409528   0% /sys/fs/cgroup
-## /dev/loop2         166784    166784          0 100% /snap/gnome-3-28-1804/145
-## /dev/loop1          56704     56704          0 100% /snap/core18/1885
-## /dev/loop4         165376    165376          0 100% /snap/gnome-3-28-1804/128
-## /dev/loop3          63616     63616          0 100% /snap/gtk-common-themes/1506
-## /dev/loop5          64896     64896          0 100% /snap/standard-notes/22
 ## /dev/loop0          56704     56704          0 100% /snap/core18/1932
-## /dev/loop6          31744     31744          0 100% /snap/snapd/9607
+## /dev/loop1          56704     56704          0 100% /snap/core18/1885
+## /dev/loop2         165376    165376          0 100% /snap/gnome-3-28-1804/128
+## /dev/loop3         166784    166784          0 100% /snap/gnome-3-28-1804/145
+## /dev/loop4          63616     63616          0 100% /snap/gtk-common-themes/1506
+## /dev/loop5         261760    261760          0 100% /snap/gnome-3-34-1804/36
 ## /dev/nvme0n1p1    1994928      7984    1986944   1% /boot/efi
-## /dev/loop7         223232    223232          0 100% /snap/gnome-3-34-1804/60
-## /dev/sda1      1921802432 428103772 1396006604  24% /home
-## /dev/loop8          64896     64896          0 100% /snap/standard-notes/23
-## /dev/loop9          44288     44288          0 100% /snap/snap-store/415
-## /dev/loop10        261760    261760          0 100% /snap/gnome-3-34-1804/36
-## /dev/loop11         51968     51968          0 100% /snap/snap-store/481
-## /dev/loop12         31744     31744          0 100% /snap/snapd/9721
+## /dev/loop6         223232    223232          0 100% /snap/gnome-3-34-1804/60
+## /dev/loop7          44288     44288          0 100% /snap/snap-store/415
+## /dev/loop8          31744     31744          0 100% /snap/snapd/9721
+## /dev/loop9          51968     51968          0 100% /snap/snap-store/481
+## /dev/loop11         64896     64896          0 100% /snap/standard-notes/23
+## /dev/loop10         64896     64896          0 100% /snap/standard-notes/22
+## /dev/loop12         31744     31744          0 100% /snap/snapd/9607
+## /dev/sda1      1921802432 428110548 1395999828  24% /home
 ## tmpfs             3281904        20    3281884   1% /run/user/125
-## tmpfs             3281904        48    3281856   1% /run/user/1000</code></pre>
+## tmpfs             3281904        36    3281868   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465889936 18476116 423678168   5% /</code></pre>
+## /dev/nvme0n1p3 465889936 18491088 423663196   5% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></h3>
 <p>Como cualquier comando, le podemos pasar opciones para adecuar mejor la salida a nuestra necesidad.</p>
@@ -2486,28 +2481,28 @@ df -h /home</code></pre>
 <pre><code>## Filesystem     1M-blocks    Used Available Use% Mounted on
 ## udev              15998M      0M    15998M   0% /dev
 ## tmpfs              3205M      2M     3204M   1% /run
-## /dev/nvme0n1p3   454971M  18044M   413749M   5% /
-## tmpfs             16025M    101M    15925M   1% /dev/shm
+## /dev/nvme0n1p3   454971M  18058M   413734M   5% /
+## tmpfs             16025M     47M    15979M   1% /dev/shm
 ## tmpfs                 5M      1M        5M   1% /run/lock
 ## tmpfs             16025M      0M    16025M   0% /sys/fs/cgroup
-## /dev/loop2          163M    163M        0M 100% /snap/gnome-3-28-1804/145
-## /dev/loop1           56M     56M        0M 100% /snap/core18/1885
-## /dev/loop4          162M    162M        0M 100% /snap/gnome-3-28-1804/128
-## /dev/loop3           63M     63M        0M 100% /snap/gtk-common-themes/1506
-## /dev/loop5           64M     64M        0M 100% /snap/standard-notes/22
 ## /dev/loop0           56M     56M        0M 100% /snap/core18/1932
-## /dev/loop6           31M     31M        0M 100% /snap/snapd/9607
+## /dev/loop1           56M     56M        0M 100% /snap/core18/1885
+## /dev/loop2          162M    162M        0M 100% /snap/gnome-3-28-1804/128
+## /dev/loop3          163M    163M        0M 100% /snap/gnome-3-28-1804/145
+## /dev/loop4           63M     63M        0M 100% /snap/gtk-common-themes/1506
+## /dev/loop5          256M    256M        0M 100% /snap/gnome-3-34-1804/36
 ## /dev/nvme0n1p1     1949M      8M     1941M   1% /boot/efi
-## /dev/loop7          218M    218M        0M 100% /snap/gnome-3-34-1804/60
-## /dev/sda1       1876761M 418071M  1363288M  24% /home
-## /dev/loop8           64M     64M        0M 100% /snap/standard-notes/23
-## /dev/loop9           44M     44M        0M 100% /snap/snap-store/415
-## /dev/loop10         256M    256M        0M 100% /snap/gnome-3-34-1804/36
-## /dev/loop11          51M     51M        0M 100% /snap/snap-store/481
-## /dev/loop12          31M     31M        0M 100% /snap/snapd/9721
+## /dev/loop6          218M    218M        0M 100% /snap/gnome-3-34-1804/60
+## /dev/loop7           44M     44M        0M 100% /snap/snap-store/415
+## /dev/loop8           31M     31M        0M 100% /snap/snapd/9721
+## /dev/loop9           51M     51M        0M 100% /snap/snap-store/481
+## /dev/loop11          64M     64M        0M 100% /snap/standard-notes/23
+## /dev/loop10          64M     64M        0M 100% /snap/standard-notes/22
+## /dev/loop12          31M     31M        0M 100% /snap/snapd/9607
+## /dev/sda1       1876761M 418077M  1363282M  24% /home
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392600M 437477M  1836542M  20% -
+## total           2392600M 437445M  1836574M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2527,7 +2522,7 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 172304   .
+<pre><code>## 172988   .
 ## 169M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
@@ -3969,6 +3964,7 @@ ls -ld working_with* *.awk *.sh docs pics | awk &#39;{print $1, $NF}&#39; </code
 ## -rwxr-xr-x align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- bash_script_template_with_getopts.sh
 ## -rw-rw-r-- count_genome_features_for_taxon.awk
+## -rw-rw-r-- count_genome_features_for_taxon_V2.awk
 ## drwxr-xr-x docs
 ## -rwxr-xr-x filter_fasta_sequences.awk
 ## -rw-rw-r-- get_sequences_from_list.awk
@@ -4055,17 +4051,17 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1428211 nov  6 21:29 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1432739 nov  7 19:18 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  188986 nov  6 21:30 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  191460 nov  7 19:20 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  306038 oct 31 19:08 working_with_linux_commands.tex
-## total size of working_with_linux_commands.* files is: 1.89 Mb</code></pre>
+## total size of working_with_linux_commands.* files is: 1.90 Mb</code></pre>
 <ul>
 <li>comparen y entiendan la diferencia del comando anterior con el del siguiente:</li>
 </ul>
 <pre class="bash"><code>ls -l working_with_linux_commands.* | \
  awk &#39;{s+=$5}; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## total size of working_with_linux_commands.* files is: 1.89 Mb</code></pre>
+<pre><code>## total size of working_with_linux_commands.* files is: 1.90 Mb</code></pre>
 </div>
 <div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
 <h3><span class="header-section-number">11.5.7</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
@@ -5360,105 +5356,74 @@ sed &#39;s/ Bra/ [Bra/; s/|gb.*| /|/; s/Bradyrhizobium /B_/; s/genosp\. //; s/ r
 ## &gt;AY591542.1 [B_canariense_bv._genistearum_strain_BC-P5]
 ## &gt;AY591541.1 [B_canariense_bv._genistearum_strain_BC-C2]
 ## &gt;AY591540.1 [B_alpha_bv._genistearum_strain_BC-C1]</code></pre>
-<p>Excelente, ésto ha funcionado perfectamente. Ya pueden decir que dominan las herramientas de filtrado básicas y su combinación en pipelines - ¡¡¡enhorabuena!!!</p>
+<p>Excelente, ésto ha funcionado perfectamente. Ya pueden decir que dominan las herramientas de filtrado básicas y su combinación en <em>pipelines</em> - ¡¡¡enhorabuena!!!</p>
+<p>Para reforzar lo aprendido les dejo el siguiente ejercicio:</p>
+</div>
+</div>
+<div id="reto-de-programación---ejercicio-de-parseo-de-archivos-fasta" class="section level2">
+<h2><span class="header-section-number">12.4</span> Reto de programación - ejercicio de parseo de archivos FASTA</h2>
+<p>Como ejercicio, para repasar lo que hemos aprendido en esta sesión les propongo repetir el ejercicio de parseo de archivos FASTA pero con secuencias del gen <i>rpoB</i> de <i>Bradyrhizobium</i></p>
+<ol style="list-style-type: decimal">
+<li>Descargar las secuencias de NCBI usando el portal ENTREZ nucleotides con: ‘Bradyrhizobium[orgn] AND vinuesa[auth] AND rpoB[gene]’</li>
+<li>Renombra el archivo descargado a rpoB_Bradyrhizobium_vinuesa.fna</li>
+<li>¿Cuántas secuencias hay en el archivo rpoB_Bradyrhizobium_vinuesa.fna?</li>
+<li>Explora la cabecera y cola del archivo con <span class="math inline">\(head\)</span> y <span class="math inline">\(tail\)</span></li>
+<li>Despliega las 5 primeras lineas de cabeceras fasta usando <span class="math inline">\(grep\)</span> y <span class="math inline">\(head\)</span> para explorar su estructura en detalle</li>
+<li>Calcula el número de géneros que contiene el archivo FASTA</li>
+<li>Calcula el número de especies que contiene el archivo FASTA</li>
+<li>Imprime una lista ordenada de mayor a menor, del numero de especies que contiene el archivo FASTA</li>
+</ol>
 <p>Pasemos al siguiente nivel.</p>
 <hr />
 </div>
 </div>
-</div>
-<div id="inicios-de-programación-en-bash" class="section level1">
-<h1><span class="header-section-number">13</span> Inicios de programación en <span class="math inline">\(Bash\)</span></h1>
-<p>Vamos a aprender algunos de los elementos esenciales del lenguaje <span class="math inline">\(Bash\)</span>, el más poderoso y usado para la <b>programación Shell</b></p>
+<div id="fundamentos-de-programación-en-bash" class="section level1">
+<h1><span class="header-section-number">13</span> Fundamentos de programación en <span class="math inline">\(Bash\)</span></h1>
+<p>Revisaremos en esta sección algunos de los elementos sintácticos básicos para poder programar en <span class="math inline">\(Bash\)</span>, como son la asignación y uso de <em>variables</em>, <em>control de flujo</em> de un programa mediante <em>condicionales</em> y <em>bucles</em>. Estos son sólo algunos de los elementos esenciales del lenguaje <span class="math inline">\(Bash\)</span>, el más poderoso y usado para la <b>programación Shell</b>.</p>
+<p>Revisa la <a href="https://www.gnu.org/software/bash/manual/bash.html">manual GNU de referencia de Bash</a> para cualquier aspecto adicional que necesites consultar.</p>
 <div id="asignación-y-uso-de-variables" class="section level2">
 <h2><span class="header-section-number">13.1</span> Asignación y uso de <strong>variables</strong></h2>
+<p>Las variables permiten guardar un valor bajo una etiqueta o nombre para su uso posterior en un programa. Recuerden que el <span class="math inline">\(Shell\)</span> define una cantidad importante de <em>variables de ambiente</em> que revisaremos en una siguiente sección.</p>
 <ul>
 <li>La sintaxis básica de asignación es:</li>
 </ul>
 <pre><code>varName=VALUE</code></pre>
+<p>Noten que <strong>no puede haber un espacio entre el nombre de la variable, el ‘=’ y el valor</strong>.</p>
 <ul>
-<li>para recuperar el valor de una varible, le añadimos el prefijo <b>$</b>. Para imprimir el valor asignado a la variable, usamos <b>echo $varName</b></li>
+<li>para recuperar el valor de una variable, le añadimos el prefijo <b>$</b>. Para imprimir el valor asignado a la variable, usamos <b>echo $varName</b></li>
 </ul>
-<pre class="bash"><code>archivo_de_comandos_linux=linux_commands.tab
-echo &quot;$archivo_de_comandos_linux&quot;</code></pre>
-<pre><code>## linux_commands.tab</code></pre>
-</div>
-<div id="dónde-debo-guardar-mis-scripts-para-que-sean-visibles-desde-cualquier-directorio-del-sitema" class="section level2">
-<h2><span class="header-section-number">13.2</span> Dónde debo guardar mis scripts para que sean visibles desde cualquier directorio del sitema</h2>
-<p>Como explicábamos en la <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción</a>, el <span class="math inline">\(Shell\)</span> busca comandos en los directorios especificados en la variable de ambiente <strong>PATH</strong>. Los directorios van separados por <span class="math inline">\(:\)</span> y se leen en ese orden.</p>
-<pre class="bash"><code>echo &quot;PATH = $PATH&quot;</code></pre>
-<pre><code>## PATH = /home/vinuesa/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vinuesa/edirect:/home/vinuesa/soft_download/get_homologues-x86_64-20190805:/home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin:/home/vinuesa/soft_download/Fiji.app:/home/vinuesa/soft_download/circos/current/bin:/usr/local/genome/bin:/usr/lib/rstudio/bin/postback</code></pre>
-<p>Recuerda, es fácile generar una lista de estos directorios más legible con un comando como ésta</p>
-<pre class="bash"><code>echo &quot;$PATH&quot; | sed &#39;s/:/\n/g&#39;</code></pre>
-<pre><code>## /home/vinuesa/bin
-## /usr/local/sbin
-## /usr/local/bin
-## /usr/sbin
-## /usr/bin
-## /sbin
-## /bin
-## /usr/games
-## /usr/local/games
-## /snap/bin
-## /home/vinuesa/edirect
-## /home/vinuesa/soft_download/get_homologues-x86_64-20190805
-## /home/vinuesa/soft_download/sratoolkit.2.10.5-ubuntu64/bin
-## /home/vinuesa/soft_download/Fiji.app
-## /home/vinuesa/soft_download/circos/current/bin
-## /usr/local/genome/bin
-## /usr/lib/rstudio/bin/postback</code></pre>
-<div id="agregando-directorios-a-la-variable-de-ambiente-path" class="section level3">
-<h3><span class="header-section-number">13.2.1</span> Agregando directorios a la variable de ambiente <b>PATH</b></h3>
-<p>A veces necesitamos agregar un nuevo direcotrio a la variable de ambiente <strong>PATH</strong></p>
+<pre class="bash"><code>usuario=&quot;Juan&quot;
+echo &quot;el usuario guardado en la variable &#39;usuario&#39; es: $usuario&quot;</code></pre>
+<pre><code>## el usuario guardado en la variable &#39;usuario&#39; es: Juan</code></pre>
 <ul>
-<li>Añade el directorio $HOME/bin al final de la lista de directorios de <strong>PATH</strong></li>
+<li>para <strong>concatenar los valores</strong> de dos variables, intercalando otros caracteres, debemos proteger el nombre de la variable entre llave, usando la sintaxis <code>${var}</code></li>
 </ul>
-<pre><code>PATH=$PATH:$HOME/bin</code></pre>
-<p>Nota: en versiones recientes de <span class="math inline">\(Ubuntu\)</span> y otras distribuciones de Linux, el directorio <em><span class="math inline">\(HOME/bin* se exporta automáticamente. Revisa tu archivo *\)</span>HOME/.bashrc</em>. Ya que estamos con archivos de configuración, profundicemos un poco más en este tópico.</p>
-</div>
-</div>
-<div id="variables-de-ambiente---printenv" class="section level2">
-<h2><span class="header-section-number">13.3</span> Variables de ambiente - <strong><span class="math inline">\(printenv\)</span></strong></h2>
-<p>Al iniciar una <b>sesión local o remota</b>, el <span class="math inline">\(SHELL\)</span> carga en memoria una serie de <span class="math inline">\(VARIABLES\_DE\_AMBIENTE\)</span> que son parte de la configuración del sistema.</p>
-<p>Ya hemos visto algunas antes, pero aquí les muestro algunas muy importantes:</p>
-<pre class="bash"><code>echo &quot;HOME = $HOME&quot;
-echo &quot;USER = $USER&quot;
-echo &quot;SHELL = $SHELL&quot;</code></pre>
-<pre><code>## HOME = /home/vinuesa
-## USER = vinuesa
-## SHELL = /bin/bash</code></pre>
-<p>Pueden ver todas las variables de su ambiente con el comando <span class="math inline">\(printenv\)</span></p>
-<p><code>printenv | sort | less</code></p>
-<div id="archivos-de-configuración-.bash_profile-y-.bashrc" class="section level3">
-<h3><span class="header-section-number">13.3.1</span> Archivos de configuración <strong>.bash_profile</strong> y <strong>.bashrc</strong></h3>
-<p>Si quieres agregar un directorio permanentemente a <span class="math inline">\(PATH\)</span>, puedes añadirlo al archivo de configuración <span class="math inline">\(.bash\_profile\)</span> de tu <span class="math inline">\(HOME\)</span> en un servidor remoto o al <span class="math inline">\(.bashrc\)</span> de tu <span class="math inline">\(HOME\)</span> en una máquina local y exportarlo.</p>
-<pre><code>PATH=$PATH:$HOME/bin
+<pre class="bash"><code>nombre=&quot;Juan&quot;
+apellido=&quot;Aguirre&quot;
+n_a=&quot;${nombre}_${apellido}&quot;
+echo &quot;Nombe y Apellido: $n_a&quot;</code></pre>
+<pre><code>## Nombe y Apellido: Juan_Aguirre</code></pre>
+<ul>
+<li>los nombres de las variables no pueden empezar con un dígito, ni contener caracteres más que los alfanuméricos estándar del idioma inglés: [a-zA-Z0-9_]</li>
+</ul>
+<pre><code># Nombres válidos de variables
+user_name=$USER
+user1=&quot;María López&quot;  &quot; # noten que los valores a asignar que contengan espacios deben escaoarse con comillas
 
-export PATH</code></pre>
-<p>Cualquier <span class="math inline">\(script\)</span> o programa que pongas ahí con permisos de ejecución (<code>chmod 755 script</code>) será ejecutable desde cualquier directorio del sistema.</p>
-</div>
-<div id="cuál-es-el-binario-o-script-que-estoy-usando---which" class="section level3">
-<h3><span class="header-section-number">13.3.2</span> ¿Cuál es el binario o script que estoy usando? - <strong>which</strong></h3>
-<p>A veces tenemos un <span class="math inline">\(script\)</span> o un binario (por ejemplo <span class="math inline">\(blastn\)</span>) instalado en varios directorios. Esto puede ser intencional o inadvertidamente. El comando <span class="math inline">\(which\)</span> nos indica cual es el <span class="math inline">\(PATH\)</span> del comando que ve el <span class="math inline">\(Shell\)</span>, es decir, el primero en <span class="math inline">\(PATH\)</span></p>
-<pre class="bash"><code>which blastn
-which perl
-which trunc_seq.pl
-which transpose_pangenome_matrix.sh</code></pre>
-<pre><code>## /usr/local/bin/blastn
-## /usr/bin/perl
-## /home/vinuesa/bin/trunc_seq.pl
-## /home/vinuesa/bin/transpose_pangenome_matrix.sh</code></pre>
-</div>
+# Nombres INválidos de variables
+ubicación=CDMX
+1_argumento=1</code></pre>
 </div>
 <div id="captura-en-una-varialbe-de-la-salida-de-un-comando-con-varcomando" class="section level2">
-<h2><span class="header-section-number">13.4</span> Captura en una varialbe de la salida de un comando con <b>var=$(comando)</b></h2>
+<h2><span class="header-section-number">13.2</span> Captura en una varialbe de la salida de un comando con <b>var=$(comando)</b></h2>
 <pre class="bash"><code>wkdir=$(pwd)
 dat=$(date | awk &#39;{print $3$2$6}&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in: $wkdir at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;nov06CST&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in: /home/vinuesa/cursos/intro2linux at &lt;alisio&gt; on &lt;nov07CST&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
-<h2><span class="header-section-number">13.5</span> Modificación de variables y operaciones con ellas</h2>
+<h2><span class="header-section-number">13.3</span> Modificación de variables y operaciones con ellas</h2>
 <pre class="bash"><code>wkdir=$(pwd)
 echo &quot;wkdir: $wkdir&quot;
 
@@ -5478,7 +5443,7 @@ echo &quot;basedir has ${#basedir} characters  # \${#basedir}&quot;
 ## basedir has 11 characters  # ${#basedir}</code></pre>
 </div>
 <div id="condicionales" class="section level2">
-<h2><span class="header-section-number">13.6</span> <strong>Condicionales</strong></h2>
+<h2><span class="header-section-number">13.4</span> <strong>Condicionales</strong></h2>
 <ul>
 <li>La sintaxis básica de un condicional simple en formato de una línea es así</li>
 </ul>
@@ -5495,7 +5460,7 @@ echo &quot;basedir has ${#basedir} characters  # \${#basedir}&quot;
     orden2 
 fi</code></pre>
 <div id="comparación-de-íntegros-en-condicionales" class="section level3">
-<h3><span class="header-section-number">13.6.1</span> Comparación de íntegros en condicionales</h3>
+<h3><span class="header-section-number">13.4.1</span> Comparación de íntegros en condicionales</h3>
 <pre class="bash"><code>i=5
 j=3
 
@@ -5507,7 +5472,7 @@ fi</code></pre>
 <pre><code>## 5 &gt; 3</code></pre>
 </div>
 <div id="comparación-de-cadenas-de-caracteres-en-condicionales" class="section level3">
-<h3><span class="header-section-number">13.6.2</span> Comparación de cadenas de caracteres en condicionales</h3>
+<h3><span class="header-section-number">13.4.2</span> Comparación de cadenas de caracteres en condicionales</h3>
 <pre class="bash"><code>c=carla
 j=juan
 
@@ -5519,7 +5484,7 @@ fi</code></pre>
 <pre><code>## c:carla != j:juan</code></pre>
 </div>
 <div id="comprobación-de-la-existencia-de-un-archivo-de-tamaño-0-bytes" class="section level3">
-<h3><span class="header-section-number">13.6.3</span> Comprobación de la existencia de un archivo de tamaño &gt; 0 bytes</h3>
+<h3><span class="header-section-number">13.4.3</span> Comprobación de la existencia de un archivo de tamaño &gt; 0 bytes</h3>
 <pre class="bash"><code>touch empty_file
 ls -l empty_file
 ls -l *gz
@@ -5539,22 +5504,36 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  6 21:31 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  7 19:20 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
 ## assembly_summary.txt.gz exists and has size: 6.5M</code></pre>
 </div>
 <div id="la-versión-corta-de-test-condición-comando1-comando2" class="section level3">
-<h3><span class="header-section-number">13.6.4</span> La versión corta de test <strong>[ condición ] &amp;&amp; comando1 &amp;&amp; comando2</strong> …</h3>
+<h3><span class="header-section-number">13.4.4</span> La versión corta de test <strong>[ condición ] &amp;&amp; comando1 &amp;&amp; comando2</strong> …</h3>
 <pre class="bash"><code># también podemos usar la versión corta del test:
 f=$(ls *.txt.gz)
 [ -s &quot;$f&quot; ] &amp;&amp; echo &quot;$f exists and is non-empty&quot;</code></pre>
 <pre><code>## assembly_summary.txt.gz exists and is non-empty</code></pre>
 </div>
-<div id="if-elif-else" class="section level3">
-<h3><span class="header-section-number">13.6.5</span> <strong>if; elif; else</strong></h3>
-<pre class="bash"><code>  if [[ &quot;$OSTYPE&quot; == &quot;linux-gnu&quot; ]]
+<div id="versión-moderna-de-test-para-evaluar-expresiones-expresión-o-expresiones-regulares-var-regexp" class="section level3">
+<h3><span class="header-section-number">13.4.5</span> Versión moderna de <span class="math inline">\(test\)</span> para evaluar expresiones <strong>[[ $(expresión) ]]</strong> o expresiones regulares <strong>[[ $var =~ regexp ]]</strong></h3>
+<p>Esta versión del <span class="math inline">\(test\)</span>, si es exitosa evalúa a 0, como muestra el siguiente código</p>
+<ul>
+<li>evaluación de <strong>[[ $(expresión) ]]</strong></li>
+</ul>
+<pre class="bash"><code>[[ $(ls *txt.gz | grep &#39;^assembly&#39;) ]] &amp;&amp; echo -n &quot;\$?=$?&quot; &amp;&amp; echo &quot;; encontré un archivo con terminación txt.gz y que incia con &#39;assembly&#39;&quot;</code></pre>
+<pre><code>## $?=0; encontré un archivo con terminación txt.gz y que incia con &#39;assembly&#39;</code></pre>
+<ul>
+<li>ejemplo de evaluación de expresiones regulares <strong>[[ $var =~ regexp ]]</strong></li>
+</ul>
+<pre class="bash"><code>[[ &quot;$OSTYPE&quot; =~ ^linux.* ]] &amp;&amp; echo &quot;Excelente, la máquina &#39;$HOSTNAME&#39; corre $OSTYPE! ;)&quot;</code></pre>
+<pre><code>## Excelente, la máquina &#39;alisio&#39; corre linux-gnu! ;)</code></pre>
+</div>
+<div id="if-elif-else-con-la-versión-moderna-de-test-para-evaluar-expresiones-regulares-var-regexp" class="section level3">
+<h3><span class="header-section-number">13.4.6</span> <strong>if; elif; else</strong> con la versión moderna de test para evaluar expresiones regulares <strong>[[ “$var” =~ regexp ]]</strong></h3>
+<pre class="bash"><code>  if [[ &quot;$OSTYPE&quot; =~ ^linux.* ]]
   then
     OS=&#39;linux&#39;
     no_cores=$(awk &#39;/^processor/{n+=1}END{print n}&#39; /proc/cpuinfo)
@@ -5568,24 +5547,25 @@ f=$(ls *.txt.gz)
     echo &quot;running on $host under $OS with $no_cores cores :)&quot;
   else
        OS=&#39;windows&#39;
-       echo &quot;oh no! another windows box :( ... you should better change to GNU/linux :) &quot;
+       echo &quot;oh no! another windows box :( ... you should better change to GNU/Linux :) &quot;
   fi</code></pre>
 <pre><code>## running on alisio under linux with 12 cores :)</code></pre>
 </div>
 </div>
 <div id="bucles-for" class="section level2">
-<h2><span class="header-section-number">13.7</span> <strong>Bucles for</strong></h2>
+<h2><span class="header-section-number">13.5</span> <strong>Bucles for</strong></h2>
 <p>la sintaxis general de un bucle for en <span class="math inline">\(Bash\)</span> es:</p>
 <p><code>for ALIAS in LIST; do CMD1; CMD2; done</code></p>
 <p>donde el usuario tiene que cambiar los términos en mayúsculas por opciones concretas. ALIAS es el nombre de una variable temporal a la que se asigna secuencialmente cada valor de LIST.</p>
 <p>Así por ejemplo, si tuviéramos en un directorio muchos archivos en formato FASTA con secuencias homólogas y extensión *.faa, podríamos alinearlas secuencialmente con <span class="math inline">\(clustalo\)</span>, un excelente alineador, con un comando como el siguiente:</p>
 <div id="sintaxis-y-ejemplo-de-bucle-for-en-una-línea" class="section level3">
-<h3><span class="header-section-number">13.7.1</span> Sintaxis y ejemplo de bucle for en una línea</h3>
-<pre><code># sintaxis de bucle for en una línea
-for file in *.faa; do clustalo -i $file -o ${file%.*}_cluoAln.faa; done</code></pre>
+<h3><span class="header-section-number">13.5.1</span> Sintaxis y ejemplo de bucle for en una línea</h3>
+<pre class="bash"><code># sintaxis de bucle for en una línea, combinado con if [[ ]]
+for file in *; do if [[ $file =~ html$ ]]; then echo &quot;found html file $file&quot;; fi;  done</code></pre>
+<pre><code>## found html file working_with_linux_commands.html</code></pre>
 </div>
 <div id="sintaxis-y-ejemplo-de-bucle-for-en-múltiples-líneas-con-indentación" class="section level3">
-<h3><span class="header-section-number">13.7.2</span> Sintaxis y ejemplo de bucle for en múltiples líneas con indentación</h3>
+<h3><span class="header-section-number">13.5.2</span> Sintaxis y ejemplo de bucle for en múltiples líneas con indentación</h3>
 <pre><code># sintaxis de bucle for en múltiples líneas, como se escribiría normalmente en un script
 for file in *.faa
 do 
@@ -5596,7 +5576,7 @@ done</code></pre>
 <p>Nota 2: si quieres aprender más sobre alineamientos múltiples y alineadores, puedes consultar el <a href="https://github.com/vinuesa/TIB-filoinfo#sesi%C3%B3n-4-alineamientos-m%C3%BAltiples-teor%C3%ADa-y-pr%C3%A1cticas">tutorial sobre alineamientos múltiples</a> que preparé para los <a href="https://github.com/vinuesa/TIB-filoinfo">Talleres Internacionales de Bioinformática - 2019 (TIB19)</a>.</p>
 </div>
 <div id="generación-de-archivos-fasta-especie-específicos-combinando-bucle-for-con-herramientas-de-filtrado-y-awk-script" class="section level3">
-<h3><span class="header-section-number">13.7.3</span> Generación de archivos FASTA especie-específicos combinando bucle <span class="math inline">\(for\)</span> con herramientas de filtrado y <span class="math inline">\(awk\)</span> script</h3>
+<h3><span class="header-section-number">13.5.3</span> Generación de archivos FASTA especie-específicos combinando bucle <span class="math inline">\(for\)</span> con herramientas de filtrado y <span class="math inline">\(awk\)</span> script</h3>
 <p>En este ejercicio continuaremos procesando el archivo <em>recA_Bradyrhizobium_vinuesa.fnaed</em> que generamos en la sección de <a href="https://vinuesa.github.io/intro2linux/#edici%C3%B3n-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-UNIX-1">filtrado de cabeceras de archivos FASTA</a>.</p>
 <p>El reto que les planteo es escribir archivos FASTA especie-específicos en base a <em>recA_Bradyrhizobium_vinuesa.fnaed</em>.</p>
 <p>Es decir, necesitamos escribir tantos archivos FASTA como especies diferentes tenemos en el archivo fuente. Para ello nos va a ser muy útil el <span class="math inline">\(script\)</span> <a href="#generaci%C3%B3n-de-archivos-especie-espec%C3%ADficos"><strong>filter_fasta_sequences.awk</strong></a> que escribimos al final de la sección de <span class="math inline">\(gawk\)</span>.</p>
@@ -5618,7 +5598,7 @@ grep &#39;^&gt;&#39; recA_Bradyrhizobium_vinuesa.fnaed | tail -5</code></pre>
 </ul>
 <pre class="bash"><code>for sp in $(grep &#39;^&gt;&#39; recA_Bradyrhizobium_vinuesa.fnaed | cut -d_ -f2 | sort -u | sed &#39;s/\[//&#39;)
 do 
-  echo &quot;processing species $sp ...&quot;
+   echo &quot;processing species $sp ...&quot;
 done</code></pre>
 <pre><code>## processing species alpha ...
 ## processing species beta ...
@@ -5633,8 +5613,8 @@ done</code></pre>
 </ul>
 <pre class="bash"><code>for sp in $(grep &#39;^&gt;&#39; recA_Bradyrhizobium_vinuesa.fnaed | cut -d_ -f2 | sort -u | sed &#39;s/\[//&#39;)
 do 
-  echo &quot;processing species $sp ...&quot;
-  ./filter_fasta_sequences.awk &quot;$sp&quot; recA_Bradyrhizobium_vinuesa.fnaed &gt; &quot;recA_B_${sp}.fasta&quot;
+   echo &quot;processing species $sp ...&quot;
+   ./filter_fasta_sequences.awk &quot;$sp&quot; recA_Bradyrhizobium_vinuesa.fnaed &gt; &quot;recA_B_${sp}.fasta&quot;
 done</code></pre>
 <pre><code>## processing species alpha ...
 ## processing species beta ...
@@ -5648,14 +5628,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  6 21:31 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  6 21:31 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  6 21:31 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  6 21:31 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  6 21:31 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  6 21:31 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  6 21:31 recA_B_yuanmingense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  6 21:31 recA_B_sp..fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  7 19:20 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  7 19:20 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  7 19:20 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  7 19:20 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  7 19:20 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  7 19:20 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  7 19:20 recA_B_yuanmingense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  7 19:20 recA_B_sp..fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -5724,6 +5704,59 @@ done
 ## &gt;AY591566.1 [B_yuanmingense_strain_CCBAU_10071]
 ## &gt;AY591565.1 [B_yuanmingense_strain_TAL760]
 ## .....................................</code></pre>
+</div>
+</div>
+<div id="bucles-while" class="section level2">
+<h2><span class="header-section-number">13.6</span> <strong>Bucles <span class="math inline">\(while\)</span></strong></h2>
+<p>la sintaxis es simple:</p>
+<ul>
+<li><code>while test-commands; do consequent-commands; done</code></li>
+</ul>
+<p>Mientras la condición evalúe a cierta, se ejecuta el código en el bloque entre <span class="math inline">\(do\)</span> y <span class="math inline">\(done\)</span>, como muestra este sencillo ejemplo:</p>
+<p>Veamos dos ejemplos:</p>
+<div id="contador-en-bucle-while-con-condicional" class="section level3">
+<h3><span class="header-section-number">13.6.1</span> Contador en bucle <span class="math inline">\(while\)</span> con condicional</h3>
+<pre class="bash"><code>contador=1
+
+while [ $contador -le 5 ]
+do
+    echo $contador
+    contador=$((contador + 1))
+done
+</code></pre>
+<pre><code>## 1
+## 2
+## 3
+## 4
+## 5</code></pre>
+</div>
+<div id="bucle-while-leyendo-de-un-archivo-doble-condicional-para-evaluar-dos-expresiones-regulares-y-builtin-let-para-incrementar-contador" class="section level3">
+<h3><span class="header-section-number">13.6.2</span> Bucle <span class="math inline">\(while\)</span> leyendo de un archivo, doble condicional para evaluar dos expresiones regulares y builtin <strong>let</strong> para incrementar contador</h3>
+<p>Un bucle <span class="math inline">\(while\)</span> puede tomar su entrada desde <STDIN>. Ello permite leer líneas de archivos o provenientes de la salida de un <em>pipeline</em>, como muestra el siguiente ejemplo, que también incluye:</p>
+<ul>
+<li>un doble condicional para evaluar dos <em>regexes</em>: ‘[[ “$line” =~ “$patron” ]] &amp;&amp; [[ “$line” =~ “$patron2” ]]’</li>
+<li>el <em>builtin</em> <span class="math inline">\(let\)</span>, para hacer más fácil incrementar un contador.</li>
+</ul>
+<pre class="bash"><code>contador=0
+patron=&quot;Steno&quot;
+patron2=&quot;CCG&quot;
+
+while read line
+do
+    # noten el uso de [[ texto =~ regexp ]]
+    if [[ &quot;$line&quot; =~ &quot;$patron&quot; ]] &amp;&amp; [[ &quot;$line&quot; =~ &quot;$patron2&quot; ]]
+    then 
+        echo &quot;$line&quot;
+        let contador++
+    fi
+done &lt; mini_tabla.tsv
+
+echo &quot;$contador líneas contienen el patrón $patron&quot;
+</code></pre>
+<pre><code>## GCF_003086675.1  Stenotrophomonas sp. ZAC14D2_NAIMI4_7   2018/05/03  ASM308667v1 CCG-UNAM
+## GCF_003086855.1  Stenotrophomonas sp. YAU14A_MKIMI4_1    2018/05/03  ASM308685v1 CCG-UNAM
+## 2 líneas contienen el patrón Steno</code></pre>
+<p>Es importante notar que al usar <span class="math inline">\(echo\)</span> para imprimir las líneas que satisfacen la condición <code>[[ “<span class="math inline">\(line&quot; =~ &quot;\)</span>patron” ]]</code>, se pierden los tabuladores que separaban los campos de la tabla.</p>
 <!--
 
 ### Otra solución al problema: convertir archivos FASTA a formato "FASTAB" usando **perl** 1-liners
@@ -5875,38 +5908,6 @@ head -6 recA_B_japonicum.fas
 Esta segunda solución es sin duda más engorrosa. 
 
 -->
-</div>
-</div>
-<div id="reto-de-programación---ejercicio-de-parseo-de-archivos-fasta" class="section level2">
-<h2><span class="header-section-number">13.8</span> Reto de programación - ejercicio de parseo de archivos FASTA</h2>
-<p>Como ejercicio, para repasar lo que hemos aprendido en esta sesión les propongo repetir el ejercicio de parseo de archivos FASTA pero con secuencias del gen <i>rpoB</i> de <i>Bradyrhizobium</i></p>
-<div id="inspección-y-estadísticas-básicas-de-las-secuencias-descargadas-1" class="section level3">
-<h3><span class="header-section-number">13.8.1</span> Inspección y estadísticas básicas de las secuencias descargadas</h3>
-<ol style="list-style-type: decimal">
-<li>Descargar las secuencias de NCBI usando el portal ENTREZ nucleotides con: ‘Bradyrhizobium[orgn] AND vinuesa[auth] AND rpoB[gene]’</li>
-<li>Renombra el archivo descargado a rpoB_Bradyrhizobium_vinuesa.fna</li>
-<li>¿Cuántas secuencias hay en el archivo rpoB_Bradyrhizobium_vinuesa.fna?</li>
-<li>Explora la cabecera y cola del archivo con <span class="math inline">\(head\)</span> y <span class="math inline">\(tail\)</span></li>
-<li>Despliega las 5 primeras lineas de cabeceras fasta usando <span class="math inline">\(grep\)</span> y <span class="math inline">\(head\)</span> para explorar su estructura en detalle</li>
-<li>Calcula el número de géneros que contiene el archivo FASTA</li>
-<li>Calcula el número de especies que contiene el archivo FASTA</li>
-<li>Imprime una lista ordenada de mayor a menor, del numero de especies que contiene el archivo FASTA</li>
-</ol>
-</div>
-<div id="edición-de-las-cabeceras-fasta-mediante-herramientas-de-filtrado-de-unix-2" class="section level3">
-<h3><span class="header-section-number">13.8.2</span> Edición de las cabeceras FASTA mediante herramientas de filtrado de UNIX</h3>
-<ol style="list-style-type: decimal">
-<li>Explora nuevamente todas las cabeceras FASTA del archivo rpoB_Bradyrhizobium_vinuesa.fna usando <span class="math inline">\(grep\)</span> y <span class="math inline">\(less\)</span></li>
-<li>Simplifica las cabeceras FASTA usando el comando <span class="math inline">\(sed\)</span> (stream editor)</li>
-</ol>
-<p>El objetivo es eliminar redundancia y longitud excesiva de las cabeceras FASTA, así como todos los caracteres ‘( , ; : )’ que impedirían el despliegue de un árbol filogenético, al tratarse de caracteres reservados del formato NEWICK. Dejar solo el numero de accesión, así como el género, especie y cepa indicados entre corchetes.</p>
-<ol start="3" style="list-style-type: decimal">
-<li>Cuando estén satisfechos con el resultado, guarden la salida del comando en un archivo llamado rpoB_Bradyrhizobium_vinuesa.fnaed</li>
-</ol>
-</div>
-<div id="generación-de-archivos-especie-específicos-de-secuencias-rpob" class="section level3">
-<h3><span class="header-section-number">13.8.3</span> Generación de archivos especie específicos de secuencias <em>rpoB</em></h3>
-<p>Al igual que en el ejemplo con secuencias <em>recA</em>, genera una lista de nombres de especie únicos y usa un bucle <span class="math inline">\(for\)</span> para pasar los elementos de la misma al <span class="math inline">\(script\)</span> <em>filter_fasta_sequences.awk</em> que discutimos en la <a href="#el-scritp-filter_fasta_sequences.awk">sección de <span class="math inline">\(AWK\)</span></a>, para generar los archivos especie-específicos de secuencias.</p>
 <!--
 
 ### Ejemplo de bucle for, acoplado a las herramientas de filtrado y de manipulación de variables
@@ -6038,7 +6039,7 @@ rm *fnaed *.fnaedtab *.fas empty_file Pseudomonas_species* *.fasta</code></pre>
 </div>
 <div id="bash-scripting---siguientes-pasos" class="section level1">
 <h1><span class="header-section-number">14</span> <strong><span class="math inline">\(Bash\)</span> scripting</strong> - siguientes pasos</h1>
-<p>En esta sección veremos ejemplos muy sencillos de <strong>Shell scripts</strong> escritos en <span class="math inline">\(Bash\)</span> que integran varios aspectos de la sintaxis básica del lenguaje descritas en la sección anterior, así como extensiones adicionales como son <strong>argumentos posicionales</strong> y <strong>funciones</strong></p>
+<p>En esta sección veremos ejemplos muy sencillos de <strong>Shell scripts</strong> escritos en <span class="math inline">\(Bash\)</span> que integran varios aspectos de la sintaxis básica del lenguaje descritas en la sección anterior, así como extensiones adicionales como son <strong>argumentos posicionales</strong> y <strong>funciones</strong>.</p>
 <div id="la-shebang-line-usrbinenv-bash-y-permisos-de-ejecución---el-script-ls_dir" class="section level2">
 <h2><span class="header-section-number">14.1</span> la “<strong>shebang line</strong>” (#!/usr/bin/env bash) y permisos de ejecución - el script <em>ls_dir</em></h2>
 <p>Se conocen como <em>scripts</em> a archivos de texto plano (codificación ASCII) que contienen los comandos a ser ejecutados secuencialmente por un <strong>intérprete de comandos</strong> particular, como <span class="math inline">\(bash\)</span>, <span class="math inline">\(perl\)</span>, <span class="math inline">\(R\)</span> …</p>
@@ -6065,12 +6066,15 @@ done</code></pre>
 <pre><code>cat &gt; ls_dir
 PEGA AQUÍ EL CÓDIGO ARRIBA MOSTRADO
 CTRL-D</code></pre>
-<p>El script <em>ls_dir</em> busca los directorios presentes en el directorio actual usando un bucle for para analizar cada archivo econtrado por <span class="math inline">\(ls\)</span>, evaluando seguidamente si el archivo en turno es un directorio con un condicional <code>if [ -d “$file” ]</code></p>
+<p>El script <em>ls_dir</em> busca los directorios presentes en el directorio actual usando un bucle <span class="math inline">\(for\)</span> para analizar cada archivo encontrado por <span class="math inline">\(ls\)</span>, evaluando seguidamente si el archivo en turno es un directorio con un condicional:</p>
+<ul>
+<li><code>if [ -d “$file” ]</code></li>
+</ul>
 <p>Noten que la primera línea inicia con lo que se conoce como una <strong>shebang line</strong>:</p>
 <p><code>#!/usr/bin/env bash</code></p>
 <p>Esta línea, en la cabecera del archivo (¡sin dejar especios a la izquierda o arriba de la línea!), le indica al sistema operativo qué <strong>intérprete de comandos</strong> usar para la ejecución del código que sigue. En este caso se llama al intérprete de comandos <span class="math inline">\(bash\)</span></p>
-<p>Noten también que cualquier línea que inicie con <strong>#</strong> después de la shebang line, representa un comentario, es decir, que el texto que sigue al gato no es interpretado por <span class="math inline">\(bash\)</span></p>
-<p>Para ejecutar el script como si fuera un comando cualquiera de <span class="math inline">\(Linux\)</span>, le damos <strong>permisos de ejecución</strong>:</p>
+<p>Noten también que cualquier línea que inicie con <strong>#</strong> después de la <em>shebang line</em>, representa un comentario, es decir, que el texto que sigue al gato no es interpretado por <span class="math inline">\(bash\)</span></p>
+<p>Para ejecutar el <span class="math inline">\(script\)</span> como si fuera un comando cualquiera de <span class="math inline">\(Linux\)</span>, le damos <strong>permisos de ejecución</strong>:</p>
 <pre><code>chmod 755 ls_dir</code></pre>
 <p>Comprueba los permisos:</p>
 <p><code>$ ls -l ls_dir</code></p>
@@ -6203,12 +6207,12 @@ find . -maxdepth $max_depth -type $type</code></pre>
 </ul>
 <p>Los alineamientos múltiples y las llamadas a <span class="math inline">\(clustalw\)</span> se explican en <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/sesion4_alineamientos">sesión4_alineamientos</a>.</p>
 <p>Con lo aprendido hasta ahora y los comentarios que documentan los scripts, deberías entender lo que hacen.</p>
-<p>Vuelve a explorar ambos scripts después de haber revisado la <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/sesion4_alineamientos">sesión4_alineamientos</a>.</p>
+<p>Vuelve a explorar ambos <span class="math inline">\(scripts\)</span> después de haber revisado la <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/sesion4_alineamientos">sesión4_alineamientos</a>.</p>
 </div>
 <div id="scripts-con-interfaz-de-usuario-paso-de-opciones-y-su-parseo-con-getopts" class="section level2">
 <h2><span class="header-section-number">14.4</span> Scripts con interfaz de usuario, paso de opciones y su parseo con <strong>getopts</strong></h2>
-<p>Para scripts más complejos, que pueden recibir muchas opciones, es mejor escribir una interfaz de usuario que permita el parseo de opciones pasadas al script desde la línea de comandos y describir adecuadamente estas opciones en un menú de ayuda que se despliega en pantalla.</p>
-<p>Les presento seguidamente secciones del archivo de templado o machote para escribir scripts con parseo de opciones llamado <em>bash_script_template_with_getopts.sh</em> disponible en el <a href="https://github.com/vinuesa/intro2linux/blob/master/bash_script_template_with_getopts.sh">repositorio githut de intro2linux</a></p>
+<p>Para <span class="math inline">\(scripts\)</span> más complejos, que pueden recibir muchas opciones, es mejor escribir una interfaz de usuario que permita el parseo de opciones pasadas al <span class="math inline">\(script\)</span> desde la línea de comandos y describir adecuadamente estas opciones en un menú de ayuda que se despliega en pantalla.</p>
+<p>Les presento seguidamente secciones del archivo de templado o machote para escribir <span class="math inline">\(scripts\)</span> con parseo de opciones llamado <em>bash_script_template_with_getopts.sh</em> disponible en el <a href="https://github.com/vinuesa/intro2linux/blob/master/bash_script_template_with_getopts.sh">repositorio githut de intro2linux</a></p>
 <pre><code>function print_help()
 {
    cat &lt;&lt;EOF
@@ -6337,7 +6341,68 @@ fi
 <ol style="list-style-type: decimal">
 <li>usa el archivo de machote <em>bash_script_template_with_getopts.sh</em> para modificar el script <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/bin/align_seqs_with_clustal_or_muscle.sh">align_seqs_with_clustal_or_muscle.sh</a>, añadiéndole una interfaz de usuario.</li>
 </ol>
+</div>
+<div id="dónde-debo-guardar-mis-scripts-para-que-sean-visibles-desde-cualquier-directorio-del-sitema" class="section level2">
+<h2><span class="header-section-number">14.5</span> Dónde debo guardar mis scripts para que sean visibles desde cualquier directorio del sitema</h2>
+<p>Como explicábamos en la <a href="https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf">tutoral de introducción</a>, el <span class="math inline">\(Shell\)</span> busca comandos en los directorios especificados en la variable de ambiente <strong>PATH</strong>. Los directorios van separados por <span class="math inline">\(:\)</span> y se leen en ese orden.</p>
+<pre class="bash"><code>echo &quot;PATH = $PATH&quot;</code></pre>
+<pre><code>## PATH = /home/vinuesa/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/rstudio/bin/postback</code></pre>
+<p>Recuerda, es fácile generar una lista de estos directorios más legible con un comando como ésta</p>
+<pre class="bash"><code>echo &quot;$PATH&quot; | sed &#39;s/:/\n/g&#39;</code></pre>
+<pre><code>## /home/vinuesa/bin
+## /usr/local/sbin
+## /usr/local/bin
+## /usr/sbin
+## /usr/bin
+## /sbin
+## /bin
+## /usr/games
+## /usr/local/games
+## /snap/bin
+## /usr/lib/rstudio/bin/postback</code></pre>
+<div id="agregando-directorios-a-la-variable-de-ambiente-path" class="section level3">
+<h3><span class="header-section-number">14.5.1</span> Agregando directorios a la variable de ambiente <b>PATH</b></h3>
+<p>A veces necesitamos agregar un nuevo direcotrio a la variable de ambiente <strong>PATH</strong></p>
+<ul>
+<li>Añade el directorio $HOME/bin al final de la lista de directorios de <strong>PATH</strong></li>
+</ul>
+<pre><code>PATH=$PATH:$HOME/bin</code></pre>
+<p>Nota: en versiones recientes de <span class="math inline">\(Ubuntu\)</span> y otras distribuciones de Linux, el directorio <em><span class="math inline">\(HOME/bin* se exporta automáticamente. Revisa tu archivo *\)</span>HOME/.bashrc</em>. Ya que estamos con archivos de configuración, profundicemos un poco más en este tópico.</p>
+</div>
+</div>
+<div id="variables-de-ambiente---printenv" class="section level2">
+<h2><span class="header-section-number">14.6</span> Variables de ambiente - <strong><span class="math inline">\(printenv\)</span></strong></h2>
+<p>Al iniciar una <b>sesión local o remota</b>, el <span class="math inline">\(SHELL\)</span> carga en memoria una serie de <span class="math inline">\(VARIABLES\_DE\_AMBIENTE\)</span> que son parte de la configuración del sistema.</p>
+<p>Ya hemos visto algunas antes, pero aquí les muestro algunas muy importantes:</p>
+<pre class="bash"><code>echo &quot;HOME = $HOME&quot;
+echo &quot;USER = $USER&quot;
+echo &quot;SHELL = $SHELL&quot;</code></pre>
+<pre><code>## HOME = /home/vinuesa
+## USER = vinuesa
+## SHELL = /bin/bash</code></pre>
+<p>Pueden ver todas las variables de su ambiente con el comando <span class="math inline">\(printenv\)</span></p>
+<p><code>printenv | sort | less</code></p>
+<div id="archivos-de-configuración-.bash_profile-y-.bashrc" class="section level3">
+<h3><span class="header-section-number">14.6.1</span> Archivos de configuración <strong>.bash_profile</strong> y <strong>.bashrc</strong></h3>
+<p>Si quieres agregar un directorio permanentemente a <span class="math inline">\(PATH\)</span>, puedes añadirlo al archivo de configuración <span class="math inline">\(.bash\_profile\)</span> de tu <span class="math inline">\(HOME\)</span> en un servidor remoto o al <span class="math inline">\(.bashrc\)</span> de tu <span class="math inline">\(HOME\)</span> en una máquina local y exportarlo.</p>
+<pre><code>PATH=$PATH:$HOME/bin
+
+export PATH</code></pre>
+<p>Cualquier <span class="math inline">\(script\)</span> o programa que pongas ahí con permisos de ejecución (<code>chmod 755 script</code>) será ejecutable desde cualquier directorio del sistema.</p>
+</div>
+<div id="cuál-es-el-binario-o-script-que-estoy-usando---which" class="section level3">
+<h3><span class="header-section-number">14.6.2</span> ¿Cuál es el binario o script que estoy usando? - <strong>which</strong></h3>
+<p>A veces tenemos un <span class="math inline">\(script\)</span> o un binario (por ejemplo <span class="math inline">\(blastn\)</span>) instalado en varios directorios. Esto puede ser intencional o inadvertidamente. El comando <span class="math inline">\(which\)</span> nos indica cual es el <span class="math inline">\(PATH\)</span> del comando que ve el <span class="math inline">\(Shell\)</span>, es decir, el primero en <span class="math inline">\(PATH\)</span></p>
+<pre class="bash"><code>which blastn
+which perl
+which trunc_seq.pl
+which transpose_pangenome_matrix.sh</code></pre>
+<pre><code>## /usr/local/bin/blastn
+## /usr/bin/perl
+## /home/vinuesa/bin/trunc_seq.pl
+## /home/vinuesa/bin/transpose_pangenome_matrix.sh</code></pre>
 <hr />
+</div>
 </div>
 </div>
 <div id="consideraciones-finales-y-referencias-recomendadas-para-continuar-aprendiendo-bash" class="section level1">
