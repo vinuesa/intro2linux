@@ -9,9 +9,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; http://www.ccg.unan.mx/~vinuesa; @pvinmex" />
+<meta name="author" content="Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; http://www.ccg.unan.mx/~vinuesa | @pvinmex: https://twitter.com/pvinmex" />
 
-<meta name="date" content="2020-11-07" />
 
 <title>Tutorial de introducción al biocómputo en sistemas GNU/Linux</title>
 
@@ -412,8 +411,8 @@ summary {
 
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
-<h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a>; <span class="citation">@pvinmex</span></h4>
-<h4 class="date">2020-11-07</h4>
+<h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
+<h4 class="date">Versión: Sat Nov 7 22:49:35 2020</h4>
 
 </div>
 
@@ -859,8 +858,8 @@ ls | head</code></pre>
 ## data</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 99696
-## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  7 21:50 .
+<pre><code>## total 99700
+## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  7 22:48 .
 ## drwxr-xr-x  3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -1717,7 +1716,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 99668
+<pre><code>## total 99672
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-rw-r-- 1 vinuesa vinuesa      361 oct 29 22:15 awk.hash
@@ -1725,7 +1724,7 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 oct 13 13:50 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 nov  7 22:33 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 nov  7 22:49 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-rw-r-- 1 vinuesa vinuesa     3663 nov  7 10:33 count_genome_features_for_taxon.awk</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
@@ -2106,7 +2105,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  7 22:33 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  7 22:49 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2125,7 +2124,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  7 22:33 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  7 22:49 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2254,15 +2253,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  7 22:33 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  7 22:33 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  7 22:49 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  7 22:49 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  7 22:33 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  7 22:49 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2356,9 +2355,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  7 21:50 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  7 22:48 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  7 22:33 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  7 22:49 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2379,9 +2378,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  7 21:50 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  7 22:48 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  7 22:33 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  7 22:49 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2391,10 +2390,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  7 21:50 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  7 22:48 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  7 21:50 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  7 22:48 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2404,11 +2403,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  7 21:50 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  7 22:48 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  7 21:50 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  7 22:48 recA_Byuanmingense.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-locate-y-find" class="section level1">
@@ -2432,8 +2431,8 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 <pre><code>## Filesystem      1K-blocks      Used  Available Use% Mounted on
 ## udev             16381352         0   16381352   0% /dev
 ## tmpfs             3281908      2000    3279908   1% /run
-## /dev/nvme0n1p3  465889936  18491104  423663180   5% /
-## tmpfs            16409528    193468   16216060   2% /dev/shm
+## /dev/nvme0n1p3  465889936  18491112  423663172   5% /
+## tmpfs            16409528    189372   16220156   2% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409528         0   16409528   0% /sys/fs/cgroup
 ## /dev/loop0          56704     56704          0 100% /snap/core18/1932
@@ -2450,13 +2449,13 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 ## /dev/loop11         64896     64896          0 100% /snap/standard-notes/23
 ## /dev/loop10         64896     64896          0 100% /snap/standard-notes/22
 ## /dev/loop12         31744     31744          0 100% /snap/snapd/9607
-## /dev/sda1      1921802432 428117916 1395992460  24% /home
+## /dev/sda1      1921802432 428119068 1395991308  24% /home
 ## tmpfs             3281904        20    3281884   1% /run/user/125
 ## tmpfs             3281904        68    3281836   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465889936 18491104 423663180   5% /</code></pre>
+## /dev/nvme0n1p3 465889936 18491112 423663172   5% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></h3>
 <p>Como cualquier comando, le podemos pasar opciones para adecuar mejor la salida a nuestra necesidad.</p>
@@ -2488,7 +2487,7 @@ df -h /home</code></pre>
 ## udev              15998M      0M    15998M   0% /dev
 ## tmpfs              3205M      2M     3204M   1% /run
 ## /dev/nvme0n1p3   454971M  18058M   413734M   5% /
-## tmpfs             16025M    189M    15836M   2% /dev/shm
+## tmpfs             16025M    185M    15840M   2% /dev/shm
 ## tmpfs                 5M      1M        5M   1% /run/lock
 ## tmpfs             16025M      0M    16025M   0% /sys/fs/cgroup
 ## /dev/loop0           56M     56M        0M 100% /snap/core18/1932
@@ -2505,10 +2504,10 @@ df -h /home</code></pre>
 ## /dev/loop11          64M     64M        0M 100% /snap/standard-notes/23
 ## /dev/loop10          64M     64M        0M 100% /snap/standard-notes/22
 ## /dev/loop12          31M     31M        0M 100% /snap/snapd/9607
-## /dev/sda1       1876761M 418084M  1363274M  24% /home
+## /dev/sda1       1876761M 418086M  1363273M  24% /home
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392600M 437595M  1836425M  20% -
+## total           2392600M 437592M  1836427M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2528,7 +2527,7 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 176408   .
+<pre><code>## 177088   .
 ## 173M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
@@ -4158,17 +4157,17 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1445415 nov  7 21:50 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1447126 nov  7 22:48 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  196494 nov  7 22:33 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  196534 nov  7 22:48 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  306038 oct 31 19:08 working_with_linux_commands.tex
-## total size of working_with_linux_commands.* files is: 1.91 Mb</code></pre>
+## total size of working_with_linux_commands.* files is: 1.92 Mb</code></pre>
 <ul>
 <li>comparen y entiendan la diferencia del comando anterior con el del siguiente:</li>
 </ul>
 <pre class="bash"><code>ls -l working_with_linux_commands.* | \
  awk &#39;{s+=$5}; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## total size of working_with_linux_commands.* files is: 1.91 Mb</code></pre>
+<pre><code>## total size of working_with_linux_commands.* files is: 1.92 Mb</code></pre>
 </div>
 <div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
 <h3><span class="header-section-number">11.5.7</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
@@ -5635,7 +5634,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  7 22:33 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  7 22:49 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -5821,14 +5820,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  7 22:33 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  7 22:33 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  7 22:33 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  7 22:33 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  7 22:33 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  7 22:33 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  7 22:33 recA_B_yuanmingense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  7 22:33 recA_B_sp..fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  7 22:49 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  7 22:49 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  7 22:49 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  7 22:49 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  7 22:49 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  7 22:49 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  7 22:49 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  7 22:49 recA_B_yuanmingense.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -5927,17 +5926,17 @@ done
 <h3><span class="header-section-number">13.9.2</span> Bucle <span class="math inline">\(while\)</span> leyendo de un archivo, doble condicional para evaluar dos expresiones regulares y builtin <strong>let</strong> para incrementar contador</h3>
 <p>Un bucle <span class="math inline">\(while\)</span> puede tomar su entrada desde <STDIN>. Ello permite leer líneas de archivos o provenientes de la salida de un <em>pipeline</em>, como muestra el siguiente ejemplo, que también incluye:</p>
 <ul>
-<li>un doble condicional para evaluar dos <em>regexes</em>: ‘[[ “$line” =~ “$patron” ]] &amp;&amp; [[ “$line” =~ “$patron2” ]]’</li>
+<li>un doble condicional para evaluar dos <em>regexes</em>: ‘[[ “$line” =~ “$patron” ]] &amp;&amp; [[ ! “$line” =~ “$patron2” ]]’, donde debe cumplir el primer test [[ =~ ]] pero no el segundo [[ ! =~ ]]</li>
 <li>el <em>builtin</em> <span class="math inline">\(let\)</span>, para hacer más fácil incrementar un contador.</li>
 </ul>
 <pre class="bash"><code>contador=0
-patron=&quot;Steno&quot;
-patron2=&quot;CCG&quot;
+patron=&#39;Steno&#39;
+patron2=&#39;UNAM$&#39;
 
 while read line
 do
     # noten el uso de [[ texto =~ regexp ]]
-    if [[ &quot;$line&quot; =~ &quot;$patron&quot; ]] &amp;&amp; [[ &quot;$line&quot; =~ &quot;$patron2&quot; ]]
+    if [[ &quot;$line&quot; =~ $patron ]] &amp;&amp; [[ ! &quot;$line&quot; =~ $patron2 ]]
     then 
         echo &quot;$line&quot;
         let contador++
@@ -5946,10 +5945,10 @@ done &lt; mini_tabla.tsv
 
 echo &quot;$contador líneas contienen el patrón $patron&quot;
 </code></pre>
-<pre><code>## GCF_003086675.1  Stenotrophomonas sp. ZAC14D2_NAIMI4_7   2018/05/03  ASM308667v1 CCG-UNAM
-## GCF_003086855.1  Stenotrophomonas sp. YAU14A_MKIMI4_1    2018/05/03  ASM308685v1 CCG-UNAM
+<pre><code>## GCF_000072485.1  Stenotrophomonas maltophilia K279a  2008/06/10  ASM7248v1   Wellcome Trust Sanger Institute
+## GCF_000284595.1  Stenotrophomonas maltophilia D457   2012/04/11  ASM28459v1  University of Valencia
 ## 2 líneas contienen el patrón Steno</code></pre>
-<p>Es importante notar que al usar <span class="math inline">\(echo\)</span> para imprimir las líneas que satisfacen la condición <code>[[ “<span class="math inline">\(line&quot; =~ &quot;\)</span>patron” ]]</code>, se pierden los tabuladores que separaban los campos de la tabla.</p>
+<p>Es importante notar que al usar <span class="math inline">\(echo\)</span> para imprimir las líneas se pierden los tabuladores que separaban los campos de la tabla.</p>
 <!--
 
 ### Otra solución al problema: convertir archivos FASTA a formato "FASTAB" usando **perl** 1-liners
