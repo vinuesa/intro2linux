@@ -34,14 +34,18 @@ set -u              # exit if unset variables are encountered
 set -o pipefail     # exit after unsuccessful UNIX pipe command
 
 progname=$(basename "$0")  # run_phylip.sh
-VERSION=0.4  #v0.4 2020-11-08; released to the public domain @ https://github.com/vinuesa/intro2linux
-             #       * added nw_support and nw_display calls to map and display bottstrap support values onto NJ or UPGMA trees
-             #       * fixed warnings issued by shellcheck
-	     #       * added strict bash interpreter calling with set -e; set -u; set -o pipefail
-	     #       * localized variables received in functions
-	     #       * explicitly set default_DNA_model=F84 and default_prot_model=JTT
-	     #       * added option -v to print version and exit
-	     #            
+VERSION=0.5  # v0.5 2020-11-09; added functions:
+             #                  *  rdm_odd_int to compute random odd integers to pass to PHYLIP programs
+	     #                  *  check_output (silently checks for expected output files, dying if not found)
+
+    #v0.4 2020-11-08; released to the public domain @ https://github.com/vinuesa/intro2linux
+    #	    * added nw_support and nw_display calls to map and display bottstrap support values onto NJ or UPGMA trees
+    #	    * fixed warnings issued by shellcheck
+    #	    * added strict bash interpreter calling with set -e; set -u; set -o pipefail
+    #	    * localized variables received in functions
+    #	    * explicitly set default_DNA_model=F84 and default_prot_model=JTT
+    #	    * added option -v to print version and exit
+    #		 
 
 # GLOBALS
 #DATEFORMAT_SHORT="%d%b%y" # 16Oct13
@@ -64,17 +68,29 @@ model=
 DEBUG=0
 sequential=0
 TiTv=2
-rnd_no=123
 upgma=0
 outgroup=0
 gamma=0
 outgroup=1
 
 declare -a outfiles
-#unset outfiles  # completely whipe out contents of the outfiles array variable
 
 #---------------------------------------------------------------------------------#
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>> FUNCTION DEFINITIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<#
+#---------------------------------------------------------------------------------#
+
+
+function check_output()
+{
+    outfile=$1
+    if [ ! -s "$outfile" ]
+    then
+        echo
+	echo " >>> ERROR! The expected output file $outfile was not produced, will exit now!"
+        echo
+	exit 9
+    fi
+}
 #---------------------------------------------------------------------------------#
 
 function check_dependencies
@@ -149,7 +165,24 @@ EOF
 
 exit 1   
 }
+
 #---------------------------------------------------------------------------------#
+function rdm_odd_int()
+{
+  # generate a random odd integer for seqboot and neighbor
+  while true
+  do 
+     i=$RANDOM
+     if (( "$i" % 2 )) # true when odd
+     then 
+         echo "$i" 
+	 break
+     fi
+done
+
+}
+#---------------------------------------------------------------------------------#
+
 
 # these are fucntions to write the command files to pass parameters to PHYLIP programs
 function write_dnadist_params
@@ -303,7 +336,7 @@ do
         ;;
    D)   DEBUG=1
         ;;
-   \:)   printf "argument missing from -%s option\n" "$OPTARG"
+   :)   printf "argument missing from -%s option\n" "$OPTARG"
    	 print_help
      	 exit 2 
      	 ;;
@@ -442,11 +475,16 @@ then
        echo "# Protein matrix set to default: $def_prot_model ..."       
 fi
 
+
+# Set the script's run random odd number required by diverse PHYLIP programs
+rnd_no=$(rdm_odd_int)
+
 echo
 echo "### $progname v.$VERSION run on $start_time with the following parameters:"
 echo "# work_directory=$wkdir"
 echo "# input_phylip=$input_phylip"
-echo "# model=$model | gamma=$gamma | CV=$CV | gammaf=$gammaf | ti/tv ratio=$TiTv | outgroup=$outgroup | UPGMA=$upgma | bootstrap no.=$boot"
+echo "# model=$model | gamma=$gamma | CV=$CV | gammaf=$gammaf | ti/tv ratio=$TiTv |
+     outgroup=$outgroup | UPGMA=$upgma | bootstrap no.=$boot | rnd_no=$rnd_no"
 echo "# runmode=$runmode"
 echo "# DEBUG=$DEBUG" 
 echo
@@ -454,6 +492,7 @@ echo
 #-------------------------------------------------------------------------------------------------#
 #------------------------------------------ MAIN CODE --------------------------------------------#
 #-------------------------------------------------------------------------------------------------#
+
 
 # 1. make sure the external dependencies are found in PATH
 check_dependencies
@@ -481,6 +520,7 @@ then
      write_seqboot_params "$boot" "$sequential"
      echo "# running seqboot < seqboot.params &> /dev/null"
      seqboot < seqboot.params &> /dev/null
+     check_output outfile
      mv outfile infile
 fi
 
@@ -495,6 +535,7 @@ then
     	 write_dnadist_params "$model" "$boot" "$TiTv" "$sequential" "$gamma" "$CV"
 	 echo "# running dnadist < dnadist.params &> /dev/null"
     	 dnadist < dnadist.params &> /dev/null
+	 check_output outfile
 	 mv outfile infile
      elif [ "$runmode" -eq 2 ]
      then
@@ -503,6 +544,7 @@ then
     	 write_protdist_params "$model" "$boot" "$sequential" "$gamma" "$CV"
 	 echo "# running protdist < protdist.params &> /dev/null"
     	 protdist < protdist.params &> /dev/null
+	 check_output outfile
 	 mv outfile infile
      fi
 
@@ -512,6 +554,7 @@ then
      write_neighbor_params "$boot" "$upgma" "$outgroup"
      echo "# running neighbor < neighbor.params &> /dev/null"
      neighbor < neighbor.params &> /dev/null
+     check_output outtree
      
      if [ -s outtree ]
      then
@@ -530,7 +573,9 @@ then
      write_consense_params
      echo "# running consense < consense.params &> /dev/null"
      consense < consense.params &> /dev/null
-
+     check_output outtree
+     check_output outfile
+     
      if [ $upgma -gt 0 ]
      then
 	 # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
@@ -550,6 +595,7 @@ then
 
     # restore the original infile for the standard NJ/UPGMA analysis below
     cp "$input_phylip" infile
+          check_output infile
 fi
 
 
@@ -564,7 +610,8 @@ then
     write_dnadist_params "$model" "0" "$TiTv" "$sequential" "$gamma" "$CV"
     echo "# running dnadist < dnadist.params"
     dnadist < dnadist.params &> /dev/null
-
+    check_output outfile
+    
     # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
     # Set last item specifically
     # nstead of appending one element, set the last item specifically, without any "unbound variable" error
@@ -578,6 +625,8 @@ then
     write_protdist_params "$model" "0" "$sequential" "$gamma" "$CV"
     echo "# running protdist < protdist.params"
     protdist < protdist.params &> /dev/null
+    check_output outfile
+
     cp outfile "${input_phylip%.*}_${model}${gammaf}gamma_distMat.out" && \
       outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_distMat.out
     mv outfile infile
@@ -589,6 +638,9 @@ echo "# running write_neighbor_params 0 $upgma"
 write_neighbor_params "0" "$upgma" "$outgroup"
 echo "# running neighbor < neighbor.params"
 neighbor < neighbor.params &> /dev/null
+check_output outfile
+check_output outtree
+
 
 # 5.1 rename outtrees and tree outfiles; remap bootstrap values to bipartitions and display tree to screen
 if [ "$upgma" -gt 0 ]
@@ -634,6 +686,8 @@ else
 	 nw_support "${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph" \
 	 "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk" > \
 	 "${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph"
+	 
+	 check_output "${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph"
 	 
 	 if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph" ] && [[ $(type -P nw_display) ]]
 	 then
