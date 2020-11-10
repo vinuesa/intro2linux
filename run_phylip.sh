@@ -35,8 +35,10 @@ set -o pipefail     # exit after unsuccessful UNIX pipe command
 
 progname=$(basename "$0")  # run_phylip.sh
 VERSION=0.5  # v0.5 2020-11-09; added functions:
-             #                  *  rdm_odd_int to compute random odd integers to pass to PHYLIP programs
-	     #                  *  check_output (silently checks for expected output files, dying if not found)
+             #     *  rdm_odd_int to compute random odd integers to pass to PHYLIP programs
+	     #     *  check_output (silently checks for expected output files, dying if not found)
+	     #     Fixed defaults for CV=1 & gamma="0.0"; 
+	     #     use outfiles+=() to capture outfiles for -R 1 and -R 2 when boot -eq 0; now runs with -i -R1|2 as single opts
 
     #v0.4 2020-11-08; released to the public domain @ https://github.com/vinuesa/intro2linux
     #	    * added nw_support and nw_display calls to map and display bottstrap support values onto NJ or UPGMA trees
@@ -64,13 +66,14 @@ def_prot_model=JTT
 input_phylip=
 runmode=
 boot=0
+CV=1
 model=
 DEBUG=0
 sequential=0
 TiTv=2
 upgma=0
 outgroup=0
-gamma=0
+gamma="0.0"
 outgroup=1
 
 declare -a outfiles
@@ -211,7 +214,7 @@ function write_dnadist_params
     [ "$boot" -gt 0 ]             && echo -ne "M\nD\n$boot\n" >> dnadist.params
     [ "$sequential" -eq 1 ]       && echo -ne "I\n"           >> dnadist.params
                                    echo -ne "Y\n"             >> dnadist.params
-    [ "$gamma" != "0" ]           && echo -ne "$CV\n"         >> dnadist.params				   
+    [ "$gamma" != "0" ]           && echo -ne "$CV\n"         >> dnadist.params
 }
 #---------------------------------------------------------------------------------#
 
@@ -617,7 +620,7 @@ then
     # nstead of appending one element, set the last item specifically, without any "unbound variable" error
     # t[${#t[*]}]=foo
     cp outfile "${input_phylip%.*}_${model}${gammaf}gamma_distMat.out" && \
-      outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_distMat.out 
+      outfiles+=(${input_phylip%.*}_${model}${gammaf}gamma_distMat.out)
     mv outfile infile
 elif [ "$runmode" -eq 2 ]
 then
@@ -628,7 +631,7 @@ then
     check_output outfile
 
     cp outfile "${input_phylip%.*}_${model}${gammaf}gamma_distMat.out" && \
-      outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_distMat.out
+      outfiles+=(${input_phylip%.*}_${model}${gammaf}gamma_distMat.out)
     mv outfile infile
 fi
     
