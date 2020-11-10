@@ -412,7 +412,7 @@ summary {
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
-<h4 class="date">Versión: Mon Nov 9 22:40:03 2020</h4>
+<h4 class="date">Versión: Mon Nov 9 23:36:26 2020</h4>
 
 </div>
 
@@ -880,8 +880,8 @@ ls | head</code></pre>
 ## data</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 99940
-## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  9 22:33 .
+<pre><code>## total 100016
+## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  9 23:32 .
 ## drwxr-xr-x  3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -1738,7 +1738,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 99912
+<pre><code>## total 99988
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-rw-r-- 1 vinuesa vinuesa      361 oct 29 22:15 awk.hash
@@ -1746,7 +1746,7 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 nov  8 18:39 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 nov  9 22:40 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 nov  9 23:36 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-rw-r-- 1 vinuesa vinuesa     3663 nov  7 10:33 count_genome_features_for_taxon.awk</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
@@ -2133,7 +2133,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  9 22:40 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  9 23:36 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2152,7 +2152,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  9 22:40 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  9 23:36 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2281,15 +2281,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  9 22:40 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  9 22:40 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  9 23:36 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  9 23:36 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  9 22:40 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  9 23:36 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2383,9 +2383,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  9 22:33 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  9 22:40 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  9 22:40 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  9 23:36 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2406,9 +2406,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  9 22:33 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  9 22:40 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  9 22:40 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  9 23:36 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2418,10 +2418,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  9 22:33 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  9 22:40 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  9 22:33 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  9 22:40 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2431,11 +2431,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  9 22:33 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov  9 22:40 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  9 22:33 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  9 22:40 recA_Byuanmingense.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-mlocate-y-find" class="section level1">
@@ -2485,8 +2485,8 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 <pre><code>## Filesystem      1K-blocks      Used  Available Use% Mounted on
 ## udev             16381352         0   16381352   0% /dev
 ## tmpfs             3281908      2008    3279900   1% /run
-## /dev/nvme0n1p3  465889936  18600944  423553340   5% /
-## tmpfs            16409528    173492   16236036   2% /dev/shm
+## /dev/nvme0n1p3  465889936  18600956  423553328   5% /
+## tmpfs            16409528    173524   16236004   2% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409528         0   16409528   0% /sys/fs/cgroup
 ## /dev/loop1          56704     56704          0 100% /snap/core18/1885
@@ -2503,13 +2503,13 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 ## /dev/loop10        166784    166784          0 100% /snap/gnome-3-28-1804/145
 ## /dev/loop11         64896     64896          0 100% /snap/standard-notes/22
 ## /dev/loop12         64896     64896          0 100% /snap/standard-notes/23
-## /dev/sda1      1921802432 428359056 1395751320  24% /home
+## /dev/sda1      1921802432 428360056 1395750320  24% /home
 ## tmpfs             3281904        20    3281884   1% /run/user/125
-## tmpfs             3281904        40    3281864   1% /run/user/1000</code></pre>
+## tmpfs             3281904        44    3281860   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465889936 18600944 423553340   5% /</code></pre>
+## /dev/nvme0n1p3 465889936 18600956 423553328   5% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></h3>
 <p>Como cualquier comando, le podemos pasar opciones para adecuar mejor la salida a nuestra necesidad.</p>
@@ -2558,10 +2558,10 @@ df -h /home</code></pre>
 ## /dev/loop10         163M    163M        0M 100% /snap/gnome-3-28-1804/145
 ## /dev/loop11          64M     64M        0M 100% /snap/standard-notes/22
 ## /dev/loop12          64M     64M        0M 100% /snap/standard-notes/23
-## /dev/sda1       1876761M 418320M  1363039M  24% /home
+## /dev/sda1       1876761M 418321M  1363038M  24% /home
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392600M 437918M  1836101M  20% -
+## total           2392600M 437919M  1836100M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2581,8 +2581,8 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 182624   .
-## 179M .</code></pre>
+<pre><code>## 183568   .
+## 180M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
 </ul>
@@ -4212,9 +4212,9 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1764843 nov  9 22:33 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1764846 nov  9 22:40 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  247561 nov  9 22:40 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  248989 nov  9 23:36 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  306038 oct 31 19:08 working_with_linux_commands.tex
 ## total size of working_with_linux_commands.* files is: 2.27 Mb</code></pre>
 <ul>
@@ -5689,7 +5689,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  9 22:40 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  9 23:36 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -5875,14 +5875,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  9 22:40 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  9 22:40 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  9 22:40 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  9 22:40 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  9 22:40 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  9 22:40 recA_B_yuanmingense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  9 22:40 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  9 22:40 recA_B_liaoningense.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  9 23:36 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  9 23:36 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  9 23:36 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  9 23:36 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  9 23:36 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  9 23:36 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  9 23:36 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  9 23:36 recA_B_yuanmingense.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -6013,19 +6013,19 @@ echo &quot;$contador líneas contienen el patrón $patron&quot;
 <pre class="bash"><code>while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 22662
-## 14990
-## 28080</code></pre>
+<pre><code>## 29802
+## 17002
+## 17474</code></pre>
 <p>Los bucles <span class="math inline">\(until\)</span> son útiles para ejecutar un bucle hasta que se cumpla o no una determinada condición.</p>
 <p>Su sintaxis es idéntica al del bucle <span class="math inline">\(while\)</span>.</p>
 <p><code>until TEST-COMMAND; do CONSEQUENT-COMMANDS; done</code></p>
-<p>El siguiente ejemplo corre el bucle <span class="math inline">\(until\)</span> hasta que la variable $RANDOM, que almacena íntegros al generados al azar, sea impar, saliendo del bucle con un break.</p>
+<p>El siguiente ejemplo corre el bucle <span class="math inline">\(until\)</span> hasta que la variable $RANDOM, que almacena íntegros al generados al azar, sea impar, saliendo del bucle con un <span class="math inline">\(break\)</span>.</p>
 <pre class="bash"><code>until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 24123
-## 19215
-## 16909</code></pre>
+<pre><code>## 7813
+## 11481
+## 17913</code></pre>
 </div>
 </div>
 <div id="estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" class="section level2">
@@ -6812,14 +6812,18 @@ set -u              # exit if unset variables are encountered
 set -o pipefail     # exit after unsuccessful UNIX pipe command
 
 progname=$(basename &quot;$0&quot;)  # run_phylip.sh
-VERSION=0.4  #v0.4 2020-11-08; released to the public domain @ https://github.com/vinuesa/intro2linux
-             #       * added nw_support and nw_display calls to map and display bottstrap support values onto NJ or UPGMA trees
-             #       * fixed warnings issued by shellcheck
-         #       * added strict bash interpreter calling with set -e; set -u; set -o pipefail
-         #       * localized variables received in functions
-         #       * explicitly set default_DNA_model=F84 and default_prot_model=JTT
-         #       * added option -v to print version and exit
-         #            
+VERSION=0.5  # v0.5 2020-11-09; added functions:
+             #                  *  rdm_odd_int to compute random odd integers to pass to PHYLIP programs
+         #                  *  check_output (silently checks for expected output files, dying if not found)
+
+    #v0.4 2020-11-08; released to the public domain @ https://github.com/vinuesa/intro2linux
+    #       * added nw_support and nw_display calls to map and display bottstrap support values onto NJ or UPGMA trees
+    #       * fixed warnings issued by shellcheck
+    #       * added strict bash interpreter calling with set -e; set -u; set -o pipefail
+    #       * localized variables received in functions
+    #       * explicitly set default_DNA_model=F84 and default_prot_model=JTT
+    #       * added option -v to print version and exit
+    #        
 
 # GLOBALS
 #DATEFORMAT_SHORT=&quot;%d%b%y&quot; # 16Oct13
@@ -6842,15 +6846,12 @@ model=
 DEBUG=0
 sequential=0
 TiTv=2
-rnd_no=123
 upgma=0
 outgroup=0
 gamma=0
 outgroup=1
 
 declare -a outfiles
-#unset outfiles  # completely whipe out contents of the outfiles array variable
-
 </code></pre>
 </div>
 <div id="funciones-de-run_phylip.sh---modularización-del-código" class="section level3">
@@ -6859,6 +6860,20 @@ declare -a outfiles
 <pre><code>
 #---------------------------------------------------------------------------------#
 #&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; FUNCTION DEFINITIONS &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;#
+#---------------------------------------------------------------------------------#
+
+
+function check_output()
+{
+    outfile=$1
+    if [ ! -s $outfile ]
+    then
+        echo
+    echo &quot; &gt;&gt;&gt; ERROR! The expected output file $outfile was not produced, will exit now!&quot;
+        echo
+    exit 9
+    fi
+}
 #---------------------------------------------------------------------------------#
 
 function check_dependencies
@@ -6933,7 +6948,23 @@ EOF
 
 exit 1   
 }
+
 #---------------------------------------------------------------------------------#
+function rdm_odd_int()
+{
+  while true
+  do 
+     i=$(echo $RANDOM)
+     if (( &quot;$i&quot; % 2 )) # true when odd
+     then 
+         echo &quot;$i&quot; 
+     break
+     fi
+done
+
+}
+#---------------------------------------------------------------------------------#
+
 
 # these are fucntions to write the command files to pass parameters to PHYLIP programs
 function write_dnadist_params
@@ -7057,6 +7088,7 @@ function cleanup_dir
 <h3><span class="header-section-number">15.2.3</span> El bloque de <em>getopts</em> - procesado y validación de opciones y argumentos pasados al <span class="math inline">\(script\)</span> por el usuario</h3>
 <p>Este bloque contiene código clave para procesar y validar las opciones y argumentos que el usuario le pasa al <span class="math inline">\(script\)</span>. Es importante que el programador verifique que el <span class="math inline">\(script\)</span> recibe los parámetros requeridos y que cada opción y parámetro tengan valores razonables.</p>
 <p>Es importante que el <span class="math inline">\(script\)</span> imprima mensajes de error informativos para el usuario, con el fin de hacerle claro y sencillo el manejo del programa.</p>
+<p>Noten la sentencia <code>rnd_no=$(rdm_odd_int)</code> que define a la variable global <em>rnd_no</em>, que almacena un íntegro impar aleatorio generado por la función <em>rdm_odd_int</em>. Este número impar es requerido por varios programas del paquete PHYLIP como <span class="math inline">\(seqboot\)</span> y <span class="math inline">\(neighbor\)</span>.</p>
 <p>En un bloque final, si se pasan los tests, se imprimen los valores de las opciones, para que quede clara la parametrización de la corrida del <span class="math inline">\(script\)</span>.</p>
 <pre><code>#-------------------------------------------------------------------------------------------------#
 #---------------------------------------- GET OPTIONS --------------------------------------------#
@@ -7232,15 +7264,19 @@ then
        echo &quot;# Protein matrix set to default: $def_prot_model ...&quot;       
 fi
 
+
+# Set the script&#39;s run random odd number required by diverse PHYLIP programs
+rnd_no=$(rdm_odd_int)
+
 echo
 echo &quot;### $progname v.$VERSION run on $start_time with the following parameters:&quot;
 echo &quot;# work_directory=$wkdir&quot;
 echo &quot;# input_phylip=$input_phylip&quot;
-echo &quot;# model=$model | gamma=$gamma | CV=$CV | gammaf=$gammaf | ti/tv ratio=$TiTv | outgroup=$outgroup | UPGMA=$upgma | bootstrap no.=$boot&quot;
+echo &quot;# model=$model | gamma=$gamma | CV=$CV | gammaf=$gammaf | ti/tv ratio=$TiTv |
+     outgroup=$outgroup | UPGMA=$upgma | bootstrap no.=$boot | rnd_no=$rnd_no&quot;
 echo &quot;# runmode=$runmode&quot;
 echo &quot;# DEBUG=$DEBUG&quot; 
 echo
-
 </code></pre>
 </div>
 <div id="el-bloque-principal-de-run_phylip.sh" class="section level3">
@@ -7253,6 +7289,7 @@ echo
 <pre><code>#-------------------------------------------------------------------------------------------------#
 #------------------------------------------ MAIN CODE --------------------------------------------#
 #-------------------------------------------------------------------------------------------------#
+
 
 # 1. make sure the external dependencies are found in PATH
 check_dependencies
@@ -7280,6 +7317,7 @@ then
      write_seqboot_params &quot;$boot&quot; &quot;$sequential&quot;
      echo &quot;# running seqboot &lt; seqboot.params &amp;&gt; /dev/null&quot;
      seqboot &lt; seqboot.params &amp;&gt; /dev/null
+     check_output outfile
      mv outfile infile
 fi
 
@@ -7294,6 +7332,7 @@ then
          write_dnadist_params &quot;$model&quot; &quot;$boot&quot; &quot;$TiTv&quot; &quot;$sequential&quot; &quot;$gamma&quot; &quot;$CV&quot;
      echo &quot;# running dnadist &lt; dnadist.params &amp;&gt; /dev/null&quot;
          dnadist &lt; dnadist.params &amp;&gt; /dev/null
+     check_output outfile
      mv outfile infile
      elif [ &quot;$runmode&quot; -eq 2 ]
      then
@@ -7302,6 +7341,7 @@ then
          write_protdist_params &quot;$model&quot; &quot;$boot&quot; &quot;$sequential&quot; &quot;$gamma&quot; &quot;$CV&quot;
      echo &quot;# running protdist &lt; protdist.params &amp;&gt; /dev/null&quot;
          protdist &lt; protdist.params &amp;&gt; /dev/null
+     check_output outfile
      mv outfile infile
      fi
 
@@ -7311,6 +7351,7 @@ then
      write_neighbor_params &quot;$boot&quot; &quot;$upgma&quot; &quot;$outgroup&quot;
      echo &quot;# running neighbor &lt; neighbor.params &amp;&gt; /dev/null&quot;
      neighbor &lt; neighbor.params &amp;&gt; /dev/null
+     check_output outtree
      
      if [ -s outtree ]
      then
@@ -7329,7 +7370,9 @@ then
      write_consense_params
      echo &quot;# running consense &lt; consense.params &amp;&gt; /dev/null&quot;
      consense &lt; consense.params &amp;&gt; /dev/null
-
+     check_output outtree
+     check_output outfile
+     
      if [ $upgma -gt 0 ]
      then
      # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
@@ -7349,6 +7392,7 @@ then
 
     # restore the original infile for the standard NJ/UPGMA analysis below
     cp &quot;$input_phylip&quot; infile
+          check_output infile
 fi
 
 
@@ -7363,7 +7407,8 @@ then
     write_dnadist_params &quot;$model&quot; &quot;0&quot; &quot;$TiTv&quot; &quot;$sequential&quot; &quot;$gamma&quot; &quot;$CV&quot;
     echo &quot;# running dnadist &lt; dnadist.params&quot;
     dnadist &lt; dnadist.params &amp;&gt; /dev/null
-
+    check_output outfile
+    
     # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
     # Set last item specifically
     # nstead of appending one element, set the last item specifically, without any &quot;unbound variable&quot; error
@@ -7377,6 +7422,8 @@ then
     write_protdist_params &quot;$model&quot; &quot;0&quot; &quot;$sequential&quot; &quot;$gamma&quot; &quot;$CV&quot;
     echo &quot;# running protdist &lt; protdist.params&quot;
     protdist &lt; protdist.params &amp;&gt; /dev/null
+    check_output outfile
+
     cp outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_distMat.out&quot; &amp;&amp; \
       outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_distMat.out
     mv outfile infile
@@ -7388,6 +7435,9 @@ echo &quot;# running write_neighbor_params 0 $upgma&quot;
 write_neighbor_params &quot;0&quot; &quot;$upgma&quot; &quot;$outgroup&quot;
 echo &quot;# running neighbor &lt; neighbor.params&quot;
 neighbor &lt; neighbor.params &amp;&gt; /dev/null
+check_output outfile
+check_output outtree
+
 
 # 5.1 rename outtrees and tree outfiles; remap bootstrap values to bipartitions and display tree to screen
 if [ &quot;$upgma&quot; -gt 0 ]
@@ -7433,6 +7483,8 @@ else
      nw_support &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot; \
      &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; &gt; \
      &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot;
+     
+     check_output &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot;
      
      if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot; ] &amp;&amp; [[ $(type -P nw_display) ]]
      then
