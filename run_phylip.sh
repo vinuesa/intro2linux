@@ -397,7 +397,7 @@ do
         ;;
    g)   gamma=$OPTARG
         [ "$gamma" != 0 ] && CV=$(echo "1/sqrt($gamma)" | bc -l) 
-	 CV=$(printf "%.4f\n", "$CV")
+	 CV=$(printf "%.4f\n" "$CV")
         ;;
    h)   print_help
         ;;
@@ -481,7 +481,7 @@ re_TiTv='^[0-9.]+$'
 if [[ ! "$TiTv" =~ $re_TiTv ]] && [ "$runmode" -eq 1 ]
 then
    echo
-   echo "# ERROR: TiTv:$TiTv is not an integer >= 0; provide a value between 0-20" >&2 
+   echo "# ERROR: TiTv:$TiTv is not an integer >= 0; provide a value between 0-10" >&2 
    echo
    print_help
    echo
