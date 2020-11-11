@@ -412,7 +412,7 @@ summary {
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
-<h4 class="date">Versión: Mon Nov 9 23:36:26 2020</h4>
+<h4 class="date">Versión: Tue Nov 10 22:24:58 2020</h4>
 
 </div>
 
@@ -675,7 +675,14 @@ summary {
 </ul></li>
 <li><a href="#interfaz-de-usuario-y-ejemplos-de-uso-de-run_phylip.sh"><span class="toc-section-number">15.3</span> Interfaz de usuario y ejemplos de uso de <strong>run_phylip.sh</strong></a><ul>
 <li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-con-100-réplicas-de-bootstrap-y-modelo-jttg-alpha0.6"><span class="toc-section-number">15.3.1</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas con 100 réplicas de bootstrap y modelo JTT+G (alpha=0.6)</a></li>
-<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-cdss-dna-con-1000-réplicas-de-bootstrap-y-modelo-f84g-alpha0.3-y-tasa-de-titv-6"><span class="toc-section-number">15.3.2</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con 1000 réplicas de bootstrap y modelo F84+G (alpha=0.3) y tasa de ti/tv = 6</a></li>
+<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-bajo-modelo-jttg"><span class="toc-section-number">15.3.2</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo modelo JTT+G</a></li>
+<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-bajo-modelo-erróneo-de-dna"><span class="toc-section-number">15.3.3</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo modelo erróneo (de DNA)</a></li>
+<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-adn-con-valor-incorrecto-de-titv"><span class="toc-section-number">15.3.4</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de ADN con valor incorrecto de Ti/Tv</a></li>
+<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-bajo-con-número-de-réplicas-0-0-repl-100-o-1000-o-pasando-números-decimales-o-caracteres-no-numéricos."><span class="toc-section-number">15.3.5</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo con número de réplicas &lt;0, 0 &lt; repl &lt; 100, o &gt; 1000 o pasando números decimales o caracteres no numéricos.</a></li>
+<li><a href="#verificación-de-que-el-modelo-o-matriz-pasados-por-el-usuario-al-script-con--m-modelo-son-los-que-puede-usar-phylip"><span class="toc-section-number">15.3.6</span> Verificación de que el modelo o matriz pasados por el usuario al <span class="math inline">\(script\)</span> con <span class="math inline">\(-m\ modelo\)</span> son los que puede usar PHYLIP</a></li>
+<li><a href="#comprobación-de-resultados"><span class="toc-section-number">15.3.7</span> Comprobación de resultados</a></li>
+<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-cdss-dna-con-valores-por-defecto"><span class="toc-section-number">15.3.8</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con valores por defecto</a></li>
+<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-cdss-dna-con-1000-réplicas-de-bootstrap-y-modelo-f84g-alpha0.2-y-tasa-de-titv-10"><span class="toc-section-number">15.3.9</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con 1000 réplicas de bootstrap y modelo F84+G (alpha=0.2) y tasa de ti/tv = 10</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#consideraciones-finales-y-referencias-recomendadas-para-continuar-aprendiendo-bash"><span class="toc-section-number">16</span> Consideraciones finales y referencias recomendadas para continuar aprendiendo Bash</a></li>
@@ -685,7 +692,7 @@ summary {
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
 <p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2020-11-09) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
+<p>Las versión actual (v.2020-11-10) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
@@ -880,8 +887,8 @@ ls | head</code></pre>
 ## data</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 100016
-## drwxr-xr-x 10 vinuesa vinuesa    20480 nov  9 23:32 .
+<pre><code>## total 100160
+## drwxr-xr-x 11 vinuesa vinuesa    20480 nov 10 22:19 .
 ## drwxr-xr-x  3 vinuesa vinuesa     4096 sep 29 22:15 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -892,14 +899,14 @@ ls -al | head -20</code></pre>
 ## -rw-rw-r--  1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
 ## -rw-rw-r--  1 vinuesa vinuesa     3663 nov  7 10:33 count_genome_features_for_taxon.awk
 ## -rw-rw-r--  1 vinuesa vinuesa     3460 nov  7 11:26 count_genome_features_for_taxon_V2.awk
-## drwxrwxr-x  2 vinuesa vinuesa     4096 nov  9 00:03 data
+## drwxrwxr-x  2 vinuesa vinuesa     4096 nov 10 21:22 data
+## -rw-rw-r--  1 vinuesa vinuesa       18 nov 10 22:19 dnadist.params
 ## -rw-rw-r--  1 vinuesa vinuesa       43 nov  4 19:20 dna_string.txt
 ## drwxr-xr-x  2 vinuesa vinuesa     4096 nov  9 00:04 docs
 ## -rwxr-xr-x  1 vinuesa vinuesa      535 oct 26 19:16 fas2tab.pl
 ## -rw-rw-r--  1 vinuesa vinuesa      415 oct 25 19:22 fasta_filtering_pipeline.cmd
 ## -rwxr-xr-x  1 vinuesa vinuesa     1298 nov  4 21:42 filter_fasta_sequences.awk
-## -rwxr-xr-x  1 vinuesa vinuesa     1238 nov  6 19:31 find_dir
-## -rw-r--r--  1 vinuesa vinuesa     3889 nov  8 20:32 GDP_12_prokEuc.phy</code></pre>
+## -rwxr-xr-x  1 vinuesa vinuesa     1238 nov  6 19:31 find_dir</code></pre>
 <div id="veamos-el-contenido-del-directorio-raíz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del <strong>directorio raíz /</strong></h4>
 <ul>
@@ -924,8 +931,8 @@ ls -al | head -20</code></pre>
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
 ## drwxr-xr-x   4 root root  4096 nov  9 10:27 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4580 nov  9 19:22 dev
-## drwxr-xr-x 155 root root 12288 nov  9 10:27 etc
+## drwxr-xr-x  21 root root  4580 nov 10 11:13 dev
+## drwxr-xr-x 155 root root 12288 nov 10 11:17 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
 ## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib32 -&gt; usr/lib32
@@ -1317,8 +1324,8 @@ cd /home/vinuesa/cursos/intro2linux/data</code></pre>
 <h4><span class="header-section-number">2.4.2.4</span> regresa al directorio en el que estabas justo antes con <b>cd -</b></h4>
 <pre class="bash"><code>cd -
 pwd</code></pre>
-<pre><code>## /home/vinuesa
-## /home/vinuesa</code></pre>
+<pre><code>## /home/vinuesa/cursos/intro2linux/data
+## /home/vinuesa/cursos/intro2linux/data</code></pre>
 </div>
 <div id="regresa-a-tu-home-desde-cualquier-punto-del-sistema-de-archivos-con-cd" class="section level4">
 <h4><span class="header-section-number">2.4.2.5</span> regresa a tu home desde cualquier punto del sistema de archivos con <b>cd</b></h4>
@@ -1341,8 +1348,8 @@ pwd</code></pre>
 </ul>
 <pre class="bash"><code>cd -
 pwd</code></pre>
-<pre><code>## /home/vinuesa
-## /home/vinuesa</code></pre>
+<pre><code>## /home/vinuesa/cursos/intro2linux/data
+## /home/vinuesa/cursos/intro2linux/data</code></pre>
 <ul>
 <li>sube al directorio home/ usando la ruta relativa</li>
 </ul>
@@ -1460,7 +1467,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 <p>La mayoría de los programas ejecutables del sistema proveen un formato estandarizado de documentación que se despliega en la consola usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                                                                            User Commands                                                                           CUT(1)
+<pre><code>## CUT(1)                                                                                User Commands                                                                                CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -1738,7 +1745,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 99988
+<pre><code>## total 100132
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-rw-r-- 1 vinuesa vinuesa      361 oct 29 22:15 awk.hash
@@ -1746,7 +1753,7 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 nov  8 18:39 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 nov  9 23:36 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 nov 10 22:24 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-rw-r-- 1 vinuesa vinuesa     3663 nov  7 10:33 count_genome_features_for_taxon.awk</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
@@ -2133,7 +2140,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 nov  9 23:36 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 nov 10 22:24 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2152,7 +2159,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  9 23:36 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 10 22:24 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2281,15 +2288,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  9 23:36 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  9 23:36 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 10 22:24 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 nov 10 22:24 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov  9 23:36 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov 10 22:24 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2383,9 +2390,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  9 22:40 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 10 12:09 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  9 23:36 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov 10 22:24 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2406,9 +2413,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  9 22:40 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 10 12:09 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov  9 23:36 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov 10 22:24 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2418,10 +2425,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  9 22:40 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 10 12:09 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  9 22:40 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov 10 12:09 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2431,11 +2438,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov  9 22:40 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov 10 12:09 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov  9 22:40 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 10 12:09 recA_Byuanmingense.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-mlocate-y-find" class="section level1">
@@ -2484,32 +2491,32 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 <pre class="bash"><code>df        </code></pre>
 <pre><code>## Filesystem      1K-blocks      Used  Available Use% Mounted on
 ## udev             16381352         0   16381352   0% /dev
-## tmpfs             3281908      2008    3279900   1% /run
-## /dev/nvme0n1p3  465889936  18600956  423553328   5% /
-## tmpfs            16409528    173524   16236004   2% /dev/shm
+## tmpfs             3281908      2016    3279892   1% /run
+## /dev/nvme0n1p3  465889936  18488936  423665348   5% /
+## tmpfs            16409528     61044   16348484   1% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409528         0   16409528   0% /sys/fs/cgroup
-## /dev/loop1          56704     56704          0 100% /snap/core18/1885
 ## /dev/loop0          56704     56704          0 100% /snap/core18/1932
-## /dev/loop3         165376    165376          0 100% /snap/gnome-3-28-1804/128
-## /dev/loop2         223232    223232          0 100% /snap/gnome-3-34-1804/60
-## /dev/loop4         261760    261760          0 100% /snap/gnome-3-34-1804/36
-## /dev/loop5          63616     63616          0 100% /snap/gtk-common-themes/1506
+## /dev/loop1          56704     56704          0 100% /snap/core18/1885
+## /dev/loop2          44288     44288          0 100% /snap/snap-store/415
+## /dev/loop4         166784    166784          0 100% /snap/gnome-3-28-1804/145
+## /dev/loop5         261760    261760          0 100% /snap/gnome-3-34-1804/36
+## /dev/loop3          31744     31744          0 100% /snap/snapd/9721
+## /dev/loop6          64896     64896          0 100% /snap/standard-notes/22
 ## /dev/nvme0n1p1    1994928      7984    1986944   1% /boot/efi
-## /dev/loop8          31744     31744          0 100% /snap/snapd/9607
-## /dev/loop6          44288     44288          0 100% /snap/snap-store/415
-## /dev/loop7          31744     31744          0 100% /snap/snapd/9721
-## /dev/loop9          51968     51968          0 100% /snap/snap-store/481
-## /dev/loop10        166784    166784          0 100% /snap/gnome-3-28-1804/145
-## /dev/loop11         64896     64896          0 100% /snap/standard-notes/22
+## /dev/loop7          63616     63616          0 100% /snap/gtk-common-themes/1506
+## /dev/loop8          51968     51968          0 100% /snap/snap-store/481
+## /dev/loop9         223232    223232          0 100% /snap/gnome-3-34-1804/60
+## /dev/loop10         31744     31744          0 100% /snap/snapd/9607
+## /dev/loop11        165376    165376          0 100% /snap/gnome-3-28-1804/128
 ## /dev/loop12         64896     64896          0 100% /snap/standard-notes/23
-## /dev/sda1      1921802432 428360056 1395750320  24% /home
+## /dev/sda1      1921802432 428363048 1395747328  24% /home
 ## tmpfs             3281904        20    3281884   1% /run/user/125
-## tmpfs             3281904        44    3281860   1% /run/user/1000</code></pre>
+## tmpfs             3281904        48    3281856   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465889936 18600956 423553328   5% /</code></pre>
+## /dev/nvme0n1p3 465889936 18488936 423665348   5% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></h3>
 <p>Como cualquier comando, le podemos pasar opciones para adecuar mejor la salida a nuestra necesidad.</p>
@@ -2540,28 +2547,28 @@ df -h /home</code></pre>
 <pre><code>## Filesystem     1M-blocks    Used Available Use% Mounted on
 ## udev              15998M      0M    15998M   0% /dev
 ## tmpfs              3205M      2M     3204M   1% /run
-## /dev/nvme0n1p3   454971M  18165M   413627M   5% /
-## tmpfs             16025M    170M    15856M   2% /dev/shm
+## /dev/nvme0n1p3   454971M  18056M   413736M   5% /
+## tmpfs             16025M     60M    15966M   1% /dev/shm
 ## tmpfs                 5M      1M        5M   1% /run/lock
 ## tmpfs             16025M      0M    16025M   0% /sys/fs/cgroup
-## /dev/loop1           56M     56M        0M 100% /snap/core18/1885
 ## /dev/loop0           56M     56M        0M 100% /snap/core18/1932
-## /dev/loop3          162M    162M        0M 100% /snap/gnome-3-28-1804/128
-## /dev/loop2          218M    218M        0M 100% /snap/gnome-3-34-1804/60
-## /dev/loop4          256M    256M        0M 100% /snap/gnome-3-34-1804/36
-## /dev/loop5           63M     63M        0M 100% /snap/gtk-common-themes/1506
+## /dev/loop1           56M     56M        0M 100% /snap/core18/1885
+## /dev/loop2           44M     44M        0M 100% /snap/snap-store/415
+## /dev/loop4          163M    163M        0M 100% /snap/gnome-3-28-1804/145
+## /dev/loop5          256M    256M        0M 100% /snap/gnome-3-34-1804/36
+## /dev/loop3           31M     31M        0M 100% /snap/snapd/9721
+## /dev/loop6           64M     64M        0M 100% /snap/standard-notes/22
 ## /dev/nvme0n1p1     1949M      8M     1941M   1% /boot/efi
-## /dev/loop8           31M     31M        0M 100% /snap/snapd/9607
-## /dev/loop6           44M     44M        0M 100% /snap/snap-store/415
-## /dev/loop7           31M     31M        0M 100% /snap/snapd/9721
-## /dev/loop9           51M     51M        0M 100% /snap/snap-store/481
-## /dev/loop10         163M    163M        0M 100% /snap/gnome-3-28-1804/145
-## /dev/loop11          64M     64M        0M 100% /snap/standard-notes/22
+## /dev/loop7           63M     63M        0M 100% /snap/gtk-common-themes/1506
+## /dev/loop8           51M     51M        0M 100% /snap/snap-store/481
+## /dev/loop9          218M    218M        0M 100% /snap/gnome-3-34-1804/60
+## /dev/loop10          31M     31M        0M 100% /snap/snapd/9607
+## /dev/loop11         162M    162M        0M 100% /snap/gnome-3-28-1804/128
 ## /dev/loop12          64M     64M        0M 100% /snap/standard-notes/23
-## /dev/sda1       1876761M 418321M  1363038M  24% /home
+## /dev/sda1       1876761M 418324M  1363035M  24% /home
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392600M 437919M  1836100M  20% -
+## total           2392600M 437702M  1836317M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2581,8 +2588,8 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 183568   .
-## 180M .</code></pre>
+<pre><code>## 184420   .
+## 181M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
 </ul>
@@ -4212,17 +4219,17 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1764846 nov  9 22:40 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1771480 nov 10 12:09 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  248989 nov  9 23:36 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  274718 nov 10 22:24 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  306038 oct 31 19:08 working_with_linux_commands.tex
-## total size of working_with_linux_commands.* files is: 2.27 Mb</code></pre>
+## total size of working_with_linux_commands.* files is: 2.30 Mb</code></pre>
 <ul>
 <li>comparen y entiendan la diferencia del comando anterior con el del siguiente:</li>
 </ul>
 <pre class="bash"><code>ls -l working_with_linux_commands.* | \
  awk &#39;{s+=$5}; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## total size of working_with_linux_commands.* files is: 2.27 Mb</code></pre>
+<pre><code>## total size of working_with_linux_commands.* files is: 2.30 Mb</code></pre>
 </div>
 <div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
 <h3><span class="header-section-number">11.5.7</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
@@ -5589,7 +5596,7 @@ ubicación=CDMX
 dat=$(date | awk &#39;{print $2&quot;-&quot;$3&quot;-&quot;$4}&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in &lt;$wkdir&gt; at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;09-nov-2020&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;10-nov-2020&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
 <h2><span class="header-section-number">13.3</span> Modificación de variables y operaciones con ellas</h2>
@@ -5689,7 +5696,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov  9 23:36 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 10 22:25 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -5875,14 +5882,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov  9 23:36 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov  9 23:36 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov  9 23:36 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov  9 23:36 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov  9 23:36 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov  9 23:36 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov  9 23:36 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov  9 23:36 recA_B_yuanmingense.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov 10 22:25 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov 10 22:25 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov 10 22:25 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov 10 22:25 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov 10 22:25 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov 10 22:25 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov 10 22:25 recA_B_yuanmingense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov 10 22:25 recA_B_sp..fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -6013,9 +6020,9 @@ echo &quot;$contador líneas contienen el patrón $patron&quot;
 <pre class="bash"><code>while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 29802
-## 17002
-## 17474</code></pre>
+<pre><code>## 12226
+## 5684
+## 5778</code></pre>
 <p>Los bucles <span class="math inline">\(until\)</span> son útiles para ejecutar un bucle hasta que se cumpla o no una determinada condición.</p>
 <p>Su sintaxis es idéntica al del bucle <span class="math inline">\(while\)</span>.</p>
 <p><code>until TEST-COMMAND; do CONSEQUENT-COMMANDS; done</code></p>
@@ -6023,9 +6030,9 @@ while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; bre
 <pre class="bash"><code>until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 7813
-## 11481
-## 17913</code></pre>
+<pre><code>## 21837
+## 22945
+## 10249</code></pre>
 </div>
 </div>
 <div id="estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" class="section level2">
@@ -6377,6 +6384,7 @@ CTRL-D</code></pre>
 ## intro2linux
 ## participantes_Taller_CG_FC
 ## pics
+## tmp
 ## tutorials
 ## working_with_linux_commands_files</code></pre>
 <p>Nota: el script <em>ls_dir</em> funciona perfectamente, pero no es la manera más eficiente de buscar directorios. La función <span class="math inline">\(find\)</span> de <span class="math inline">\(Linux\)</span> es mucho más versátil y eficiente para ello.</p>
@@ -6537,6 +6545,7 @@ find . -maxdepth $max_depth -type $type</code></pre>
 ## ./participantes_Taller_CG_FC
 ## ./intro2linux
 ## ./bin
+## ./tmp
 ## ./working_with_linux_commands_files
 ## ./docs</code></pre>
 <ul>
@@ -6781,10 +6790,14 @@ fi
 #-------------------------------------------------------------------------------------------------------
 #: PROGRAM: run_phylip.sh
 #: AUTHOR: Pablo Vinuesa, Center for Genomic Sciences, UNAM, Mexico
-#:         https://www.ccg.unam.mx/~vinuesa/
+#:         https://www.ccg.unam.mx/~vinuesa/ twitter: @pvinmex
 #
 #: PROJECT START: October 16th, 2013
-#
+#    This program has been developed mainly for teaching purposes, 
+#    with improvements/new features added as the script was used in 
+#    diverse courses taught to undergrads at https://www.lcg.unam.mx
+#    (LCG-UNAM) and the International Workshops on Bioinformatics (TIB)
+
 #: AIM: run PHYLIP&#39;s distance methods [NJ|UPGMA] for DNA and proteins with bootstrapping
 #       This script was written to teach intermediate Bash scripting to my students at the 
 #       Bachelor&#39;s Program in Genome Sciences at the Center for Genome Sciences, UNAM, Mexico
@@ -6793,17 +6806,24 @@ fi
 #
 #: OUTPUT: [NJ|UPGMA] phylogenies and, if requested, bootstrap consensus trees
 
-#: COPYRIGHT (c) 2013, Pablo Vinuesa. Released under the GPLv3 License. 
-#                                     http://www.gnu.org/copyleft/gpl.html
+#: SOURCE: Freely available on GitHub @ https://github.com/vinuesa/intro2linux
+#          Released under the GPLv3 License. 
+#          http://www.gnu.org/copyleft/gpl.html
 
 #### DEPENDENCIES 
 # Assumes that the following binaries and scripts are all in $PATH, checked by check_dependencies()
 #
 #   1) Binaries from the PHYLIP package: 
-#   seqboot dnadist protdist neighbor consense nw_support
+#   seqboot dnadist protdist neighbor consense nw_support nw_display
+#   NOTE: Linux-compatible binaries are supplied in the distro\&#39;s bin/ directory
+#           https://github.com/vinuesa/intro2linux/tree/master/bin  
 
-#: TODO
-#    implement also FM, ME, parsimony and ML analyses
+#: TODO:
+#    implement also FM, ME, parsimony and ML analyses; 
+#    check that the user provides proper PHYLIP files with at least 4 distinct sequences each
+
+#: KNOWN BUGS: None.
+#    Please report any errors you may encounter through the GitHub issue pages
 #-------------------------------------------------------------------------------------------------------
 
 # 0. Define strict bash settings
@@ -6812,18 +6832,7 @@ set -u              # exit if unset variables are encountered
 set -o pipefail     # exit after unsuccessful UNIX pipe command
 
 progname=$(basename &quot;$0&quot;)  # run_phylip.sh
-VERSION=0.5  # v0.5 2020-11-09; added functions:
-             #                  *  rdm_odd_int to compute random odd integers to pass to PHYLIP programs
-         #                  *  check_output (silently checks for expected output files, dying if not found)
-
-    #v0.4 2020-11-08; released to the public domain @ https://github.com/vinuesa/intro2linux
-    #       * added nw_support and nw_display calls to map and display bottstrap support values onto NJ or UPGMA trees
-    #       * fixed warnings issued by shellcheck
-    #       * added strict bash interpreter calling with set -e; set -u; set -o pipefail
-    #       * localized variables received in functions
-    #       * explicitly set default_DNA_model=F84 and default_prot_model=JTT
-    #       * added option -v to print version and exit
-    #        
+VERSION=1.0 
 
 # GLOBALS
 #DATEFORMAT_SHORT=&quot;%d%b%y&quot; # 16Oct13
@@ -6841,37 +6850,87 @@ def_DNA_model=F84
 def_prot_model=JTT
 input_phylip=
 runmode=
-boot=0
+boot=100
+CV=1
 model=
 DEBUG=0
 sequential=0
 TiTv=2
 upgma=0
 outgroup=0
-gamma=0
+gamma=&quot;0.0&quot;
 outgroup=1
 
-declare -a outfiles
+declare -a outfiles # to collect the output files written to disk
 </code></pre>
 </div>
 <div id="funciones-de-run_phylip.sh---modularización-del-código" class="section level3">
 <h3><span class="header-section-number">15.2.2</span> Funciones de <strong>run_phylip.sh</strong> - modularización del código</h3>
-<p>Las <strong>funciones</strong> en programas de <span class="math inline">\(Bash\)</span> se definen siempre en la parte alta del <span class="math inline">\(script\)</span>. Es importante localizar las variables de las funciones con <span class="math inline">\(local\)</span>, para evitar que los valores de las variables modificados en las funciones interfieran con las globales.</p>
-<pre><code>
-#---------------------------------------------------------------------------------#
+<p>Las <strong>funciones</strong> en programas de <span class="math inline">\(Bash\)</span> se definen siempre en la parte alta del <span class="math inline">\(script\)</span>, es decir tiene que estar definidas antes de que se llamen desde el bloque de código principal. A mí me gusta agruparlas por bloques de funciones relacionadas.</p>
+<p>Es importante localizar las variables de las funciones con <span class="math inline">\(local\)</span>, para evitar que los valores de las variables modificados en las funciones interfieran con las globales.</p>
+<p>Las funciones son fundamentales para modularizar el código y evitar llamadas repetidas al mismo bloque de código. Una función como <span class="math inline">\(check\_output\)</span> se llama múltiples veces desde <em>run_phylip.sh</em></p>
+<p>Puede ser conveniente separar grupos de funciones relacionadas en archivos separados, que llamaremos librerías de funciones. Estas puden ser importadas al <span class="math inline">\(script\)</span>, con cualquiera de las dos llamadas equivalentes que se muestran seguidamente:</p>
+<ul>
+<li><code>source /path/to/lib_name</code></li>
+<li><code>. /path/to/lib_name</code></li>
+</ul>
+<pre><code>#---------------------------------------------------------------------------------#
 #&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; FUNCTION DEFINITIONS &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;#
 #---------------------------------------------------------------------------------#
+function print_dev_history()
+{
+    cat &lt;&lt;EOF_
+    
+    $progname $VERSION has been developed mainly for teaching purposes, 
+      with improvements/new features added as the script was used in 
+      diverse courses taught to undergrads at https://www.lcg.unam.mx
+      and the International Workshops on Bioinformatics (TIB)
+    
+    #v1.0  2020-11-09; This version has thorough error checking and reporting with improved code flow
+         *  re-ingeneered the main code block. It now first runs the standard distance-matrix + clustering computations
+            before doing bootstrapping. This helps in rapidly detecting problematic model parameters, as reflected in negative distances
+     *  displays NJ|UPGMA tree without bootstrap values, if no bootstrapping is requested   
+     *  added functions:
+          - check_matrix to check if they contain negative values, issuing an error message
+          - display_treeOI display trees with nw_display, only if they do not contain negative branch lengths, issuing an error message
+          - print_dev_history to clean up the script\&#39;s header section
+     *  made 100% shellcheck-compliant; prints all error messages to &gt;&amp;2 (STDERR)
+         *  changed/fixed defaults for CV=1 &amp; gamma=&quot;0.0&quot;; 
+     *  use outfiles+=() to capture outfiles for -R 1 and -R 2 when boot -eq 0; now runs with -i -R1|2 as single opts
+     *  Changed default boot=100
+     *  now accepts TiTv=real like 6.7 and checks for real numbers passed to -t
+     *  checks if outtree contains negative branches before attempting to display with nw_display &amp; prints proper message
 
+    # v0.5 2020-11-09; added functions:
+         *  rdm_odd_int to compute random odd integers to pass to PHYLIP programs
+         *  check_output (silently checks for expected output files, dying if not found)
+
+    #v0.4 2020-11-08; released to the public domain @ https://github.com/vinuesa/intro2linux
+           * added nw_support and nw_display calls to map and display bottstrap support values onto NJ or UPGMA trees
+           * fixed several warnings issued by shellcheck
+           * added strict bash interpreter calling with set -e; set -u; set -o pipefail
+           * localized variables received in functions
+           * explicitly set default_DNA_model=F84 and default_prot_model=JTT
+           * added option -v to print version and exit
+            
+    #v0.3 September 15, 2017; improved checking of user input
+    #v0.2 September 16, 2015; basic options and parameter checking for protdist phylogenies
+    #v0.1 October 16, 2013; basic options and parameter checking for dnadist phylogenies
+EOF_
+
+exit 0
+}
+#---------------------------------------------------------------------------------#
 
 function check_output()
 {
-    outfile=$1
-    if [ ! -s $outfile ]
+    local outfile=$1
+    if [ ! -s &quot;$outfile&quot; ]
     then
         echo
-    echo &quot; &gt;&gt;&gt; ERROR! The expected output file $outfile was not produced, will exit now!&quot;
+    echo &quot; &gt;&gt;&gt; ERROR! The expected output file $outfile was not produced, will exit now!&quot; &gt;&amp;2
         echo
-    exit 9
+    exit 2
     fi
 }
 #---------------------------------------------------------------------------------#
@@ -6883,78 +6942,29 @@ function check_dependencies
     dependencies=(seqboot dnadist protdist neighbor consense) 
     for programname in &quot;${dependencies[@]}&quot;
     do
+       local bin=
        bin=$(type -P &quot;$programname&quot;)
        if [ -z &quot;$bin&quot; ]; then
           echo
-          echo &quot;# ERROR: $programname not in place!&quot;
-          echo &quot;# ... you will need to install \&quot;$programname\&quot; first or include it in \$PATH&quot;
-          echo &quot;# ... exiting&quot;
+          echo &quot;# ERROR: $programname not in place!&quot; &gt;&amp;2
+          echo &quot;# ... you will need to install \&quot;$programname\&quot; first or include it in \$PATH&quot; &gt;&amp;2
+          echo &quot;# ... exiting&quot; &gt;&amp;2
           exit 1
        fi
     done
 
     echo
-    echo &#39;# Run check_dependencies() ... looks good: all required binaries and perl scripts are in place.&#39;
-    echo
+    echo &#39;# Run check_dependencies() ... looks good: all required external dependencies are in place!&#39;
+    echo &#39;-------------------------------------------------------------------------------------------&#39;
 }
 #---------------------------------------------------------------------------------#
 
-function print_help
-{
-   #&#39;:b:c:m:I:o:R:t:hDsuv&#39;
-   cat&lt;&lt;EOF
-   $progname v.$VERSION [OPTIONS]
-   
-   -h  prints this help message
-   
- REQUIRED
-   -i &lt;input_phylip_file&gt; (if sequential, use also flag -s)
-   -R &lt;integer&gt;  RUNMODE
-        1    run dnadist  (expects DNA  alignment in phylip format)
-    2    run protdist (expects PROT alignment in phylip format)
-
- OPTIONAL
-   -b &lt;integer&gt; No. of bootstrap pseudoreplicates [default: $boot]
-   -g &lt;real number&gt; alpha for gamma distribution  [default: $gamma]
-   -o &lt;integer&gt; outgroup sequence no.             [default: $outgroup]
-   -s sequential format; -s (flag; no val)!       [default: interleaved]
-   -t &lt;digit&gt; Transition/Transversion ratio       [default: $TiTv]
-   -m &lt;model name&gt;  NOTE: TYPE AS SHOWN!
-        DNA:  F84, Kimura, Jukes-Cantor, LogDet   [default: $def_DNA_model]
-        PROT: JTT, PMB, PAM, Kimura               [default: $def_prot_model]
-   -u &lt;flag&gt; use UPGMA for clustering             [default:  NJ]
-   -v &lt;flag&gt; print program version and exit
-   -D &lt;flag&gt; Activate debugging to keep cmd files [default: $DEBUG]
-   
- AIM: run PHYLIP&#39;s distance methods [NJ|UPGMA] for DNA and proteins with bootstrapping
-      This code was written to teach basic Bash scripting to my students at the 
-      Bachelor&#39;s Program in Genome Sciences, Center for Genome Sciences, UNAM, Mexico
-      https://www.lcg.unam.mx/      
-
- OUTPUT: [NJ|UPGMA] phylogenies and, if requested, bootstrap consensus trees 
-         and  [NJ|UPGMA] phylogenies with bootstrap support values mappend on bipartitions
- 
- EXTERNAL DEPENDENCIES: seqboot dnadist protdist neighbor consense nw_support
-                        optional: nw_support and nw_display 
-            (Linux 64bit binaries available in bin/ dir)
- 
- LICENSING &amp; SOURCE
-       Author: Pablo Vinuesa | https://www.ccg.unam.mx/~vinuesa/ | twitter: @pvinmex
-       Released under the GNU General Public License version 3 (GPLv3)
-       http://www.gnu.org/copyleft/gpl.html
-       source: https://github.com/vinuesa/intro2linux
-
-EOF
-
-exit 1   
-}
-
-#---------------------------------------------------------------------------------#
 function rdm_odd_int()
 {
+  # generate a random odd integer for seqboot and neighbor
   while true
   do 
-     i=$(echo $RANDOM)
+     i=$RANDOM
      if (( &quot;$i&quot; % 2 )) # true when odd
      then 
          echo &quot;$i&quot; 
@@ -6962,11 +6972,47 @@ function rdm_odd_int()
      fi
 done
 
+#---------------------------------------------------------------------------------#
+}
+
+function check_matrix()
+{
+    local matrix=$1
+    
+    # check that the distance matrix does not contain negative values due to wrong model parameters
+    if grep -El &#39; \-[0-9\.]+&#39; &quot;$matrix&quot;
+    then
+        echo &quot;ERROR: computed negative distances!&quot; &gt;&amp;2
+         [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; echo &quot; You may need to ajust the model and|or gamma value; try lowering TiTv if &gt; 6&quot; &gt;&amp;2
+         [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; echo &quot; You may need to ajust the matrix and|or gamma value&quot; &gt;&amp;2
+    exit 3
+    fi
 }
 #---------------------------------------------------------------------------------#
 
+function display_treeOK()
+{
+     # checks that tree does not contain branches with negative lengths, 
+     #    as these cannot be displayed  with nw_dsiplay
+     local tree=$1
+     
+     # check that there are no negative branch lengths in the nj_tree
+     if ! grep -El &#39;\-[0-9\.]+&#39; &quot;$tree&quot;
+     then 
+         echo &quot;# displaying $tree ...&quot;
+         echo
+         nw_display -w 80 -Ir &quot;$tree&quot;
+         echo
+     else
+         echo &quot;ERROR: cannot display $nj_tree with nw_dsiplay, as it contains branches with negative lengths!&quot; &gt;&amp;2
+         [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; echo &quot;  You may need to adjust (lower?) TiTv=$TiTv&quot; &gt;&amp;2
+         [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; echo &quot;  You may need to use another matrix or adjunst gamma&quot; &gt;&amp;2
+         exit 4
+     fi
+}
+#------------------------------------- PHYLIP FUNCTIONS ---------------------------------------#
+# &gt;&gt;&gt; these are fucntions to write the command files to pass parameters to PHYLIP programs &lt;&lt;&lt; # 
 
-# these are fucntions to write the command files to pass parameters to PHYLIP programs
 function write_dnadist_params
 {
     #get the input runmodes, models, bootstrap no. ...
@@ -6988,12 +7034,12 @@ function write_dnadist_params
     [ &quot;$model&quot; = &#39;Kimura&#39; ]       &amp;&amp; echo &quot;D&quot;                 &gt;&gt; dnadist.params
     [ &quot;$model&quot; = &#39;Jukes-Cantor&#39; ] &amp;&amp; echo -ne &quot;D\nD\n&quot;        &gt;&gt; dnadist.params
     [ &quot;$model&quot; = &#39;LogDet&#39; ]       &amp;&amp; echo -ne &quot;D\nD\nD\n&quot;     &gt;&gt; dnadist.params
-    [ &quot;$TiTv&quot; -ne 2 ]             &amp;&amp; echo -ne &quot;T\n$TiTv\n&quot;    &gt;&gt; dnadist.params
+    [ &quot;$TiTv&quot; != &quot;2&quot; ]            &amp;&amp; echo -ne &quot;T\n$TiTv\n&quot;    &gt;&gt; dnadist.params
     [ &quot;$gamma&quot; != &quot;0&quot; ]           &amp;&amp; echo -ne &quot;G\n&quot;           &gt;&gt; dnadist.params
     [ &quot;$boot&quot; -gt 0 ]             &amp;&amp; echo -ne &quot;M\nD\n$boot\n&quot; &gt;&gt; dnadist.params
     [ &quot;$sequential&quot; -eq 1 ]       &amp;&amp; echo -ne &quot;I\n&quot;           &gt;&gt; dnadist.params
-                                   echo -ne &quot;Y\n&quot;             &gt;&gt; dnadist.params
-    [ &quot;$gamma&quot; != &quot;0&quot; ]           &amp;&amp; echo -ne &quot;$CV\n&quot;         &gt;&gt; dnadist.params                
+                                     echo -ne &quot;Y\n&quot;           &gt;&gt; dnadist.params
+    [ &quot;$gamma&quot; != &quot;0&quot; ]           &amp;&amp; echo -ne &quot;$CV\n&quot;         &gt;&gt; dnadist.params
 }
 #---------------------------------------------------------------------------------#
 
@@ -7038,7 +7084,7 @@ function write_seqboot_params
     [ &quot;$boot&quot; -gt 0 ]       &amp;&amp; echo -ne &quot;R\n$boot\n&quot; &gt;&gt; seqboot.params
     [ &quot;$sequential&quot; -eq 1 ] &amp;&amp; echo -ne &quot;I\n&quot;        &gt;&gt; seqboot.params
                                echo -ne &quot;Y\n&quot;        &gt;&gt; seqboot.params
-                   echo -ne &quot;$rnd_no\n&quot;  &gt;&gt; seqboot.params   
+                   echo -ne &quot;$ROI\n&quot;     &gt;&gt; seqboot.params   
 }
 #---------------------------------------------------------------------------------#
 
@@ -7052,10 +7098,10 @@ function write_neighbor_params
     # need to remove previous param file, since we are concatenating to it
     [ -s neighbor.params ] &amp;&amp; rm neighbor.params
 
-    # Write $rnd_no params
+    # Write $ROI params
     [ &quot;$upgma&quot; -gt 0 ]    &amp;&amp; echo -ne &quot;N\n&quot;                 &gt;&gt; neighbor.params
     [ &quot;$outgroup&quot; -gt 1 ] &amp;&amp; echo -ne &quot;O\n$outgroup\n&quot;      &gt;&gt; neighbor.params
-    [ &quot;$boot&quot; -gt 0 ]     &amp;&amp; echo -ne &quot;M\n$boot\n$rnd_no\n&quot; &gt;&gt; neighbor.params
+    [ &quot;$boot&quot; -gt 0 ]     &amp;&amp; echo -ne &quot;M\n$boot\n$ROI\n&quot;    &gt;&gt; neighbor.params
                              echo -ne &quot;Y\n&quot;                 &gt;&gt; neighbor.params
 }
 #---------------------------------------------------------------------------------#
@@ -7082,20 +7128,75 @@ function cleanup_dir
        [ -s &quot;$file&quot; ] &amp;&amp; rm &quot;$file&quot;
    done    
 }
+
+#-------------------------------- END PHYLIP FUNCTIONS----------------------------#
+
+function print_help
+{
+   #&#39;:b:c:m:I:o:R:t:hHDsuv&#39;
+   cat&lt;&lt;EOF
+   $progname v.$VERSION [OPTIONS]
+   
+   -h  prints this help message
+   
+ REQUIRED
+   -i &lt;input_phylip_file&gt; (if sequential, use also flag -s)
+   -R &lt;integer&gt;  RUNMODE
+        1    run dnadist  (expects DNA  alignment in phylip format)
+    2    run protdist (expects PROT alignment in phylip format)
+
+ OPTIONAL
+   -b &lt;integer&gt; No. of bootstrap pseudoreplicates [default: $boot]
+   -g &lt;real number&gt; alpha for gamma distribution  [default: $gamma]
+   -o &lt;integer&gt; outgroup sequence no.             [default: $outgroup]
+   -s sequential format; -s (flag; no val)!       [default: interleaved]
+   -t &lt;digit&gt; Transition/Transversion ratio       [default: $TiTv]
+   -m &lt;model name&gt;  NOTE: TYPE AS SHOWN!
+        DNA:  F84, Kimura, Jukes-Cantor, LogDet   [default: $def_DNA_model]
+        PROT: JTT, PMB, PAM, Kimura               [default: $def_prot_model]
+   -u &lt;flag&gt; use UPGMA for clustering             [default:  NJ]
+   -v &lt;flag&gt; print program version and exit
+   -D &lt;flag&gt; Activate debugging to keep cmd files [default: $DEBUG]
+   -H &lt;flag&gt; print development history and exit   
+   
+ AIM: run PHYLIP&#39;s distance methods [NJ|UPGMA] for DNA and proteins with bootstrapping
+      This code was written to teach basic Bash scripting to my students at the 
+      Bachelor&#39;s Program in Genome Sciences, Center for Genome Sciences, UNAM, Mexico
+      https://www.lcg.unam.mx/      
+
+ OUTPUT: [NJ|UPGMA] phylogenies and, if requested, bootstrap consensus trees 
+         and  [NJ|UPGMA] phylogenies with bootstrap support values mappend on bipartitions
+ 
+ EXTERNAL DEPENDENCIES: seqboot dnadist protdist neighbor consense nw_support
+                        optional: nw_support and nw_display 
+            (Linux 64bit binaries available in bin/ dir)
+ 
+ LICENSING &amp; SOURCE
+       Author: Pablo Vinuesa | https://www.ccg.unam.mx/~vinuesa/ | twitter: @pvinmex
+       Released under the GNU General Public License version 3 (GPLv3)
+       http://www.gnu.org/copyleft/gpl.html
+       source: https://github.com/vinuesa/intro2linux
+
+EOF
+
+exit 1   
+}
+
+
 </code></pre>
 </div>
 <div id="el-bloque-de-getopts---procesado-y-validación-de-opciones-y-argumentos-pasados-al-script-por-el-usuario" class="section level3">
 <h3><span class="header-section-number">15.2.3</span> El bloque de <em>getopts</em> - procesado y validación de opciones y argumentos pasados al <span class="math inline">\(script\)</span> por el usuario</h3>
-<p>Este bloque contiene código clave para procesar y validar las opciones y argumentos que el usuario le pasa al <span class="math inline">\(script\)</span>. Es importante que el programador verifique que el <span class="math inline">\(script\)</span> recibe los parámetros requeridos y que cada opción y parámetro tengan valores razonables.</p>
-<p>Es importante que el <span class="math inline">\(script\)</span> imprima mensajes de error informativos para el usuario, con el fin de hacerle claro y sencillo el manejo del programa.</p>
-<p>Noten la sentencia <code>rnd_no=$(rdm_odd_int)</code> que define a la variable global <em>rnd_no</em>, que almacena un íntegro impar aleatorio generado por la función <em>rdm_odd_int</em>. Este número impar es requerido por varios programas del paquete PHYLIP como <span class="math inline">\(seqboot\)</span> y <span class="math inline">\(neighbor\)</span>.</p>
-<p>En un bloque final, si se pasan los tests, se imprimen los valores de las opciones, para que quede clara la parametrización de la corrida del <span class="math inline">\(script\)</span>.</p>
+<p>Este bloque contiene código clave para procesar y validar las opciones y argumentos que el usuario le pasa al <span class="math inline">\(script\)</span>. Es crítico que el programador verifique que el <span class="math inline">\(script\)</span> recibe los parámetros requeridos y que cada opción y parámetro tengan valores razonables. Verás una gran cantidad de condicionales para verificar los datos recibidos por el <span class="math inline">\(script\)</span>.</p>
+<p>Es muy deseable además, que el <span class="math inline">\(script\)</span> imprima mensajes de error informativos para el usuario, con el fin de hacerle claro y sencillo el manejo del programa.</p>
+<p>Noten la sentencia <code>ROI=$(rdm_odd_int)</code> que define a la variable global <em>ROI</em>, que almacena un íntegro impar aleatorio generado por la función <em>rdm_odd_int</em>. Este número impar es requerido por varios programas del paquete PHYLIP como <span class="math inline">\(seqboot\)</span> y <span class="math inline">\(neighbor\)</span>.</p>
+<p>En un bloque final, si se pasan los <em>tests</em>, se imprimen los valores de las opciones, para que quede clara la parametrización de la corrida del <span class="math inline">\(script\)</span>.</p>
 <pre><code>#-------------------------------------------------------------------------------------------------#
 #---------------------------------------- GET OPTIONS --------------------------------------------#
 #-------------------------------------------------------------------------------------------------#
 
 # GETOPTS
-while getopts &#39;:b:g:i:m:R:o:t:hDsuv&#39; OPTIONS
+while getopts &#39;:b:g:i:m:R:o:t:hDHsuv&#39; OPTIONS
 do
    case $OPTIONS in
 
@@ -7103,7 +7204,7 @@ do
         ;;
    g)   gamma=$OPTARG
         [ &quot;$gamma&quot; != 0 ] &amp;&amp; CV=$(echo &quot;1/sqrt($gamma)&quot; | bc -l) 
-     CV=$(printf &quot;%.4f\n&quot; &quot;$CV&quot;)
+          CV=$(printf &quot;%.4f\n&quot; &quot;$CV&quot;)
         ;;
    h)   print_help
         ;;
@@ -7125,7 +7226,9 @@ do
         ;;
    D)   DEBUG=1
         ;;
-   \:)   printf &quot;argument missing from -%s option\n&quot; &quot;$OPTARG&quot;
+   H)   print_dev_history
+        ;;
+   :)   printf &quot;argument missing from -%s option\n&quot; &quot;$OPTARG&quot;
      print_help
          exit 2 
          ;;
@@ -7159,56 +7262,73 @@ then
        exit 1    
 fi
 
+# Check for correct model names
+
+
+# automatically set TiTv=0 when running with protein matrices or the LogDet DNA model
 [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; TiTv=0
+[ &quot;$model&quot; == LogDet ] &amp;&amp; TiTv=0
 
-# lets do some additional user input checking
 
-# First check that bootstrap value is an integer
+# check that bootstrap value is an integer
 re=&#39;^[0-9]+$&#39;
-if ! [[ &quot;$boot&quot; =~ $re ]]
+if [[ ! &quot;$boot&quot; =~ $re ]]
 then
    echo
-   echo &quot;# ERROR: $boot is not an integer; provide a value between 100 and 1000&quot; &gt;&amp;2 
+   echo &quot;# ERROR: boot:$boot is not a positive number &gt;= 0; provide a value between 100 and 1000&quot; &gt;&amp;2 
    echo
    print_help
    echo
    exit 3
 fi
 
+
+# check that Ti/Tv is a real number, integer or decimal
+re_TiTv=&#39;^[0-9.]+$&#39;
+if [[ ! &quot;$TiTv&quot; =~ $re_TiTv ]] &amp;&amp; [ &quot;$runmode&quot; -eq 1 ]
+then
+   echo
+   echo &quot;# ERROR: TiTv:$TiTv is not an integer &gt;= 0; provide a value between 0-20&quot; &gt;&amp;2 
+   echo
+   print_help
+   echo
+   exit 3
+elif [[ &quot;$TiTv&quot; =~ $re_TiTv ]] &amp;&amp; [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; { [ &quot;$model&quot; == Jukes-Cantor ] || [ &quot;$model&quot; == LogDet ]; }
+then
+       echo
+       echo &quot;# ERROR: $model is only valid when analyzing DNA alignments under the F84 or K2P models&quot; &gt;&amp;2
+       echo
+       print_help
+       exit 1    
+fi
+
 if [ &quot;$gamma&quot; != 0 ] # note, need to treat as string, since gamma will be generalle a float like 0.5
 then
-    gammaf=$(echo &quot;$gamma&quot; | sed &#39;s/\.//&#39;)
+    # this is to avoid having dots within filename (converts gamma==0.2 to gammaf=02)
+    gammaf=${gamma%.*}${gamma##*.}
 else
     gammaf=&quot;$gamma&quot;
 fi    
 
 # check model vs. runmode compatibility and suitable bootstrap values are provided
-#if [ &quot;$runmode&quot; -eq 1 -a \( &quot;$model&quot; = JTT -o &quot;$model&quot; = PMG -o &quot;$model&quot; = PAM \) ]
-if [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; [ &quot;$model&quot; = JTT -o &quot;$model&quot; = PMG -o &quot;$model&quot; = PAM -o &quot;$model&quot; = &quot;$def_prot_model&quot; ]
+if [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; { [ &quot;$model&quot; = JTT ] || [ &quot;$model&quot; = PMG ] || [ &quot;$model&quot; = PAM ] || [ &quot;$model&quot; = &quot;$def_prot_model&quot; ]; }
 then
        echo
-       echo &quot;# ERROR: $model is only valid when analyzing protein alignments under -R 2&quot;
+       echo &quot;# ERROR: $model is only valid when analyzing protein alignments under -R 2&quot; &gt;&amp;2 
        echo
        print_help
        exit 1    
-elif [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; [ &quot;$model&quot; = F84 -o &quot;$model&quot; = &#39;Jukes-Cantor&#39; -o &quot;$model&quot; = &#39;LogDet&#39; -o &quot;$model&quot; = &quot;$def_DNA_model&quot; ]
+elif [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; { [ &quot;$model&quot; = F84 ] || [ &quot;$model&quot; = &#39;Jukes-Cantor&#39; ] || [ &quot;$model&quot; = &#39;LogDet&#39; ] || [ &quot;$model&quot; = &quot;$def_DNA_model&quot; ]; }
 then
        echo
-       echo &quot;# ERROR: $model is only valid when analyzing DNA alignments under -R 1&quot;
-       echo
-       print_help
-       exit 1    
-elif [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; [ &quot;$TiTv&quot; -ne 0 ]
-then
-       echo
-       echo &quot;# ERROR: TiTv parameter=$TiTv is only valid when analyzing DNA alignments under -R 1&quot;
+       echo &quot;# ERROR: $model is only valid when analyzing DNA alignments under -R 1&quot; &gt;&amp;2
        echo
        print_help
        exit 1    
 elif [ &quot;$boot&quot; -lt 0 ]
 then
        echo
-       echo &quot;# ERROR: bootstrap value=$boot is &lt; 0 and not permitted&quot;
+       echo &quot;# ERROR: bootstrap value=$boot is &lt; 0 and not permitted&quot; &gt;&amp;2
        echo
        print_help
        exit 1    
@@ -7232,7 +7352,7 @@ then
 elif [ &quot;$boot&quot; -gt 0 ] &amp;&amp; [ &quot;$boot&quot; -lt 100 ]
 then
        echo
-       echo &quot;# WARNING: bootstrap value=$boot is a bit low. Use a value between 100 and 1000.&quot;
+       echo &quot;# WARNING: bootstrap value=$boot is a bit low. Use a value &gt;= 100.&quot;
        echo -n &quot;# Are you sure you want to continue anyway? Type Y|N &quot;
        read -r answer
        if [ &quot;$answer&quot; = N ] || [ &quot;$answer&quot; = n ] 
@@ -7252,28 +7372,49 @@ fi
 if [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; [ -z &quot;$model&quot; ]
 then
        model=&quot;$def_DNA_model&quot;
-       echo
-       echo &quot;# DNA model set to default: $def_DNA_model...&quot;       
+       #echo &quot;# DNA model set to default: $def_DNA_model...&quot;       
 fi
 
 if [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; [ -z &quot;$model&quot; ]
 
 then
        model=&quot;$def_prot_model&quot;
-       echo
-       echo &quot;# Protein matrix set to default: $def_prot_model ...&quot;       
+       #echo &quot;# Protein matrix set to default: $def_prot_model ...&quot;       
+fi
+
+# check that the user provided a valid DNA substitution model
+if [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; [[ ! &quot;$model&quot; =~ ^(F84|Kimura|Jukes-Cantor|LogDet|&quot;$def_DNA_model&quot;)$ ]]
+then
+   echo
+   echo &quot;# ERROR: $model is not a recognized substitution model for DNA sequences used by PHYLIP&quot; &gt;&amp;2 
+   echo
+   print_help
+   echo
+   exit 3
+fi
+
+# check that the user provided a valid name for empirical substitution matrix
+#    note the much shorter and cleaner notation of this test using extended regexes, than the previous one
+if [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; [[ ! &quot;$model&quot; =~ ^(JTT|PMB|PAM|Kimura)$ ]]
+then
+   echo
+   echo &quot;# ERROR: $model is not a recognized substitution matrix for protein sequences used by PHYLIP&quot; &gt;&amp;2 
+   echo
+   print_help
+   echo
+   exit 3
 fi
 
 
-# Set the script&#39;s run random odd number required by diverse PHYLIP programs
-rnd_no=$(rdm_odd_int)
+#&gt;&gt;&gt; Set the script&#39;s run random odd number required by diverse PHYLIP programs &lt;&lt;&lt;
+ROI=$(rdm_odd_int)
 
 echo
 echo &quot;### $progname v.$VERSION run on $start_time with the following parameters:&quot;
 echo &quot;# work_directory=$wkdir&quot;
 echo &quot;# input_phylip=$input_phylip&quot;
 echo &quot;# model=$model | gamma=$gamma | CV=$CV | gammaf=$gammaf | ti/tv ratio=$TiTv |
-     outgroup=$outgroup | UPGMA=$upgma | bootstrap no.=$boot | rnd_no=$rnd_no&quot;
+     outgroup=$outgroup | UPGMA=$upgma | bootstrap no.=$boot | ROI=$ROI&quot;
 echo &quot;# runmode=$runmode&quot;
 echo &quot;# DEBUG=$DEBUG&quot; 
 echo
@@ -7282,10 +7423,17 @@ echo
 <div id="el-bloque-principal-de-run_phylip.sh" class="section level3">
 <h3><span class="header-section-number">15.2.4</span> El bloque principal de <em>run_phylip.sh</em></h3>
 <p>El siguiente bloque les muestra el código principal, que hace las llamadas a las funciones mostradas en la sección anterior y controla el flujo del programa acorde a las opciones y parámetros pasado al <span class="math inline">\(script\)</span> por el usuario, procesados y validados en la sección anterior.</p>
+<p>El <span class="math inline">\(script\)</span> <em>run_phylip.sh</em> consta de dos bloques principales. 1. El primero calcula la matriz de distancias (-R 1 = DNA; -R 2 = prot) y el árbol (NJ|UPGMA) correspondiente directamente a partir de los datos del alineamiento en formato PHYLIP que le pasa el usuario al <span class="math inline">\(script\)</span> (-i input_phylip). 2. El segundo se corre cuando el usuario le pide al <span class="math inline">\(script\)</span> hacer un <strong>análisis de bootstrap</strong>, el cual se realiza por defecto con 100 pseudoréplicas. Este bloque no se corre cuando el usuario le pasa <span class="math inline">\(-b\ 0\)</span> el <span class="math inline">\(script\)</span></p>
 <p>Este bloque además se encarga de verificar que se van produciendo los resultados esperados, imprimiendo algunos mensajes del progreso del programa.</p>
 <p>Si se corren réplicas de <em>bootstrap</em>, los valores de consenso se remapean sobre la filogenia NJ o UPGMA inferida directamente de los datos, usando <span class="math inline">\(nw\_support\)</span>. Esta filogenia, con sus valores de <em>bootstrap</em>, se despliega en pantalla con <span class="math inline">\(nw\_display\)</span>.</p>
 <p>Una vez concluido el trabajo, se limpia el directorio, borrando los archivos temporales como los de argumentos escritos para cada uno de los programas de PHYLIP.</p>
 <p>Finalmente se imprime un resumen de los archivos escritos a disco, cuyos nombres se fueron almacenados en el <em>arreglo</em> <span class="math inline">\(outfiles\)</span> a medida que se iban generando a lo largo del programa.</p>
+<div id="sección-1-del-cuerpo-principal-del-script-encargado-de-calcular-una-filogenia-de-distancias-directamente-del-alineamiento-sin-réplias-de-bootstrap" class="section level4">
+<h4><span class="header-section-number">15.2.4.1</span> Sección 1 del cuerpo principal del <span class="math inline">\(script\)</span>, encargado de calcular una filogenia de distancias directamente del alineamiento (sin réplias de bootstrap)</h4>
+<p>En este bloque se calculan primero las matrices de distancia con la parametrización indicada por el usuario llamando a <span class="math inline">\(dnadist\)</span> o a <span class="math inline">\(protdist\)</span> desde funciones, según los datos sean de DNA o proteína.</p>
+<p>La función <span class="math inline">\(check\_matrix\)</span> verifica que no se hayan estimado distancias negativas.</p>
+<p>Finalmente se llama a <span class="math inline">\(neighbor\)</span> para que reconstruya el árbol (NJ|UPGMA).</p>
+<p>Si el usuario le pasa <span class="math inline">\(-b\ 0\)</span> el <span class="math inline">\(script\)</span>, éste termina desplegando el árbol de distancia en pantalla llamando a <span class="math inline">\(nw\_display\)</span> e imprime un resumen de los archivos escritos a disco.</p>
 <pre><code>#-------------------------------------------------------------------------------------------------#
 #------------------------------------------ MAIN CODE --------------------------------------------#
 #-------------------------------------------------------------------------------------------------#
@@ -7295,44 +7443,179 @@ echo
 check_dependencies
 
 # 2. Start processing the input file
+# make sure there are no old outfile or outtree files lying around from previous runs
+[ -s infile ] &amp;&amp; rm infile
+[ -s outfile ] &amp;&amp; rm outfile
+[ -s outtree ] &amp;&amp; rm outtree
+
+
 # 2.1) make sure we have an input file or die
 if [ -s &quot;$input_phylip&quot; ]
 then
      cp &quot;$input_phylip&quot; infile
 else
      echo
-     echo &quot;# FATAL ERROR: input phylip file $input_phylip does not exist or is empty&quot;
-     echo &quot;# Make sure $input_phylip is in $wkdir. Exiting ...&quot;
+     echo &quot;# FATAL ERROR: input phylip file $input_phylip does not exist or is empty&quot; &gt;&amp;2 
+     echo &quot;# Make sure $input_phylip is in $wkdir. Exiting ...&quot; &gt;&amp;2
      echo
      exit 1
 fi
 
-# 2.2 Run seqboot if requested
+# ----------------------------------------------------------- #
+# &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Compute distance matrices &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; #
+# ----------------------------------------------------------- #
+
+# 3. In any case (with or without bootstrap) compute the NJ tree for the original phylip file
+#     Run dnadist or protdist, as required   
+echo
+echo &quot;&gt;&gt;&gt; Computing distance matrix for $input_phylip ...&quot;
+
+if [ &quot;$runmode&quot; -eq 1 ]      
+then
+    echo &quot;# running write_dnadist_params $model 0 $TiTv $sequential $gamma $CV&quot;
+    write_dnadist_params &quot;$model&quot; &quot;0&quot; &quot;$TiTv&quot; &quot;$sequential&quot; &quot;$gamma&quot; &quot;$CV&quot;
+    echo &quot;# running dnadist &lt; dnadist.params&quot;
+    dnadist &lt; dnadist.params &amp;&gt; /dev/null
+    check_output outfile
+    
+    # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
+    # Set last item specifically
+    # nstead of appending one element, set the last item specifically, without any &quot;unbound variable&quot; error
+    # t[${#t[*]}]=foo
+    cp outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_distMat.out&quot; &amp;&amp; \
+      outfiles+=(&quot;${input_phylip%.*}_${model}${gammaf}gamma_distMat.out&quot;)
+    
+    # check that the distance matrix does not contain negative values due to wrong model parameters
+    check_matrix &quot;${input_phylip%.*}_${model}${gammaf}gamma_distMat.out&quot;    
+    
+    mv outfile infile
+elif [ &quot;$runmode&quot; -eq 2 ]
+then
+    echo &quot;# running write_protdist_params $model 0 $sequential $gamma $CV&quot;
+    write_protdist_params &quot;$model&quot; &quot;0&quot; &quot;$sequential&quot; &quot;$gamma&quot; &quot;$CV&quot;
+    echo &quot;# running protdist &lt; protdist.params&quot;
+    protdist &lt; protdist.params &amp;&gt; /dev/null
+    check_output outfile
+    
+    cp outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_distMat.out&quot; &amp;&amp; \
+      outfiles+=(&quot;${input_phylip%.*}_${model}${gammaf}gamma_distMat.out&quot;)
+    
+    # check that the distance matrix does not contain negative values due to wrong model parameters
+    check_matrix &quot;${input_phylip%.*}_${model}${gammaf}gamma_distMat.out&quot;
+    
+    mv outfile infile
+fi
+
+
+# ------------------------------------------------------------------------------------ #
+# &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Computing NJ|UPGMA trees from original alignments &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; #
+# ------------------------------------------------------------------------------------ #
+
+echo
+echo &quot;&gt;&gt;&gt; Computing distance tree for $input_phylip ...&quot;  
+
+# 4. now that we have the dist matrix, do the clustering with NJ or UPGMA
+echo &quot;# running write_neighbor_params 0 $upgma&quot;
+write_neighbor_params &quot;0&quot; &quot;$upgma&quot; &quot;$outgroup&quot;
+echo &quot;# running neighbor &lt; neighbor.params&quot;
+neighbor &lt; neighbor.params &amp;&gt; /dev/null
+check_output outfile
+check_output outtree
+
+
+# 5.1 rename outtrees and tree outfiles; remap bootstrap values to bipartitions and display tree to screen
+if [ &quot;$upgma&quot; -gt 0 ]
+then
+     # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
+     # Set last item specifically
+     # nstead of appending one element, set the last item specifically, without any &quot;unbound variable&quot; error
+     # t[${#t[*]}]=foo
+     [ -s outtree ] &amp;&amp; mv outtree &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph&quot;      &amp;&amp; \
+       outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph
+     [ -s outfile ] &amp;&amp; mv outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile&quot; &amp;&amp; \
+       outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile&quot;
+     
+     upgma_tree=&quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph&quot;
+     echo &quot;# wrote tree $upgma_tree to disk&quot; 
+       
+     # check that there are no negative branch lengths in the nj_tree
+     #  and display with nw_display, only if no bootstrapping is requested
+     [ &quot;$boot&quot; -eq 0 ] &amp;&amp; display_treeOK &quot;$upgma_tree&quot;
+else
+     [ -s outtree ] &amp;&amp; mv outtree &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot;  &amp;&amp; \
+       outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot;
+     [ -s outfile ] &amp;&amp; mv outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile&quot; &amp;&amp; \
+       outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile&quot;
+
+     nj_tree=&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot;
+     echo &quot;# wrote tree $nj_tree to disk&quot;
+
+     # check that there are no negative branch lengths in the nj_tree
+     #  and display with nw_display, only if no bootstrapping is requested
+     [ &quot;$boot&quot; -eq 0 ] &amp;&amp; display_treeOK &quot;$nj_tree&quot;
+fi
+
+echo &quot;# &gt; finished computing distance matrix and tree for $input_phylip!&quot;
+
+if [ &quot;$boot&quot; -eq 0 ]
+then
+    # 6. Print final output summary message
+    echo
+    echo &#39;===================== OUTPUT SUMMARY =====================&#39;
+    no_outfiles=${#outfiles[@]}
+    echo &quot;# $no_outfiles output files were generated:&quot;
+    printf &quot;%s\n&quot; &quot;${outfiles[@]}&quot;
+
+    echo
+    echo -n &quot;# FINISHED run at: &quot;; date 
+    echo &quot;   ==&gt; Exiting now ...&quot;
+    echo
+else
+    echo &quot;==================================================================&quot;
+    echo
+fi
+</code></pre>
+</div>
+<div id="sección-2-del-cuerpo-principal-del-script-encargado-de-hacer-un-análisis-filogenético-de-distancias-con-réplicas-de-bootstrap" class="section level4">
+<h4><span class="header-section-number">15.2.4.2</span> Sección 2 del cuerpo principal del <span class="math inline">\(script\)</span>, encargado de hacer un análisis filogenético de distancias con réplicas de bootstrap</h4>
+<p>La principal diferencia de este bloque con respecto al anterior, es que antes de calcular las matrices de distancias, se llama a <span class="math inline">\(seqboot\)</span> para que genere <span class="math inline">\(-b\ \#\)</span> alineamientos con columnas muestreadas al azar con reemplazo (<em>con bootstrap</em>). Es sobre éstos que se calculan luego las matrices de distancias (una por pseudoréplica) y una filogenia de cada una de las matrices anteriores. El <span class="math inline">\(script\)</span> vuelve a llamar a <span class="math inline">\(check\_matrix\)</span> para verificar que haya habido problemas en la estima de alguna distancia antes de llamar a <span class="math inline">\(neighbor\)</span> para el cálculo de los árboles. Una vez obtenidos, el <span class="math inline">\(script\)</span> llama a <span class="math inline">\(consense\)</span> para calcular el árbol consenso de mayoría, en cuyos nodos internos se escriben la proporción de veces que dicha rama o bipartición fue encontrada en las #n pseudoréplicas de bootstrap.</p>
+<p>Finalmente el <span class="math inline">\(script\)</span> llama a <span class="math inline">\(nw_support\)</span> para mapear los valores de <em>bootstrap</em> sobre la filogenia original. Esto no lo hace PHYLIP, por lo que usamos esta utilería del paquete <a href="http://cegg.unige.ch/newick_utils">newick utilities</a> no incluida en el paquete PHYLIP. Una vez remapeadas, se despliega el árbol en la terminal haciendo uso de <span class="math inline">\(nw\_display\)</span> e imprime un resumen de los archivos escritos a disco.</p>
+<pre><code># ----------------------------------------------------------- #
+# &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Bootstrap Analysis &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; #
+# ----------------------------------------------------------- #
+
+# Run seqboot if requested
 # run seqboot if -b &gt; 0
 
 if [ &quot;$boot&quot; -gt 0 ] 
 then
-     echo &quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Bootstrap Analysis &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&quot;
+     # 1. restore the original infile for the bootstrapping and standard NJ/UPGMA analysis below
+     cp &quot;$input_phylip&quot; infile
+     check_output infile
+
+     echo
+     echo &quot;&gt;&gt;&gt; Bootstrap Analysis based on $boot pseudoreplicates for $input_phylip ...&quot;
      echo &quot;# running  write_seqboot_params $boot $sequential&quot;
      write_seqboot_params &quot;$boot&quot; &quot;$sequential&quot;
      echo &quot;# running seqboot &lt; seqboot.params &amp;&gt; /dev/null&quot;
      seqboot &lt; seqboot.params &amp;&gt; /dev/null
      check_output outfile
      mv outfile infile
-fi
 
-# 3. if bootstrapping, then compute consensus tree
-if [ &quot;$boot&quot; -gt 0 ] 
-then
+     echo &quot;# &gt; computing distance matrices on $boot bootstrapped alignments ...&quot;
+     # 2. if bootstrapping, then compute consensus tree
      # we need to run dnadist or protdist, depending on runmode
      if [ &quot;$runmode&quot; -eq 1 ]
      then
-     echo
      echo &quot;# running write_dnadist_params $model $boot $TiTv $sequential $gamma $CV&quot;
          write_dnadist_params &quot;$model&quot; &quot;$boot&quot; &quot;$TiTv&quot; &quot;$sequential&quot; &quot;$gamma&quot; &quot;$CV&quot;
      echo &quot;# running dnadist &lt; dnadist.params &amp;&gt; /dev/null&quot;
          dnadist &lt; dnadist.params &amp;&gt; /dev/null
      check_output outfile
+     
+     # check that matrix does not contain negative values
+     check_matrix outfile
+     
      mv outfile infile
      elif [ &quot;$runmode&quot; -eq 2 ]
      then
@@ -7342,11 +7625,16 @@ then
      echo &quot;# running protdist &lt; protdist.params &amp;&gt; /dev/null&quot;
          protdist &lt; protdist.params &amp;&gt; /dev/null
      check_output outfile
+     
+     # check that matrix does not contain negative values
+     check_matrix outfile
+
      mv outfile infile
      fi
 
-     #Now we have the distance matrices and we can proceed equaly for runmodes 1 and 2
-     echo     
+     # 3. Now we have the distance matrices and we can proceed equaly for runmodes 1 and 2
+     #    &gt;&gt;&gt; Run neighbor
+     echo &quot;# &gt; Computing distance trees from bootstrapped data ...&quot;   
      echo &quot;# running write_neighbor_params $boot $upgma $outgroup&quot;
      write_neighbor_params &quot;$boot&quot; &quot;$upgma&quot; &quot;$outgroup&quot;
      echo &quot;# running neighbor &lt; neighbor.params &amp;&gt; /dev/null&quot;
@@ -7365,7 +7653,8 @@ then
      mv outtree intree
      rm outfile
 
-     echo
+     # 4. Compute consensus tree with consense
+     echo &quot;# &gt; Computing MJR consensus tree from trees reconstructed from bootstrap pseudoreplicates ...&quot;
      echo &quot;# running write_consense_params&quot;
      write_consense_params
      echo &quot;# running consense &lt; consense.params &amp;&gt; /dev/null&quot;
@@ -7390,115 +7679,72 @@ then
       outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile&quot;
      fi 
 
-    # restore the original infile for the standard NJ/UPGMA analysis below
-    cp &quot;$input_phylip&quot; infile
-          check_output infile
-fi
 
-
-# 4. In any case (with or without bootstrap) compute the NJ tree for the original phylip file
-#     Run dnadist or protdist, as required   
-echo
-echo &quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; NJ or UPGMA Analysis &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&quot;
-
-if [ &quot;$runmode&quot; -eq 1 ]      
-then
-    echo &quot;# running write_dnadist_params $model 0 $TiTv $sequential $gamma $CV&quot;
-    write_dnadist_params &quot;$model&quot; &quot;0&quot; &quot;$TiTv&quot; &quot;$sequential&quot; &quot;$gamma&quot; &quot;$CV&quot;
-    echo &quot;# running dnadist &lt; dnadist.params&quot;
-    dnadist &lt; dnadist.params &amp;&gt; /dev/null
-    check_output outfile
-    
-    # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
-    # Set last item specifically
-    # nstead of appending one element, set the last item specifically, without any &quot;unbound variable&quot; error
-    # t[${#t[*]}]=foo
-    cp outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_distMat.out&quot; &amp;&amp; \
-      outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_distMat.out 
-    mv outfile infile
-elif [ &quot;$runmode&quot; -eq 2 ]
-then
-    echo &quot;# running write_protdist_params $model 0 $sequential $gamma $CV&quot;
-    write_protdist_params &quot;$model&quot; &quot;0&quot; &quot;$sequential&quot; &quot;$gamma&quot; &quot;$CV&quot;
-    echo &quot;# running protdist &lt; protdist.params&quot;
-    protdist &lt; protdist.params &amp;&gt; /dev/null
-    check_output outfile
-
-    cp outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_distMat.out&quot; &amp;&amp; \
-      outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_distMat.out
-    mv outfile infile
-fi
-    
-# 5. now that we have the dist matrix, do the clustering with NJ or UPGMA
-echo
-echo &quot;# running write_neighbor_params 0 $upgma&quot;
-write_neighbor_params &quot;0&quot; &quot;$upgma&quot; &quot;$outgroup&quot;
-echo &quot;# running neighbor &lt; neighbor.params&quot;
-neighbor &lt; neighbor.params &amp;&gt; /dev/null
-check_output outfile
-check_output outtree
-
-
-# 5.1 rename outtrees and tree outfiles; remap bootstrap values to bipartitions and display tree to screen
-if [ &quot;$upgma&quot; -gt 0 ]
-then
-     # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
-     # Set last item specifically
-     # nstead of appending one element, set the last item specifically, without any &quot;unbound variable&quot; error
-     # t[${#t[*]}]=foo
-     [ -s outtree ] &amp;&amp; mv outtree &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph&quot;      &amp;&amp; \
-       outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph
-     [ -s outfile ] &amp;&amp; mv outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile&quot; &amp;&amp; \
-       outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile&quot;
-       
-     # if we requested bootstrapping, map bootstrap values onto UPGMA tree using
-     #   nw_support upgma.ph bootRepl_tree.ph &gt; UPGMA_with_boot_support.ph
-     if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; ] &amp;&amp; [[ $(type -P nw_support) ]]
+     echo &quot;# &gt; Remapping bootstrap values on original distane tree and preparing for tree display ...&quot;
+     # 5. Rename outtrees and tree outfiles; remap bootstrap values to bipartitions and display tree on screen
+     if [ &quot;$upgma&quot; -gt 0 ]
      then
-         echo &quot;# mapping bootstrap values on UPGMA tree with nw_support ...&quot;
-         nw_support &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph&quot; \
+          # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
+          # Set last item specifically
+          # nstead of appending one element, set the last item specifically, without any &quot;unbound variable&quot; error
+          # t[${#t[*]}]=foo
+          [ -s outtree ] &amp;&amp; mv outtree &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph&quot;     &amp;&amp; \
+            outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph
+          [ -s outfile ] &amp;&amp; mv outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile&quot; &amp;&amp; \
+            outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile&quot;
+       
+          # if we requested bootstrapping, map bootstrap values onto UPGMA tree using
+          #   nw_support upgma.ph bootRepl_tree.ph &gt; UPGMA_with_boot_support.ph
+          if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; ] &amp;&amp; [[ $(type -P nw_support) ]]
+          then
+          echo &quot;# mapping bootstrap values on UPGMA tree with nw_support ...&quot;
+          nw_support &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph&quot; \
          &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; &gt; \
          &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph&quot;
 
-         if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph&quot; ] &amp;&amp; [[ $(type -P nw_display) ]]
-         then
+          if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph&quot; ] &amp;&amp; [[ $(type -P nw_display) ]]
+          then
               outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph&quot;
-              echo &quot;# displaying ${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph with nw_display ...&quot;
-          echo
-          nw_display -w 80 -Ir outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph&quot;
-          echo
-         fi
-     fi
-else
-     [ -s outtree ] &amp;&amp; mv outtree &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot;  &amp;&amp; \
-       outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot;
-     [ -s outfile ] &amp;&amp; mv outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile&quot; &amp;&amp; \
-       outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile&quot;
+          
+          nj_tree=&quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph&quot;
+              
+          # check that there are no negative branch lengths in the nj_tree 
+          #   before displaying with nw_display
+          display_treeOK &quot;$nj_tree&quot;
+          fi
+          fi
+     else
+         [ -s outtree ] &amp;&amp; mv outtree &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot;  &amp;&amp; \
+           outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot;
+         [ -s outfile ] &amp;&amp; mv outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile&quot; &amp;&amp; \
+           outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile&quot;
 
-     # if we requested bootstrapping, map bootstrap values onto NJ tree using
-     #   nw_support NJ.ph bootRepl_tree.ph &gt; NJ_with_boot_support.ph
-     echo &quot;# mapping bootstrap values on NJ tree with nw_support ...&quot;
-     if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; ] &amp;&amp; [[ $(type -P nw_support) ]]
-     then
-     nw_support &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot; \
-     &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; &gt; \
-     &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot;
+         # if we requested bootstrapping, map bootstrap values onto NJ tree using
+         #   nw_support NJ.ph bootRepl_tree.ph &gt; NJ_with_boot_support.ph
+         echo &quot;# mapping bootstrap values on NJ tree with nw_support ...&quot;
+         if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; ] &amp;&amp; [[ $(type -P nw_support) ]]
+         then
+         nw_support &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot; \
+         &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; &gt; \
+         &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot;
      
-     check_output &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot;
+         check_output &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot;
      
-     if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot; ] &amp;&amp; [[ $(type -P nw_display) ]]
-     then
-        outfiles+=(&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot;)
-            echo &quot;# displaying ${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph with nw_display ...&quot;
-        echo
-        nw_display -w 80 -Ir &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot;
-        echo
-     fi
-     fi
+         if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot; ] &amp;&amp; [[ $(type -P nw_display) ]]
+         then
+             outfiles+=(&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot;)
+
+             nj_tree=&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot;
+             
+         # check that there are no negative branch lengths in the nj_tree 
+         #   before displaying with nw_display
+         display_treeOK &quot;$nj_tree&quot;
+         fi
+         fi
+    fi
 fi
 
-
-# 6. lets tidy up: remove the *params files and other temporary files 
+# 6. Tidy up: remove the *params files and other temporary files 
 # that could interfere with future runs and litter the directory
 
 [ &quot;$DEBUG&quot; -eq 0 ] &amp;&amp; cleanup_dir
@@ -7518,13 +7764,12 @@ echo
 </code></pre>
 </div>
 </div>
+</div>
 <div id="interfaz-de-usuario-y-ejemplos-de-uso-de-run_phylip.sh" class="section level2">
 <h2><span class="header-section-number">15.3</span> Interfaz de usuario y ejemplos de uso de <strong>run_phylip.sh</strong></h2>
 <p>El <span class="math inline">\(script\)</span>, cuando se invoca sin argumentos o con la opción (<em>-h</em>) <code>run_phylip.sh -h</code> imprime la interfaz de usuario, con información sobre su uso y finalidad.</p>
-<pre><code>./run_phylip.sh
-
-# ERROR: no input phylip file defined!
-   run_phylip.sh v.1.0 [OPTIONS]
+<p><code>./run_phylip.sh -h</code></p>
+<pre><code>   run_phylip.sh v.1.0 [OPTIONS]
    
    -h  prints this help message
    
@@ -7532,11 +7777,11 @@ echo
    -i &lt;input_phylip_file&gt; (if sequential, use also flag -s)
    -R &lt;integer&gt;  RUNMODE
         1    run dnadist  (expects DNA  alignment in phylip format)
-          2    run protdist (expects PROT alignment in phylip format)
+    2    run protdist (expects PROT alignment in phylip format)
 
  OPTIONAL
-   -b &lt;integer&gt; No. of bootstrap pseudoreplicates [default: 0]
-   -g &lt;real number&gt; alpha for gamma distribution  [default: 0]
+   -b &lt;integer&gt; No. of bootstrap pseudoreplicates [default: 100]
+   -g &lt;real number&gt; alpha for gamma distribution  [default: 0.0]
    -o &lt;integer&gt; outgroup sequence no.             [default: 1]
    -s sequential format; -s (flag; no val)!       [default: interleaved]
    -t &lt;digit&gt; Transition/Transversion ratio       [default: 2]
@@ -7546,6 +7791,7 @@ echo
    -u &lt;flag&gt; use UPGMA for clustering             [default:  NJ]
    -v &lt;flag&gt; print program version and exit
    -D &lt;flag&gt; Activate debugging to keep cmd files [default: 0]
+   -H &lt;flag&gt; print development history and exit   
    
  AIM: run PHYLIP&#39;s distance methods [NJ|UPGMA] for DNA and proteins with bootstrapping
       This code was written to teach basic Bash scripting to my students at the 
@@ -7563,7 +7809,9 @@ echo
        Author: Pablo Vinuesa | https://www.ccg.unam.mx/~vinuesa/ | twitter: @pvinmex
        Released under the GNU General Public License version 3 (GPLv3)
        http://www.gnu.org/copyleft/gpl.html
-       source: https://github.com/vinuesa/intro2linux</code></pre>
+       source: https://github.com/vinuesa/intro2linux
+
+</code></pre>
 <p><em>run_phylip</em> requiere necesariamente definir dos opciones:</p>
 <ul>
 <li>-i <input_file> el archivo de entrada con secuencias alineadas en formato <em>phylip</em></li>
@@ -7577,7 +7825,7 @@ echo
 <p><em>run_phylip</em> puede aceptar otras opciones que le permiten al usuario definir: - el modelo de sustitución (para DNA o Proteína) - el número de pseudoréplicas de <em>bootstrap</em> a correr - el tipo de árbol a construir: NJ|UPGMA</p>
 <div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-con-100-réplicas-de-bootstrap-y-modelo-jttg-alpha0.6" class="section level3">
 <h3><span class="header-section-number">15.3.1</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas con 100 réplicas de bootstrap y modelo JTT+G (alpha=0.6)</h3>
-<p>La siguiente línea muestra una llamada a <em>run_phylip</em> para hacer lo arriba indicado usando el archivo <em>phylip</em> GDP_12_prokEuc.phy, que con tiene 12 secuencias de gliceraldehido-fosfato deshidrogenasas de representantes de los <em>dominios</em> <em>Eukaryota</em> y <em>Bacteria</em></p>
+<p>La siguiente línea muestra una llamada a <em>run_phylip</em> para hacer lo arriba indicado usando el archivo <em>phylip</em> GDP_12_prokEuc.phy, que con tiene 12 secuencias de gliceraldehido-fosfato deshidrogenasas de representantes de los <em>dominios</em> <em>Eukarya</em> y <em>Bacteria</em></p>
 <p>Veamos primero la cabecera del archivo GDP_12_prokEuc.phy</p>
 <pre class="bash"><code>head -13 GDP_12_prokEuc.phy</code></pre>
 <pre><code>##  12 234
@@ -7594,63 +7842,72 @@ echo
 ## gpdabacsu    LALVLTDNEN KDYLPNVKLS TSIKGTTDMK EAVSDADVII VAVPTKAIRE
 ## gpdpseu      VAKTRWRNEN TAYLPGHPLP AALKATADFS LALDHVAQGD GLLIAATSVA</code></pre>
 <p>Un alineamiento en formato <em>phylip</em> debe contener una cabecera indicando las dimensiones de la matriz, en este caso &quot; 12 234&quot;, es decir: 12 secuencias y 234 columnas o caracteres. Noten también que el formato <em>phylip estándar</em> acepta etiquetas con un máximo de 10 caracteres de longitud, por lo que los nombres de los taxa están truncados.</p>
-<p>Veamos ahora la salida de la siguiente llamada a <em>run_phylip.sh</em>:</p>
-<p><code>./run_phylip.sh -i GDP_12_prokEuc.phy -R 2 -b 100 -g 0.6</code></p>
-<pre><code>
-# Protein matrix set to default: JTT ...
-
-### run_phylip.sh v.1.0 run on 2020_11_08-22.12.33 with the following parameters:
+</div>
+<div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-bajo-modelo-jttg" class="section level3">
+<h3><span class="header-section-number">15.3.2</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo modelo JTT+G</h3>
+<p>Veamos ahora la salida de la siguiente llamada a <em>run_phylip.sh</em>, usando el modelo por defecto para proteínas (JTT), pero asumiendo una heterogeneidad de tasas entre sitios modelada por una <em>distribución gamma</em> con un valor de alpha=0.6.</p>
+<p><code>./run_phylip.sh -i GDP_12_prokEuc.phy -R 2 -g 0.6</code></p>
+<pre><code>### run_phylip.sh v.1.0 run on 2020_11_10-22.10.07 with the following parameters:
 # work_directory=/home/vinuesa/cursos/intro2linux
 # input_phylip=GDP_12_prokEuc.phy
-# model=JTT | gamma=0.6 | CV=1.2910 | gammaf=06 | ti/tv ratio=0 | outgroup=1 | UPGMA=0 | bootstrap no.=100
+# model=JTT | gamma=0.6 | CV=1.2910 | gammaf=06 | ti/tv ratio=0 |
+     outgroup=1 | UPGMA=0 | bootstrap no.=100 | ROI=10305
 # runmode=2
 # DEBUG=0
 
 
-# Run check_dependencies() ... looks good: all required binaries and perl scripts are in place.
+# Run check_dependencies() ... looks good: all required external dependencies are in place!
+-------------------------------------------------------------------------------------------
 
-&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Bootstrap Analysis &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-# running  write_seqboot_params 100 0
-# running seqboot &lt; seqboot.params &amp;&gt; /dev/null
-
-# running write_protdist_params JTT 100 0 0.6 1.2910
-# running protdist &lt; protdist.params &amp;&gt; /dev/null
-
-# running write_neighbor_params 100 0 1
-# running neighbor &lt; neighbor.params &amp;&gt; /dev/null
-
-# running write_consense_params
-# running consense &lt; consense.params &amp;&gt; /dev/null
-
-&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; NJ or UPGMA Analysis &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+&gt;&gt;&gt; Computing distance matrix for GDP_12_prokEuc.phy ...
 # running write_protdist_params JTT 0 0 0.6 1.2910
 # running protdist &lt; protdist.params
 
+&gt;&gt;&gt; Computing distance tree for GDP_12_prokEuc.phy ...
 # running write_neighbor_params 0 0
 # running neighbor &lt; neighbor.params
+# wrote tree GDP_12_prokEuc_JTT06gamma_NJ.ph to disk
+# &gt; finished computing distance matrix and tree for GDP_12_prokEuc.phy!
+==================================================================
+
+
+&gt;&gt;&gt; Bootstrap Analysis based on 100 pseudoreplicates for GDP_12_prokEuc.phy ...
+# running  write_seqboot_params 100 0
+# running seqboot &lt; seqboot.params &amp;&gt; /dev/null
+# &gt; computing distance matrices on 100 bootstrapped alignments ...
+
+# running write_protdist_params JTT 100 0 0.6 1.2910
+# running protdist &lt; protdist.params &amp;&gt; /dev/null
+# &gt; Computing distance trees from bootstrapped data ...
+# running write_neighbor_params 100 0 1
+# running neighbor &lt; neighbor.params &amp;&gt; /dev/null
+# &gt; Computing MJR consensus tree from trees reconstructed from bootstrap pseudoreplicates ...
+# running write_consense_params
+# running consense &lt; consense.params &amp;&gt; /dev/null
+# &gt; Remapping bootstrap values on original distane tree and preparing for tree display ...
 # mapping bootstrap values on NJ tree with nw_support ...
-# displaying GDP_12_prokEuc_JTT06gamma_NJ_with_100boot_support.ph with nw_display ...
+# displaying GDP_12_prokEuc_JTT06gamma_NJ_with_100boot_support.ph ...
 
                                                           /---+ gpdleish        
                                         /-100-------------+                     
                                         |                 \--------+ gpdtrybb   
                                         |                                       
                                         |                      /----+ gpdaecoli 
- /-100----------------------------------+          /-97--------+                
- |                                      |   /-78---+           \-+ gpdahaein    
+ /-100----------------------------------+          /-95--------+                
+ |                                      |   /-86---+           \-+ gpdahaein    
  |                                      |   |      |                            
  |                                      \-62+      \-----------------+ gpdpseu  
  |                                          |                                   
  |                                          \---------+ gpdabacsu               
  |                                                                              
  |        /---+ gpdadrome                                                       
-=+ 100 /-90                                                                     
+=+ 100 /-88                                                                     
  |     |  \------+ gpdacaeel                                                    
- +-92--+                                                                        
+ +-85--+                                                                        
  |     | / gpdamouse                                                            
  |     | |                                                                      
- |     \-83 gpdhuman                                                            
- |       \ 87                                                                   
+ |     \-79 gpdhuman                                                            
+ |       \ 77                                                                   
  |       \-+ gpdarabit                                                          
  |                                                                              
  \--------------+ gpd1yeast                                                     
@@ -7663,97 +7920,328 @@ echo
 
 ===================== OUTPUT SUMMARY =====================
 # 7 output files were generated:
-GDP_12_prokEuc_JTT06gamma_100bootRepl_trees.nwk
-GDP_12_prokEuc_NJconsensus_JTT06gamma_100bootRepl.ph
-GDP_12_prokEuc_NJconsensus_JTT06gamma_100bootRepl.outfile
 GDP_12_prokEuc_JTT06gamma_distMat.out
 GDP_12_prokEuc_JTT06gamma_NJ.ph
 GDP_12_prokEuc_JTT06gamma_NJ.outfile
+GDP_12_prokEuc_JTT06gamma_100bootRepl_trees.nwk
+GDP_12_prokEuc_NJconsensus_JTT06gamma_100bootRepl.ph
+GDP_12_prokEuc_NJconsensus_JTT06gamma_100bootRepl.outfile
 GDP_12_prokEuc_JTT06gamma_NJ_with_100boot_support.ph
 
-# FINISHED run at: dom 08 nov 2020 22:12:54 CST
+# FINISHED run at: mar 10 nov 2020 22:10:27 CST
    ==&gt; Exiting now ...
 </code></pre>
 </div>
-<div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-cdss-dna-con-1000-réplicas-de-bootstrap-y-modelo-f84g-alpha0.3-y-tasa-de-titv-6" class="section level3">
-<h3><span class="header-section-number">15.3.2</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con 1000 réplicas de bootstrap y modelo F84+G (alpha=0.3) y tasa de ti/tv = 6</h3>
-<p>Veamos la salida de la siguiente llamada al <span class="math inline">\(script\)</span>, al que activamos la opción -D para que no borre los archivos de parámetros, los cuales desplegaremos también</p>
-<p><code>./run_phylip.sh -i primates.phy -R 1 -t 6 -g 0.3 -m F84 -b 1000 -D</code></p>
-<pre><code>### run_phylip.sh v.0.4 run on 2020_11_09-19.38.38 with the following parameters:
-# work_directory=/home/vinuesa/Cursos/Genomica_Evolutiva-1/Practicas/phylip
+<div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-bajo-modelo-erróneo-de-dna" class="section level3">
+<h3><span class="header-section-number">15.3.3</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo modelo erróneo (de DNA)</h3>
+<p>Es <span class="math inline">\(script\)</span> revisa que el usuario use correctamente las opciones de modelos para DNA (-R 1) o proteína (-R 2), haciendo uso del código que se muestra seguidamente:</p>
+<pre><code>if [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; ([ &quot;$model&quot; = JTT ] || [ &quot;$model&quot; = PMG ] || [ &quot;$model&quot; = PAM ] || [ &quot;$model&quot; = &quot;$def_prot_model&quot; ])
+then
+       echo
+       echo &quot;# ERROR: $model is only valid when analyzing protein alignments under -R 2&quot; &gt;&amp;2 
+       echo
+       print_help
+       exit 1    
+elif [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; ([ &quot;$model&quot; = F84 ] || [ &quot;$model&quot; = &#39;Jukes-Cantor&#39; ] || [ &quot;$model&quot; = &#39;LogDet&#39; ] || [ &quot;$model&quot; = &quot;$def_DNA_model&quot; ])
+then
+       echo
+       echo &quot;# ERROR: $model is only valid when analyzing DNA alignments under -R 1&quot; &gt;&amp;2
+       echo
+       print_help
+       exit 1    
+...</code></pre>
+<ul>
+<li>Veamos ahora la salida de la siguiente llamada a <em>run_phylip.sh</em> para correr con proteínas (-R 2), usando parámetros por defecto, salvo el modelo, que el usuario erróneamente quiere definir como F84. <code>./run_phylip.sh -i GDP_12_prokEuc.phy -R 2 -m F84</code></li>
+</ul>
+<pre><code># ERROR: F84 is only valid when analyzing DNA alignments under -R 1
+
+   run_phylip.sh v.1.0 [OPTIONS]
+   ...</code></pre>
+<ul>
+<li>Otro ejemplo de invocación errónea: querer definir tasas de transiciones/transversiones para alineamiento de proteínas</li>
+</ul>
+<p><code>./run_phylip.sh -i GDP_12_prokEuc.phy -R 2 -t 10</code></p>
+<pre><code>### run_phylip.sh v.1.0 run on 2020_11_10-12.23.28 with the following parameters:
+# work_directory=/home/vinuesa/cursos/intro2linux
+# input_phylip=GDP_12_prokEuc.phy
+# model=JTT | gamma=0.0 | CV=1 | gammaf=00 | ti/tv ratio=0 |
+     outgroup=1 | UPGMA=0 | bootstrap no.=100 | rnd_no=31435
+# runmode=2
+# DEBUG=0
+   ...</code></pre>
+<p>En este caso corre, pero vean que lo hace bajo ti/tv = 0, es decir, ignorando la opción inadecuada ya que ésta no se le pasa a <span class="math inline">\(protdist\)</span> para calcular las distancias.</p>
+</div>
+<div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-adn-con-valor-incorrecto-de-titv" class="section level3">
+<h3><span class="header-section-number">15.3.4</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de ADN con valor incorrecto de Ti/Tv</h3>
+<p>Vimos en el caso anterior que el <span class="math inline">\(script\)</span> simplemente ignora que se le pase <span class="math inline">\(-t\ valor\)</span> cuando se va a correr con proteínas. Pero en el caso de que el usuario corra con secuencias de DNA, entonces sí se debe revisar que el usuario provea de un valor razonable a la opción <span class="math inline">\(-t\)</span>. También revisa que no se pase <span class="math inline">\(-t\)</span> cuando los modelos especificados por el usuario son <em>Jukes-Cantor</em> o *LogDet.</p>
+<p>Esto lo hace con el siguiente código:</p>
+<pre><code># check that Ti/Tv is a real number, integer or decimal
+re_TiTv=&#39;^[0-9.]+$&#39;
+if [[ ! &quot;$TiTv&quot; =~ $re_TiTv ]] &amp;&amp; [ &quot;$runmode&quot; -eq 1 ]
+then
+   echo
+   echo &quot;# ERROR: TiTv:$TiTv is not an integer &gt;= 0; provide a value between 0-10&quot; &gt;&amp;2 
+   echo
+   print_help
+   echo
+   exit 3
+elif [[ &quot;$TiTv&quot; =~ $re_TiTv ]] &amp;&amp; [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; { [ &quot;$model&quot; == Jukes-Cantor ] || [ &quot;$model&quot; == LogDet ]; }
+then
+       echo
+       echo &quot;# ERROR: $model is only valid when analyzing DNA alignments under the F84 or K2P models&quot; &gt;&amp;2
+       echo
+       print_help
+       exit 1    
+fi
+</code></pre>
+<ul>
+<li>ejemplo de llamada incorrecta al <span class="math inline">\(script\)</span>: en modo -R 1 se revisa que el argumento pasado a la opción <span class="math inline">\(-t\)</span> sea correcto <code>./run_phylip.sh -i primates.phy -R 1 -g 0.3 -t ttt</code></li>
+</ul>
+<pre><code># ERROR: TiTv:ttt is not an integer &gt;= 0; provide a value between 0 and 10
+...</code></pre>
+</div>
+<div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-bajo-con-número-de-réplicas-0-0-repl-100-o-1000-o-pasando-números-decimales-o-caracteres-no-numéricos." class="section level3">
+<h3><span class="header-section-number">15.3.5</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo con número de réplicas &lt;0, 0 &lt; repl &lt; 100, o &gt; 1000 o pasando números decimales o caracteres no numéricos.</h3>
+<p>El <span class="math inline">\(script\)</span> hace uso del siguiente código para asegurarse que el usuario sólo le pasa íntegros positivos a la opción <span class="math inline">\(-b\)</span></p>
+<pre><code># check that bootstrap value is an integer
+re=&#39;^[0-9]+$&#39;
+if [[ ! &quot;$boot&quot; =~ $re ]]
+then
+   echo
+   echo &quot;# ERROR: boot:$boot is not a positive integer &gt;= 0; provide a value between 100 and 1000&quot; &gt;&amp;2 
+   echo
+   print_help
+   echo
+   exit 3
+fi</code></pre>
+<p>Veamos algunos ejemplos</p>
+<ul>
+<li><code>./run_phylip.sh -i GDP_12_prokEuc.phy -R 2 -t 2.3 -b -1000</b></li>
+</ul>
+<pre><code># ERROR: boot:-1000 is not a positive integer &gt;= 0; provide a value between 100 and 1000
+...</code></pre>
+<ul>
+<li><code>./run_phylip.sh -i GDP_12_prokEuc.phy -R 2 -t 2.3 -b 10</b></li>
+</ul>
+<pre><code># WARNING: bootstrap value=10 is a bit low. Use a value &gt;= 100.
+# Are you sure you want to continue anyway? Type Y|N n
+
+# Ok, will exit then!
+</code></pre>
+<ul>
+<li><code>./run_phylip.sh -i GDP_12_prokEuc.phy -R 2 -t 2.3 -b 10000</b></li>
+</ul>
+<pre><code># WARNING: bootstrap value=10000 is &gt; 1000. This may take a long time to run.
+# Are you sure you want to continue anyway? Type Y|N N
+
+# Ok, will exit then!
+</code></pre>
+</div>
+<div id="verificación-de-que-el-modelo-o-matriz-pasados-por-el-usuario-al-script-con--m-modelo-son-los-que-puede-usar-phylip" class="section level3">
+<h3><span class="header-section-number">15.3.6</span> Verificación de que el modelo o matriz pasados por el usuario al <span class="math inline">\(script\)</span> con <span class="math inline">\(-m\ modelo\)</span> son los que puede usar PHYLIP</h3>
+<p>Los “dedazos” son comunes al teclear texto. El <span class="math inline">\(script\)</span> revisa que los nombres de los modelos o matrices recibidos sean los correctos.</p>
+<p><code>./run_phylip.sh -i GDP_12_prokEuc.phy -R 2 -m PBM</code> # PBM en vez de PMB</p>
+<pre><code># ERROR: PBM is not a recognized substitution matrix for protein sequences used by PHYLIP</code></pre>
+<p><code>./run_phylip.sh -i primates.phy -R 1 -g 0.2 -m K2P</code></p>
+<pre><code># ERROR: K2P is not a recognized substitution model for DNA sequences used by PHYLIP</code></pre>
+</div>
+<div id="comprobación-de-resultados" class="section level3">
+<h3><span class="header-section-number">15.3.7</span> Comprobación de resultados</h3>
+<p>Dado que <em>run_phylip.sh</em> sólo hace análisis de matrices de distancias, no puede obtener estimas de los valores adecuados de los parámetros de los modelos de sustitución. Para ello hay que usar el criterio de optimización de <em>máxima verosimilitud</em>. Por tanto el usuario debe pasas estos valores al programa, en base a su experiencia o conocimiento previo. A veces ciertas combinaciones de valores de los parámetros, particularmente <em>alpha</em> y <em>ti/tv</em> pueden estar tan desviados de los que se ajustan a los datos, que puede hacer imposible la estima de las distancias. PHYLIP automáticamente da valores de -1.000 a distancias que no pudo estimar. Por ello, es importante revisar las salidas del programa:</p>
+<ol style="list-style-type: decimal">
+<li>Comprobar que se hayan producido los archivos esperados después de la llamada de cada programa de PHYLIP</li>
+<li>Comprobar que la matriz de distancias no contenga valores negativos</li>
+<li>Comprobar que los árboles resultantes no tengan ramas negativas</li>
+</ol>
+<p><code>./run_phylip.sh -i primates.phy -R 1 -g 0.2 -t 70.3</code></p>
+<pre><code>### run_phylip.sh v.1.0 run on 2020_11_10-22.19.06 with the following parameters:
+# work_directory=/home/vinuesa/cursos/intro2linux
 # input_phylip=primates.phy
-# model=F84 | gamma=0.3 | CV=1.8257 | gammaf=03 | ti/tv ratio=6 | outgroup=1 | UPGMA=0 | bootstrap no.=1000
+# model=F84 | gamma=0.2 | CV=2.2361 | gammaf=02 | ti/tv ratio=70.3 |
+     outgroup=1 | UPGMA=0 | bootstrap no.=100 | ROI=3905
 # runmode=1
-# DEBUG=1
+# DEBUG=0
+
+
+# Run check_dependencies() ... looks good: all required external dependencies are in place!
+-------------------------------------------------------------------------------------------
+
+&gt;&gt;&gt; Computing distance matrix for primates.phy ...
+# running write_dnadist_params F84 0 70.3 0 0.2 2.2361
+# running dnadist &lt; dnadist.params
+primates_F8402gamma_distMat.out
+ERROR: computed negative distances!
+ You may need to ajust the model and|or gamma value; try lowering TiTv if &gt; 6</code></pre>
+<p>Estos son algunos ejemplos de cómo pueden programar una interfaz para que el programa, además de robusto, sea amigable y sencillo de usar para el usuario.</p>
+</div>
+<div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-cdss-dna-con-valores-por-defecto" class="section level3">
+<h3><span class="header-section-number">15.3.8</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con valores por defecto</h3>
+<p>Veamos la salida de la siguiente llamada al <span class="math inline">\(script\)</span> usando el archivo clásico de secuencias nucleotídicas (gen mitocondrial COI) de primates (<em>primates.phy</em>; usado por Hasayaka et al. (1988). Molecular phylogeny and evolution of primate mitochondrial DNA. Mol. Biol. Evol. 5:626-644) y opciones por defecto.</p>
+<p><code>./run_phylip.sh -i primates.phy -R 1</code></p>
+<pre><code># DNA model set to default: F84...
+
+### run_phylip.sh v.0.6 run on 2020_11_10-11.45.08 with the following parameters:
+# work_directory=/home/vinuesa/cursos/intro2linux
+# input_phylip=primates.phy
+# model=F84 | gamma=0.0 | CV=1 | gammaf=00 | ti/tv ratio=2 |
+     outgroup=1 | UPGMA=0 | bootstrap no.=100 | rnd_no=9765
+# runmode=1
+# DEBUG=0
 
 
 # Run check_dependencies() ... looks good: all required binaries and perl scripts are in place.
 
 &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Bootstrap Analysis &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-# running  write_seqboot_params 1000 0
+# running  write_seqboot_params 100 0
 # running seqboot &lt; seqboot.params &amp;&gt; /dev/null
 
-# running write_dnadist_params F84 1000 6 0 0.3 1.8257
+# running write_dnadist_params F84 100 2 0 0.0 1
 # running dnadist &lt; dnadist.params &amp;&gt; /dev/null
 
-# running write_neighbor_params 1000 0 1
+# running write_neighbor_params 100 0 1
 # running neighbor &lt; neighbor.params &amp;&gt; /dev/null
 
 # running write_consense_params
 # running consense &lt; consense.params &amp;&gt; /dev/null
 
 &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; NJ or UPGMA Analysis &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
-# running write_dnadist_params F84 0 6 0 0.3 1.8257
+# running write_dnadist_params F84 0 2 0 0.0 1
 # running dnadist &lt; dnadist.params
 
 # running write_neighbor_params 0 0
 # running neighbor &lt; neighbor.params
 # mapping bootstrap values on NJ tree with nw_support ...
-# displaying primates_F8403gamma_NJ_with_1000boot_support.ph with nw_display ...
+# displaying primates_F8400gamma_NJ_with_100boot_support.ph with nw_display ...
 
- /---------------------------+ Lemur catt                                       
+ /--------------------------------+ Lemur catt                                  
  |                                                                              
- |                                /---------------------------------+ Saimiri sc
- |                                |                                             
- |                                |                           /+ Macaca fus     
- |                                |                           / 708             
- |                                |                         /-839 M mulatta     
- +-1000---------------------------+                         | |                 
- |                                |        /-1000-----------+ \---+ M fascicul  
- |                                |        |                |                   
- |                                |        |                \---+ M sylvanus    
-=+ 1000                           \-881----+                                    
- |                                         |         /---------+ Hylobates      
- |                                         |         |                          
- |                                         \-994-----+  /---------+ Pongo       
- |                                                   |  |                       
- |                                                   \-942    /-+ Homo sapie    
- |                                                      |    /+870              
- |                                                      \-995+\--+ Pan          
- |                                                           |                  
- |                                                           \--+ Gorilla       
+ |                     /-----------------------------------------+ Saimiri sc   
+ |                     |                                                        
+ |                     |                                     /--+ Macaca fus    
+ |                     |                                  /-99                  
+ |                     |                             /-98-+  \--+ M mulatta     
+ +-100-----------------+                             |    |                     
+ |                     |        /-100----------------+    \---------+ M fascicul
+ |                     |        |                    |                          
+ |                     |        |                    \-----------+ M sylvanus   
+=+ 100                 \-95-----+                                               
+ |                              |         /--------------------+ Hylobates      
+ |                              |         |                                     
+ |                              \-100-----+   /------------------+ Pongo        
+ |                                        |   |                                 
+ |                                        \-94+         /-------+ Homo sapie    
+ |                                            |       /-87                      
+ |                                            \-100---+ \---------+ Pan         
+ |                                                    |                         
+ |                                                    \---------+ Gorilla       
  |                                                                              
- \-------------------------------------+ Tarsius sy                             
+ \------------------------------------------+ Tarsius sy                        
                                                                                 
- |-----------|-----------|-----------|-----------|-----------|-------           
- 0        0.25         0.5        0.75           1        1.25                  
+ |----------------|-----------------|----------------|---------------           
+ 0              0.1               0.2              0.3                          
  substitutions/site                                                             
                                                                                 
 
 
 ===================== OUTPUT SUMMARY =====================
 # 7 output files were generated:
-primates_F8403gamma_1000bootRepl_trees.nwk
-primates_NJconsensus_F8403gamma_1000bootRepl.ph
-primates_NJconsensus_F8403gamma_1000bootRepl.outfile
+primates_F8400gamma_100bootRepl_trees.nwk
+primates_NJconsensus_F8400gamma_100bootRepl.ph
+primates_NJconsensus_F8400gamma_100bootRepl.outfile
+primates_F8400gamma_distMat.out
+primates_F8400gamma_NJ.ph
+primates_F8400gamma_NJ.outfile
+primates_F8400gamma_NJ_with_100boot_support.ph
+
+# FINISHED run at: mar 10 nov 2020 11:45:09 CST
+   ==&gt; Exiting now ...
+   </code></pre>
+</div>
+<div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-cdss-dna-con-1000-réplicas-de-bootstrap-y-modelo-f84g-alpha0.2-y-tasa-de-titv-10" class="section level3">
+<h3><span class="header-section-number">15.3.9</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con 1000 réplicas de bootstrap y modelo F84+G (alpha=0.2) y tasa de ti/tv = 10</h3>
+<p>Veamos la salida de la siguiente llamada al <span class="math inline">\(script\)</span>, al que activamos la opción -D para que no borre los archivos de parámetros, los cuales desplegaremos también</p>
+<p><code>./run_phylip.sh -i primates.phy -R 1 -t 10 -g 0.2 -m F84 -b 1000 -D</code></p>
+<pre><code>### run_phylip.sh v.0.6 run on 2020_11_10-12.06.17 with the following parameters:
+# work_directory=/home/vinuesa/cursos/intro2linux
+# input_phylip=primates.phy
+# model=F84 | gamma=0.3 | CV=1.8257 | gammaf=03 | ti/tv ratio=10 |
+     outgroup=1 | UPGMA=0 | bootstrap no.=100 | rnd_no=29041
+# runmode=1
+# DEBUG=0
+
+
+# Run check_dependencies() ... looks good: all required binaries and perl scripts are in place.
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Bootstrap Analysis &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+# running  write_seqboot_params 100 0
+# running seqboot &lt; seqboot.params &amp;&gt; /dev/null
+
+# running write_dnadist_params F84 100 10 0 0.3 1.8257
+# running dnadist &lt; dnadist.params &amp;&gt; /dev/null
+
+# running write_neighbor_params 100 0 1
+# running neighbor &lt; neighbor.params &amp;&gt; /dev/null
+
+# running write_consense_params
+# running consense &lt; consense.params &amp;&gt; /dev/null
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; NJ or UPGMA Analysis &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+# running write_dnadist_params F84 0 10 0 0.3 1.8257
+# running dnadist &lt; dnadist.params
+
+# running write_neighbor_params 0 0
+# running neighbor &lt; neighbor.params
+# mapping bootstrap values on NJ tree with nw_support ...
+# displaying primates_F8403gamma_NJ_with_100boot_support.ph with nw_display ...
+
+ /---------------------------+ Lemur catt                                       
+ |                                                                              
+ |                                /---------------------------------+ Saimiri sc
+ |                                |                                             
+ |                                |                         / Macaca fus        
+ |                                |                        /+71                 
+ |                                |                       /+81 M mulatta        
+ +-95-----------------------------+                       ||                    
+ |                                |       /-100-----------+\---+ M fascicul     
+ |                                |       |               |                     
+ |                                |       |               \--+ M sylvanus       
+=+ 100                            \-86----+                                     
+ |                                        |         /--------+ Hylobates        
+ |                                        |         |                           
+ |                                        \-96------+   /------+ Pongo          
+ |                                                  |   |                       
+ |                                                  \-90+   /-+ Homo sapie      
+ |                                                      |  /+85                 
+ |                                                      \-94\--+ Pan            
+ |                                                         |                    
+ |                                                         \-+ Gorilla          
+ |                                                                              
+ \------------------------------------+ Tarsius sy                              
+                                                                                
+ |----------------|---------------|----------------|---------------|-           
+ 0              0.5               1              1.5               2            
+ substitutions/site                                                             
+                                                                                
+
+
+===================== OUTPUT SUMMARY =====================
+# 7 output files were generated:
+primates_F8403gamma_100bootRepl_trees.nwk
+primates_NJconsensus_F8403gamma_100bootRepl.ph
+primates_NJconsensus_F8403gamma_100bootRepl.outfile
 primates_F8403gamma_distMat.out
 primates_F8403gamma_NJ.ph
 primates_F8403gamma_NJ.outfile
-primates_F8403gamma_NJ_with_1000boot_support.ph
+primates_F8403gamma_NJ_with_100boot_support.ph
 
-# FINISHED run at: lun 09 nov 2020 19:38:52 CST
+# FINISHED run at: mar 10 nov 2020 12:06:19 CST
    ==&gt; Exiting now ...
 </code></pre>
+<p>Comparen los árboles de ambas salidas. ¿Qué diferencias notan?</p>
+<ul>
+<li>comparen las escalas</li>
+<li>comparen las longitudes de rama en el clado de los <em>homínidos</em></li>
+</ul>
 <p>Veamos ahora el contenido de los archivos de parámetros con este simple código:</p>
 <p><code>for f in *params; do echo “#$f”; cat $f; echo ‘——–’; done</code></p>
 <pre><code>#consense.params
