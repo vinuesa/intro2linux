@@ -44,12 +44,18 @@ set -e              # exit on non-zero exit status
 set -u              # exit if unset variables are encountered
 set -o pipefail     # exit after unsuccessful UNIX pipe command
 
+# set and export LC_NUMERIC=en_US.UTF-8, to avoid problems with locales tha use 1,32
+LC_NUMERIC=en_US.UTF-8
+export LC_NUMERIC
+
 progname=$(basename "$0")  # run_phylip.sh
-VERSION=1.1 
+VERSION=1.2 
 
 # GLOBALS
 #DATEFORMAT_SHORT="%d%b%y" # 16Oct13
 #TIMESTAMP_SHORT=$(date +${DATEFORMAT_SHORT})
+
+
 
 date_F=$(date +%F |sed 's/-/_/g')-   # 2013_10_20
 date_T=$(date +%T |sed 's/:/./g')    # 23.28.22 (hr.min.secs)
@@ -87,6 +93,8 @@ function print_dev_history()
       with improvements/new features added as the script was used in 
       diverse courses taught to undergrads at https://www.lcg.unam.mx
       and the International Workshops on Bioinformatics (TIB)
+    
+    # v1.2 2020-11-11; set and export LC_NUMERIC=en_US.UTF-8, to avoid problems with locales tha use 1,32
     
     # v1.1  2020-11-11; added function extract_tree_from_oufile and calls it on NJ|UPGMA bootRepl consensus trees
     #                      if nw_display is not available in PATH
@@ -221,7 +229,7 @@ function extract_tree_from_outfile()
     # grep out lines containing tree characters | - and print to STDOUT
     local outfile=$1
    
-    grep --color=never -E '[[:space:]]+\||-'
+    grep --color=never -E '[[:space:]]+\||-' "$outfile"
 }
 
 #------------------------------------- PHYLIP FUNCTIONS ---------------------------------------#
@@ -411,8 +419,7 @@ do
    b)   boot=$OPTARG
         ;;
    g)   gamma=$OPTARG
-        [ "$gamma" != 0 ] && CV=$(echo "1/sqrt($gamma)" | bc -l) 
-	 CV=$(printf "%.4f\n" "$CV")
+        [ "$gamma" != 0 ] && CV=$(echo "1/sqrt($gamma)" | bc -l) && CV=$(printf "%.4f\n" "$CV")
         ;;
    h)   print_help
         ;;
@@ -944,8 +951,10 @@ then
 		 #   before displaying with nw_display
 		 display_treeOK "$nj_tree"
 	     fi
-         elif [ -s "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && [[ ! $(type -P nw_support) ]]
+         fi
+	 if [ -s "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && [[ ! $(type -P nw_support) ]]
 	 then
+		echo "extract_tree_from_outfile ${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
 		extract_tree_from_outfile "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
          fi
     fi
