@@ -45,7 +45,7 @@ set -u              # exit if unset variables are encountered
 set -o pipefail     # exit after unsuccessful UNIX pipe command
 
 progname=$(basename "$0")  # run_phylip.sh
-VERSION=1.0 
+VERSION=1.1 
 
 # GLOBALS
 #DATEFORMAT_SHORT="%d%b%y" # 16Oct13
