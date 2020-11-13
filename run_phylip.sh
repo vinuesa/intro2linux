@@ -381,10 +381,13 @@ function print_help
  OUTPUT: [NJ|UPGMA] phylogenies and, if requested, bootstrap consensus trees 
          and  [NJ|UPGMA] phylogenies with bootstrap support values mappend on bipartitions
  
- EXTERNAL DEPENDENCIES: seqboot dnadist protdist neighbor consense nw_support
-                        optional: nw_support and nw_display 
-			(Linux 64bit binaries available in bin/ dir)
- 
+ EXTERNAL DEPENDENCIES: 
+   * PHYLIP (https://evolution.genetics.washington.edu/phylip.html) programs:
+      seqboot dnadist protdist neighbor consense nw_support 
+   * Newick utilities programs (http://cegg.unige.ch/newick_utils) programs:
+      optional: nw_support and nw_display 
+   - Note: Linux 64bit binaries available in bin/ dir
+  
  LICENSING & SOURCE
        Author: Pablo Vinuesa | https://www.ccg.unam.mx/~vinuesa/ | twitter: @pvinmex
        Released under the GNU General Public License version 3 (GPLv3)
