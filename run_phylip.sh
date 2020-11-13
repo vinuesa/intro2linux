@@ -88,6 +88,9 @@ function print_dev_history()
       diverse courses taught to undergrads at https://www.lcg.unam.mx
       and the International Workshops on Bioinformatics (TIB)
     
+    # v1.1  2020-11-11; added function extract_tree_from_oufile and calls it on NJ|UPGMA bootRepl consensus trees
+    #                      if nw_display is not available in PATH
+    
     #v1.0  2020-11-09; This version has thorough error checking and reporting with improved code flow
          *  re-ingeneered the main code block. It now first runs the standard distance-matrix + clustering computations
 	        before doing bootstrapping. This helps in rapidly detecting problematic model parameters, as reflected in negative distances
@@ -212,6 +215,15 @@ function display_treeOK()
      	 exit 4
      fi
 }
+#---------------------------------------------------------------------------------#
+function extract_tree_from_outfile()
+{
+    # grep out lines containing tree characters | - and print to STDOUT
+    local outfile=$1
+   
+    grep --color=never -E '[[:space:]]+\||-'
+}
+
 #------------------------------------- PHYLIP FUNCTIONS ---------------------------------------#
 # >>> these are fucntions to write the command files to pass parameters to PHYLIP programs <<< # 
 
@@ -468,7 +480,7 @@ re='^[0-9]+$'
 if [[ ! "$boot" =~ $re ]]
 then
    echo
-   echo "# ERROR: boot:$boot is not a positive number >= 0; provide a value between 100 and 1000" >&2 
+   echo "# ERROR: boot:$boot is not a positive integer >= 0; provide a value between 100 and 1000" >&2 
    echo
    print_help
    echo
@@ -718,7 +730,13 @@ then
        
      # check that there are no negative branch lengths in the nj_tree
      #  and display with nw_display, only if no bootstrapping is requested
-     [ "$boot" -eq 0 ] && display_treeOK "$upgma_tree"
+     if [ "$boot" -eq 0 ] && [[ $(type -P nw_display) ]]
+     then 
+         display_treeOK "$upgma_tree"
+     elif [ "$boot" -eq 0 ] && [[ ! $(type -P nw_display) ]]
+     then
+          extract_tree_from_outfile "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
+     fi	 
 else
      [ -s outtree ] && mv outtree "${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"	 && \
        outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"
@@ -730,7 +748,13 @@ else
 
      # check that there are no negative branch lengths in the nj_tree
      #  and display with nw_display, only if no bootstrapping is requested
-     [ "$boot" -eq 0 ] && display_treeOK "$nj_tree"
+     if [ "$boot" -eq 0 ] && [[ $(type -P nw_display) ]]
+     then
+         display_treeOK "$nj_tree"
+     elif [ "$boot" -eq 0 ] && [[ ! $(type -P nw_display) ]]
+     then
+         extract_tree_from_outfile "${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
+     fi	 
 fi
 
 echo "# > finished computing distance matrix and tree for $input_phylip!"
@@ -886,7 +910,10 @@ then
 		  #   before displaying with nw_display
 		  display_treeOK "$nj_tree"
 	      fi
-          fi
+	  elif [ -s "${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && [[ ! $(type -P nw_support) ]]
+	  then
+	       extract_tree_from_outfile "${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+	  fi
      else
          [ -s outtree ] && mv outtree "${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"	 && \
            outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"
@@ -914,6 +941,9 @@ then
 		 #   before displaying with nw_display
 		 display_treeOK "$nj_tree"
 	     fi
+         elif [ -s "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && [[ ! $(type -P nw_support) ]]
+	 then
+		extract_tree_from_outfile "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
          fi
     fi
 fi
