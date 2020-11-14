@@ -27,7 +27,7 @@
 # Assumes that the following binaries and scripts are all in $PATH, checked by check_dependencies()
 #
 #   1) Binaries from the PHYLIP package: 
-#	seqboot dnadist protdist neighbor consense nw_support nw_display
+#	seqboot dnadist protdist neighbor consense nw_support
 #   NOTE: Linux-compatible binaries are supplied in the distro\'s bin/ directory
 #           https://github.com/vinuesa/intro2linux/tree/master/bin  
 
@@ -396,10 +396,10 @@ function print_help
  
  EXTERNAL DEPENDENCIES: 
    * PHYLIP (https://evolution.genetics.washington.edu/phylip.html) programs:
-      seqboot dnadist protdist neighbor consense nw_support 
+      seqboot dnadist protdist neighbor consense 
    * Newick utilities programs (http://cegg.unige.ch/newick_utils) programs:
       optional: nw_support and nw_display 
-   - Note: Linux 64bit binaries available in bin/ dir
+   - Note: Linux 64bit binaries available in the bin/ dir
   
  LICENSING & SOURCE
        Author: Pablo Vinuesa | https://www.ccg.unam.mx/~vinuesa/ | twitter: @pvinmex
