@@ -49,7 +49,7 @@ LC_NUMERIC=en_US.UTF-8
 export LC_NUMERIC
 
 progname=$(basename "$0")  # run_phylip.sh
-VERSION=1.2 
+VERSION=1.3 
 
 # GLOBALS
 #DATEFORMAT_SHORT="%d%b%y" # 16Oct13
@@ -93,6 +93,11 @@ function print_dev_history()
       with improvements/new features added as the script was used in 
       diverse courses taught to undergrads at https://www.lcg.unam.mx
       and the International Workshops on Bioinformatics (TIB)
+    
+    # v1.3 2020-11-14; * improved layout of output messages; 
+    #                  * improved regex in extract_tree_from_outfile (now also for NJ tree)
+    #                  * if nw_support and nw_display are not available, 
+    #                     prints both the NJ and boot trees to screen if bootstrap analysis was performed
     
     # v1.2 2020-11-11; set and export LC_NUMERIC=en_US.UTF-8, to avoid problems with locales tha use 1,32
     
@@ -229,7 +234,7 @@ function extract_tree_from_outfile()
     # grep out lines containing tree characters | - and print to STDOUT
     local outfile=$1
    
-    grep --color=never -E '[[:space:]]+\||-' "$outfile"
+    grep --color=never -E '[[:space:]]+\||-' "$outfile" | grep -Ev 'Neighbor-|^-----'
 }
 
 #------------------------------------- PHYLIP FUNCTIONS ---------------------------------------#
@@ -745,7 +750,10 @@ then
          display_treeOK "$upgma_tree"
      elif [ "$boot" -eq 0 ] && [[ ! $(type -P nw_display) ]]
      then
-          extract_tree_from_outfile "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
+          echo "# extract_tree_from_outfile ${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
+	  echo
+	  extract_tree_from_outfile "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
+	  echo
      fi	 
 else
      [ -s outtree ] && mv outtree "${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"	 && \
@@ -763,7 +771,10 @@ else
          display_treeOK "$nj_tree"
      elif [ "$boot" -eq 0 ] && [[ ! $(type -P nw_display) ]]
      then
-         extract_tree_from_outfile "${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
+         echo "# extract_tree_from_outfile ${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
+	 echo
+	 extract_tree_from_outfile "${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
+	 echo
      fi	 
 fi
 
@@ -888,7 +899,6 @@ then
      fi 
 
 
-     echo "# > Remapping bootstrap values on original distane tree and preparing for tree display ..."
      # 5. Rename outtrees and tree outfiles; remap bootstrap values to bipartitions and display tree on screen
      if [ "$upgma" -gt 0 ]
      then
@@ -922,7 +932,14 @@ then
 	      fi
 	  elif [ -s "${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && [[ ! $(type -P nw_support) ]]
 	  then
+               echo "# extract_tree_from_outfile ${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
+	       echo
+	       extract_tree_from_outfile "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
+	       echo
+	       echo "# extract_tree_from_outfile ${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+	       echo
 	       extract_tree_from_outfile "${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+	       echo
 	  fi
      else
          [ -s outtree ] && mv outtree "${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"	 && \
@@ -932,9 +949,9 @@ then
 
          # if we requested bootstrapping, map bootstrap values onto NJ tree using
          #   nw_support NJ.ph bootRepl_tree.ph > NJ_with_boot_support.ph
-         echo "# mapping bootstrap values on NJ tree with nw_support ..."
          if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk" ] && [[ $(type -P nw_support) ]]
          then
+             echo "# mapping bootstrap values on NJ tree with nw_support ..."
 	     nw_support "${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph" \
 	     "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk" > \
 	     "${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph"
@@ -951,11 +968,18 @@ then
 		 #   before displaying with nw_display
 		 display_treeOK "$nj_tree"
 	     fi
-         fi
-	 if [ -s "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && [[ ! $(type -P nw_support) ]]
+    	 elif [ -s "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && [[ ! $(type -P nw_support) ]]
 	 then
-		echo "extract_tree_from_outfile ${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+
+                echo "# extract_tree_from_outfile ${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
+	        echo
+	        extract_tree_from_outfile "${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
+		echo
+
+		echo "# extract_tree_from_outfile ${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+		echo
 		extract_tree_from_outfile "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+		echo
          fi
     fi
 fi
