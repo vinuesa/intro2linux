@@ -49,7 +49,7 @@ LC_NUMERIC=en_US.UTF-8
 export LC_NUMERIC
 
 progname=$(basename "$0")  # run_phylip.sh
-VERSION=1.3 
+VERSION=1.4 
 
 # GLOBALS
 #DATEFORMAT_SHORT="%d%b%y" # 16Oct13
@@ -80,6 +80,8 @@ outgroup=0
 gamma="0.0"
 outgroup=1
 
+nw_utils_ok=
+
 declare -a outfiles # to collect the output files written to disk
 
 #---------------------------------------------------------------------------------#
@@ -93,6 +95,10 @@ function print_dev_history()
       with improvements/new features added as the script was used in 
       diverse courses taught to undergrads at https://www.lcg.unam.mx
       and the International Workshops on Bioinformatics (TIB)
+    
+    # v1.4 2020-11-14; * added function check_nw_utils_ok, to check that nw_display and nw_support can be executed
+    #                    as they may be in path but cannot find /lib64/libc.so.6: version GLIBC_2.14
+    #                    when the binaries are compiled with dynamic linking to the libs
     
     # v1.3 2020-11-14; * improved layout of output messages; 
     #                  * improved regex in extract_tree_from_outfile (now also for NJ tree)
@@ -177,6 +183,42 @@ function check_dependencies
 }
 #---------------------------------------------------------------------------------#
 
+function check_nw_utils_ok()
+{
+    # This function checks that nw_display and nw_support can be executed
+    #  as they may be in path but cannot find /lib64/libc.so.6: version GLIBC_2.14
+    #  when the binaries are compiled with dynamic linking to the libs
+    
+    # The function returns 0 when nw_support nw_display cannot be executed and 1 when they can
+    # The function does not run and return anything if nw_support nw_display are not in PATH
+    
+    dependencies=(nw_support nw_display)
+    
+    local nw_utils_ok=
+    local bin=
+    
+    for programname in "${dependencies[@]}"
+    do
+        bin=$(type -P "$programname")
+        if [ -n "$bin" ]; then
+	   # prints something like nw_support: /lib64/libc.so.6: version `GLIBC_2.14' not found
+	   "$programname" 2>> "nw_utils_check.out.tmp" 
+        fi
+    done
+    
+    # check the contents of nw_utils_check.out.tmp and set proper flag
+    if [ -s nw_utils_check.out.tmp ]
+    then
+           # set the nw_utils_ok flag to 0 if the lib is not found, to check later in the code when nw_support and nw_display are called
+           grep GLIBC nw_utils_check.out.tmp &> /dev/null
+	   nw_utils_ok=$? 
+	   [ "$nw_utils_ok" -eq 0 ] && echo "# WARNING: ${dependencies[*]} are in PATH but cannot find /lib64/libc.so.6: version GLIBC_2.14" >&2 
+           rm nw_utils_check.out.tmp 
+           echo  "$nw_utils_ok"
+    fi
+}
+#---------------------------------------------------------------------------------#
+
 function rdm_odd_int()
 {
   # generate a random odd integer for seqboot and neighbor
@@ -190,8 +232,8 @@ function rdm_odd_int()
      fi
 done
 
-#---------------------------------------------------------------------------------#
 }
+#---------------------------------------------------------------------------------#
 
 function check_matrix()
 {
@@ -234,7 +276,7 @@ function extract_tree_from_outfile()
     # grep out lines containing tree characters | - and print to STDOUT
     local outfile=$1
    
-    grep --color=never -E '[[:space:]]+\||-' "$outfile" | grep -Ev 'Neighbor-|^-----'
+    grep --color=never -E '[[:blank:]]+\||-' "$outfile" | grep -Ev 'Neighbor-|^---'
 }
 
 #------------------------------------- PHYLIP FUNCTIONS ---------------------------------------#
@@ -645,7 +687,9 @@ echo
 
 
 # 1. make sure the external dependencies are found in PATH
+#     and that nw_display and nw_support find the required GLIBC_2.14 in /lib64/libc.so.6
 check_dependencies
+nw_utils_ok=$(check_nw_utils_ok) # nw_utils_ok -eq 1 when OK, -eq 0 when not
 
 # 2. Start processing the input file
 # make sure there are no old outfile or outtree files lying around from previous runs
@@ -745,7 +789,7 @@ then
        
      # check that there are no negative branch lengths in the nj_tree
      #  and display with nw_display, only if no bootstrapping is requested
-     if [ "$boot" -eq 0 ] && [[ $(type -P nw_display) ]]
+     if [ "$boot" -eq 0 ] && [[ $(type -P nw_display) ]] && [[ "$nw_utils_ok" -eq 1 ]]
      then 
          display_treeOK "$upgma_tree"
      elif [ "$boot" -eq 0 ] && [[ ! $(type -P nw_display) ]]
@@ -766,7 +810,7 @@ else
 
      # check that there are no negative branch lengths in the nj_tree
      #  and display with nw_display, only if no bootstrapping is requested
-     if [ "$boot" -eq 0 ] && [[ $(type -P nw_display) ]]
+     if [ "$boot" -eq 0 ] && [[ $(type -P nw_display) ]] && [[ "$nw_utils_ok" -eq 1 ]]
      then
          display_treeOK "$nj_tree"
      elif [ "$boot" -eq 0 ] && [[ ! $(type -P nw_display) ]]
@@ -913,14 +957,14 @@ then
        
           # if we requested bootstrapping, map bootstrap values onto UPGMA tree using
           #   nw_support upgma.ph bootRepl_tree.ph > UPGMA_with_boot_support.ph
-          if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk" ] && [[ $(type -P nw_support) ]]
+          if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk" ] && [[ $(type -P nw_support) ]] && [ "$nw_utils_ok" -eq 1 ]
           then
 	      echo "# mapping bootstrap values on UPGMA tree with nw_support ..."
 	      nw_support "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph" \
 	     "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk" > \
 	     "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph"
 
-	      if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph" ] && [[ $(type -P nw_display) ]]
+	      if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph" ] && [[ $(type -P nw_display) ]] && [ "$nw_utils_ok" -eq 1 ]
 	      then
 	          outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph"
 		  
@@ -930,7 +974,7 @@ then
 		  #   before displaying with nw_display
 		  display_treeOK "$nj_tree"
 	      fi
-	  elif [ -s "${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && [[ ! $(type -P nw_support) ]]
+	  elif [ -s "${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && { [[ ! $(type -P nw_support) ]] || [ "$nw_utils_ok" -eq 0 ]; }
 	  then
                echo "# extract_tree_from_outfile ${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
 	       echo
@@ -949,7 +993,7 @@ then
 
          # if we requested bootstrapping, map bootstrap values onto NJ tree using
          #   nw_support NJ.ph bootRepl_tree.ph > NJ_with_boot_support.ph
-         if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk" ] && [[ $(type -P nw_support) ]]
+         if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk" ] && [[ $(type -P nw_support) ]] && [ "$nw_utils_ok" -eq 1 ]
          then
              echo "# mapping bootstrap values on NJ tree with nw_support ..."
 	     nw_support "${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph" \
@@ -958,7 +1002,7 @@ then
 	 
 	     check_output "${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph"
 	 
-	     if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph" ] && [[ $(type -P nw_display) ]]
+	     if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph" ] && [[ $(type -P nw_display) ]] && [ "$nw_utils_ok" -eq 1 ]
 	     then
 	         outfiles+=("${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph")
 
@@ -968,7 +1012,7 @@ then
 		 #   before displaying with nw_display
 		 display_treeOK "$nj_tree"
 	     fi
-    	 elif [ -s "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && [[ ! $(type -P nw_support) ]]
+    	 elif [ -s "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && { [[ ! $(type -P nw_support) ]] || [ "$nw_utils_ok" -eq 0 ]; }
 	 then
 
                 echo "# extract_tree_from_outfile ${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
