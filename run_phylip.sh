@@ -34,7 +34,6 @@
 
 #: TODO:
 #    implement also FM, ME, parsimony and ML analyses; 
-#    check that the user provides proper PHYLIP files with at least 4 distinct sequences each
 
 #: KNOWN BUGS: None.
 #    Please report any errors you may encounter through the GitHub issue pages
@@ -1001,7 +1000,7 @@ then
           # Set last item specifically
           # nstead of appending one element, set the last item specifically, without any "unbound variable" error
           # t[${#t[*]}]=foo
-          [ -s outtree ] && mv outtree "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph"	    && \
+          [ -s outtree ] && mv outtree "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph"	 && \
             outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph
           [ -s outfile ] && mv outfile "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile" && \
             outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
@@ -1037,7 +1036,7 @@ then
 	       echo
 	  fi
      else
-         [ -s outtree ] && mv outtree "${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"	 && \
+         [ -s outtree ] && mv outtree "${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"	     && \
            outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"
          [ -s outfile ] && mv outfile "${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile" && \
            outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
