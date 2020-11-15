@@ -48,7 +48,7 @@ set -o pipefail     # exit after unsuccessful UNIX pipe command
 LC_NUMERIC=en_US.UTF-8
 export LC_NUMERIC
 
-progname=$(basename "$0")  # run_phylip.sh
+progname=${0##*/} # run_phylip.sh
 VERSION=1.4 
 
 # GLOBALS
@@ -466,7 +466,7 @@ do
    b)   boot=$OPTARG
         ;;
    g)   gamma=$OPTARG
-        [ "$gamma" != 0 ] && CV=$(echo "1/sqrt($gamma)" | bc -l) && CV=$(printf "%.4f\n" "$CV")
+	[ "$gamma" != 0 ] && CV=$(echo "1/sqrt($gamma)" | bc -l) && printf -v CV "%.4f\n" "$CV"
         ;;
    h)   print_help
         ;;
