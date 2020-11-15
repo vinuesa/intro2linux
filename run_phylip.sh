@@ -101,6 +101,7 @@ function print_dev_history()
       and the International Workshops on Bioinformatics (TIB)
     
     # v1.5 2020-11-15; * added check_phylip_ok to validate input phylip file with -ge 4 sequences and -ge 4 characters
+    #                  * added remove_phylip_param_files
     #                  * added [ "${BASH_VERSION%%.*}" -lt 4 ] && die
     #                  * makes more extensive use of Bash variables (internal and arrays) and variable expansions, including \${var/pattern/string}
 
@@ -177,16 +178,16 @@ function check_phylip_ok()
     num_tax=$(awk 'NR == 1 {print $1}' "$phyfile")
     num_char=$(awk 'NR == 1 {print $2}' "$phyfile")
     
-    if [[ ! "$num_tax" =~ [[:digit:]]+ ]] &&  [[ ! "$num_char" =~ [[:digit:]]+ ]]
+    if [[ ! "$num_tax" =~ ^([0-9]+)$ ]] ||  [[ ! "$num_char" =~ ^([0-9]+)$ ]]
     then
          echo "ERROR: $phyfile is not a phylip-formatted input file!"
 	 echo
 	 exit 1  
-    elif [[ "$num_tax" =~ ^[[:digit:]]+ ]] && [ "$num_tax" -lt 4 ]
+    elif [[ "$num_tax" =~ ^([0-9]+)$ ]] && [ "$num_tax" -lt 4 ]
     then
          echo "ERROR: $phyfile should contain at least 4 taxa"
 	 exit 1
-    elif [[ "$num_char" =~ ^[[:digit:]]+ ]] && [ "$num_char" -lt 5 ]
+    elif [[ "$num_char" =~ ^([0-9]+)$ ]] && [ "$num_char" -lt 5 ]
     then
          echo "ERROR: $phyfile should contain at least 5 aligned residues"
 	 exit 1
@@ -320,6 +321,17 @@ function extract_tree_from_outfile()
 
 #------------------------------------- PHYLIP FUNCTIONS ---------------------------------------#
 # >>> these are fucntions to write the command files to pass parameters to PHYLIP programs <<< # 
+
+function remove_phylip_param_files()
+{
+   [ -s dnadist.params ] && rm dnadist.params
+   [ -s protdist.params ] && rm protdist.params
+   [ -s seqboot.params ] && rm seqboot.params
+   [ -s neighbor.params ] && rm neighbor.params
+   [ -s consense.params ] && rm consense.params
+   return 0
+}
+#------------------------------------- PHYLIP FUNCTIONS ---------------------------------------#
 
 function write_dnadist_params
 {
@@ -733,7 +745,8 @@ nw_utils_ok=$(check_nw_utils_ok) # nw_utils_ok -eq 1 when OK, -eq 0 when not
 [ -s infile ] && rm infile
 [ -s outfile ] && rm outfile
 [ -s outtree ] && rm outtree
-
+# nor old params files
+remove_phylip_param_files
 
 # 2.1) make sure we have an input file or die
 if [ -s "$input_phylip" ]
