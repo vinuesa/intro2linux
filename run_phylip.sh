@@ -11,9 +11,10 @@
 #    diverse courses taught to undergrads at https://www.lcg.unam.mx
 #    (LCG-UNAM) and the International Workshops on Bioinformatics (TIB)
 
-#: AIM: run PHYLIP's distance methods [NJ|UPGMA] for DNA and proteins with bootstrapping
+#: AIM: run PHYLIP's distance methods [NJ|UPGMA] for DNA and proteins (dnadist|protdist) with optional bootstrapping
 #       This script was written to teach intermediate Bash scripting to my students at the 
 #       Bachelor's Program in Genome Sciences at the Center for Genome Sciences, UNAM, Mexico
+#       https://www.lcg.unam.mx
 #
 #: INPUT: multiple sequence alignments (PROT|DNA) with at least 4 distinct sequences in phylip format
 #
@@ -27,8 +28,8 @@
 # Assumes that the following binaries and scripts are all in $PATH, checked by check_dependencies()
 #
 #   1) Binaries from the PHYLIP package: 
-#	seqboot dnadist protdist neighbor consense nw_support
-#   NOTE: Linux-compatible binaries are supplied in the distro\'s bin/ directory
+#	seqboot dnadist protdist neighbor consense
+#   NOTE: Linux-compatible PHYLIP binaries are supplied in the distro\'s bin/ directory
 #           https://github.com/vinuesa/intro2linux/tree/master/bin  
 
 #: TODO:
@@ -39,6 +40,10 @@
 #    Please report any errors you may encounter through the GitHub issue pages
 #-------------------------------------------------------------------------------------------------------
 
+# make sure the user has at least bash version 4, since the script uses standard arrays (introduced in version 4),
+#  but future development may require hashes, introduced in version 4
+[ "${BASH_VERSION%%.*}" -lt 4 ] && echo "$HOSTNAME is running an ancient bash: ${BASH_VERSION}; ${0##*/} requires bash version 4 or higher" && exit 1
+
 # 0. Define strict bash settings
 set -e              # exit on non-zero exit status
 set -u              # exit if unset variables are encountered
@@ -48,14 +53,13 @@ set -o pipefail     # exit after unsuccessful UNIX pipe command
 LC_NUMERIC=en_US.UTF-8
 export LC_NUMERIC
 
+args="$*"
 progname=${0##*/} # run_phylip.sh
-VERSION=1.4 
+VERSION=1.5 
 
 # GLOBALS
 #DATEFORMAT_SHORT="%d%b%y" # 16Oct13
 #TIMESTAMP_SHORT=$(date +${DATEFORMAT_SHORT})
-
-
 
 date_F=$(date +%F |sed 's/-/_/g')-   # 2013_10_20
 date_T=$(date +%T |sed 's/:/./g')    # 23.28.22 (hr.min.secs)
@@ -96,6 +100,10 @@ function print_dev_history()
       diverse courses taught to undergrads at https://www.lcg.unam.mx
       and the International Workshops on Bioinformatics (TIB)
     
+    # v1.5 2020-11-15; * added check_phylip_ok to validate input phylip file with -ge 4 sequences and -ge 4 characters
+    #                  * added [ "${BASH_VERSION%%.*}" -lt 4 ] && die
+    #                  * makes more extensive use of Bash variables (internal and arrays) and variable expansions, including \${var/pattern/string}
+
     # v1.4 2020-11-14; * added function check_nw_utils_ok, to check that nw_display and nw_support can be executed
     #                    as they may be in path but cannot find /lib64/libc.so.6: version GLIBC_2.14
     #                    when the binaries are compiled with dynamic linking to the libs
@@ -155,6 +163,36 @@ function check_output()
 	echo " >>> ERROR! The expected output file $outfile was not produced, will exit now!" >&2
         echo
 	exit 2
+    fi
+}
+#---------------------------------------------------------------------------------#
+
+function check_phylip_ok()
+{
+    # implements a rudimentary format validation check
+    local phyfile=$1
+    local num_tax=
+    local num_char=
+
+    num_tax=$(awk 'NR == 1 {print $1}' "$phyfile")
+    num_char=$(awk 'NR == 1 {print $2}' "$phyfile")
+    
+    if [[ ! "$num_tax" =~ [[:digit:]]+ ]] &&  [[ ! "$num_char" =~ [[:digit:]]+ ]]
+    then
+         echo "ERROR: $phyfile is not a phylip-formatted input file!"
+	 echo
+	 exit 1  
+    elif [[ "$num_tax" =~ ^[[:digit:]]+ ]] && [ "$num_tax" -lt 4 ]
+    then
+         echo "ERROR: $phyfile should contain at least 4 taxa"
+	 exit 1
+    elif [[ "$num_char" =~ ^[[:digit:]]+ ]] && [ "$num_char" -lt 5 ]
+    then
+         echo "ERROR: $phyfile should contain at least 5 aligned residues"
+	 exit 1
+    else
+        echo "# File validation OK: $phyfile seems to be a standard phylip file ..."
+        echo '-------------------------------------------------------------------------------------------'
     fi
 }
 #---------------------------------------------------------------------------------#
@@ -243,8 +281,8 @@ function check_matrix()
     if grep -El ' \-[0-9\.]+' "$matrix"
     then
         echo "ERROR: computed negative distances!" >&2
-	     [ "$runmode" -eq 1 ] && echo " You may need to ajust the model and|or gamma value; try lowering TiTv if > 6" >&2
-	     [ "$runmode" -eq 2 ] && echo " You may need to ajust the matrix and|or gamma value" >&2
+	     [ "$runmode" -eq 1 ] && echo "You may need to ajust the model and|or gamma value; try lowering TiTv if > 6" >&2
+	     [ "$runmode" -eq 2 ] && echo "You may need to ajust the matrix and|or gamma value" >&2
 	exit 3
     fi
 }
@@ -265,12 +303,13 @@ function display_treeOK()
      	 echo
      else
      	 echo "ERROR: cannot display $nj_tree with nw_dsiplay, as it contains branches with negative lengths!" >&2
-	     [ "$runmode" -eq 1 ] && echo "  You may need to adjust (lower?) TiTv=$TiTv" >&2
-	     [ "$runmode" -eq 2 ] && echo "  You may need to use another matrix or adjunst gamma" >&2
+	     [ "$runmode" -eq 1 ] && echo "You may need to adjust (lower?) TiTv=$TiTv" >&2
+	     [ "$runmode" -eq 2 ] && echo "You may need to use another matrix or adjunst gamma" >&2
      	 exit 4
      fi
 }
 #---------------------------------------------------------------------------------#
+
 function extract_tree_from_outfile()
 {
     # grep out lines containing tree characters | - and print to STDOUT
@@ -524,9 +563,6 @@ then
        exit 1    
 fi
 
-# Check for correct model names
-
-
 # automatically set TiTv=0 when running with protein matrices or the LogDet DNA model
 [ "$runmode" -eq 2 ] && TiTv=0
 [ "$model" == LogDet ] && TiTv=0
@@ -567,12 +603,13 @@ fi
 if [ "$gamma" != 0 ] # note, need to treat as string, since gamma will be generalle a float like 0.5
 then
     # this is to avoid having dots within filename (converts gamma==0.2 to gammaf=02)
-    gammaf=${gamma%.*}${gamma##*.}
+    gammaf=${gamma/\./} #gammaf=${gamma%.*}${gamma##*.}
 else
     gammaf="$gamma"
 fi    
 
 # check model vs. runmode compatibility and suitable bootstrap values are provided
+#   using two alternative sintaxes for educational purposes
 if [ "$runmode" -eq 1 ] && { [ "$model" = JTT ] || [ "$model" = PMG ] || [ "$model" = PAM ] || [ "$model" = "$def_prot_model" ]; }
 then
        echo
@@ -580,7 +617,7 @@ then
        echo
        print_help
        exit 1    
-elif [ "$runmode" -eq 2 ] && { [ "$model" = F84 ] || [ "$model" = 'Jukes-Cantor' ] || [ "$model" = 'LogDet' ] || [ "$model" = "$def_DNA_model" ]; }
+elif [ "$runmode" -eq 2 ] && [[ "$model" =~ ^(F84|Jukes-Cantor|LogDet|"$def_DNA_model")$ ]]
 then
        echo
        echo "# ERROR: $model is only valid when analyzing DNA alignments under -R 1" >&2
@@ -667,10 +704,10 @@ then
    exit 3
 fi
 
-
 #>>> Set the script's run random odd number required by diverse PHYLIP programs <<<
 ROI=$(rdm_odd_int)
 
+# print the run settings
 echo
 echo "### $progname v.$VERSION run on $start_time with the following parameters:"
 echo "# work_directory=$wkdir"
@@ -679,12 +716,12 @@ echo "# model=$model | gamma=$gamma | CV=$CV | gammaf=$gammaf | ti/tv ratio=$TiT
      outgroup=$outgroup | UPGMA=$upgma | bootstrap no.=$boot | ROI=$ROI"
 echo "# runmode=$runmode"
 echo "# DEBUG=$DEBUG" 
+echo "# command: $progname ${args[*]}"
 echo
 
 #-------------------------------------------------------------------------------------------------#
 #------------------------------------------ MAIN CODE --------------------------------------------#
 #-------------------------------------------------------------------------------------------------#
-
 
 # 1. make sure the external dependencies are found in PATH
 #     and that nw_display and nw_support find the required GLIBC_2.14 in /lib64/libc.so.6
@@ -701,6 +738,8 @@ nw_utils_ok=$(check_nw_utils_ok) # nw_utils_ok -eq 1 when OK, -eq 0 when not
 # 2.1) make sure we have an input file or die
 if [ -s "$input_phylip" ]
 then
+     # make basic format validation check
+     check_phylip_ok "$input_phylip"
      cp "$input_phylip" infile
 else
      echo
@@ -941,7 +980,6 @@ then
     	 mv outfile "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" && \
 	  outfiles[${#outfiles[*]}]="${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
      fi 
-
 
      # 5. Rename outtrees and tree outfiles; remap bootstrap values to bipartitions and display tree on screen
      if [ "$upgma" -gt 0 ]
