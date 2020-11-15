@@ -17,7 +17,7 @@ Aprender&aacute;s todo lo necesario para un arranque r&aacute;pido, &uacute;til,
 - [Licenciatura en Ciencias Genómicas LCG-UNAM](https://www.lcg.unam.mx)
 - [Taller de Ciencias Genómicas, Facultad de Ciencias UNAM](https://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/)
 
-v.2020-11-05
+v.2020-11-15
 
 ***
  
@@ -83,20 +83,21 @@ Les comparto unas notas elaboradas por la UATI de la @lcg_unam sobre instalació
 - [instalaci&oacute;n mobaXterm - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/ConexionSSHdesdeWindows_usando_mobaXterm_UATI_LCG-UNAM.pdf)
 
 
-
 # Contenidos del Taller de Introducci&oacute;n al bioc&oacute;mputo en sistemas GNU/Linux
-En este tutoral se describen los siguientes conceptos b&aacute;sicos:
+En este repositorio encontrarás dos tutoriales:
+- uno corto y básico en formato pdf para los que nunca han trabajado antes con la cosola de comandos 
+- otro extenso y avanzado en formato html
+
+## Tutorial corto básico para los que nunca han trabajado antes con la línea de comandos de UNIX o GNU/Linux
+Se describen los siguientes conceptos b&aacute;sicos:
 - Qu&eacute; es el bioc&oacute;mputo?
 - Qu&eacute; es GNU/Linux?
 - Qu&eacute; es el Shell?
 - C&oacute;mo me conecto a un servidor remoto v&iacute;a ssh?
-- Revisaremos comandos b&acute;sicos y c&oacute;mo moverte por el sistema de archivos
+- Revisaremos comandos b&aacute;sicos y c&oacute;mo moverte por el sistema de archivos
+  + [Primer contacto con Linux - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf)
 
-Si nunca has trabajado en un sistema Linux anteriormente, recomiendo leer este tutoral antes de inciar las sesiones prácticas del siguiente rubro.
-
-- [Primer contacto con Linux - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf)
-
-## Tutoral extenso de comandos GNU/Linux con aplicaciones a biocómputo
+## Tutoral extenso y avanzado de comandos GNU/Linux con aplicaciones a biocómputo
 - [Tutoral - html](https://vinuesa.github.io/intro2linux/)
 
 <!--
