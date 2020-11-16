@@ -564,7 +564,7 @@ do
    b)   boot=$OPTARG
         ;;
    g)   gamma=$OPTARG
-	[ "$gamma" != 0 ] && CV=$(printf "1/sqrt($gamma)" | bc -l) && printf -v CV "%.4f\n" "$CV"
+	[ "$gamma" != 0 ] && CV=$(echo "1/sqrt($gamma)" | bc -l) && printf -v CV "%.4f\n" "$CV"
         ;;
    h)   print_help
         ;;
