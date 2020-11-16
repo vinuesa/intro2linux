@@ -101,8 +101,9 @@ function print_dev_history()
     
     # v1.5 2020-11-15; * added check_phylip_ok to validate input phylip file with -ge 4 sequences and -ge 4 characters
     #                  * added remove_phylip_param_files
+    #                  * added option -I to call print_install_notes
     #                  * added [ "${BASH_VERSION%%.*}" -lt 4 ] && die
-    #                  * makes more extensive use of Bash variables (internal and arrays) and variable expansions, including \${var/pattern/string}
+    #                  * makes more extensive use of internal Bash variables and variable expansions, including \${var/pattern/string}
 
     # v1.4 2020-11-14; * added function check_nw_utils_ok, to check that nw_display and nw_support can be executed
     #                    as they may be in path but cannot find /lib64/libc.so.6: version GLIBC_2.14
@@ -113,7 +114,7 @@ function print_dev_history()
     #                  * if nw_support and nw_display are not available, 
     #                     prints both the NJ and boot trees to screen if bootstrap analysis was performed
     
-    # v1.2 2020-11-11; set and export LC_NUMERIC=en_US.UTF-8, to avoid problems with locales tha use 1,32
+    # v1.2 2020-11-11; set and export LC_NUMERIC=en_US.UTF-8, to avoid problems with locales that use 1,32 instead of 1.32
     
     # v1.1  2020-11-11; added function extract_tree_from_oufile and calls it on NJ|UPGMA bootRepl consensus trees
     #                      if nw_display is not available in PATH
@@ -153,6 +154,51 @@ EOF_
 exit 0
 }
 #---------------------------------------------------------------------------------#
+
+function print_install_notes()
+{
+   cat <<INSTALL
+   
+    #1. PHYLIP PHYLogeny Inference Package by Joe Felensetein https://evolution.genetics.washington.edu/phylip.html
+    
+    The bin/ directory of the intro2linux distribution provides precompiled Linux-x86_64 binaries 
+          for seqboot dnadist protdist neighbor consense. Copy them into your \$HOME/bin directory or any other in your PATH
+    
+    If you need executables for a different architecture, visit https://evolution.genetics.washington.edu/phylip/executables.html
+    
+    #2. Newick Utilities http://cegg.unige.ch/newick_utils
+    The Newick Utilities have been described in an Open-Access paper (that is, available online for everyone):
+
+    The Newick Utilities: High-throughput Phylogenetic tree Processing in the UNIX Shell
+    Thomas Junier and Evgeny M. Zdobnov
+    Bioinformatics 2010 26:1669-1670
+    http://bioinformatics.oxfordjournals.org/content/26/13/1669.full
+    doi:10.1093/bioinformatics/btq243
+    
+    The src/ dir contains the newick-utils-1.6-Linux-x86_64-disabled-extra.tar.gz source file
+    
+    Visit http://cegg.unige.ch/newick_utils if you need other pre-compiled versions
+    
+    Brief compilation notes
+    
+    1. Copy the newick-utils-1.6-Linux-x86_64-disabled-extra.tar.gz to a suitable directory in your \$HOME
+    2. cd into the directory hoding the source *tar.gz file
+    3. unpack and compile with the following commands 
+          tar -xvzf newick-utils-1.6-Linux-x86_64-disabled-extra.tar.gz
+	  cd newick-utils-1.6
+	  ./configure --prefix=$HOME  # if you do NOT have administrator privileges
+          #./configure                # if you have superuser privileges
+	  make
+	  make check
+	  make install                # if you do NOT have administrator privileges
+	  # sudo make install         # if you have superuser privileges
+
+INSTALL
+
+exit 0
+
+}
+
 
 function check_output()
 {
@@ -200,7 +246,7 @@ function check_phylip_ok()
 function check_dependencies
 {
     # check that the following PHYLIP binaries are in $PATH; die if not
-    # optional dependencies found in bin/ dir: nw_support and nw_display
+    # optional: the Newick_utilities src is found in the src/ dir
     dependencies=(seqboot dnadist protdist neighbor consense) 
     for programname in "${dependencies[@]}"
     do
@@ -452,7 +498,7 @@ function cleanup_dir
 
 function print_help
 {
-   #':b:c:m:I:o:R:t:hHDsuv'
+   #':b:c:m:I:o:R:t:hHIDsuv'
    cat<<EOF
    $progname v.$VERSION [OPTIONS]
    
@@ -477,10 +523,11 @@ function print_help
    -v <flag> print program version and exit
    -D <flag> Activate debugging to keep cmd files [default: $DEBUG]
    -H <flag> print development history and exit   
+   -I <flag> print installation notes and exit   
    
- AIM: run PHYLIP's distance methods [NJ|UPGMA] for DNA and proteins with bootstrapping
+ AIM: run PHYLIP\'s distance methods [NJ|UPGMA] for DNA and proteins with bootstrapping
       This code was written to teach basic Bash scripting to my students at the 
-      Bachelor's Program in Genome Sciences, Center for Genome Sciences, UNAM, Mexico
+      Bachelor\'s Program in Genome Sciences, Center for Genome Sciences, UNAM, Mexico
       https://www.lcg.unam.mx/      
 
  OUTPUT: [NJ|UPGMA] phylogenies and, if requested, bootstrap consensus trees 
@@ -490,8 +537,9 @@ function print_help
    * PHYLIP (https://evolution.genetics.washington.edu/phylip.html) programs:
       seqboot dnadist protdist neighbor consense 
    * Newick utilities programs (http://cegg.unige.ch/newick_utils) programs:
-      optional: nw_support and nw_display 
-   - Note: Linux 64bit binaries available in the bin/ dir
+      optional: nw_support and nw_display; need to install separately
+   - Notes: PHYLIP Linux 64bit binaries available in the bin/ dir
+            Copy them to your \$HOME/bin directory or any other in your PATH
   
  LICENSING & SOURCE
        Author: Pablo Vinuesa | https://www.ccg.unam.mx/~vinuesa/ | twitter: @pvinmex
@@ -509,14 +557,14 @@ exit 1
 #-------------------------------------------------------------------------------------------------#
 
 # GETOPTS
-while getopts ':b:g:i:m:R:o:t:hDHsuv' OPTIONS
+while getopts ':b:g:i:m:R:o:t:hDHIsuv' OPTIONS
 do
    case $OPTIONS in
 
    b)   boot=$OPTARG
         ;;
    g)   gamma=$OPTARG
-	[ "$gamma" != 0 ] && CV=$(echo "1/sqrt($gamma)" | bc -l) && printf -v CV "%.4f\n" "$CV"
+	[ "$gamma" != 0 ] && CV=$(printf "1/sqrt($gamma)" | bc -l) && printf -v CV "%.4f\n" "$CV"
         ;;
    h)   print_help
         ;;
@@ -540,14 +588,16 @@ do
         ;;
    H)   print_dev_history
         ;;
+   I)   print_install_notes
+        ;;
    :)   printf "argument missing from -%s option\n" "$OPTARG"
-   	 print_help
-     	 exit 2 
-     	 ;;
-   \?)   echo "need the following args: "
-   	 print_help
-         exit 3
-	 ;;
+   	print_help
+     	exit 2 
+     	;;
+   \?)  echo "need the following args: "
+   	print_help
+        exit 3
+	;;
    esac >&2   # print the ERROR MESSAGES to STDERR
 
 done
@@ -590,7 +640,6 @@ then
    echo
    exit 3
 fi
-
 
 # check that Ti/Tv is a real number, integer or decimal
 re_TiTv='^[0-9.]+$'
