@@ -412,7 +412,7 @@ summary {
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
-<h4 class="date">Versión: Sat Nov 14 11:39:26 2020</h4>
+<h4 class="date">Versión: Mon Nov 16 08:28:20 2020</h4>
 
 </div>
 
@@ -664,8 +664,9 @@ summary {
 </ul></li>
 <li><a href="#programando-un-pipeline-en-bash-en-construcción"><span class="toc-section-number">15</span> Programando un pipeline en <span class="math inline">\(Bash\)</span> (en construcción …)</a><ul>
 <li><a href="#construcción-de-filogenias-njupgma-con-bootstrapping-y-modelos-de-dnaprot-definidos-por-el-usuario-usando-programas-del-paquete-phylip"><span class="toc-section-number">15.1</span> Construcción de filogenias NJ|UPGMA con bootstrapping y modelos de DNA|PROT definidos por el usuario, usando programas del paquete PHYLIP</a><ul>
-<li><a href="#tutorial-de-uso-de-phylip-desde-la-línea-de-comandos-de-linux"><span class="toc-section-number">15.1.1</span> Tutorial de uso de PHYLIP desde la línea de comandos de Linux</a></li>
-<li><a href="#tutoriales-sobre-filogenética-de-pablo-vinuesa"><span class="toc-section-number">15.1.2</span> Tutoriales sobre filogenética de Pablo Vinuesa</a></li>
+<li><a href="#cómo-puedo-saber-cuáles-son-los-parámetros-que-recibe-un-programa-de-phylip"><span class="toc-section-number">15.1.1</span> Cómo puedo saber cuáles son los parámetros que recibe un programa de phylip?</a></li>
+<li><a href="#tutorial-de-uso-de-phylip-desde-la-línea-de-comandos-de-linux"><span class="toc-section-number">15.1.2</span> Tutorial de uso de PHYLIP desde la línea de comandos de Linux</a></li>
+<li><a href="#tutoriales-sobre-filogenética-de-pablo-vinuesa"><span class="toc-section-number">15.1.3</span> Tutoriales sobre filogenética de Pablo Vinuesa</a></li>
 </ul></li>
 <li><a href="#el-script-run_phylip.sh"><span class="toc-section-number">15.2</span> El <span class="math inline">\(script\)</span> <strong>run_phylip.sh</strong></a><ul>
 <li><a href="#cabecera-de-run_phylip.sh---settings-globales-e-inicialización-de-variables"><span class="toc-section-number">15.2.1</span> Cabecera de <strong>run_phylip.sh</strong> - settings globales e inicialización de variables</a></li>
@@ -673,25 +674,26 @@ summary {
 <li><a href="#el-bloque-de-getopts---procesado-y-validación-de-opciones-y-argumentos-pasados-al-script-por-el-usuario"><span class="toc-section-number">15.2.3</span> El bloque de <em>getopts</em> - procesado y validación de opciones y argumentos pasados al <span class="math inline">\(script\)</span> por el usuario</a></li>
 <li><a href="#el-bloque-principal-de-run_phylip.sh"><span class="toc-section-number">15.2.4</span> El bloque principal de <em>run_phylip.sh</em></a></li>
 <li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-con-100-réplicas-de-bootstrap-y-modelo-jttg-alpha0.6"><span class="toc-section-number">15.2.5</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas con 100 réplicas de bootstrap y modelo JTT+G (alpha=0.6)</a></li>
-<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-bajo-modelo-erróneo-de-dna"><span class="toc-section-number">15.2.6</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo modelo erróneo (de DNA)</a></li>
-<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-adn-con-valor-incorrecto-de-titv"><span class="toc-section-number">15.2.7</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de ADN con valor incorrecto de Ti/Tv</a></li>
-<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-bajo-con-número-de-réplicas-0-0-repl-100-o-1000-o-pasando-números-decimales-o-caracteres-no-numéricos."><span class="toc-section-number">15.2.8</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo con número de réplicas &lt;0, 0 &lt; repl &lt; 100, o &gt; 1000 o pasando números decimales o caracteres no numéricos.</a></li>
-<li><a href="#verificación-de-que-el-modelo-o-matriz-pasados-por-el-usuario-al-script-con--m-modelo-son-los-que-puede-usar-phylip"><span class="toc-section-number">15.2.9</span> Verificación de que el modelo o matriz pasados por el usuario al <span class="math inline">\(script\)</span> con <span class="math inline">\(-m\ modelo\)</span> son los que puede usar PHYLIP</a></li>
-<li><a href="#comprobación-de-resultados"><span class="toc-section-number">15.2.10</span> Comprobación de resultados</a></li>
-<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-cdss-dna-con-valores-por-defecto"><span class="toc-section-number">15.2.11</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con valores por defecto</a></li>
-<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-cdss-dna-con-1000-réplicas-de-bootstrap-y-modelo-f84g-alpha0.2-y-tasa-de-titv-10"><span class="toc-section-number">15.2.12</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con 1000 réplicas de bootstrap y modelo F84+G (alpha=0.2) y tasa de ti/tv = 10</a></li>
-<li><a href="#despliegue-de-árboles-cuando-no-están-disponibles-los-binarios-nw_support-y-nw_display-del-paquete-newick-utilities"><span class="toc-section-number">15.2.13</span> Despliegue de árboles cuando no están disponibles los binarios <em>nw_support</em> y <em>nw_display</em> del paquete <strong>Newick utilities</strong></a></li>
-<li><a href="#los-archivos-de-parámetros"><span class="toc-section-number">15.2.14</span> Los archivos de parámetros</a></li>
+<li><a href="#llamada-a-run_phylip-con-un-archivo-de-secuencias-fasta"><span class="toc-section-number">15.2.6</span> Llamada a <em>run_phylip</em> con un archivo de secuencias FASTA</a></li>
+<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-bajo-modelo-erróneo-de-dna"><span class="toc-section-number">15.2.7</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo modelo erróneo (de DNA)</a></li>
+<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-adn-con-valor-incorrecto-de-titv"><span class="toc-section-number">15.2.8</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de ADN con valor incorrecto de Ti/Tv</a></li>
+<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-bajo-con-número-de-réplicas-0-0-repl-100-o-1000-o-pasando-números-decimales-o-caracteres-no-numéricos."><span class="toc-section-number">15.2.9</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo con número de réplicas &lt;0, 0 &lt; repl &lt; 100, o &gt; 1000 o pasando números decimales o caracteres no numéricos.</a></li>
+<li><a href="#verificación-de-que-el-modelo-o-matriz-pasados-por-el-usuario-al-script-con--m-modelo-son-los-que-puede-usar-phylip"><span class="toc-section-number">15.2.10</span> Verificación de que el modelo o matriz pasados por el usuario al <span class="math inline">\(script\)</span> con <span class="math inline">\(-m\ modelo\)</span> son los que puede usar PHYLIP</a></li>
+<li><a href="#comprobación-de-resultados"><span class="toc-section-number">15.2.11</span> Comprobación de resultados</a></li>
+<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-cdss-dna-con-valores-por-defecto"><span class="toc-section-number">15.2.12</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con valores por defecto</a></li>
+<li><a href="#llamada-a-run_phylip-para-construir-filogenia-nj-de-cdss-dna-con-1000-réplicas-de-bootstrap-y-modelo-f84g-alpha0.2-y-tasa-de-titv-10"><span class="toc-section-number">15.2.13</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con 1000 réplicas de bootstrap y modelo F84+G (alpha=0.2) y tasa de ti/tv = 10</a></li>
+<li><a href="#despliegue-de-árboles-cuando-no-están-disponibles-los-binarios-nw_support-y-nw_display-del-paquete-newick-utilities"><span class="toc-section-number">15.2.14</span> Despliegue de árboles cuando no están disponibles los binarios <em>nw_support</em> y <em>nw_display</em> del paquete <strong>Newick utilities</strong></a></li>
+<li><a href="#los-archivos-de-parámetros"><span class="toc-section-number">15.2.15</span> Los archivos de parámetros</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#consideraciones-finales-y-referencias-recomendadas-para-continuar-aprendiendo-bash"><span class="toc-section-number">16</span> Consideraciones finales y referencias recomendadas para continuar aprendiendo Bash</a></li>
+<li><a href="#consideraciones-finales-y-referencias-recomendadas-para-continuar-aprendiendo-programación-shell"><span class="toc-section-number">16</span> Consideraciones finales y referencias recomendadas para continuar aprendiendo programación <span class="math inline">\(Shell\)</span></a></li>
 </ul>
 </div>
 
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
 <p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2020-11-14) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
+<p>Las versión actual (v.2020-11-16) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
@@ -886,8 +888,8 @@ ls | head</code></pre>
 ## count_genome_features_for_taxon_V2.awk</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 100140
-## drwxr-xr-x 11 vinuesa vinuesa    20480 nov 14 11:31 .
+<pre><code>## total 100280
+## drwxr-xr-x 12 vinuesa vinuesa    20480 nov 15 22:58 .
 ## drwxr-xr-x  4 vinuesa vinuesa     4096 nov 11 22:55 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -930,7 +932,7 @@ ls -al | head -20</code></pre>
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
 ## drwxr-xr-x   4 root root  4096 nov 12 09:10 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4580 nov 14 09:36 dev
+## drwxr-xr-x  21 root root  4580 nov 16 08:28 dev
 ## drwxr-xr-x 155 root root 12288 nov 14 11:10 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
@@ -952,7 +954,7 @@ ls -al | head -20</code></pre>
 ## clique</code></pre>
 <pre class="bash"><code># idem, pero con detalles de permisos etc
 ls -l /usr/local/bin | head </code></pre>
-<pre><code>## total 34500
+<pre><code>## total 35432
 ## -rwxr-xr-x 1 root root   464792 oct  4 22:37 alimask
 ## lrwxrwxrwx 1 root root       68 oct  4 22:31 blastdb_aliastool -&gt; /home/vinuesa/soft_download/ncbi-blast-2.10.1+/bin/blastdb_aliastool
 ## lrwxrwxrwx 1 root root       63 oct  4 22:31 blastdbcheck -&gt; /home/vinuesa/soft_download/ncbi-blast-2.10.1+/bin/blastdbcheck
@@ -964,16 +966,16 @@ ls -l /usr/local/bin | head </code></pre>
 ## lrwxrwxrwx 1 root root       77 oct  4 22:31 cleanup-blastdb-volumes.py -&gt; /home/vinuesa/soft_download/ncbi-blast-2.10.1+/bin/cleanup-blastdb-volumes.py</code></pre>
 <pre class="bash"><code># idem, pero ordenando los archivos por fechas de modificacion (-t), listando los mas recientes al final (-r), es decir, en orden reverso
 ls -ltr /usr/local/bin | tail</code></pre>
-<pre><code>## lrwxrwxrwx 1 root root       47 nov  8 11:48 nw_labels -&gt; /home/vinuesa/GitHub/newick_utils/src/nw_labels
-## lrwxrwxrwx 1 root root       48 nov  8 11:48 nw_info.py -&gt; /home/vinuesa/GitHub/newick_utils/src/nw_info.py
-## lrwxrwxrwx 1 root root       47 nov  8 11:48 nw_indent -&gt; /home/vinuesa/GitHub/newick_utils/src/nw_indent
-## lrwxrwxrwx 1 root root       44 nov  8 11:48 nw_gen -&gt; /home/vinuesa/GitHub/newick_utils/src/nw_gen
-## lrwxrwxrwx 1 root root       43 nov  8 11:48 nw_ed -&gt; /home/vinuesa/GitHub/newick_utils/src/nw_ed
-## lrwxrwxrwx 1 root root       49 nov  8 11:48 nw_duration -&gt; /home/vinuesa/GitHub/newick_utils/src/nw_duration
-## lrwxrwxrwx 1 root root       49 nov  8 11:48 nw_distance -&gt; /home/vinuesa/GitHub/newick_utils/src/nw_distance
-## lrwxrwxrwx 1 root root       48 nov  8 11:48 nw_display -&gt; /home/vinuesa/GitHub/newick_utils/src/nw_display
-## lrwxrwxrwx 1 root root       49 nov  8 11:48 nw_condense -&gt; /home/vinuesa/GitHub/newick_utils/src/nw_condense
-## lrwxrwxrwx 1 root root       46 nov  8 11:48 nw_clade -&gt; /home/vinuesa/GitHub/newick_utils/src/nw_clade</code></pre>
+<pre><code>## -rwxr-xr-x 1 root root    25664 nov 15 18:47 nw_topology
+## -rwxr-xr-x 1 root root    64568 nov 15 18:47 nw_distance
+## -rwxr-xr-x 1 root root    27120 nov 15 18:47 nw_labels
+## -rwxr-xr-x 1 root root    29368 nov 15 18:47 nw_prune
+## -rwxr-xr-x 1 root root    32744 nov 15 18:47 nw_order
+## -rwxr-xr-x 1 root root    45824 nov 15 18:47 nw_match
+## -rwxr-xr-x 1 root root    36496 nov 15 18:47 nw_gen
+## -rwxr-xr-x 1 root root    28560 nov 15 18:47 nw_trim
+## -rwxr-xr-x 1 root root    26544 nov 15 18:47 nw_duration
+## -rwxr-xr-x 1 root root    27840 nov 15 18:47 nw_stats</code></pre>
 </div>
 </div>
 <div id="expansión-de-caracteres-con-y" class="section level3">
@@ -1466,7 +1468,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 <p>La mayoría de los programas ejecutables del sistema proveen un formato estandarizado de documentación que se despliega en la consola usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                                                     User Commands                                                     CUT(1)
+<pre><code>## CUT(1)                           User Commands                          CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -1479,7 +1481,8 @@ man cut | head -30</code></pre>
 ## 
 ##        With no FILE, or when FILE is -, read standard input.
 ## 
-##        Mandatory arguments to long options are mandatory for short options too.
+##        Mandatory  arguments  to  long  options are mandatory for short options
+##        too.
 ## 
 ##        -b, --bytes=LIST
 ##               select only these bytes
@@ -1491,8 +1494,8 @@ man cut | head -30</code></pre>
 ##               use DELIM instead of TAB for field delimiter
 ## 
 ##        -f, --fields=LIST
-##               select  only  these fields;  also print any line that contains no delimiter character, unless the -s option is speci‐
-##               fied
+##               select only these fields;  also print any line that contains  no
+##               delimiter character, unless the -s option is specified
 ## 
 ##        -n     (ignored)</code></pre>
 </div>
@@ -1564,20 +1567,20 @@ mkdir --help</code></pre>
 <pre class="bash"><code># encuentra comandos que tienen que ver con la palabra clave distribution
 apropos distribution</code></pre>
 <pre><code>## hmmsim (1)           - collect profile score distributions on random sequences
-## bdftopcf (1)         - convert X font from Bitmap Distribution Format to Portable Compiled Format
-## Bio::Tools::RandomDistFunctions (3pm) - A set of routines useful for generating random data in different distributions
+## bdftopcf (1)         - convert X font from Bitmap Distribution Format to Port...
+## Bio::Tools::RandomDistFunctions (3pm) - A set of routines useful for generati...
 ## CPAN::Meta (3perl)   - the distribution metadata for a CPAN dist
 ## CPAN::Meta::Converter (3perl) - Convert CPAN distribution metadata structures
-## CPAN::Meta::Feature (3perl) - an optional feature provided by a CPAN distribution
-## CPAN::Meta::Prereqs (3perl) - a set of distribution prerequisites by phase and type
+## CPAN::Meta::Feature (3perl) - an optional feature provided by a CPAN distribu...
+## CPAN::Meta::Prereqs (3perl) - a set of distribution prerequisites by phase an...
 ## CPAN::Meta::Spec (3perl) - specification for CPAN distribution metadata
 ## CPAN::Meta::Validator (3perl) - validate CPAN distribution metadata structures
 ## dpkg-vendor (1)      - queries information about distribution vendors
-## iptables-extensions (8) - list of extensions in the standard iptables distribution
+## iptables-extensions (8) - list of extensions in the standard iptables distrib...
 ## lsb_release (1)      - print distribution-specific information
 ## perlnewmod (1)       - preparing a new module for distribution
 ## perlutil (1)         - utilities packaged with the Perl distribution
-## pfscale (1)          - fit parameters of an extreme-value distribution to a profile score list</code></pre>
+## pfscale (1)          - fit parameters of an extreme-value distribution to a p...</code></pre>
 <ul>
 <li>veo que es lsb_release. Consultemos su <span class="math inline">\(--help\)</span></li>
 </ul>
@@ -1743,7 +1746,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 100112
+<pre><code>## total 100252
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-rw-r-- 1 vinuesa vinuesa      361 oct 29 22:15 awk.hash
@@ -1751,7 +1754,7 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 nov  8 18:39 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 nov 14 11:39 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 nov 16 08:28 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-rw-r-- 1 vinuesa vinuesa     1335 nov 12 18:35 consensus_tre.nwk</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
@@ -2138,7 +2141,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 nov 14 11:39 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 nov 16 08:28 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2157,7 +2160,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 14 11:39 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 16 08:28 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2286,15 +2289,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 14 11:39 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 nov 14 11:39 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 16 08:28 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 nov 16 08:28 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov 14 11:39 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov 16 08:28 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2388,9 +2391,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 14 11:31 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 15 22:58 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov 14 11:39 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov 16 08:28 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2411,9 +2414,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 14 11:31 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 15 22:58 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov 14 11:39 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov 16 08:28 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2423,10 +2426,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 14 11:31 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 15 22:58 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov 14 11:31 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov 15 22:58 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2436,11 +2439,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov 14 11:31 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov 15 22:58 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 14 11:31 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 15 22:58 recA_Byuanmingense.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-mlocate-y-find" class="section level1">
@@ -2489,32 +2492,32 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 <pre class="bash"><code>df        </code></pre>
 <pre><code>## Filesystem      1K-blocks      Used  Available Use% Mounted on
 ## udev             16381128         0   16381128   0% /dev
-## tmpfs             3281908      2016    3279892   1% /run
-## /dev/nvme0n1p3  465889936  18495452  423658832   5% /
-## tmpfs            16409528     61648   16347880   1% /dev/shm
+## tmpfs             3281908      2012    3279896   1% /run
+## /dev/nvme0n1p3  465889936  18502196  423652088   5% /
+## tmpfs            16409528      4976   16404552   1% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409528         0   16409528   0% /sys/fs/cgroup
-## /dev/loop2         223232    223232          0 100% /snap/gnome-3-34-1804/60
-## /dev/loop1          56704     56704          0 100% /snap/core18/1932
-## /dev/loop3         165376    165376          0 100% /snap/gnome-3-28-1804/128
-## /dev/loop0          56704     56704          0 100% /snap/core18/1885
-## /dev/loop4          64896     64896          0 100% /snap/standard-notes/24
-## /dev/loop5          51968     51968          0 100% /snap/snap-store/481
-## /dev/loop6          44288     44288          0 100% /snap/snap-store/415
+## /dev/loop0          56704     56704          0 100% /snap/core18/1932
+## /dev/loop4         261760    261760          0 100% /snap/gnome-3-34-1804/36
+## /dev/loop2          44288     44288          0 100% /snap/snap-store/415
+## /dev/loop3          31744     31744          0 100% /snap/snapd/9721
+## /dev/loop5          31744     31744          0 100% /snap/snapd/9607
+## /dev/loop1         166784    166784          0 100% /snap/gnome-3-28-1804/145
+## /dev/loop6          51968     51968          0 100% /snap/snap-store/481
 ## /dev/nvme0n1p1    1994928      7984    1986944   1% /boot/efi
-## /dev/sda1      1921802432 428382420 1395727956  24% /home
-## /dev/loop7         261760    261760          0 100% /snap/gnome-3-34-1804/36
-## /dev/loop8          63616     63616          0 100% /snap/gtk-common-themes/1506
-## /dev/loop9         166784    166784          0 100% /snap/gnome-3-28-1804/145
-## /dev/loop10         31744     31744          0 100% /snap/snapd/9721
-## /dev/loop11         64896     64896          0 100% /snap/standard-notes/23
-## /dev/loop12         31744     31744          0 100% /snap/snapd/9607
-## tmpfs             3281904        20    3281884   1% /run/user/125
-## tmpfs             3281904        44    3281860   1% /run/user/1000</code></pre>
+## /dev/loop8          56704     56704          0 100% /snap/core18/1885
+## /dev/loop7          64896     64896          0 100% /snap/standard-notes/23
+## /dev/loop9          63616     63616          0 100% /snap/gtk-common-themes/1506
+## /dev/sda1      1921802432 428431424 1395678952  24% /home
+## /dev/loop10        165376    165376          0 100% /snap/gnome-3-28-1804/128
+## /dev/loop11        223232    223232          0 100% /snap/gnome-3-34-1804/60
+## /dev/loop12         64896     64896          0 100% /snap/standard-notes/24
+## tmpfs             3281904        16    3281888   1% /run/user/125
+## tmpfs             3281904        24    3281880   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465889936 18495452 423658832   5% /</code></pre>
+## /dev/nvme0n1p3 465889936 18502196 423652088   5% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></h3>
 <p>Como cualquier comando, le podemos pasar opciones para adecuar mejor la salida a nuestra necesidad.</p>
@@ -2545,28 +2548,28 @@ df -h /home</code></pre>
 <pre><code>## Filesystem     1M-blocks    Used Available Use% Mounted on
 ## udev              15998M      0M    15998M   0% /dev
 ## tmpfs              3205M      2M     3204M   1% /run
-## /dev/nvme0n1p3   454971M  18062M   413730M   5% /
-## tmpfs             16025M     61M    15965M   1% /dev/shm
+## /dev/nvme0n1p3   454971M  18069M   413723M   5% /
+## tmpfs             16025M      5M    16021M   1% /dev/shm
 ## tmpfs                 5M      1M        5M   1% /run/lock
 ## tmpfs             16025M      0M    16025M   0% /sys/fs/cgroup
-## /dev/loop2          218M    218M        0M 100% /snap/gnome-3-34-1804/60
-## /dev/loop1           56M     56M        0M 100% /snap/core18/1932
-## /dev/loop3          162M    162M        0M 100% /snap/gnome-3-28-1804/128
-## /dev/loop0           56M     56M        0M 100% /snap/core18/1885
-## /dev/loop4           64M     64M        0M 100% /snap/standard-notes/24
-## /dev/loop5           51M     51M        0M 100% /snap/snap-store/481
-## /dev/loop6           44M     44M        0M 100% /snap/snap-store/415
+## /dev/loop0           56M     56M        0M 100% /snap/core18/1932
+## /dev/loop4          256M    256M        0M 100% /snap/gnome-3-34-1804/36
+## /dev/loop2           44M     44M        0M 100% /snap/snap-store/415
+## /dev/loop3           31M     31M        0M 100% /snap/snapd/9721
+## /dev/loop5           31M     31M        0M 100% /snap/snapd/9607
+## /dev/loop1          163M    163M        0M 100% /snap/gnome-3-28-1804/145
+## /dev/loop6           51M     51M        0M 100% /snap/snap-store/481
 ## /dev/nvme0n1p1     1949M      8M     1941M   1% /boot/efi
-## /dev/sda1       1876761M 418343M  1363016M  24% /home
-## /dev/loop7          256M    256M        0M 100% /snap/gnome-3-34-1804/36
-## /dev/loop8           63M     63M        0M 100% /snap/gtk-common-themes/1506
-## /dev/loop9          163M    163M        0M 100% /snap/gnome-3-28-1804/145
-## /dev/loop10          31M     31M        0M 100% /snap/snapd/9721
-## /dev/loop11          64M     64M        0M 100% /snap/standard-notes/23
-## /dev/loop12          31M     31M        0M 100% /snap/snapd/9607
+## /dev/loop8           56M     56M        0M 100% /snap/core18/1885
+## /dev/loop7           64M     64M        0M 100% /snap/standard-notes/23
+## /dev/loop9           63M     63M        0M 100% /snap/gtk-common-themes/1506
+## /dev/sda1       1876761M 418391M  1362968M  24% /home
+## /dev/loop10         162M    162M        0M 100% /snap/gnome-3-28-1804/128
+## /dev/loop11         218M    218M        0M 100% /snap/gnome-3-34-1804/60
+## /dev/loop12          64M     64M        0M 100% /snap/standard-notes/24
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392600M 437728M  1836291M  20% -
+## total           2392600M 437727M  1836291M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2586,15 +2589,15 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 186348   .
-## 182M .</code></pre>
+<pre><code>## 197328   .
+## 193M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
 </ul>
 <pre class="bash"><code>du -sh /usr/local
 du -shc /usr/local/*</code></pre>
 <pre><code>## 1.8G /usr/local
-## 34M  /usr/local/bin
+## 35M  /usr/local/bin
 ## 4.0K /usr/local/etc
 ## 4.0K /usr/local/games
 ## 4.0K /usr/local/include
@@ -4217,17 +4220,17 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1798907 nov 14 11:31 working_with_linux_commands.html
-## -rw-rw-r-- 1 vinuesa vinuesa   58454 oct 31 19:08 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  279363 nov 14 11:39 working_with_linux_commands.Rmd
-## -rw-rw-r-- 1 vinuesa vinuesa  306038 oct 31 19:08 working_with_linux_commands.tex
-## total size of working_with_linux_commands.* files is: 2.33 Mb</code></pre>
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1824247 nov 15 22:58 working_with_linux_commands.html
+## -rw-rw-r-- 1 vinuesa vinuesa   68106 nov 15 20:16 working_with_linux_commands.log
+## -rw-r--r-- 1 vinuesa vinuesa  297765 nov 15 23:03 working_with_linux_commands.Rmd
+## -rw-rw-r-- 1 vinuesa vinuesa  499749 nov 15 20:16 working_with_linux_commands.tex
+## total size of working_with_linux_commands.* files is: 2.57 Mb</code></pre>
 <ul>
 <li>comparen y entiendan la diferencia del comando anterior con el del siguiente:</li>
 </ul>
 <pre class="bash"><code>ls -l working_with_linux_commands.* | \
  awk &#39;{s+=$5}; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## total size of working_with_linux_commands.* files is: 2.33 Mb</code></pre>
+<pre><code>## total size of working_with_linux_commands.* files is: 2.57 Mb</code></pre>
 </div>
 <div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
 <h3><span class="header-section-number">11.5.7</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
@@ -5593,7 +5596,7 @@ ubicación=CDMX
 dat=$(date | awk &#39;{print $2&quot;-&quot;$3&quot;-&quot;$4}&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in &lt;$wkdir&gt; at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;14-nov-2020&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;16-nov-2020&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
 <h2><span class="header-section-number">13.3</span> Modificación de variables y operaciones con ellas</h2>
@@ -5693,7 +5696,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 14 11:39 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 16 08:28 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -5879,14 +5882,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov 14 11:39 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov 14 11:39 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov 14 11:39 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov 14 11:39 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov 14 11:39 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov 14 11:39 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov 14 11:39 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov 14 11:39 recA_B_yuanmingense.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov 16 08:28 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov 16 08:28 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov 16 08:28 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov 16 08:28 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov 16 08:28 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov 16 08:28 recA_B_yuanmingense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov 16 08:28 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov 16 08:28 recA_B_liaoningense.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -6017,9 +6020,9 @@ echo &quot;$contador líneas contienen el patrón $patron&quot;
 <pre class="bash"><code>while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 12522
-## 23004
-## 31406</code></pre>
+<pre><code>## 11840
+## 14314
+## 7436</code></pre>
 <p>Los bucles <span class="math inline">\(until\)</span> son útiles para ejecutar un bucle hasta que se cumpla o no una determinada condición.</p>
 <p>Su sintaxis es idéntica al del bucle <span class="math inline">\(while\)</span>.</p>
 <p><code>until TEST-COMMAND; do CONSEQUENT-COMMANDS; done</code></p>
@@ -6027,9 +6030,9 @@ while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; bre
 <pre class="bash"><code>until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 15369
-## 18869
-## 16273</code></pre>
+<pre><code>## 30229
+## 20135
+## 23965</code></pre>
 </div>
 </div>
 <div id="estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" class="section level2">
@@ -6381,6 +6384,7 @@ CTRL-D</code></pre>
 ## intro2linux
 ## participantes_Taller_CG_FC
 ## pics
+## src
 ## tmp
 ## tutorials
 ## working_with_linux_commands_files</code></pre>
@@ -6544,7 +6548,8 @@ find . -maxdepth $max_depth -type $type</code></pre>
 ## ./bin
 ## ./tmp
 ## ./working_with_linux_commands_files
-## ./docs</code></pre>
+## ./docs
+## ./src</code></pre>
 <ul>
 <li>Los argumentos posicionales pasados a un <span class="math inline">\(Shell\ script\)</span> quedan guardados en las variables reservadas <em>$1 … $9</em></li>
 <li>Los argumentos posicionales pasados a una <span class="math inline">\(función\)</span> también quedan guardados en las variables reservadas <em>$1 … $9</em></li>
@@ -6740,40 +6745,258 @@ fi
 </ul>
 <p>Estos archivos de parámetros tienen una estructura muy sencilla, con un parámetro por línea, como muestra la siguiente imagen:</p>
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUIAAAGICAYAAACEB5rMAAAABHNCSVQICAgIfAhkiAAAABl0RVh0U29mdHdhcmUAZ25vbWUtc2NyZWVuc2hvdO8Dvz4AAAAmdEVYdENyZWF0aW9uIFRpbWUAZG9tIDA4IG5vdiAyMDIwIDIwOjIzOjEy7TySSQAAIABJREFUeJzs3Xd0FGX3B/CbvmmEFAKhhkgILbQAQgRBEBAR9AUERDGA0hOKEAQFxQ4SqgUQoggqvCiiKOIPBA2KEpUqRTokQAg1BZKQdn9/cHbenZ1nN7vZ2Zrv55ycszPz7DN3J7Ozz947M+vGzEwAAAAAAAAAAAAALszd3gEAAAAAAAAAAAAAWBsSoQAAAAAAAAAAAODykAgFAAAAAAAAAAAAl4dEKAAAAAAAAAAAALg8JEIBAAAAAAAAAADA5SERCgAAAAAAAAAAAC4PiVAAAAAAAAAAAABweUiEAgAAAAAAAAAAgMtDIhQAAAAAAAAAAABcHhKhAAAAAAAAAAAA4PKQCAUAAAAAAAAAAACXh0QoAAAAAAAAAAAAuDwkQgEAAAAAAAAAAMDledo7AAAAAAAAAABQ38cff1zp5zKzipFYh5ubm71DAAAH06dPH4qIiDC43I2d4egGAAAAAAAAAGZBohAAqpqdO3dS9+7dDS7HGaEAAAAAAAAALio5OZnGjx9v7zAAAKzq+PHj1Ldv3wrbIREKAGAjTz75JF29etXeYQAAVMrYsWNp2LBhVl3Hs88+SxcuXLDqOgAA7CU8PJy+/PJLm6+3Zs2a1LBhQ5uvFwDAlnJyckxqh0QoAICNpKenk7u7O7Vq1creoQAAmGXLli3Uv39/q6/n4MGDdPXqVbr//vutvi4AAFs6dOgQnTt3zt5hAABUeaokQqdMmUJLly5VoysAAKtq2bIlHTp0yG7rf+KJJ2jJkiV2Wz8AQGXY6h5zbm5u9Mgjj9CaNWtssj4AAFsZMWIE7dq1y95hAABUeaqdEert7U1vv/22Wt0BAKhu1apV9g4BAAAAAAAAAOxEtUSoj48PTZs2Ta3uAABUt3v3bjp//ry9wwAAAAAAAAAAO3C3dwAAAAAAAAAAAAAA1oZEKAAAAAAAAAAAALg8JEIBAAAAAAAAAADA5SERCgAAAAAAAAAAAC4PiVAAAAAAAAAAAABweUiEAgAAAAAAAAAAgMtDIhQAAAAAAAAAAABcHhKhAAAAAOAQmNneIQAAAACAC0MiFAAAAAAAAAAAAFweEqEAAAAAAAAAAADg8pAIBQCAKu38+fPUsWNHCggIoF69etHVq1ftHRIAAAAAAABYARKhAABQpc2ZM4fS09Ppzp07tGPHDpo9e7aiTU5ODj377LMUHBxM9913H61bt84OkQIAmC8jI4N69uxJ/v7+dP/999OpU6cs7vPw4cPUvHlzCgwMpJdeekmFKAEAAABsA4lQG8GAEQDAfCUlJZSXl2fVdaSnp8umDx8+rGiTmJhI69ato5ycHDp79iwlJCTQb7/9ZtW4dNliOwCAbdi6sDJ+/Hj66aefqKCggP78808aPXq0xX0+++yzdOzYMbp9+zbNmzePcnNzVYgUAAAAwPqQCLURDBgBAMyzdOlSqlatGlWvXp0mTZpktfVcunRJNu3h4aFos337dtk0M9OOHTusFpMuW20HALANWxdW/vnnH9n07t27KT8/v9L9HTt2jA4dOiRNMzPdvn270v0BAAAA2BISoTaAAeM9OKMJAEx14sQJmjp1KhUVFREz03vvvUdpaWmqr6ewsJAKCgpk83x9fRXtoqOjFfMaN26sejz6bLUdAMB2bF1YCQsLU6wvMzOz0v2dP3++wnUAAAAAOCokQm0AA0ac0QQA5jly5Agxs2zejz/+qPp6bty4oZjn7++vmPfhhx9SvXr1pOmnn36annrqKdXj0Wer7QAAtmPrwkpUVJRi3p07dyrdX3FxsWKe6Ex6AAAAa9MfJwOYAolQG6jqA0ac0QQA5vLy8lLMO3PmjOrrEd2mJCgoSDGvVatWdOLECfrjjz/o5MmT9Nlnn5G7u/U/Qm21HQDAdmxdWKlRo4Zini2OXwAA1lJUVETffPMNff311xYVdhxZVXiNlvj8888pLCyMqlWrRnPmzLF3OE6hqKiIli5dSikpKXT58mV7h2NXGAWB1eGMJgD1uXr1MzAwUDHPGoNA0e06qlevLmzr6+tLHTt2FJ7NZS222g6GuPp+BmAPti6slJeXK+b5+PhYbX0A4NpOnTpF48ePp6ioKPLx8aG6detSt27daP78+WYVa9PT02ny5MnUpk0bqlmzJvn6+lJUVBSNGDFC8UOWuvLz8ykuLo7+85//0MCBA+n++++XTjzKz8+n+fPnU1xcHAUGBlJISAg98MAD9Mknn1QYDzPT9u3bKTk5mfr06UNNmzal8PBw8vPzI09PT9JoNNSgQQMaO3Ys5eTkVNjfvn37aPLkydSyZUsKDQ0lLy8vCgkJoTZt2tDYsWPpxx9/NDjOqgqv0RIXL16kkSNH0o0bN+j27dv05ptvUlpaGu3du5cSExMpNjaWAgICKDAwkJo1a0ZJSUl04sQJs9dz9OhRmjt3LsXHx1OdOnVIo9FQZGQk9evXjz777DPhmJyZKTExkapXr05RUVG0bds2adn58+fp7bffpkcffZTq1atHfn5+FBgYSE888YTJt6ypTExaY8aMoSlTplBycjK1aNFCer9qt2Hjxo3J19eX7rvvPpoxY4Z0P/Hy8nLasGED9e/fnyIiIkij0VCjRo0oKSmJrly5UmHMau93qmAVTJ48mQMDA9XoyiVt3ryZiUj2V1JSYu+wbObbb79VvP4nn3zS3mFBFdS/f39u2bKl3dZfr149njx5skV9fPbZZxwaGsoBAQE8e/ZslSJzPOnp6YrjRr9+/VRfz/bt2xXrmTt3rurrqSxbbQd9VWU/U0thYSEvWbKEFyxYwJcuXbJ3OFZBRJySkmL19cTGxnJCQoLV11OVPPPMM4rjyMmTJyvdX1Uf15qrvLzc3iGAg0hISOB69erZfL1qHr/fe+899vb2VhwDdP/69OnDhw8fNthHdnY2DxgwwGgfbm5uPGPGDOH7Z926dYr2mzdv5u3bt3Pt2rUN9jlq1CiDMe3cuZObNWtmNCZT+8rNzeWRI0ea1E+7du3433//rZKv0RIpKSmK9RjbLkTE3t7e/PHHH5vUf2ZmJg8bNozd3NyM9lm9enV+9913uaysTHru1q1bZW3Cw8P5xIkTPGDAAHZ3dzfYV2xsLJeWllolJmbmrKwsxXMXLVrEx48f5yZNmhiM6Z9//uF27doZXF9kZKTRsa+a+50p9u/fz0TEO3fuNNoOiVAbqOoDxl27dile/6OPPmqTdWPwCbqcPRGamZnJXl5esvfSL7/8wn/88QdPnDiRW7Rowf7+/hwQEMBNmzblxMREgwOP8vJynjhxIgcFBXHDhg35hx9+kJadO3eO33rrLe7Tpw/XrVuXfX19OSAggB9//HHOyMgwGuPevXt50qRJ3Lp1aw4PD2eNRsMNGzbkhIQE3rt3r/A5ZWVlnJiYyEFBQazRaLhOnTocHR2tOG74+vpytWrV2N3dnX18fLhBgwY8depULi4uNhjPoUOH+KWXXuL27dtzrVq12MvLi6tXr87x8fE8b948/vTTTxXrWbZsmaKfrVu3cqNGjbhatWo8atQoo+vUbt//+7//4+nTp/MjjzzCTZo04Ro1arCvry97eHiwj48P169fn8eMGcO3bt2y+nYwh5r7mSFHjhzhV199lTt16sS1a9eWXsdjjz3G69at49u3bwufZ6391pKYmJmHDx8ubavg4GA+ffo0MzPn5+fzG2+8wdHR0azRaDgqKoqTk5M5Ly+Pme/9z9evX8/9+vXjWrVqsY+PD993332cmJjIWVlZFcZcmf2ssoicJxFaWFjImzdv5k2bNhn9v1UVTzzxhOI4Ysp7wpCqPq41FQpK5qkKBSVnT4S++eabJiczNBoN//jjj4o+Lly4wHXr1jW5nxdffFHRx3vvvadoFx8fz56enhX2t2nTJkV/W7durTC5q/8XExMj3Ea5ubncunVrs/qKiIhQ7PNV4TVaIjEx0az16/5t2bLFaN979uzh8PBws/rUHbfMnz9fsdzDw8Okfn7++WerxMQsTq5Pnz6da9asabSfihKvRMRPPPGEMG419ztTIRHqQKr6gNEeZzRh8Gm+qjAAdfZEqJrVT7WrlZZU90XJSHP+Fi1apIjnxo0bnJCQUOGHt2hA+fnnn8v6ys/P58DAQFmbpUuXGvw/VbbyaY3tUBnWrLJbWs22RpUdFXbTEDlHIjQvL0+2XZo3b853796Vls2bN4/btm3LAQEBHBwczPHx8SafIcLM/Pfff/OkSZM4NjaWQ0JC2NPTk4ODg7l169Y8ZswY3rZtW4VFWHMLKyJlZWWck5Nj9OwRrYcfflixP1y9epWZmf/8808eP348R0dHs5+fH/v7+3OLFi141qxZfOPGDWF/hsa1v/zyCz///PMcHR3NPj4+HBwczM2bN+ekpCT+448/zH6NlSmsMVu3YGIqFJRQUBJx5kTo119/bfa4pG3btrI+cnJyDH4uGvtLS0uT9fPJJ59Ueqz04IMPyvoqKSnhRo0amd2P6PtEeXk59+jRo1JxTZ06tcq9RkvMmDGj0tunZs2a0vFD32+//cY+Pj6V6ld7fJg7d26lY1uwYIFVYmJmfvvttxXLTUlymvLn5ubGJ06ckMWt5n5nDqdNhKr9YaTGgFU/vl27dvHMmTM5Pj6eIyMj2d/fn6tXr85DhgzhsLAwbty4Mf/000/Sc2w1YGSu/KBRrb4c4YwmWww+mSs32LP24BwDUOOcPRGqZvVTzWqlpdX9l19+2aIP34kTJ8r6y8jIMCtBpP+3bds2WX/79u1TtBkxYoTwf2RJ5VPt7VBZ1qqyq1HNVrvKjgq76YicIxFqjcsJmdW7DNDcworWiRMn+M033+SuXbtyaGiolPh3c3Pj6OhonjJlCl+8eFH43IceekgRY1ZWlvCSed2/hg0bcmZmpqI/0bj2/vvvr3C7PPXUUwaTq7osvWzWWpclmgMFJfNiqioFJWdNhF6/fp1DQ0MV26Nu3bo8a9Ysfumll7h///6KZM1DDz0k62fixInC7erp6clxcXHcqVMn4Wd6p06dZP18+eWXFf6vPDw8uEOHDhwSEiKb7+XlxUVFRVJfR44cEb4XBw4cyG+88QYvX76cU1NTecGCBbLxwtChQxXbaeXKlcJYevfuzcuXL+e1a9fyvHnz+KGHHlLs761bt65yr9ES8+bNM7pt3N3duVGjRsI8BBHxe++9p+gzIyODa9SoIWzfqlUrfvfdd/nbb7/l119/XbG8fv360vFx1qxZFcYWHx/Po0aNUiybOXOmVWJiZp4zZ47JxzpjfyEhIYpcCxHxypUrZbGrud+ZwykToY5+34rNmzdzbGysSX0GBQXxzZs3pefpL1dzwMhs+aBRrb4c4Ywm3DPEvJiYq84A1NkToWpWP9WqVqpR3f/111+N7v8V/eleAlRYWGjycdrQX3p6umy7//rrrybti5ZWPtXcDpawRpVdrWq2mlV2VNjNQ+QciVC1LydkVvcyQHMKK8zMly9f5uHDh5uU8A8LC+M1a9Zwbm6urI8uXboo2rZo0cKk1zF48GBFTKJxrTn7ofZsVBE1Lpu1xmWJ5kJBybyYqkpByVkToePGjVNsiyZNmvC1a9dk7c6dO8f9+vVjNzc3rlu3Lu/fv19advLkSeF+1rlzZ9kJH4cPH+bg4GBFu2PHjkltKjo7NS4ujk+dOsXMzB988IFi+T///CP19eOPPyqWv/LKK8LtsHnzZm7YsCFHRkbKXhszc1FRkTBhtXz5clm7wsJCfuWVVxT73n333SdrVxVeoyVWrVol3C6enp48depUWRFvxYoVinYPPPCAos/Bgwcr2rm7u3NKSorsu/Nff/2laDdu3Dhp+fTp0w3+3zp37swHDhxg5nv7uv7y5ORkq8TEzPzGG28Y3acCAgJ4/fr1HBMTI1weGBjIKSkpXFRUxAsXLlQsnzJlimx9au135nK6RKgj37eiuLiYx44da1Z/RP8bLFhzwMiszqBRrb4c4Ywm3DPEvJiYq84A1NkToWpWP9WqVqpV3d+3bx+/8sorPHz4cH7kkUeExSIvLy+OiYnhDh068P333889e/bk1atXy/qZPHmyMJ769evzsGHDOCkpiQcPHszVqlUz+Nr1E0+iH1RKTExU/H/UqHyqtR0soXaVXc1qtlr7LSrs5iNyjkSompcTMqt/GaCphRXme5etV1TIFf1FRUVxfn6+1M8DDzxQ6W3i6enJOTk5srgsGdcS3UtM6xdkmdW7bFbtyxIrAwUl82KqKgUlZ0yEnj9/XjGO8/b25iNHjhh8Tn5+vuJkmeTkZMX2jIqKUhRumMXjEN37t3/xxRdG/0e6x6wNGzYo2mzfvl1aLkpGBQYG8qeffmrWVaPr169X9DN69GhpeUlJCa9evZobNGggjPupp56S9VcVXqMlRGfMhoWF8a+//ips37x5c1lbT09P2ZWSBw8eFB5zPvjgA0VfmzZtUrR79913peXTpk0Tvv6BAwfKrn7NzMxUtNG9QkTNmJiZFyxYYHCfCgkJ4X379jEzc+fOnRXLe/fuLbvqJCMjQ9Gmb9++svWptd+Zy6kSoY5834qysjLu27dvpfpTIxFKZHjAyKzeoFGtvhzhjCbcM8S8mJirzgDU2ROhalY/1ahWqlnd11dYWKhoHxsba3T7XLlyRfF+8Pb25lWrVimOoXl5edy/f3/h69e/pcN///tfRZuXX35ZsX5rVD4rsx0spXaVXc1qtlpVdlTYzUfkHIlQNS8nZFb/MkBzCisBAQEVvhZDf7r3Ou7YsWOF7T09Pblp06bs5+enWKZ7uyfmise1zZo144SEBB4yZIjBQu3ChQsVr1mtwpqalyVWFgpKKCiJOGMi9MUXX1Rsq1mzZpndj2hfX79+vbDt8ePHFW1HjhwpLTd0XNZoNIqrPFNTUxXtvv76a1kb/SSZ9q9Fixa8fv16k26Z8eSTTyr2p8uXL3NhYSF/+OGHHBUVZXC/9ff35+PHj8v6qwqv0RKiz1L98ZmupKQkRXvdcdFLL72kWP7II48I+xIVXFNTU6XlokRo8+bNFbcALCsr4/r168u255kzZ6wSEzPz+++/L/zf+Pr6ym7LKMqliX7fRv+EqWbNminaqLHfmcupEqGOfN+K2bNnG3xD9+zZk5ctW8ZfffUVDxw4ULH8999/Z2brDRiZ1Rs0qtmXvc9owj1DMAA1xNkToWpWP9WoVqpZ3RfRP95UdEmN6NdMP/roI4PtCwoKhIM2/WKI6HNFv8rKbL3Kp7nbwVJq7mdqV7PV2G9RYa8cIudIhKp5OaE1LgM0pbBy584d4RjFy8uLJ06cyL/99hvfuHGDb9++zWlpacJL33XPKqnodkxPPfUUX758mZmZv/32W8XyVatWyeIzNK594IEHFMeJwsJC4WW1NWvWlCWd1SysqXlZYmWhoISCkogzJkIbNmyo+F+Ye8/+mzdvKrZ3tWrVpB+y01dWVqY4sUb3s1B0hR2RuJAhul3Khg0bZG327t1r9MSS6Oho/uyzz4x+xtarV0/2nG7duvEbb7xR4VV7oaGhwhOUqsJrtMTvv/+uWI+xW6i99dZbiva6yeL27dsrlhu6GlN0K0Dd4qNorLpjxw5hX0ePHuWxY8fyqFGjePfu3bJlasbEzLx69Wrh/0f/9oCiE0VEvzPStWtXWRs/Pz/F/qPGfmcup0qEOup9K44fPy48u7F+/fpSklNLdBaiNj5rDBiZ1R00OtqZXZbAPUMwADXE2ROhalY/1ahWqlndF9H/QZFatWoZba//gyD169c3eDa9lujDXr/q+e677yra6Cf3taxR+TR3O1hKzf1M7Wq2GvstKuyVQ+QciVA1Lye0xmWAphRWRJ+joaGh/Ndffwlf88yZMxXt165dKy0XfZnS/unfkujEiROKNvpXpIjGte+//77RLzKiq6t0rwJSs7Cm1mWJlkBBybyYqkpBydkSoefPn1dsp+eee87sfg4cOKDop1u3bkafExQUZLC96Hu3RqMR3k7unXfeUbTVTxIyM+/evbvChF5cXJy0L+rKz883+jzRn4eHB48aNYqvXLkifP1V4TVa4tChQ4r1Pf300wbbL168WNH+k08+kZbr55A0Go1wjMYsLrh+8cUX0nLRMfbcuXNmv0Y1Y2IWj2l79eql6CshIUHRTvTDiaa2s2S/qwxTE6Hu5ABq166tmLd48WJau3YtMbNs/hNPPEFnz56lc+fOUZs2bWTLNm/eTNeuXZPNGz16NI0bN46IiEpLSyk1NZWaNGlCr7/+OhUXF8vadujQQTb9zjvvUHl5uWxeeHg47dmzhzp16iSbn5ubq3gNPj4+opdLRETvv/8+/frrr9S5c2fZfI1GQ8uXL6e+ffvK5mdnZ9PWrVtl81atWkVlZWWyeVFRUbR161aqV6+eNC82NpZefPFFRQw//fSTVfrSp9FoyMPDQzavoKDAYHtLVa9eXTEvLCyMfv75Z1q0aBHVrVtXmj927Fhq3ry5rG16ejrduXNHmj506BB9+eWXij7fe+89mjZtGrm7/+9tlJGRoWgXFRUlPdbfn7UGDhxIu3btotatWxMRUXBwsKKNbtxqxkR0739kSEhICKWlpdHQoUOpRo0aiuW9e/em48eP07Rp08jHx4eefPJJRZtTp07JptV6z1c1AQEBinn6xzFdtWrVUsw7f/68wfZLliwhLy8v2Tx3d3fatm0bjR07lkaNGkU//fQTRUVF0a1btxT/12rVqtGAAQOEfTdu3Fi2XxIRXb161WAsRET+/v6yad33pUh6erps+pFHHlGsU5/oPenp6SmbzsvLU7SpVq2asL/U1FThsf/IkSP01FNPUdOmTenzzz83eCwQMXc7WErN/WzHjh2KZaLPECIS/q+MHZu0zNlvrRGToRg/+OAD6tixozSt/38kIrp7965iXpMmTWTT58+fV+wv1tjPXEV+fr5wvkajoY0bN1JQUJA0T/Reun37tvT466+/li3z9vam1157jYqKimj58uUUExNDzz//PF24cEHRj7+/P73yyiuK+aLxom5MzEwLFy5UtPniiy+oXbt2wtd27tw5xTz9z3mRjh070tKlS2Xz3NzcFO1MGbONHz9e+FytN998UzHvl19+kR5/8803iuVvvfWW8Fj7+OOPK+YdOHDAaHzNmzen9evXy44VtWvXpvr160vT3t7e9Nhjjxntx1S6/1OtQYMGKcb9Wt27d5dNl5aW0smTJ4mIaOPGjYr38iOPPEITJkxQ9CP6vAoNDa0wXnO3j9ox+fr6CuPy9fWlrVu3Utu2bYlI/N3q+++/pzp16kjT9erVo5o1a8ra6L9HYmNjFeP//Px8SkhIoJYtW9KGDRsU34uqIv1xHhFRr169zO5HdKyNiIgw+hz9/Uv3WHDjxg1F+//85z/C7ymFhYWKeaLP9i5dutDx48dp+vTp5OfnJ4xp3759FB8fT+vXr5fNv3XrlvhFCHh6etLw4cPp6NGjlJqaqthXtarCa7SE6FggGlNpiT6fioqKpMf62zs8PFzxfUBLdEwtLS01uO7KskVM4eHhinlhYWGKednZ2Yp5urkJLdExw5L9zpocIhGq1oeRmgPWoqIi2rhxo6Ld8uXLhf903YGzlrFEqKUDRiJ1B43WHoDq7/TW/CKv5uCTyPoD0MoMzjEArZpMTaRoiT5sRF/CtRo1aiSc36xZM1qxYgWlpqZSly5diIiEx9G2bduSt7e3sA93d3cKDAyUzavoOKD/ekUDPa38/HzFl3X9hJKIKYki3YGSlqHj+/333087duwQDiyI7g0QnnnmGWrfvj3t37+/wnUTmbcd1KDmfqafeNdoNAaPxfr7B5F44KrPnP3WGjHpF/qI7n1RHDlypGyeqMAl+mIRGRkpmy4oKKBLly7J5lljP3MVOTk5wvlTpkyhmJgY2TxRgk836b93717Zsvj4eEpNTaUGDRrQhAkT6OzZs8J1hYaG0g8//CA8BlVUWDlw4ABdvnxZtrxbt25Gkw+nT59WzNN9X4iOcx4eHrRy5UrF/is6vqhRvG7durWiCHrkyBEiIpsU1swtmFgKBSXzYkJByTHdvHlTMU/3BBlTif5vxpI0hYWFimOl7ued6LOzf//+wr7092siw8e0kJAQWrBgAZ0/f55efvllCgkJUbS5e/cuDR8+nHbu3CmLtyJ+fn6UlJREp0+fprVr1yo+j/RVhddoCdExw9hYVf9zlUieM9D//mJs/xQldkWf7boqcxyxdkxEypM/DPWVlZWlmCc6FhgaF1V2v7Mmh0iEEqnzYaTmgPX3339XfPmNjo42OCgTfaEXnZloKmMDRiJ1B42OeGaXJdQ+a87aA9DKDM4xAK2a1K5+WkLt6r6IfoKttLSUSkpKhG1FA0ZREquimETzRAMP0aBTS+3KpznbQQ1q7meosP9PVamw25voLBqNRkMvvPCCYr6oiK27LDMzUzbvl19+oTlz5hgc83h4eNCoUaPo6NGj9OCDDwrbVFRY+fXXXxXLBw4caDBOIpIVb4nuHft0v8iIxgGjRo2ili1bKuaLvjyrNWbTT/Jr/1e2KKyZWzCxFApK5sWEgpJjEp1ccuXKFbP7EX2uHT9+3GD7tLQ0xby4uDjpsSjBo/8/1xLtfxV9b61Rowa9+eablJmZSSkpKYrtUFZWRlOmTJGmRZ/vWqGhofTqq69SRkYGLVu2jBo0aGB03VpV4TVaQjQON/Z9XzePoqX7vUU/b3PlyhWD35lEVzaKxnOWskVMomOvqC/RFaaidmfOnDG6PnP3O2tymESopR9Gag9Y//77b0V7Q1UYIuXA0d3dXfhhbQ5DA0YidQeNjnZml6XUPmvO2gPQygzOMQCtmtSufuqz5HJtIsuq+yKi12toACB6H4vOZDCF/usQvT8qOmNZzcqnOdtBDWruZ7aoZptbLEGF3bWpdTmhtS4DrKiwov9ZSUTChKVWRkaG4nYA9913n2xalAgguATLAAAgAElEQVRNTEwU9icas5iyz5vC0HvVFoU1W0NByfKYUFCyP9EZ0qmpqRU+7/Dhw7LEU1hYGDVs2FDW5siRI4qTmIjuja9EV0Z269ZNeiw6ZohObCESH0tEZ9GL+Pn50bRp0+jAgQOKz9cjR45IuYeQkBDFdyR3d3dauHAhZWRk0Ny5cw1eIcjMdOTIEcV3narwGi0hGpsbOsaePHmSfvzxR8XzdW83o38ST3l5ucFb/wUGBio+c4wl9ivLFjGJxgemJkJ1rwjVEuWVREzd76zJYRKhRI513wpR8tTYQFR/kBgSElLhvekqYuzLnZqDRkc7s8tSuGeIOjFhAOp41K5+WkLt6r6IOe/lkJAQxfbRv6+yiOj9r79NRdvd1OOXGpVPc49pllJzP0OF3Xhfrlhhtze1Lie01mWAFRVWRIlcYwWsffv2KebpF1hFr9PQLXFERa7KnAGmj5kVZ65qxxm2KKzZ+uoSFJQsjwkFJfuLjo6mxo0by+Zt3bqVEhMTFbdaYmbavn07Pfjgg9SqVSuKjY2ladOmScv79eun6H/o0KGy26vl5ubS8OHDac+ePbJ28fHxsqSQaAxm6EpM3VuNael+J7l27RqlpqZSamoq/fPPP8I+atWqJexf90Qo/fsLl5eX065du4zekur777+ntm3bUmxsLMXFxdHLL78sLasKr9ESojxLdna2IhF36tQpGjRokOJ3Xx566CHZVaS6V0BqzZ49W3HlSHFxMc2fP19xEtzOnTuNjhsq8xlk7ZiITE+EihKcFSVC1drvrEWcObEj7YfRjBkzaOnSpbR8+XLFWT3aD6Pw8HDq0aMHEZk+YH3uuedo2rRpFZ6yLTqTSPTBqKU/SDR2+rgpjA0YidQdNNrzzC5jl5dWljXuGaL7JdlR7hlizZiIrDMAfeihhxTzK/uer4rUrn5aQlvd173/q7a6r//BbUp1X0R0VrqhBKS7uzvFx8fLEq67d++mDRs20NChQ4XPyc/PFyaYCgoKZMdFURzGEoMi2srngAEDqF27drJ9XFv5NHTfLXO2gxrU3M+aNGki+3zUVrNFP0iirWbrHp+sVWG3dkz2rrBXZj9zFWpdTljRZYCJiYmUlJRk0g/R6KqosCIqfBi76mbt2rWKefpnhOp/ASQSf8YTkfDMWdFZqub6v//7P0WSt1WrVkRkm8KaraldUNI9ZmmLN6Lxri0LStaOyV4FpZdeeomWL19Ob7zxhizBoy0oGfpC76omT55MEydOlM374IMP6IsvvqAePXpQVFQU5eXl0c8//0wnTpyQtVu0aBElJSVRZGQkTZkyhZYvXy473l24cIE6dOhArVu3pqCgIEpPTxfeskQ/eSb67mqooKl/JiqR/HYi8fHxsrMn69SpQz179qSYmBgqKyujixcv0rZt2xSfwxqNRpZPSEpKos8//1x2vN26dStFR0dT3759qWPHjlSjRg0qKiqikydP0g8//EBHjx6V9an7eyBV4TWq7fjx4xQZGUkREREUERFBxcXFdPToUeF37alTp8qmhw0bRvPmzZPNO3ToELVo0YKeeuopql69Op09e5a+++474XffW7du0dq1a2ns2LGqvR5bxCQar4ryOqJ8SXh4OGk0Gtl+qbsPqbXfWYvDJUK1zP0wUnvAKjr4GEoeFRUV0cWLF2XzLE2EGhswEqk7aLTnmV2m3MPPXNa4ZwgGoIb7wgDUdoxVP3U/MEytfuozNynfr18/WrZsmWze0KFDafPmzdSmTRsiulfdHz9+fIXVfRHRl3djSf+BAwcqjk8JCQmUk5NDY8aMkW2/w4cP09ChQ4XHuvz8fFkywNQzMq9du0ZbtmwhIqIOHTpQbGysoo228qmf7DdW+TR3O1hKzf2sY8eOikHv7NmzqVu3brJ9sbi4mBYvXmywmm3o7DUi8/dbW8Rk7Qq7NfYzV6HW5YTaywB1zzB1d3enBQsW0Lhx4wxexUB0b588evQoFRcXSz82qFVRYUW0n/zzzz8UHx+vmP/DDz8If+xS/0uM6HhlqBCtvcJE9xijP8YVMfY+zMvLE56R3KdPHyKyTWHN1lBQsjwmFJQcw9ixY+mLL75QjONu3bpFX331ldHnent7S99NGjZsSC+++KLi/VtaWiq8JZ3WoEGD6NFHH5XNExVssrKyhMf6mjVrkr+/v+yz4dKlS1RaWkqlpaWK7yeXLl2iNWvWGH1dRPeSVLrfu9q3b09JSUm0dOlSWbs7d+7Qxo0bhT/CrK9169bS46rwGvXl5ubS3LlzadeuXRQcHEyJiYk0aNAgYVtjt57LysoSJga1BgwYoNinYmNjqW/fvoqryS5cuKBIRhqybNkyg0nHypz4pHZMogKoaCwbHBysGAeIrgxxc3OjBg0ayAogWVlZqu931uJQl8aL2Ou+FaIPuG3btgmfv2/fPsWXUksu0alowEik7r1W1L5vi4gtz2jCPUPUicneA1B73jPEmWirn7Vr16a4uDiKjY2lmJgYYcJYv/ppqSlTpii+TGur++3bt6eHH36Y6tatK7ytgSmXxojO9Dd23Bg9erRi3ysuLqbx48dTVFQUPf300zRy5Ejq2rUrtW3b1uD7QD95ZOoZofHx8fT888/T888/Ty1btqS6devSyJEjad68efTWW2/R+PHjqWnTporL8yqqfJq7HayhsvvZsGHDFMu11exZs2bR/PnzaezYsRQZGUkzZ85UfJZqq9lqskVMalTYdelX2K2xn7kKNS8ntMZlgBUVVkT3+/7oo48U++Hff/9NTz/9tDAG/fGw6CwiQ4lcNzc3xRg4NzeXrl27JmyvlZKSIvzieezYMerWrZviTLEWLVrIrhJR87JZEVtfGq/mZZu2uDyyMgUla8dUlS/ZdCQeHh70/fffm33Wtb+/P33++eeyxN1rr71m8Md4RTp06CBMnIhOODJ2mzzRvU7z8/NJo9EIr1arSExMDC1cuFAxf9GiRYrfVzCnz1dffVWargqvUd9//vMfWrJkCR0+fJjS0tLoySefVHxP16rsMb1Nmza0atUq4bLVq1cLjx2mOnbsGP3555/CXIRoninUiolInFw3lHDUzx0Y+t0F/VtnlJWV0aVLl1Tf76yCVTB58mQODAys9POvXr3Kq1ev5tWrV/Phw4eFbQoKCjgqKoqJSPb377//Sm2GDx+uWN63b1++fPmywXV/99133Lp1a6n9Sy+9xMzM+/fvV/Tl7u7OGzduVPQxZswYRdspU6ZIyzdv3qxYPm/ePGFcR48e5TZt2ijat2jRgsvKymRtJ02apGjXoEED3r9/v9QmJyeHn3rqKUW7+Ph4q/Ul0q1bN8XzMjIyKnxeZVy9elWxrqZNm/L58+dl7U6ePMmxsbGKtg8//LCs3cyZMxVtWrVqxfn5+bJ2d+/e5Xnz5rGnp6esbXBwMBcUFDAz87Rp0xR9nTlzxuzXqGZMzMyffPKJor+xY8cq1vvvv/8q2g0dOlTR7sqVK4p2DzzwgLRcrfe8ufr3788tW7as9PMtVa9ePZ48eXKln3/t2jXF9jD1b8CAAbK+RPvi6dOnzY5p9uzZZscyaNAgk/pu2bKl4rlXrlwx+pzt27cr9ndz/zZv3izrc/HixYo2H3zwgaxNYWEhu7m5VWp9o0aNUn076MrJyeEpU6Zwy5YtuWvXrvzll18aba/mfsbM3LdvX4v+H82aNZP6Umu/VTOmdevWKZa/8MILwvXq75uNGzcWtouJiZG18/Dw4JKSEqvuZxUhIk5JSbGoD1PExsZyQkJCpZ/ftWtXxWvPysoSthV9VtWpU0da/ueff7K7u7uijb+/Pw8ePJgXLVrE69at41WrVnFycjI3b95c0VZ/jLRgwQJFmxUrVkjLS0pKuGHDhoo23bt35++++45///13fu2119jX19fg//rrr7+WrfO+++5TtCkuLja4DR955BFF+927d0vLv/rqK+F63dzcuHXr1vz0009zQkICd+zYUbj9iIi///572TrPnj3LXl5einaenp7crl077tGjBwcEBAj72rp1q6wvtcZalhCNRbV/ERER3LZtW27RooXB97Puazp8+LCwTYMGDXjmzJk8b948HjNmDEdERBhcp+4+psb2UTsm0Th0/PjxivXevHlT0e7BBx9UtCsvL2eNRiNrV7duXWl5o0aNFO/7ESNG8DvvvMNvvvkmjxs3jhs0aKBYl0aj4cLCQrO2la6EhASuV69epZ9fWWocvwsLC/mFF14Qvk91/7y8vHjEiBGK711apaWlnJyczB4eHkb7GTZsGN+6dUvYx+rVq2Vtvb29jX7fHz16tKx9rVq1uLy8nJmZs7OzuWfPnkZj0T3GPfPMMwbj0vr00085PDzcpD59fHw4KSmJb968WeVeoy5DY89JkyYJ22dnZ5u0bt2/AQMGVPi6MjMzuVOnThVuo4EDB/KSJUtk7wd3d3c+efIkr127VtY+LCyMS0tLja7X2jFpt7G3t7fseZ9++qlwnXXq1JG18/f3F7YTjWkOHjwo/Y/U3u9Moc3j7dy502g7h0iEqvVhpPaANS4uTvhP6tevH69cuZK3bNnCs2bNEg5ilixZIvVjjQEjs7qDRjX7Ern//vsVz7PWoFTNwSezuoM9tQbnGIBWjrMnQo3t28b+2rRpwzdu3JD1NWPGDEW7c+fOmR1TWVkZDxgwwORYOnTowLdv3zap76ZNm8qe6+XlZdJAYs2aNRUO1I39vf/++7L+Nm3apGizZcsWxXq7d+9u9rpiYmIq/NCv7HbQeuihhxTr3bZtm8H2au5nzMxZWVmKAZW5f+np6cys3n6rZkw//vijYpm2qKovJCRE1i4sLEzYrl+/foo+tV8qrbWfVYTIORKhgwYNUrx+3aKuPn9/f0X7kpISafnkyZMt2k8mTJggW58phRVRct2cv59//lnqq7y8nKtVqyZbHhwcbHQbit5nuuNa0ZjBnL/k5GThetUqrKlVMNFnTlEJBSXzYqoqBSVnToRqXbp0id966y3u0aMHR0REsI+PDwcGBnKXLl14/vz5RpN1uo4dO8aTJk3ipk2bsr+/PwcEBHBMTAw/99xz/Ouvvxp9bmlpKU+YMIGDgoI4MjJSeKKSfsxdu3ZlX19fjo2N5d9++03R5o8//uBZs2Zxx44duU6dOuzj48M+Pj4cERHBDz30EM+dO5dPnDhh0mtjvncyyoYNG3jEiBHcvHlzDgkJYQ8PD/b19eVGjRrxgAED+MMPP+Tr169X2deoT3+8S0QGX7eokFmzZk2Oj4/n8PBw9vb25oCAAG7cuDGPHj2a09LSTH5dzMzbtm3j5557jps2bcrBwcHs7e3NMTExPG3aNNk2SktL48aNG3NERASnpqYy872C5qhRozgwMJCbNm0q+0y2hCUxaa1cuZJDQ0M5ODiYJ0+erDjRTkt/rGno+3NBQQEPHDiQ/fz8uGbNmjxjxgxFn2rvdxVxmkSo2h9Gag5Y09PTK/1l+ptvvpH6sdaAkVnds7Ec7cwuXfYcfDKrN9hTc3COAaj5nD0Rqmb1U81qpRrVfZHBgwfLnv/444+b/Ny0tDTFPij68/Hx4aCgINk8/cFScXEx9+jRQ1req1cvWaJEy1qVT0u2g7kVdu3rUGs/01Krmq3mfosKu3mInCMROm7cOMV2MDYYFl0ZonvWSllZGY8cOdLs9wTRvQR0dna2bH2mFlbGjh1bqXXq7ivMzBkZGYrlcXFxRrehKMbnn39eWr58+fJKx5aYmGjwi5dahTW1Cib6zCkqoaBkXkxVpaDkColQAGs5d+4cP/bYYxwYGMiRkZGKIqGuS5cuKd6j+ld1QuUdOHCA69Wrx0TE4eHhsqtCHJ3TJEKZ1f0wUnvA+vXXX1cqGao7CLXWgFH7etU6G8sRz+zSsufgk1m9wZ6ag3MMQM3n7IlQNauf1qhWWlLdF8nKyuI+ffpwQEAAP/DAA3zhwgWznl9aWsrr16/noUOHclRUFPv7+7O3tzfXrl2be/fuzYsWLeLs7GzeuXMn16lTh4OCgviNN94Q9lVeXs6HDh3iw4cPS5caGaJ25dPS7WBOhZ3ZulV2S6vZ1thvUWE3DZFzJELVvJxQl1qXAZpaWCkvL+c5c+YYvdWHr6+v8JZFuseI0tJSRdyGPt+1cnJyFGfKvvvuu9Ly3bt3m/0ZXrNmTcX7RkSNwpralyUyO8Zlmygo3ePMBSUkQgHUcfHiRcV7tWfPnvYOy6WUlpZyRkaGcIziyJwqEero963Yv38/t2vXzqzBjG581hwwMqt7NpYjntnlCINPZtwzRMuZB6DOnghF9RMqw5wKOzP2M2ty5go7kXMkQq1xOaGWWpcBmlNYOXnyJL/wwgscGxvLQUFB7OPjw1FRUTx+/Hg+d+4cL1q0SPF+1b9f+J49e7hJkybs5ubGffr0USwX2bhxI9etW5eDgoJ47NixinuKvvbaaxwSEsKxsbG8Y8cOfu+997hv374cHR3N1apVY41Gww0aNOC+ffvyypUrOS8vr8J16rKksGatyxId5bJNFJSct6CERCiAOkRXOyARCsxOlgjVcvT7VuzevZuTkpK4ffv2XKNGDfby8uKwsDBFtT4oKEjxXGsPGJnVPRvL0c7scpTBJzPuGeLMA1BnT4Si+gm2gP3Mupy1wu4sidCq5tlnn5W9V0NDQw22tfSsyKoOl206BmcuKCERCqCO8+fPK46xvXr1sndY4ABMTYS6MTOThaZMmUIff/wx5eXlWdqVUwoODqacnBxpunnz5nTkyBE7RuR6zp8/T0lJSZSWlkahoaGUnJxMEyZMELa9fPky1alTRzbv4Ycfph07dtgiVJd38OBB6t+/P2VmZlJ4eDh99dVX1KVLF3uHZZLHH3+czp8/T4cOHbLL+uvXr08DBgygJUuWVOr5mZmZVL9+fdm8nj170vbt29UID4CIsJ+BmJubG6WkpNC0adOsup6WLVtS27Ztac2aNVZdjysoKyujevXqUVZWljTvwQcfpLS0NDtGBUREly5dorp168rm4TiqnrKyMrp8+TJFRESQp6envcMx2YgRI2jXrl2UkZFh0/VW9vjdtWtXK0UEYJmioiL6888/ZfOCg4MpNjbWThGB2pYsWUJt2rQx+3kHDhygtm3b0s6dO6l79+4G2znPJ4eDKikpkSVBiYgiIiLsFI3rioyMpO+++86ktqLcvpubm9ohVVmtW7emc+fOOeUA1NmVl5cr5mHfBrVhPwNwDhs2bJAlQYmIOnToYKdoQJfoOArq8fDwoHr16tk7DJe3e/due4cAYLJbt25hn3Uht27dsmr/yGBYKDs7WzGvVq1adogEtDD4tD4MQG2va9euVFRUpJj/119/oWIPqsJ+5tpefPFFevTRR+0dBljojz/+oKSkJMX8fv362SEa0IeCEgAAgONCItRCokRoeHi4HSIBLQw+wRUZqnCi+gm2gP3MdSQkJNg7BKtxhWR9aWkpnTx5knJzc8nT05P8/PzIz8+PNBoNeXh4SFci3bhxQ/FcPz8/mjNnjh2iBn0oKLm2Vq1a0bJly+wdhtW58ucFODdmpo0bN8qOtbGxsdS2bVs7RgVqsvZV1nZPhDr7gEA0EP3qq6/o77//tkM0QITBZ1Uwb9486tSpk73DAAAAB+JqyfqSkhIqLCwUjjVFCgoKXG4buBIUlMDZ4F7N4MhGjhxJEyZMoMzMTOrTpw+lpqZSYGCgvcMCJ2H3RKgrDggyMjJsfhNsMA6DT9eif0+0qiAhIQHVT7AJ7GeurWnTpvYOAQAAAMAi3bp1o2PHjtk7DHBSdk+EAgBAxbRVeVQ/wRawn4EzcoXLOK9fv07bt2+nkpISk9oHBARQu3btqEGDBlaODMyBgpJri4mJsXcIAABgAbsnQp190Jqbm0vffPONbF6fPn1wn1A7wuDT9TVs2NDeIdgNqp9gC9jPwBm5ymWcV69epTVr1lBaWhqdPHmSsrOzqaCggDw9PSk0NJRq1KhBHTp0oD59+lCfPn1Io9HYO2QQQEEJAADAMdk9EeoKg9YFCxZQSkoKMTNNnz6dZsyYYe+QqjwMPgEAAMAZhYeH04wZMzCedHIoKAEAADgmuydCXUFycjIlJyfbOwzQgcEnAAAAAAAAAADocrd3AAAAAAAAAAAAAADWhkQoAAAAAAAAAAAAuDwkQgEAAAAAAAAAAMDlIREKAAAAAAAAAAAALg+JUAAAAAAAAAAAAHB5SIQCAAAAAAAAAACAy0MiFAAAAAAAAAAAAFweEqEAAAAAAAAAAADg8pAIBQAAAAAAAAAAAJeHRCgAAAAAAAAAAAC4PCRCAQAAAAAAAAAAwOUhEQoAAAAAAAAAAAAuD4lQAAAAAAAAAAAAcHlIhAIAAAAAAAAAAIDLQyIUAAAAAAAAAAAAXB4SoQAAAAAAAAAAAODykAgFAAAAAAAAAAAAl4dEKAAAAAAAAAAAALg8JEIBAAAAwCG4ubnZOwQAAAAAcGFIhAIAAAAAAAAAAIDLQyIUAAAAAAAAAAAAXB4SoQAAAAAAAAAAAODykAgFAAAAAAAAAAAAl4dEKAAAAAAAAAAAALg8JEIBAAAAAAAAAADA5SERCgAAAAAAAAAAAC4PiVAAAAAAAAAAAABweUiEAgAAAAAAAAAAgMtDIhQAAAAAAAAAAABcHhKhAAAAAAAAAAAA4PKQCAUAAAAAAAAAAACXh0QoAAAAAAAAAAAAuDwkQgEAAAAAAAAAAMDlIREKAAAAAAAAAAAALg+JUAAAAAAAAAAAAHB5SIQCAAAAAAAAAACAy0MiFAAAAAAAAAAAAFweEqEAAAAAAAAAAADg8pAIBQAAAAAAAAAAAJeHRCgAAAAAAAAAAAC4PCRCAQAAAAAAAAAAwOUhEQoAAAAAAAAAAAAuD4lQAAAAAAAAAAAAcHlIhAIAAAAAAAAAAIDLQyIUAAAAAAAAAAAAXB4SoQAAAAAAAAAAAODykAgFAAAAAAAAAAAAl4dEKAAAAAC4rKNHj1KrVq0oODiYUlJS7B0OAAAAANgREqEAAAAA4LKmT59Ohw8fppycHJoxYwadPHnS3iEBAAAAgJ0gEQoAAAAALqugoEB6zMyyaQAAAACoWpAIBQAAAACX9eabb1JISAgREU2cOJFat25t54gAAAAAwF487R0AAAAAAIC1dOnShbKzs+nOnTsUFBRk73AAAAAAwI5wRigAAAAAuDRPT08kQQEAAAAAiVAAAAAAAAAA+J+PPvqIgoODqXfv3lRUVGTy827fvk09evSgsLAwWr9+vRUjBACoHCRCAQCcSGFhIT3//PM0ZswYunHjhr3DAQAAAAAXU1xcTElJSZSTk0Pbt2+nV1991eTnzp49m3bt2kU3btygxMREK0YJAFA5SIQCADiRlStXUmpqKq1atYomTZokW/bdd99RXFwc+fv7U8uWLWnNmjWy5Tt27KBBgwZRvXr1yNfXlxo3bkzz5s2j0tJSG74CAADbW7VqFQUHB9PDDz9M169ft3c4AAAOzcvLi4KDg6XphQsX0v79+yt8XmZmJq1YsUKajoqKskp8AACWQCIUAMCJpKWlSY8zMzOlx8nJydS/f3/av38/FRQU0D///EMjR46kZcuWUXl5OY0dO5Z69epFmzZtoosXL1JRURGdOnWKZs2aRWPGjLHHSwEAsIni4mKaOnUq5eTk0M6dO2n16tX2DgkAwKG5ubnRyy+/LE2XlZXRhAkTiJmNPu/111+nu3fvStMTJkywWowAAJXlMInQgoICmjp1Kk2cOJHy8vJky/7++2968cUXKS4ujsLDw0mj0VDfvn1xWSgAVDlZWVnS44iICCK6lwRNSUkRtp8zZw6NHj2aPvroI4N9fvLJJ7R37151AwUAcBDXr1+nO3fuyKYBAMC4CRMmUMuWLaXp9PR0o/f8vHz5Mq1du1aajoiIoKefftqqMQIAVIbDJEI3btxIS5YsoQ8//JDeeecdIiI6ffo0PfHEE9S+fXt69913af/+/XTt2jW6e/cu/fDDDzRt2jQ7Rw0AYFslJSXSY41GQ6tXr5YlQb28vKhx48bSdF5eHn388ceyPpo1a0Y1atSQzUtNTbVSxAAA9hUYGCibzs3NtVMkAADOw8PDg9544w3ZvJkzZxr84aTFixdTcXGxNJ2UlETe3t5WjREAoDIcJhGqe5bTn3/+SVu3bqW2bdvSt99+a/A5X3/9dYWn5wMAuBKNRiM9vnTpEs2YMUOavu++++jgwYO0ePFi4XOjo6Pphx9+oKNHj9Lu3bvJw8NDWnb48GHrBQ0AYEeBgYGy453+lUcAACDWv39/ateunTStfw9Qrby8PFq5cqU0HRAQQOPGjbNJjAAA5nKYRKhuZWnv3r3Uv39/ys/Pl+Y1b96cpk6dSsnJydK8/Px8unr1qk3jBACwp+rVq0uPd+7cSbdu3SKie2d5/v7779SsWTNq2rSp7Dlubm40ffp0Onz4MPXp04eIiJo0aUK9e/eW2pw+fdoG0QMA2EdQUJD0GGeEAgCY7rXXXpNNz5s3jwoLC2XzPvnkE9l391GjRsl+bAkAwJE4ZCK0oKCAysvLiYioQ4cOtGfPHjpy5AgtWrSIBg0aJHue7j2fAABcXVhYmGJerVq16IcffqDw8HAiIgoNDZUtf+edd2jBggWys0mJiHr06CE9vnnzJpIDAOCydBOhOCMUAMB0jz76KHXs2FGazs7Opg8//FCaZmbZtIeHB02dOtWmMQIAmMNhEqG69xPRGjZsGO3Zs4fi4+Oleb6+vrI2np6eVo8NAMBR6CdC/fz86Pvvv6cGDRpI83x8fGRtGjZsKOyra9eusukLFy6oFCUAgGPRPZseRR8AAPPonxWakpIi/Tr8jh076OTJk9KyQYMGUWRkpC3DAwAwi8MkQvXv9dmhQwdas2aNItGpe6ZTYGAg1alTxybxAQA4goCAANn0qlWrKC4uTjbPx8eHvGwVvi4AACAASURBVLy8pGntQFVfo0aNZNNnz55VKUoAAMeimwjFGaEAAObp1asXde7cWZq+cuUKrVu3joiI3n//fVnb6dOn2zQ2AABzOUwiVJebmxt99NFHsi/yWrVr16akpCRq0aIFvf/++7Kb3wMAuDp39/8dtoOCgmjYsGHCdrqXgRpKhAYFBcl+TVm3mg8A4Epwj1AAAMuIzgo9e/Ysbd26VZrXtWtX2Y8rAQA4Ioe8rvzBBx+kVq1aGVy+bNkyG0YDAOA4dG9Er392qK7Q0FC6fv06ERHduHHDYLu6devS8ePHiYjozJkzKkUJAOBYdM8IvX37NpWXl8sKSwAAYFz37t2pW7du9MsvvxAR0YkTJ2jw4MHSb3sQ4WxQAHAODjkCNPblHgCgKtMmN4mIQkJCDLarUaOG9PjixYsG29WrV096fO7cOQujAwBwTLqJUGaWFZUAAMA0r7/+umx637590uOmTZtS3759bR0SAIDZHDIRqn+/UAAAuOfq1avSY+2vxItERERIj5EIBYCqLjg4WDZ9584dO0UCAOC8unTpQg8//LBw2bRp08jNzc3GEQEAmA+JUAAAJ6J7Rqjuj8fpq1WrlvT40qVLBtvp/uBcZmYmjr8A4JL0j5dIhAIAVI7+WaFE98adzzzzjB2iAQAwn0MmQgEAQEz3Rz50f/xDn6lnhOomTO/evUvZ2dkWRggA4HhwRigAgDo6depEvXv3ls1LTEwkHx8fO0UEAGAeh0yE4owkAACxkpIS6bGHh4fBdrqXzWdnZ1NZWZmwXe3atWXTGRkZFkYIAOB49O+pjEQoAEDl5eTkSI/9/Pxo/PjxdowGAMA8SIQCADgRjUYjPc7KyjLYLiwsTHpcXl5u8EzP+vXry6YzMzMtjBAAwPHo/lgSERKhAACVlZ6eTunp6dL0iBEjjP6AJwCAo0EiFADAidStW1d6fPr0aYPt9C+b1/2RJV0NGzaUTSMRCgCuCJfGAwCoY+nSpdJjNzc3SkpKsmM0AADmQyIUAMCJdO7cWXpcWlpqsF1AQIBs2tCX/urVq8suj8/Pz7cwQgAAx4MzQgEALJednU2bNm2Spnv27ElNmjSxY0QAAOZDIhQAwIlMnDiRWrVqRTVq1KD58+cbbFetWjXZtLu74cP9nDlzKCAggFq3bk0JCQmqxQoA4CgCAwNl00iEAgCYLzU1lYqLi6Vp3BsUAJyRwyRC/f39hY8BAOB/QkND6eDBg3T16lV6/PHHDbaLjo6mxx57jIjunUXarl07g23HjRtH+fn5dODAAcU9QwEAnMXp06dpxYoVdPPmTcUyPz8/WUEIiVAAAPMwM61evVqarl27NvXr18+OEQEAVI7DJEIHDx5MderUofDwcJowYYK9wwEAcGpubm703Xff0a1bt+jXX38lLy8ve4cEAGA1ly9fpri4OBo/fjx1796dioqKFG18fX2lx0iEAgCY55dffqFz585J0wkJCeTh4WHHiAAAKsdhEqGtWrWiixcvUnZ2NvXq1cve4QAAuAT9++IBALiiM2fOUF5eHhERHTp0iBYvXqxoo3vrJd1LOwEAoGKfffaZbHr48OF2igQAwDIOkwgFAAAAAKiMDh06UK1ataTp+fPn040bN6TpY8eOUUFBgTQdHh5u0/gAAJxZWVkZffPNN9J0bGwsNW3a1I4RAQBUHhKhAAAAAODUfHx8KDk5WZrOzc2lSZMmSWeBvvfee7L2HTt2tGl8AADO7NChQ7L7Lw8ePNiO0QAAWAaJUAAAAABweomJiRQTEyNNf/HFF9SxY0caMmQIrVixQprfvHlzat++vT1CBABwSrm5ubLpIUOG2CkSAADLIREKAAAAAE7P29ubPv/8c9JoNNK8P//8kzZu3Chrt3DhQluHBgDg1Lp06UKDBw8mPz8/mjp1KkVHR9s7JACASvO0dwAAAAAAAGqIi4ujr776ioYMGSL8Zfi3336bevfubYfIAACcl6enJ/33v/+1dxgAAKrAGaEAAAAA4DL69u1L+/fvp2HDhlFoaCj5+vpSp06d6Ntvv6VZs2bZOzwAAAAAsCOcEQoAAAAALqVx48b0+eef2zsMAAAAAHAwOCMUAAAAAAAAAAAAXB7OCAUAAAAAAABwUVu2bKHMzEx7hwEAYFU5OTkmtUMiFAAAAAAAAMAFBQYG0oEDB+jAgQP2DgUA7IiZbbYuNzc3m61LX2BgYIVtkAgFAAAAAAAAcEF5eXn2DgEAwKHgHqEAAFXA6tWrKTAwkOLi4ig3N9fe4QAAAAAAAADYHBKhAABVQEpKCt2+fZv2799PaWlp9g4HAMAqdu3aRbVr1yY3NzeL/jw9PalZs2Z04cIFq/YLAAAAALbl0JfG37lzh1599VX69NNPqWbNmrR//37y9vY2q4/8/Hzau3cvnT17lkpLS6lu3brUpEkTiomJsSg2a/ULAKA2ZqZz585J0yUlJXaMBgDAelJSUigrK8vifsrKyuj48eN06tQpatCggdX6BQAAAADbcthE6JUrV+ixxx6jffv2ERHR9evX6eLFixQVFWXS8zMyMujVV1+lDRs2UFFRkWJ5u3btaPr06TRkyBCz4rJWvwAA1nLr1i0qLi6Wpv38/OwYDQCA9cTExNC2bdtU6atZs2bUrVs3q/YLAAAAALblkInQAwcO0OOPP06ZmZmy+aGhoSY9f8uWLTR8+HCjN4b++++/aejQofTjjz/SihUryMfHx279AgBY082bN2XTpvySHgCAM1qwYAE98MADdPHiRbOe991339GuXbukaT8/P/riiy/I09PTqv0CAAAAgG053ChszZo1NGHCBCosLJTN9/HxoaCgoAqfv2XLFhowYACVlZWZvL6ysjJau3atXfoFALC2nJwc2bQpx1IAAGfk6elJgwYNMus5Bw4coFmzZknTbm5utG7dOmrVqpXV+wUAAAAA23KoH0t6++23aeTIkYokKNG9wWNFzpw5Q08//bQsWdmxY0fatGkTXbx4kQoKCujEiRP0zjvvyBIB69atow8++MDm/QIA2IL+WezBwcF2igQAwLHk5+fToEGDZLc7mjt3Lg0YMMAh+wUAAAAAyzhMIvTKlSs0Z84c2TzdS+GLioqovLzcaB8TJkyg27dvS9NJSUm0Z88eGjBgANWpU4d8fX2pcePGNHPmTNq/fz9FRERIbefMmaM4a8ra/QIA2ILu8YvI9NuMAAC4uhdffJHOnj0rTffp00cxHnWkfgEAAADAMg6TCK1evTrVrFmTiO5dBv/uu+/S7NmzZW0KCgoMPv+XX36h7du3S9P9+/enZcuWkbu7+CVGRUXRunXrpOlbt27RsmXLbNYvAICt6CZCNRoN+fr62jEaAADHsGfPHlqxYoU0HRoaSp988olJVyHZo18AAAAAsJzDJEI1Gg39/vvvtGjRIjp69CglJyfT3bt3ZW10f/VY34IFC6THgYGBtHr16grX2aNHD+rcubM0/dlnn9msXwAANZSUlNDatWvpiSeeoIYNG5Kvry+FhIRQq1ataO7cuZSXlye73UhYWJgdowUAcAzMTFOnTiVmluYtWbJEKso7Wr8AAAAAoA6H+rGkyMhImjp1qjStfwaot7e38Hk3btygHTt2SNPjxo2jGjVqmLTOwYMH02+//UZERKdOnaIjR45QixYtrNovAIAa/vjjDxo1ahT9+++/svlFRUV069YtOnz4MH322WfUtWtXaRkSoQAARP/973/pr7/+kqa7dOlCzzzzjMP2CwAAAADqcJgzQkV0763p5uZG/v7+wnbbtm2jkpISaXrEiBEmr6N79+6y6X379lm9XwAAS+3YsYN69OihSILqO3PmDH388cfSNBKhAFDVlZeX06uvviqbt2jRIoftFwAAAADU41BnhOq7deuW9Lh69eoG762km2SMjIykZs2ambyORo0akbu7u/RDTP/884/V+wUAsMT58+dp4MCB0iXvbm5u1LNnT3r44Yepdu3alJOTQ+np6bRhwwZZMYcIiVAAgC+//JJOnjwpTQ8cOJDatWvnsP0CAAAAgHocOhF6/fp16bGxL++HDh2SHrdp08asdfj4+FBERARdunSJiIiuXbtm9X4BACwxevRoys/PJyKi8PBw+uabb6hTp06yNhMnTqQZM2ZQr169KCsrS5ofGBho01gBABzNvHnzZNMvvfSSQ/cLAAAAAOpx6Evjb9y4IT2uVauWwXZXr16VHkdGRpq9noCAAOlxbm6u1fsFAKisgwcP0k8//URERB4eHrR161ZFElSrRYsWtHHjRtk8Q7cYAQCoCtLS0ujgwYPSdNeuXalt27YO2y8AAAAAqMuhE6G6Z1FGREQYbKebZKxW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bFFFRUW9z0ePHq2FCxdq+vTprarLqrwAAABonGNfjXe73frwww+VlJSk0aNHKyIiQkFBQerevbvGjRunlStXqqyszDF5AQAA4Cx/+ctfNGbMGKMJ+rNu3bq16P7MzEyNGDFCmzZtarBZKUl//vOfdc8992jWrFmqrKy0NS8AAACa5sgVodnZ2Zo7d66++OKLep8VFxdrz5492rNnj1566SWtX79et912m615AQAA4CybNm1SYmKiLly4YLoeFBSkzp07N3t/Zmam7rrrLtXU1LT4eTU1Ndq8ebMteQEAANA8x60ITU9P19ixYxtsVtZVWFioqVOnatOmTbblBQAAgLM8++yzmjVrVr0mqCS5XK5m7z9y5IhmzJhhalbefPPN2rZtm06ePKny8nIVFBToueeeMzVV09LS9Prrr3s9LwAAAFrGUY3QrKwszZo1S7W1tZKkjh076pFHHtGuXbv09ddfq7CwUBkZGRo5cqRxT01NjebOnauPP/7Y63kBAADgLKdOndLixYtN1zxfha+oqDC+EzYmMTHRtFVScnKy9uzZo7vuukt9+vRRSEiIhg4dqpSUFOXm5qpXr17G3MWLF6ukpMSreQEAANAyjmmEVldXKzk5WdXV1ZKk/v37Kzc3VytXrtQ//uM/asCAAerdu7fuvPNO5eTk6J577jHdO2PGjAZ/9bcqLwAAAJwnPDxcERERkn56DX758uVatGiRaU55eXmj9+/evVsffPCBEcfGxmrVqlXq0KHhr82DBw9WWlqaEZ89e1arVq3yWl4AAAC0nGMaoRkZGSooKDDit956S0OHDm1wbmBgoNLT0zVx4kTjWmFhod544w2v5QUAAIDzBAcH67PPPtPLL7+s/Px8Pf744/UOG6qqqmr0/hdffNEYh4WFaf369c0+c9KkSRo3bpwRp6eney0vAAAAWs4xjdD333/fGEdFRWns2LFNzvfz81NaWpo6duxoXGvoy6FVeQHAm9auXasuXbooJiam0ROGG1JWVqZJkyape/fuevvtty2sEACcY+DAgVqwYIGuueYaSfVXgAYGBjZ4X3FxsbKysow4ISFBPXr0aNEz4+LijPGhQ4dM+9JblRcAAACt45hG6N69e42x54rMpvTu3Vtz58414v379+uHH37wSl4A8JaqqiolJyerpKREH3zwgZYsWdLiexctWqRdu3apuLhYSUlJFlYJAM7lubemy+Uy/eDtaefOnbp48aIRx8fHt/gZdb9n7tu3z/K8AAAAaB3HNEKLioqM8YABA1p839SpU42x2+3W8ePHvZIXALwlICBAXbp0MeKXXnpJubm5zd534sQJrVmzxogHDx5sSX0A4HRnz541xuHh4Y2eHO/ZZBw4cKCuvfbaFj9jyJAhpv0+Dx48aHleAAAAtI4jGqG1tbUqLS014qCgoBbf279/f1N8+vRpy/MCgDe5XC499dRTRlxTU6PExES53e4m71u2bJlpX7zExETLagQAJ/P8Hte9e/dG5x04cMAYjxo1qlXPCAoKMp3y7vk2kVV5AQAA0DqOaIR26NBBnTp1MuLCwsIW39vUnk9W5QUAb0tMTNR1111nxDk5OU3u+fntt99q8+bNRtyrVy/NmDHD0hoBwKmKi4uNcc+ePRud9/333xvjgQMHtvo5nt87z507Z3leAAAAtI4jGqGS1LdvX2P83nvvtfi+EydOmGLPL4pW5gUAb/Lz89MzzzxjupaSktLowUkrV640nYqcnJzMDzoArlieqyg9V1fW5dlkvOqqq1r9nNDQUGNcW1treV4AAAC0jmMaoTExMcZ47969LTrd+ODBg3riiSdM1zwbn1bmBQBvi42N1ejRo4247h6gPystLVVqaqoRd+rUSQkJCV6pEQCcqKWNUM8DjZrbfqS5+z0PZLIqLwAAAFqnzRqhjW0631IzZ840bQQfHx+v1NTUBr8sVlRUaPny5RozZoy+/PJL43pISEi9152sygsAdli6dKkpfv7553XhwgXTtY0bN+r8+fNGPHv2bNNhSwBwJbl48aLKysqMuKnvdCEhIca47t/WlvBcpe/ZsLQqLwAAAFrH3+4CfjZq1Cg99NBDeuONNyRJVVVVSkhI0IoVKxQbG6uhQ4fK7XYrPz9fW7ZsafDwopEjR9ZryFqVFwDsMGXKFN18883Kzs6WJBUVFWn16tV67LHHJP200mj16tXGfD8/Py1YsMCWWgHACTxPjJeaPizJ8xV0z+ZpS3l+j/RsWFqVFwAAAK3jmEaoJL3yyisqLCxUZmamce3w4cN6+eWXW3T/+PHjvZoXAOywdOlS07YfK1asUFJSkoKCgpSVlaWvvvrK+Ozuu+++pIM5AMBXlJaWmuJu3bo1OjciIkJ//etfJUknT55s1XPKy8tVUlJixP3797c8LwAAAFrHMXuESj+dzP6HP/xBS5YsafZQj+DgYF1//fWma7feeqtX8wKAHW699VaNGzfOiE+dOqW0tDRJ0muvvWaau3DhQq/WBgBOU15eboqbOqxo0KBBxvibb75p1XPy8/NNcWRkpOV5AQAA0DqOaoRKUkBAgJ5++ml9/fXXeuaZZxQdHa0ePXooICBAERERmjZtmtasWaPCwkL5+/9tQevVV1+tCRMmeD0vANih7l6hK1as0NGjR/X+++8b16Kjo02HKwHAlai6utoUN/WjuGeTsaCgwLQ3Z3P27dvXaC6r8gIAAKB1HPVqvKdevXpp0aJFWrRoUYOfZ2RkmL4YzpgxQ35+frblBQBvmjhxoiZMmKDdu3dL+ukf1nFxcaqtrTXmsBoUAKSgoCBT7HkCe11RUVHGuLKyUjk5OYqOjm7Rc3bu3GmMw8PDNXToUMvzAgAAoHUctyK0JSorK/Xkk08asZ+fnx5++GHH5gUAKyxbtswUe/6IM3z4cN1+++3eLgkAHKdr166m+Ny5c43Ovemmm0yN03feeadFzzhz5oyysrKMePLkyaYf0q3KCwAAgNZpl43Qp59+WgUFBUY8Y8YMDRgwwLF5AcAK48eP1y233NLgZ4899phcLpeXKwIA56l7SrznCex1BQcHa8qUKUaclpZW79T5hqxatUoXLlwwYs8cVuYFAABA67S7Rujvf/97vfDCC0Z81VVXmWKn5QUAK9VdFSpJPXv21H333WdDNQDgPAEBAaYDkoqLi5uc/+CDDxrj0tJSJSUlNTk/Ly9Py5cvN+KIiAhNnz7da3kBAADQcu2qEZqamqr77rtPbrfbuLZy5Ur17NnTkXkBwGpRUVGKiYkxXUtKSqq3Jx4AXEncbrfy8vL0pz/9STt27DC9Tr5//37t2LFDH374YYOHFsXExOiGG24w4rfeeksJCQkNzt2zZ49iYmJMqzYfffRRhYSEeC0vAAAAWs6xhyV5Onz4sBYsWKAdO3aYriclJWn27NmOywsA3lRSUmKMQ0NDNW/ePBurAQB7VVVVKTo6WtnZ2Q1+vnXrVm3dulXST3t31p3ncrm0Zs0ajR071jhYKTU1Vdu2bdOdd96pQYMGqaKiQp9++qk++ugj0w/pY8aMaXR/eavyAgAAoOUc3Qjdu3evVq9erS1btqi6utr0WVJSkl599VVH5QUAb8vJyVFOTo4Rx8fH1zsYBACuJEePHm20CVrX559/roqKCgUHB5uu33jjjUpNTdWcOXOMhuTp06e1bt26RnP17dtXGRkZTa7ItyovAAAAWsZxr8YfO3ZMv/3tbzV48GD9/d//vdLT003NyrCwMK1Zs0b/8R//oQ4dWl6+VXkBwE6eP9y4XC4lJyfbWA0A2C8yMlJ33HGHQkNDm5wXHByslJSUek3Qn82aNUvbt29Xjx49mn3mlClTlJubqz59+jQ716q8AAAAaJ6jVoQeOXJEI0eOVFlZWb3P/P39NXv2bC1durTVe3dalRcA7FRUVKRt27YZ8eTJkzVs2DAbKwIA+/n5+endd99tk1yxsbE6cuSINm7cqMzMTOXl5ens2bMKDw9Xnz59FBUVpQceeEBRUVGOyAsAAICmOaoRmp+fX69ZGRQUpPj4eKWkpGjgwIGOygsAdtqwYYOqqqqMmL1BAaDthYWFaf78+Zo/f367yAsAAIDGOaoROnnyZN10003KycnRL3/5S917772aM2eOIiIiHJkXAOzidru1fv16I+7du7emTZtmY0UAAAAAADiboxqhISEhys7OVlVVlQIDAx2fFwDssnv3bh07dsyIZ86cKT8/PxsrAgAAAADA2Rx5KpBVzUqaoAB8RXp6uim+//77baoEAAAAAID2wZGNUABA42pqarR9+3YjHjFihIYPH25jRQAAAAAAOB+NUABoZw4cOKAzZ84YcVxcnI3VAAAAAADQPtAIBYB25ty5c6Z4+vTpNlUCAAAAAED7QSMUANqZ8ePHKy4uTqGhoVqwYIEiIyPtLgkAAAAAAMdz1KnxAIDm+fv7a+vWrXaXAQAAAABAu8KKUAAAAAAAAAA+j0YogCuKy+WyuwQAAAAAAGADGqEAAAAAAAAAfB57hAKAFx07dkwZGRl2lwEAAAAAwBWHRigAeFFmZqYyMzPtLgMAAAAAgCtOmzVCKysr9cgjj7RVOgBocwUFBQoKCrLt+f/93/9t27MB4HINGjTI7hIAAACAy9ImjdDOnTsrIiKC1z0BOF6/fv1se/aoUaNsezYAXKncbrd27dqld999V9nZ2Tpx4oRKSkoUFhamYcOG6de//rXmzp2rTp06OSIvAAAArONyu91uu4sAAAAArr/+eo0aNUqbNm1qk3zZ2dmaO3euvvjiiybn9enTR+vXr9dtt91ma14Avis+Pl67du3S8ePH7S4FAK5onBoPAAAAn5Oenq6xY8c226yUpMLCQk2dOrVFDVir8gIAAMB6NEIBAADgU7KysjRr1izV1tZKkjp27KhHHnlEu3bt0tdff63CwkJlZGRo5MiRxj01NTWaO3euPv74Y6/nBQAAgHfwajwAAAAcoS1eja+urtbf/d3fqaCgQJLUv39/ZWVlaejQofXmVlVVaebMmdqyZYtxrU+fPjp06JBCQkK8khfAlYFX4wHAGVgRCgAAAJ+RkZFhNCsl6a233mqwWSlJgYGBSk9P18SJE41rhYWFeuONN7yWFwAAAN5DIxQAAAA+4/333zfGUVFRGjt2bJPz/fz8lJaWpo4dOxrX0tPTvZYXAAAA3kMjFAAAAD5j7969xthzRWZTevfurblz5xrx/v379cMPP3glLwAAALyHRigAAAB8RlFRkTEeMGBAi++bOnWqMXa73fX28bMqLwAAALyHRigAAAB8Qm1trUpLS404KCioxff279/fFJ8+fdryvAAAAPAuGqEAAADwCR06dFCnTp2MuLCwsMX3lpeXm+LAwEDL8wIAAMC7aIQCAADAZ/Tt29cYv/feey2+78SJE6bYs/FpZV4AAAB4D41QAAAA+IyYmBhjvHfvXr399tvN3nPw4EE98cQTpmuejU8r8wIAAMB7aIQCAADAZ8ycOVMdOvztK258fLxSU1Pldrvrza2oqNDy5cs1ZswYffnll8b1kJAQ9ezZ0yt5AQAA4D3+dhcAAAAAtJVRo0bpoYce0htvvCFJqqqqUkJCglasWKHY2FgNHTpUbrdb+fn52rJlS4OHF40cOVIul8sreQEAAOA9NEIBAADgU1555RUVFhYqMzPTuHb48GG9/PLLLbp//PjxXs0LAAAA7+DVeAAAAPiUwMBA/eEPf9CSJUuaPaU9ODhY119/venarbfe6tW8AAAA8A4aoQAAAPA5AQEBevrpp/X111/rmWeeUXR0tHr06KGAgABFRERo2rRpWrNmjQoLC+Xv/7eXpK6++mpNmDDB63kBAABgPV6NBwAAgM/q1auXFi1apEWLFjX4eUZGhvbt22fEM2bMkJ+fn215AQAAYB1WhAIAAOCKVFlZqSeffNKI/fz89PDDDzs2LwAAAC4PjVAAAABckZ5++mkVFBQY8YwZMzRgwADH5gUAAMDloREKAACAK87vf/97vfDCC0Z81VVXmWKn5QUAAMDloxEKAACAK0pqaqruu+8+ud1u49rKlSvVs2dPR+YFAABA26ARCgAAgCvC4cOHNW3aNCUkJOjixYvG9aSkJM2ePdtxeQEAANC2ODUeAAAAPm3v3r1avXq1tmzZourqatNnSUlJevXVVx2VFwAAANagEQoAAACfc+zYMa1du1Zbt27VsWPH6n0eFhamF198UQ899JAj8gIAAMB6NEIBAADgU44cOaKRI0eqrKys3mf+/v6aPXu2li5d2uq9O63KCwAAAO+gEQoAAACfkp+fX69ZGRQUpPj4eKWkpGjgwIGOygsAAADvoBEKAAAAnzJ58mTddNNNysnJ0S9/+Uvde++9mjNnjiIiIhyZFwAAAN5BIxQAAAA+JSQkRNnZ2aqqqlJgYKDj8wIAAMA7OthdAAAAAGAFq5qVNEEBAADaJxqhAAAAAAAAAHwejVAAAAAAAAAAPo9GKAAAAAAAAACfRyMUAAAAAAAAgM+jEQoAAAAAAADA59EIBQAAAAAAAODzaIQCAAAAAAAA8Hk0QgEAAAAAAAD4PBqhAAAAAAAAAHwejVAAAAAAAAAAPo9GKAAAAAAAAACfRyMUAAAAAAAAgM+jEQoAAAAAAADA59EIBQAAAAAAAODzaIQCAAAAAAAA8Hk0QgEAAAAAAAD4PBqhAAAAAAAAAHwejVAAAAAAAAAAPo9GKAAAAAAAAACfRyMUAAAAAAAAgM+jEQoAAIB2b+3aterSpYtiYmJUUVHR4vvKyso0adIkde/eXW+//baFFQIAAMBuNEIBAADQrlVVVSk5OVklJSX64IMPtGTJkhbfu2jRIu3atUvFxcVKSkqysEoAAADYjUYoAAAA2rWAgAB16dLFiF966SXl5uY2e9+JEye0Zs0aIx48eLAl9QEAAMAZaIQCAACgXXO5XHrqqaeMuKamRomJiXK73U3et2zZMlVWVhpxYmKiZTUCAADAfjRCAQAA0O4lJibquuuuM+KcnJwm9/z89ttvtXnzZiPu1auXZsyYYWmNAAAAsBeNUAAAALR7fn5+euaZZ0zXUlJSGj04aeXKlaqqqjLi5ORkBQYGWlojAAAA7EUjFAAAAD4hNjZWo0ePNuK6e4D+rLS0VKmpqUbcqVMnJSQkeKVGAAAA2IdGKAAAAHzG0qVLTfHzzz+vCxcumK5t3LhR58+fN+LZs2ebDlsCAACAb6IRCgAAAJ8xZcoU3XzzzUZcVFSk1atXG7Hb7TbFfn5+WrBggVdrBAAAgD1ohAIAAMCn1F0VumLFCuN0+KysLH311VfGZ3fffbcGDhzozfIAAABgExqhAAAA8Cm33nqrxo0bZ8SnTp1SWlqaJOm1114zzV24cKFXawMAAIB9aIQCAADA5zS0KvTo0aN6//33jWvR0dGmw5UAAADg22iEAgAAwOdMnDhREyZMMOKCggLFxcWptrbWuMZqUAAAgCsLjVAAAAD4pGXLlpniffv2GePhw4fr9ttv93ZJAAAAsBGNUAAAAPik8ePH65Zbbmnws8cee0wul8vLFQEAAMBONEIBAADgs+quCpWknj176r777rOhGgAAANiJRigAAAB8VlRUlGJiYkzXkpKSFBQUZFNFAAAAsAuNUAAAAPi0kpISYxwaGqp58+bZWA0AAADsQiMUAAAAPisnJ0c5OTlGHB8fr65du9pYEQAAAOxCIxQAAAA+69VXXzXGLpdLycnJNlYDAAAAO9EIBQAAgE8qKirStm3bjHjy5MkaNmyYjRUBAADATjRCAQAA4JM2bNigqqoqI2ZvUAAAgCsbjVAAAAD4HLfbrfXr1xtx7969NW3aNBsrAgAAgN1ohAIAAMDn7N69W8eOHTPimTNnys/Pz8aKAAAAYDcaoQAAAPA56enppvj++++3qRIAAAA4BY1QAAAA+JSamhpt377diEeMGKHhw4fbWBEAAACcgEYoAAAAfMqBAwd05swZI46Li7OxGgAAADgFjVAAAAD4lHPnzpni6dOn21QJAAAAnIRGKAAAAHzK+PHjFRcXp9DQUC1YsECRkZF2lwQAAAAH8Le7AAAAAKAt+fv7a+vWrXaXAQAAAIdhRSgAAAAAAAAAn0cjFAAAAAAAAIDPoxEKAAAAAAAAwOexRygAAAAcwe1268KFCzp27JjdpQBAmzp79qzdJQAAJLncbrfb7iIAAACA66+/Xnl5eXaXAQCW6Nevn44fP253GQBwRWNFKAAAABxh5cqVKikpsbsMALBEeHi43SUAwBWPFaEAAAAAAAAAfB6HJQEAAAAAAADweTRCAQAAAAAAAPg8GqEAAAAAAAAAfB6NUAAAAAAAAAA+j0YoAAAAAAAAAJ9HIxQAAAAAAACAz6MRCgAAAAAAAMDn0QgFAAAAAAAA4PNohAIAAAAAAADweTRCAQAAAAAAAPg8GqEAAAAAAAAAfN7/Ax7UxAKCMMNOAAAAAElFTkSuQmCC"></p>
-<p>No es éste el espacio para describir en detalle el funcionamiento del paquete PHYLIP ni de los métodos filogenéticos, pero te pueden servir los siguientes tutoriales que he preparado al respecto para otros cursos:</p>
-<div id="tutorial-de-uso-de-phylip-desde-la-línea-de-comandos-de-linux" class="section level3">
-<h3><span class="header-section-number">15.1.1</span> Tutorial de uso de PHYLIP desde la línea de comandos de Linux</h3>
+<div id="cómo-puedo-saber-cuáles-son-los-parámetros-que-recibe-un-programa-de-phylip" class="section level3">
+<h3><span class="header-section-number">15.1.1</span> Cómo puedo saber cuáles son los parámetros que recibe un programa de phylip?</h3>
+<p>Simplemente llama al binario correspondiente con el archivo de entrada requerido (<span class="math inline">\(infile\)</span>) y desplegará un menú textual como el que se muestra abajo para <span class="math inline">\(seqboot\)</span>.</p>
+<p>Teclea la letra correspondiente del menú para hacer las midificaciones que quieras a los valores por defecto. Al final deberás confirmar con “Y”. Algunos programas todavía pedirán un número impar para echar a andar.</p>
+<pre><code>cp primates.phy infile
+
+seqboot
+
+Bootstrapping algorithm, version 3.69
+
+Settings for this run:
+  D      Sequence, Morph, Rest., Gene Freqs?  Molecular sequences
+  J  Bootstrap, Jackknife, Permute, Rewrite?  Bootstrap
+  %    Regular or altered sampling fraction?  regular
+  B      Block size for block-bootstrapping?  1 (regular bootstrap)
+  R                     How many replicates?  100
+  W              Read weights of characters?  No
+  C                Read categories of sites?  No
+  S     Write out data sets or just weights?  Data sets
+  I             Input sequences interleaved?  Yes
+  0      Terminal type (IBM PC, ANSI, none)?  ANSI
+  1       Print out the data at start of run  No
+  2     Print indications of progress of run  Yes
+
+  Y to accept these or type the letter for one to change
+y
+
+Random number seed (must be odd)?
+99
+
+completed replicate number   10
+completed replicate number   20
+completed replicate number   30
+completed replicate number   40
+completed replicate number   50
+completed replicate number   60
+completed replicate number   70
+completed replicate number   80
+completed replicate number   90
+completed replicate number  100
+
+Output written to file &quot;outfile&quot;
+
+Done.
+</code></pre>
 <ul>
-<li>Tutorial_Pablo_Vinuesa_uso_paqute_Phylip.pdf que encontrarás en el directorio docs/ del repositorio.</li>
+<li>Veamos ahora la entrada a <span class="math inline">\(dnadist\)</span> para calcular una distancia F84+G con alpha=0.3 (CV=1.8257), aplicado a los 100 sets de alineamientos remuestreados mediante bootstrap.</li>
+</ul>
+<pre><code>mv outfile infile
+
+dnadist
+
+Nucleic acid sequence Distance Matrix program, version 3.697
+
+Settings for this run:
+  D  Distance (F84, Kimura, Jukes-Cantor, LogDet)?  F84
+  G          Gamma distributed rates across sites?  No
+  T                 Transition/transversion ratio?  2.0
+  C            One category of substitution rates?  Yes
+  W                         Use weights for sites?  No
+  F                Use empirical base frequencies?  Yes
+  L                       Form of distance matrix?  Square
+  M                    Analyze multiple data sets?  No
+  I                   Input sequences interleaved?  Yes
+  0            Terminal type (IBM PC, ANSI, none)?  ANSI
+  1             Print out the data at start of run  No
+  2           Print indications of progress of run  Yes
+
+  Y to accept these or type the letter for one to change
+g
+
+Nucleic acid sequence Distance Matrix program, version 3.697
+
+Settings for this run:
+  D  Distance (F84, Kimura, Jukes-Cantor, LogDet)?  F84
+  G          Gamma distributed rates across sites?  Yes
+  T                 Transition/transversion ratio?  2.0
+  W                         Use weights for sites?  No
+  F                Use empirical base frequencies?  Yes
+  L                       Form of distance matrix?  Square
+  M                    Analyze multiple data sets?  No
+  I                   Input sequences interleaved?  Yes
+  0            Terminal type (IBM PC, ANSI, none)?  ANSI
+  1             Print out the data at start of run  No
+  2           Print indications of progress of run  Yes
+
+  Y to accept these or type the letter for one to change
+t
+Transition/transversion ratio?
+4.5
+
+
+Nucleic acid sequence Distance Matrix program, version 3.697
+
+Settings for this run:
+  D  Distance (F84, Kimura, Jukes-Cantor, LogDet)?  F84
+  G          Gamma distributed rates across sites?  Yes
+  T                 Transition/transversion ratio?  4.5000
+  W                         Use weights for sites?  No
+  F                Use empirical base frequencies?  Yes
+  L                       Form of distance matrix?  Square
+  M                    Analyze multiple data sets?  No
+  I                   Input sequences interleaved?  Yes
+  0            Terminal type (IBM PC, ANSI, none)?  ANSI
+  1             Print out the data at start of run  No
+  2           Print indications of progress of run  Yes
+
+  Y to accept these or type the letter for one to change
+m
+Multiple data sets or multiple weights? (type D or W)
+d
+How many data sets?
+100
+
+
+Nucleic acid sequence Distance Matrix program, version 3.697
+
+Settings for this run:
+  D  Distance (F84, Kimura, Jukes-Cantor, LogDet)?  F84
+  G          Gamma distributed rates across sites?  Yes
+  T                 Transition/transversion ratio?  4.5000
+  W                         Use weights for sites?  No
+  F                Use empirical base frequencies?  Yes
+  L                       Form of distance matrix?  Square
+  M                    Analyze multiple data sets?  Yes, 100 data sets
+  I                   Input sequences interleaved?  Yes
+  0            Terminal type (IBM PC, ANSI, none)?  ANSI
+  1             Print out the data at start of run  No
+  2           Print indications of progress of run  Yes
+
+  Y to accept these or type the letter for one to change
+y
+
+Coefficient of variation of substitution rate among sites (must be positive)
+ In gamma distribution parameters, this is 1/(square root of alpha)
+1.8257
+Data set # 1:
+
+Distances calculated for species
+    Tarsius_sy   ...........
+    Lemur_catt   ..........
+    Homo_sapie   .........
+    Pan          ........
+    Gorilla      .......
+    Pongo        ......
+    Hylobates    .....
+    Macaca_fus   ....
+    M_mulatta    ...
+    M_fascicul   ..
+    M_sylvanus   .
+    Saimiri_sc
+
+Distances written to file &quot;outfile&quot;
+
+Data set # 2:
+
+Distances calculated for species
+    Tarsius_sy   ...........
+    Lemur_catt   ..........
+    Homo_sapie   .........
+    Pan          ........
+    Gorilla      .......
+    Pongo        ......
+    Hylobates    .....
+    Macaca_fus   ....
+    M_mulatta    ...
+    M_fascicul   ..
+    M_sylvanus   .
+    Saimiri_sc
+
+...</code></pre>
+<p>De este último ejemplo vemos que las opciones que usamos fueron las siguientes, es este orden:</p>
+<pre>
+g
+t
+4.5
+m
+d
+100
+y
+1.8257
+</pre>
+<p>Si guardamos estos valores en un archivo que podemos llamar por ejemplo dnadist.params, podríamos repetir la corrida con el siguiente código, asumiendo que tenemos un <em>infile</em> adecuado:</p>
+<p><code>dnadist &lt; dnadist.params</code>.</p>
+<p>Te dejo como <strong>ejercicio</strong> que explores las opciones que controlan a los programas <span class="math inline">\(protdist\)</span>, <span class="math inline">\(neighbor\)</span> y <span class="math inline">\(consense\)</span>. Compara sus parámetros con los mostrados para los archivos de configuración de la figura anterior.</p>
+<p>Con estos ejemplos debería ser suficiente para que entiendas bien cómo funcionan los programas del paquete PHYLIP. Esto es esencial para que puedas entender lo que hace el <span class="math inline">\(script\)</span> <em>run_phylip.sh</em> que veremos en la siguiente sección, que nos permite automatizar todo el proceso, incluyendo el despliegue del árbol.</p>
+<p>No es éste el espacio para describir con mayor detalle el funcionamiento de PHYLIP ni de los métodos filogenéticos, pero te pueden servir los siguientes tutoriales que he preparado al respecto para otros cursos:</p>
+</div>
+<div id="tutorial-de-uso-de-phylip-desde-la-línea-de-comandos-de-linux" class="section level3">
+<h3><span class="header-section-number">15.1.2</span> Tutorial de uso de PHYLIP desde la línea de comandos de Linux</h3>
+<ul>
+<li><a href="https://github.com/vinuesa/intro2linux/blob/master/docs/Tutorial_Pablo_Vinuesa_uso_paqute_Phylip.pdf">Tutorial_Pablo_Vinuesa_uso_paqute_Phylip.pdf</a> que encontrarás en el directorio docs/ del repositorio.</li>
 </ul>
 </div>
 <div id="tutoriales-sobre-filogenética-de-pablo-vinuesa" class="section level3">
-<h3><span class="header-section-number">15.1.2</span> Tutoriales sobre filogenética de Pablo Vinuesa</h3>
+<h3><span class="header-section-number">15.1.3</span> Tutoriales sobre filogenética de Pablo Vinuesa</h3>
 <p>Aquí encontrarás mucho material: teoría y práctica. Todo libremente disponible en GitHub: - <a href="https://github.com/vinuesa/TIB-filoinfo">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a></p>
 </div>
 </div>
 <div id="el-script-run_phylip.sh" class="section level2">
 <h2><span class="header-section-number">15.2</span> El <span class="math inline">\(script\)</span> <strong>run_phylip.sh</strong></h2>
-<p>Estimar una filogenia con PHYLIP “a mano”, siguiendo los pasos arriba mostrados, es sin duda tedioso y tardado. El <span class="math inline">\(script\)</span> <em>run_phylip.sh</em> se encarga de automatizar el <span class="math inline">\(pipeline\)</span> mostrado arriba. Para ello implementa <strong>funciones</strong> que escriben estos archivos de parámetros en función de los argumentos que el usuario le pasa al <span class="math inline">\(script\)</span> y otras que se encargan de hacer las llamadas a los programas en el orden correcto, renombrar archivos, borrar los que ya no se necesitan, etc.</p>
-<p>El siguiente bloque de código muestra la función <em>write_seqboot_params</em> encargadas de escribir el archivo de parámetros para correr el programa <span class="math inline">\(seqboot\)</span> de PHYLIP.</p>
-<pre><code>function write_seqboot_params
+<p>Estimar una filogenia con PHYLIP “a mano”, siguiendo los pasos arriba mostrados, es sin duda tedioso y tardado, con muchas operaciones repetitivas en las que es fácil equivocarse.</p>
+<p>El <span class="math inline">\(script\)</span> <em>run_phylip.sh</em> se encarga de automatizar <span class="math inline">\(pipelines\)</span> similares a los mostrados en las figuras anteriores.</p>
+<ul>
+<li>Para ello implementa <strong>funciones</strong> que, entre otras, hacen lo siguiente:
+<ul>
+<li>verifican que la versión de <span class="math inline">\(bash\)</span> que corre en la computadora sea adecuada para el <span class="math inline">\(script\)</span></li>
+<li>verifican detalles de configuración como la variable <span class="math inline">\(LC\_NUMERIC\)</span> que controla cómo se manejan los números según la configuración <em>local</em>.</li>
+<li>imprimen menús de ayuda</li>
+<li>verifican que el archivo de entrada está en formato PHYLIP y contiene al menos 4 secuencias</li>
+<li>verifican que los parámetros pasados por el usuario al <span class="math inline">\(script\)</span> sean adecuados</li>
+<li>escriben los archivos de parámetros en base a los argumentos que el usuario le pasa al <span class="math inline">\(script\)</span>.</li>
+<li>hacen las llamadas a los programas de PHYLIP (seqboot, dnadist|protdist, consense, neighbor) en el orden correcto, pasándole los archivos de parámetros pertinentes</li>
+<li>verifican que existen los archivos de entrada y salida (infile, outfile, intree, outtree), renombrándolos adecuadamente con nombres informativos</li>
+<li>borra los archivos que ya no se necesitan</li>
+</ul></li>
+</ul>
+<p>Al concluir los análisis, el <span class="math inline">\(script\)</span> nos despliega la(s) filogenia(s) resultantes en la pantalla. Si están instalados correctamente los programas <span class="math inline">\(nw\_support\)</span> y <span class="math inline">\(nw\_display\)</span>, son llamados para que calculen los valores de soporte de las biparticiones y las escriban sobre la filogenia original, la cual es desplegada con <span class="math inline">\(nw\_display\)</span>, mostrando los valores de soporte. En caso de no estar instalados, la función <span class="math inline">\(extract\_tree\_from\_outfile\)</span> extrae las líneas que contienen los árboles NJ|UPGMA y consenso de mayoría de los archivos de salida correspondientes, desplegándolos igualmente en pantalla.</p>
+<p>A modo de ejemplo, el siguiente bloque de código muestra la función <em>write_dnadis_params</em> encargadas de escribir el archivo de parámetros para correr el programa <span class="math inline">\(dnadist\)</span> de PHYLIP. Compara el código de la función con las capturas del menú textual del programa desplegado arriba.</p>
+<pre><code>function write_dnadist_params
 {
-    #get the input runmodes, models and bootstrap no.
-    local boot=$1
-    local sequential=$2
-    
-    # need to remove previous param file, since we are concatenating to it
-    [ -s seqboot.params ] &amp;&amp; rm seqboot.params
+    #get the input runmodes, models, bootstrap no. ...
+    local model=$1
+    local boot=$2
+    local TiTv=$3
+    local sequential=$4
+    local gamma=$5
+    local CV=$6
 
-    # Write Seqboot params
-    [ &quot;$boot&quot; -gt 0 ]       &amp;&amp; echo -ne &quot;R\n$boot\n&quot; &gt;&gt; seqboot.params
-    [ &quot;$sequential&quot; -eq 1 ] &amp;&amp; echo -ne &quot;I\n&quot;        &gt;&gt; seqboot.params
-                               echo -ne &quot;Y\n&quot;        &gt;&gt; seqboot.params
-                   echo -ne &quot;$rnd_no\n&quot;  &gt;&gt; seqboot.params   
+    # need to remove previous param file, since we are concatenating to it
+    [ -s dnadist.params ] &amp;&amp; rm dnadist.params
+    
+    #[ &quot;$gamma&quot; != 0 ] &amp;&amp; CV=$( gamma2CV $gamma )
+
+    # Runmode 1 = dnadist 
+    [ &quot;$model&quot; = &#39;F84&#39; ]          &amp;&amp; touch dnadist.params
+    [ -z &quot;$model&quot; ]               &amp;&amp; touch dnadist.params 
+    [ &quot;$model&quot; = &#39;Kimura&#39; ]       &amp;&amp; echo &quot;D&quot;                 &gt;&gt; dnadist.params
+    [ &quot;$model&quot; = &#39;Jukes-Cantor&#39; ] &amp;&amp; echo -ne &quot;D\nD\n&quot;        &gt;&gt; dnadist.params
+    [ &quot;$model&quot; = &#39;LogDet&#39; ]       &amp;&amp; echo -ne &quot;D\nD\nD\n&quot;     &gt;&gt; dnadist.params
+    [ &quot;$TiTv&quot; != &quot;2&quot; ]            &amp;&amp; echo -ne &quot;T\n$TiTv\n&quot;    &gt;&gt; dnadist.params
+    [ &quot;$gamma&quot; != &quot;0&quot; ]           &amp;&amp; echo -ne &quot;G\n&quot;           &gt;&gt; dnadist.params
+    [ &quot;$boot&quot; -gt 0 ]             &amp;&amp; echo -ne &quot;M\nD\n$boot\n&quot; &gt;&gt; dnadist.params
+    [ &quot;$sequential&quot; -eq 1 ]       &amp;&amp; echo -ne &quot;I\n&quot;           &gt;&gt; dnadist.params
+                                     echo -ne &quot;Y\n&quot;           &gt;&gt; dnadist.params
+    [ &quot;$gamma&quot; != &quot;0&quot; ]           &amp;&amp; echo -ne &quot;$CV\n&quot;         &gt;&gt; dnadist.params
 }
-#---------------------------------------------------------------------------------#
+
 </code></pre>
-<p>Veamos ahora el <span class="math inline">\(script\)</span> <em>run_phylip.sh</em> completo, sección por sección</p>
+<p>Veamos ahora el <span class="math inline">\(script\)</span> <em>run_phylip.sh</em> completo, sección por sección, comentando algunos aspectos importantes de cada una.</p>
+<p>Debes revisar con atención cada línea y consultar secciones previas de este tutorial o la <a href="https://www.gnu.org/software/bash/manual/">guía de usuario de bash</a> para aclarar dudas sobre aspectos sintácticos que te surjan. Trata además de entender la lógica de las secciones de código.</p>
+<p>Lo ideal es que modifiques partes pequeñas del código para que entiendas cómo funciona. Copia las funciones, pégalas en la terminal y llámalas con diversos parámetros para que entiendas bien lo que hacen.</p>
 <div id="cabecera-de-run_phylip.sh---settings-globales-e-inicialización-de-variables" class="section level3">
 <h3><span class="header-section-number">15.2.1</span> Cabecera de <strong>run_phylip.sh</strong> - settings globales e inicialización de variables</h3>
 <p>En esta primera sección se definen:</p>
@@ -6801,9 +7024,10 @@ fi
 #    diverse courses taught to undergrads at https://www.lcg.unam.mx
 #    (LCG-UNAM) and the International Workshops on Bioinformatics (TIB)
 
-#: AIM: run PHYLIP&#39;s distance methods [NJ|UPGMA] for DNA and proteins with bootstrapping
+#: AIM: run PHYLIP&#39;s distance methods [NJ|UPGMA] for DNA and proteins (dnadist|protdist) with optional bootstrapping
 #       This script was written to teach intermediate Bash scripting to my students at the 
 #       Bachelor&#39;s Program in Genome Sciences at the Center for Genome Sciences, UNAM, Mexico
+#       https://www.lcg.unam.mx
 #
 #: INPUT: multiple sequence alignments (PROT|DNA) with at least 4 distinct sequences in phylip format
 #
@@ -6817,17 +7041,20 @@ fi
 # Assumes that the following binaries and scripts are all in $PATH, checked by check_dependencies()
 #
 #   1) Binaries from the PHYLIP package: 
-#   seqboot dnadist protdist neighbor consense nw_support nw_display
-#   NOTE: Linux-compatible binaries are supplied in the distro\&#39;s bin/ directory
+#   seqboot dnadist protdist neighbor consense
+#   NOTE: Linux-compatible PHYLIP binaries are supplied in the distro\&#39;s bin/ directory
 #           https://github.com/vinuesa/intro2linux/tree/master/bin  
 
 #: TODO:
 #    implement also FM, ME, parsimony and ML analyses; 
-#    check that the user provides proper PHYLIP files with at least 4 distinct sequences each
 
 #: KNOWN BUGS: None.
 #    Please report any errors you may encounter through the GitHub issue pages
 #-------------------------------------------------------------------------------------------------------
+
+# make sure the user has at least bash version 4, since the script uses standard arrays (introduced in version 4),
+#  but future development may require hashes, introduced in version 4
+[ &quot;${BASH_VERSION%%.*}&quot; -lt 4 ] &amp;&amp; echo &quot;$HOSTNAME is running an ancient bash: ${BASH_VERSION}; ${0##*/} requires bash version 4 or higher&quot; &amp;&amp; exit 1
 
 # 0. Define strict bash settings
 set -e              # exit on non-zero exit status
@@ -6838,14 +7065,13 @@ set -o pipefail     # exit after unsuccessful UNIX pipe command
 LC_NUMERIC=en_US.UTF-8
 export LC_NUMERIC
 
-progname=$(basename &quot;$0&quot;)  # run_phylip.sh
-VERSION=1.3 
+args=&quot;$*&quot;
+progname=${0##*/} # run_phylip.sh
+VERSION=1.5 
 
 # GLOBALS
 #DATEFORMAT_SHORT=&quot;%d%b%y&quot; # 16Oct13
 #TIMESTAMP_SHORT=$(date +${DATEFORMAT_SHORT})
-
-
 
 date_F=$(date +%F |sed &#39;s/-/_/g&#39;)-   # 2013_10_20
 date_T=$(date +%T |sed &#39;s/:/./g&#39;)    # 23.28.22 (hr.min.secs)
@@ -6870,8 +7096,9 @@ outgroup=0
 gamma=&quot;0.0&quot;
 outgroup=1
 
-declare -a outfiles # to collect the output files written to disk
+nw_utils_ok=
 
+declare -a outfiles # to collect the output files written to disk
 </code></pre>
 </div>
 <div id="funciones-de-run_phylip.sh---modularización-del-código" class="section level3">
@@ -6896,12 +7123,22 @@ function print_dev_history()
       diverse courses taught to undergrads at https://www.lcg.unam.mx
       and the International Workshops on Bioinformatics (TIB)
     
+    # v1.5 2020-11-15; * added check_phylip_ok to validate input phylip file with -ge 4 sequences and -ge 4 characters
+    #                  * added remove_phylip_param_files
+    #                  * added option -I to call print_install_notes
+    #                  * added [ &quot;${BASH_VERSION%%.*}&quot; -lt 4 ] &amp;&amp; die
+    #                  * makes more extensive use of internal Bash variables and variable expansions, including \${var/pattern/string}
+
+    # v1.4 2020-11-14; * added function check_nw_utils_ok, to check that nw_display and nw_support can be executed
+    #                    as they may be in path but cannot find /lib64/libc.so.6: version GLIBC_2.14
+    #                    when the binaries are compiled with dynamic linking to the libs
+    
     # v1.3 2020-11-14; * improved layout of output messages; 
     #                  * improved regex in extract_tree_from_outfile (now also for NJ tree)
     #                  * if nw_support and nw_display are not available, 
     #                     prints both the NJ and boot trees to screen if bootstrap analysis was performed
     
-    # v1.2 2020-11-11; set and export LC_NUMERIC=en_US.UTF-8, to avoid problems with locales tha use 1,32
+    # v1.2 2020-11-11; set and export LC_NUMERIC=en_US.UTF-8, to avoid problems with locales that use 1,32 instead of 1.32
     
     # v1.1  2020-11-11; added function extract_tree_from_oufile and calls it on NJ|UPGMA bootRepl consensus trees
     #                      if nw_display is not available in PATH
@@ -6942,6 +7179,51 @@ exit 0
 }
 #---------------------------------------------------------------------------------#
 
+function print_install_notes()
+{
+   cat &lt;&lt;INSTALL
+   
+    #1. PHYLIP PHYLogeny Inference Package by Joe Felensetein https://evolution.genetics.washington.edu/phylip.html
+    
+    The bin/ directory of the intro2linux distribution provides precompiled Linux-x86_64 binaries 
+          for seqboot dnadist protdist neighbor consense. Copy them into your \$HOME/bin directory or any other in your PATH
+    
+    If you need executables for a different architecture, visit https://evolution.genetics.washington.edu/phylip/executables.html
+    
+    #2. Newick Utilities http://cegg.unige.ch/newick_utils
+    The Newick Utilities have been described in an Open-Access paper (that is, available online for everyone):
+
+    The Newick Utilities: High-throughput Phylogenetic tree Processing in the UNIX Shell
+    Thomas Junier and Evgeny M. Zdobnov
+    Bioinformatics 2010 26:1669-1670
+    http://bioinformatics.oxfordjournals.org/content/26/13/1669.full
+    doi:10.1093/bioinformatics/btq243
+    
+    The src/ dir contains the newick-utils-1.6-Linux-x86_64-disabled-extra.tar.gz source file
+    
+    Visit http://cegg.unige.ch/newick_utils if you need other pre-compiled versions
+    
+    Brief compilation notes
+    
+    1. Copy the newick-utils-1.6-Linux-x86_64-disabled-extra.tar.gz to a suitable directory in your \$HOME
+    2. cd into the directory hoding the source *tar.gz file
+    3. unpack and compile with the following commands 
+          tar -xvzf newick-utils-1.6-Linux-x86_64-disabled-extra.tar.gz
+      cd newick-utils-1.6
+      ./configure --prefix=$HOME  # if you do NOT have administrator privileges
+          #./configure                # if you have superuser privileges
+      make
+      make check
+      make install                # if you do NOT have administrator privileges
+      # sudo make install         # if you have superuser privileges
+
+INSTALL
+
+exit 0
+
+}
+#---------------------------------------------------------------------------------#
+
 function check_output()
 {
     local outfile=$1
@@ -6955,10 +7237,40 @@ function check_output()
 }
 #---------------------------------------------------------------------------------#
 
+function check_phylip_ok()
+{
+    # implements a rudimentary format validation check
+    local phyfile=$1
+    local num_tax=
+    local num_char=
+
+    num_tax=$(awk &#39;NR == 1 {print $1}&#39; &quot;$phyfile&quot;)
+    num_char=$(awk &#39;NR == 1 {print $2}&#39; &quot;$phyfile&quot;)
+    
+    if [[ ! &quot;$num_tax&quot; =~ ^([0-9]+)$ ]] ||  [[ ! &quot;$num_char&quot; =~ ^([0-9]+)$ ]]
+    then
+         echo &quot;ERROR: $phyfile is not a phylip-formatted input file!&quot;
+     echo
+     exit 1  
+    elif [[ &quot;$num_tax&quot; =~ ^([0-9]+)$ ]] &amp;&amp; [ &quot;$num_tax&quot; -lt 4 ]
+    then
+         echo &quot;ERROR: $phyfile should contain at least 4 taxa&quot;
+     exit 1
+    elif [[ &quot;$num_char&quot; =~ ^([0-9]+)$ ]] &amp;&amp; [ &quot;$num_char&quot; -lt 5 ]
+    then
+         echo &quot;ERROR: $phyfile should contain at least 5 aligned residues&quot;
+     exit 1
+    else
+        echo &quot;# File validation OK: $phyfile seems to be a standard phylip file ...&quot;
+        echo &#39;-------------------------------------------------------------------------------------------&#39;
+    fi
+}
+#---------------------------------------------------------------------------------#
+
 function check_dependencies
 {
     # check that the following PHYLIP binaries are in $PATH; die if not
-    # optional dependencies found in bin/ dir: nw_support and nw_display
+    # optional: the Newick_utilities src is found in the src/ dir
     dependencies=(seqboot dnadist protdist neighbor consense) 
     for programname in &quot;${dependencies[@]}&quot;
     do
@@ -6979,6 +7291,42 @@ function check_dependencies
 }
 #---------------------------------------------------------------------------------#
 
+function check_nw_utils_ok()
+{
+    # This function checks that nw_display and nw_support can be executed
+    #  as they may be in path but cannot find /lib64/libc.so.6: version GLIBC_2.14
+    #  when the binaries are compiled with dynamic linking to the libs
+    
+    # The function returns 0 when nw_support nw_display cannot be executed and 1 when they can
+    # The function does not run and return anything if nw_support nw_display are not in PATH
+    
+    dependencies=(nw_support nw_display)
+    
+    local nw_utils_ok=
+    local bin=
+    
+    for programname in &quot;${dependencies[@]}&quot;
+    do
+        bin=$(type -P &quot;$programname&quot;)
+        if [ -n &quot;$bin&quot; ]; then
+       # prints something like nw_support: /lib64/libc.so.6: version `GLIBC_2.14&#39; not found
+       &quot;$programname&quot; 2&gt;&gt; &quot;nw_utils_check.out.tmp&quot; 
+        fi
+    done
+    
+    # check the contents of nw_utils_check.out.tmp and set proper flag
+    if [ -s nw_utils_check.out.tmp ]
+    then
+           # set the nw_utils_ok flag to 0 if the lib is not found, to check later in the code when nw_support and nw_display are called
+           grep GLIBC nw_utils_check.out.tmp &amp;&gt; /dev/null
+       nw_utils_ok=$? 
+       [ &quot;$nw_utils_ok&quot; -eq 0 ] &amp;&amp; echo &quot;# WARNING: ${dependencies[*]} are in PATH but cannot find /lib64/libc.so.6: version GLIBC_2.14&quot; &gt;&amp;2 
+           rm nw_utils_check.out.tmp 
+           echo  &quot;$nw_utils_ok&quot;
+    fi
+}
+#---------------------------------------------------------------------------------#
+
 function rdm_odd_int()
 {
   # generate a random odd integer for seqboot and neighbor
@@ -6992,8 +7340,8 @@ function rdm_odd_int()
      fi
 done
 
-#---------------------------------------------------------------------------------#
 }
+#---------------------------------------------------------------------------------#
 
 function check_matrix()
 {
@@ -7003,8 +7351,8 @@ function check_matrix()
     if grep -El &#39; \-[0-9\.]+&#39; &quot;$matrix&quot;
     then
         echo &quot;ERROR: computed negative distances!&quot; &gt;&amp;2
-         [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; echo &quot; You may need to ajust the model and|or gamma value; try lowering TiTv if &gt; 6&quot; &gt;&amp;2
-         [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; echo &quot; You may need to ajust the matrix and|or gamma value&quot; &gt;&amp;2
+         [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; echo &quot;You may need to ajust the model and|or gamma value; try lowering TiTv if &gt; 6&quot; &gt;&amp;2
+         [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; echo &quot;You may need to ajust the matrix and|or gamma value&quot; &gt;&amp;2
     exit 3
     fi
 }
@@ -7025,22 +7373,34 @@ function display_treeOK()
          echo
      else
          echo &quot;ERROR: cannot display $nj_tree with nw_dsiplay, as it contains branches with negative lengths!&quot; &gt;&amp;2
-         [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; echo &quot;  You may need to adjust (lower?) TiTv=$TiTv&quot; &gt;&amp;2
-         [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; echo &quot;  You may need to use another matrix or adjunst gamma&quot; &gt;&amp;2
+         [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; echo &quot;You may need to adjust (lower?) TiTv=$TiTv&quot; &gt;&amp;2
+         [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; echo &quot;You may need to use another matrix or adjunst gamma&quot; &gt;&amp;2
          exit 4
      fi
 }
 #---------------------------------------------------------------------------------#
+
 function extract_tree_from_outfile()
 {
     # grep out lines containing tree characters | - and print to STDOUT
     local outfile=$1
    
-    grep --color=never -E &#39;[[:space:]]+\||-&#39; &quot;$outfile&quot; | grep -Ev &#39;Neighbor-|^-----&#39;
+    grep --color=never -E &#39;[[:blank:]]+\||-&#39; &quot;$outfile&quot; | grep -Ev &#39;Neighbor-|^---&#39;
 }
 
 #------------------------------------- PHYLIP FUNCTIONS ---------------------------------------#
 # &gt;&gt;&gt; these are fucntions to write the command files to pass parameters to PHYLIP programs &lt;&lt;&lt; # 
+
+function remove_phylip_param_files()
+{
+   [ -s dnadist.params ] &amp;&amp; rm dnadist.params
+   [ -s protdist.params ] &amp;&amp; rm protdist.params
+   [ -s seqboot.params ] &amp;&amp; rm seqboot.params
+   [ -s neighbor.params ] &amp;&amp; rm neighbor.params
+   [ -s consense.params ] &amp;&amp; rm consense.params
+   return 0
+}
+#------------------------------------- PHYLIP FUNCTIONS ---------------------------------------#
 
 function write_dnadist_params
 {
@@ -7162,7 +7522,7 @@ function cleanup_dir
 
 function print_help
 {
-   #&#39;:b:c:m:I:o:R:t:hHDsuv&#39;
+   #&#39;:b:c:m:I:o:R:t:hHIDsuv&#39;
    cat&lt;&lt;EOF
    $progname v.$VERSION [OPTIONS]
    
@@ -7187,10 +7547,11 @@ function print_help
    -v &lt;flag&gt; print program version and exit
    -D &lt;flag&gt; Activate debugging to keep cmd files [default: $DEBUG]
    -H &lt;flag&gt; print development history and exit   
+   -I &lt;flag&gt; print installation notes and exit   
    
- AIM: run PHYLIP&#39;s distance methods [NJ|UPGMA] for DNA and proteins with bootstrapping
+ AIM: run PHYLIP\&#39;s distance methods [NJ|UPGMA] for DNA and proteins with bootstrapping
       This code was written to teach basic Bash scripting to my students at the 
-      Bachelor&#39;s Program in Genome Sciences, Center for Genome Sciences, UNAM, Mexico
+      Bachelor\&#39;s Program in Genome Sciences, Center for Genome Sciences, UNAM, Mexico
       https://www.lcg.unam.mx/      
 
  OUTPUT: [NJ|UPGMA] phylogenies and, if requested, bootstrap consensus trees 
@@ -7198,10 +7559,11 @@ function print_help
  
  EXTERNAL DEPENDENCIES: 
    * PHYLIP (https://evolution.genetics.washington.edu/phylip.html) programs:
-      seqboot dnadist protdist neighbor consense nw_support 
+      seqboot dnadist protdist neighbor consense 
    * Newick utilities programs (http://cegg.unige.ch/newick_utils) programs:
-      optional: nw_support and nw_display 
-   - Note: Linux 64bit binaries available in bin/ dir
+      optional: nw_support and nw_display; need to install separately
+   - Notes: PHYLIP Linux 64bit binaries available in the bin/ dir
+            Copy them to your \$HOME/bin directory or any other in your PATH
   
  LICENSING &amp; SOURCE
        Author: Pablo Vinuesa | https://www.ccg.unam.mx/~vinuesa/ | twitter: @pvinmex
@@ -7226,14 +7588,14 @@ exit 1
 #-------------------------------------------------------------------------------------------------#
 
 # GETOPTS
-while getopts &#39;:b:g:i:m:R:o:t:hDHsuv&#39; OPTIONS
+while getopts &#39;:b:g:i:m:R:o:t:hDHIsuv&#39; OPTIONS
 do
    case $OPTIONS in
 
    b)   boot=$OPTARG
         ;;
    g)   gamma=$OPTARG
-        [ &quot;$gamma&quot; != 0 ] &amp;&amp; CV=$(echo &quot;1/sqrt($gamma)&quot; | bc -l) &amp;&amp; CV=$(printf &quot;%.4f\n&quot; &quot;$CV&quot;)
+    [ &quot;$gamma&quot; != 0 ] &amp;&amp; CV=$(printf &quot;1/sqrt($gamma)&quot; | bc -l) &amp;&amp; printf -v CV &quot;%.4f\n&quot; &quot;$CV&quot;
         ;;
    h)   print_help
         ;;
@@ -7257,14 +7619,16 @@ do
         ;;
    H)   print_dev_history
         ;;
+   I)   print_install_notes
+        ;;
    :)   printf &quot;argument missing from -%s option\n&quot; &quot;$OPTARG&quot;
-     print_help
-         exit 2 
-         ;;
-   \?)   echo &quot;need the following args: &quot;
-     print_help
-         exit 3
-     ;;
+    print_help
+        exit 2 
+        ;;
+   \?)  echo &quot;need the following args: &quot;
+    print_help
+        exit 3
+    ;;
    esac &gt;&amp;2   # print the ERROR MESSAGES to STDERR
 
 done
@@ -7291,9 +7655,6 @@ then
        exit 1    
 fi
 
-# Check for correct model names
-
-
 # automatically set TiTv=0 when running with protein matrices or the LogDet DNA model
 [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; TiTv=0
 [ &quot;$model&quot; == LogDet ] &amp;&amp; TiTv=0
@@ -7310,7 +7671,6 @@ then
    echo
    exit 3
 fi
-
 
 # check that Ti/Tv is a real number, integer or decimal
 re_TiTv=&#39;^[0-9.]+$&#39;
@@ -7334,12 +7694,13 @@ fi
 if [ &quot;$gamma&quot; != 0 ] # note, need to treat as string, since gamma will be generalle a float like 0.5
 then
     # this is to avoid having dots within filename (converts gamma==0.2 to gammaf=02)
-    gammaf=${gamma%.*}${gamma##*.}
+    gammaf=${gamma/\./} #gammaf=${gamma%.*}${gamma##*.}
 else
     gammaf=&quot;$gamma&quot;
 fi    
 
 # check model vs. runmode compatibility and suitable bootstrap values are provided
+#   using two alternative sintaxes for educational purposes
 if [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; { [ &quot;$model&quot; = JTT ] || [ &quot;$model&quot; = PMG ] || [ &quot;$model&quot; = PAM ] || [ &quot;$model&quot; = &quot;$def_prot_model&quot; ]; }
 then
        echo
@@ -7347,7 +7708,7 @@ then
        echo
        print_help
        exit 1    
-elif [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; { [ &quot;$model&quot; = F84 ] || [ &quot;$model&quot; = &#39;Jukes-Cantor&#39; ] || [ &quot;$model&quot; = &#39;LogDet&#39; ] || [ &quot;$model&quot; = &quot;$def_DNA_model&quot; ]; }
+elif [ &quot;$runmode&quot; -eq 2 ] &amp;&amp; [[ &quot;$model&quot; =~ ^(F84|Jukes-Cantor|LogDet|&quot;$def_DNA_model&quot;)$ ]]
 then
        echo
        echo &quot;# ERROR: $model is only valid when analyzing DNA alignments under -R 1&quot; &gt;&amp;2
@@ -7434,10 +7795,10 @@ then
    exit 3
 fi
 
-
 #&gt;&gt;&gt; Set the script&#39;s run random odd number required by diverse PHYLIP programs &lt;&lt;&lt;
 ROI=$(rdm_odd_int)
 
+# print the run settings
 echo
 echo &quot;### $progname v.$VERSION run on $start_time with the following parameters:&quot;
 echo &quot;# work_directory=$wkdir&quot;
@@ -7446,6 +7807,7 @@ echo &quot;# model=$model | gamma=$gamma | CV=$CV | gammaf=$gammaf | ti/tv ratio
      outgroup=$outgroup | UPGMA=$upgma | bootstrap no.=$boot | ROI=$ROI&quot;
 echo &quot;# runmode=$runmode&quot;
 echo &quot;# DEBUG=$DEBUG&quot; 
+echo &quot;# command: $progname ${args[*]}&quot;
 echo
 </code></pre>
 </div>
@@ -7467,20 +7829,24 @@ echo
 #------------------------------------------ MAIN CODE --------------------------------------------#
 #-------------------------------------------------------------------------------------------------#
 
-
 # 1. make sure the external dependencies are found in PATH
+#     and that nw_display and nw_support find the required GLIBC_2.14 in /lib64/libc.so.6
 check_dependencies
+nw_utils_ok=$(check_nw_utils_ok) # nw_utils_ok -eq 1 when OK, -eq 0 when not
 
 # 2. Start processing the input file
 # make sure there are no old outfile or outtree files lying around from previous runs
 [ -s infile ] &amp;&amp; rm infile
 [ -s outfile ] &amp;&amp; rm outfile
 [ -s outtree ] &amp;&amp; rm outtree
-
+# nor old params files
+remove_phylip_param_files
 
 # 2.1) make sure we have an input file or die
 if [ -s &quot;$input_phylip&quot; ]
 then
+     # make basic format validation check
+     check_phylip_ok &quot;$input_phylip&quot;
      cp &quot;$input_phylip&quot; infile
 else
      echo
@@ -7569,7 +7935,7 @@ then
        
      # check that there are no negative branch lengths in the nj_tree
      #  and display with nw_display, only if no bootstrapping is requested
-     if [ &quot;$boot&quot; -eq 0 ] &amp;&amp; [[ $(type -P nw_display) ]]
+     if [ &quot;$boot&quot; -eq 0 ] &amp;&amp; [[ $(type -P nw_display) ]] &amp;&amp; [[ &quot;$nw_utils_ok&quot; -eq 1 ]]
      then 
          display_treeOK &quot;$upgma_tree&quot;
      elif [ &quot;$boot&quot; -eq 0 ] &amp;&amp; [[ ! $(type -P nw_display) ]]
@@ -7590,7 +7956,7 @@ else
 
      # check that there are no negative branch lengths in the nj_tree
      #  and display with nw_display, only if no bootstrapping is requested
-     if [ &quot;$boot&quot; -eq 0 ] &amp;&amp; [[ $(type -P nw_display) ]]
+     if [ &quot;$boot&quot; -eq 0 ] &amp;&amp; [[ $(type -P nw_display) ]] &amp;&amp; [[ &quot;$nw_utils_ok&quot; -eq 1 ]]
      then
          display_treeOK &quot;$nj_tree&quot;
      elif [ &quot;$boot&quot; -eq 0 ] &amp;&amp; [[ ! $(type -P nw_display) ]]
@@ -7722,7 +8088,6 @@ then
       outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile&quot;
      fi 
 
-
      # 5. Rename outtrees and tree outfiles; remap bootstrap values to bipartitions and display tree on screen
      if [ &quot;$upgma&quot; -gt 0 ]
      then
@@ -7730,21 +8095,21 @@ then
           # Set last item specifically
           # nstead of appending one element, set the last item specifically, without any &quot;unbound variable&quot; error
           # t[${#t[*]}]=foo
-          [ -s outtree ] &amp;&amp; mv outtree &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph&quot;     &amp;&amp; \
+          [ -s outtree ] &amp;&amp; mv outtree &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph&quot;  &amp;&amp; \
             outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph
           [ -s outfile ] &amp;&amp; mv outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile&quot; &amp;&amp; \
             outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile&quot;
        
           # if we requested bootstrapping, map bootstrap values onto UPGMA tree using
           #   nw_support upgma.ph bootRepl_tree.ph &gt; UPGMA_with_boot_support.ph
-          if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; ] &amp;&amp; [[ $(type -P nw_support) ]]
+          if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; ] &amp;&amp; [[ $(type -P nw_support) ]] &amp;&amp; [ &quot;$nw_utils_ok&quot; -eq 1 ]
           then
           echo &quot;# mapping bootstrap values on UPGMA tree with nw_support ...&quot;
           nw_support &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph&quot; \
          &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; &gt; \
          &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph&quot;
 
-          if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph&quot; ] &amp;&amp; [[ $(type -P nw_display) ]]
+          if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph&quot; ] &amp;&amp; [[ $(type -P nw_display) ]] &amp;&amp; [ &quot;$nw_utils_ok&quot; -eq 1 ]
           then
               outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph&quot;
           
@@ -7754,7 +8119,7 @@ then
           #   before displaying with nw_display
           display_treeOK &quot;$nj_tree&quot;
           fi
-      elif [ -s &quot;${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile&quot; ] &amp;&amp; [[ ! $(type -P nw_support) ]]
+      elif [ -s &quot;${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile&quot; ] &amp;&amp; { [[ ! $(type -P nw_support) ]] || [ &quot;$nw_utils_ok&quot; -eq 0 ]; }
       then
                echo &quot;# extract_tree_from_outfile ${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile&quot;
            echo
@@ -7766,14 +8131,14 @@ then
            echo
       fi
      else
-         [ -s outtree ] &amp;&amp; mv outtree &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot;  &amp;&amp; \
+         [ -s outtree ] &amp;&amp; mv outtree &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot;      &amp;&amp; \
            outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot;
          [ -s outfile ] &amp;&amp; mv outfile &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile&quot; &amp;&amp; \
            outfiles[${#outfiles[*]}]=&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile&quot;
 
          # if we requested bootstrapping, map bootstrap values onto NJ tree using
          #   nw_support NJ.ph bootRepl_tree.ph &gt; NJ_with_boot_support.ph
-         if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; ] &amp;&amp; [[ $(type -P nw_support) ]]
+         if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; ] &amp;&amp; [[ $(type -P nw_support) ]] &amp;&amp; [ &quot;$nw_utils_ok&quot; -eq 1 ]
          then
              echo &quot;# mapping bootstrap values on NJ tree with nw_support ...&quot;
          nw_support &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph&quot; \
@@ -7782,7 +8147,7 @@ then
      
          check_output &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot;
      
-         if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot; ] &amp;&amp; [[ $(type -P nw_display) ]]
+         if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot; ] &amp;&amp; [[ $(type -P nw_display) ]] &amp;&amp; [ &quot;$nw_utils_ok&quot; -eq 1 ]
          then
              outfiles+=(&quot;${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph&quot;)
 
@@ -7792,7 +8157,7 @@ then
          #   before displaying with nw_display
          display_treeOK &quot;$nj_tree&quot;
          fi
-         elif [ -s &quot;${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile&quot; ] &amp;&amp; [[ ! $(type -P nw_support) ]]
+         elif [ -s &quot;${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile&quot; ] &amp;&amp; { [[ ! $(type -P nw_support) ]] || [ &quot;$nw_utils_ok&quot; -eq 0 ]; }
      then
 
                 echo &quot;# extract_tree_from_outfile ${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile&quot;
@@ -7951,9 +8316,56 @@ GDP_12_prokEuc_JTT06gamma_NJ_with_100boot_support.ph
    ==&gt; Exiting now ...
 </code></pre>
 </div>
+<div id="llamada-a-run_phylip-con-un-archivo-de-secuencias-fasta" class="section level3">
+<h3><span class="header-section-number">15.2.6</span> Llamada a <em>run_phylip</em> con un archivo de secuencias FASTA</h3>
+<p>El <span class="math inline">\(script\)</span> revisa que el archivo de entrada tenga formato PHYLIP, comprobando además que tenga al menos 4 secuencias y 5 columnas de datos de secuencia (caracteres)</p>
+<p>La función <span class="math inline">\(check\_phylip\_ok\)</span> es la encargada de ello:</p>
+<pre><code>function check_phylip_ok()
+{
+    # implements a rudimentary format validation check
+    local phyfile=$1
+    local num_tax=
+    local num_char=
+
+    num_tax=$(awk &#39;NR == 1 {print $1}&#39; &quot;$phyfile&quot;)
+    num_char=$(awk &#39;NR == 1 {print $2}&#39; &quot;$phyfile&quot;)
+    
+    if [[ ! &quot;$num_tax&quot; =~ ^([0-9]+)$ ]] ||  [[ ! &quot;$num_char&quot; =~ ^([0-9]+)$ ]]
+    then
+         echo &quot;ERROR: $phyfile is not a phylip-formatted input file!&quot;
+           echo
+           exit 1  
+    elif [[ &quot;$num_tax&quot; =~ ^([0-9]+)$ ]] &amp;&amp; [ &quot;$num_tax&quot; -lt 4 ]
+    then
+         echo &quot;ERROR: $phyfile should contain at least 4 taxa&quot;
+           exit 1
+    elif [[ &quot;$num_char&quot; =~ ^([0-9]+)$ ]] &amp;&amp; [ &quot;$num_char&quot; -lt 5 ]
+    then
+         echo &quot;ERROR: $phyfile should contain at least 5 aligned residues&quot;
+           exit 1
+    else
+        echo &quot;# File validation OK: $phyfile seems to be a standard phylip file ...&quot;
+        echo &#39;-------------------------------------------------------------------------------------------&#39;
+    fi
+}</code></pre>
+<p><code>./run_phylip.sh -i recA_Byuanmingense_muscle.aln -R 1</code></p>
+<pre><code>### run_phylip.sh v.1.5 run on 2020_11_15-20.10.11 with the following parameters:
+# work_directory=/home/vinuesa/cursos/intro2linux
+# input_phylip=recA_Byuanmingense_muscle.aln
+# model=F84 | gamma=0.0 | CV=1 | gammaf=00 | ti/tv ratio=2 |
+     outgroup=1 | UPGMA=0 | bootstrap no.=100 | ROI=12349
+# runmode=1
+# DEBUG=0
+# command: run_phylip.sh -i recA_Byuanmingense_muscle.aln -R 1
+
+
+# Run check_dependencies() ... looks good: all required external dependencies are in place!
+-------------------------------------------------------------------------------------------
+ERROR: recA_Byuanmingense_muscle.aln is not a phylip-formatted input file!</code></pre>
+</div>
 <div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-bajo-modelo-erróneo-de-dna" class="section level3">
-<h3><span class="header-section-number">15.2.6</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo modelo erróneo (de DNA)</h3>
-<p>Es <span class="math inline">\(script\)</span> revisa que el usuario use correctamente las opciones de modelos para DNA (-R 1) o proteína (-R 2), haciendo uso del código que se muestra seguidamente:</p>
+<h3><span class="header-section-number">15.2.7</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo modelo erróneo (de DNA)</h3>
+<p>El <span class="math inline">\(script\)</span> revisa que el usuario use correctamente las opciones de modelos para DNA (-R 1) o proteína (-R 2), haciendo uso del código que se muestra seguidamente:</p>
 <pre><code>if [ &quot;$runmode&quot; -eq 1 ] &amp;&amp; ([ &quot;$model&quot; = JTT ] || [ &quot;$model&quot; = PMG ] || [ &quot;$model&quot; = PAM ] || [ &quot;$model&quot; = &quot;$def_prot_model&quot; ])
 then
        echo
@@ -7993,7 +8405,7 @@ then
 <p>En este caso corre, pero vean que lo hace bajo ti/tv = 0, es decir, ignorando la opción inadecuada ya que ésta no se le pasa a <span class="math inline">\(protdist\)</span> para calcular las distancias.</p>
 </div>
 <div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-adn-con-valor-incorrecto-de-titv" class="section level3">
-<h3><span class="header-section-number">15.2.7</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de ADN con valor incorrecto de Ti/Tv</h3>
+<h3><span class="header-section-number">15.2.8</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de ADN con valor incorrecto de Ti/Tv</h3>
 <p>Vimos en el caso anterior que el <span class="math inline">\(script\)</span> simplemente ignora que se le pase <span class="math inline">\(-t\ valor\)</span> cuando se va a correr con proteínas. Pero en el caso de que el usuario corra con secuencias de DNA, entonces sí se debe revisar que el usuario provea de un valor razonable a la opción <span class="math inline">\(-t\)</span>. También revisa que no se pase <span class="math inline">\(-t\)</span> cuando los modelos especificados por el usuario son <em>Jukes-Cantor</em> o *LogDet.</p>
 <p>Esto lo hace con el siguiente código:</p>
 <pre><code># check that Ti/Tv is a real number, integer or decimal
@@ -8022,7 +8434,7 @@ fi
 ...</code></pre>
 </div>
 <div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-proteínas-bajo-con-número-de-réplicas-0-0-repl-100-o-1000-o-pasando-números-decimales-o-caracteres-no-numéricos." class="section level3">
-<h3><span class="header-section-number">15.2.8</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo con número de réplicas &lt;0, 0 &lt; repl &lt; 100, o &gt; 1000 o pasando números decimales o caracteres no numéricos.</h3>
+<h3><span class="header-section-number">15.2.9</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de proteínas bajo con número de réplicas &lt;0, 0 &lt; repl &lt; 100, o &gt; 1000 o pasando números decimales o caracteres no numéricos.</h3>
 <p>El <span class="math inline">\(script\)</span> hace uso del siguiente código para asegurarse que el usuario sólo le pasa íntegros positivos a la opción <span class="math inline">\(-b\)</span></p>
 <pre><code># check that bootstrap value is an integer
 re=&#39;^[0-9]+$&#39;
@@ -8059,7 +8471,7 @@ fi</code></pre>
 </code></pre>
 </div>
 <div id="verificación-de-que-el-modelo-o-matriz-pasados-por-el-usuario-al-script-con--m-modelo-son-los-que-puede-usar-phylip" class="section level3">
-<h3><span class="header-section-number">15.2.9</span> Verificación de que el modelo o matriz pasados por el usuario al <span class="math inline">\(script\)</span> con <span class="math inline">\(-m\ modelo\)</span> son los que puede usar PHYLIP</h3>
+<h3><span class="header-section-number">15.2.10</span> Verificación de que el modelo o matriz pasados por el usuario al <span class="math inline">\(script\)</span> con <span class="math inline">\(-m\ modelo\)</span> son los que puede usar PHYLIP</h3>
 <p>Los “dedazos” son comunes al teclear texto. El <span class="math inline">\(script\)</span> revisa que los nombres de los modelos o matrices recibidos sean los correctos.</p>
 <p><code>./run_phylip.sh -i GDP_12_prokEuc.phy -R 2 -m PBM</code> # PBM en vez de PMB</p>
 <pre><code># ERROR: PBM is not a recognized substitution matrix for protein sequences used by PHYLIP</code></pre>
@@ -8067,7 +8479,7 @@ fi</code></pre>
 <pre><code># ERROR: K2P is not a recognized substitution model for DNA sequences used by PHYLIP</code></pre>
 </div>
 <div id="comprobación-de-resultados" class="section level3">
-<h3><span class="header-section-number">15.2.10</span> Comprobación de resultados</h3>
+<h3><span class="header-section-number">15.2.11</span> Comprobación de resultados</h3>
 <p>Dado que <em>run_phylip.sh</em> sólo hace análisis de matrices de distancias, no puede obtener estimas de los valores adecuados de los parámetros de los modelos de sustitución. Para ello hay que usar el criterio de optimización de <em>máxima verosimilitud</em>. Por tanto el usuario debe pasas estos valores al programa, en base a su experiencia o conocimiento previo. A veces ciertas combinaciones de valores de los parámetros, particularmente <em>alpha</em> y <em>ti/tv</em> pueden estar tan desviados de los que se ajustan a los datos, que puede hacer imposible la estima de las distancias. PHYLIP automáticamente da valores de -1.000 a distancias que no pudo estimar. Por ello, es importante revisar las salidas del programa:</p>
 <ol style="list-style-type: decimal">
 <li>Comprobar que se hayan producido los archivos esperados después de la llamada de cada programa de PHYLIP</li>
@@ -8096,7 +8508,7 @@ ERROR: computed negative distances!
 <p>Estos son algunos ejemplos de cómo pueden programar una interfaz para que el programa, además de robusto, sea amigable y sencillo de usar para el usuario.</p>
 </div>
 <div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-cdss-dna-con-valores-por-defecto" class="section level3">
-<h3><span class="header-section-number">15.2.11</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con valores por defecto</h3>
+<h3><span class="header-section-number">15.2.12</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con valores por defecto</h3>
 <p>Veamos la salida de la siguiente llamada al <span class="math inline">\(script\)</span> usando el archivo clásico de secuencias nucleotídicas (gen mitocondrial COI) de primates (<em>primates.phy</em>; usado por Hasayaka et al. (1988). Molecular phylogeny and evolution of primate mitochondrial DNA. Mol. Biol. Evol. 5:626-644) y opciones por defecto.</p>
 <p><code>./run_phylip.sh -i primates.phy -R 1</code></p>
 <pre><code># DNA model set to default: F84...
@@ -8179,7 +8591,7 @@ primates_F8400gamma_NJ_with_100boot_support.ph
    </code></pre>
 </div>
 <div id="llamada-a-run_phylip-para-construir-filogenia-nj-de-cdss-dna-con-1000-réplicas-de-bootstrap-y-modelo-f84g-alpha0.2-y-tasa-de-titv-10" class="section level3">
-<h3><span class="header-section-number">15.2.12</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con 1000 réplicas de bootstrap y modelo F84+G (alpha=0.2) y tasa de ti/tv = 10</h3>
+<h3><span class="header-section-number">15.2.13</span> Llamada a <em>run_phylip</em> para construir filogenia NJ de CDSs (DNA) con 1000 réplicas de bootstrap y modelo F84+G (alpha=0.2) y tasa de ti/tv = 10</h3>
 <p>Veamos la salida de la siguiente llamada al <span class="math inline">\(script\)</span>, al que activamos la opción -D para que no borre los archivos de parámetros, los cuales desplegaremos también</p>
 <p><code>./run_phylip.sh -i primates.phy -R 1 -t 10 -g 0.2 -m F84 -b 1000 -D</code></p>
 <pre><code>### run_phylip.sh v.0.6 run on 2020_11_10-12.06.17 with the following parameters:
@@ -8267,7 +8679,7 @@ primates_F8403gamma_NJ_with_100boot_support.ph
 </ul>
 </div>
 <div id="despliegue-de-árboles-cuando-no-están-disponibles-los-binarios-nw_support-y-nw_display-del-paquete-newick-utilities" class="section level3">
-<h3><span class="header-section-number">15.2.13</span> Despliegue de árboles cuando no están disponibles los binarios <em>nw_support</em> y <em>nw_display</em> del paquete <strong>Newick utilities</strong></h3>
+<h3><span class="header-section-number">15.2.14</span> Despliegue de árboles cuando no están disponibles los binarios <em>nw_support</em> y <em>nw_display</em> del paquete <strong>Newick utilities</strong></h3>
 <p>en el bloque final de cada sección, el <span class="math inline">\(script\)</span> comproueba si están disponibles <em>nw_support</em> y <em>nw_display</em>, como se muestra abajo para el bloque de corrida NJ+Bootstrap</p>
 <pre><code>         if [ -s &quot;${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk&quot; ] &amp;&amp; [[ $(type -P nw_support) ]]
          then
@@ -8351,7 +8763,7 @@ primates_F8403gamma_NJ_with_100boot_support.ph
 </code></pre>
 </div>
 <div id="los-archivos-de-parámetros" class="section level3">
-<h3><span class="header-section-number">15.2.14</span> Los archivos de parámetros</h3>
+<h3><span class="header-section-number">15.2.15</span> Los archivos de parámetros</h3>
 <p>Si quieren ver los parámetros pasados a los programas del paquete PHYLIP, deberán correr con el flag -D activado, como hicimos en la última llamada al <span class="math inline">\(script\)</span>.</p>
 <p>Ello le indica que no borre los archivos de parámetros, los cuales podremos visualizar convenientemente con este simple bucle for.</p>
 <p><code>for f in *params; do echo “#$f”; cat $f; echo ‘——–’; done</code></p>
@@ -8378,10 +8790,10 @@ Y
 </div>
 </div>
 </div>
-<div id="consideraciones-finales-y-referencias-recomendadas-para-continuar-aprendiendo-bash" class="section level1">
-<h1><span class="header-section-number">16</span> Consideraciones finales y referencias recomendadas para continuar aprendiendo Bash</h1>
-<p>Llegamos al final de este tutorial, ¡¡¡enhorabuena!!! Has aprendido mucho, pero lo bueno es que queda todavía queda mucho camino por andar.</p>
-<p><span class="math inline">\(Bash\)</span> sin duda es muy útil si vas a usarlo como <em>lenguaje pegamento</em> para conectar múltiples utilerías o programas como demustra el <span class="math inline">\(script\)</span> <em>run_phylp.sh</em> que presentamos en la sección anterior, pero no es el apropiado para escribir programas complejos que tienen que hacer procesamiento numérico, gráfico, estadístico de datos, interactuar con bases de datos, <em>parsear</em> archivos de estructura compleja, etc. Para ello deberás aprender otros lenguajes más poderosos, capaces de manejar estructuras de datos complejas (multidimensionales como hashes de hashes, arreglos de hahes …) y que disponen de repositorios gigantescos de librerías o paquetes especializados de código todo lo que puedas imaginar. Pero aprender primero <span class="math inline">\(Shell\)</span> y <span class="math inline">\(AWK\)</span> es sin duda lo mejor que puedes hacer para iniciarte en la programación en sistemas UNIX o GNU/Linux. Te facilitará el camino posterior y te permitirá dominar el sistema operativo, ya que el <span class="math inline">\(Shell\)</span> es su interfaz programática.</p>
+<div id="consideraciones-finales-y-referencias-recomendadas-para-continuar-aprendiendo-programación-shell" class="section level1">
+<h1><span class="header-section-number">16</span> Consideraciones finales y referencias recomendadas para continuar aprendiendo programación <span class="math inline">\(Shell\)</span></h1>
+<p>Llegamos al final de este tutorial, ¡¡¡enhorabuena!!! Has aprendido mucho, pero lo bueno es que queda todavía queda un largo camino por andar.</p>
+<p><span class="math inline">\(Bash\)</span> sin duda es muy útil si vas a usarlo como <em>lenguaje pegamento</em> para conectar múltiples utilerías o programas como demuestra el <span class="math inline">\(script\)</span> <em>run_phylp.sh</em> que presentamos en la sección anterior, pero no es el apropiado para escribir programas complejos que tienen que hacer procesamiento numérico, gráfico, estadístico de datos, interactuar con bases de datos, <em>parsear</em> archivos de estructura compleja, etc. Para ello deberás aprender otros lenguajes más poderosos, capaces de manejar estructuras de datos complejas (multidimensionales como hashes de hashes, arreglos de hashes, etc.) y que disponen de repositorios gigantescos de librerías o paquetes especializados de código para todo lo que puedas imaginar. Pero aprender primero <span class="math inline">\(Shell\)</span> y <span class="math inline">\(AWK\)</span> es sin duda lo mejor que puedes hacer para iniciarte en la programación en sistemas UNIX o GNU/Linux. Te facilitará el camino posterior y te permitirá dominar el sistema operativo, ya que el <span class="math inline">\(Shell\)</span> es su interfaz programática.</p>
 <p>Recomiendo las siguientes guías para apoyarte en tu proceso de aprendizaje del <span class="math inline">\(Shell\)</span>. Disfruta el camino, saludos!</p>
 <ul>
 <li><a href="https://www.gnu.org/software/gawk/manual/gawk.html">The GNU Awk User’s Guide</a></li>
