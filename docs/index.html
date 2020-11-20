@@ -412,7 +412,7 @@ summary {
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="http://www.ccg.unan.mx/~vinuesa" class="uri">http://www.ccg.unan.mx/~vinuesa</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
-<h4 class="date">Versión: Tue Nov 17 17:51:38 2020</h4>
+<h4 class="date">Versión: Thu Nov 19 19:16:40 2020</h4>
 
 </div>
 
@@ -694,7 +694,7 @@ summary {
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
 <p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2020-11-17) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
+<p>Las versión actual (v.2020-11-19) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
@@ -889,8 +889,8 @@ ls | head</code></pre>
 ## data</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 100304
-## drwxr-xr-x 12 vinuesa vinuesa    20480 nov 17 17:47 .
+<pre><code>## total 100300
+## drwxr-xr-x 12 vinuesa vinuesa    20480 nov 19 19:13 .
 ## drwxr-xr-x  4 vinuesa vinuesa     4096 nov 11 22:55 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -933,8 +933,8 @@ ls -al | head -20</code></pre>
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
 ## drwxr-xr-x   4 root root  4096 nov 17 10:23 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4580 nov 17 13:25 dev
-## drwxr-xr-x 155 root root 12288 nov 17 10:23 etc
+## drwxr-xr-x  21 root root  4580 nov 19 17:36 dev
+## drwxr-xr-x 155 root root 12288 nov 19 17:39 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
 ## lrwxrwxrwx   1 root root     9 oct  4 14:42 lib32 -&gt; usr/lib32
@@ -1747,14 +1747,14 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 100276
+<pre><code>## total 100272
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-r--r-- 1 vinuesa vinuesa     5505 nov  7 22:55 bash_script_template_with_getopts.sh
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 nov 16 17:37 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 nov 17 17:51 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 nov 19 19:16 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-rw-r-- 1 vinuesa vinuesa     1335 nov 12 18:35 consensus_tre.nwk
 ## -rw-rw-r-- 1 vinuesa vinuesa     3663 nov  7 10:33 count_genome_features_for_taxon.awk</code></pre>
 <ul>
@@ -2136,7 +2136,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 nov 17 17:51 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 nov 19 19:16 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2155,7 +2155,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 17 17:51 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 19 19:16 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2284,15 +2284,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 17 17:51 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 nov 17 17:51 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 19 19:16 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 nov 19 19:16 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov 17 17:51 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 nov 19 19:16 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2386,9 +2386,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 17 17:47 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 17 17:51 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov 17 17:51 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov 19 19:16 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2409,9 +2409,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 17 17:47 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 17 17:51 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4729 nov 17 17:51 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4730 nov 19 19:16 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2421,10 +2421,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 17 17:47 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 17 17:51 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov 17 17:47 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov 17 17:51 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2434,11 +2434,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 nov 17 17:47 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 nov 17 17:51 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 17 17:47 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 nov 17 17:51 recA_Byuanmingense.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-mlocate-y-find" class="section level1">
@@ -2487,32 +2487,32 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 <pre class="bash"><code>df        </code></pre>
 <pre><code>## Filesystem      1K-blocks      Used  Available Use% Mounted on
 ## udev             16381128         0   16381128   0% /dev
-## tmpfs             3281908      2012    3279896   1% /run
-## /dev/nvme0n1p3  465889936  18522724  423631560   5% /
-## tmpfs            16409528     60228   16349300   1% /dev/shm
+## tmpfs             3281908      2028    3279880   1% /run
+## /dev/nvme0n1p3  465889936  18591380  423562904   5% /
+## tmpfs            16409528     53480   16356048   1% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409528         0   16409528   0% /sys/fs/cgroup
 ## /dev/loop0          56704     56704          0 100% /snap/core18/1885
-## /dev/loop1          56704     56704          0 100% /snap/core18/1932
-## /dev/loop2         223232    223232          0 100% /snap/gnome-3-34-1804/60
-## /dev/loop3          44288     44288          0 100% /snap/snap-store/415
-## /dev/loop5         166784    166784          0 100% /snap/gnome-3-28-1804/145
-## /dev/loop6         165376    165376          0 100% /snap/gnome-3-28-1804/128
-## /dev/loop4          31744     31744          0 100% /snap/snapd/9607
+## /dev/loop1         165376    165376          0 100% /snap/gnome-3-28-1804/128
+## /dev/loop3         261760    261760          0 100% /snap/gnome-3-34-1804/36
+## /dev/loop2          63616     63616          0 100% /snap/gtk-common-themes/1506
+## /dev/loop4          56704     56704          0 100% /snap/core18/1932
+## /dev/loop5          51968     51968          0 100% /snap/snap-store/481
+## /dev/loop6         223232    223232          0 100% /snap/gnome-3-34-1804/60
 ## /dev/nvme0n1p1    1994928      7984    1986944   1% /boot/efi
-## /dev/loop9          63616     63616          0 100% /snap/gtk-common-themes/1506
-## /dev/loop7         261760    261760          0 100% /snap/gnome-3-34-1804/36
-## /dev/loop8          51968     51968          0 100% /snap/snap-store/481
-## /dev/loop10         64896     64896          0 100% /snap/standard-notes/24
-## /dev/loop11         64896     64896          0 100% /snap/standard-notes/23
-## /dev/loop12         31744     31744          0 100% /snap/snapd/9721
-## /dev/sda1      1921802432 428452676 1395657700  24% /home
+## /dev/loop7          31744     31744          0 100% /snap/snapd/9607
+## /dev/loop8         166784    166784          0 100% /snap/gnome-3-28-1804/145
+## /dev/loop9          64896     64896          0 100% /snap/standard-notes/23
+## /dev/loop10         31744     31744          0 100% /snap/snapd/9721
+## /dev/loop11         44288     44288          0 100% /snap/snap-store/415
+## /dev/loop12         64896     64896          0 100% /snap/standard-notes/24
+## /dev/sda1      1921802432 428548212 1395562164  24% /home
 ## tmpfs             3281904        20    3281884   1% /run/user/125
-## tmpfs             3281904        52    3281852   1% /run/user/1000</code></pre>
+## tmpfs             3281904        40    3281864   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465889936 18522724 423631560   5% /</code></pre>
+## /dev/nvme0n1p3 465889936 18591380 423562904   5% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></h3>
 <p>Como cualquier comando, le podemos pasar opciones para adecuar mejor la salida a nuestra necesidad.</p>
@@ -2543,28 +2543,28 @@ df -h /home</code></pre>
 <pre><code>## Filesystem     1M-blocks    Used Available Use% Mounted on
 ## udev              15998M      0M    15998M   0% /dev
 ## tmpfs              3205M      2M     3204M   1% /run
-## /dev/nvme0n1p3   454971M  18089M   413703M   5% /
-## tmpfs             16025M     59M    15967M   1% /dev/shm
+## /dev/nvme0n1p3   454971M  18156M   413636M   5% /
+## tmpfs             16025M     53M    15973M   1% /dev/shm
 ## tmpfs                 5M      1M        5M   1% /run/lock
 ## tmpfs             16025M      0M    16025M   0% /sys/fs/cgroup
 ## /dev/loop0           56M     56M        0M 100% /snap/core18/1885
-## /dev/loop1           56M     56M        0M 100% /snap/core18/1932
-## /dev/loop2          218M    218M        0M 100% /snap/gnome-3-34-1804/60
-## /dev/loop3           44M     44M        0M 100% /snap/snap-store/415
-## /dev/loop5          163M    163M        0M 100% /snap/gnome-3-28-1804/145
-## /dev/loop6          162M    162M        0M 100% /snap/gnome-3-28-1804/128
-## /dev/loop4           31M     31M        0M 100% /snap/snapd/9607
+## /dev/loop1          162M    162M        0M 100% /snap/gnome-3-28-1804/128
+## /dev/loop3          256M    256M        0M 100% /snap/gnome-3-34-1804/36
+## /dev/loop2           63M     63M        0M 100% /snap/gtk-common-themes/1506
+## /dev/loop4           56M     56M        0M 100% /snap/core18/1932
+## /dev/loop5           51M     51M        0M 100% /snap/snap-store/481
+## /dev/loop6          218M    218M        0M 100% /snap/gnome-3-34-1804/60
 ## /dev/nvme0n1p1     1949M      8M     1941M   1% /boot/efi
-## /dev/loop9           63M     63M        0M 100% /snap/gtk-common-themes/1506
-## /dev/loop7          256M    256M        0M 100% /snap/gnome-3-34-1804/36
-## /dev/loop8           51M     51M        0M 100% /snap/snap-store/481
-## /dev/loop10          64M     64M        0M 100% /snap/standard-notes/24
-## /dev/loop11          64M     64M        0M 100% /snap/standard-notes/23
-## /dev/loop12          31M     31M        0M 100% /snap/snapd/9721
-## /dev/sda1       1876761M 418411M  1362947M  24% /home
+## /dev/loop7           31M     31M        0M 100% /snap/snapd/9607
+## /dev/loop8          163M    163M        0M 100% /snap/gnome-3-28-1804/145
+## /dev/loop9           64M     64M        0M 100% /snap/standard-notes/23
+## /dev/loop10          31M     31M        0M 100% /snap/snapd/9721
+## /dev/loop11          44M     44M        0M 100% /snap/snap-store/415
+## /dev/loop12          64M     64M        0M 100% /snap/standard-notes/24
+## /dev/sda1       1876761M 418505M  1362854M  24% /home
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392600M 437822M  1836197M  20% -
+## total           2392600M 437976M  1836043M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2584,8 +2584,8 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 209800   .
-## 205M .</code></pre>
+<pre><code>## 210748   .
+## 206M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
 </ul>
@@ -4216,9 +4216,9 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1836497 nov 17 17:47 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 1836336 nov 17 17:51 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   68106 nov 15 20:16 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  304527 nov 17 17:51 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  304018 nov 19 19:16 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  499749 nov 15 20:16 working_with_linux_commands.tex
 ## total size of working_with_linux_commands.* files is: 2.58 Mb</code></pre>
 <ul>
@@ -4831,7 +4831,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 5 
 ## ARGC = 5
-## [] [] [123] [9577]</code></pre>
+## [] [] [123] [5211]</code></pre>
 <ul>
 <li>Comentarios y preguntas
 <ul>
@@ -4876,7 +4876,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 3 
 ## ARGC = 3
-## [] [] [21757] []</code></pre>
+## [] [] [13143] []</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -4895,7 +4895,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 6 
 ## ARGC = 6
-## [] [] [123] [8020]</code></pre>
+## [] [] [123] [4163]</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -5819,7 +5819,7 @@ ubicación=CDMX
 dat=$(date | awk &#39;{print $2&quot;-&quot;$3&quot;-&quot;$4}&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in &lt;$wkdir&gt; at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;17-nov-2020&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;19-nov-2020&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
 <h2><span class="header-section-number">13.3</span> Modificación de variables y operaciones con ellas</h2>
@@ -5919,7 +5919,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 17 17:51 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 nov 19 19:16 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -6105,14 +6105,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov 17 17:51 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov 17 17:51 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov 17 17:51 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov 17 17:51 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov 17 17:51 recA_B_yuanmingense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov 17 17:51 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov 17 17:51 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov 17 17:51 recA_B_japonicum.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 nov 19 19:16 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 nov 19 19:16 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 nov 19 19:16 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 nov 19 19:16 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 nov 19 19:16 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 nov 19 19:16 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 nov 19 19:16 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 nov 19 19:16 recA_B_yuanmingense.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -6243,9 +6243,9 @@ echo &quot;$contador líneas contienen el patrón $patron&quot;
 <pre class="bash"><code>while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 19196
-## 21686
-## 25748</code></pre>
+<pre><code>## 31756
+## 29566
+## 27196</code></pre>
 <p>Los bucles <span class="math inline">\(until\)</span> son útiles para ejecutar un bucle hasta que se cumpla o no una determinada condición.</p>
 <p>Su sintaxis es idéntica al del bucle <span class="math inline">\(while\)</span>.</p>
 <p><code>until TEST-COMMAND; do CONSEQUENT-COMMANDS; done</code></p>
@@ -6253,9 +6253,9 @@ while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; bre
 <pre class="bash"><code>until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 16799
-## 15553
-## 6137</code></pre>
+<pre><code>## 20007
+## 14253
+## 7653</code></pre>
 </div>
 </div>
 <div id="estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" class="section level2">
@@ -7340,6 +7340,9 @@ function print_dev_history()
       diverse courses taught to undergrads at https://www.lcg.unam.mx
       and the International Workshops on Bioinformatics (TIB)
     
+    # v1.6 2020-11-19; * streamlined write_PHYLIP_param functions by grouping echo calls in { } &gt; params; avoiding concatenation 
+    #                  * improved description of write_PHYLIP_param functionality
+
     # v1.5 2020-11-15; * added check_phylip_ok to validate input phylip file with -ge 4 sequences and -ge 4 characters
     #                  * added remove_phylip_param_files
     #                  * added option -I to call print_install_notes
@@ -7621,7 +7624,7 @@ function remove_phylip_param_files()
 
 function write_dnadist_params
 {
-    #get the input runmodes, models, bootstrap no. ...
+    # writes a parameter file to run dnadist, based on provided arguments
     local model=$1
     local boot=$2
     local TiTv=$3
@@ -7629,29 +7632,28 @@ function write_dnadist_params
     local gamma=$5
     local CV=$6
 
-    # need to remove previous param file, since we are concatenating to it
-    [ -s dnadist.params ] &amp;&amp; rm dnadist.params
-    
-    #[ &quot;$gamma&quot; != 0 ] &amp;&amp; CV=$( gamma2CV $gamma )
-
     # Runmode 1 = dnadist 
-    [ &quot;$model&quot; = &#39;F84&#39; ]          &amp;&amp; touch dnadist.params
-    [ -z &quot;$model&quot; ]               &amp;&amp; touch dnadist.params 
-    [ &quot;$model&quot; = &#39;Kimura&#39; ]       &amp;&amp; echo &quot;D&quot;                 &gt;&gt; dnadist.params
-    [ &quot;$model&quot; = &#39;Jukes-Cantor&#39; ] &amp;&amp; echo -ne &quot;D\nD\n&quot;        &gt;&gt; dnadist.params
-    [ &quot;$model&quot; = &#39;LogDet&#39; ]       &amp;&amp; echo -ne &quot;D\nD\nD\n&quot;     &gt;&gt; dnadist.params
-    [ &quot;$TiTv&quot; != &quot;2&quot; ]            &amp;&amp; echo -ne &quot;T\n$TiTv\n&quot;    &gt;&gt; dnadist.params
-    [ &quot;$gamma&quot; != &quot;0&quot; ]           &amp;&amp; echo -ne &quot;G\n&quot;           &gt;&gt; dnadist.params
-    [ &quot;$boot&quot; -gt 0 ]             &amp;&amp; echo -ne &quot;M\nD\n$boot\n&quot; &gt;&gt; dnadist.params
-    [ &quot;$sequential&quot; -eq 1 ]       &amp;&amp; echo -ne &quot;I\n&quot;           &gt;&gt; dnadist.params
-                                     echo -ne &quot;Y\n&quot;           &gt;&gt; dnadist.params
-    [ &quot;$gamma&quot; != &quot;0&quot; ]           &amp;&amp; echo -ne &quot;$CV\n&quot;         &gt;&gt; dnadist.params
+    if [ &quot;$model&quot; = &#39;F84&#39; ] || [ -z &quot;$model&quot; ]
+    then 
+        {
+          [ &quot;$model&quot; = &#39;Kimura&#39; ]       &amp;&amp; echo &quot;D&quot;                 
+          [ &quot;$model&quot; = &#39;Jukes-Cantor&#39; ] &amp;&amp; echo -ne &quot;D\nD\n&quot;        
+          [ &quot;$model&quot; = &#39;LogDet&#39; ]       &amp;&amp; echo -ne &quot;D\nD\nD\n&quot;     
+          [ &quot;$TiTv&quot; != &quot;2&quot; ]            &amp;&amp; echo -ne &quot;T\n$TiTv\n&quot;    
+          [ &quot;$gamma&quot; != &quot;0&quot; ]           &amp;&amp; echo -ne &quot;G\n&quot;           
+          [ &quot;$boot&quot; -gt 0 ]             &amp;&amp; echo -ne &quot;M\nD\n$boot\n&quot; 
+          [ &quot;$sequential&quot; -eq 1 ]       &amp;&amp; echo -ne &quot;I\n&quot;           
+                                           echo -ne &quot;Y\n&quot;             
+          [ &quot;$gamma&quot; != &quot;0&quot; ]           &amp;&amp; echo -ne &quot;$CV\n&quot;         
+    
+        } &gt; dnadist.params
+   fi
 }
 #---------------------------------------------------------------------------------#
 
 function write_protdist_params
 {
-    #get the input runmodes, models and bootstrap no.
+    # writes a parameter file to run protdist, based on provided arguments
     # Models: JTT, PMB, PAM, Kimura
     local model=$1
     local boot=$2
@@ -7659,65 +7661,63 @@ function write_protdist_params
     local gamma=$4
     local CV=$5
 
-    # need to remove previous param file, since we are concatenating to it
-    [ -s protdist.params ] &amp;&amp; rm protdist.params
-    
-    # Runmode 2 = protdist 
-    [ &quot;$model&quot; = &#39;JTT&#39; ]     &amp;&amp; touch protdist.params
-    [ -z &quot;$model&quot; ]          &amp;&amp; touch protdist.params 
-    [ &quot;$model&quot; = &#39;PMB&#39; ]     &amp;&amp; echo &quot;P&quot;                 &gt;&gt; protdist.params
-    [ &quot;$model&quot; = &#39;PAM&#39; ]     &amp;&amp; echo -ne &quot;P\nP\n&quot;        &gt;&gt; protdist.params
-    [ &quot;$model&quot; = &#39;Kimura&#39; ]  &amp;&amp; echo -ne &quot;P\nP\nP\n&quot;     &gt;&gt; protdist.params
-    [ &quot;$gamma&quot; != &quot;0&quot; ]      &amp;&amp; echo -ne &quot;G\n&quot;           &gt;&gt; protdist.params
-    [ &quot;$boot&quot; -gt 0 ]        &amp;&amp; echo -ne &quot;M\nD\n$boot\n&quot; &gt;&gt; protdist.params
-    [ &quot;$sequential&quot; -eq 1 ]  &amp;&amp; echo -ne &quot;I\n&quot;           &gt;&gt; protdist.params
-                                echo -ne &quot;Y\n&quot;           &gt;&gt; protdist.params
-    [ &quot;$gamma&quot; != &quot;0&quot; ]      &amp;&amp; echo -ne &quot;$CV\n&quot;         &gt;&gt; protdist.params              
-
+    if [ &quot;$model&quot; = &#39;JTT&#39; ] || [ -z &quot;$model&quot; ]
+    then
+       { # Runmode 2 = protdist 
+         [ &quot;$model&quot; = &#39;PMB&#39; ]     &amp;&amp; echo &quot;P&quot;                 
+         [ &quot;$model&quot; = &#39;PAM&#39; ]     &amp;&amp; echo -ne &quot;P\nP\n&quot;        
+         [ &quot;$model&quot; = &#39;Kimura&#39; ]  &amp;&amp; echo -ne &quot;P\nP\nP\n&quot;     
+         [ &quot;$gamma&quot; != &quot;0&quot; ]      &amp;&amp; echo -ne &quot;G\n&quot;           
+         [ &quot;$boot&quot; -gt 0 ]        &amp;&amp; echo -ne &quot;M\nD\n$boot\n&quot; 
+         [ &quot;$sequential&quot; -eq 1 ]  &amp;&amp; echo -ne &quot;I\n&quot;    
+                                     echo -ne &quot;Y\n&quot;       
+         [ &quot;$gamma&quot; != &quot;0&quot; ]      &amp;&amp; echo -ne &quot;$CV\n&quot;                  
+       } &gt; protdist.params
+    fi  
 }
 #---------------------------------------------------------------------------------#
 
 function write_seqboot_params
 {
-    #get the input runmodes, models and bootstrap no.
+    # writes a parameter file to run seqboot, based on provided arguments
     local boot=$1
     local sequential=$2
     
-    # need to remove previous param file, since we are concatenating to it
-    [ -s seqboot.params ] &amp;&amp; rm seqboot.params
-
     # Write Seqboot params
-    [ &quot;$boot&quot; -gt 0 ]       &amp;&amp; echo -ne &quot;R\n$boot\n&quot; &gt;&gt; seqboot.params
-    [ &quot;$sequential&quot; -eq 1 ] &amp;&amp; echo -ne &quot;I\n&quot;        &gt;&gt; seqboot.params
-                               echo -ne &quot;Y\n&quot;        &gt;&gt; seqboot.params
-                   echo -ne &quot;$ROI\n&quot;     &gt;&gt; seqboot.params   
+    {
+      [ &quot;$boot&quot; -gt 0 ]       &amp;&amp; echo -ne &quot;R\n$boot\n&quot; 
+      [ &quot;$sequential&quot; -eq 1 ] &amp;&amp; echo -ne &quot;I\n&quot;        
+                                 echo -ne &quot;Y\n&quot;
+                                 echo -ne &quot;$ROI\n&quot;
+    } &gt; seqboot.params                
 }
 #---------------------------------------------------------------------------------#
 
 function write_neighbor_params
 {
-    #get the input runmodes, models and bootstrap no.
+    # writes a parameter file to run neighbor, based on provided arguments
     local boot=$1
     local upgma=$2
     local outgroup=$3
     
-    # need to remove previous param file, since we are concatenating to it
-    [ -s neighbor.params ] &amp;&amp; rm neighbor.params
-
-    # Write $ROI params
-    [ &quot;$upgma&quot; -gt 0 ]    &amp;&amp; echo -ne &quot;N\n&quot;                 &gt;&gt; neighbor.params
-    [ &quot;$outgroup&quot; -gt 1 ] &amp;&amp; echo -ne &quot;O\n$outgroup\n&quot;      &gt;&gt; neighbor.params
-    [ &quot;$boot&quot; -gt 0 ]     &amp;&amp; echo -ne &quot;M\n$boot\n$ROI\n&quot;    &gt;&gt; neighbor.params
-                             echo -ne &quot;Y\n&quot;                 &gt;&gt; neighbor.params
+    {
+       # Write $ROI params
+       [ &quot;$upgma&quot; -gt 0 ]    &amp;&amp; echo -ne &quot;N\n&quot;                 
+       [ &quot;$outgroup&quot; -gt 1 ] &amp;&amp; echo -ne &quot;O\n$outgroup\n&quot;      
+       [ &quot;$boot&quot; -gt 0 ]     &amp;&amp; echo -ne &quot;M\n$boot\n$ROI\n&quot;    
+                                echo -ne &quot;Y\n&quot;        
+    } &gt; neighbor.params
 }
 #---------------------------------------------------------------------------------#
 
 function write_consense_params
 {
-    #very difficult
+    #writes a parameter file to run consense; very difficult ;)
     [ -s consense.params ] &amp;&amp; rm consense.params
-    [ &quot;$outgroup&quot; -gt 1 ]  &amp;&amp; echo -ne &quot;O\n$outgroup\n&quot;  &gt;&gt; consense.params 
-                              echo -ne &quot;Y\n&quot;             &gt;&gt; consense.params
+    {
+      [ &quot;$outgroup&quot; -gt 1 ]  &amp;&amp; echo -ne &quot;O\n$outgroup\n&quot;  
+                                echo -ne &quot;Y\n&quot;           
+    } &gt; consense.params             
 }
 #---------------------------------------------------------------------------------#
 
