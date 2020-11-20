@@ -100,6 +100,7 @@ function print_dev_history()
       and the International Workshops on Bioinformatics (TIB)
     
     # v1.6 2020-11-19; * streamlined write_PHYLIP_param functions by grouping echo calls in { } > params; avoiding concatenation 
+    #                  * improved description of write_PHYLIP_param functionality
 
     # v1.5 2020-11-15; * added check_phylip_ok to validate input phylip file with -ge 4 sequences and -ge 4 characters
     #                  * added remove_phylip_param_files
@@ -323,9 +324,9 @@ done
 
 function check_matrix()
 {
+    # check that the distance matrix does not contain negative values due to wrong model parameters
     local matrix=$1
     
-    # check that the distance matrix does not contain negative values due to wrong model parameters
     if grep -El ' \-[0-9\.]+' "$matrix"
     then
         echo "ERROR: computed negative distances!" >&2
@@ -382,7 +383,7 @@ function remove_phylip_param_files()
 
 function write_dnadist_params
 {
-    #get the input runmodes, models, bootstrap no. ...
+    # writes a parameter file to run dnadist, based on provided arguments
     local model=$1
     local boot=$2
     local TiTv=$3
@@ -411,7 +412,7 @@ function write_dnadist_params
 
 function write_protdist_params
 {
-    #get the input runmodes, models and bootstrap no.
+    # writes a parameter file to run protdist, based on provided arguments
     # Models: JTT, PMB, PAM, Kimura
     local model=$1
     local boot=$2
@@ -437,7 +438,7 @@ function write_protdist_params
 
 function write_seqboot_params
 {
-    #get the input runmodes, models and bootstrap no.
+    # writes a parameter file to run seqboot, based on provided arguments
     local boot=$1
     local sequential=$2
     
@@ -453,7 +454,7 @@ function write_seqboot_params
 
 function write_neighbor_params
 {
-    #get the input runmodes, models and bootstrap no.
+    # writes a parameter file to run neighbor, based on provided arguments
     local boot=$1
     local upgma=$2
     local outgroup=$3
@@ -470,7 +471,7 @@ function write_neighbor_params
 
 function write_consense_params
 {
-    #very difficult ;)
+    #writes a parameter file to run consense; very difficult ;)
     [ -s consense.params ] && rm consense.params
     {
       [ "$outgroup" -gt 1 ]  && echo -ne "O\n$outgroup\n"  
