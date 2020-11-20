@@ -54,7 +54,7 @@ export LC_NUMERIC
 
 args="$*"
 progname=${0##*/} # run_phylip.sh
-VERSION=1.5 
+VERSION=1.6 
 
 # GLOBALS
 #DATEFORMAT_SHORT="%d%b%y" # 16Oct13
@@ -99,6 +99,8 @@ function print_dev_history()
       diverse courses taught to undergrads at https://www.lcg.unam.mx
       and the International Workshops on Bioinformatics (TIB)
     
+    # v1.6 2020-11-19; * streamlined write_PHYLIP_param functions by grouping echo calls in { } > params; avoiding concatenation 
+
     # v1.5 2020-11-15; * added check_phylip_ok to validate input phylip file with -ge 4 sequences and -ge 4 characters
     #                  * added remove_phylip_param_files
     #                  * added option -I to call print_install_notes
@@ -388,23 +390,22 @@ function write_dnadist_params
     local gamma=$5
     local CV=$6
 
-    # need to remove previous param file, since we are concatenating to it
-    [ -s dnadist.params ] && rm dnadist.params
-    
-    #[ "$gamma" != 0 ] && CV=$( gamma2CV $gamma )
-
     # Runmode 1 = dnadist 
-    [ "$model" = 'F84' ]          && touch dnadist.params
-    [ -z "$model" ]               && touch dnadist.params 
-    [ "$model" = 'Kimura' ]       && echo "D"                 >> dnadist.params
-    [ "$model" = 'Jukes-Cantor' ] && echo -ne "D\nD\n"        >> dnadist.params
-    [ "$model" = 'LogDet' ]       && echo -ne "D\nD\nD\n"     >> dnadist.params
-    [ "$TiTv" != "2" ]            && echo -ne "T\n$TiTv\n"    >> dnadist.params
-    [ "$gamma" != "0" ]           && echo -ne "G\n"           >> dnadist.params
-    [ "$boot" -gt 0 ]             && echo -ne "M\nD\n$boot\n" >> dnadist.params
-    [ "$sequential" -eq 1 ]       && echo -ne "I\n"           >> dnadist.params
-                                     echo -ne "Y\n"           >> dnadist.params
-    [ "$gamma" != "0" ]           && echo -ne "$CV\n"         >> dnadist.params
+    if [ "$model" = 'F84' ] || [ -z "$model" ]
+    then 
+        {
+          [ "$model" = 'Kimura' ]       && echo "D"                 
+          [ "$model" = 'Jukes-Cantor' ] && echo -ne "D\nD\n"        
+          [ "$model" = 'LogDet' ]       && echo -ne "D\nD\nD\n"     
+          [ "$TiTv" != "2" ]            && echo -ne "T\n$TiTv\n"    
+          [ "$gamma" != "0" ]           && echo -ne "G\n"           
+          [ "$boot" -gt 0 ]             && echo -ne "M\nD\n$boot\n" 
+          [ "$sequential" -eq 1 ]       && echo -ne "I\n"           
+                                           echo -ne "Y\n"             
+          [ "$gamma" != "0" ]           && echo -ne "$CV\n"         
+    
+        } > dnadist.params
+   fi
 }
 #---------------------------------------------------------------------------------#
 
@@ -418,21 +419,19 @@ function write_protdist_params
     local gamma=$4
     local CV=$5
 
-    # need to remove previous param file, since we are concatenating to it
-    [ -s protdist.params ] && rm protdist.params
-    
-    # Runmode 2 = protdist 
-    [ "$model" = 'JTT' ]     && touch protdist.params
-    [ -z "$model" ]          && touch protdist.params 
-    [ "$model" = 'PMB' ]     && echo "P"                 >> protdist.params
-    [ "$model" = 'PAM' ]     && echo -ne "P\nP\n"        >> protdist.params
-    [ "$model" = 'Kimura' ]  && echo -ne "P\nP\nP\n"     >> protdist.params
-    [ "$gamma" != "0" ]      && echo -ne "G\n"           >> protdist.params
-    [ "$boot" -gt 0 ]        && echo -ne "M\nD\n$boot\n" >> protdist.params
-    [ "$sequential" -eq 1 ]  && echo -ne "I\n"	         >> protdist.params
-                                echo -ne "Y\n"           >> protdist.params
-    [ "$gamma" != "0" ]      && echo -ne "$CV\n"         >> protdist.params				 
-
+    if [ "$model" = 'JTT' ] || [ -z "$model" ]
+    then
+       { # Runmode 2 = protdist 
+         [ "$model" = 'PMB' ]     && echo "P"                 
+         [ "$model" = 'PAM' ]     && echo -ne "P\nP\n"        
+         [ "$model" = 'Kimura' ]  && echo -ne "P\nP\nP\n"     
+         [ "$gamma" != "0" ]      && echo -ne "G\n"           
+         [ "$boot" -gt 0 ]        && echo -ne "M\nD\n$boot\n" 
+         [ "$sequential" -eq 1 ]  && echo -ne "I\n"    
+                                     echo -ne "Y\n"       
+         [ "$gamma" != "0" ]      && echo -ne "$CV\n"   			   
+       } > protdist.params
+    fi  
 }
 #---------------------------------------------------------------------------------#
 
@@ -442,14 +441,13 @@ function write_seqboot_params
     local boot=$1
     local sequential=$2
     
-    # need to remove previous param file, since we are concatenating to it
-    [ -s seqboot.params ] && rm seqboot.params
-
     # Write Seqboot params
-    [ "$boot" -gt 0 ]       && echo -ne "R\n$boot\n" >> seqboot.params
-    [ "$sequential" -eq 1 ] && echo -ne "I\n"        >> seqboot.params
-                               echo -ne "Y\n"	     >> seqboot.params
-			       echo -ne "$ROI\n"     >> seqboot.params   
+    {
+      [ "$boot" -gt 0 ]       && echo -ne "R\n$boot\n" 
+      [ "$sequential" -eq 1 ] && echo -ne "I\n"        
+                                 echo -ne "Y\n"
+                                 echo -ne "$ROI\n"
+    } > seqboot.params 			      
 }
 #---------------------------------------------------------------------------------#
 
@@ -460,23 +458,24 @@ function write_neighbor_params
     local upgma=$2
     local outgroup=$3
     
-    # need to remove previous param file, since we are concatenating to it
-    [ -s neighbor.params ] && rm neighbor.params
-
-    # Write $ROI params
-    [ "$upgma" -gt 0 ]    && echo -ne "N\n"                 >> neighbor.params
-    [ "$outgroup" -gt 1 ] && echo -ne "O\n$outgroup\n"      >> neighbor.params
-    [ "$boot" -gt 0 ]     && echo -ne "M\n$boot\n$ROI\n"    >> neighbor.params
-                             echo -ne "Y\n"                 >> neighbor.params
+    {
+       # Write $ROI params
+       [ "$upgma" -gt 0 ]    && echo -ne "N\n"                 
+       [ "$outgroup" -gt 1 ] && echo -ne "O\n$outgroup\n"      
+       [ "$boot" -gt 0 ]     && echo -ne "M\n$boot\n$ROI\n"    
+                                echo -ne "Y\n"        
+    } > neighbor.params
 }
 #---------------------------------------------------------------------------------#
 
 function write_consense_params
 {
-    #very difficult
+    #very difficult ;)
     [ -s consense.params ] && rm consense.params
-    [ "$outgroup" -gt 1 ]  && echo -ne "O\n$outgroup\n"  >> consense.params 
-                              echo -ne "Y\n"             >> consense.params
+    {
+      [ "$outgroup" -gt 1 ]  && echo -ne "O\n$outgroup\n"  
+                                echo -ne "Y\n"           
+    } > consense.params				
 }
 #---------------------------------------------------------------------------------#
 
