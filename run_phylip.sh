@@ -54,7 +54,7 @@ export LC_NUMERIC
 
 args="$*"
 progname=${0##*/} # run_phylip.sh
-VERSION=1.6 
+VERSION=2.0 
 
 # GLOBALS
 #DATEFORMAT_SHORT="%d%b%y" # 16Oct13
@@ -99,28 +99,36 @@ function print_dev_history()
       diverse courses taught to undergrads at https://www.lcg.unam.mx
       and the International Workshops on Bioinformatics (TIB)
     
+    # v2.0 2020-11-19; * fixed bug in write_protdist_params in the if [ $model == JTT ] || [ ...] conditional
+   		       * fixed an error in the model name input checks, changing PMG for PMB
+   		       * fixed grep in check_nw_utils_ok and made more robust conditional checking to call the function
+   		       * use variable expansion only once in naming outfiles outtress, saving it to a variable
+   			 to make the code more streamlined and possibly a tiny bit faster
+   		       * removed useless [ -s outtre|outfile ] tests for the orignal tress|outfiles in the bootstrapping block, 
+   			   as these are already checked in the first code block computing tress from the original alignment
+    
     # v1.6 2020-11-19; * streamlined write_PHYLIP_param functions by grouping echo calls in { } > params; avoiding concatenation 
     #                  * improved description of write_PHYLIP_param functionality
 
     # v1.5 2020-11-15; * added check_phylip_ok to validate input phylip file with -ge 4 sequences and -ge 4 characters
-    #                  * added remove_phylip_param_files
-    #                  * added option -I to call print_install_notes
-    #                  * added [ "${BASH_VERSION%%.*}" -lt 4 ] && die
-    #                  * makes more extensive use of internal Bash variables and variable expansions, including \${var/pattern/string}
+    		       * added remove_phylip_param_files
+    		       * added option -I to call print_install_notes
+    		       * added [ "${BASH_VERSION%%.*}" -lt 4 ] && die
+    		       * makes more extensive use of internal Bash variables and variable expansions, including \${var/pattern/string}
 
     # v1.4 2020-11-14; * added function check_nw_utils_ok, to check that nw_display and nw_support can be executed
-    #                    as they may be in path but cannot find /lib64/libc.so.6: version GLIBC_2.14
-    #                    when the binaries are compiled with dynamic linking to the libs
+    			  as they may be in path but cannot find /lib64/libc.so.6: version GLIBC_2.14
+    			  when the binaries are compiled with dynamic linking to the libs
     
     # v1.3 2020-11-14; * improved layout of output messages; 
-    #                  * improved regex in extract_tree_from_outfile (now also for NJ tree)
-    #                  * if nw_support and nw_display are not available, 
-    #                     prints both the NJ and boot trees to screen if bootstrap analysis was performed
+    		       * improved regex in extract_tree_from_outfile (now also for NJ tree)
+    		       * if nw_support and nw_display are not available, 
+    			 prints both the NJ and boot trees to screen if bootstrap analysis was performed
     
     # v1.2 2020-11-11; set and export LC_NUMERIC=en_US.UTF-8, to avoid problems with locales that use 1,32 instead of 1.32
     
     # v1.1  2020-11-11; added function extract_tree_from_oufile and calls it on NJ|UPGMA bootRepl consensus trees
-    #                      if nw_display is not available in PATH
+                          if nw_display is not available in PATH
     
     #v1.0  2020-11-09; This version has thorough error checking and reporting with improved code flow
          *  re-ingeneered the main code block. It now first runs the standard distance-matrix + clustering computations
@@ -297,7 +305,7 @@ function check_nw_utils_ok()
     if [ -s nw_utils_check.out.tmp ]
     then
            # set the nw_utils_ok flag to 0 if the lib is not found, to check later in the code when nw_support and nw_display are called
-           grep GLIBC nw_utils_check.out.tmp &> /dev/null
+           grep -i error nw_utils_check.out.tmp &> /dev/null
 	   nw_utils_ok=$? 
 	   [ "$nw_utils_ok" -eq 0 ] && echo "# WARNING: ${dependencies[*]} are in PATH but cannot find /lib64/libc.so.6: version GLIBC_2.14" >&2 
            rm nw_utils_check.out.tmp 
@@ -412,6 +420,7 @@ function write_dnadist_params
 
 function write_protdist_params
 {
+    # write_protdist_params "$model" "$boot" "$sequential" "$gamma" "$CV"
     # writes a parameter file to run protdist, based on provided arguments
     # Models: JTT, PMB, PAM, Kimura
     local model=$1
@@ -420,7 +429,7 @@ function write_protdist_params
     local gamma=$4
     local CV=$5
 
-    if [ "$model" = 'JTT' ] || [ -z "$model" ]
+    if [ "$model" = 'JTT' ] || [ -n "$model" ]
     then
        { # Runmode 2 = protdist 
          [ "$model" = 'PMB' ]     && echo "P"                 
@@ -670,7 +679,7 @@ fi
 
 # check model vs. runmode compatibility and suitable bootstrap values are provided
 #   using two alternative sintaxes for educational purposes
-if [ "$runmode" -eq 1 ] && { [ "$model" = JTT ] || [ "$model" = PMG ] || [ "$model" = PAM ] || [ "$model" = "$def_prot_model" ]; }
+if [ "$runmode" -eq 1 ] && { [ "$model" = JTT ] || [ "$model" = PMB ] || [ "$model" = PAM ] || [ "$model" = "$def_prot_model" ]; }
 then
        echo
        echo "# ERROR: $model is only valid when analyzing protein alignments under -R 2" >&2 
@@ -831,11 +840,12 @@ then
     # Set last item specifically
     # nstead of appending one element, set the last item specifically, without any "unbound variable" error
     # t[${#t[*]}]=foo
-    cp outfile "${input_phylip%.*}_${model}${gammaf}gamma_distMat.out" && \
-      outfiles+=("${input_phylip%.*}_${model}${gammaf}gamma_distMat.out")
+    dnadist_outfile="${input_phylip%.*}_${model}${gammaf}gamma_distMat.out"
+    cp outfile "$dnadist_outfile" && \
+      outfiles+=("$dnadist_outfile")
     
     # check that the distance matrix does not contain negative values due to wrong model parameters
-    check_matrix "${input_phylip%.*}_${model}${gammaf}gamma_distMat.out"    
+    check_matrix "$dnadist_outfile"    
     
     mv outfile infile
 elif [ "$runmode" -eq 2 ]
@@ -846,11 +856,12 @@ then
     protdist < protdist.params &> /dev/null
     check_output outfile
     
-    cp outfile "${input_phylip%.*}_${model}${gammaf}gamma_distMat.out" && \
-      outfiles+=("${input_phylip%.*}_${model}${gammaf}gamma_distMat.out")
+    protdist_outfile="${input_phylip%.*}_${model}${gammaf}gamma_distMat.out"
+    cp outfile "$protdist_outfile" && \
+      outfiles+=("$protdist_outfile")
     
     # check that the distance matrix does not contain negative values due to wrong model parameters
-    check_matrix "${input_phylip%.*}_${model}${gammaf}gamma_distMat.out"
+    check_matrix "$protdist_outfile"
     
     mv outfile infile
 fi
@@ -871,53 +882,72 @@ neighbor < neighbor.params &> /dev/null
 check_output outfile
 check_output outtree
 
-
 # 5.1 rename outtrees and tree outfiles; remap bootstrap values to bipartitions and display tree to screen
 if [ "$upgma" -gt 0 ]
 then
      # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
      # Set last item specifically
-     # nstead of appending one element, set the last item specifically, without any "unbound variable" error
+     # instead of appending one element, set the last item specifically, without any "unbound variable" error
      # t[${#t[*]}]=foo
-     [ -s outtree ] && mv outtree "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph"	    && \
-       outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph
-     [ -s outfile ] && mv outfile "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile" && \
-       outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
+     upgma_tree=
+     upgma_outfile=
      
-     upgma_tree="${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph"
-     echo "# wrote tree $upgma_tree to disk" 
+     if [ -s outtree ] 
+     then
+          upgma_tree="${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph"
+          mv outtree "$upgma_tree"
+	  echo "# wrote tree $upgma_tree to disk" 
+	  outfiles[${#outfiles[*]}]="$upgma_tree"
+     fi 
+     
+     if [ -s outfile ]
+     then
+         upgma_outfile="${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
+         mv outfile "$upgma_outfile"
+         outfiles[${#outfiles[*]}]="$upgma_outfile"
+     fi 
        
      # check that there are no negative branch lengths in the nj_tree
      #  and display with nw_display, only if no bootstrapping is requested
      if [ "$boot" -eq 0 ] && [[ $(type -P nw_display) ]] && [[ "$nw_utils_ok" -eq 1 ]]
      then 
          display_treeOK "$upgma_tree"
-     elif [ "$boot" -eq 0 ] && [[ ! $(type -P nw_display) ]]
+     elif [ "$boot" -eq 0 ] && { [[ ! $(type -P nw_display) ]] || [[ "$nw_utils_ok" -ne 1 ]]; }
      then
-          echo "# extract_tree_from_outfile ${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
+          echo "# extract_tree_from_outfile $upgma_outfile"
 	  echo
-	  extract_tree_from_outfile "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
+	  extract_tree_from_outfile "$upgma_outfile"
 	  echo
      fi	 
 else
-     [ -s outtree ] && mv outtree "${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"	 && \
-       outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"
-     [ -s outfile ] && mv outfile "${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile" && \
-       outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
+     nj_tree=
+     nj_outfile=
 
-     nj_tree="${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"
-     echo "# wrote tree $nj_tree to disk"
+     if [ -s outtree ] 
+     then
+	  nj_tree="${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"
+          mv outtree "$nj_tree"
+          echo "# wrote tree $nj_tree to disk"
+          outfiles[${#outfiles[*]}]="$nj_tree"
+     fi
+     
+     if [ -s outfile ] 
+     then
+          nj_outfile="${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
+          mv outfile "$nj_outfile"
+          outfiles[${#outfiles[*]}]="$nj_outfile"
+     fi
 
      # check that there are no negative branch lengths in the nj_tree
      #  and display with nw_display, only if no bootstrapping is requested
      if [ "$boot" -eq 0 ] && [[ $(type -P nw_display) ]] && [[ "$nw_utils_ok" -eq 1 ]]
      then
          display_treeOK "$nj_tree"
-     elif [ "$boot" -eq 0 ] && [[ ! $(type -P nw_display) ]]
+     elif [ "$boot" -eq 0 ] && { [[ ! $(type -P nw_display) ]] || [[ "$nw_utils_ok" -ne 1 ]]; }
      then
-         echo "# extract_tree_from_outfile ${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
+         echo "# extract_tree_from_outfile $nj_outfile"
 	 echo
-	 extract_tree_from_outfile "${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
+	 extract_tree_from_outfile "$nj_outfile"
 	 echo
      fi	 
 fi
@@ -1004,14 +1034,16 @@ then
      neighbor < neighbor.params &> /dev/null
      check_output outtree
      
+     boot_trees=
      if [ -s outtree ]
      then
 	 # this is the file holding the trees for the n-distance matrices for n-boot replicated alignments
-	 cp outtree "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk"
+	 boot_trees="${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk"
+	 cp outtree "$boot_trees"
 	 
 	 # append to array with +=, otherwise will complain as unset with set -u 
 	 # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
-	 outfiles+=("${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk")
+	 outfiles+=("$boot_trees")
      fi
      mv outtree intree
      rm outfile
@@ -1025,103 +1057,95 @@ then
      check_output outtree
      check_output outfile
      
-     if [ $upgma -gt 0 ]
+     # variables holding consensus trees
+     upgma_consensus_tree=
+     upgma_consensus_outfile=
+     nj_consensus_tree=
+     nj_consensus_outfile=
+
+     if [ "$upgma" -gt 0 ]
      then
 	 # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
          # Set last item specifically
-	 # nstead of appending one element, set the last item specifically, without any "unbound variable" error
+	 # instead of appending one element, set the last item specifically, without any "unbound variable" error
 	 # t[${#t[*]}]=foo
-	 mv outtree "${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.ph" && \
-	   outfiles[${#outfiles[*]}]=${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.ph
-    	 mv outfile "${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" && \
-	  outfiles[${#outfiles[*]}]="${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+	 upgma_consensus_tree="${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.ph"
+	 mv outtree "$upgma_consensus_tree"
+	 outfiles[${#outfiles[*]}]="$upgma_consensus_tree"
+    	 
+	 upgma_consensus_outfile="${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+	 mv outfile "$upgma_consensus_outfile"
+	 outfiles[${#outfiles[*]}]="$upgma_consensus_outfile"
      else
-	 mv outtree "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.ph" && \
-	  outfiles[${#outfiles[*]}]=${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.ph
-    	 mv outfile "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" && \
-	  outfiles[${#outfiles[*]}]="${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+         nj_consensus_tree="${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.ph"
+	 mv outtree "$nj_consensus_tree"
+	 outfiles[${#outfiles[*]}]="$nj_consensus_tree"
+    	 
+	 nj_consensus_outfile="${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+	 mv outfile "$nj_consensus_outfile"
+	 outfiles[${#outfiles[*]}]="$nj_consensus_outfile"
      fi 
 
      # 5. Rename outtrees and tree outfiles; remap bootstrap values to bipartitions and display tree on screen
      if [ "$upgma" -gt 0 ]
      then
-          # https://fvue.nl/wiki/Bash:_Error_%60Unbound_variable%27_when_appending_to_empty_array
-          # Set last item specifically
-          # nstead of appending one element, set the last item specifically, without any "unbound variable" error
-          # t[${#t[*]}]=foo
-          [ -s outtree ] && mv outtree "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph"	 && \
-            outfiles[${#outfiles[*]}]=${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph
-          [ -s outfile ] && mv outfile "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile" && \
-            outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
-       
           # if we requested bootstrapping, map bootstrap values onto UPGMA tree using
           #   nw_support upgma.ph bootRepl_tree.ph > UPGMA_with_boot_support.ph
-          if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk" ] && [[ $(type -P nw_support) ]] && [ "$nw_utils_ok" -eq 1 ]
+          if [ -s "$upgma_tree" ] && [ -s "$boot_trees" ] && [[ $(type -P nw_support) ]] && [ "$nw_utils_ok" -eq 1 ]
           then
+	      upgma_tree_with_boot="${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph"
 	      echo "# mapping bootstrap values on UPGMA tree with nw_support ..."
-	      nw_support "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.ph" \
-	     "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk" > \
-	     "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph"
+	      nw_support "$upgma_tree" "$boot_trees" > "$upgma_tree_with_boot"
 
-	      if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph" ] && [[ $(type -P nw_display) ]] && [ "$nw_utils_ok" -eq 1 ]
+	      if [ -s "$upgma_tree_with_boot" ] && [[ $(type -P nw_display) ]] && [ "$nw_utils_ok" -eq 1 ]
 	      then
-	          outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph"
-		  
-		  nj_tree="${input_phylip%.*}_${model}${gammaf}gamma_UPGMA_with_${boot}boot_support.ph"
+	          outfiles[${#outfiles[*]}]="$upgma_tree_with_boot"
 	          
 		  # check that there are no negative branch lengths in the nj_tree 
 		  #   before displaying with nw_display
-		  display_treeOK "$nj_tree"
+		  display_treeOK "$upgma_tree_with_boot"
 	      fi
-	  elif [ -s "${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && { [[ ! $(type -P nw_support) ]] || [ "$nw_utils_ok" -eq 0 ]; }
+	  elif [ -s "$upgma_outfile" ] && [ -s "$upgma_consensus_outfile" ] && { [[ ! $(type -P nw_support) ]] || [ "$nw_utils_ok" -ne 1 ]; }
 	  then
-               echo "# extract_tree_from_outfile ${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
+               echo "# extract_tree_from_outfile $upgma_outfile"
 	       echo
-	       extract_tree_from_outfile "${input_phylip%.*}_${model}${gammaf}gamma_UPGMA.outfile"
+	       extract_tree_from_outfile "$upgma_outfile"
 	       echo
-	       echo "# extract_tree_from_outfile ${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+	       echo "# extract_tree_from_outfile $upgma_consensus_outfile"
 	       echo
-	       extract_tree_from_outfile "${input_phylip%.*}_UPGMAconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+	       extract_tree_from_outfile "$upgma_consensus_outfile"
 	       echo
 	  fi
      else
-         [ -s outtree ] && mv outtree "${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"	     && \
-           outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph"
-         [ -s outfile ] && mv outfile "${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile" && \
-           outfiles[${#outfiles[*]}]="${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
-
          # if we requested bootstrapping, map bootstrap values onto NJ tree using
          #   nw_support NJ.ph bootRepl_tree.ph > NJ_with_boot_support.ph
-         if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk" ] && [[ $(type -P nw_support) ]] && [ "$nw_utils_ok" -eq 1 ]
+         if [ -s "$nj_tree" ] && [ -s "$boot_trees" ] && [[ $(type -P nw_support) ]] && [ "$nw_utils_ok" -eq 1 ]
          then
-             echo "# mapping bootstrap values on NJ tree with nw_support ..."
-	     nw_support "${input_phylip%.*}_${model}${gammaf}gamma_NJ.ph" \
-	     "${input_phylip%.*}_${model}${gammaf}gamma_${boot}bootRepl_trees.nwk" > \
-	     "${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph"
+             nj_tree_with_boot="${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph"
+	     echo "# mapping bootstrap values on NJ tree with nw_support ..."
+	     nw_support "$nj_tree" "$boot_trees" > "$nj_tree_with_boot"
 	 
-	     check_output "${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph"
+	     check_output "$nj_tree_with_boot"
 	 
-	     if [ -s "${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph" ] && [[ $(type -P nw_display) ]] && [ "$nw_utils_ok" -eq 1 ]
+	     if [ -s "$nj_tree_with_boot" ] && [[ $(type -P nw_display) ]] && [ "$nw_utils_ok" -eq 1 ]
 	     then
-	         outfiles+=("${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph")
-
-	         nj_tree="${input_phylip%.*}_${model}${gammaf}gamma_NJ_with_${boot}boot_support.ph"
+	         outfiles+=("$nj_tree_with_boot")
 	         
 		 # check that there are no negative branch lengths in the nj_tree 
 		 #   before displaying with nw_display
-		 display_treeOK "$nj_tree"
+		 display_treeOK "$nj_tree_with_boot"
 	     fi
-    	 elif [ -s "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile" ] && { [[ ! $(type -P nw_support) ]] || [ "$nw_utils_ok" -eq 0 ]; }
+    	 elif [ -s "$nj_outfile" ] && [ -s "$nj_consensus_outfile" ] && { [[ ! $(type -P nw_support) ]] || [ "$nw_utils_ok" -ne 1 ]; }
 	 then
 
-                echo "# extract_tree_from_outfile ${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
+                echo "# extract_tree_from_outfile $nj_outfile"
 	        echo
-	        extract_tree_from_outfile "${input_phylip%.*}_${model}${gammaf}gamma_NJ.outfile"
+	        extract_tree_from_outfile "$nj_outfile"
 		echo
 
-		echo "# extract_tree_from_outfile ${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+		echo "# extract_tree_from_outfile $nj_consensus_outfile"
 		echo
-		extract_tree_from_outfile "${input_phylip%.*}_NJconsensus_${model}${gammaf}gamma_${boot}bootRepl.outfile"
+		extract_tree_from_outfile "$nj_consensus_outfile"
 		echo
          fi
     fi
