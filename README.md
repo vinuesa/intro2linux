@@ -88,7 +88,7 @@ En este repositorio encontrarás dos tutoriales:
 - uno corto y básico en formato pdf para los que nunca han trabajado antes con la cosola de comandos 
 - otro extenso y avanzado en formato html
 
-## Tutorial corto básico para los que nunca han trabajado antes con la línea de comandos de UNIX o GNU/Linux
+## Tutorial corto básico para los que nunca han trabajado antes con la l&iacute;nea de comandos de UNIX o GNU/Linux
 Se describen los siguientes conceptos b&aacute;sicos:
 - Qu&eacute; es el bioc&oacute;mputo?
 - Qu&eacute; es GNU/Linux?
@@ -97,8 +97,8 @@ Se describen los siguientes conceptos b&aacute;sicos:
 - Revisaremos comandos b&aacute;sicos y c&oacute;mo moverte por el sistema de archivos
   + [Primer contacto con Linux - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf)
 
-## Tutoral extenso y avanzado de comandos GNU/Linux con aplicaciones para bioinformática
-- [Tutorial de introducción al biocómputo en sistemas GNU/Linux - html](https://vinuesa.github.io/docs/intro2linux/)
+## Tutoral extenso y avanzado de comandos GNU/Linux con aplicaciones para bioinform&aacute;tica
+- [Tutorial de introducción al biocómputo en sistemas GNU/Linux - html](https://vinuesa.github.io//intro2linux/)
 
 <!--
 #### Pr&aacute;ctica 2. Descarga de secuencias en formato FASTA de GenBank usando el sistema ENTREZ y parseo de los archivos usando herrramientas de filtrado
