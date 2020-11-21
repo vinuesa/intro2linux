@@ -33,7 +33,7 @@
 #           https://github.com/vinuesa/intro2linux/tree/master/bin  
 
 #: TODO:
-#    implement also FM, ME, parsimony and ML analyses; 
+#    implement also parsimony and ML analyses and parallelize bootstrapping
 
 #: KNOWN BUGS: None.
 #    Please report any errors you may encounter through the GitHub issue pages
@@ -98,6 +98,9 @@ function print_dev_history()
       with improvements/new features added as the script was used in 
       diverse courses taught to undergrads at https://www.lcg.unam.mx
       and the International Workshops on Bioinformatics (TIB)
+      
+    TODO: * implement also parsimony and ML analyses
+          * parallelize bootstrapping  
     
     # v2.0 2020-11-19; * fixed bug in write_protdist_params in the if [ $model == JTT ] || [ ...] conditional
    		       * fixed an error in the model name input checks, changing PMG for PMB
