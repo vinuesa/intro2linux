@@ -98,7 +98,7 @@ Se describen los siguientes conceptos b&aacute;sicos:
   + [Primer contacto con Linux - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf)
 
 ## Tutoral extenso y avanzado de comandos GNU/Linux con aplicaciones para bioinformática
-- [Tutorial de introducción al biocómputo en sistemas GNU/Linux - html](https://vinuesa.github.io/intro2linux/)
+- [Tutorial de introducción al biocómputo en sistemas GNU/Linux - html](https://vinuesa.github.io/docs/intro2linux/)
 
 <!--
 #### Pr&aacute;ctica 2. Descarga de secuencias en formato FASTA de GenBank usando el sistema ENTREZ y parseo de los archivos usando herrramientas de filtrado
