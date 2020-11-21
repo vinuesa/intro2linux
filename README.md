@@ -17,7 +17,7 @@ Aprender&aacute;s todo lo necesario para un arranque r&aacute;pido, &uacute;til,
 - [Licenciatura en Ciencias Genómicas LCG-UNAM](https://www.lcg.unam.mx)
 - [Taller de Ciencias Genómicas, Facultad de Ciencias UNAM](https://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/)
 
-v.2020-11-15
+v.2020-11-21
 
 ***
  
