@@ -17,7 +17,7 @@ Aprender&aacute;s todo lo necesario para un arranque r&aacute;pido, &uacute;til,
 - [Licenciatura en Ciencias Genómicas LCG-UNAM](https://www.lcg.unam.mx)
 - [Taller de Ciencias Genómicas, Facultad de Ciencias UNAM](https://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/)
 
-v.2020-11-21
+v.2020-11-25
 
 ***
  
@@ -98,7 +98,7 @@ Se describen los siguientes conceptos b&aacute;sicos:
   + [Primer contacto con Linux - PDF](https://github.com/vinuesa/intro2linux/tree/master/docs/intro_biocomputo_Linux.pdf)
 
 ## Tutoral extenso y avanzado de comandos GNU/Linux con aplicaciones para bioinform&aacute;tica
-- [Tutorial de introducción al biocómputo en sistemas GNU/Linux - html](https://vinuesa.github.io//intro2linux/)
+- [Tutorial de introducción al biocómputo en sistemas GNU/Linux - html](https://vinuesa.github.io/intro2linux/index.html)
 
 <!--
 #### Pr&aacute;ctica 2. Descarga de secuencias en formato FASTA de GenBank usando el sistema ENTREZ y parseo de los archivos usando herrramientas de filtrado
