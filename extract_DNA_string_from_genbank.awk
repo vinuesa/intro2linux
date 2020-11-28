@@ -17,12 +17,14 @@ BEGIN {
    # print the gbk basename as the FASTA header
    input_gbk=ARGV[1]
    gsub(/\..*$/, "", input_gbk)   
-   print ">"input_gbk
+   #print ">"input_gbk
 }
 
+# capture the locus ID on the first line to add to the FASTA header
 # skip all lines, from the first record (line) to the ORIGIN flag,
 #   which precede the sequnce string to be extracted
 # Note the use of an expr-REGEXP range: expr, /regexp/
+NR == 1 { locus_id = $2; print ">"locus_id"|"input_gbk }
 NR == 1, /^ORIGIN/ { next } 
 
 # remove spaces and digits preceding sequence strings
@@ -40,5 +42,4 @@ function Usage_Exit() {
   printf "\t%s %s\n\n",  progname, "genbank_file.gbk"   
   
   exit 0
-
 }
