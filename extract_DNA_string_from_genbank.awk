@@ -9,10 +9,10 @@
 BEGIN {
 
    progname="extract_DNA_string_from_genbank.awk"
-   VERSION=0.1  # Nov 27, 2020
+   VERSION=0.2  # Nov 28, 2020
 
    if(ARGC < 2) # needs the genbank file to process as single argument on the command line
-        Usage_Exit()    
+        Usage_Exit(progname, VERSION)    
 	
    # print the gbk basename as the FASTA header
    input_gbk=ARGV[1]
@@ -34,12 +34,12 @@ NR == 1, /^ORIGIN/ { next }
 # skip any empty lines and convert sequence strings to uppercase
 NF > 0 { print toupper($0)}
 
-function Usage_Exit() {
+function Usage_Exit(prog, vers) {
   
   print "# AIM: extracts the DNA string from a GenBank file and prints to STDOUT"
-  print "# NOTE", progname, "v"VERSION, "assumes that the input GenBank file contains a single sequence record or LOCUS"  
-  print "# USAGE of", progname, "v"VERSION":" 
-  printf "\t%s %s\n\n",  progname, "genbank_file.gbk"   
+  print "# NOTE", prog, "v"vers, "assumes that the input GenBank file contains a single sequence record or LOCUS"  
+  print "# USAGE of", prog, "v"vers":" 
+  printf "\t%s %s\n\n",  prog, "genbank_file.gbk"   
   
   exit 0
 }
