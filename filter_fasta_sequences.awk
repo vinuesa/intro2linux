@@ -10,25 +10,26 @@
 
 BEGIN {
          progname = "filter_fasta_sequences.awk"
-         version  = 0.2  # nov 04, 2020
+         version  = 0.3  # dec 02, 2020
          
          if  (ARGC < 2) Usage_Exit(progname, version)
 
-         # Capturamos la cadena que vamos a usar para filtrar
+         # save te filtering string in variable s
          s = ARGV [1]
          
-         # y borramos el primer argumento para que awk no lo trate como un archivo
-         #  e intente abrirlo. 
+         # delete this first argument with delete.
+	 # This is to avoid that in the main block below, 
+	 # the command interpreter treats it as a file 
          delete ARGV [1];
          
 	 RS=">"
 }
 
 # MAIN; if line matches filtering string, print record ;)
-$0~s{print ">"$0}
+$0 ~ s { print ">"$0 }
 
 # function definition
-function  Usage_Exit  (prog, vers) {
+function  Usage_Exit(prog, vers) {
  
    print "# USAGE FOR", prog, "v"vers > "/dev/stderr"
    print  prog, "<filtering_string>  <multifasta_file>" > "/dev/stderr"
