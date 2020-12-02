@@ -412,7 +412,7 @@ summary {
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="https://www.ccg.unam.mx/~vinuesa/" class="uri">https://www.ccg.unam.mx/~vinuesa/</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
-<h4 class="date">Versión: Tue Dec 1 19:42:31 2020</h4>
+<h4 class="date">Versión: Tue Dec 1 20:59:07 2020</h4>
 
 </div>
 
@@ -600,12 +600,11 @@ summary {
 </ul></li>
 <li><a href="#awk-scripts"><span class="toc-section-number">11.7</span> <strong><span class="math inline">\(awk\)</span> scripts</strong></a><ul>
 <li><a href="#paso-de-variables-argumentos-y-archivos-a-scripts-de-awk-y-uso-de-los-arreglos-argc-y-argv"><span class="toc-section-number">11.7.1</span> Paso de variables, argumentos y archivos a <span class="math inline">\(scripts\)</span> de <span class="math inline">\(awk\)</span> y uso de los arreglos <span class="math inline">\(ARGC\)</span> y <span class="math inline">\(ARGV\)</span></a></li>
-<li><a href="#condicionales-if-if-else-if-if-else-if-else"><span class="toc-section-number">11.7.2</span> Condicionales: if; if-else if; if-else if-else</a></li>
-<li><a href="#el-script-count_genome_features_for_taxon.awk"><span class="toc-section-number">11.7.3</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></a></li>
-<li><a href="#shebang-line-usrbinawk-y-scripts-autocontenidos-el-script-filter_fasta_sequences.awk"><span class="toc-section-number">11.7.4</span> Shebang line <strong>#!/usr/bin/awk</strong> y scripts autocontenidos: el <span class="math inline">\(script\)</span> <strong>filter_fasta_sequences.awk</strong></a></li>
-<li><a href="#filtra-un-archivo-multifasta-usando-un-hash-y-una-lista-de-etiquetas-con-get_sequences_from_list.awk"><span class="toc-section-number">11.7.5</span> Filtra un archivo multifasta usando un <span class="math inline">\(hash\)</span> y una lista de etiquetas con <em>get_sequences_from_list.awk</em></a></li>
-<li><a href="#el-script-translate_dna.awk-integración-de-condicionales-bucles-y-funciones"><span class="toc-section-number">11.7.6</span> El script <em>translate_dna.awk</em>: integración de condicionales, bucles y funciones</a></li>
-<li><a href="#retos-de-programación-awk"><span class="toc-section-number">11.7.7</span> Retos de programación <span class="math inline">\(awk\)</span></a></li>
+<li><a href="#el-script-count_genome_features_for_taxon.awk"><span class="toc-section-number">11.7.2</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></a></li>
+<li><a href="#shebang-line-usrbinawk-y-scripts-autocontenidos-el-script-filter_fasta_sequences.awk"><span class="toc-section-number">11.7.3</span> Shebang line <strong>#!/usr/bin/awk</strong> y scripts autocontenidos: el <span class="math inline">\(script\)</span> <strong>filter_fasta_sequences.awk</strong></a></li>
+<li><a href="#filtra-un-archivo-multifasta-usando-un-hash-y-una-lista-de-etiquetas-con-get_sequences_from_list.awk"><span class="toc-section-number">11.7.4</span> Filtra un archivo multifasta usando un <span class="math inline">\(hash\)</span> y una lista de etiquetas con <em>get_sequences_from_list.awk</em></a></li>
+<li><a href="#el-script-translate_dna.awk-integración-de-condicionales-bucles-y-funciones"><span class="toc-section-number">11.7.5</span> El script <em>translate_dna.awk</em>: integración de condicionales, bucles y funciones</a></li>
+<li><a href="#retos-de-programación-awk"><span class="toc-section-number">11.7.6</span> Retos de programación <span class="math inline">\(awk\)</span></a></li>
 </ul></li>
 <li><a href="#tutoriales-recomendados-para-profundizar-en-awk"><span class="toc-section-number">11.8</span> Tutoriales recomendados para profundizar en AWK</a></li>
 </ul></li>
@@ -964,7 +963,7 @@ ls | head</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
 <pre><code>## total 101344
-## drwxr-xr-x 12 vinuesa vinuesa    20480 dic  1 19:35 .
+## drwxr-xr-x 12 vinuesa vinuesa    20480 dic  1 20:47 .
 ## drwxr-xr-x  4 vinuesa vinuesa     4096 nov 11 22:55 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -973,7 +972,7 @@ ls -al | head -20</code></pre>
 ## -rwxr-xr-x  1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r--  1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
 ## -rw-rw-r--  1 vinuesa vinuesa     1335 nov 12 18:35 consensus_tre.nwk
-## -rw-rw-r--  1 vinuesa vinuesa     3663 nov  7 10:33 count_genome_features_for_taxon.awk
+## -rw-rw-r--  1 vinuesa vinuesa     3715 dic  1 20:47 count_genome_features_for_taxon.awk
 ## -rw-rw-r--  1 vinuesa vinuesa     3460 nov  7 11:26 count_genome_features_for_taxon_V2.awk
 ## drwxrwxr-x  2 vinuesa vinuesa     4096 nov 10 21:22 data
 ## -rw-rw-r--  1 vinuesa vinuesa       43 nov  4 19:20 dna_string.txt
@@ -1828,9 +1827,9 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 nov 16 17:37 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 dic  1 19:42 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 dic  1 20:59 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rw-rw-r-- 1 vinuesa vinuesa     1335 nov 12 18:35 consensus_tre.nwk
-## -rw-rw-r-- 1 vinuesa vinuesa     3663 nov  7 10:33 count_genome_features_for_taxon.awk</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa     3715 dic  1 20:47 count_genome_features_for_taxon.awk</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
 </ul>
@@ -2216,7 +2215,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 dic  1 19:42 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 dic  1 20:59 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2235,7 +2234,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic  1 19:42 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic  1 20:59 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2364,15 +2363,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic  1 19:42 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 dic  1 19:42 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic  1 20:59 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 dic  1 20:59 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 dic  1 19:42 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 dic  1 20:59 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2466,9 +2465,9 @@ ls *fna                      # se empaca una copia de los archivos *fna, los cua
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 dic  1 19:34 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 dic  1 20:47 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4729 dic  1 19:42 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4729 dic  1 20:59 fna_files.tgz
 ## ----------------------------
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
@@ -2489,9 +2488,9 @@ ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 dic  1 19:34 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 dic  1 20:47 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4729 dic  1 19:42 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4729 dic  1 20:59 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2501,10 +2500,10 @@ gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 dic  1 19:34 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 dic  1 20:47 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 dic  1 19:34 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 dic  1 20:47 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2514,11 +2513,11 @@ gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 dic  1 19:34 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 dic  1 20:47 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 dic  1 19:34 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 dic  1 20:47 recA_Byuanmingense.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-mlocate-y-find" class="section level1">
@@ -2568,8 +2567,8 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 <pre><code>## Filesystem      1K-blocks      Used  Available Use% Mounted on
 ## udev             16381120         0   16381120   0% /dev
 ## tmpfs             3281912      2012    3279900   1% /run
-## /dev/nvme0n1p3  465889936  19521528  422632756   5% /
-## tmpfs            16409540    133700   16275840   1% /dev/shm
+## /dev/nvme0n1p3  465889936  19521540  422632744   5% /
+## tmpfs            16409540     50612   16358928   1% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409540         0   16409540   0% /sys/fs/cgroup
 ## /dev/loop0          56704     56704          0 100% /snap/core18/1885
@@ -2587,13 +2586,13 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 ## /dev/loop11         65792     65792          0 100% /snap/standard-notes/27
 ## /dev/loop12         51968     51968          0 100% /snap/snap-store/481
 ## /dev/loop13         52352     52352          0 100% /snap/snap-store/498
-## /dev/sda1      1921802432 429434076 1394676300  24% /home
+## /dev/sda1      1921802432 429435768 1394674608  24% /home
 ## tmpfs             3281908        20    3281888   1% /run/user/125
-## tmpfs             3281908        44    3281864   1% /run/user/1000</code></pre>
+## tmpfs             3281908        48    3281860   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465889936 19521528 422632756   5% /</code></pre>
+## /dev/nvme0n1p3 465889936 19521540 422632744   5% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></h3>
 <p>Como cualquier comando, le podemos pasar opciones para adecuar mejor la salida a nuestra necesidad.</p>
@@ -2624,8 +2623,8 @@ df -h /home</code></pre>
 <pre><code>## Filesystem     1M-blocks    Used Available Use% Mounted on
 ## udev              15998M      0M    15998M   0% /dev
 ## tmpfs              3205M      2M     3204M   1% /run
-## /dev/nvme0n1p3   454971M  19064M   412728M   5% /
-## tmpfs             16025M    131M    15895M   1% /dev/shm
+## /dev/nvme0n1p3   454971M  19065M   412728M   5% /
+## tmpfs             16025M     50M    15976M   1% /dev/shm
 ## tmpfs                 5M      1M        5M   1% /run/lock
 ## tmpfs             16025M      0M    16025M   0% /sys/fs/cgroup
 ## /dev/loop0           56M     56M        0M 100% /snap/core18/1885
@@ -2643,10 +2642,10 @@ df -h /home</code></pre>
 ## /dev/loop11          65M     65M        0M 100% /snap/standard-notes/27
 ## /dev/loop12          51M     51M        0M 100% /snap/snap-store/481
 ## /dev/loop13          52M     52M        0M 100% /snap/snap-store/498
-## /dev/sda1       1876761M 419370M  1361989M  24% /home
+## /dev/sda1       1876761M 419371M  1361987M  24% /home
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392677M 439905M  1834191M  20% -
+## total           2392677M 439825M  1834271M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2666,8 +2665,8 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 220452   .
-## 216M .</code></pre>
+<pre><code>## 221692   .
+## 217M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
 </ul>
@@ -4297,9 +4296,9 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 2296448 dic  1 19:35 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 2297535 dic  1 20:47 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   68106 nov 15 20:16 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  315844 dic  1 19:42 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  316247 dic  1 20:40 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  499749 nov 15 20:16 working_with_linux_commands.tex
 ## total size of working_with_linux_commands.* files is: 3.03 Mb</code></pre>
 <ul>
@@ -4924,24 +4923,24 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 </div>
 <div id="awk-scripts" class="section level2">
 <h2><span class="header-section-number">11.7</span> <strong><span class="math inline">\(awk\)</span> scripts</strong></h2>
-<p>Cuando el programa que escribimos es un poco largo y sea de interés general, es decir, que se vaya a usar regularmente, conviene guardarlo en un archivo. En este bloque les presentaré un primer <span class="math inline">\(script\)</span> que integra múltiples aspectos presentados anteriormente y varios elementos nuevos del lenguaje. Pero más importante aún, el <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> es un primer ejemplo de los aspectos que como programadores debemos cuidar para que el código sea robusto y amigable con el usuario, para facilitarle su uso.</p>
-<p>Para que un programa sea útil, debe resolver adecuadamente una clase o tipo de problemas o acciones que se realicen rutinariamente. En secciones anteriores hemos mostrado múltiples ejemplos de uso de <span class="math inline">\(awk\)</span> para parsear la tabla assembly_summary.txt.gz. Dado que esta tabla provee información clave sobre los ensambles disponibles en la división RefSeq de GenBank, podría ser útil tener un <span class="math inline">\(script\)</span> que nos provea de estadísticas de resumen (conteos) para campos específicos de la misma y para un taxon de nuestro interés particular.</p>
-<p>En la sección sobre <a href="#uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla">uso del operador ++ para contar ocurrencias de un patrón</a> vimos dos ejemplos muy parecidos, uno para contar el número de ensambles liberados por año para un taxon y otro para contar el nivel del ensamble. No sería una buena práctica guardarlos como <span class="math inline">\(scripts\)</span> individuales. Más bien debemos pensar en cómo generalizarlos para que puedan calcular estas estadísticas de resumen sobre cualquier campo relevante de la tabla. El <span class="math inline">\(script\)</span> lo llamaremos <em>count_genome_features_for_taxon.awk</em> y haremos su uso flexible y práctico al pasarle dos argumentos desde la línea de comandos: <em>&lt;tax=TAXON&gt; &lt;f=numero_de_columna&gt;</em>.</p>
-<p>Este <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> implementa una gama de elementos sintácticos, como funciones integradas y variables reservadas, la mayoría de las cuales hemos descrito en secciones previas. Las siguientes subsecciones explican brevemente los que no hemos visto en detalle aún, como estructuras de control.</p>
+<p>Cuando el programa que escribimos es un poco largo y/o de interés general, es decir, que se vaya a usar regularmente, conviene guardarlo en un archivo. En este bloque les presentaré un primer <span class="math inline">\(script\)</span> que integra múltiples aspectos presentados anteriormente y varios elementos nuevos del lenguaje. Pero más importante aún, el <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> es un primer ejemplo de los detalles que como programadores debemos cuidar para que el código sea robusto y amigable con el usuario, para facilitarle su uso.</p>
+<p>Para que un programa sea útil, debe resolver eficientemente una clase o tipo de problemas o acciones que se realicen rutinariamente. En secciones anteriores hemos mostrado múltiples ejemplos de uso de <span class="math inline">\(awk\)</span> para <em>parsear</em> la tabla assembly_summary.txt.gz. Dado que esta tabla provee información clave sobre los ensambles disponibles en la división RefSeq de GenBank, podría ser útil tener un <span class="math inline">\(script\)</span> que nos provea de estadísticas de resumen (conteos) para campos específicos de la misma y para un taxon de nuestro interés particular.</p>
+<p>En la sección sobre <a href="#uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla">uso del operador ++ para contar ocurrencias de un patrón</a> vimos dos ejemplos muy parecidos, uno para contar el número de ensambles liberados por año para un taxon y otro para contar el número de genomas para un taxon por nivel del ensamble. No sería una buena práctica guardarlos como <span class="math inline">\(scripts\)</span> individuales. Más bien debemos pensar en cómo escribir el código para que un solo <em>script</em> puedan calcular estas estadísticas de resumen sobre cualquier campo relevante de la tabla. El <span class="math inline">\(script\)</span> lo llamaremos <em>count_genome_features_for_taxon.awk</em> y haremos su uso flexible y práctico al pasarle dos argumentos desde la línea de comandos: <em>&lt;tax=TAXON&gt; &lt;f=numero_de_columna&gt;</em>.</p>
+<p>El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> implementa una gama de elementos sintácticos, como funciones integradas y variables reservadas, la mayoría de las cuales hemos descrito en secciones previas. Las siguientes subsecciones explican brevemente los que no hemos visto en detalle aún, como estructuras de control.</p>
 <div id="paso-de-variables-argumentos-y-archivos-a-scripts-de-awk-y-uso-de-los-arreglos-argc-y-argv" class="section level3">
 <h3><span class="header-section-number">11.7.1</span> Paso de variables, argumentos y archivos a <span class="math inline">\(scripts\)</span> de <span class="math inline">\(awk\)</span> y uso de los arreglos <span class="math inline">\(ARGC\)</span> y <span class="math inline">\(ARGV\)</span></h3>
-<p><span class="math inline">\(awk\)</span> define automáticamente las variables <strong>ARGC</strong> y <strong>ARGV</strong> para proveer de información al programa que las usa sobre los argumentos pasados al mismo.</p>
+<p><span class="math inline">\(awk\)</span> define automáticamente las variables <strong>ARGC</strong> y <strong>ARGV</strong> para proveer al programa información sobre los argumentos pasados al mismo.</p>
 <ul>
 <li>Los argumentos pasados al programa desde la línea de comandos después del ‘bloque de código’ se guardan en <span class="math inline">\(ARGV\)</span></li>
 <li>Al contrario que la mayoría de los <em>arreglos</em> de <span class="math inline">\(awk\)</span>, ARGV se indexa desde 0 .. ARGC - 1, como se muestra en el siguiente ejemplo:</li>
 </ul>
-<pre class="bash"><code>awk &#39;BEGIN { print &quot;# ARGV contiene:&quot;; for (i=0; i &lt; ARGC; i++) print ARGV[i]; print &quot;\n# ARGC == lenght(ARGV) =&gt;&quot;, length(ARGV), &quot;\nARGC =&quot;, ARGC; print var1}&#39; archivo1 archivo2</code></pre>
+<pre class="bash"><code>awk &#39;BEGIN { print &quot;# ARGV contiene:&quot;; for (i=0; i &lt; ARGC; i++) print ARGV[i]; print &quot;\n# ARGC == lenght(ARGV) ==&quot;, length(ARGV), &quot;\nARGC =&quot;, ARGC}&#39; archivo1 archivo2</code></pre>
 <pre><code>## # ARGV contiene:
 ## awk
 ## archivo1
 ## archivo2
 ## 
-## # ARGC == lenght(ARGV) =&gt; 3 
+## # ARGC == lenght(ARGV) == 3 
 ## ARGC = 3</code></pre>
 <ul>
 <li>Comentarios
@@ -4960,7 +4959,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 <li>las variables u opciones asignadas después del bloque de código no están disponibles en un bloque BEGIN{} ya que éste se ejecuta antes de leer argumentos</li>
 </ul></li>
 </ul>
-<pre class="bash"><code>awk -v var1=123 -v var2=$RANDOM &#39;BEGIN { print &quot;# ARGV contiene:&quot;; for (i=0; i &lt; ARGC; i++) print ARGV[i]; print &quot;\n# ARGC == lenght(ARGV) =&gt;&quot;, length(ARGV), &quot;\nARGC =&quot;, ARGC; print &quot;[&quot;param1&quot;]&quot;, &quot;[&quot;param2&quot;]&quot;, &quot;[&quot;var1&quot;]&quot;, &quot;[&quot;var2&quot;]&quot;}&#39; param1=VALOR1 param2=valor2 archivo1 archivo2</code></pre>
+<pre class="bash"><code>awk -v var1=123 -v var2=$RANDOM &#39;BEGIN { print &quot;# ARGV contiene:&quot;; for (i=0; i &lt; ARGC; i++) print ARGV[i]; print &quot;\n# ARGC == lenght(ARGV) ==&quot;, length(ARGV), &quot;\nARGC =&quot;, ARGC; print &quot;[&quot;param1&quot;]&quot;, &quot;[&quot;param2&quot;]&quot;, &quot;[&quot;var1&quot;]&quot;, &quot;[&quot;var2&quot;]&quot;}&#39; param1=VALOR1 param2=valor2 archivo1 archivo2</code></pre>
 <pre><code>## # ARGV contiene:
 ## awk
 ## param1=VALOR1
@@ -4968,9 +4967,9 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## archivo1
 ## archivo2
 ## 
-## # ARGC == lenght(ARGV) =&gt; 5 
+## # ARGC == lenght(ARGV) == 5 
 ## ARGC = 5
-## [] [] [123] [14465]</code></pre>
+## [] [] [123] [5514]</code></pre>
 <ul>
 <li>Comentarios y preguntas
 <ul>
@@ -4981,9 +4980,9 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 <li>¿porqué imprime dos [] []?</li>
 </ul></li>
 </ul>
-<div id="el-script-print_vars_and_params.awk" class="section level5">
-<h5><span class="header-section-number">11.7.1.1.1</span> El <span class="math inline">\(script\)</span> <em>print_vars_and_params.awk</em></h5>
-<p>Como el <span class="math inline">\(script\)</span> anterior empieza a hacerse un poco largo, podemos escribirlo en un archivo que llamaremos <em>print_vars_and_params.awk</em>, lo que nos permite comentarlo.</p>
+<div id="el-script-print_vars_and_params.awk-y-su-lladada-con-awk--f-script" class="section level5">
+<h5><span class="header-section-number">11.7.1.1.1</span> El <span class="math inline">\(script\)</span> <em>print_vars_and_params.awk</em> y su lladada con <code>awk -f script</code></h5>
+<p>Como el <span class="math inline">\(script\)</span> anterior empieza a hacerse un poco largo, podemos escribirlo en un archivo que llamaremos <em>print_vars_and_params.awk</em>, lo que nos permite comentarlo y escribir las sentencias en líneas individuales para una mejor legibilidad.</p>
 <pre><code>BEGIN { 
     print &quot;# ARGV contiene:&quot;
     for (i=0; i &lt; ARGC; i++) print ARGV[i]
@@ -4996,7 +4995,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 <ul>
 <li>noten que el <span class="math inline">\(script\)</span> sólo contiene el código del bloque <em>BEGIN{}</em></li>
 <li>para una lectura más fácil, usamos algo de indentación y separamos las sentencias en renglones individuales</li>
-<li>noten que al hacerlo, ya no es necesario usar ‘;’ al final de cada sentencia: van separadas por saltos de línea</li>
+<li>noten que al hacerlo, ya no es necesario usar ‘;’ al final de cada sentencia; éstas van separadas por saltos de línea</li>
 </ul></li>
 </ul>
 <p><br /></p>
@@ -5014,11 +5013,11 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 3 
 ## ARGC = 3
-## [] [] [9533] []</code></pre>
+## [] [] [19255] []</code></pre>
 <ul>
 <li>Comentario
 <ul>
-<li>noten el uso de -f ./print_vars_and_params.awk para llamar al <span class="math inline">\(script\)</span> contenido en dicho archivo</li>
+<li>noten el uso de <code>awk -f ./print_vars_and_params.awk</code> para llamar al archivo que contiene el código a ejecutar por el intérprete de comandos <span class="math inline">\(awk\)</span></li>
 </ul></li>
 </ul>
 <p><br /> <br /></p>
@@ -5033,7 +5032,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 6 
 ## ARGC = 6
-## [] [] [123] [29185]</code></pre>
+## [] [] [123] [7358]</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -5041,8 +5040,9 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 </ul></li>
 </ul>
 </div>
-<div id="otro-ejemplo-de-paso-de-variables-argumentos-y-archivos-el-script-showargs.awk" class="section level5">
-<h5><span class="header-section-number">11.7.1.1.2</span> Otro ejemplo de paso de variables, argumentos y archivos: el <span class="math inline">\(script\)</span> <em>showargs.awk</em></h5>
+</div>
+<div id="otro-ejemplo-de-paso-de-variables-argumentos-y-archivos-el-script-showargs.awk" class="section level4">
+<h4><span class="header-section-number">11.7.1.2</span> Otro ejemplo de paso de variables, argumentos y archivos: el <span class="math inline">\(script\)</span> <em>showargs.awk</em></h4>
 <p>Veamos el contenido del <span class="math inline">\(script\)</span> <em>showargs.awk</em> que consta de 3 secciones:</p>
 <ol style="list-style-type: decimal">
 <li>bloque BEGIN{}</li>
@@ -5050,7 +5050,8 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 <li>bloque END{}</li>
 </ol>
 <pre class="bash"><code>cat showargs.awk</code></pre>
-<pre><code>## # bloque BEGIN{} de inicializacion
+<pre><code>## # showargs.awk v0.3
+## # bloque BEGIN{} de inicializacion
 ## BEGIN {
 ##    RS=&quot;&gt;&quot;
 ##    FS=&quot;\n&quot;
@@ -5064,9 +5065,32 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## NR &gt; 1 &amp;&amp; $1 == B
 ## 
 ## # bloque END{} de procesamiento final
-## END { printf &quot;END block: A=%d, B=%s, NF=%s, NR=%s, FNR=%s\n&quot;, A, B, NF, NR, FNR }</code></pre>
+## END { printf &quot;END block1: A=%d, B=%s, NF=%s, NR=%s, FNR=%s\n&quot;, A, B, NF, NR, FNR }
+## END { print  &quot;\nEND block2:&quot;; for (i=1; i&lt;=NF; i++) print $i }</code></pre>
 <ul>
-<li>llamada a <em>showargs.awk</em> con dos variables (A y B) pasadas como opciones y argumento, respectivamente, además de un archivo pasado también como argumento</li>
+<li>llamada a <em>showargs.awk</em> con dos variables (A y B) pasadas como opciones y argumento, respectivamente, además de un archivo FASTA pasado también como argumento
+<ul>
+<li>veamos el archivo mini_fasta.fst</li>
+</ul></li>
+</ul>
+<pre class="bash"><code>cat mini_fasta.fst</code></pre>
+<pre><code>## &gt;especie12
+## ATACCGACCATTAC
+## TTAGGAACCCAGGC
+## &gt;especie2
+## CCAGTAGTCGAGGC
+## AGCAGCTTCCATAT
+## &gt;especie3
+## CCAGGGCCCATATT
+## ATACCGACCATTAC
+## &gt;especie4
+## GCATAATCCACCAT
+## GCACGAATGCAGAC
+## &gt;especie5
+## GGGGTACCCATTTA
+## CCCCCCCTTTTTAT</code></pre>
+<ul>
+<li>corramos el <em>script</em></li>
 </ul>
 <pre class="bash"><code>awk -v A=1 -f ./showargs.awk B=especie2 mini_fasta.fst</code></pre>
 <pre><code>## BEGIN block: A=1, B=, NF=0, NR=0, FNR=0
@@ -5080,7 +5104,12 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## CCAGTAGTCGAGGC
 ## AGCAGCTTCCATAT
 ## 
-## END block: A=1, B=especie2, NF=4, NR=6, FNR=6</code></pre>
+## END block1: A=1, B=especie2, NF=4, NR=6, FNR=6
+## 
+## END block2:
+## especie5
+## GGGGTACCCATTTA
+## CCCCCCCTTTTTAT</code></pre>
 <ul>
 <li>Preguntas
 <ul>
@@ -5115,21 +5144,24 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## ataccaggaca
 ## ctcaggcacct
 ## 
-## END block: A=1, B=especie1, NF=4, NR=12, FNR=6</code></pre>
+## END block1: A=1, B=especie1, NF=4, NR=12, FNR=6
+## 
+## END block2:
+## especie1
+## ataccaggaca
+## ctcaggcacct</code></pre>
 <ul>
 <li>Preguntas:
 <ul>
 <li>¿porqué se imprimen ahora dos secuencias, en el orden especie2, especie1?</li>
 <li>¿de qué archivos salen especie1 y especie2?</li>
 <li>¿porqué FNR == 6 pero NR=12 en el bloque END{}?</li>
-<li>¿porqué B=especie1 en el bloque END{}?</li>
+<li>¿porqué B=especie1 en el bloque END{} #1?</li>
 </ul></li>
 </ul>
 </div>
-</div>
-</div>
-<div id="condicionales-if-if-else-if-if-else-if-else" class="section level3">
-<h3><span class="header-section-number">11.7.2</span> Condicionales: if; if-else if; if-else if-else</h3>
+<div id="condicionales-if-if-else-if-if-else-if-else" class="section level4">
+<h4><span class="header-section-number">11.7.1.3</span> Condicionales: if; if-else if; if-else if-else</h4>
 <p>Los <em>condicionales</em> son estructuras de control fundamentales para controlar el flujo de un programa en función de si son ciertas o falsas determinadas condiciones. Sólo si una condición es cierta, se ejecuta la acción subsiguiente, según la siguiente sintaxis:</p>
 <ul>
 <li><code>if(condición){acción}</code></li>
@@ -5147,9 +5179,16 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == arg) { print n, &quot;==&quot;, arg } else { print n, &quot;!=&quot;, arg }} &#39; n=3</code></pre>
 <pre><code>## 3 != 2
 ## 3 == 3</code></pre>
+<ul>
+<li>preguntas:
+<ul>
+<li>¿qué hace la expresión <code>gsub(/n=/, &quot;&quot;, arg);</code>?</li>
+</ul></li>
+</ul>
+</div>
 </div>
 <div id="el-script-count_genome_features_for_taxon.awk" class="section level3">
-<h3><span class="header-section-number">11.7.3</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></h3>
+<h3><span class="header-section-number">11.7.2</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></h3>
 <p>El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> tiene por finalidad mostrarles un ejemplo de código un poco más complejo y extenso con el fin de:</p>
 <ol style="list-style-type: decimal">
 <li>integrar y revisar los diferentes aspectos sintácticos del lenguaje discutidos hasta ahora</li>
@@ -5246,8 +5285,10 @@ awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == ar
 ## function Usage_Exit() {
 ##       # the function is called if the proper arguments are not passed to the script
 ##       print &quot;# USAGE: zcat assembly_summary.txt.gz | awk -f count_genome_features_for_taxon.awk tax=Pseudomonas f=12&quot;
-##       print &quot;#    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt; as positional arguments at the end of the awk call, as shown&quot; 
-##       print &quot;#    note2: if using the gzip-compressed source file, you need to pipe it into awk with zcat, as shown above&quot; 
+##       print &quot;#    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt;&quot;
+##       print &quot;#           as positional arguments at the end of the awk call, as shown&quot; 
+##       print &quot;#    note2: if using the gzip-compressed source file, you need to pipe it into awk with zcat,&quot;
+##       print &quot;#           as shown above&quot; 
 ##       print &quot;# AIM: print a table with the the number of features found in assembly_summary.txt.gz for a taxon&quot; 
 ##       print &quot;#      both provided as arguments to the program in the format tax=TAXON f=feature_field_number&quot; 
 ##       exit;
@@ -5258,8 +5299,10 @@ awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == ar
 </ul>
 <pre class="bash"><code>zcat assembly_summary.txt.gz | awk -f ./count_genome_features_for_taxon.awk</code></pre>
 <pre><code>## # USAGE: zcat assembly_summary.txt.gz | awk -f count_genome_features_for_taxon.awk tax=Pseudomonas f=12
-## #    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt; as positional arguments at the end of the awk call, as shown
-## #    note2: if using the gzip-compressed source file, you need to pipe it into awk with zcat, as shown above
+## #    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt;
+## #           as positional arguments at the end of the awk call, as shown
+## #    note2: if using the gzip-compressed source file, you need to pipe it into awk with zcat,
+## #           as shown above
 ## # AIM: print a table with the the number of features found in assembly_summary.txt.gz for a taxon
 ## #      both provided as arguments to the program in the format tax=TAXON f=feature_field_number</code></pre>
 <ul>
@@ -5267,8 +5310,10 @@ awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == ar
 </ul>
 <pre class="bash"><code>zcat assembly_summary.txt.gz | awk -f ./count_genome_features_for_taxon.awk tax=Pseudomonas f=1</code></pre>
 <pre><code>## # USAGE: zcat assembly_summary.txt.gz | awk -f count_genome_features_for_taxon.awk tax=Pseudomonas f=12
-## #    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt; as positional arguments at the end of the awk call, as shown
-## #    note2: if using the gzip-compressed source file, you need to pipe it into awk with zcat, as shown above
+## #    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt;
+## #           as positional arguments at the end of the awk call, as shown
+## #    note2: if using the gzip-compressed source file, you need to pipe it into awk with zcat,
+## #           as shown above
 ## # AIM: print a table with the the number of features found in assembly_summary.txt.gz for a taxon
 ## #      both provided as arguments to the program in the format tax=TAXON f=feature_field_number</code></pre>
 <ul>
@@ -5279,8 +5324,10 @@ awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == ar
 ##        ==&gt; you provided  Pseudomonas
 ## 
 ## # USAGE: zcat assembly_summary.txt.gz | awk -f count_genome_features_for_taxon.awk tax=Pseudomonas f=12
-## #    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt; as positional arguments at the end of the awk call, as shown
-## #    note2: if using the gzip-compressed source file, you need to pipe it into awk with zcat, as shown above
+## #    note1: need to pass tax=&#39;TAXON&#39; and f=&lt;&#39;field number&#39;[2|5|11-15]&gt;
+## #           as positional arguments at the end of the awk call, as shown
+## #    note2: if using the gzip-compressed source file, you need to pipe it into awk with zcat,
+## #           as shown above
 ## # AIM: print a table with the the number of features found in assembly_summary.txt.gz for a taxon
 ## #      both provided as arguments to the program in the format tax=TAXON f=feature_field_number</code></pre>
 <ul>
@@ -5323,7 +5370,7 @@ awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == ar
 ## Pseudomonas  2018    3833</code></pre>
 </div>
 <div id="shebang-line-usrbinawk-y-scripts-autocontenidos-el-script-filter_fasta_sequences.awk" class="section level3">
-<h3><span class="header-section-number">11.7.4</span> Shebang line <strong>#!/usr/bin/awk</strong> y scripts autocontenidos: el <span class="math inline">\(script\)</span> <strong>filter_fasta_sequences.awk</strong></h3>
+<h3><span class="header-section-number">11.7.3</span> Shebang line <strong>#!/usr/bin/awk</strong> y scripts autocontenidos: el <span class="math inline">\(script\)</span> <strong>filter_fasta_sequences.awk</strong></h3>
 <p>Si colocas la sentencia **#!/usr/bin/awk*$<strong> al inicio del archivo (conocida como línea <em>shebang</em>) que contiene tu programa de <span class="math inline">\(awk\)</span> y lo haces ejecutable con <span class="math inline">\(chmod\ 755\ script.awk\)</span>, podrás ejecutarlo como un programa o <span class="math inline">\(script\)</span> <em>autocontenido</em>. La línea <em>shebang</em> indica al <span class="math inline">\(shell\)</span> con qué </strong>intérprete de comandos** ha de interpretar los comandos contenidos en el archivo.</p>
 <p>Si el <span class="math inline">\(script\)</span> autocontenido y ejecutable está en uno de los directorios incluidos en <em>$PATH</em>, entonces puedes ejecutarlos simplemente tecleando su nombre, como cualquier otro comando del sistema, desde cualquier directorio del mismo.</p>
 <p>Si el <span class="math inline">\(script\)</span> no está en un directorio del <em>$PATH</em>, entonces debes ejecutarlo con la siguiente sintaxis:</p>
@@ -5441,7 +5488,7 @@ cat recA_Bradyrhizobium_vinuesa.fna | ./filter_fasta_sequences.awk MAM  | grep &
 ## &gt;AY591546.1 Bradyrhizobium canariense bv. genistearum strain BC-MAM1 recombination protein A (recA) gene, partial cds</code></pre>
 </div>
 <div id="filtra-un-archivo-multifasta-usando-un-hash-y-una-lista-de-etiquetas-con-get_sequences_from_list.awk" class="section level3">
-<h3><span class="header-section-number">11.7.5</span> Filtra un archivo multifasta usando un <span class="math inline">\(hash\)</span> y una lista de etiquetas con <em>get_sequences_from_list.awk</em></h3>
+<h3><span class="header-section-number">11.7.4</span> Filtra un archivo multifasta usando un <span class="math inline">\(hash\)</span> y una lista de etiquetas con <em>get_sequences_from_list.awk</em></h3>
 <p>Este problema es una variante del anterior. En este caso queremos filtrar el multifasta usando un archivo que contiene la lista de etiquetas de nuestro interés.</p>
 <p>Para ello vamos a usar el script <em>get_sequences_from_list.awk</em>, que recibe dos argumentos:</p>
 <p><code>get_sequences_from_list.awk <lista_de_etiquetas> <archivo_fasta></code></p>
@@ -5483,7 +5530,7 @@ El archivo de etiquetas debe tener el siguiente formato:
 ## CCCCCCCTTTTTAT</code></pre>
 <p>Noten que ¡el orden de las secuencias en la salida del <span class="math inline">\(script\)</span> <em>get_sequences_from_list.awk</em> no coincide con el de la lista! Ello se debe a que, como indicamos en la sección de introducción de <span class="math inline">\(arreglos\)</span>, los <span class="math inline">\(hashes\)</span> o <span class="math inline">\(arreglos\ asociativos\)</span> no guardan los índices o llaves en un orden particular.</p>
 <div id="ordenar-las-secuencias-de-un-archivo-en-formato-fastab-según-las-entradas-de-una-lista-en-un-bucle-while" class="section level4">
-<h4><span class="header-section-number">11.7.5.1</span> Ordenar las secuencias de un archivo en formato <strong>FASTAB</strong> según las entradas de una lista en un bucle <span class="math inline">\(while\)</span></h4>
+<h4><span class="header-section-number">11.7.4.1</span> Ordenar las secuencias de un archivo en formato <strong>FASTAB</strong> según las entradas de una lista en un bucle <span class="math inline">\(while\)</span></h4>
 <p>Si necesitan ordenar las secuencias siguiendo un orden particular, indicado en una lista, una opción es filtrar un archivo <strong>FASTAB</strong> con un bucle <span class="math inline">\(while\)</span> de <span class="math inline">\(Bash\)</span> como se muestra a continuación. Veremos la sintaxis de <em>bucles while</em> de <span class="math inline">\(Bash\)</span> en una sección posterior.</p>
 <pre class="bash"><code>while read seq; do grep &quot;$seq&quot; mini_fasta.fastab; done &lt; seq.list</code></pre>
 <pre><code>## &gt;especie5    GGGGTACCCATTTACCCCCCCTTTTTAT
@@ -5493,7 +5540,7 @@ El archivo de etiquetas debe tener el siguiente formato:
 </div>
 </div>
 <div id="el-script-translate_dna.awk-integración-de-condicionales-bucles-y-funciones" class="section level3">
-<h3><span class="header-section-number">11.7.6</span> El script <em>translate_dna.awk</em>: integración de condicionales, bucles y funciones</h3>
+<h3><span class="header-section-number">11.7.5</span> El script <em>translate_dna.awk</em>: integración de condicionales, bucles y funciones</h3>
 <p>Para cerrar esta sección, les presento el <span class="math inline">\(script\)</span> <em>translate_dna.awk</em> como ejercicio integrativo final.</p>
 <p>El programa recibe una cadena secuencia de nucleótidos y la traduce a aminoácidos usando el código genético universal. La conversión entre tripletes (codones) y aminoácidos se hace usando un <span class="math inline">\(hash\)</span> que guarda las parejas <em>triplete-aminoácido</em>, inicializado en un bloque <span class="math inline">\(BEGIN{}\)</span>.</p>
 <p>En el bloque principal el código revisa que la cadena de DNA pasada al <span class="math inline">\(script\)</span> no esté vacía, contenga sólo caracteres válidos mediante la <em>regexp</em> ‘/[agctAGCT]+/’ y sea divisible por 3, imprimiendo mensajes de error adecuados si no pasa los tests.</p>
@@ -5651,7 +5698,7 @@ ATG GGG TGT TGT GGG TTG AAA GTG CCC GGG AAA TTA ATA ERROR: input triplet 14 = CA
 <p>Como ven, el <span class="math inline">\(script\)</span> fue programado “<em>defensivamente</em>”, es decir, previendo posibles errores que le impiden funcionar correctamente, imprimiendo mensajes de error informativos para que el usuario entienda cuál es el problema antes de terminar su ejecución. A ésto se le llama “<em>morir grácilmente</em>”</p>
 </div>
 <div id="retos-de-programación-awk" class="section level3">
-<h3><span class="header-section-number">11.7.7</span> Retos de programación <span class="math inline">\(awk\)</span></h3>
+<h3><span class="header-section-number">11.7.6</span> Retos de programación <span class="math inline">\(awk\)</span></h3>
 <ol style="list-style-type: decimal">
 <li>En base al ejemplo anterior, transforma en <span class="math inline">\(scripts\)</span> autocontenidos a los <em>oneliners</em> mostrados más arriba que convierten un archivo fasta a formato FASTAB (nómbralo <em>fas2tab.awk</em>) y a su contraparte, el que lo regresa a formato FASTA, nómbralo <em>tab2fas.awk</em></li>
 <li>Modifica el <em>one-liner</em> que concatena múltiples archivos FASTA para que corra como un <span class="math inline">\(script\)</span> autocontenido, que puedas invocar como <em>concat_fastas.awk</em></li>
@@ -6126,7 +6173,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic  1 19:42 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic  1 20:59 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -6312,14 +6359,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  2222 dic  1 19:42 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  1131 dic  1 19:42 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 dic  1 19:42 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 dic  1 19:42 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 dic  1 19:42 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 dic  1 19:42 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 dic  1 19:42 recA_B_yuanmingense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 dic  1 19:42 recA_B_sp..fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 10279 dic  1 20:59 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 dic  1 20:59 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  1131 dic  1 20:59 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 dic  1 20:59 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 dic  1 20:59 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 dic  1 20:59 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 dic  1 20:59 recA_B_yuanmingense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 dic  1 20:59 recA_B_sp..fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -6450,9 +6497,9 @@ echo &quot;$contador líneas contienen el patrón $patron&quot;
 <pre class="bash"><code>while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 27666
-## 19640
-## 13950</code></pre>
+<pre><code>## 18608
+## 17710
+## 23556</code></pre>
 <p>Los bucles <span class="math inline">\(until\)</span> son útiles para ejecutar un bucle hasta que se cumpla o no una determinada condición.</p>
 <p>Su sintaxis es idéntica al del bucle <span class="math inline">\(while\)</span>.</p>
 <p><code>until TEST-COMMAND; do CONSEQUENT-COMMANDS; done</code></p>
@@ -6460,9 +6507,9 @@ while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; bre
 <pre class="bash"><code>until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 9081
-## 27299
-## 24129</code></pre>
+<pre><code>## 7421
+## 21693
+## 21073</code></pre>
 </div>
 </div>
 <div id="estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" class="section level2">
