@@ -13,5 +13,5 @@ BEGIN {
 NR > 1 && $1 == B
 
 # bloque END{} de procesamiento final
-END { printf "END block: A=%d, B=%s, NF=%s, NR=%s, FNR=%s\n", A, B, NF, NR, FNR }
-END { for (i=1; i<=NF; i++) print $i }
+END { printf "END block1: A=%d, B=%s, NF=%s, NR=%s, FNR=%s\n", A, B, NF, NR, FNR }
+END { print  "\nEND block2:"; for (i=1; i<=NF; i++) print $i }
