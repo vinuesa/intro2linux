@@ -412,7 +412,7 @@ summary {
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="https://www.ccg.unam.mx/~vinuesa/" class="uri">https://www.ccg.unam.mx/~vinuesa/</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
-<h4 class="date">Versión: Mon Dec 21 21:05:09 2020</h4>
+<h4 class="date">Versión: Tue Dec 22 11:07:13 2020</h4>
 
 </div>
 
@@ -605,7 +605,7 @@ summary {
 <li><a href="#filtra-un-archivo-multifasta-usando-un-hash-y-una-lista-de-etiquetas-con-get_sequences_from_list.awk"><span class="toc-section-number">11.7.4</span> Filtra un archivo multifasta usando un <span class="math inline">\(hash\)</span> y una lista de etiquetas con <strong>get_sequences_from_list.awk</strong></a></li>
 <li><a href="#el-script-translate_dna.awk-integración-de-condicionales-bucles-y-funciones"><span class="toc-section-number">11.7.5</span> El script <strong>translate_dna.awk</strong>: integración de condicionales, bucles y funciones</a></li>
 </ul></li>
-<li><a href="#modularización-de-código-mediante-funciones-definidas-por-el-usuario-function-name"><span class="toc-section-number">11.8</span> Modularización de código mediante funciones definidas por el usuario: <strong>function name(){ … }</strong></a><ul>
+<li><a href="#modularización-de-código-mediante-funciones-definidas-por-el-usuario-function-my_function_name"><span class="toc-section-number">11.8</span> Modularización de código mediante funciones definidas por el usuario: <strong>function my_function_name(){ … }</strong></a><ul>
 <li><a href="#ejemplos-de-definición-y-llamadas-de-funciones-definidas-por-el-usuario"><span class="toc-section-number">11.8.1</span> Ejemplos de definición y llamadas de funciones definidas por el usuario</a></li>
 <li><a href="#un-script-multifuncional-fasta_toolkit.awk"><span class="toc-section-number">11.8.2</span> Un <em>script</em> multifuncional: <strong>fasta_toolkit.awk</strong></a></li>
 </ul></li>
@@ -702,7 +702,7 @@ summary {
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
 <p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2020-12-21) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
+<p>Las versión actual (v.2020-12-22) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
@@ -966,8 +966,8 @@ ls | head</code></pre>
 ## count_genome_features_for_taxon.awk</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 101436
-## drwxr-xr-x 12 vinuesa vinuesa    20480 dic 21 20:53 .
+<pre><code>## total 101444
+## drwxr-xr-x 12 vinuesa vinuesa    20480 dic 22 11:00 .
 ## drwxr-xr-x  4 vinuesa vinuesa     4096 nov 11 22:55 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -1010,7 +1010,7 @@ ls -al | head -20</code></pre>
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
 ## drwxr-xr-x   4 root root  4096 dic 12 09:56 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4600 dic 21 14:39 dev
+## drwxr-xr-x  21 root root  4600 dic 22 10:43 dev
 ## drwxr-xr-x 155 root root 12288 dic 19 18:02 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
@@ -1546,7 +1546,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 <p>La mayoría de los programas ejecutables del sistema proveen un formato estandarizado de documentación que se despliega en la consola usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                                                                          User Commands                                                                          CUT(1)
+<pre><code>## CUT(1)                                                                      User Commands                                                                     CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -1829,7 +1829,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 101408
+<pre><code>## total 101416
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-rw-r-- 1 vinuesa vinuesa      895 dic 21 10:41 awkvars.out
@@ -1837,7 +1837,7 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 nov 16 17:37 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 dic 21 21:05 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 dic 22 11:07 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rwxr-xr-x 1 vinuesa vinuesa     1245 dic 19 18:01 compute_DNA_seq_stats.awk</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
@@ -2224,7 +2224,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 dic 21 21:05 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 dic 22 11:07 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2243,7 +2243,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 21 21:05 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 22 11:07 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2372,15 +2372,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 21 21:05 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 21 21:05 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 22 11:07 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 22 11:07 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 21 21:05 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 22 11:07 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2475,9 +2475,9 @@ echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa   114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 dic 21 20:53 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 dic 22 11:00 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4827 dic 21 21:05 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4826 dic 22 11:07 fna_files.tgz
 ## ----------------------------
 ## mini_CDS.fna
 ## recA_Bradyrhizobium_vinuesa.fna
@@ -2501,9 +2501,9 @@ echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa   114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 dic 21 20:53 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 dic 22 11:00 recA_Byuanmingense.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4827 dic 21 21:05 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 4826 dic 22 11:07 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2514,11 +2514,11 @@ echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa   114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 dic 21 20:53 recA_Byuanmingense.fna
+## -rw-r--r-- 1 vinuesa vinuesa 17736 dic 22 11:00 recA_Byuanmingense.fna
 ## ----------------------------
 ## -rw-rw-r-- 1 vinuesa vinuesa  104 dic 21 17:41 mini_CDS.fna.gz
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 dic 21 20:53 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  882 dic 22 11:00 recA_Byuanmingense.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2529,12 +2529,12 @@ echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  104 dic 21 17:41 mini_CDS.fna.gz
 ## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 dic 21 20:53 recA_Byuanmingense.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  882 dic 22 11:00 recA_Byuanmingense.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-rw-r-- 1 vinuesa vinuesa   114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 dic 21 20:53 recA_Byuanmingense.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa 17736 dic 22 11:00 recA_Byuanmingense.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-mlocate-y-find" class="section level1">
@@ -2583,33 +2583,33 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 <pre class="bash"><code>df        </code></pre>
 <pre><code>## Filesystem      1K-blocks      Used  Available Use% Mounted on
 ## udev             16381120         0   16381120   0% /dev
-## tmpfs             3281912      2008    3279904   1% /run
-## /dev/nvme0n1p3  465889936  19332408  422821876   5% /
-## tmpfs            16409540     28224   16381316   1% /dev/shm
+## tmpfs             3281912      2016    3279896   1% /run
+## /dev/nvme0n1p3  465889936  19332680  422821604   5% /
+## tmpfs            16409540     28172   16381368   1% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409540         0   16409540   0% /sys/fs/cgroup
 ## /dev/loop0          56704     56704          0 100% /snap/core18/1932
-## /dev/loop1          56832     56832          0 100% /snap/core18/1944
-## /dev/loop2          65920     65920          0 100% /snap/gtk-common-themes/1513
-## /dev/loop3          52352     52352          0 100% /snap/snap-store/498
-## /dev/loop4          52352     52352          0 100% /snap/snap-store/518
-## /dev/loop5          66432     66432          0 100% /snap/gtk-common-themes/1514
+## /dev/loop1         166784    166784          0 100% /snap/gnome-3-28-1804/145
+## /dev/loop2          56832     56832          0 100% /snap/core18/1944
+## /dev/loop3          65920     65920          0 100% /snap/gtk-common-themes/1513
+## /dev/loop4         261760    261760          0 100% /snap/gnome-3-34-1804/36
 ## /dev/nvme0n1p1    1994928      7984    1986944   1% /boot/efi
-## /dev/loop6         261760    261760          0 100% /snap/gnome-3-34-1804/36
-## /dev/loop7         165376    165376          0 100% /snap/gnome-3-28-1804/128
-## /dev/loop8         223232    223232          0 100% /snap/gnome-3-34-1804/60
-## /dev/loop9          65792     65792          0 100% /snap/standard-notes/27
-## /dev/loop11         31872     31872          0 100% /snap/snapd/10492
-## /dev/loop10         31872     31872          0 100% /snap/snapd/10238
-## /dev/loop12        166784    166784          0 100% /snap/gnome-3-28-1804/145
-## /dev/loop13         65792     65792          0 100% /snap/standard-notes/26
-## /dev/sda1      1921802432 429607476 1394502900  24% /home
+## /dev/loop5         165376    165376          0 100% /snap/gnome-3-28-1804/128
+## /dev/loop6          66432     66432          0 100% /snap/gtk-common-themes/1514
+## /dev/loop7          31872     31872          0 100% /snap/snapd/10492
+## /dev/loop9          52352     52352          0 100% /snap/snap-store/498
+## /dev/loop8          52352     52352          0 100% /snap/snap-store/518
+## /dev/loop10         65792     65792          0 100% /snap/standard-notes/27
+## /dev/loop12         65792     65792          0 100% /snap/standard-notes/26
+## /dev/loop11         31872     31872          0 100% /snap/snapd/10238
+## /dev/loop13        223232    223232          0 100% /snap/gnome-3-34-1804/60
+## /dev/sda1      1921802432 429599076 1394511300  24% /home
 ## tmpfs             3281908        20    3281888   1% /run/user/125
-## tmpfs             3281908        48    3281860   1% /run/user/1000</code></pre>
+## tmpfs             3281908        36    3281872   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465889936 19332408 422821876   5% /</code></pre>
+## /dev/nvme0n1p3 465889936 19332680 422821604   5% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></h3>
 <p>Como cualquier comando, le podemos pasar opciones para adecuar mejor la salida a nuestra necesidad.</p>
@@ -2645,24 +2645,24 @@ df -h /home</code></pre>
 ## tmpfs                 5M      1M        5M   1% /run/lock
 ## tmpfs             16025M      0M    16025M   0% /sys/fs/cgroup
 ## /dev/loop0           56M     56M        0M 100% /snap/core18/1932
-## /dev/loop1           56M     56M        0M 100% /snap/core18/1944
-## /dev/loop2           65M     65M        0M 100% /snap/gtk-common-themes/1513
-## /dev/loop3           52M     52M        0M 100% /snap/snap-store/498
-## /dev/loop4           52M     52M        0M 100% /snap/snap-store/518
-## /dev/loop5           65M     65M        0M 100% /snap/gtk-common-themes/1514
+## /dev/loop1          163M    163M        0M 100% /snap/gnome-3-28-1804/145
+## /dev/loop2           56M     56M        0M 100% /snap/core18/1944
+## /dev/loop3           65M     65M        0M 100% /snap/gtk-common-themes/1513
+## /dev/loop4          256M    256M        0M 100% /snap/gnome-3-34-1804/36
 ## /dev/nvme0n1p1     1949M      8M     1941M   1% /boot/efi
-## /dev/loop6          256M    256M        0M 100% /snap/gnome-3-34-1804/36
-## /dev/loop7          162M    162M        0M 100% /snap/gnome-3-28-1804/128
-## /dev/loop8          218M    218M        0M 100% /snap/gnome-3-34-1804/60
-## /dev/loop9           65M     65M        0M 100% /snap/standard-notes/27
-## /dev/loop11          32M     32M        0M 100% /snap/snapd/10492
-## /dev/loop10          32M     32M        0M 100% /snap/snapd/10238
-## /dev/loop12         163M    163M        0M 100% /snap/gnome-3-28-1804/145
-## /dev/loop13          65M     65M        0M 100% /snap/standard-notes/26
-## /dev/sda1       1876761M 419539M  1361820M  24% /home
+## /dev/loop5          162M    162M        0M 100% /snap/gnome-3-28-1804/128
+## /dev/loop6           65M     65M        0M 100% /snap/gtk-common-themes/1514
+## /dev/loop7           32M     32M        0M 100% /snap/snapd/10492
+## /dev/loop9           52M     52M        0M 100% /snap/snap-store/498
+## /dev/loop8           52M     52M        0M 100% /snap/snap-store/518
+## /dev/loop10          65M     65M        0M 100% /snap/standard-notes/27
+## /dev/loop12          65M     65M        0M 100% /snap/standard-notes/26
+## /dev/loop11          32M     32M        0M 100% /snap/snapd/10238
+## /dev/loop13         218M    218M        0M 100% /snap/gnome-3-34-1804/60
+## /dev/sda1       1876761M 419531M  1361828M  24% /home
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392678M 439787M  1834310M  20% -
+## total           2392678M 439779M  1834318M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2682,8 +2682,8 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 229220   .
-## 224M .</code></pre>
+<pre><code>## 230468   .
+## 226M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
 </ul>
@@ -4317,17 +4317,17 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 2326813 dic 21 20:53 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 2332047 dic 22 11:00 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   68106 nov 15 20:16 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  338720 dic 21 21:04 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  342389 dic 22 11:07 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  499749 nov 15 20:16 working_with_linux_commands.tex
-## total size of working_with_linux_commands.* files is: 3.08 Mb</code></pre>
+## total size of working_with_linux_commands.* files is: 3.09 Mb</code></pre>
 <ul>
 <li>comparen y entiendan la diferencia del comando anterior con el del siguiente:</li>
 </ul>
 <pre class="bash"><code>ls -l working_with_linux_commands.* | \
  awk &#39;{s+=$5}; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## total size of working_with_linux_commands.* files is: 3.08 Mb</code></pre>
+<pre><code>## total size of working_with_linux_commands.* files is: 3.09 Mb</code></pre>
 </div>
 <div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
 <h3><span class="header-section-number">11.5.7</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
@@ -4991,7 +4991,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) == 5 
 ## ARGC = 5
-## [] [] [123] [21961]</code></pre>
+## [] [] [123] [14547]</code></pre>
 <ul>
 <li>Comentarios y preguntas
 <ul>
@@ -5035,7 +5035,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 3 
 ## ARGC = 3
-## [] [] [30087] []</code></pre>
+## [] [] [12858] []</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -5054,7 +5054,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 6 
 ## ARGC = 6
-## [] [] [123] [20812]</code></pre>
+## [] [] [123] [14855]</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -5727,21 +5727,22 @@ ATG GGG TGT TGT GGG TTG AAA GTG CCC GGG AAA TTA ATA ERROR: input triplet 14 = CA
 <p>En la siguiente sección veremos el <em>script</em> <code>fasta_toolkit.awk</code> que implementa una versión que trabaja directamente sobre archivos multifasta.</p>
 </div>
 </div>
-<div id="modularización-de-código-mediante-funciones-definidas-por-el-usuario-function-name" class="section level2">
-<h2><span class="header-section-number">11.8</span> Modularización de código mediante funciones definidas por el usuario: <strong>function name(){ … }</strong></h2>
+<div id="modularización-de-código-mediante-funciones-definidas-por-el-usuario-function-my_function_name" class="section level2">
+<h2><span class="header-section-number">11.8</span> Modularización de código mediante funciones definidas por el usuario: <strong>function my_function_name(){ … }</strong></h2>
 <p>En la sección anterior vimos varios ejemplos de <em>scripts</em> relativamente cortos y sencillos. Cuando los programas se hacen más largos y complejos, es fundamental escribir <strong>funciones definidas por el usuario</strong> para que el código sea más fácil de leer y mantener, contribuyendo a la modularidad y re-uso de código entre programas y dentro del mismo.</p>
 <ul>
 <li>Sintaxis para definición de una función (my_function_name) <code> function my_function_name([param1, param2, local_var1, local_var2 …]) { body-of-function } </code></li>
 <li>Sintaxis de llamada de una función definida por el usuario (my_function_name) <code> my_function_name([param1, param2]) </code></li>
 </ul>
 <ol style="list-style-type: decimal">
-<li>Para nombrar la función se siguen las reglas de nombramiento de variables: inician con [_[a-zA-Z]] y no deben contener espacios. No debe haber espacio ente el nombre de la función y los parántesis que le siguen.</li>
+<li>Para nombrar la función se siguen las reglas de nombramiento de variables: inician con [_[a-zA-Z]] y no deben contener espacios. No debe haber espacio ente el nombre de la función y los paréntesis que le siguen.</li>
 <li>La lista de parámetros se separa por comas. Estos parámetros son globales.</li>
 <li>Para definir variables locales a una función, se añaden a la lista de parámetros en la definición de la función. Estas variables quedan automáticamente inicializadas como cadena vacía o 0 (cero), según el contexto en el que son llamadas en la función. Internamente, <em>awk</em> distingue estas variables locales de los parámetros ya que en base al número de parámetros pasados a la función en su llamada. Para facilitar la identificación de variables locales de los parámetros que recibe una función, es útil la convención de separar a estas últimas de los parámetros globales con múltiples espacios en blanco, como se muestra en la sintaxis mostrada arriba.</li>
 <li>Durante la ejecución del cuerpo de una función, los argumentos y variables locales <em>enmascaran</em> a variables con el mismo nombre usadas en otras partes del programa. Estas variables enmascaradas no están disponibles en el cuerpo de la función. El resto de las variables (no localizadas en otra función) definidas en un programa están disponibles dentro del cuerpo de cualquier función, pudiendo ser modificadas desde el mismo.</li>
 <li>Los argumentos y variables locales de una función sólo existen mientras se ejecuta el cuerpo de la misma. Una vez finalizada su ejecución, se tiene nuevamente acceso a las variables enmascaradas por la función que terminó su ejecución.</li>
-<li>Se puede usar la sentencia <code>return</code> para que una función regrese un valor escalar determinado</li>
-<li>Se pueden llamar funciones desde dentro de funciones o incluso a la misma (llamadas recursivas)</li>
+<li>Se puede usar la sentencia <code>return</code> para que una función regrese un valor escalar determinado.</li>
+<li>Se pueden llamar funciones desde dentro de funciones, incluso a la misma (llamadas recursivas).</li>
+<li>Las funciones se pueden definir en cualquier punto del <em>script</em>, sea cerca de la cabecera o al final del mismo.</li>
 </ol>
 <div id="ejemplos-de-definición-y-llamadas-de-funciones-definidas-por-el-usuario" class="section level3">
 <h3><span class="header-section-number">11.8.1</span> Ejemplos de definición y llamadas de funciones definidas por el usuario</h3>
@@ -5773,10 +5774,43 @@ delarray(a)</code></pre>
    seqs[h]=s
 }
 </code></pre>
+<ul>
+<li><a href="https://www.gnu.org/software/gawk/manual/gawk.html#Walking-Arrays"><strong>walk_array()</strong></a> para atravesar arreglos multidimensionales</li>
+</ul>
+<p>En <em>awk</em> es posible definir arreglos de arreglos, es decir, <a href="https://www.gnu.org/software/gawk/manual/gawk.html#Arrays-of-Arrays">arreglos multidimensionales</a>. Dicho de otra manera, el valor asignado a una llave o índice de un arreglo puede ser otro arreglo.</p>
+<p>La función <a href="https://www.gnu.org/software/gawk/manual/gawk.html#Walking-Arrays"><strong>walk_array()</strong></a> recorre la estructura y la imprime.</p>
+<pre><code>function walk_array(arr, name,      i)
+{
+    for (i in arr) {
+        if (isarray(arr[i]))
+            walk_array(arr[i], (name &quot;[&quot; i &quot;]&quot;))
+        else
+            printf(&quot;%s[%s] = %s\n&quot;, name, i, arr[i])
+    }
+}
+
+BEGIN {
+    a[1] = 1
+    a[2][1] = 21
+    a[2][2] = 22
+    a[3] = 3
+    a[4][1][1] = 411
+    a[4][2] = 42
+
+    walk_array(a, &quot;a&quot;)
+}</code></pre>
+<p>Asumiendo que hemos escrito el bloque mostrado arriba en el <em>script</em> walk_array.awk, si lo llamamos obtendremos el siguiente resultado:</p>
+<p><code>gawk -f walk_array.awk</code></p>
+<pre><code>-| a[1] = 1
+-| a[2][1] = 21
+-| a[2][2] = 22
+-| a[3] = 3
+-| a[4][1][1] = 411
+-| a[4][2] = 42</code></pre>
 </div>
 <div id="un-script-multifuncional-fasta_toolkit.awk" class="section level3">
 <h3><span class="header-section-number">11.8.2</span> Un <em>script</em> multifuncional: <strong>fasta_toolkit.awk</strong></h3>
-<p>Para cerrar la sección sobre AWK les dejo con un <em>script</em> <code>fasta_toolkit.awk</code>. Es un <em>script</em> algo más largo, que integra múltiples funciones para manipular archivos multi-FASTA de DNA. Este <em>script</em> espero que no sólo les sea de utilidad en su trabajo rutinario con secuencias (lo usaremos en las prácticas de BLAST de la LCG), sino que les sirva como ejemplo de cómo escribir programas más avanzados en <em>awk</em>.</p>
+<p>Para cerrar la sección sobre AWK les presento el <em>script</em> <code>fasta_toolkit.awk</code>. Es algo más largo e integra múltiples funciones para manipular archivos multi-FASTA de DNA. Este <em>script</em> les será de utilidad en su trabajo rutinario con secuencias (lo usaremos por ejemplo en las prácticas de BLAST de la LCG), y les sirva como ejemplo de cómo escribir programas más avanzados en <em>awk</em>. En particular el <em>script</em> tiene por objetivo enseñarles cómo modularizar el código mediante el uso de funciones.</p>
 <p>El <em>script</em> <strong>fasta_toolkit.awk</strong> implementa funciones para realizar las siguientes operaciones sobre archivos multi-FASTA de DNA:</p>
 <ol style="list-style-type: decimal">
 <li>filtrar o seleccionar secuencias de un archivo multifasta usando una cadena de caracteres</li>
@@ -5785,8 +5819,9 @@ delarray(a)</code></pre>
 <li>traducir CDSs a proteínas, usando el código genético universal</li>
 <li>imprimir una tabla con estadísticas básicas de las secuencias</li>
 </ol>
-<p>El <em>script</em> <strong>fasta_toolkit.awk</strong> implementa además la función <code>getopt()</code> escrita por Arnold Robin, el actual mantenedor de <em>gawk</em>, la cual es una implementación en <em>AWK</em> de la librería de <em>C</em> <strong>getopt</strong>, lo que permite manejar con mayor flexibilidad y conveniencia opciones y argumentos pasados a <em>scripts</em> de <em>AWK</em> desde la línea de comandos.</p>
-<p>La implementación en <em>awk</em> de <em>getopt</em> se llama <em>getopt.awk</em> y se distribuye con la libraría de funciones de <em>gawk</em>, por lo que debes poderla localizar fácilmente en tus sitema con <code>locate getopt.awk</code>.</p>
+<p>Cada una de estas funcionalidades se define mediante un “runmode” numérico que llamaremos con la opción <code>-R <int> [1-5]</code>.</p>
+<p>El <em>script</em> <strong>fasta_toolkit.awk</strong> implementa además la función <code>getopt()</code> escrita por Arnold Robin, el actual mantenedor de <em>gawk</em>, la cual es una implementación en <em>AWK</em> de la librería de <em>C</em> <strong>getopt</strong>. Ello permite manejar con mayor flexibilidad y conveniencia opciones y argumentos pasados a <em>scripts</em> de <em>AWK</em> desde la línea de comandos.</p>
+<p>La implementación en <em>awk</em> de <em>getopt</em> se llama <em>getopt.awk</em> y se distribuye con la libraría de funciones de <em>gawk</em>, por lo que debes poderla localizar fácilmente en tu sistema con <code>locate getopt.awk</code>.</p>
 <p>Puedes leer sobre los detalles de implementación de <em>getopt.awk</em> en <a href="https://www.gnu.org/software/gawk/manual/gawk.html#Getopt-Function">The GNU Awk User’s Guide - GetOpt function</a> y estudiar múltiples ejemplos que hacen uso de la misma en <a href="https://www.gnu.org/software/gawk/manual/gawk.html#Sample-Programs">The GNU Awk User’s Guide - Sample programs</a>, por lo que no los repetiré aquí.</p>
 <ul>
 <li>Estudiemos el <em>script</em>
@@ -5794,16 +5829,16 @@ delarray(a)</code></pre>
 <li>Desplegamos el menú de ayuda del <em>script</em> invocándolo sin argumentos: <code>./fasta_toolkit.awk</code></li>
 </ul></li>
 </ul>
-<pre><code>OPTIONS for fasta_toolkit.awk v0.1
+<pre><code>OPTIONS for fasta_toolkit.awk v0.2
  # Required options
-     -R &lt;int&gt; [runmode]
-          1 [filter sequences matching string]
-          2 [reverse complement DNA sequence]
-          3 [extract sequence by start-end coordinates]
-          4 [translate CDSs]
-          5 [print basic sequence stats]
+    -R &lt;int&gt; [runmode]
+         1 [filter sequences matching -m string]
+         2 [reverse complement DNA sequence]
+         3 [extract sequence by -s start -e end coordinates]
+         4 [translate CDSs]
+         5 [print basic sequence stats]
 
- # Runmode-speicic options
+ # Runmode-specific options
      -m &lt;string&gt; [match string] for -R 1
      -s &lt;int&gt; [start coord] for -R 3
      -e &lt;int&gt; [end coord] for -R 3
@@ -5811,16 +5846,21 @@ delarray(a)</code></pre>
  # Other options
      -d [FLAG; sets DEBUG=1 to print extra debugging info]
 
-USAGE EXAMPLES:
-./fasta_toolkit.awk -R 1 -m match_string input.fasta
-./fasta_toolkit.awk -R 2 input.fasta
-./fasta_toolkit.awk -R 3 -s 2 -e 5 input.fasta
-./fasta_toolkit.awk -R 4 input.fasta
-./fasta_toolkit.awk -R 5 input.fasta
-cat input.fasta | ./fasta_toolkit.awk -R 5</code></pre>
-<p>Veamos ahora las secciones del <em>script</em> fasta_toolkit.awk</p>
-<div id="cabecera-y-funciones-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.8.2.1</span> Cabecera y funciones de fasta_toolkit.awk</h4>
+ # Usage examples:
+    ./fasta_toolkit.awk -R 1 -m match_string input.fasta
+    ./fasta_toolkit.awk -R 2 input.fasta
+    ./fasta_toolkit.awk -R 3 -s 2 -e 5 input.fasta
+    ./fasta_toolkit.awk -R 4 input.fasta
+    ./fasta_toolkit.awk -R 5 input.fasta
+    cat input.fasta | ./fasta_toolkit.awk -R 5
+
+ # Notes:
+    1. Pass only single FASTA files to fasta_toolkit.awk
+    2. prints results to STDOUT</code></pre>
+<p>Veamos ahora las secciones del <em>script</em> <strong>fasta_toolkit.awk</strong></p>
+<div id="cabecera-de-fasta_toolkit.awk" class="section level4">
+<h4><span class="header-section-number">11.8.2.1</span> Cabecera de fasta_toolkit.awk</h4>
+<p>Simplemente describe la funcionalidad y opciones del <em>script</em></p>
 <pre><code>#!/usr/bin/awk -f
 
 # fasta_toolkit.awk VERSION:0.1 released Dec 21, 2020
@@ -5836,9 +5876,14 @@ cat input.fasta | ./fasta_toolkit.awk -R 5</code></pre>
 # NOTES:  
 #   1. uses Arnold Robbin&#39;s getopt() function from the gawk distro to deal with options and arguments
 #   2. can read FASTA files from file or STDIN
-#   3. prints to STDOUT
-
-#---------------------------------------------------------------------------------------------------------#
+#   3. pass only single FASTA files to fasta_toolkit.awk
+#   4. prints results to STDOUT
+</code></pre>
+</div>
+<div id="funciones-de-fasta_toolkit.awk" class="section level4">
+<h4><span class="header-section-number">11.8.2.2</span> Funciones de fasta_toolkit.awk</h4>
+<p>Las funciones pueden ser definidas en cualquier parte del programa. En este caso las he puesto hacia la cabecera del <em>script</em>, en el orden asignado a los “runmodes” definidos con la opción -R <int>. La función getopts() la he puesto junto con la de print_help() hacia el final del bloque de funciones para tenerlas más cerca del bloque BEGIN{}, donde se procesan las opciones.</p>
+<pre><code>#---------------------------------------------------------------------------------------------------------#
 # &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; FUNCTION DEFINITIONS &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; #
 #---------------------------------------------------------------------------------------------------------#
 function read_fasta(      i, h, s)
@@ -5851,7 +5896,7 @@ function read_fasta(      i, h, s)
 }
 #---------------------------------------------------------------------------------------------------------
 function rev_compl(header, dna_seq,        i, k, x) # reverse complement
-{ 
+{  # receives two arguments: the fasta header and the CDS sequence to be translated
     k=x=&quot;&quot;
     
     dna_seq = toupper(dna_seq) # to match the keys of compl_nucl
@@ -5932,7 +5977,8 @@ function translate_dna(header, dna_seq,      s, i, p)
     prots[header]=p
 }
 #---------------------------------------------------------------------------------------------------------
-function print_sequence_stats(header, dna_seq,         i,l) { # prints to STDOUT
+function print_sequence_stats(header, dna_seq,         i,l) 
+{ # receives two arguments: the fasta header and the CDS sequence to be translated
    
    sumA=0;sumT=0;sumC=0;sumG=0;sumN=0;seq=&quot;&quot;
    l=length(dna_seq)
@@ -5949,36 +5995,6 @@ function print_sequence_stats(header, dna_seq,         i,l) { # prints to STDOUT
 }
 #---------------------------------------------------------------------------------------------------------
 
-function print_help(prog, vers) # (prog, vers)
-{   
-   print &quot;OPTIONS for &quot; prog &quot; v&quot;vers &gt; &quot;/dev/stderr&quot; 
-   print &quot; # Required options&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;     -R &lt;int&gt; [runmode]&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;          1 [filter sequences matching string]&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;          2 [reverse complement DNA sequence]&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;          3 [extract sequence by start-end coordinates]&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;          4 [translate CDSs]&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;          5 [print basic sequence stats]&quot; &gt; &quot;/dev/stderr&quot; 
-
-   print &quot;\n # Runmode-speicic options&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;     -m &lt;string&gt; [match string] for -R 1&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;     -s &lt;int&gt; [start coord] for -R 3&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;     -e &lt;int&gt; [end coord] for -R 3&quot; &gt; &quot;/dev/stderr&quot; 
-
-   print &quot;\n # Other options&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;     -d [FLAG; sets DEBUG=1 to print extra debugging info]&quot; &gt; &quot;/dev/stderr&quot; 
-  
-   print &quot;\nUSAGE EXAMPLES:&quot;
-   print &quot;./&quot; prog, &quot;-R 1 -m match_string input.fasta&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;./&quot; prog, &quot;-R 2 input.fasta&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;./&quot; prog, &quot;-R 3 -s 2 -e 5 input.fasta&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;./&quot; prog, &quot;-R 4 input.fasta&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;./&quot; prog, &quot;-R 5 input.fasta&quot; &gt; &quot;/dev/stderr&quot; 
-   print &quot;cat input.fasta | ./&quot;prog &quot; -R 5&quot; &gt; &quot;/dev/stderr&quot; 
-
-   exit 1
-}
-#---------------------------------------------------------------------------------------------------------
 
 # available in /usr/share/awk/
 # getopt.awk --- Do C library getopt(3) function in awk
@@ -6046,13 +6062,48 @@ function getopt(argc, argv, options,    thisopt, i)
     return thisopt
 }
 #---------------------------------------------------------------------------------------------------------
+
+function print_help(prog, vers) # (prog, vers)
+{   
+   print &quot;OPTIONS for &quot; prog &quot; v&quot;vers &gt; &quot;/dev/stderr&quot; 
+   print &quot; # Required options&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;     -R &lt;int&gt; [runmode]&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;          1 [filter sequences matching -m string]&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;          2 [reverse complement DNA sequence]&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;          3 [extract sequence by -s start -e end coordinates]&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;          4 [translate CDSs]&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;          5 [print basic sequence stats]&quot; &gt; &quot;/dev/stderr&quot; 
+
+   print &quot;\n # Runmode-speicic options&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;     -m &lt;string&gt; [match string] for -R 1&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;     -s &lt;int&gt; [start coord] for -R 3&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;     -e &lt;int&gt; [end coord] for -R 3&quot; &gt; &quot;/dev/stderr&quot; 
+
+   print &quot;\n # Other options&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;     -d [FLAG; sets DEBUG=1 to print extra debugging info]&quot; &gt; &quot;/dev/stderr&quot; 
+  
+   print &quot;\nUSAGE EXAMPLES:&quot;
+   print &quot;./&quot; prog, &quot;-R 1 -m match_string input.fasta&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;./&quot; prog, &quot;-R 2 input.fasta&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;./&quot; prog, &quot;-R 3 -s 2 -e 5 input.fasta&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;./&quot; prog, &quot;-R 4 input.fasta&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;./&quot; prog, &quot;-R 5 input.fasta&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;cat input.fasta | ./&quot;prog &quot; -R 5&quot; &gt; &quot;/dev/stderr&quot; 
+
+   print &quot;\n # Notes:&quot; &gt; &quot;/dev/stderr&quot; 
+   print &quot;    1. Pass only single FASTA files to &quot; prog &gt; &quot;/dev/stderr&quot; 
+   print &quot;    2. prints results to STDOUT&quot; &gt; &quot;/dev/stderr&quot;
+
+   exit 1
+}
+#---------------------------------------------------------------------------------------------------------
 </code></pre>
 </div>
 <div id="bloque-de-inicialización-begin-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.8.2.2</span> Bloque de inicialización BEGIN{} de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.8.2.3</span> Bloque de inicialización BEGIN{} de fasta_toolkit.awk</h4>
 <p>Este es un bloque BEGIN{} bastante más largo que otros mostrados en ejemplos anteriores.</p>
 <ol style="list-style-type: decimal">
-<li>Una primera sección llama a la función <strong>getopt</strong> y procesa las opciones y sus argumentos</li>
+<li>Una primera sección llama a la función <strong>getopt</strong> dentro de un bucle <em>while()</em>, pasándole ARGC, ARGV y las opciones como cadena “dm:e:R:s:”, en la que las opciones que requieren argumentos son seguidas por un ‘:’, como ‘-e:’. <code>while ((c = getopt(ARGC, ARGV, “dm:e:R:s:”)) != -1) { … }</code>.</li>
 <li>Una segunda sección define a las variables RS, FS y OFS para modelar archivos FASTA, como hemos visto anteriormente</li>
 <li>La siguiente sección revisa que las opciones y sus valores sean los adecuados para cada “runmode” u operación a hacer con el FASTA de entrada</li>
 <li>Además se definen los hashes compl_nucl y codons sólo si van a ser usados por el runmode correspondiene (-R 2; -R 4) y se imprime la cabecera de la tabla de estadísticas para -R 5</li>
@@ -6064,7 +6115,8 @@ function getopt(argc, argv, options,    thisopt, i)
     Optind = 1    # skip ARGV[0]
     
     progname = &quot;fasta_toolkit.awk&quot;
-    version  = 0.1  # v0.1 dec 21, 2020, first commit
+    version  = 0.2 # v0.2 dec 22, 2020
+                   # v0.1 dec 21, 2020, first commit
     
     # check that the script receives input either from file or pipe
     if ( ARGC &lt; 2 ) print_help(progname, version)
@@ -6094,7 +6146,7 @@ function getopt(argc, argv, options,    thisopt, i)
 
         for(i=1; i&lt;=ARGC; i++)
         {
-       print &quot;ARGV[&quot;i&quot;]=&quot; ARGV[i]
+              print &quot;ARGV[&quot;i&quot;]=&quot; ARGV[i]
         }
     }
     
@@ -6162,7 +6214,9 @@ function getopt(argc, argv, options,    thisopt, i)
 </code></pre>
 </div>
 <div id="bloque-de-patronesacciones-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.8.2.3</span> Bloque de patrones/acciones de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.8.2.4</span> Bloque de patrones/acciones de fasta_toolkit.awk</h4>
+<p>El bloque de código que hace las llamadas a las funciones es relativamente corto, haciendo muy fácil y clara su lectura.</p>
+<p>1.Como hemos visto en múltiples ejemplos anteriores de <em>scripts</em> que procesan archivos FASTA modelando su estructura con <code>BEGIN{RS=“&gt;”; FS=OFS=“”}</code>, iniciamos el bloque de código principal con el patrón <code>NR &gt; 1</code> para eliminar el primer registro que está vacío. 2. Sigue un condicional que asegura que el usuario ha pasado al <em>script</em> un “runmode” definido en el mismo (-R <int> [1-5]). De ser así lee el FASTA mediante la función <strong>read_fasta()</strong>, capturando los registros en el <strong>hash global seqs</strong>. 3. Sigue un <strong>bloque END{}</strong> que llama a las funciones según el “runmode” que se le ha pasado al <em>script</em> (-R <int> [1-5]), siempre y cuando las secuencias no sean ridículamente cortas.</p>
 <pre><code># -------------------- # 
 # &gt;&gt;&gt; MAIN PROGRAM &lt;&lt;&lt; #  
 # -------------------- # 
@@ -6181,27 +6235,27 @@ NR &gt; 1 {
 
 END { 
     for (h in seqs) { 
-    if( length(seqs[h] &gt;= 2) &amp;&amp; runmode == 1 ) { if(h ~ string) print &quot;&gt;&quot;h, seqs[h] }
-    if( length(seqs[h] &gt;= 2) &amp;&amp; runmode == 2 ) { rev_compl(h, seqs[h]) }
+          if( length(seqs[h] &gt;= 2) &amp;&amp; runmode == 1 ) { if(h ~ string) print &quot;&gt;&quot;h, seqs[h] }
+          if( length(seqs[h] &gt;= 2) &amp;&amp; runmode == 2 ) { rev_compl(h, seqs[h]) }
         if( length(seqs[h] &gt;= 3) &amp;&amp; runmode == 3 ) { extract_sequence_by_coordinates(h, seqs[h], start, end) }
         if( length(seqs[h] &gt;= 3) &amp;&amp; runmode == 4 ) {
-           # 1. translate the CDS
-       translate_dna(h, seqs[h]) 
+            # 1. translate the CDS
+              translate_dna(h, seqs[h]) 
            
-       # 2. print tranlsated fasta
-           for (h in prots) {
-           # make sure we print only non-redundant sequences
-           hcount[h]++
-           if ($1 != &quot;&quot; &amp;&amp; hcount[h] == 1) printf &quot;&gt;%s\n%s\n&quot;, h, prots[h] 
-       }    
-        }
-    if( length(seqs[h] &gt;= 3) &amp;&amp; runmode == 5 ) { print_sequence_stats(h, seqs[h]) }
-    }
+              # 2. print tranlsated fasta
+            for (h in prots) {
+                   # make sure we print only non-redundant sequences
+                   hcount[h]++
+                   if ($1 != &quot;&quot; &amp;&amp; hcount[h] == 1) printf &quot;&gt;%s\n%s\n&quot;, h, prots[h] 
+             }    
+      }
+        if( length(seqs[h] &gt;= 3) &amp;&amp; runmode == 5 ) { print_sequence_stats(h, seqs[h]) }
+   }
 }
 </code></pre>
 </div>
 <div id="ejemplos-de-uso-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.8.2.4</span> Ejemplos de uso de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.8.2.5</span> Ejemplos de uso de fasta_toolkit.awk</h4>
 <p>Usaremos para los ejemplos el archivo <em>mini_CDS.fna</em></p>
 <pre class="bash"><code>cat mini_CDS.fna</code></pre>
 <pre><code>## &gt;mini_CDS1
@@ -6630,7 +6684,7 @@ ubicación=CDMX
 dat=$(date | awk &#39;{print $2&quot;-&quot;$3&quot;-&quot;$4}&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in &lt;$wkdir&gt; at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;21-dic-2020&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;22-dic-2020&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
 <h2><span class="header-section-number">13.3</span> Modificación de variables y operaciones con ellas</h2>
@@ -6730,7 +6784,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 21 21:05 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 22 11:07 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -6916,14 +6970,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  2222 dic 21 21:05 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  1131 dic 21 21:05 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 dic 21 21:05 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 dic 21 21:05 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 dic 21 21:05 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 dic 21 21:05 recA_B_yuanmingense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 dic 21 21:05 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 dic 21 21:05 recA_B_liaoningense.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 dic 22 11:07 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 dic 22 11:07 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 dic 22 11:07 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 dic 22 11:07 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 dic 22 11:07 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 dic 22 11:07 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 dic 22 11:07 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 dic 22 11:07 recA_B_yuanmingense.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -7054,9 +7108,9 @@ echo &quot;$contador líneas contienen el patrón $patron&quot;
 <pre class="bash"><code>while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 27152
-## 11478
-## 22980</code></pre>
+<pre><code>## 23764
+## 11906
+## 8354</code></pre>
 <p>Los bucles <span class="math inline">\(until\)</span> son útiles para ejecutar un bucle hasta que se cumpla o no una determinada condición.</p>
 <p>Su sintaxis es idéntica al del bucle <span class="math inline">\(while\)</span>.</p>
 <p><code>until TEST-COMMAND; do CONSEQUENT-COMMANDS; done</code></p>
@@ -7064,9 +7118,9 @@ while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; bre
 <pre class="bash"><code>until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 10779
-## 4689
-## 30799</code></pre>
+<pre><code>## 17055
+## 9233
+## 16059</code></pre>
 </div>
 </div>
 <div id="estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" class="section level2">
