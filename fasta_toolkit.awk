@@ -11,15 +11,16 @@
 #       -R 5 [print basic sequence stats]
 # USAGE: call the script without arguments to print the help menu
 # NOTES:  
-#   1. uses Arnold Robbin's getopt function from the gawk distro to deal with options and arguments
+#   1. uses Arnold Robbin's getopt() function from the gawk distro to deal with options and arguments
 #   2. can read FASTA files from file or STDIN
-#   3. prints to STDOUT
+#   3. pass only single FASTA files to fasta_toolkit.awk
+#   4. prints results to STDOUT
 
 #---------------------------------------------------------------------------------------------------------#
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FUNCTION DEFINITIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< #
 #---------------------------------------------------------------------------------------------------------#
 
-function read_fasta(fasta,        i, h, s)
+function read_fasta(      i, h, s)
 { 
    # fill hash seqs with the DNA/CDS sequences
    s=""
@@ -30,11 +31,11 @@ function read_fasta(fasta,        i, h, s)
 #---------------------------------------------------------------------------------------------------------
 
 function rev_compl(header, dna_seq,        i, k, x) # reverse complement
-{ 
+{  # receives two arguments: the fasta header and the CDS sequence to be translated
     k=x=""
     
     dna_seq = toupper(dna_seq) # to match the keys of compl_nucl
-    for( i = length(dna_seq); i !=0; i-- ) { 
+    for( i = length(dna_seq); i !=0; i-- ) { # note that the loop reads the sequence from end to beginnig
          k = substr(dna_seq, i, 1)
          x = x compl_nucl[k]
     }
@@ -43,8 +44,8 @@ function rev_compl(header, dna_seq,        i, k, x) # reverse complement
 #---------------------------------------------------------------------------------------------------------
 
 function extract_sequence_by_coordinates(header, dna_seq, start, end) {
-       if(start == 1) print ">"header"\n"substr(dna_seq,start,end)
-       if(start > 1)  print ">"header"\n"substr(dna_seq,start,end-start+1)
+       if(start == 1) print ">"header"\n"substr(dna_seq, start, end)
+       if(start > 1)  print ">"header"\n"substr(dna_seq, start, end-start+1)
 }
 #---------------------------------------------------------------------------------------------------------
 
@@ -113,8 +114,8 @@ function translate_dna(header, dna_seq,      s, i, p)
     prots[header]=p
 }
 #---------------------------------------------------------------------------------------------------------
-function print_sequence_stats(header, dna_seq,         i,l) { # prints to STDOUT
-   
+function print_sequence_stats(header, dna_seq,         i,l) 
+{  # receives two arguments: the fasta header and the CDS sequence to be translated
    sumA=0;sumT=0;sumC=0;sumG=0;sumN=0;seq=""
    l=length(dna_seq)
    
@@ -130,18 +131,18 @@ function print_sequence_stats(header, dna_seq,         i,l) { # prints to STDOUT
 }
 #---------------------------------------------------------------------------------------------------------
 
-function print_help(prog, vers) # (prog, vers)
+function print_help(prog, vers) # (program, version)
 {   
    print "OPTIONS for " prog " v"vers > "/dev/stderr" 
    print " # Required options" > "/dev/stderr" 
-   print "     -R <int> [runmode]" > "/dev/stderr" 
-   print "          1 [filter sequences matching string]" > "/dev/stderr" 
-   print "          2 [reverse complement DNA sequence]" > "/dev/stderr" 
-   print "          3 [extract sequence by start-end coordinates]" > "/dev/stderr" 
-   print "          4 [translate CDSs]" > "/dev/stderr" 
-   print "          5 [print basic sequence stats]" > "/dev/stderr" 
+   print "    -R <int> [runmode]" > "/dev/stderr" 
+   print "         1 [filter sequences matching -m string]" > "/dev/stderr" 
+   print "         2 [reverse complement DNA sequence]" > "/dev/stderr" 
+   print "         3 [extract sequence by -s start -e end coordinates]" > "/dev/stderr" 
+   print "         4 [translate CDSs]" > "/dev/stderr" 
+   print "         5 [print basic sequence stats]" > "/dev/stderr" 
 
-   print "\n # Runmode-speicic options" > "/dev/stderr" 
+   print "\n # Runmode-specific options" > "/dev/stderr" 
    print "     -m <string> [match string] for -R 1" > "/dev/stderr" 
    print "     -s <int> [start coord] for -R 3" > "/dev/stderr" 
    print "     -e <int> [end coord] for -R 3" > "/dev/stderr" 
@@ -149,15 +150,17 @@ function print_help(prog, vers) # (prog, vers)
    print "\n # Other options" > "/dev/stderr" 
    print "     -d [FLAG; sets DEBUG=1 to print extra debugging info]" > "/dev/stderr" 
   
-   print "\nUSAGE EXAMPLES:"
-   print "./" prog, "-R 1 -m match_string input.fasta" > "/dev/stderr" 
-   print "./" prog, "-R 2 input.fasta" > "/dev/stderr" 
-   print "./" prog, "-R 3 -s 2 -e 5 input.fasta" > "/dev/stderr" 
-   print "./" prog, "-R 4 input.fasta" > "/dev/stderr" 
-   print "./" prog, "-R 5 input.fasta" > "/dev/stderr" 
-   print "cat input.fasta | ./"prog " -R 5" > "/dev/stderr" 
+   print "\n # Usage examples:"
+   print "    ./" prog " -R 1 -m match_string input.fasta" > "/dev/stderr" 
+   print "    ./" prog " -R 2 input.fasta" > "/dev/stderr" 
+   print "    ./" prog " -R 3 -s 2 -e 5 input.fasta" > "/dev/stderr" 
+   print "    ./" prog " -R 4 input.fasta" > "/dev/stderr" 
+   print "    ./" prog " -R 5 input.fasta" > "/dev/stderr" 
+   print "    cat input.fasta | ./"prog " -R 5" > "/dev/stderr" 
 
-
+   print "\n # Notes:" > "/dev/stderr" 
+   print "    1. Pass only single FASTA files to " prog > "/dev/stderr" 
+   print "    2. prints results to STDOUT" > "/dev/stderr"
 
    exit 1
 }
@@ -237,7 +240,8 @@ BEGIN {
     Optind = 1    # skip ARGV[0]
     
     progname = "fasta_toolkit.awk"
-    version  = 0.1  # v0.1 dec 21, 2020, first commit
+    version  = 0.2  # dec 22, 2020, improved layout; fixed typos
+                    # v0.1 dec 21, 2020, first commit
     
     # check that the script receives input either from file or pipe
     if ( ARGC < 2 ) print_help(progname, version)
@@ -278,10 +282,15 @@ BEGIN {
     for (i = 1; i < Optind; i++)
        ARGV[i] = ""
 
+  #------------------------- END GETOPT --------------------------#
+
     # Model FASTA file
     RS=">"
     FS=OFS="\n"
+
+  #-----------------------  END MODEL FASTA  ---------------------#
    
+    # check that the user provided the required options and arguments, depending on runmode
     if (runmode == 1 && length(string) == 0) {
         print "ERROR: -R 1 requires -m match_string to filter the input FASTA" > "/dev/stderr"
         print_help(progname, version)
@@ -297,6 +306,7 @@ BEGIN {
         print_help(progname, version)
     }   
  
+    # set runmode-specific hashes
     if (runmode == 2) {
         # complement sequences
         compl_nucl["T"]="A"
@@ -328,7 +338,7 @@ BEGIN {
     }
 
     if (runmode == 5) {
-         # print table header for sequence stats
+         # print table header for sequence stats (-R 5)
          print "seq_name\tA\tC\tG\tT\tN\tlength\tGC%"
     }
 }
@@ -338,6 +348,7 @@ BEGIN {
 
 NR > 1 { 
    # read the CDS (DNA) sequence into the global seqs hash
+
 
    if (runmode > 5) {
       printf "ERROR: runmomde %d is not defined\n", runmode
@@ -353,7 +364,8 @@ END {
 	if( length(seqs[h] >= 2) && runmode == 1 ) { if(h ~ string) print ">"h, seqs[h] }
 	if( length(seqs[h] >= 2) && runmode == 2 ) { rev_compl(h, seqs[h]) }
         if( length(seqs[h] >= 3) && runmode == 3 ) { extract_sequence_by_coordinates(h, seqs[h], start, end) }
-        if( length(seqs[h] >= 3) && runmode == 4 ) {
+        if( length(seqs[h] >= 3) && runmode == 4 ) 
+	{
            # 1. translate the CDS
 	   translate_dna(h, seqs[h]) 
            
@@ -364,6 +376,6 @@ END {
 	       if ($1 != "" && hcount[h] == 1) printf ">%s\n%s\n", h, prots[h] 
 	   }    
         }
-	if( length(seqs[h] >= 3) && runmode == 5 ) { print_sequence_stats(h, seqs[h]) }
+	if( length(seqs[h] >= 2) && runmode == 5 ) { print_sequence_stats(h, seqs[h]) }
     }
 }
