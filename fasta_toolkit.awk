@@ -71,8 +71,8 @@ function translate_dna(header, dna_seq,      s, i, p)
    	  # Check that the DNA sequence string is divisible by 3 using the modulo operator
    	  #   if not, exit with an error message
    	  } else if(length(dna_seq)%3) { 
-   	      print "ERROR: input DNA sequence not divisible by 3 ..."
-   	      exit 2
+   	      printf "# WARNING: input DNA sequence for %s not divisible by 3. Will skip it!\n", header
+	      break
    	  }
 
    	  # use substr() to split the input sequence (dna_seq) into triplets saved in s 	
@@ -240,7 +240,8 @@ BEGIN {
     Optind = 1    # skip ARGV[0]
     
     progname = "fasta_toolkit.awk"
-    version  = 0.2  # dec 22, 2020, improved layout; fixed typos
+    version  = 0.3  # dec 23, 2020. Prints warning and does not exit, if dna_seq not divisible by 3
+                    # dec 22, 2020, improved layout; fixed typos
                     # v0.1 dec 21, 2020, first commit
     
     # check that the script receives input either from file or pipe
