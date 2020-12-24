@@ -412,7 +412,7 @@ summary {
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="https://www.ccg.unam.mx/~vinuesa/" class="uri">https://www.ccg.unam.mx/~vinuesa/</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
-<h4 class="date">Versión: Tue Dec 22 11:07:13 2020</h4>
+<h4 class="date">Versión: Wed Dec 23 19:51:42 2020</h4>
 
 </div>
 
@@ -607,7 +607,8 @@ summary {
 </ul></li>
 <li><a href="#modularización-de-código-mediante-funciones-definidas-por-el-usuario-function-my_function_name"><span class="toc-section-number">11.8</span> Modularización de código mediante funciones definidas por el usuario: <strong>function my_function_name(){ … }</strong></a><ul>
 <li><a href="#ejemplos-de-definición-y-llamadas-de-funciones-definidas-por-el-usuario"><span class="toc-section-number">11.8.1</span> Ejemplos de definición y llamadas de funciones definidas por el usuario</a></li>
-<li><a href="#un-script-multifuncional-fasta_toolkit.awk"><span class="toc-section-number">11.8.2</span> Un <em>script</em> multifuncional: <strong>fasta_toolkit.awk</strong></a></li>
+<li><a href="#extract_cdss_from_genbank.awk-un-script-que-transforma-un-archivo-genbank-en-tabla-extrae-cdss-y-la-cadena-completa-de-dna-haciendo-uso-de-hashes-de-hashes"><span class="toc-section-number">11.8.2</span> <strong>extract_CDSs_from_GenBank.awk</strong>, un <em>script</em> que transforma un archivo GenBank en tabla, extrae CDSs y la cadena completa de DNA, haciendo uso de <strong>hashes de hashes</strong></a></li>
+<li><a href="#fasta_toolkit.awk-un-script-multifuncional-para-mainpular-archivo-fasta-que-hace-uso-de-getopt"><span class="toc-section-number">11.8.3</span> <strong>fasta_toolkit.awk</strong>, un <em>script</em> multifuncional para mainpular archivo FASTA que hace uso de <strong>getopt()</strong></a></li>
 </ul></li>
 <li><a href="#retos-de-programación-awk"><span class="toc-section-number">11.9</span> Retos de programación <span class="math inline">\(awk\)</span></a></li>
 <li><a href="#tutoriales-recomendados-para-profundizar-en-awk"><span class="toc-section-number">11.10</span> Tutoriales recomendados para profundizar en AWK</a></li>
@@ -702,7 +703,7 @@ summary {
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
 <p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2020-12-22) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
+<p>Las versión actual (v.2020-12-23) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
@@ -966,8 +967,8 @@ ls | head</code></pre>
 ## count_genome_features_for_taxon.awk</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 101444
-## drwxr-xr-x 12 vinuesa vinuesa    20480 dic 22 11:00 .
+<pre><code>## total 102272
+## drwxr-xr-x 12 vinuesa vinuesa    20480 dic 23 19:49 .
 ## drwxr-xr-x  4 vinuesa vinuesa     4096 nov 11 22:55 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -983,9 +984,9 @@ ls -al | head -20</code></pre>
 ## drwxrwxr-x  2 vinuesa vinuesa     4096 nov 10 21:22 data
 ## -rw-rw-r--  1 vinuesa vinuesa       43 nov  4 19:20 dna_string.txt
 ## drwxr-xr-x  2 vinuesa vinuesa     4096 nov 26 17:48 docs
+## -rwxr-xr-x  1 vinuesa vinuesa     9654 dic 23 18:45 extract_CDSs_from_GenBank.awk
 ## -rwxr-xr-x  1 vinuesa vinuesa     1699 nov 28 21:00 extract_DNA_string_from_genbank.awk
-## -rwxr-xr-x  1 vinuesa vinuesa     2401 dic 19 18:01 extract_sequence_strings_by_coords.awk
-## -rwxr-xr-x  1 vinuesa vinuesa      535 oct 26 19:16 fas2tab.pl</code></pre>
+## -rwxr-xr-x  1 vinuesa vinuesa     2401 dic 19 18:01 extract_sequence_strings_by_coords.awk</code></pre>
 <div id="veamos-el-contenido-del-directorio-raíz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del <strong>directorio raíz /</strong></h4>
 <ul>
@@ -1010,7 +1011,7 @@ ls -al | head -20</code></pre>
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
 ## drwxr-xr-x   4 root root  4096 dic 12 09:56 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4600 dic 22 10:43 dev
+## drwxr-xr-x  21 root root  4600 dic 23 09:18 dev
 ## drwxr-xr-x 155 root root 12288 dic 19 18:02 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
@@ -1546,7 +1547,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 <p>La mayoría de los programas ejecutables del sistema proveen un formato estandarizado de documentación que se despliega en la consola usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                                                                      User Commands                                                                     CUT(1)
+<pre><code>## CUT(1)                                                             User Commands                                                            CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -1829,7 +1830,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 101416
+<pre><code>## total 102244
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-rw-r-- 1 vinuesa vinuesa      895 dic 21 10:41 awkvars.out
@@ -1837,7 +1838,7 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 nov 16 17:37 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 dic 22 11:07 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
+## lrwxrwxrwx 1 vinuesa vinuesa       78 dic 23 19:51 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
 ## -rwxr-xr-x 1 vinuesa vinuesa     1245 dic 19 18:01 compute_DNA_seq_stats.awk</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
@@ -2224,7 +2225,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 dic 22 11:07 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 dic 23 19:51 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2243,7 +2244,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 22 11:07 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 23 19:51 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2372,15 +2373,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 22 11:07 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 22 11:07 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 23 19:51 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 23 19:51 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 22 11:07 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 23 19:51 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2473,15 +2474,17 @@ echo &#39;----------------------------&#39;
 ls *fna                      # se empaca una copia de los archivos *fna, los cuales siguen existiendo sin comprimir
 echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa   114 dic 21 17:41 mini_CDS.fna
-## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 dic 22 11:00 recA_Byuanmingense.fna
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
+## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 23 19:49 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 145931 dic 23 19:49 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4826 dic 22 11:07 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 47839 dic 23 19:51 fna_files.tgz
 ## ----------------------------
 ## mini_CDS.fna
 ## recA_Bradyrhizobium_vinuesa.fna
 ## recA_Byuanmingense.fna
+## Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------</code></pre>
 <ul>
 <li>listar contenidos de un tarro comprimido</li>
@@ -2489,7 +2492,8 @@ rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre class="bash"><code>tar -tzf fna_files.tgz      # la opción -t permite listar el contenido de un tarro</code></pre>
 <pre><code>## mini_CDS.fna
 ## recA_Bradyrhizobium_vinuesa.fna
-## recA_Byuanmingense.fna</code></pre>
+## recA_Byuanmingense.fna
+## Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
 <ul>
 <li>desempacado de un tarro comprimido</li>
 </ul>
@@ -2499,11 +2503,12 @@ echo &#39;----------------------------&#39;
 ls -l fna_files.tgz           # vemos que sigue existiendo el *tgz
 echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa   114 dic 21 17:41 mini_CDS.fna
-## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 dic 22 11:00 recA_Byuanmingense.fna
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
+## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 23 19:49 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 145931 dic 23 19:49 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 4826 dic 22 11:07 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 47839 dic 23 19:51 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2512,13 +2517,15 @@ rm fna_files.tgz              # lo eliminamos</code></pre>
 gzip *fna                     # comprimimos *fna
 echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa   114 dic 21 17:41 mini_CDS.fna
-## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 dic 22 11:00 recA_Byuanmingense.fna
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
+## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 23 19:49 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 145931 dic 23 19:49 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa  104 dic 21 17:41 mini_CDS.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 dic 22 11:00 recA_Byuanmingense.fna.gz</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa   104 dic 21 17:41 mini_CDS.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa   882 dic 23 19:49 recA_Byuanmingense.fna.gz
+## -rw-rw-r-- 1 vinuesa vinuesa 42264 dic 23 19:49 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2527,14 +2534,16 @@ echo &#39;----------------------------&#39;
 gunzip *fna.gz               # descomprimimos los *fna.gz
 echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  104 dic 21 17:41 mini_CDS.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa 3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa  882 dic 22 11:00 recA_Byuanmingense.fna.gz
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa   104 dic 21 17:41 mini_CDS.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa  3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa   882 dic 23 19:49 recA_Byuanmingense.fna.gz
+## -rw-rw-r-- 1 vinuesa vinuesa 42264 dic 23 19:49 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz
 ## ----------------------------
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa   114 dic 21 17:41 mini_CDS.fna
-## -rw-r--r-- 1 vinuesa vinuesa 77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa 17736 dic 22 11:00 recA_Byuanmingense.fna</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
+## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 23 19:49 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 145931 dic 23 19:49 Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-mlocate-y-find" class="section level1">
@@ -2583,33 +2592,33 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 <pre class="bash"><code>df        </code></pre>
 <pre><code>## Filesystem      1K-blocks      Used  Available Use% Mounted on
 ## udev             16381120         0   16381120   0% /dev
-## tmpfs             3281912      2016    3279896   1% /run
-## /dev/nvme0n1p3  465889936  19332680  422821604   5% /
-## tmpfs            16409540     28172   16381368   1% /dev/shm
+## tmpfs             3281912      2056    3279856   1% /run
+## /dev/nvme0n1p3  465889936  19341336  422812948   5% /
+## tmpfs            16409540     11396   16398144   1% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409540         0   16409540   0% /sys/fs/cgroup
-## /dev/loop0          56704     56704          0 100% /snap/core18/1932
-## /dev/loop1         166784    166784          0 100% /snap/gnome-3-28-1804/145
-## /dev/loop2          56832     56832          0 100% /snap/core18/1944
-## /dev/loop3          65920     65920          0 100% /snap/gtk-common-themes/1513
-## /dev/loop4         261760    261760          0 100% /snap/gnome-3-34-1804/36
-## /dev/nvme0n1p1    1994928      7984    1986944   1% /boot/efi
+## /dev/loop1          56704     56704          0 100% /snap/core18/1932
+## /dev/loop2         223232    223232          0 100% /snap/gnome-3-34-1804/60
+## /dev/loop4          52352     52352          0 100% /snap/snap-store/498
+## /dev/loop0          56832     56832          0 100% /snap/core18/1944
 ## /dev/loop5         165376    165376          0 100% /snap/gnome-3-28-1804/128
-## /dev/loop6          66432     66432          0 100% /snap/gtk-common-themes/1514
-## /dev/loop7          31872     31872          0 100% /snap/snapd/10492
-## /dev/loop9          52352     52352          0 100% /snap/snap-store/498
-## /dev/loop8          52352     52352          0 100% /snap/snap-store/518
+## /dev/loop3          66432     66432          0 100% /snap/gtk-common-themes/1514
+## /dev/loop7         261760    261760          0 100% /snap/gnome-3-34-1804/36
+## /dev/nvme0n1p1    1994928      7984    1986944   1% /boot/efi
+## /dev/loop8         166784    166784          0 100% /snap/gnome-3-28-1804/145
+## /dev/loop6          31872     31872          0 100% /snap/snapd/10492
+## /dev/loop9          52352     52352          0 100% /snap/snap-store/518
 ## /dev/loop10         65792     65792          0 100% /snap/standard-notes/27
-## /dev/loop12         65792     65792          0 100% /snap/standard-notes/26
 ## /dev/loop11         31872     31872          0 100% /snap/snapd/10238
-## /dev/loop13        223232    223232          0 100% /snap/gnome-3-34-1804/60
-## /dev/sda1      1921802432 429599076 1394511300  24% /home
+## /dev/loop12         65792     65792          0 100% /snap/standard-notes/26
+## /dev/loop13         65920     65920          0 100% /snap/gtk-common-themes/1513
+## /dev/sda1      1921802432 429660548 1394449828  24% /home
 ## tmpfs             3281908        20    3281888   1% /run/user/125
-## tmpfs             3281908        36    3281872   1% /run/user/1000</code></pre>
+## tmpfs             3281908        64    3281844   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465889936 19332680 422821604   5% /</code></pre>
+## /dev/nvme0n1p3 465889936 19341336 422812948   5% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></h3>
 <p>Como cualquier comando, le podemos pasar opciones para adecuar mejor la salida a nuestra necesidad.</p>
@@ -2639,30 +2648,30 @@ echo
 df -h /home</code></pre>
 <pre><code>## Filesystem     1M-blocks    Used Available Use% Mounted on
 ## udev              15998M      0M    15998M   0% /dev
-## tmpfs              3205M      2M     3204M   1% /run
-## /dev/nvme0n1p3   454971M  18880M   412912M   5% /
-## tmpfs             16025M     28M    15998M   1% /dev/shm
+## tmpfs              3205M      3M     3203M   1% /run
+## /dev/nvme0n1p3   454971M  18889M   412904M   5% /
+## tmpfs             16025M     12M    16014M   1% /dev/shm
 ## tmpfs                 5M      1M        5M   1% /run/lock
 ## tmpfs             16025M      0M    16025M   0% /sys/fs/cgroup
-## /dev/loop0           56M     56M        0M 100% /snap/core18/1932
-## /dev/loop1          163M    163M        0M 100% /snap/gnome-3-28-1804/145
-## /dev/loop2           56M     56M        0M 100% /snap/core18/1944
-## /dev/loop3           65M     65M        0M 100% /snap/gtk-common-themes/1513
-## /dev/loop4          256M    256M        0M 100% /snap/gnome-3-34-1804/36
-## /dev/nvme0n1p1     1949M      8M     1941M   1% /boot/efi
+## /dev/loop1           56M     56M        0M 100% /snap/core18/1932
+## /dev/loop2          218M    218M        0M 100% /snap/gnome-3-34-1804/60
+## /dev/loop4           52M     52M        0M 100% /snap/snap-store/498
+## /dev/loop0           56M     56M        0M 100% /snap/core18/1944
 ## /dev/loop5          162M    162M        0M 100% /snap/gnome-3-28-1804/128
-## /dev/loop6           65M     65M        0M 100% /snap/gtk-common-themes/1514
-## /dev/loop7           32M     32M        0M 100% /snap/snapd/10492
-## /dev/loop9           52M     52M        0M 100% /snap/snap-store/498
-## /dev/loop8           52M     52M        0M 100% /snap/snap-store/518
+## /dev/loop3           65M     65M        0M 100% /snap/gtk-common-themes/1514
+## /dev/loop7          256M    256M        0M 100% /snap/gnome-3-34-1804/36
+## /dev/nvme0n1p1     1949M      8M     1941M   1% /boot/efi
+## /dev/loop8          163M    163M        0M 100% /snap/gnome-3-28-1804/145
+## /dev/loop6           32M     32M        0M 100% /snap/snapd/10492
+## /dev/loop9           52M     52M        0M 100% /snap/snap-store/518
 ## /dev/loop10          65M     65M        0M 100% /snap/standard-notes/27
-## /dev/loop12          65M     65M        0M 100% /snap/standard-notes/26
 ## /dev/loop11          32M     32M        0M 100% /snap/snapd/10238
-## /dev/loop13         218M    218M        0M 100% /snap/gnome-3-34-1804/60
-## /dev/sda1       1876761M 419531M  1361828M  24% /home
+## /dev/loop12          65M     65M        0M 100% /snap/standard-notes/26
+## /dev/loop13          65M     65M        0M 100% /snap/gtk-common-themes/1513
+## /dev/sda1       1876761M 419591M  1361768M  24% /home
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392678M 439779M  1834318M  20% -
+## total           2392678M 439831M  1834265M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2682,8 +2691,8 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 230468   .
-## 226M .</code></pre>
+<pre><code>## 232552   .
+## 228M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
 </ul>
@@ -2828,6 +2837,7 @@ SYNOPSIS
 <pre><code>## 2</code></pre>
 <pre class="bash"><code>grep -li pseudo *.tsv *.txt</code></pre>
 <pre><code>## mini_tabla.tsv
+## Salmonella_enterica_33676_pIncAC.tsv
 ## prokaryotes.txt
 ## TODO.txt</code></pre>
 </div>
@@ -4226,6 +4236,7 @@ ls -ld working_with* *.awk *.sh docs pics | awk &#39;{print $1, $NF}&#39; </code
 ## -rw-rw-r-- count_genome_features_for_taxon.awk
 ## -rw-rw-r-- count_genome_features_for_taxon_V2.awk
 ## drwxr-xr-x docs
+## -rwxr-xr-x extract_CDSs_from_GenBank.awk
 ## -rwxr-xr-x extract_DNA_string_from_genbank.awk
 ## -rwxr-xr-x extract_sequence_strings_by_coords.awk
 ## -rwxr-xr-x fasta_toolkit.awk
@@ -4317,17 +4328,17 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 2332047 dic 22 11:00 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 2376230 dic 23 19:49 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   68106 nov 15 20:16 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  342389 dic 22 11:07 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  378694 dic 23 19:51 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  499749 nov 15 20:16 working_with_linux_commands.tex
-## total size of working_with_linux_commands.* files is: 3.09 Mb</code></pre>
+## total size of working_with_linux_commands.* files is: 3.17 Mb</code></pre>
 <ul>
 <li>comparen y entiendan la diferencia del comando anterior con el del siguiente:</li>
 </ul>
 <pre class="bash"><code>ls -l working_with_linux_commands.* | \
  awk &#39;{s+=$5}; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## total size of working_with_linux_commands.* files is: 3.09 Mb</code></pre>
+<pre><code>## total size of working_with_linux_commands.* files is: 3.17 Mb</code></pre>
 </div>
 <div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
 <h3><span class="header-section-number">11.5.7</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
@@ -4409,7 +4420,8 @@ awk &#39;BEGIN{print &quot;species,count&quot;; OFS=&quot;,&quot;} {print $2 &qu
 <pre class="bash"><code>for f in *fna; do awk &#39;/^&gt;/ {s++} END{print FILENAME, &quot;has&quot;, s, &quot;sequences&quot;}&#39; $f; done</code></pre>
 <pre><code>## mini_CDS.fna has 2 sequences
 ## recA_Bradyrhizobium_vinuesa.fna has 125 sequences
-## recA_Byuanmingense.fna has 32 sequences</code></pre>
+## recA_Byuanmingense.fna has 32 sequences
+## Salmonella_enterica_33676_pIncAC_CDSs.fna has 196 sequences</code></pre>
 </div>
 <div id="trabajando-con-archivo-fasta-cuántos-nucleótidos-hay-en-reca_bradyrhizobium_vinuesa.fna" class="section level3">
 <h3><span class="header-section-number">11.5.10</span> Trabajando con archivo FASTA: ¿cuántos nucleótidos hay en recA_Bradyrhizobium_vinuesa.fna?</h3>
@@ -4991,7 +5003,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) == 5 
 ## ARGC = 5
-## [] [] [123] [14547]</code></pre>
+## [] [] [123] [3654]</code></pre>
 <ul>
 <li>Comentarios y preguntas
 <ul>
@@ -5035,7 +5047,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 3 
 ## ARGC = 3
-## [] [] [12858] []</code></pre>
+## [] [] [8412] []</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -5054,7 +5066,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 6 
 ## ARGC = 6
-## [] [] [123] [14855]</code></pre>
+## [] [] [123] [31959]</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -5808,8 +5820,735 @@ BEGIN {
 -| a[4][1][1] = 411
 -| a[4][2] = 42</code></pre>
 </div>
-<div id="un-script-multifuncional-fasta_toolkit.awk" class="section level3">
-<h3><span class="header-section-number">11.8.2</span> Un <em>script</em> multifuncional: <strong>fasta_toolkit.awk</strong></h3>
+<div id="extract_cdss_from_genbank.awk-un-script-que-transforma-un-archivo-genbank-en-tabla-extrae-cdss-y-la-cadena-completa-de-dna-haciendo-uso-de-hashes-de-hashes" class="section level3">
+<h3><span class="header-section-number">11.8.2</span> <strong>extract_CDSs_from_GenBank.awk</strong>, un <em>script</em> que transforma un archivo GenBank en tabla, extrae CDSs y la cadena completa de DNA, haciendo uso de <strong>hashes de hashes</strong></h3>
+<p>Como su nombre indica, el <em>script</em> lee un archivo GenBank genera varios archivos a partir de él:</p>
+<ul>
+<li>una tabla con las coordenadas y cadena de cada CDS, indicando además su locus_tag, producto y si es un pseudogen</li>
+<li>un archivo multi-FASTA con todos los CDSs</li>
+<li>un archivo FASTA con la cadena completa de DNA del genoma</li>
+</ul>
+<p>Revisemos el <em>script</em> <strong>extract_CDSs_from_GenBank.awk</strong> con cierto detalle, ya que tiene varios aspectos novedosos que no hemos visto anteriormente.</p>
+<ol style="list-style-type: decimal">
+<li>hace uso frecuente de <strong>expresiones regulares</strong> para capturar determinados campos de la anotación, la cual se almacena en una estructura de datos compleja, un <strong>hash de hashes</strong> (o arreglo de arreglos)</li>
+<li>el <em>script</em> escribe directamente a disco los tres archivos que produce. Antes de hacerlo, checa que no exista un versión previa de los mismos, borrándolos su caso antes de volverlos a generar. Para ello hace una llamada al <em>shell</em> mediante un pipe, pasándole un comando</li>
+<li>el <em>script</em> imprime a STDOUT los archivos que generó, igualmente usando un comando del <em>shell</em>, el cual se le pasa mediante un pipe</li>
+</ol>
+<ul>
+<li>Cabecera de <strong>extract_CDSs_from_genbank.awk</strong></li>
+</ul>
+<pre><code>#!/usr/bin/awk -f
+
+#: PROGRAM: extract_CDSs_from_genbank.awk; first commmit Dec 23, 2020
+#: AUTHOR: Pablo Vinuesa, @pvinmex, https://www.ccg.unam.mx/~vinuesa/
+#: SOURCE: https://github.com/vinuesa/intro2linux
+#: USAGE: extract_CDSs_from_genbank.awk genbank_file.gbk   
+#: AIMS: 1. extracts the CDSs from a single GenBank file and writes them as input_genbank_basename_CDSs.fna
+#:       2. writes the GenBank file in tabular format as input_genbank_basename.tsv
+#:       3. extracts the complete DNA string from the input GenBank saving to input_genbank_basename.fsa
+#: NOTE: the program assumes that the input GenBank file contains a single sequence record or LOCUS</code></pre>
+<ul>
+<li>Bloque BEGIN{} de inicialización</li>
+</ul>
+<pre><code>BEGIN {   
+    # Initializations
+    start=end=complflag=pseudoflag=0
+    product=locus_tag=&quot;&quot;
+    progname=&quot;extract_CDSs_from_genbank.awk&quot;
+    VERSION=0.1  # Dec 23, 2020
+
+    # check user input: needs the GenBank file to process
+    #        as single argument on the command line
+    if(ARGC &lt; 2) 
+        print_help(progname, VERSION)    
+    
+    # capture the gbk basename for naming output files written by this script
+    input_gbk = ARGV[1]
+    basename = input_gbk
+    
+    gsub(/\..*$/, &quot;&quot;, basename)   
+    gbk_tsv = basename&quot;.tsv&quot;
+    gbk_fsa = basename&quot;.fsa&quot;
+    gbk_CDSs = basename&quot;_CDSs.fna&quot;
+    
+    # hash used by rev_compl()
+    compl_nucl[&quot;T&quot;]=&quot;A&quot;
+    compl_nucl[&quot;A&quot;]=&quot;T&quot;
+    compl_nucl[&quot;C&quot;]=&quot;G&quot;
+    compl_nucl[&quot;G&quot;]=&quot;C&quot;
+    compl_nucl[&quot;N&quot;]=&quot;N&quot;
+}
+#-------------------------------- END OF BEGIN BLOCK ----------------------------------#</code></pre>
+<p>Los dos elementos que destacaremos del bloque BEGIN{} son: 1. el código para obtener el nombre de base del archivo GenBank con <code>gsub(/..*$/, &quot;“, basename)</code> y cómo generar a partir de él los nombres de los tres archivos que se van a escribir a disco usando simples concatenanciones <code>gbk_tsv = basename”.tsv&quot;</code></p>
+<ol start="2" style="list-style-type: decimal">
+<li>El hash <code>compl_nucl[“T”]=“A”; compl_nucl[“A”]=“T” … </code> que usaremos en la función <code>rev_compl()</code> para cuando se requira obtener la secuencia reversa complementaria</li>
+</ol>
+<ul>
+<li>El bloque de patrón-acción</li>
+</ul>
+<p>Este bloque es relativamente largo y está dominado por el uso de <strong>expresiones regulares</strong> combinado con <strong>condicionales</strong> y el uso de <strong>flags</strong> o <strong>banderas</strong> para hacer el <em>parseo</em> de la información relevante sobre coordenadas, cadena y producto de los CDSs anotados un GenBank.</p>
+<pre><code># capture the locus ID on the first line to add to the FASTA header
+# Then skip all lines, from the first record (line) to the source FEATURE,
+# Note the use of an expr-REGEXP range: expr, /regexp/
+NR == 1 { 
+   locus_id = $2; 
+   header   = locus_id
+}
+
+NR == 1, /^\s{4,}source\s{4,}/ { next }
+
+{
+  # exclude pseudogenes (&lt;&gt;)
+  if (/^\s{4,}CDS\s{4,}[[:digit:]]+/ &amp;&amp; flag == 0 &amp;&amp; !/[&lt;&gt;]/ &amp;&amp; !/complem/)
+  {
+     flag = 1 
+     coord=$0   
+     sub(/^\s{4,}CDS\s{4,}/, &quot;&quot;, coord)
+     #print &quot;coord:&quot;coord
+     start=coord
+     end=coord
+     coord=0
+     sub(/\.\.[[:digit:]]+$/, &quot;&quot;, start)
+     sub(/^[[:digit:]]+\.\./, &quot;&quot;, end)
+     
+     complflag = 0
+  }
+  else if (/^\s{4,}CDS\s{4,}complement/ &amp;&amp; ! flag &amp;&amp; ! /[&lt;&gt;]/)
+  {
+     flag = 1
+     coord=$0     
+     sub(/^\s{4,}CDS\s{4,}complement\(/, &quot;&quot;, coord)
+     gsub(/[\)]/, &quot;&quot;, coord)
+     start = coord
+     end = coord
+     sub(/\.\.[[:digit:]]+/, &quot;&quot;, start)
+     sub(/^[[:digit:]]+\.\./, &quot;&quot;, end)
+
+     complflag = 1
+  }
+  
+  if( flag &amp;&amp; /^\s{8,}\/locus_tag=/ )
+  {
+     locus_tag=$0
+     sub(/^\s{8,}\/locus_tag=/, &quot;&quot;, locus_tag)
+     gsub(/[&quot;]/, &quot;&quot;, locus_tag)
+  } 
+
+  if( flag &amp;&amp; /^\s{8,}\/pseudo/ ) pseudoflag = 1
+
+  if(flag &amp;&amp; /^\s{8,}\/product=/)
+  {
+     product=$0
+     sub(/^\s{8,}\/product=/, &quot;&quot;, product)
+     gsub(/[&quot;]/, &quot;&quot;, product)
+     
+     if (pseudoflag) { product = product &quot; [pseudogene]&quot; }
+     
+     # we use geneID to generate a numeric index for the hash, so that it prints out in order!
+     geneID++
+     
+     #printf &quot;%s\t%s\t%d\t%d\t%d\n&quot;, locus_tag, product, start, end, complflag,  pseudoflag
+     CDSs_string[geneID] = locus_tag &quot;\t&quot; product &quot;\t&quot; start &quot;\t&quot; end &quot;\t&quot; complflag &quot;\t&quot; pseudoflag
+     CDSs_AoA[geneID][&quot;l&quot;]  = locus_tag
+     CDSs_AoA[geneID][&quot;p&quot;]  = product
+     CDSs_AoA[geneID][&quot;s&quot;]  = start
+     CDSs_AoA[geneID][&quot;e&quot;]  = end
+     CDSs_AoA[geneID][&quot;c&quot;]  = complflag
+     CDSs_AoA[geneID][&quot;pseudo&quot;] = pseudoflag
+
+     flag=start=end=complflag=revflag=pseudoflag=0
+     product=locus_tag=&quot;&quot;
+  }
+  
+  # After the ORIGING mark, starts the dna string
+  if (flag == 0 &amp;&amp; !/^ORIGIN/) { 
+      next 
+  }
+   
+  # Remove spaces and digits preceding sequence strings
+  #  remove also the single spaces between 10 bp sequence strings
+  if (/^ORIGIN/) { flag = 1; next}
+  
+  if(flag &amp;&amp; $0 ~ /^\s+[[:digit:]]+\s+[AGCTNagctn\s]+/)
+  {   
+     sub(/^\s+[[:digit:]]+\s+/, &quot;&quot;, $0)
+     gsub(/\/\//, &quot;&quot;, $0)
+     gsub(/[[:space:]]/, &quot;&quot;, $0)
+
+     seq=seq$0
+     # skip any empty lines and convert sequence strings to uppercase
+   }
+}
+# ------------------------------- END OF PATTERN &amp; ACTION BLOCK -----------------------------------#</code></pre>
+<p>Veamos la cabecera de un archivo GenBank correspondiente a un plásmido pIncC de Salmonella Typhimurium, para que puedan entender lo que hace el código</p>
+<pre>
+
+LOCUS       NZ_CP012682           161461 bp    DNA     circular CON 28-FEB-2017
+DEFINITION  Salmonella enterica subsp. enterica serovar Typhimurium strain
+            33676 plasmid p33676_IncA/C, complete sequence.
+ACCESSION   NZ_CP012682
+VERSION     NZ_CP012682.1
+DBLINK      BioProject: PRJNA224116
+            BioSample: SAMN03795193
+            Assembly: GCF_001293505.1
+KEYWORDS    RefSeq.
+SOURCE      Salmonella enterica subsp. enterica serovar Typhimurium (Salmonella
+            typhimurium)
+  ORGANISM  Salmonella enterica subsp. enterica serovar Typhimurium
+            Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacterales;
+            Enterobacteriaceae; Salmonella.
+REFERENCE   1  (bases 1 to 161461)
+  AUTHORS   Vinuesa,P., Silva,C. and Calva,E.
+  TITLE     Complete genome sequencing of a multidrug-resistant and
+            human-invasive Salmonella Typhimurium strain of the emerging
+            sequence type 213 harboring a blaCMY-2-carrying IncF plasmid
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 161461)
+  AUTHORS   Vinuesa,P., Silva,C. and Calva,E.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (17-SEP-2015) Departamento de Microbiologia Molecular,
+            Instituto de Biotecnologia, UNAM, Av. Universidad 3000, Cuernavaca,
+            Morelos 62210, Mexico
+COMMENT     REFSEQ INFORMATION: The reference sequence was derived from
+            CP012682.
+            Source DNA and bacteria are available from:  Claudia Silva
+            (csilvamex1@yahoo.com).
+            Annotation was added by the NCBI Prokaryotic Genome Annotation
+            Pipeline (released 2013). Information about the Pipeline can be
+            found here: https://www.ncbi.nlm.nih.gov/genome/annotation_prok/
+            
+            ##Genome-Assembly-Data-START##
+            Assembly Method       :: HGAP2 v. 2.3.0.139497
+            Assembly Name         :: Senter_33676_1.0
+            Long Assembly Name    :: Salmonella enterica subsp. enterica
+                                     serovar Typhimurium 33676 1.0
+            Genome Coverage       :: 119x
+            Sequencing Technology :: PacBio RS
+            ##Genome-Assembly-Data-END##
+            
+            ##Genome-Annotation-Data-START##
+            Annotation Provider               :: NCBI
+            Annotation Date                   :: 02/28/2017 06:20:01
+            Annotation Pipeline               :: NCBI Prokaryotic Genome
+                                                 Annotation Pipeline
+            Annotation Method                 :: Best-placed reference protein
+                                                 set; GeneMarkS+
+            Annotation Software revision      :: 4.1
+            Features Annotated                :: Gene; CDS; rRNA; tRNA; ncRNA;
+                                                 repeat_region
+            Genes (total)                     :: 5,263
+            CDS (total)                       :: 5,143
+            Genes (coding)                    :: 4,886
+            CDS (coding)                      :: 4,886
+            Genes (RNA)                       :: 120
+            rRNAs                             :: 8, 7, 7 (5S, 16S, 23S)
+            complete rRNAs                    :: 8, 7, 7 (5S, 16S, 23S)
+            tRNAs                             :: 83
+            ncRNAs                            :: 15
+            Pseudo Genes (total)              :: 257
+            Pseudo Genes (ambiguous residues) :: 0 of 257
+            Pseudo Genes (frameshifted)       :: 159 of 257
+            Pseudo Genes (incomplete)         :: 82 of 257
+            Pseudo Genes (internal stop)      :: 62 of 257
+            Pseudo Genes (multiple problems)  :: 40 of 257
+            CRISPR Arrays                     :: 2
+            ##Genome-Annotation-Data-END##
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..161461
+                     /organism=&quot;Salmonella enterica subsp. enterica serovar
+                     Typhimurium&quot;
+                     /mol_type=&quot;genomic DNA&quot;
+                     /strain=&quot;33676&quot;
+                     /serovar=&quot;Typhimurium&quot;
+                     /isolation_source=&quot;blood-culture&quot;
+                     /host=&quot;Homo sapiens; female&quot;
+                     /sub_species=&quot;enterica&quot;
+                     /db_xref=&quot;taxon:90371&quot;
+                     /plasmid=&quot;p33676_IncA/C&quot;
+                     /country=&quot;Mexico: Mexico City&quot;
+                     /lat_lon=&quot;19.43 N 99.13 W&quot;
+                     /collection_date=&quot;2011&quot;
+                     /collected_by=&quot;Juan J. Calva&quot;
+                     /genotype=&quot;ST213&quot;
+     gene            295..861
+                     /locus_tag=&quot;SE15cs_RS23200&quot;
+                     /old_locus_tag=&quot;SE15cs_04746&quot;
+     CDS             295..861
+                     /locus_tag=&quot;SE15cs_RS23200&quot;
+                     /old_locus_tag=&quot;SE15cs_04746&quot;
+                     /inference=&quot;COORDINATES: similar to AA
+                     sequence:RefSeq:WP_000375812.1&quot;
+                     /note=&quot;Derived by automated computational analysis using
+                     gene prediction method: Protein Homology.&quot;
+                     /codon_start=1
+                     /transl_table=11
+                     /product=&quot;hypothetical protein&quot;
+                     /protein_id=&quot;WP_000375812.1&quot;
+                     /translation=&quot;MDRNWEGIEVSLPTERWLDLLDPKLEEERSEITEDLLEAEGREF
+                     VAEVRSKLDHALAVLAVEAQQEADMYWNAHKSAREEASEDEQGRVGTRVRILGVSLVA
+                     EWYRNRFVEQVPGQKKRVLSTHIKKGRGHAYSMSHFKKEPVWAQELIQQVETRYAVLR
+                     QRATALAKIRRALNEYERQLNKTHSDEV&quot;
+     gene            866..1153
+                     /locus_tag=&quot;SE15cs_RS23205&quot;
+                     /old_locus_tag=&quot;SE15cs_04747&quot;
+     CDS             866..1153
+                     /locus_tag=&quot;SE15cs_RS23205&quot;
+                     /old_locus_tag=&quot;SE15cs_04747&quot;
+                     /inference=&quot;COORDINATES: similar to AA
+                     sequence:RefSeq:WP_000127322.1&quot;
+                     /note=&quot;Derived by automated computational analysis using
+                     gene prediction method: Protein Homology.&quot;
+                     /codon_start=1
+                     /transl_table=11
+                     /product=&quot;hypothetical protein&quot;
+                     /protein_id=&quot;WP_000127321.1&quot;
+                     /translation=&quot;MTASVAATELAKLGKCEAMIKKVASHPRPALSKRPQSPQGTDST
+                     LRGEFAHFRYEAAALRFMSGTAGAKRRIYQLVFSATVAAGALTMLAAWTTS&quot;
+... TRUNCATED
+
+</pre>
+<p>El primer bloque de código se enfoca en la primera línea del GenBank para extraer el LOCUS ID, el cual se usará como cabecera del archivo FASTA que contendrá la cadena de DNA completa del genoma.</p>
+<pre><code># capture the locus ID on the first line to add to the FASTA header
+# Then skip all lines, from the first record (line) to the source FEATURE,
+# Note the use of an expr-REGEXP range: expr, /regexp/
+NR == 1 { 
+   locus_id = $2; 
+   header   = locus_id
+}</code></pre>
+<p>Sigue otra sentencia de patrón-acción, que le indica al script saltarse todas las líneas, desde la primera hasta la que contenga el patrón <code>/^source/</code>. Es decir, se especifica un rango, desde la primera hasta la línea que contiene el patrón (ver ejemplo de GenBank arriba)</p>
+<pre><code>NR == 1, /^\s{4,}source\s{4,}/ { next }</code></pre>
+<p>Las siguientes líneas se encargan de extraer las coordenadas y otra información de cada CDS. Vean el uso de <strong>regexps</strong>, <strong>condicionales</strong> y <strong>banderas</strong> para localizar los campos de atributos (FEATURES) de interés. Cuando por primera vez encuentra el campo &quot; CDS 295..861“, activa la bandera”flag&quot;: <code>flag = 1</code> y se prepara para capturar las coordenadas de inicio y fin del CDS. Cuando el CDS viene en la cadena complementaria, el GenBank lo indica, como en:</p>
+<pre><code>      CDS             complement(2886..3071)
+                      /locus_tag=&quot;SE15cs_RS26325&quot;
+...</code></pre>
+<p>en cuyo caso el bloque de código también activa la bandera <code>complflag = 1</code>, como pueden ver abajo</p>
+<pre><code>{
+  # exclude pseudogenes (&lt;&gt;)
+  if (/^\s{4,}CDS\s{4,}[[:digit:]]+/ &amp;&amp; flag == 0 &amp;&amp; !/[&lt;&gt;]/ &amp;&amp; !/complem/)
+  {
+     flag = 1 
+     coord=$0   
+     sub(/^\s{4,}CDS\s{4,}/, &quot;&quot;, coord)
+     #print &quot;coord:&quot;coord
+     start=coord
+     end=coord
+     coord=0
+     sub(/\.\.[[:digit:]]+$/, &quot;&quot;, start)
+     sub(/^[[:digit:]]+\.\./, &quot;&quot;, end)
+     
+     complflag = 0
+  }
+  else if (/^\s{4,}CDS\s{4,}complement/ &amp;&amp; ! flag &amp;&amp; ! /[&lt;&gt;]/)
+  {
+     flag = 1
+     coord=$0     
+     sub(/^\s{4,}CDS\s{4,}complement\(/, &quot;&quot;, coord)
+     gsub(/[\)]/, &quot;&quot;, coord)
+     start = coord
+     end = coord
+     sub(/\.\.[[:digit:]]+/, &quot;&quot;, start)
+     sub(/^[[:digit:]]+\.\./, &quot;&quot;, end)
+
+     complflag = 1
+  }
+  if( flag &amp;&amp; /^\s{8,}\/locus_tag=/ )
+  {
+     locus_tag=$0
+     sub(/^\s{8,}\/locus_tag=/, &quot;&quot;, locus_tag)
+     gsub(/[&quot;]/, &quot;&quot;, locus_tag)
+  } 
+
+  if( flag &amp;&amp; /^\s{8,}\/pseudo/ ) pseudoflag = 1
+
+  if(flag &amp;&amp; /^\s{8,}\/product=/)
+  {
+     product=$0
+     sub(/^\s{8,}\/product=/, &quot;&quot;, product)
+     gsub(/[&quot;]/, &quot;&quot;, product)
+     
+     if (pseudoflag) { product = product &quot; [pseudogene]&quot; }
+     
+     # we use geneID to generate a numeric index for the hash, so that it prints out in order!
+     geneID++
+     
+     #printf &quot;%s\t%s\t%d\t%d\t%d\n&quot;, locus_tag, product, start, end, complflag,  pseudoflag
+     #CDSs_string[geneID] = locus_tag &quot;\t&quot; product &quot;\t&quot; start &quot;\t&quot; end &quot;\t&quot; complflag &quot;\t&quot; pseudoflag
+     CDSs_AoA[geneID][&quot;l&quot;]  = locus_tag
+     CDSs_AoA[geneID][&quot;p&quot;]  = product
+     CDSs_AoA[geneID][&quot;s&quot;]  = start
+     CDSs_AoA[geneID][&quot;e&quot;]  = end
+     CDSs_AoA[geneID][&quot;c&quot;]  = complflag
+     CDSs_AoA[geneID][&quot;pseudo&quot;] = pseudoflag
+
+     flag=start=end=complflag=revflag=pseudoflag=0
+     product=locus_tag=&quot;&quot;
+  }
+  
+... TRUNCATED</code></pre>
+<p>Noten arriba el uso de la función <code>sub()</code> y <strong>regexps</strong> para extraer las coordenadas en múltiples pasos: primero se captura la línea que contiene las coordenadas, y luego se extrae la de inicio y la de fin del CDS.</p>
+<p>Siguen líneas que capturan el <em>locus_tag</em>, la descripción del producto y si el gen es un <em>pseudogen</em>, todos estos son atributos del mismo CDS. Noten que si el CDS es un <em>pseudogen</em>, se agrega la cadena ’ [pseudogen]’ al producto.</p>
+<p>Finalmente la información capturada en las líneas anteriores se guarda en <strong>CDSs_AoA</strong>, que es un <strong>hash de hashes</strong>, cuya llave principal es el contador geneID, variable que es auto-incrementada cada vez que se encuentra un CDS. Así, para guardar por ejemplo el atributo <em>locus_tag</em> de un CDS particular, se usa el siguiente código <code>CDSs_AoA[geneID][“l”] = locus_tag</code>, donde el <em>locus_tag</em> se identifica con la llave primaria geneID, específica del CDS en cuestión, y la llave secundaria “l”, en la siguiente estructura: <strong>CDSs_AoA-&gt;geneID-&gt;l = locus_tag</strong>. De igual manera se guarda el producto bajo la llave secundaria “p”, etc, como se muestra al final del bloque desplegado arriba.</p>
+<p>Una vez capturada la información del primer CDS, se vuelven a inicializar a 0 todas las variables numéricas, incluidas las banderas. A medida que <em>awk</em> va leyendo las líneas del archivo, repite las operaciones arriba descritas, hasta que llega al final del bloque de “FEATURES” e inicia el bloque “ORIGIN” del GenBank, como se muestra abajo:</p>
+<pre>
+
+... TRUNCATED
+     gene            complement(160301..161284)
+                     /locus_tag=&quot;SE15cs_RS24170&quot;
+                     /old_locus_tag=&quot;SE15cs_04947&quot;
+     CDS             complement(160301..161284)
+                     /locus_tag=&quot;SE15cs_RS24170&quot;
+                     /old_locus_tag=&quot;SE15cs_04947&quot;
+                     /inference=&quot;COORDINATES: similar to AA
+                     sequence:RefSeq:WP_000077456.1&quot;
+                     /note=&quot;Derived by automated computational analysis using
+                     gene prediction method: Protein Homology.&quot;
+                     /codon_start=1
+                     /transl_table=11
+                     /product=&quot;plasmid stability protein StbA&quot;
+                     /protein_id=&quot;WP_000077458.1&quot;
+                     /translation=&quot;MSQFVLGLDIGYSNLKMAMGYKGEEARTVVMPVGAGPLELMPQQ
+                     LTGGAGTCIQVVIDGEKWVAGVEPDRLQGWERELHGDYPSTNPYKALFYAALLMSEQK
+                     EIDVLVTGLPVSQYMDVERREALKSRLEGEHQITPKRSVAVKSVVVVPQPAGAYMDVV
+                     SSTKDEDLLEIIQGGKTVVIDPGFFSVDWVALEEGEVRYHSSGTSLKAMSVLLQETDR
+                     LIQEDHGGAPGIEKIEKAIRAGKAEIFLYGEKVSIKDYFKKASTKVAQNALIPMRKSM
+                     REDGMDADVVLLAGGGAEAYQDAAKELFPKSRIVLPNESVASNARGFWFCG&quot;
+ORIGIN      
+        1 ataggctcag ataaacagac cttaccctcg catcgagaac cgcttgccct ccagcatcga
+       61 gagacggtgg taaagaggca tttggaatct ttgatgccat atccaatata tctggaatct
+      121 ttaaatatag attcatatgt aaagaggctg tgaaagaata agagcatcaa gattccagat
+      181 agatagaggg aaatttgaca aattccaaag atgggttagc ctagtgacag aactagattc
+      241 cagtattgga ataatcagct ttaaattcca gatagatagt tatgtggata ggaattggat
+      301 aggaattggg agggtattga ggtgagtcta ccaacagagc gatggctaga tctgctagat
+      361 ccgaagctcg aagaagaacg atccgagata acagaggatc tgctagaggc agagggacga
+      421 gagtttgttg cagaggtacg gagcaaactg gatcacgcct tagcggttct tgctgtcgag
+      481 gcgcagcagg aagcggacat gtactggaac gcgcacaaat cagcgcgtga agaagcgtca
+      541 gaggacgaac aagggcgtgt cggtacacgg gttcgcattc taggcgtatc actcgttgca
+      
+... TRUNCATED
+
+</pre>
+<p>Las últimas líneas del bloque patrón-acción de <strong>extract_CDSs_from_GenBank.awk</strong> se encargan de extraer la secuencia de DNA, guardándola en la variable seq, haciendo uso una vez más de una combinación de <strong>condicionales</strong> con <strong>regexps</strong> y <strong>banderas</strong></p>
+<pre><code>  # After the ORIGING mark, starts the dna string
+  if (flag == 0 &amp;&amp; !/^ORIGIN/) { 
+      next 
+  }
+   
+  # Remove spaces and digits preceding sequence strings
+  #  remove also the single spaces between 10 bp sequence strings
+  if (/^ORIGIN/) { flag = 1; next}
+  
+  if(flag &amp;&amp; $0 ~ /^\s+[[:digit:]]+\s+[AGCTNagctn\s]+/)
+  {   
+     sub(/^\s+[[:digit:]]+\s+/, &quot;&quot;, $0)
+     gsub(/\/\//, &quot;&quot;, $0)
+     gsub(/[[:space:]]/, &quot;&quot;, $0)
+
+     seq=seq$0
+     # skip any empty lines and convert sequence strings to uppercase
+   }
+}
+# ------------------------------- END OF PATTERN &amp; ACTION BLOCK -----------------------------------#</code></pre>
+<ul>
+<li>Bloque de procesamiento del <strong>hash de hashes CDSs_AoA</strong> mediante llamada a funciones</li>
+</ul>
+<pre><code>END {
+     #for (k in CDSs_string)
+     #     printf &quot;%s\t%s\n&quot; 
+     seq = toupper(seq)
+     dna[header] = seq
+         
+     # conditional required to avoid errors printed to STDERR when the help menu is printed
+     if( ARGC &gt; 1 ) 
+     {  
+         # Need to remove pre-existing &quot;basename&quot;.tsv&quot; file, as the script appends lines to it 
+         #     (print stuff &gt;&gt; gbk_tsv)
+           # Can use any of the following options:
+         #    1. call system()
+         #    2. pipe command to sh
+         #    the second may by more portable and is used as a function call
+           #
+         #if(system(&quot;[ -s &quot; gbk_tsv &quot; ]&quot;) == 0) { system(&quot;rm &quot;gbk_tsv) }
+         #OR:
+         #rm_if_exists=&quot;[ -s &quot; gbk_tsv &quot; ] &amp;&amp; rm &quot;gbk_tsv
+         #print rm_if_exists | &quot;/bin/sh&quot;
+         #close(&quot;/bin/sh&quot;)
+           rm_if_exists(gbk_tsv)
+     
+         # print GBK table header for gbk_tsv
+         print &quot;CDS_no\tlocus_tag\tproduct_description\tstart\tend\tcomplement\tpseudogene&quot; &gt; gbk_tsv
+         # if exists, rm the FASTA file holding CDSS, since the script appends to it
+         #     (print stuff &gt;&gt; gbk_CDSs)
+         rm_if_exists(gbk_CDSs)
+     
+         # loop over the CDSs_AoA array of arrays to print 
+         #      i) the GBK file in tabular format to file gbk_tsv
+         #      ii) and the CDSs to STDOUT
+         for (k in CDSs_AoA)
+         {
+                # 1. print the GBK file in tabular format to file gbk_tsv
+                printf &quot;%d\t%s\t%s\t%d\t%d\t%d\t%d\n&quot;, k, CDSs_AoA[k][&quot;l&quot;], CDSs_AoA[k][&quot;p&quot;], CDSs_AoA[k][&quot;s&quot;], 
+                     CDSs_AoA[k][&quot;e&quot;], CDSs_AoA[k][&quot;c&quot;], CDSs_AoA[k][&quot;pseudo&quot;] &gt;&gt; gbk_tsv
+         
+                # 2. print the CDSs to STDOUT
+                extract_sequence_by_coordinates(CDSs_AoA[k][&quot;l&quot;]&quot; &quot;CDSs_AoA[k][&quot;p&quot;], seq, CDSs_AoA[k][&quot;s&quot;], 
+                     CDSs_AoA[k][&quot;e&quot;], CDSs_AoA[k][&quot;c&quot;], gbk_CDSs) 
+         }
+           # report if the files were successfully written to disk
+         print_if_exists(gbk_tsv)
+         print_if_exists(gbk_CDSs)
+          
+         # if exists, rm the FASTA file holding the DNA string, since the script appends to it
+         #     (print stuff &gt;&gt; gbk_fsa)
+           rm_if_exists(gbk_fsa)
+
+         # print the complete DNA sequence string of the input GenBank to to file gbk_fsa
+         for (h in dna)
+         {
+               printf &quot;&gt;%s\n%s\n&quot;, header, seq &gt;&gt; gbk_fsa
+         }
+           # report if the file was successfully written to disk
+           print_if_exists(gbk_fsa)
+     }
+}
+# --------------------------------------------- END OF END BLOCK ---------------------------------------- #
+</code></pre>
+<p>El bloque <code>END{}</code> inicia guardando la cadena de DNA de GenBank en el <strong>hash</strong> <code>dna[header] = seq</code>.</p>
+<p>Sigue una llamada la función <code>rm_if_exists(gbk_tsv)</code>, la cual se muestra y explica seguidamente:</p>
+<pre><code>function rm_if_exists(file,       cmd)
+{
+    cmd=&quot;[ -s &quot; file &quot; ] &amp;&amp; rm &quot;file
+    print cmd | &quot;/bin/sh&quot;
+    close(&quot;/bin/sh&quot;)
+}
+</code></pre>
+<p>Si programas en otros lenguajes, tal vez te sorprenda aprender que <em>AWK</em> no tiene funciones para borrar, mover o renombrar archivos, ni operadores para comprobar la existencia de archivos, o para listarlos.</p>
+<p>Para acceder a este tipo de funcionalidad desde un <em>script</em> de <em>AWK</em>, tenemos básicamente dos opciones:</p>
+<ol style="list-style-type: decimal">
+<li>hacer una llamada a la función <code>system()</code></li>
+<li>escribir el comando a ejecutar y pasarlo al <em>shell</em> mediante un pipe desde <em>print</em> o <em>printf</em></li>
+</ol>
+<p>Esto se indica en los comentarios del código mostrado abajo, y la segunda opción es la que se implemente en la función <code>rm_if_exists(file)</code> mostrada arriba</p>
+<pre><code>    #    2. pipe command to sh
+    #    the second may by more portable and is used as a function call
+      #
+    # if(system(&quot;[ -s &quot; gbk_tsv &quot; ]&quot;) == 0) { system(&quot;rm &quot;gbk_tsv) }
+    #OR:
+    #rm_if_exists=&quot;[ -s &quot; gbk_tsv &quot; ] &amp;&amp; rm &quot;gbk_tsv
+    #print rm_if_exists | &quot;/bin/sh&quot;
+    #close(&quot;/bin/sh&quot;)</code></pre>
+<p>Noten que <code>rm_if_exists(file)</code> comprueba si existe y no está vacío el archivo “file”, y si es así, lo borra.</p>
+<p>¿Porqué hace falta borrar el archivo, si estuviera presente en el directorio de trabajo?</p>
+<p>Ello se debe a que los archivos gbk_tsv, gbk_CDSs y gbk_fsa se escriben por las funciones correspondientes línea a línea, haciendo uso del comando <code>&gt;&gt;</code>, es decir, agregando o concatenando líneas al archivo. Si el mismo archivo ya existiera, duplicaríamos su contenido.</p>
+<pre><code>         # print GBK table header for gbk_tsv
+         print &quot;CDS_no\tlocus_tag\tproduct_description\tstart\tend\tcomplement\tpseudogene&quot; &gt; gbk_tsv
+     
+         # if exists, rm the FASTA file holding CDSS, since the script appends to it
+         #     (print stuff &gt;&gt; gbk_CDSs)
+         rm_if_exists(gbk_CDSs)
+     
+         # loop over the CDSs_AoA array of arrays to print 
+         #      i) the GBK file in tabular format to file gbk_tsv
+         #      ii) and the CDSs to STDOUT
+         for (k in CDSs_AoA)
+         {
+               # 1. print the GBK file in tabular format to file gbk_tsv
+               printf &quot;%d\t%s\t%s\t%d\t%d\t%d\t%d\n&quot;, k, CDSs_AoA[k][&quot;l&quot;], CDSs_AoA[k][&quot;p&quot;], CDSs_AoA[k][&quot;s&quot;], 
+                  CDSs_AoA[k][&quot;e&quot;], CDSs_AoA[k][&quot;c&quot;], CDSs_AoA[k][&quot;pseudo&quot;] &gt;&gt; gbk_tsv
+          
+              # 2. print the CDSs to STDOUT
+              extract_sequence_by_coordinates(CDSs_AoA[k][&quot;l&quot;]&quot; &quot;CDSs_AoA[k][&quot;p&quot;], seq, CDSs_AoA[k][&quot;s&quot;], 
+                  CDSs_AoA[k][&quot;e&quot;], CDSs_AoA[k][&quot;c&quot;], gbk_CDSs) 
+         }
+           # report if the files were successfully written to disk
+         print_if_exists(gbk_tsv)
+         print_if_exists(gbk_CDSs)
+          
+         # if exists, rm the FASTA file holding the DNA string, since the script appends to it
+         #     (print stuff &gt;&gt; gbk_fsa)
+           rm_if_exists(gbk_fsa)
+
+         # print the complete DNA sequence string of the input GenBank to to file gbk_fsa
+         for (h in dna)
+         {
+                 printf &quot;&gt;%s\n%s\n&quot;, header, seq &gt;&gt; gbk_fsa
+         }
+           # report if the file was successfully written to disk
+           print_if_exists(gbk_fsa)
+     }
+}
+# --------------------------------------------- END OF END BLOCK ---------------------------------------- #</code></pre>
+<p>Vale la pena resaltar cómo se extraen los valores del <strong>hash de hashes CDSs_AoA</strong> dentro de un bluche <code>for(){}</code>, cómo se usan para escribir el archivo GenBank en formato tabular, cómo pasan éstos a la función <strong>extract_sequence_by_coordinates()</strong> y cómo finalmente se verifica e imprime a STDOT que se hayan escrito a disco los archivos gbk_tsv gbk_CDSs, que les recuerdo son variables que se generaron en el bloque <code>BEGIN{}</code> y que guardan los nombres de los archivos a escribir en disco.</p>
+<pre><code>         # loop over the CDSs_AoA array of arrays to print 
+         #      i) the GBK file in tabular format to file gbk_tsv
+         #      ii) and the CDSs to STDOUT
+         for (k in CDSs_AoA)
+         {
+               # 1. print the GBK file in tabular format to file gbk_tsv
+               printf &quot;%d\t%s\t%s\t%d\t%d\t%d\t%d\n&quot;, k, CDSs_AoA[k][&quot;l&quot;], CDSs_AoA[k][&quot;p&quot;], CDSs_AoA[k][&quot;s&quot;], 
+                  CDSs_AoA[k][&quot;e&quot;], CDSs_AoA[k][&quot;c&quot;], CDSs_AoA[k][&quot;pseudo&quot;] &gt;&gt; gbk_tsv
+          
+              # 2. print the CDSs to STDOUT
+              extract_sequence_by_coordinates(CDSs_AoA[k][&quot;l&quot;]&quot; &quot;CDSs_AoA[k][&quot;p&quot;], seq, CDSs_AoA[k][&quot;s&quot;], 
+                  CDSs_AoA[k][&quot;e&quot;], CDSs_AoA[k][&quot;c&quot;], gbk_CDSs) 
+         }
+           # report if the files were successfully written to disk
+         print_if_exists(gbk_tsv)
+         print_if_exists(gbk_CDSs)</code></pre>
+<ul>
+<li>Bloque de funciones de <strong>extract_CDSs_from_GenBank.awk</strong></li>
+</ul>
+<p>Se trata de funciones sencillas, pero tal vez valga la pena resaltar lo siguiente:</p>
+<ol style="list-style-type: decimal">
+<li><strong>extract_sequence_by_coordinates()</strong> hace la mayor parte del trabajo, escribiendo a disco los CDSs en formato FASTA, después de recortar con <code>substr()</code> la secuencia de la cadena de DNA usando las coordenadas correspondientes <code>print “&gt;”header“”substr(dna_seq, start, end) &gt;&gt; outfile</code>, siempre y cuando no se trate de secuencias para las que haya que calcular la reversa-complementaria.</li>
+<li>Si se trata de secuencias que requieren ser revcompl (revCompFlag == 1), la función <strong>extract_sequence_by_coordinates()</strong> llama a la función auxiliar <strong>rev_compl()</strong> para que haga el trabajo, incluyendo imprimir al archivo el CDS correspondiente.</li>
+</ol>
+<p>Estudien las funciones, que en este caso vienen hasta el final del archivo, incluyendo la que imprime el menú de ayuda, la cual se activa en el bloque <code>BEGIN{}</code>, cuando <code>ARGC &lt; 2</code></p>
+<pre><code>#=========================================================================================================#
+# &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; FUNCTION DEFINITIONS &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; #
+#---------------------------------------------------------------------------------------------------------#
+
+function rm_if_exists(file,       cmd)
+{
+    cmd=&quot;[ -s &quot; file &quot; ] &amp;&amp; rm &quot;file
+    print cmd | &quot;/bin/sh&quot;
+    close(&quot;/bin/sh&quot;)
+}
+#---------------------------------------------------------------------------------------------------------
+
+function print_if_exists(file,     cmd)
+{
+    cmd=&quot;[ -s &quot; file &quot; ] &amp;&amp; echo &#39;# wrote file &#39;&quot;file
+    print cmd | &quot;/bin/sh&quot;
+    close(&quot;/bin/sh&quot;)
+}
+#---------------------------------------------------------------------------------------------------------
+
+function rev_string(seq       ,i,s)
+{
+   for(i=length(seq); i != 0; i--)
+   {
+      s = s substr($0, i, 1)
+   }
+   return s
+}
+#---------------------------------------------------------------------------------------------------------
+
+function rev_compl(header, dna_seq, outfile,       i, k, s) # reverse complement
+{  # receives two arguments: the fasta header and the CDS sequence to be translated
+    i=k=s=&quot;&quot;
+    
+    dna_seq = toupper(dna_seq) # to match the keys of compl_nucl
+    for( i = length(dna_seq); i !=0; i-- ) { # note that the loop reads the sequence from end to beginnig
+         k = substr(dna_seq, i, 1)
+         s = s compl_nucl[k]
+    }
+    printf &quot;&gt;%s\n%s\n&quot;, header, s &gt;&gt; outfile
+}
+#---------------------------------------------------------------------------------------------------------
+
+function extract_sequence_by_coordinates(header, dna_seq, start, end, revCompFlag, outfile,        seq)
+{   
+    if(start == 1 &amp;&amp; revCompFlag)
+    {
+         seq = substr(dna_seq, start, end)
+         rev_compl(header, seq, outfile)
+    }
+
+    if(start == 1 &amp;&amp; ! revCompFlag)
+    {
+        print &quot;&gt;&quot;header&quot;\n&quot;substr(dna_seq, start, end) &gt;&gt; outfile
+    }        
+    
+    if( start &gt; 1 &amp;&amp; ! revCompFlag ) 
+    {
+        print &quot;&gt;&quot;header&quot;\n&quot;substr(dna_seq, start, end-start+1) &gt;&gt; outfile
+    }
+    
+    if( start &gt; 1 &amp;&amp; revCompFlag ) 
+    {
+         seq = substr(dna_seq, start, end-start+1)
+         rev_compl(header, seq, outfile)
+    }
+}
+#---------------------------------------------------------------------------------------------------------
+
+function print_help(prog, vers) {
+  
+  print &quot;# AIMS: 1. extracts the CDSs from a single GenBank file, saving them as input_genbank_basename_CDSs.fna&quot; &gt; &quot;/dev/stderr&quot;
+  print &quot;#       2. writes the GenBank file in tabular format as input_genbank_basename.tsv&quot; &gt; &quot;/dev/stderr&quot;
+  print &quot;#       3. extracts the complete DNA string from the input GenBank, saving it as input_genbank_basename.fsa&quot; &gt; &quot;/dev/stderr&quot;
+  print &quot;# NOTE&quot;, prog, &quot;v&quot;vers, &quot;assumes that the input GenBank file contains a single sequence record or LOCUS&quot; &gt; &quot;/dev/stderr&quot;
+  print &quot;# USAGE of&quot;, prog, &quot;v&quot;vers&quot;:&quot; &gt; &quot;/dev/stderr&quot;
+  printf &quot;\t%s %s\n\n&quot;, prog, &quot;genbank_file_with_single_record.gbk&quot; &gt; &quot;/dev/stderr&quot;  
+  
+  exit 0
+}
+</code></pre>
+<div id="llamada-al-script-extract_cdss_from_genbank.awk" class="section level4">
+<h4><span class="header-section-number">11.8.2.1</span> Llamada al script <strong>extract_CDSs_from_GenBank.awk</strong></h4>
+<p>Como vimos en <em>scipts</em> anteriores, llamando a <strong>extract_CDSs_from_GenBank.awk</strong> sin argumentos nos imprime su ayuda.</p>
+<code>./extract_CDSs_from_GenBank.awk</code>
+<pre>
+
+# AIMS: 1. extracts the CDSs from a single GenBank file, saving them as input_genbank_basename_CDSs.fna
+#       2. writes the GenBank file in tabular format as input_genbank_basename.tsv
+#       3. extracts the complete DNA string from the input GenBank, saving it as input_genbank_basename.fsa
+# NOTE extract_CDSs_from_genbank.awk v0.1 assumes that the input GenBank file contains a single sequence record or LOCUS
+# USAGE of extract_CDSs_from_genbank.awk v0.1:
+    extract_CDSs_from_genbank.awk genbank_file_with_single_record.gbk
+</pre>
+<ul>
+<li>Corramos <strong>extract_CDSs_from_GenBank.awk</strong> usando Salmonella_enterica_33676_pIncAC.gbk y veamos cuánto tarda en correr: guau, es realmente rápido!!!</li>
+</ul>
+<pre class="bash"><code>time ./extract_CDSs_from_GenBank.awk Salmonella_enterica_33676_pIncAC.gbk</code></pre>
+<pre><code>## # wrote file Salmonella_enterica_33676_pIncAC.tsv
+## # wrote file Salmonella_enterica_33676_pIncAC_CDSs.fna
+## # wrote file Salmonella_enterica_33676_pIncAC.fsa
+## 
+## real 0m0.048s
+## user 0m0.047s
+## sys  0m0.001s</code></pre>
+<ul>
+<li>Veamos las primeras líneas de cada archivo
+<ul>
+<li>Salmonella_enterica_33676_pIncAC.tsv</li>
+</ul></li>
+</ul>
+<pre class="bash"><code>head Salmonella_enterica_33676_pIncAC.tsv</code></pre>
+<pre><code>## CDS_no   locus_tag   product_description start   end complement  pseudogene
+## 1    SE15cs_RS23200  hypothetical protein    295 861 0   0
+## 2    SE15cs_RS23205  hypothetical protein    866 1153    0   0
+## 3    SE15cs_RS23210  plasmid replication protein 1138    2238    0   0
+## 4    SE15cs_RS23215  hypothetical protein    2584    2865    0   0
+## 5    SE15cs_RS26325  hypothetical protein    2886    3071    1   0
+## 6    SE15cs_RS23220  hypothetical protein    3275    3709    1   0
+## 7    SE15cs_RS23225  phosphohydrolase    3727    4842    1   0
+## 8    SE15cs_RS23230  hypothetical protein    5306    5719    0   0
+## 9    SE15cs_RS23235  hypothetical protein    5784    6245    0   0</code></pre>
+<ul>
+<li>Salmonella_enterica_33676_pIncAC_CDSs.fna</li>
+</ul>
+<pre class="bash"><code>head Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
+<pre><code>## &gt;SE15cs_RS23200 hypothetical protein
+## TTGGATAGGAATTGGGAGGGTATTGAGGTGAGTCTACCAACAGAGCGATGGCTAGATCTGCTAGATCCGAAGCTCGAAGAAGAACGATCCGAGATAACAGAGGATCTGCTAGAGGCAGAGGGACGAGAGTTTGTTGCAGAGGTACGGAGCAAACTGGATCACGCCTTAGCGGTTCTTGCTGTCGAGGCGCAGCAGGAAGCGGACATGTACTGGAACGCGCACAAATCAGCGCGTGAAGAAGCGTCAGAGGACGAACAAGGGCGTGTCGGTACACGGGTTCGCATTCTAGGCGTATCACTCGTTGCAGAGTGGTATCGCAACAGATTTGTCGAACAAGTTCCCGGACAAAAGAAAAGGGTTCTATCGACACATATCAAGAAGGGTCGCGGTCATGCCTACAGCATGTCGCACTTCAAGAAAGAGCCTGTCTGGGCACAAGAGTTGATCCAGCAAGTTGAAACCAGGTATGCCGTGTTAAGACAACGCGCCACTGCCTTAGCAAAAATTCGCCGGGCGCTAAACGAGTACGAGCGCCAGCTAAACAAGACACATAGCGACGAGGTGTGA
+## &gt;SE15cs_RS23205 hypothetical protein
+## ATGACAGCATCTGTAGCGGCCACTGAATTGGCGAAACTGGGGAAATGTGAAGCGATGATCAAGAAAGTCGCCAGCCATCCTCGCCCTGCCCTGTCAAAGCGCCCACAATCGCCACAGGGGACAGATAGCACCCTTCGGGGTGAGTTCGCTCATTTCCGATATGAAGCGGCAGCCCTGCGTTTTATGAGCGGCACTGCGGGGGCTAAGCGTCGCATCTACCAGCTAGTGTTTTCAGCGACGGTAGCAGCGGGAGCATTGACAATGCTGGCGGCATGGACCACCAGCTAG
+## &gt;SE15cs_RS23210 plasmid replication protein
+## ATGGACCACCAGCTAGAAAGTATCGACGGAACAATCATGAGCAAGAGAACCAAAGACAAAGACCTGGAGAAACTCGACGTAATCAAAGACTCACCGCAAATGAGCCTGTTTGAGATCATTGAATCTCCGGCCAAGAAAGACGACTACTCCAACACCATCGAGATCTACGATGCGCTGCCGAAGTACATTTGGGACCAAAAGCGTGAGCATGAAGATTTATCCAACGCTGTAGTGACACGACAATGCACCATCAGAGGCCAGCATTTCACGGTGAAGGTGAAGCCAGCCATCATCGAGAAGGATGACGGAAGAACCGTGCTGATCTACGCGGGACAGCGAGAGGAAATCCTTGAGGATGCTCTACGCAAGCTCGCAGTGAACGGGAAAGGCCATATCATCGAGGGCAAGGCTGGAGTCATGTTCACTCTGTACGAACTCCAGAAAGAGCTCTCGAAGATGGGTCACGGGTACAACCTGAACGAAATCAAGGAAGCAATCCAGGTTTGTCGTGGCGCAACACTCGAATGTATCAGTGATGACGGTGAAGCCTTCATCAGCTCCAGCTTCTTCCCGATGGTGGGACTGACCACCAGAGGTGAGTTTCGCAAGAAAGGCGGGAACGCCAGGTGCTATGTGCAGTTCAACCCGCTGGTAAACGAATCGATCATGAATCTGTCGTTTCGTCAGTACAACTACAAAATCGGAATGCAAATCCGCTCCCCTCTTGCACGGTACATCTACAAGCGAATGAGCCACTACTGGACTCAAGCATCACCAGATTCGCCGTACACGCCATCGCTTATCAGCTTCCTGACCCAGAGCCCTCGTGAATTGAGCCCACGGATGCCGGAGAACGTCAGAGCCATGAAGCTCGCTCTGGAGGCCCTCATCAAACAAGAGGTCATAAGCGACTACGACGCGAACCAGATCAAGGATGGCCGCAGAGTCATCGACGTGCGGTACGTCATAAGGCCTCATGAGAACTTCGTGAAGCAGGTGATGGCGTCCAACAAGCGTAAGCAGCAGACAGAGCTACGGGCCATCAAGCACGGCATGATCGACCACGACATCATTGATGAACCCCAACGTAAGGGGAGATAG
+## &gt;SE15cs_RS23215 hypothetical protein
+## ATGAGATTTGATATGTGGGTACGTTGCACGAAAGCAGGTCCTGAACCTCTCGATATATGGGAACTCTGCACGATTGACGAAGCAGAACAAAGATTGACAGATCAGGACAAACCTAAAAAAGCAGTCAAAATGACTCTAATAGTCCATAAAGTGATCACGCGCACACAAAAAGAGGCCAAAAGTTATCCACATTTCCTGTGCATAAACGGGGTTTTGGTATATGGGAACGCTGCACGATCATATGTGGGTACGCTGCACGGTGCAAAAAACGACCAAAATTGA
+## &gt;SE15cs_RS26325 hypothetical protein
+## GTGCAACGTCCCCACATACCCTTGGATCTTATCCACTGTTATCCACACGGAACCCCTCTTTTTTCCACAAAATCCTTACAAAACAGAGCTTTCGTGCAGCGTTCCCACATATCAGATCTGGTGTTCGTGCAGTATTCCCACATGTCTAAGGTCATACGTGCAGTCGCCCCATATACAATTTTCTGA</code></pre>
+<ul>
+<li>Salmonella_enterica_33676_pIncAC.fsa</li>
+</ul>
+<pre><code>&gt;NZ_CP012682
+ATAGGCTCAGATAAACAGACCTTACCCTCGCATCGAGAACCGCTTGCCCTCCAGCATCGAGAGACGGTGGTAAAGAGGCATTTGGAATCTTTGATGCCATATCCAATATATCTGGAATCTTTAAATATAGATTCATATGTAAAGAGGCTGTGAAAGAATAAGAGCATCAAGATTCCAGATAGATAGAGGGAAATTTGACAAATTCCAAAGATGGGTTAGCCTAGTGACAGAACTAGATTCCAGTATTGGAATAATCAGCTTTAAATTCCAGATAGATAGTTATGTGGATAGGAATTGGATAGGAATTGGGAGGGTATTGAGGTGAGTCTACCAACAGAGCGATGGCTAGATCTGCTAGATCCGAAGCTCGAAGAAGAACGATCCGAGATAACAGAGGATCTGCTAGAGGCAGAGGGACGAGAGTTTGTTGCAGAGGTACGGAGCAAACTGGATCACGCCTTAGCGGTTCTTGCTGTCGAGGCGCAGCAGGAAGCGGACATGTACTGGAACGCGCACAAATCAGCGCGTGAAGAAGCGTCAGAGGACGAACAAGGGCGTGTCGGTACACGGGTTCGCATTCTAGGCGTATCACTCGTTGCAGAGTGGTATCGCAACAGATTTGTCGAACAAGTTCCCGGACAAAAGAAAAGGGTTCTATCGACACATATCAAGAAGGGTCGCGGTCATGCCTACAGCATGTCGCACTTCAAGAAAGAGCCTGTCTGGGCACAAGAGTTGATCCAGCAAGTTGAAACCAGGTATGCCGTGTTAAGACAACGCGCCACTGCCTTAGCAAAAATTCGCCGGGCGCTAAACGAGTACGAGCGCCAGCTAAACAAGACACATAGCGACGAGGTGTGACAACATGACAGCATCTGTAGCGGCCACTGAATTGGCGAAACTGGGGAAATGTGAAGCGATGATCAAGAAAGTCGCCAGCCATCCTCGCCCTGCCCTGTCAAAGCGCCCACAATCGCCACAGGGGACAGATAGCACCCTTCGGGGTGAGTTCGCTCATTTCCGATATGAAGCGGCAGCCCTGCGTTTTATGAGCGGCACTGCGGGGGCTAAGCGTCGCATCTACCAGCTAGTGTTTTCAGCGACGGTAGCAGCGGGAGCATTGACAATGCTGGCGGCATGGACCACCAGCTAGAAAGTATCGACGGAACAATCATGAGCAAGAGAACCAAAGACAAAGACCTGGAGAAACTCGACGTAATCAAAGACTCACCGCAAATGAGCCTGTTTGAGATCATTGAATCTCCGGCCAAGAAAGACGACTACTCCAACACCATCGAGATCTACGATGCGCTGCCGAAGTACATTTGGGACCAAAAGCGTGAGCATGAAGATTTATCCAACGCTGTAGTGACACGACAATGCACCATCAGAGGCCAGCATTTCACGGTGAAGGTGAAGCCAGCCATCATCGAGAAGGATGACGGAAGAACCGTGCTGATCTACGCGGGACAGCGAGAGGAAATCCTTGAGGATGCTCTACGCAAGCTCGCAGTGAACGGGAAAGGCCATATCATCGAGGGCAAGGCTGGAGTCATGTTCACTCTGTACGAACTCCAGAAAGAGCTCTCGAAGATGGGTCACGGGTACAACCTGAACGAAATCAAGGAAGCAATCCAGGTTTGTCGTGGCGCAACACTCGAATGTATCAGTGATGACGGTGAAGCCTTCATCAGCTCCAGCTTCTTCCCGATGGTGGGACTGACCACCAGAGGTGAGTTTCGCAAGAAAGGCGGGAACGCCAGGTGCTATGTGCAGTTCAACCCGCTGGTAAACGAATCGATCATGAATCTGTCGTTTCGTCAGTACAACTACAAAATCGGAATGCAAATCCGCTCCCCTCTTGCACGGTACATCTACAAGCGAATGAGCCACTACTGGACTCAAGCATCACCAGATTCGCCGTACACGCCATCGCTTATCAGCTTCCTGACCCAGAGCCCTCGTGAATTGAGCCCACGGATGCCGGAGAACGTCAGAGCCATGAAGCTCGCTCTGGAGGCCCTCATCAAACAAGAGGTCATAAGCGACTACGACGCGAACCAGATCAAGGATGGCCGCAGAGTCATCGACGTGCGGTACGTCATAAGGCCTCATGAGAACTTCGTGAAGCAGGTGATGGCGTCCAACAAGCGTAAGCAGCAGACAGAGCTACGGGCCATCAAGCACGGCATGATCGACCACGACATCATTGATGAACCCCAACGTAAGGGGAGATAGCCACCAGAATCTCCCACCCCCCAGGGAAAAGAAAGATAGGCGCGTCAGCGCCTTTTTTTATGCCAGAAGAAAGCGCACAAGGTACGCCCACCAGGCAGGACCGGAAACGGAATGCCTCCGCATATGGGGGAGCTGCACGGATAGAGCGAACGTGACCCCAGATGCAGCGTGGGCTGGGGCTCTATATATGGGATCGCTGCACGGTAGTCGCAAGCTGAGTCTCAGTATCGTGCAAGCGTAAGCCACGACGAAGGATAAGTGCCATGCTGCTCCAGTGGTTCCCGTAGAGTGGTTCGTGGGGGACCTGCACGTTATGAGATTTGATAT... TRUNCADO</code></pre>
+</div>
+</div>
+<div id="fasta_toolkit.awk-un-script-multifuncional-para-mainpular-archivo-fasta-que-hace-uso-de-getopt" class="section level3">
+<h3><span class="header-section-number">11.8.3</span> <strong>fasta_toolkit.awk</strong>, un <em>script</em> multifuncional para mainpular archivo FASTA que hace uso de <strong>getopt()</strong></h3>
 <p>Para cerrar la sección sobre AWK les presento el <em>script</em> <code>fasta_toolkit.awk</code>. Es algo más largo e integra múltiples funciones para manipular archivos multi-FASTA de DNA. Este <em>script</em> les será de utilidad en su trabajo rutinario con secuencias (lo usaremos por ejemplo en las prácticas de BLAST de la LCG), y les sirva como ejemplo de cómo escribir programas más avanzados en <em>awk</em>. En particular el <em>script</em> tiene por objetivo enseñarles cómo modularizar el código mediante el uso de funciones.</p>
 <p>El <em>script</em> <strong>fasta_toolkit.awk</strong> implementa funciones para realizar las siguientes operaciones sobre archivos multi-FASTA de DNA:</p>
 <ol style="list-style-type: decimal">
@@ -5859,7 +6598,7 @@ BEGIN {
     2. prints results to STDOUT</code></pre>
 <p>Veamos ahora las secciones del <em>script</em> <strong>fasta_toolkit.awk</strong></p>
 <div id="cabecera-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.8.2.1</span> Cabecera de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.8.3.1</span> Cabecera de fasta_toolkit.awk</h4>
 <p>Simplemente describe la funcionalidad y opciones del <em>script</em></p>
 <pre><code>#!/usr/bin/awk -f
 
@@ -5881,7 +6620,7 @@ BEGIN {
 </code></pre>
 </div>
 <div id="funciones-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.8.2.2</span> Funciones de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.8.3.2</span> Funciones de fasta_toolkit.awk</h4>
 <p>Las funciones pueden ser definidas en cualquier parte del programa. En este caso las he puesto hacia la cabecera del <em>script</em>, en el orden asignado a los “runmodes” definidos con la opción -R <int>. La función getopts() la he puesto junto con la de print_help() hacia el final del bloque de funciones para tenerlas más cerca del bloque BEGIN{}, donde se procesan las opciones.</p>
 <pre><code>#---------------------------------------------------------------------------------------------------------#
 # &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; FUNCTION DEFINITIONS &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; #
@@ -6100,7 +6839,7 @@ function print_help(prog, vers) # (prog, vers)
 </code></pre>
 </div>
 <div id="bloque-de-inicialización-begin-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.8.2.3</span> Bloque de inicialización BEGIN{} de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.8.3.3</span> Bloque de inicialización BEGIN{} de fasta_toolkit.awk</h4>
 <p>Este es un bloque BEGIN{} bastante más largo que otros mostrados en ejemplos anteriores.</p>
 <ol style="list-style-type: decimal">
 <li>Una primera sección llama a la función <strong>getopt</strong> dentro de un bucle <em>while()</em>, pasándole ARGC, ARGV y las opciones como cadena “dm:e:R:s:”, en la que las opciones que requieren argumentos son seguidas por un ‘:’, como ‘-e:’. <code>while ((c = getopt(ARGC, ARGV, “dm:e:R:s:”)) != -1) { … }</code>.</li>
@@ -6214,7 +6953,7 @@ function print_help(prog, vers) # (prog, vers)
 </code></pre>
 </div>
 <div id="bloque-de-patronesacciones-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.8.2.4</span> Bloque de patrones/acciones de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.8.3.4</span> Bloque de patrones/acciones de fasta_toolkit.awk</h4>
 <p>El bloque de código que hace las llamadas a las funciones es relativamente corto, haciendo muy fácil y clara su lectura.</p>
 <p>1.Como hemos visto en múltiples ejemplos anteriores de <em>scripts</em> que procesan archivos FASTA modelando su estructura con <code>BEGIN{RS=“&gt;”; FS=OFS=“”}</code>, iniciamos el bloque de código principal con el patrón <code>NR &gt; 1</code> para eliminar el primer registro que está vacío. 2. Sigue un condicional que asegura que el usuario ha pasado al <em>script</em> un “runmode” definido en el mismo (-R <int> [1-5]). De ser así lee el FASTA mediante la función <strong>read_fasta()</strong>, capturando los registros en el <strong>hash global seqs</strong>. 3. Sigue un <strong>bloque END{}</strong> que llama a las funciones según el “runmode” que se le ha pasado al <em>script</em> (-R <int> [1-5]), siempre y cuando las secuencias no sean ridículamente cortas.</p>
 <pre><code># -------------------- # 
@@ -6255,7 +6994,7 @@ END {
 </code></pre>
 </div>
 <div id="ejemplos-de-uso-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.8.2.5</span> Ejemplos de uso de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.8.3.5</span> Ejemplos de uso de fasta_toolkit.awk</h4>
 <p>Usaremos para los ejemplos el archivo <em>mini_CDS.fna</em></p>
 <pre class="bash"><code>cat mini_CDS.fna</code></pre>
 <pre><code>## &gt;mini_CDS1
@@ -6684,7 +7423,7 @@ ubicación=CDMX
 dat=$(date | awk &#39;{print $2&quot;-&quot;$3&quot;-&quot;$4}&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in &lt;$wkdir&gt; at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;22-dic-2020&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;23-dic-2020&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
 <h2><span class="header-section-number">13.3</span> Modificación de variables y operaciones con ellas</h2>
@@ -6784,7 +7523,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 22 11:07 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 23 19:51 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -6970,14 +7709,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 dic 22 11:07 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 dic 22 11:07 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 dic 22 11:07 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 dic 22 11:07 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 dic 22 11:07 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 dic 22 11:07 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 dic 22 11:07 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 dic 22 11:07 recA_B_yuanmingense.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 dic 23 19:51 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 dic 23 19:51 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 dic 23 19:51 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 dic 23 19:51 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 dic 23 19:51 recA_B_yuanmingense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 dic 23 19:51 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 dic 23 19:51 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 dic 23 19:51 recA_B_japonicum.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -7108,9 +7847,9 @@ echo &quot;$contador líneas contienen el patrón $patron&quot;
 <pre class="bash"><code>while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 23764
-## 11906
-## 8354</code></pre>
+<pre><code>## 20524
+## 23676
+## 272</code></pre>
 <p>Los bucles <span class="math inline">\(until\)</span> son útiles para ejecutar un bucle hasta que se cumpla o no una determinada condición.</p>
 <p>Su sintaxis es idéntica al del bucle <span class="math inline">\(while\)</span>.</p>
 <p><code>until TEST-COMMAND; do CONSEQUENT-COMMANDS; done</code></p>
@@ -7118,9 +7857,9 @@ while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; bre
 <pre class="bash"><code>until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 17055
-## 9233
-## 16059</code></pre>
+<pre><code>## 11859
+## 3335
+## 4071</code></pre>
 </div>
 </div>
 <div id="estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" class="section level2">
