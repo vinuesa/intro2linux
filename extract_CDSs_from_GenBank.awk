@@ -15,7 +15,7 @@ BEGIN {
     start=end=complflag=pseudoflag=line_no=0
     product=locus_tag=""
     progname="extract_CDSs_from_genbank.awk"
-    VERSION=0.2 # Dec 23, 2020; now captures full product name, even when split in two lines
+    VERSION=0.2 # Dec 24, 2020; now captures full product name, even when split over two lines
                 # Dec 23, 2020; first commit
 
     # check user input: needs the GenBank file to process
