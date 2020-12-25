@@ -1,6 +1,6 @@
 #!/usr/bin/awk -f
 
-#: PROGRAM: extract_CDSs_from_genbank.awk; first commmit Dec 22, 2020
+#: PROGRAM: extract_CDSs_from_genbank.awk; first commmit Dec 23, 2020
 #: AUTHOR: Pablo Vinuesa, @pvinmex, https://www.ccg.unam.mx/~vinuesa/
 #: SOURCE: https://github.com/vinuesa/intro2linux
 #: USAGE: extract_CDSs_from_genbank.awk genbank_file.gbk   
@@ -11,10 +11,12 @@
 
 BEGIN {   
     # Initializations
-    start=end=complflag=pseudoflag=0
+    DEBUG = 0  # set to 1 if debugging messages should be activated (prints to "/dev/stderr")
+    start=end=complflag=pseudoflag=line_no=0
     product=locus_tag=""
     progname="extract_CDSs_from_genbank.awk"
-    VERSION=0.1  # Dec 22, 2020
+    VERSION=0.2 # Dec 23, 2020; now captures full product name, even when split in two lines
+                # Dec 23, 2020; first commit
 
     # check user input: needs the GenBank file to process
     #        as single argument on the command line
@@ -40,18 +42,18 @@ BEGIN {
 #-------------------------------- END OF BEGIN BLOCK ----------------------------------#
 
 # capture the locus ID on the first line to add to the FASTA header
-# skip all lines, from the first record (line) to the ORIGIN flag,
-#   which precede the sequnce string to be extracted
+# Then skip all lines, from the first record (line) to the source FEATURE,
 # Note the use of an expr-REGEXP range: expr, /regexp/
 NR == 1 { 
    locus_id = $2; 
    header   = locus_id
 }
 
+# skip lines until the source attribute of the FEATURES block is reached
 NR == 1, /^\s{4,}source\s{4,}/ { next }
 
 {
-  # exclude pseudogenes (<>)
+  # exclude pseudogenes, indicated by truncated gene coordinates with [<>]
   if (/^\s{4,}CDS\s{4,}[[:digit:]]+/ && flag == 0 && !/[<>]/ && !/complem/)
   {
      flag = 1 
@@ -80,21 +82,23 @@ NR == 1, /^\s{4,}source\s{4,}/ { next }
      complflag = 1
   }
   
-  if( flag && /^\s{8,}\/locus_tag=/ )
+  if( flag && /^\s+\/locus_tag=/ )
   {
      locus_tag=$0
      sub(/^\s{8,}\/locus_tag=/, "", locus_tag)
      gsub(/["]/, "", locus_tag)
   } 
 
+  # mark pseudogenes
   if( flag && /^\s{8,}\/pseudo/ ) pseudoflag = 1
 
   if(flag && /^\s{8,}\/product=/)
   {
-     product=$0
+     line_no = FNR
+     product = $0
      sub(/^\s{8,}\/product=/, "", product)
      gsub(/["]/, "", product)
-     
+
      if (pseudoflag) { product = product " [pseudogene]" }
      
      # we use geneID to generate a numeric index for the hash, so that it prints out in order!
@@ -110,7 +114,31 @@ NR == 1, /^\s{4,}source\s{4,}/ { next }
      CDSs_AoA[geneID]["pseudo"] = pseudoflag
 
      flag=start=end=complflag=revflag=pseudoflag=0
-     product=locus_tag=""
+     locus_tag=""
+  }
+  
+  # if the product description is split in two lines, 
+  #     capture it and append it to the first line already saved in product
+  if(FNR == line_no+1)
+  {
+       # this regexp is critical to ensure the caputre of
+       #   all possible product names, like ANT(3'')-Ia, that must end with "
+       # Set DEBUG = 1 at the beginning of the BEGIN{} block
+       #   to print all the second lines for producut names to "/dev/stderr"
+       #if($0 ~/^\s+[[:alnum:] ]+\"$/)
+       if($0 ~/^\s+[a-zA-Z0-9\(\)\'\- ]+"$/) # <== matches patterns like 'gene ANT(3'')-Ia'
+       {
+	   prod_2cnd_line = $0
+	   gsub(/^\s+/, "", prod_2cnd_line)
+	   gsub(/["]/, "", prod_2cnd_line)
+	   product = product " " prod_2cnd_line
+	   
+	   if(DEBUG)
+	      print "FNR=" FNR, "line_no="line_no, "prod_2cnd_line="prod_2cnd_line > "/dev/stderr"
+
+	   CDSs_AoA[geneID]["p"] = product
+	   line_no=product=""
+       }
   }
   
   # After the ORIGING mark, starts the dna string
@@ -128,72 +156,70 @@ NR == 1, /^\s{4,}source\s{4,}/ { next }
      gsub(/\/\//, "", $0)
      gsub(/[[:space:]]/, "", $0)
 
-     seq=seq$0
-     # skip any empty lines and convert sequence strings to uppercase
-   }
+     seq= seq $0
+  }
 }
-# ------------------------------- END OF PATTER & ACTION BLOCK -----------------------------------#
+# ------------------------------- END OF PATTERN & ACTION BLOCK -----------------------------------#
 
 END {
-     #for (k in CDSs_string)
-     #     printf "%s\t%s\n" 
-     seq = toupper(seq)
-     dna[header] = toupper(seq)
-         
-     # conditional required to avoid errors printed to STDERR when the help menu is printed
-     if( ARGC > 1 ) 
-     {  
-         # Need to remove pre-existing "basename".tsv" file, as the script appends lines to it 
-         #     (print stuff >> gbk_tsv)
-	 # Can use any of the following options:
-         #    1. call system()
-         #    2. pipe command to sh
-         #    the second may by more portable and is used as a function call
-	 #
-         #if(system("[ -s " gbk_tsv " ]") == 0) { system("rm "gbk_tsv) }
-         #OR:
-         #rm_if_exists="[ -s " gbk_tsv " ] && rm "gbk_tsv
-         #print rm_if_exists | "/bin/sh"
-         #close("/bin/sh")
-	 rm_if_exists(gbk_tsv)
-     
-         # print GBK table header for gbk_tsv
-         print "CDS_no\tlocus_tag\tproduct_description\tstart\tend\tcomplement\tpseudogene" > gbk_tsv
-     
-     
-         # if exists, rm the FASTA file holding CDSS, since the script appends to it
-         #     (print stuff >> gbk_CDSs)
-         rm_if_exists(gbk_CDSs)
-     
-         # loop over the CDSs_AoA array of arrays to print 
-         #      i) the GBK file in tabular format to file gbk_tsv
-         #      ii) and the CDSs to STDOUT
-         for (k in CDSs_AoA)
-         {
-	     # 1. print the GBK file in tabular format to file gbk_tsv
-	     printf "%d\t%s\t%s\t%d\t%d\t%d\t%d\n", k, CDSs_AoA[k]["l"], CDSs_AoA[k]["p"], CDSs_AoA[k]["s"], 
-	           CDSs_AoA[k]["e"], CDSs_AoA[k]["c"], CDSs_AoA[k]["pseudo"] >> gbk_tsv
-         
-	     # 2. print the CDSs to STDOUT
-	     extract_sequence_by_coordinates(CDSs_AoA[k]["l"]" "CDSs_AoA[k]["p"], seq, CDSs_AoA[k]["s"], 
-	           CDSs_AoA[k]["e"], CDSs_AoA[k]["c"], gbk_CDSs) 
-         }
-	 # report if the files were successfully written to disk
-         print_if_exists(gbk_tsv)
-         print_if_exists(gbk_CDSs)
-     	  
-         # if exists, rm the FASTA file holding the DNA string, since the script appends to it
-         #     (print stuff >> gbk_fsa)
-	 rm_if_exists(gbk_fsa)
+    # save the genbank's DNA string in the dna hash, indexed by LOCUS
+    seq = toupper(seq)
+    dna[header] = seq
+    	
+    # conditional required to avoid errors printed to STDERR when the help menu is printed
+    if( ARGC > 1 ) 
+    {  
+    	# Need to remove pre-existing "basename".tsv" file, as the script appends lines to it 
+    	#     (print stuff >> gbk_tsv)
+        # Can use any of the following options:
+    	#    1. call system()
+    	#    2. pipe command to sh
+    	#    the second may by more portable and is used as a function call
+        #
+    	#if(system("[ -s " gbk_tsv " ]") == 0) { system("rm "gbk_tsv) }
+    	#OR:
+    	#rm_if_exists="[ -s " gbk_tsv " ] && rm "gbk_tsv
+    	#print rm_if_exists | "/bin/sh"
+    	#close("/bin/sh")
+        rm_if_exists(gbk_tsv)
+    
+    	# print GBK table header for gbk_tsv
+    	print "CDS_no\tlocus_tag\tproduct_description\tstart\tend\tcomplement\tpseudogene" > gbk_tsv
+    
+    
+    	# if exists, rm the FASTA file holding CDSS, since the script appends to it
+    	#     (print stuff >> gbk_CDSs)
+    	rm_if_exists(gbk_CDSs)
+    
+    	# loop over the CDSs_AoA array of arrays to print 
+    	#      i) the GBK file in tabular format to file gbk_tsv
+    	#      ii) and the CDSs to STDOUT
+    	for (k in CDSs_AoA)
+    	{
+            # 1. print the GBK file in tabular format to file gbk_tsv
+            printf "%d\t%s\t%s\t%d\t%d\t%d\t%d\n", k, CDSs_AoA[k]["l"], CDSs_AoA[k]["p"], CDSs_AoA[k]["s"], 
+        	  CDSs_AoA[k]["e"], CDSs_AoA[k]["c"], CDSs_AoA[k]["pseudo"] >> gbk_tsv
+    	
+            # 2. print the CDSs to STDOUT
+            extract_sequence_by_coordinates(CDSs_AoA[k]["l"]" "CDSs_AoA[k]["p"], seq, CDSs_AoA[k]["s"], 
+        	  CDSs_AoA[k]["e"], CDSs_AoA[k]["c"], gbk_CDSs) 
+    	}
+        # report if the files were successfully written to disk
+    	print_if_exists(gbk_tsv)
+    	print_if_exists(gbk_CDSs)
+    	 
+    	# if exists, rm the FASTA file holding the DNA string, since the script appends to it
+    	#     (print stuff >> gbk_fsa)
+        rm_if_exists(gbk_fsa)
 
-         # print the complete DNA sequence string of the input GenBank to to file gbk_fsa
-         for (h in dna)
-         {
-	      printf ">%s\n%s\n", header, seq >> gbk_fsa
-         }
-	 # report if the file was successfully written to disk
-	 print_if_exists(gbk_fsa)
-     }
+    	# print the complete DNA sequence string of the input GenBank to to file gbk_fsa
+    	for (h in dna)
+    	{
+             printf ">%s\n%s\n", header, seq >> gbk_fsa
+    	}
+        # report if the file was successfully written to disk
+        print_if_exists(gbk_fsa)
+    }
 }
 # --------------------------------------------- END OF END BLOCK ---------------------------------------- #
 
@@ -266,11 +292,12 @@ function extract_sequence_by_coordinates(header, dna_seq, start, end, revCompFla
 }
 #---------------------------------------------------------------------------------------------------------
 
-function print_help(prog, vers) {
-  
-  print "# AIMS: 1. extracts the CDSs from a single GenBank file, saving them as input_genbank_basename_CDSs.fna" > "/dev/stderr"
-  print "#       2. writes the GenBank file in tabular format as input_genbank_basename.tsv" > "/dev/stderr"
-  print "#       3. extracts the complete DNA string from the input GenBank, saving it as input_genbank_basename.fsa" > "/dev/stderr"
+function print_help(prog, vers) 
+{
+  print "# AIMS:" > "/dev/stderr" 
+  print "#  1. extracts the CDSs from a single GenBank file, saving them as input_genbank_basename_CDSs.fna" > "/dev/stderr"
+  print "#  2. writes the GenBank file in tabular format as input_genbank_basename.tsv" > "/dev/stderr"
+  print "#  3. extracts the complete DNA string from the input GenBank, saving it as input_genbank_basename.fsa" > "/dev/stderr"
   print "# NOTE", prog, "v"vers, "assumes that the input GenBank file contains a single sequence record or LOCUS" > "/dev/stderr"
   print "# USAGE of", prog, "v"vers":" > "/dev/stderr"
   printf "\t%s %s\n\n", prog, "genbank_file_with_single_record.gbk" > "/dev/stderr"  
