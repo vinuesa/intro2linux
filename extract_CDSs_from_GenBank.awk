@@ -1,21 +1,33 @@
 #!/usr/bin/awk -f
 
-#: PROGRAM: extract_CDSs_from_genbank.awk; first commmit Dec 23, 2020
+#---------------------------------------------------------------------------------------------------------
+#: PROGRAM: extract_CDSs_from_GenBank.awk; first commmit Dec 23, 2020
 #: AUTHOR: Pablo Vinuesa, @pvinmex, https://www.ccg.unam.mx/~vinuesa/
 #: SOURCE: https://github.com/vinuesa/intro2linux
 #: USAGE: extract_CDSs_from_genbank.awk genbank_file.gbk   
-#: AIMS: 1. extracts the CDSs from a single GenBank file and writes them as genbank_basename_CDSs.fna
-#:	 2. writes the GenBank file in tabular format as genbank_basename.tsv
-#:	 3. extracts the complete DNA string from the input GenBank saving to genbank_basename.fsa
-#: NOTE: the program assumes that the input GenBank file contains a single sequence record or LOCUS
+#: AIMS: 
+#:   1. extracts the CDSs from a single GenBank file and writes them to genbank_basename_CDSs.fna
+#:   2. translates the CDSs and writes them to file genbank_basename_proteome.faa
+#:   3. writes the GenBank file in tabular format as genbank_basename.tsv
+#:   4. extracts the complete DNA string(s) from the input GenBank saving them to genbank_basename.fsa
+#: NOTES: 
+#:   1. the program currently does not deal with CDSs containing introns.
+#:       CDSs containing the join statement: complement(join(4497616..4498557,4498557..4498814)), are skipped
+#:       Use only for bacterial|mitochondrial|plastid genomes
+#=========================================================================================================
 
 BEGIN {   
     # Initializations
     DEBUG = 0  # set to 1 if debugging messages should be activated (prints to "/dev/stderr")
     start=end=complflag=pseudoflag=line_no=0
-    product=locus_tag=locus_id=""
-    progname="extract_CDSs_from_genbank.awk"
-    VERSION=0.3 # v0.3 Dec 25, 2020; correctly appends the [pseudogene] label to the end of the product line
+    product=locus_tag=locus_id=seq=""
+    
+    # print the FASTA sequences stored in hashes in ascending order by locus_tag number 
+    PROCINFO["sorted_in"] = "@ind_num_asc"
+    
+    progname="extract_CDSs_from_GenBank.awk"
+    VERSION=0.4 # v0.4 Dec 26, 2020; prints also the CDS's translation products to file
+                # v0.3 Dec 25, 2020; correctly appends the [pseudogene] label to the end of the product line
                 # v0.2 Dec 24, 2020; now captures full product name, even when split over two lines
                 # v0.1 Dec 23, 2020; first commit
 
@@ -30,6 +42,7 @@ BEGIN {
     
     gsub(/\..*$/, "", basename)   
     gbk_tsv = basename".tsv"
+    gbk_faa = basename"_proteome.faa"
     gbk_fsa = basename".fsa"
     gbk_CDSs = basename"_CDSs.fna"
     
@@ -39,51 +52,82 @@ BEGIN {
     compl_nucl["C"]="G"
     compl_nucl["G"]="C"
     compl_nucl["N"]="N"
+
+    # initialize the "codons" hash holding the codon-aminoacid pairs, 
+    #	based on the universal genetic code, to translate CDSs with translate_dna()
+    codons["ATA"]="I"; codons["ATC"]="I"; codons["ATT"]="I"; codons["ATG"]="M";
+    codons["ACA"]="T"; codons["ACC"]="T"; codons["ACG"]="T"; codons["ACT"]="T";
+    codons["AAC"]="N"; codons["AAT"]="N"; codons["AAA"]="K"; codons["AAG"]="K";
+    codons["AGC"]="S"; codons["AGT"]="S"; codons["AGA"]="R"; codons["AGG"]="R";
+    codons["CTA"]="L"; codons["CTC"]="L"; codons["CTG"]="L"; codons["CTT"]="L";
+    codons["CCA"]="P"; codons["CCC"]="P"; codons["CCG"]="P"; codons["CCT"]="P";
+    codons["CAC"]="H"; codons["CAT"]="H"; codons["CAA"]="Q"; codons["CAG"]="Q";
+    codons["CGA"]="R"; codons["CGC"]="R"; codons["CGG"]="R"; codons["CGT"]="R";
+    codons["GTA"]="V"; codons["GTC"]="V"; codons["GTG"]="V"; codons["GTT"]="V";
+    codons["GCA"]="A"; codons["GCC"]="A"; codons["GCG"]="A"; codons["GCT"]="A";
+    codons["GAC"]="D"; codons["GAT"]="D"; codons["GAA"]="E"; codons["GAG"]="E";
+    codons["GGA"]="G"; codons["GGC"]="G"; codons["GGG"]="G"; codons["GGT"]="G";
+    codons["TCA"]="S"; codons["TCC"]="S"; codons["TCG"]="S"; codons["TCT"]="S";
+    codons["TTC"]="F"; codons["TTT"]="F"; codons["TTA"]="L"; codons["TTG"]="L";
+    codons["TAC"]="Y"; codons["TAT"]="Y"; codons["TAA"]="*"; codons["TAG"]="*";
+    codons["TGC"]="C"; codons["TGT"]="C"; codons["TGA"]="*"; codons["TGG"]="W";
+    
+    unknown = "X"
 }
-# capture the locus ID on the first line to add to the FASTA header
+#-------------------------------- END OF BEGIN BLOCK ----------------------------------#
+
+# The following block will parse the relevant annotation features of CDSs,
+#   saving them in the the CDSs_AoA (Array of Arrays)
+
+# Capture the locus ID on the first line to add to the FASTA header
 # Then skip all lines, from the first record (line) to the source FEATURE,
 # Note the use of an expr-REGEXP range: expr, /regexp/
-NR == 1 { 
-   locus_id = $2; 
+FNR == 1 || $0 ~ /^LOCUS/ { 
+   locus_id = $2 
+   
+   printf(">>> Processing LOCUS %s of %s ...\n", locus_id, FILENAME) > "/dev/stderr"
 }
 
 # skip lines until the source attribute of the FEATURES block is reached
-NR == 1, /^\s{4,}source\s{4,}/ { next }
+$0 ~ /^LOCUS/, /^\s{4,}source\s{4,}/ { next }
 
 {
-  # exclude pseudogenes, indicated by truncated gene coordinates with [<>]
-  if (/^\s{4,}CDS\s{4,}[[:digit:]]+/ && flag == 0 && !/[<>]/ && !/complem/)
+  # Exclude pseudogenes, indicated by truncated gene coordinates with [<>], 
+  #  or by the join statement: complement(join(4497616..4498557,4498557..4498814))
+  if (/^\s{4,}CDS\s{4,}[[:digit:]]+/ && flag == 0 && !/[<>,]/ && !/complem/ && !/join/)
   {
-     flag = 1 
-     coord=$0   
-     sub(/^\s{4,}CDS\s{4,}/, "", coord)
-     #print "coord:"coord
-
-     split(coord, c_arr, /\.\./)
+     flag  = 1 
+    
+     # note the pattern capturing parentheses used in this regexp, 
+     #   which capture the coords 123..789 into the c_arr array
+     match($0, /^\s{4,}CDS\s{4,}([[:digit:]]+)\.\.([[:digit:]]+)/, c_arr)
      start = c_arr[1]
      end   = c_arr[2]
-     
+
      complflag = 0
   }
-  else if (/^\s{4,}CDS\s{4,}complement/ && ! flag && ! /[<>]/)
+  else if (/^\s{4,}CDS\s{4,}complement/ && ! flag && ! /[<>,]/  && !/join/)
   {
-     flag = 1
-     coord=$0     
+     flag  = 1
+     coord = $0     
+     
+     # for the sake of showing different string-manipulation functions
+     #   in this case we combine sub(), gsub() and split()
+     #   to capture the CDS's coords
      sub(/^\s{4,}CDS\s{4,}complement\(/, "", coord)
      gsub(/[\)]/, "", coord)
 
      split(coord, c_arr, /\.\./)
      start = c_arr[1]
      end   = c_arr[2]
-
+     
      complflag = 1
   }
   
   if( flag && /^\s+\/locus_tag=/ )
   {
-     locus_tag=$0
-     sub(/^\s{8,}\/locus_tag=/, "", locus_tag)
-     gsub(/["]/, "", locus_tag)
+     match($0, /^\s{8,}\/locus_tag="([[:alnum:]_]+)"/, lt_arr)
+     locus_tag = lt_arr[1]
   } 
 
   # mark pseudogenes
@@ -99,17 +143,16 @@ NR == 1, /^\s{4,}source\s{4,}/ { next }
      # we use geneID to generate a numeric index for the hash, so that it prints out in order!
      geneID++
      
-     #printf "%s\t%s\t%d\t%d\t%d\n", locus_tag, product, start, end, complflag,  pseudoflag
-     CDSs_string[geneID] = locus_tag "\t" product "\t" start "\t" end "\t" complflag "\t" pseudoflag
-     CDSs_AoA[geneID]["l"]  = locus_tag
-     #CDSs_AoA[geneID]["p"] = product <== assign p in the following block
-     CDSs_AoA[geneID]["s"]  = start
-     CDSs_AoA[geneID]["e"]  = end
-     CDSs_AoA[geneID]["c"]  = complflag
+     # All the CDS's-relevant information parsed from the annotations 
+     #   will be stored in the CDSs_AoA (Array of Arrays)
+     CDSs_AoA[geneID]["l"] = locus_tag
+     CDSs_AoA[geneID]["LOCUS"] = locus_id
+     CDSs_AoA[geneID]["s"] = start
+     CDSs_AoA[geneID]["e"] = end
+     CDSs_AoA[geneID]["c"] = complflag
      CDSs_AoA[geneID]["pseudo"] = pseudoflag
 
-     flag=start=end=complflag=revflag=0
-     locus_tag=""
+     flag=complflag=0
   }
   
   # if the product description is split in two lines, 
@@ -121,7 +164,7 @@ NR == 1, /^\s{4,}source\s{4,}/ { next }
      # Set DEBUG = 1 at the beginning of the BEGIN{} block
      #   to print all the second lines for producut names to "/dev/stderr"
      #if($0 ~/^\s+[[:alnum:] ]+\"$/)
-     if($0 ~/^\s+[a-zA-Z0-9\(\)\'\- ]+"$/) # <== matches patterns like 'gene ANT(3'')-Ia'
+     if($0 ~/^\s+[a-zA-Z0-9\(\)\'\-,;: ]+"$/) # <== matches patterns like 'gene, ANT(3'')-Ia'
      {
      	prod_2cnd_line = $0
      	gsub(/^\s+/, "", prod_2cnd_line)
@@ -129,46 +172,57 @@ NR == 1, /^\s{4,}source\s{4,}/ { next }
      	product = product " " prod_2cnd_line
      	
      	if(DEBUG)
-     	   print "FNR=" FNR, "line_no="line_no, "prod_2cnd_line="prod_2cnd_line > "/dev/stderr"
+     	   print "FNR=" FNR, "line_no="line_no, "locus_tag="locus_tag, "prod_2cnd_line="prod_2cnd_line > "/dev/stderr"
 
-     	if (pseudoflag) product = product " [pseudogene]" 
+     	if (pseudoflag) product = product " [pseudogene]"
 
      	CDSs_AoA[geneID]["p"] = product
-     	line_no=product=pseudoflag=0
+     	line_no=pseudoflag=0
+	product=locus_tag=""
      }
      else
      {
      	if (pseudoflag) product = product " [pseudogene]"
-	   
+
      	CDSs_AoA[geneID]["p"] = product
-     	line_no=product=pseudoflag=0
+     	line_no=pseudoflag=0
+	product=locus_tag=""
      }
   }
   
   # After the ORIGING mark, starts the dna string
-  if (flag == 0 && !/^ORIGIN/) 
+  if (flag == 0 && !/^ORIGIN/)  
       next 
    
   # Remove spaces and digits preceding sequence strings
   #  remove also the single spaces between 10 bp sequence strings
-  if (/^ORIGIN/) { flag = 1; next}
+  if (/^ORIGIN/) { flag = 1; seq = ""; next }
   
   if(flag && $0 ~ /^\s+[[:digit:]]+\s+[AGCTNagctn\s]+/)
-  {  
+  {   
      sub(/^\s+[[:digit:]]+\s+/, "", $0)
      gsub(/\/\//, "", $0)
      gsub(/[[:space:]]/, "", $0)
 
      seq = seq $0
   }
+
+  # fill the dna hash, once we have reached the end of record mark '//'
+  if(flag && $0 ~ /^\/\/$/)
+  {
+     # save the genbank's DNA string in the dna array, indexed by LOCUS
+     seq = toupper(seq)
+     dna[locus_id] = seq
+     
+     flag = 0
+     locus_id=""
+  }
 }
-# ------------------------------- END OF PATTERN & ACTION BLOCK -----------------------------------#
+
+
+# ------------------------------- END OF PATTERN-ACTION BLOCK -----------------------------------#
 
 END {
-    # save the genbank's DNA string in the dna array, indexed by LOCUS
-    seq = toupper(seq)
-    dna[locus_id] = seq
-    	
     # conditional required to avoid errors printed to STDERR when the help menu is printed
     if( ARGC > 1 ) 
     {  
@@ -187,7 +241,7 @@ END {
        rm_if_exists(gbk_tsv)
     
        # print GBK table header for gbk_tsv
-       print "CDS_no\tlocus_tag\tproduct_description\tstart\tend\tcomplement\tpseudogene" > gbk_tsv
+       print "CDS_no\tLOCUS\tlocus_tag\tproduct_description\tstart\tend\tcomplement\tpseudogene" > gbk_tsv
     
     
        # if exists, rm the FASTA file holding CDSS, since the script appends to it
@@ -200,12 +254,12 @@ END {
        for (k in CDSs_AoA)
        {
            # 1. print the GBK file in tabular format to file gbk_tsv
-           printf "%d\t%s\t%s\t%d\t%d\t%d\t%d\n", k, CDSs_AoA[k]["l"], CDSs_AoA[k]["p"], CDSs_AoA[k]["s"], 
-        	 CDSs_AoA[k]["e"], CDSs_AoA[k]["c"], CDSs_AoA[k]["pseudo"] >> gbk_tsv
+           printf "%d\t%s\t%s\t%s\t%d\t%d\t%d\t%d\n", k, CDSs_AoA[k]["LOCUS"], CDSs_AoA[k]["l"], CDSs_AoA[k]["p"], 
+        	  CDSs_AoA[k]["s"], CDSs_AoA[k]["e"], CDSs_AoA[k]["c"], CDSs_AoA[k]["pseudo"] >> gbk_tsv
     
-           # 2. extract sequence by coordinates and write CDSs to file
+           # 2. extract_sequence_by_coordinates, write CDSs.fna, translate CDSs and write proteome.faa
            extract_sequence_by_coordinates(CDSs_AoA[k]["l"]" "CDSs_AoA[k]["p"], seq, CDSs_AoA[k]["s"], 
-        	 CDSs_AoA[k]["e"], CDSs_AoA[k]["c"], gbk_CDSs) 
+        	 CDSs_AoA[k]["e"], CDSs_AoA[k]["c"], gbk_CDSs, CDSs_AoA[k]["pseudo"]) 
        }
        # report if the files were successfully written to disk
        print_if_exists(gbk_tsv)
@@ -218,35 +272,50 @@ END {
        # print the complete DNA sequence string of the input GenBank to file gbk_fsa
        for (h in dna)
        {
-            printf ">%s\n%s\n", locus_id, seq >> gbk_fsa
+            printf ">%s\n%s\n", h, dna[h] >> gbk_fsa
        }
        # report if the file was successfully written to disk
        print_if_exists(gbk_fsa)
+
+       # translate fastas and print to disk
+       rm_if_exists(gbk_faa)
+
+       for (h in prots) {
+           # make sure we print only non-redundant sequences
+           hcount[h]++
+           
+           # skip printing any pesudogene translations, which will be empty
+           if( h ~ / \[pseudogene\]$/ ) continue
+           
+           printf(">%s\n%s\n", h, prots[h]) >> gbk_faa
+       } 
+       # report if the file was successfully written to disk
+       print_if_exists(gbk_faa)
     }
 }
-# ------------------------------------------ END OF END BLOCK ------------------------------------------- #
+# ------------------------------------------- END BLOCK FINISHES ---------------------------------------- #
 
 #=========================================================================================================#
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FUNCTION DEFINITIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< #
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FUNCTION DEFINITIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< #
 #---------------------------------------------------------------------------------------------------------#
 
 function rm_if_exists(file,       cmd)
 {
     cmd="[ -s " file " ] && rm "file
-    print cmd | "/bin/sh"
-    close("/bin/sh")
+    print cmd | "/usr/bin/env bash"
+    close("/usr/bin/env bash")
 }
 #---------------------------------------------------------------------------------------------------------
 
 function print_if_exists(file,     cmd)
 {
     cmd="[ -s " file " ] && echo '# wrote file '"file
-    print cmd | "/bin/sh"
-    close("/bin/sh")
+    print cmd | "/usr/bin/env bash"
+    close("/usr/bin/env bash")
 }
 #---------------------------------------------------------------------------------------------------------
 
-function rev_string(seq       ,i,s)
+function rev_string(seq,       i,s)
 {
    for(i=length(seq); i != 0; i--)
    {
@@ -265,12 +334,19 @@ function rev_compl(header, dna_seq, outfile,       i, k, s) # reverse complement
          k = substr(dna_seq, i, 1)
          s = s compl_nucl[k]
     }
-    printf ">%s\n%s\n", header, s >> outfile
+    printf(">%s\n%s\n", header, s) >> outfile
+    translate_dna(header, s)
 }
 #---------------------------------------------------------------------------------------------------------
 
 function extract_sequence_by_coordinates(header, dna_seq, start, end, revCompFlag, outfile,        seq)
 {   
+    # This function extracts the CDS string using the caputred coordinates
+    #  and appends the sequence to the output FASTA file, calling the auxiliary
+    #  function rev_compl() if required. 
+    #  Both extract_sequence_by_coordinates() and rev_compl() call translate_dna()
+    #    to translate the CDSs using the codons hash, saving the whole proteome in 
+    #    the prots hash
     if(start == 1 && revCompFlag)
     {
     	seq = substr(dna_seq, start, end)
@@ -280,11 +356,13 @@ function extract_sequence_by_coordinates(header, dna_seq, start, end, revCompFla
     if(start == 1 && ! revCompFlag)
     {
     	print ">"header"\n"substr(dna_seq, start, end) >> outfile
+	translate_dna(header, substr(dna_seq, start, end))
     }		 
     
     if( start > 1 && ! revCompFlag ) 
     {
         print ">"header"\n"substr(dna_seq, start, end-start+1) >> outfile
+	translate_dna(header, substr(dna_seq, start, end-start+1))
     }
     
     if( start > 1 && revCompFlag ) 
@@ -295,17 +373,91 @@ function extract_sequence_by_coordinates(header, dna_seq, start, end, revCompFla
 }
 #---------------------------------------------------------------------------------------------------------
 
+function translate_dna(header, dna_seq,       s, i, p)
+{  # receives two arguments: the fasta header and the CDS sequence to be translated
+   
+   # Initialize variables: 
+   #  do-while loop control variable i (nt counter) 
+   #   and p, which will hold the translation product
+   {i=1; p=""; triplet_counter=0}
+
+   # Here we run a do-while loop; the do loop is a variation of the while looping statement. 
+   #  The do loop always executes the body once and then repeats the body as long as the condition is true
+   # We use the do-while loop, to get a first triplet string saved in s; 
+   #  then the while loop keeps going until substr() got the last triplet, resulting in an empty s="".
+   do {
+        # First check that the script got some input
+        #   if not, exit with an error message
+        if(length(dna_seq) == 0) {
+            print "ERROR: need a DNA sequence string to translate (valid DNA sequence, divisible by 3)" > "/dev/stderr"
+            exit 1
+       
+        # Check that the DNA sequence string is divisible by 3 using the modulo operator
+        #   if not, exit with an error message
+        } else if(length(dna_seq)%3) { 
+            printf("# WARNING: input DNA sequence for %s not divisible by 3. Will skip it!\n", header) > "/dev/stderr"
+            continue
+        }
+        
+        # use substr() to split the input sequence (dna_seq) into triplets saved in s	      
+        s = substr(dna_seq, i, 3)
+       
+        # keep track of processed triplets (codons)
+        triplet_counter++
+       
+        # check that the input corresponds to valid nucleotides
+        if ( s ~ /[^acgtACGT]+/ ) { 
+            print "WARNING: input triplet", triplet_counter, "=", s, 
+        	  "contains a non-valid nucleotide symbol ..." > "/dev/stderr"
+            break
+        }
+
+        # make sure that input nt symbols are uppercase to match the hash keys
+        s = toupper(s)
+   
+        # use the codon hash c as lookup table to translate the s triplet
+        #   appending codons[s] to the growing peptide p
+        { 
+            # break out of loop if we get no more triplets 
+            #	out of the input DNA string with substr()
+            if (codons[s]=="") { 
+               break
+            }
+            else if (s in codons == 0) { 
+               # if the triplet is not contained in c, append "X" to p
+               p = p unknown
+            } 
+            else { 
+               # append aminoacid codons[s] to growing peptide
+               p = p codons[s]
+           }
+        }
+        i=i+3 # increment the counter of processed dna nucleotides by 3 
+    }
+    # run while loop until substring cannot retrieve any more triplets
+    while (s!="")
+        prots[header] = p
+}
+#---------------------------------------------------------------------------------------------------------
+
 function print_help(prog, vers) 
 {
   print "# AIMS:" > "/dev/stderr" 
-  print "#  1. extracts the CDSs from a single GenBank file, saving them as genbank_basename_CDSs.fna" > "/dev/stderr"
-  print "#  2. writes the GenBank file in tabular format as genbank_basename.tsv" > "/dev/stderr"
-  print "#  3. extracts the complete DNA string from the input GenBank, saving it as genbank_basename.fsa" > "/dev/stderr"
-  print "\n# NOTES" > "/dev/stderr"
-  print "#   1", prog, "v"vers, "assumes that the input GenBank file contains a single sequence record or LOCUS" > "/dev/stderr"
-  print "#   2", prog, "v"vers, "does not deal with CDSs containing introns. Use only for bacterial|mitochondrial|plastid genomes" > "/dev/stderr"
+  print "#  1. extracts the CDSs from a single GenBank file, saving them to genbank_basename_CDSs.fna" > "/dev/stderr"
+  print "#  2. translates the CDSs and writes them to file genbank_basename_proteome.faa" > "/dev/stderr"
+  print "#  3. writes the GenBank file in tabular format as genbank_basename.tsv" > "/dev/stderr"
+  print "#  4. extracts the complete DNA string(s) from the input GenBank, saving them as genbank_basename.fsa" > "/dev/stderr"
+  print "\n# NOTES:" > "/dev/stderr"
+  print "#   1.", prog, "v"vers, "does not deal with CDSs containing introns" > "/dev/stderr"
+  print "#        CDSs containing the join statement: complement(join(4497616..4498557,4498557..4498814)) are skipped" > "/dev/stderr"
+  print "#        Use only for bacterial|mitochondrial|plastid genomes" > "/dev/stderr"
+  print "\n# TODO:" > "/dev/stderr"
+  print "#   1. add code to process split (pseudo)genes as in complement(join(4497616..4498557,4498557..4498814))" > "/dev/stderr"
   print "\n# USAGE of", prog, "v"vers":" > "/dev/stderr"
-  printf "\t%s %s\n\n", prog, "genbank_file_with_single_record.gbk" > "/dev/stderr"  
+  printf "\t%s %s\n", prog, "genbank_file.gbk" > "/dev/stderr"  
+  print "\tOR" > "/dev/stderr"  
+  printf "\tfor f in *.gbk; do %s %s\n\n", prog, "$f; done" > "/dev/stderr"  
   
   exit 0
 }
+#---------------------------------------------------------------------------------------------------------
