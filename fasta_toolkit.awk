@@ -240,10 +240,14 @@ BEGIN {
     Optind = 1    # skip ARGV[0]
     
     progname = "fasta_toolkit.awk"
-    version  = 0.3  # dec 23, 2020. Prints warning and does not exit, if dna_seq not divisible by 3
-                    # dec 22, 2020, improved layout; fixed typos
+    version  = 0.4  # v0.4 dec 23, 2020. added PROCINFO["sorted_in"] = "@ind_num_asc" to print sorted results
+                    # v0.3 dec 23, 2020. Prints warning and does not exit, if dna_seq not divisible by 3
+                    # v0.2 dec 22, 2020, improved layout; fixed typos
                     # v0.1 dec 21, 2020, first commit
-    
+
+    # print the FASTA sequences stored in hashes in ascending order by locus_tag number 
+    PROCINFO["sorted_in"] = "@ind_num_asc"
+
     # check that the script receives input either from file or pipe
     if ( ARGC < 2 ) print_help(progname, version)
 
