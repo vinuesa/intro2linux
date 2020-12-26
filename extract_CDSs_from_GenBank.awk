@@ -4,9 +4,9 @@
 #: AUTHOR: Pablo Vinuesa, @pvinmex, https://www.ccg.unam.mx/~vinuesa/
 #: SOURCE: https://github.com/vinuesa/intro2linux
 #: USAGE: extract_CDSs_from_genbank.awk genbank_file.gbk   
-#: AIMS: 1. extracts the CDSs from a single GenBank file and writes them as input_genbank_basename_CDSs.fna
-#:	 2. writes the GenBank file in tabular format as input_genbank_basename.tsv
-#:	 3. extracts the complete DNA string from the input GenBank saving to input_genbank_basename.fsa
+#: AIMS: 1. extracts the CDSs from a single GenBank file and writes them as genbank_basename_CDSs.fna
+#:	 2. writes the GenBank file in tabular format as genbank_basename.tsv
+#:	 3. extracts the complete DNA string from the input GenBank saving to genbank_basename.fsa
 #: NOTE: the program assumes that the input GenBank file contains a single sequence record or LOCUS
 
 BEGIN {   
@@ -58,11 +58,10 @@ NR == 1, /^\s{4,}source\s{4,}/ { next }
      coord=$0   
      sub(/^\s{4,}CDS\s{4,}/, "", coord)
      #print "coord:"coord
-     start=coord
-     end=coord
-     coord=0
-     sub(/\.\.[[:digit:]]+$/, "", start)
-     sub(/^[[:digit:]]+\.\./, "", end)
+
+     split(coord, c_arr, /\.\./)
+     start = c_arr[1]
+     end   = c_arr[2]
      
      complflag = 0
   }
@@ -72,10 +71,10 @@ NR == 1, /^\s{4,}source\s{4,}/ { next }
      coord=$0     
      sub(/^\s{4,}CDS\s{4,}complement\(/, "", coord)
      gsub(/[\)]/, "", coord)
-     start = coord
-     end = coord
-     sub(/\.\.[[:digit:]]+/, "", start)
-     sub(/^[[:digit:]]+\.\./, "", end)
+
+     split(coord, c_arr, /\.\./)
+     start = c_arr[1]
+     end   = c_arr[2]
 
      complflag = 1
   }
@@ -103,7 +102,7 @@ NR == 1, /^\s{4,}source\s{4,}/ { next }
      #printf "%s\t%s\t%d\t%d\t%d\n", locus_tag, product, start, end, complflag,  pseudoflag
      CDSs_string[geneID] = locus_tag "\t" product "\t" start "\t" end "\t" complflag "\t" pseudoflag
      CDSs_AoA[geneID]["l"]  = locus_tag
-     #CDSs_AoA[geneID]["p"]  = product <== assign p in the following block
+     #CDSs_AoA[geneID]["p"] = product <== assign p in the following block
      CDSs_AoA[geneID]["s"]  = start
      CDSs_AoA[geneID]["e"]  = end
      CDSs_AoA[geneID]["c"]  = complflag
@@ -219,7 +218,7 @@ END {
        # print the complete DNA sequence string of the input GenBank to file gbk_fsa
        for (h in dna)
        {
-            printf ">%s\n%s\n", header, seq >> gbk_fsa
+            printf ">%s\n%s\n", locus_id, seq >> gbk_fsa
        }
        # report if the file was successfully written to disk
        print_if_exists(gbk_fsa)
@@ -299,9 +298,9 @@ function extract_sequence_by_coordinates(header, dna_seq, start, end, revCompFla
 function print_help(prog, vers) 
 {
   print "# AIMS:" > "/dev/stderr" 
-  print "#  1. extracts the CDSs from a single GenBank file, saving them as input_genbank_basename_CDSs.fna" > "/dev/stderr"
-  print "#  2. writes the GenBank file in tabular format as input_genbank_basename.tsv" > "/dev/stderr"
-  print "#  3. extracts the complete DNA string from the input GenBank, saving it as input_genbank_basename.fsa" > "/dev/stderr"
+  print "#  1. extracts the CDSs from a single GenBank file, saving them as genbank_basename_CDSs.fna" > "/dev/stderr"
+  print "#  2. writes the GenBank file in tabular format as genbank_basename.tsv" > "/dev/stderr"
+  print "#  3. extracts the complete DNA string from the input GenBank, saving it as genbank_basename.fsa" > "/dev/stderr"
   print "\n# NOTES" > "/dev/stderr"
   print "#   1", prog, "v"vers, "assumes that the input GenBank file contains a single sequence record or LOCUS" > "/dev/stderr"
   print "#   2", prog, "v"vers, "does not deal with CDSs containing introns. Use only for bacterial|mitochondrial|plastid genomes" > "/dev/stderr"
