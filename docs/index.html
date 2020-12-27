@@ -412,7 +412,7 @@ summary {
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="https://www.ccg.unam.mx/~vinuesa/" class="uri">https://www.ccg.unam.mx/~vinuesa/</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
-<h4 class="date">Versión: Sun Dec 27 00:04:42 2020</h4>
+<h4 class="date">Versión: Sun Dec 27 11:07:11 2020</h4>
 
 </div>
 
@@ -568,7 +568,7 @@ summary {
 <li><a href="#condicionales-bucles-operadores-boleanos-y-relacionales-funciones-integradas-y-definidad-por-el-usuario-arreglos"><span class="toc-section-number">11.3.1</span> Condicionales, bucles, operadores boleanos y relacionales, funciones integradas y definidad por el usuario, arreglos</a></li>
 <li><a href="#resumen-de-variables-internas-más-usadas"><span class="toc-section-number">11.3.2</span> Resumen de variables internas más usadas:</a></li>
 </ul></li>
-<li><a href="#expresiones-regulares---una-breve-introducción"><span class="toc-section-number">11.4</span> Expresiones regulares - una breve introducción</a><ul>
+<li><a href="#expresiones-regulares-regexps---una-breve-introducción"><span class="toc-section-number">11.4</span> <strong>Expresiones regulares (regexps)</strong> - una breve introducción</a><ul>
 <li><a href="#delimitadores-de-expresiones-regulares-y-búsqueda-de-coincidencias"><span class="toc-section-number">11.4.1</span> Delimitadores de expresiones regulares <strong>//</strong> y búsqueda de coincidencias</a></li>
 <li><a href="#notación-de-caracteres-especiales-más-frecuentemente-usados"><span class="toc-section-number">11.4.2</span> Notación de caracteres especiales más frecuentemente usados</a></li>
 <li><a href="#notación-posix-estándar-de-clases-de-caracteres-bre-frecuentemente-usados"><span class="toc-section-number">11.4.3</span> Notación POSIX estándar de <strong>clases de caracteres</strong> BRE frecuentemente usados</a></li>
@@ -598,9 +598,9 @@ summary {
 <li><a href="#fusión-completa-de-dos-tablas-mediante-un-outer-full-join"><span class="toc-section-number">11.6.6</span> Fusión completa de dos tablas mediante un <em>outer full-join</em></a></li>
 <li><a href="#uso-de-hashes-para-concatenar-secuencias-en-dos-o-más-archivos-fasta"><span class="toc-section-number">11.6.7</span> Uso de <span class="math inline">\(hashes\)</span> para concatenar secuencias en dos o más archivos FASTA</a></li>
 </ul></li>
-<li><a href="#estructuras-de-datos-complejas"><span class="toc-section-number">11.7</span> Estructuras de datos complejas</a><ul>
-<li><a href="#arreglos-multidimensionales"><span class="toc-section-number">11.7.1</span> Arreglos multidimensionales</a></li>
-<li><a href="#arreglos-de-arreglos"><span class="toc-section-number">11.7.2</span> <strong>Arreglos de arreglos</strong></a></li>
+<li><a href="#estructuras-de-datos-complejas"><span class="toc-section-number">11.7</span> <strong>Estructuras de datos complejas</strong></a><ul>
+<li><a href="#arreglos-multidimensionales"><span class="toc-section-number">11.7.1</span> <em>Arreglos multidimensionales</em></a></li>
+<li><a href="#arreglos-de-arreglos"><span class="toc-section-number">11.7.2</span> <em>Arreglos de arreglos</em></a></li>
 </ul></li>
 <li><a href="#awk-scripts---aspectos-básicos"><span class="toc-section-number">11.8</span> <strong><span class="math inline">\(awk\)</span> scripts</strong> - aspectos básicos</a><ul>
 <li><a href="#paso-de-variables-argumentos-y-archivos-a-scripts-de-awk-y-uso-de-los-arreglos-argc-y-argv"><span class="toc-section-number">11.8.1</span> Paso de variables, argumentos y archivos a <span class="math inline">\(scripts\)</span> de <span class="math inline">\(awk\)</span> y uso de los arreglos <span class="math inline">\(ARGC\)</span> y <span class="math inline">\(ARGV\)</span></a></li>
@@ -973,11 +973,11 @@ ls | head</code></pre>
 ## consensus_tre.nwk</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 102416
-## drwxr-xr-x 12 vinuesa vinuesa    20480 dic 27 00:04 .
+<pre><code>## total 102424
+## drwxr-xr-x 12 vinuesa vinuesa    20480 dic 27 11:05 .
 ## drwxr-xr-x  4 vinuesa vinuesa     4096 nov 11 22:55 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
-## -rw-rw-r--  1 vinuesa vinuesa      242 dic 26 23:45 aoa.awk
+## -rw-rw-r--  1 vinuesa vinuesa      244 dic 27 00:05 aoa.awk
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-rw-r--  1 vinuesa vinuesa      895 dic 21 10:41 awkvars.out
 ## -rw-r--r--  1 vinuesa vinuesa     5505 nov  7 22:55 bash_script_template_with_getopts.sh
@@ -1017,7 +1017,7 @@ ls -al | head -20</code></pre>
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 bin -&gt; usr/bin
 ## drwxr-xr-x   4 root root  4096 dic 12 09:56 boot
 ## drwxr-xr-x   2 root root  4096 oct  4 14:46 cdrom
-## drwxr-xr-x  21 root root  4600 dic 26 10:05 dev
+## drwxr-xr-x  21 root root  4600 dic 27 10:47 dev
 ## drwxr-xr-x 155 root root 12288 dic 23 20:40 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4 14:42 lib -&gt; usr/lib
@@ -1410,8 +1410,8 @@ cd /home/vinuesa/cursos/intro2linux/data</code></pre>
 <h4><span class="header-section-number">2.4.2.4</span> regresa al directorio en el que estabas justo antes con <b>cd -</b></h4>
 <pre class="bash"><code>cd -
 pwd</code></pre>
-<pre><code>## /home/vinuesa/cursos/intro2linux/docs
-## /home/vinuesa/cursos/intro2linux/docs</code></pre>
+<pre><code>## /home/vinuesa
+## /home/vinuesa</code></pre>
 </div>
 <div id="regresa-a-tu-home-desde-cualquier-punto-del-sistema-de-archivos-con-cd" class="section level4">
 <h4><span class="header-section-number">2.4.2.5</span> regresa a tu home desde cualquier punto del sistema de archivos con <b>cd</b></h4>
@@ -1434,8 +1434,8 @@ pwd</code></pre>
 </ul>
 <pre class="bash"><code>cd -
 pwd</code></pre>
-<pre><code>## /home/vinuesa/cursos/intro2linux/docs
-## /home/vinuesa/cursos/intro2linux/docs</code></pre>
+<pre><code>## /home/vinuesa
+## /home/vinuesa</code></pre>
 <ul>
 <li>sube al directorio home/ usando la ruta relativa</li>
 </ul>
@@ -1553,7 +1553,7 @@ which transpose_pangenome_matrix.sh</code></pre>
 <p>La mayoría de los programas ejecutables del sistema proveen un formato estandarizado de documentación que se despliega en la consola usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                                                                     User Commands                                                                    CUT(1)
+<pre><code>## CUT(1)                                                                             User Commands                                                                            CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -1836,16 +1836,16 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 102388
+<pre><code>## total 102396
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
-## -rw-rw-r-- 1 vinuesa vinuesa      242 dic 26 23:45 aoa.awk
+## -rw-rw-r-- 1 vinuesa vinuesa      244 dic 27 00:05 aoa.awk
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-rw-r-- 1 vinuesa vinuesa      895 dic 21 10:41 awkvars.out
 ## -rw-r--r-- 1 vinuesa vinuesa     5505 nov  7 22:55 bash_script_template_with_getopts.sh
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 nov 16 17:37 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 dic 27 00:04 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
+## lrwxrwxrwx 1 vinuesa vinuesa       78 dic 27 11:07 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
 </ul>
@@ -2231,7 +2231,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 dic 27 00:04 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 dic 27 11:07 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2250,7 +2250,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 00:04 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 11:07 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2379,15 +2379,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 00:04 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 27 00:04 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 11:07 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 27 11:07 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 27 00:04 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 27 11:07 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2482,10 +2482,10 @@ echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 00:03 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 00:03 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 11:05 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 11:05 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 47916 dic 27 00:04 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 47917 dic 27 11:07 fna_files.tgz
 ## ----------------------------
 ## mini_CDS.fna
 ## recA_Bradyrhizobium_vinuesa.fna
@@ -2511,10 +2511,10 @@ echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 00:03 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 00:03 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 11:05 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 11:05 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 47916 dic 27 00:04 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 47917 dic 27 11:07 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2525,13 +2525,13 @@ echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 00:03 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 00:03 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 11:05 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 11:05 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
 ## -rw-rw-r-- 1 vinuesa vinuesa   104 dic 21 17:41 mini_CDS.fna.gz
 ## -rw-r--r-- 1 vinuesa vinuesa  3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa   882 dic 27 00:03 recA_Byuanmingense.fna.gz
-## -rw-rw-r-- 1 vinuesa vinuesa 42351 dic 27 00:03 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa   882 dic 27 11:05 recA_Byuanmingense.fna.gz
+## -rw-rw-r-- 1 vinuesa vinuesa 42351 dic 27 11:05 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2542,14 +2542,14 @@ echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa   104 dic 21 17:41 mini_CDS.fna.gz
 ## -rw-r--r-- 1 vinuesa vinuesa  3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa   882 dic 27 00:03 recA_Byuanmingense.fna.gz
-## -rw-rw-r-- 1 vinuesa vinuesa 42351 dic 27 00:03 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa   882 dic 27 11:05 recA_Byuanmingense.fna.gz
+## -rw-rw-r-- 1 vinuesa vinuesa 42351 dic 27 11:05 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 00:03 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 00:03 Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 11:05 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 11:05 Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-mlocate-y-find" class="section level1">
@@ -2599,32 +2599,32 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 <pre><code>## Filesystem      1K-blocks      Used  Available Use% Mounted on
 ## udev             16381120         0   16381120   0% /dev
 ## tmpfs             3281912      2004    3279908   1% /run
-## /dev/nvme0n1p3  465889936  19351128  422803156   5% /
-## tmpfs            16409540      3880   16405660   1% /dev/shm
+## /dev/nvme0n1p3  465889936  19270376  422883908   5% /
+## tmpfs            16409540      4372   16405168   1% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409540         0   16409540   0% /sys/fs/cgroup
 ## /dev/loop1         165376    165376          0 100% /snap/gnome-3-28-1804/128
-## /dev/loop2         166784    166784          0 100% /snap/gnome-3-28-1804/145
-## /dev/loop4         223232    223232          0 100% /snap/gnome-3-34-1804/60
 ## /dev/loop3         261760    261760          0 100% /snap/gnome-3-34-1804/36
-## /dev/loop6          65920     65920          0 100% /snap/gtk-common-themes/1513
-## /dev/loop5          66432     66432          0 100% /snap/gtk-common-themes/1514
-## /dev/nvme0n1p1    1994928      7984    1986944   1% /boot/efi
+## /dev/loop2         166784    166784          0 100% /snap/gnome-3-28-1804/145
 ## /dev/loop0          56832     56832          0 100% /snap/core18/1944
-## /dev/loop8          56704     56704          0 100% /snap/core18/1932
-## /dev/loop7          52352     52352          0 100% /snap/snap-store/518
-## /dev/loop9          65792     65792          0 100% /snap/standard-notes/27
-## /dev/sda1      1921802432 429804312 1394306064  24% /home
-## /dev/loop10         65792     65792          0 100% /snap/standard-notes/26
-## /dev/loop11         31872     31872          0 100% /snap/snapd/10492
-## /dev/loop12         52352     52352          0 100% /snap/snap-store/498
-## /dev/loop13         31872     31872          0 100% /snap/snapd/10238
+## /dev/loop4          56704     56704          0 100% /snap/core18/1932
+## /dev/loop5          31872     31872          0 100% /snap/snapd/10492
+## /dev/loop7          66432     66432          0 100% /snap/gtk-common-themes/1514
+## /dev/loop8          65792     65792          0 100% /snap/standard-notes/27
+## /dev/loop6          65920     65920          0 100% /snap/gtk-common-themes/1513
+## /dev/loop9         223232    223232          0 100% /snap/gnome-3-34-1804/60
+## /dev/nvme0n1p1    1994928      7984    1986944   1% /boot/efi
+## /dev/loop10         31872     31872          0 100% /snap/snapd/10238
+## /dev/loop11         65792     65792          0 100% /snap/standard-notes/26
+## /dev/loop12         52352     52352          0 100% /snap/snap-store/518
+## /dev/loop13         52352     52352          0 100% /snap/snap-store/498
+## /dev/sda1      1921802432 429795572 1394314804  24% /home
 ## tmpfs             3281908        20    3281888   1% /run/user/125
-## tmpfs             3281908        68    3281840   1% /run/user/1000</code></pre>
+## tmpfs             3281908        32    3281876   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465889936 19351128 422803156   5% /</code></pre>
+## /dev/nvme0n1p3 465889936 19270376 422883908   5% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></h3>
 <p>Como cualquier comando, le podemos pasar opciones para adecuar mejor la salida a nuestra necesidad.</p>
@@ -2655,29 +2655,29 @@ df -h /home</code></pre>
 <pre><code>## Filesystem     1M-blocks    Used Available Use% Mounted on
 ## udev              15998M      0M    15998M   0% /dev
 ## tmpfs              3205M      2M     3204M   1% /run
-## /dev/nvme0n1p3   454971M  18898M   412894M   5% /
-## tmpfs             16025M      4M    16022M   1% /dev/shm
+## /dev/nvme0n1p3   454971M  18819M   412973M   5% /
+## tmpfs             16025M      5M    16021M   1% /dev/shm
 ## tmpfs                 5M      1M        5M   1% /run/lock
 ## tmpfs             16025M      0M    16025M   0% /sys/fs/cgroup
 ## /dev/loop1          162M    162M        0M 100% /snap/gnome-3-28-1804/128
-## /dev/loop2          163M    163M        0M 100% /snap/gnome-3-28-1804/145
-## /dev/loop4          218M    218M        0M 100% /snap/gnome-3-34-1804/60
 ## /dev/loop3          256M    256M        0M 100% /snap/gnome-3-34-1804/36
-## /dev/loop6           65M     65M        0M 100% /snap/gtk-common-themes/1513
-## /dev/loop5           65M     65M        0M 100% /snap/gtk-common-themes/1514
-## /dev/nvme0n1p1     1949M      8M     1941M   1% /boot/efi
+## /dev/loop2          163M    163M        0M 100% /snap/gnome-3-28-1804/145
 ## /dev/loop0           56M     56M        0M 100% /snap/core18/1944
-## /dev/loop8           56M     56M        0M 100% /snap/core18/1932
-## /dev/loop7           52M     52M        0M 100% /snap/snap-store/518
-## /dev/loop9           65M     65M        0M 100% /snap/standard-notes/27
-## /dev/sda1       1876761M 419731M  1361628M  24% /home
-## /dev/loop10          65M     65M        0M 100% /snap/standard-notes/26
-## /dev/loop11          32M     32M        0M 100% /snap/snapd/10492
-## /dev/loop12          52M     52M        0M 100% /snap/snap-store/498
-## /dev/loop13          32M     32M        0M 100% /snap/snapd/10238
+## /dev/loop4           56M     56M        0M 100% /snap/core18/1932
+## /dev/loop5           32M     32M        0M 100% /snap/snapd/10492
+## /dev/loop7           65M     65M        0M 100% /snap/gtk-common-themes/1514
+## /dev/loop8           65M     65M        0M 100% /snap/standard-notes/27
+## /dev/loop6           65M     65M        0M 100% /snap/gtk-common-themes/1513
+## /dev/loop9          218M    218M        0M 100% /snap/gnome-3-34-1804/60
+## /dev/nvme0n1p1     1949M      8M     1941M   1% /boot/efi
+## /dev/loop10          32M     32M        0M 100% /snap/snapd/10238
+## /dev/loop11          65M     65M        0M 100% /snap/standard-notes/26
+## /dev/loop12          52M     52M        0M 100% /snap/snap-store/518
+## /dev/loop13          52M     52M        0M 100% /snap/snap-store/498
+## /dev/sda1       1876761M 419723M  1361636M  24% /home
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392678M 439974M  1834123M  20% -
+## total           2392678M 439887M  1834210M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2697,8 +2697,8 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 262304   .
-## 257M .</code></pre>
+<pre><code>## 263572   .
+## 258M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
 </ul>
@@ -3884,8 +3884,8 @@ ORS      (Output Return Separator) separador de registro de la salida (\n por de
 </pre>
 </div>
 </div>
-<div id="expresiones-regulares---una-breve-introducción" class="section level2">
-<h2><span class="header-section-number">11.4</span> Expresiones regulares - una breve introducción</h2>
+<div id="expresiones-regulares-regexps---una-breve-introducción" class="section level2">
+<h2><span class="header-section-number">11.4</span> <strong>Expresiones regulares (regexps)</strong> - una breve introducción</h2>
 <p>Dado que <span class="math inline">\(AWK\)</span> es un lenguaje especializado en el procesamiento de archivos de texto en base a patrones, es imprescindible presentar una sección sobre expresiones regulares.</p>
 <p><strong>Una expresión regular</strong> (<em>regex</em> o <em>regexp</em>) define uno o varios conjuntos de cadenas de caracteres usando una notación específica:</p>
 <ul>
@@ -4366,9 +4366,9 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 2420234 dic 27 00:04 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 2420903 dic 27 11:05 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   68106 nov 15 20:16 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  408972 dic 27 00:04 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  409678 dic 27 11:06 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  499749 nov 15 20:16 working_with_linux_commands.tex
 ## total size of working_with_linux_commands.* files is: 3.24 Mb</code></pre>
 <ul>
@@ -4997,10 +4997,10 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 </div>
 </div>
 <div id="estructuras-de-datos-complejas" class="section level2">
-<h2><span class="header-section-number">11.7</span> Estructuras de datos complejas</h2>
+<h2><span class="header-section-number">11.7</span> <strong>Estructuras de datos complejas</strong></h2>
 <p>Uno de los atributos que hacen muy poderoso a <strong>AWK</strong> como lenguaje es su implementación de estructuras complejas de datos. <strong>AWK</strong> POSIX estándar implementa los <em>arreglos multidimensionales</em> y <strong>GAWK</strong> implmententa verderos <em>arreglos de arreglos</em></p>
 <div id="arreglos-multidimensionales" class="section level3">
-<h3><span class="header-section-number">11.7.1</span> Arreglos multidimensionales</h3>
+<h3><span class="header-section-number">11.7.1</span> <em>Arreglos multidimensionales</em></h3>
 <p>En los arreglos multidimensionales de <strong>AWK</strong> estándar cada elemento es identificado por una secuencia de índices, los cuales son concatenados como una cadena usando el separador “\034”, que codifica para un caracter no imprimible y guardado en la variable <strong>SUBSEP</strong></p>
 <p>Así por ejemplo, el arreglo multidimensional <em>amd</em> <code>amd[1,2]=“valor12”</code> tiene los índices 1 y 2, y podemos accesar su valor con <code>amd[1,2]</code> o <code>amd[1 SUBSEP 2]</code> o <code>amd[1 “\034” 2]</code>, o usando un bucle for, como de costumbre.</p>
 <pre class="bash"><code>awk &#39;BEGIN {
@@ -5014,7 +5014,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## using SUBSEP: valor12
 ## using \034: valor12
 ## k=&lt;12&gt; valor=valor12</code></pre>
-<p>Veamos ahora cómo leer una matriz en un arreglo bidimensional y cómo transponerla</p>
+<p>Veamos ahora cómo leer una matriz en un arreglo bidimensional y cómo tra[n]sponerla</p>
 <pre><code>{
      # true only in the first line, when max_nf = 0; 
      # don&#39;t need to repeat on each row|record, to speed up
@@ -5040,18 +5040,18 @@ END {
           printf(&quot;\n&quot;)
       }
 }</code></pre>
-dada la siguiente matriz:
+dada la siguiente matriz, con índices (i,j), donde i==fila y j==columna
 <pre>
-1 2 3 4
-5 6 7 8
-9 10 11 12
+11 12 13 14
+21 22 23 24
+31 32 33 34
 </pre>
-imprime su transpuesta como:
+el código mostrado arriba imprime su tra[n]spuesta como:
 <pre>
-1 5 9 
-2 6 10 
-3 7 11 
-4 8 12
+11 21 31 
+12 22 32 
+13 23 33 
+14 24 34
 </pre>
 <ul>
 <li><b>Retos de programación</b>
@@ -5062,7 +5062,7 @@ imprime su transpuesta como:
 </ul>
 </div>
 <div id="arreglos-de-arreglos" class="section level3">
-<h3><span class="header-section-number">11.7.2</span> <strong>Arreglos de arreglos</strong></h3>
+<h3><span class="header-section-number">11.7.2</span> <em>Arreglos de arreglos</em></h3>
 <p><em>gawk</em> implementa verdaderos <strong>arreglos de arreglos</strong>. Es decir, un arreglo puede contener como valores a otros arreglos. Los elementos de un sub-arreglo contenido en el arreglo principal son accesados con sus propios índices, encerrados igualmente en corchetes.</p>
 <pre class="bash"><code>awk &#39;BEGIN {
     # asignamos valores a un arreglo de arreglos
@@ -5081,7 +5081,7 @@ imprime su transpuesta como:
 ##  M   P   C   *
 ## GTG TCG TGT TGA
 ##  V   S   C   *</code></pre>
-<p>Veremos el uso de <strong>hashes de hashes</strong> para guardar valores extraídos de la anotación de CDSs a partir de archivos GenBank en el <em>script</em> <strong>extract_CDSs_from_GenBank.awk</strong>, como muestra el siguiente fragmento de código</p>
+<p>Veremos el uso de <strong>hashes de hashes</strong> para guardar valores extraídos de la anotación de CDSs a partir de archivos GenBank en el <em>script</em> <strong>extract_CDSs_from_GenBank.awk</strong>, como muestra el siguiente fragmento de código:</p>
 <pre><code>     # All the CDS&#39;s-relevant information parsed from the annotations 
      #   will be stored in the CDSs_AoA (Array of Arrays)
      CDSs_AoA[geneID][&quot;l&quot;] = locus_tag
@@ -5090,9 +5090,27 @@ imprime su transpuesta como:
      CDSs_AoA[geneID][&quot;e&quot;] = end
      CDSs_AoA[geneID][&quot;c&quot;] = complflag
      CDSs_AoA[geneID][&quot;pseudo&quot;] = pseudoflag</code></pre>
+<p>Para recorrer un arreglo de arreglos, podemos usar la sintaxis ya conocida de <code>for (i in array) { code }</code>, como se muestra segidamente para un arreglo bidimensional:</p>
+<pre>
+for (i in array)
+    for (j in array[i])
+        print array[i][j]
+</pre>
+<p>Cuando vamos a atravesar un arreglo multidimensional podemos hace uso de la función <strong>isarray()</strong> para verificar si un elemento de un arreglo es un arreglo.</p>
+<pre>
+for (i in array) {
+    if (isarray(array[i])) {
+        for (j in array[i]) {
+            print array[i][j]
+        }
+    }
+    else
+        print array[i]
+}
+</pre>
 <p>Los arreglos de arreglos de <em>gawk</em> pueden tener una profundidad arbitraria y cada sub-arreglo y el arreglo principal pueden ser de longitud diferente. Es más, los elementos de un arreglo y/o sub-arreglo no tienen que ser todos del mismo tipo.</p>
 <p>En resumen, el arreglo principal y cualquiera de sus sub-arreglos pueden o no tener una estructura rectangular y contener elementos de diferentes tipos.</p>
-<p>Los arreglos de arreglos de <em>gawk</em> son por tanto estructuras de datos muy versátiles y útiles, como demostraremos en el <em>script</em> <strong>extract_CDSs_from_GenBank.awk</strong> al final de la sección de <em>awk</em></p>
+<p>Los arreglos de arreglos de <em>gawk</em> son por tanto estructuras de datos muy versátiles y útiles, como demostraremos en el <em>script</em> <strong>extract_CDSs_from_GenBank.awk</strong> al final de la sección de <em>awk</em>.</p>
 </div>
 </div>
 <div id="awk-scripts---aspectos-básicos" class="section level2">
@@ -5143,7 +5161,7 @@ imprime su transpuesta como:
 ## 
 ## # ARGC == lenght(ARGV) == 5 
 ## ARGC = 5
-## [] [] [123] [4336]</code></pre>
+## [] [] [123] [16967]</code></pre>
 <ul>
 <li>Comentarios y preguntas
 <ul>
@@ -5187,7 +5205,7 @@ imprime su transpuesta como:
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 3 
 ## ARGC = 3
-## [] [] [7941] []</code></pre>
+## [] [] [31134] []</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -5206,7 +5224,7 @@ imprime su transpuesta como:
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 6 
 ## ARGC = 6
-## [] [] [123] [32738]</code></pre>
+## [] [] [123] [15436]</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -7588,9 +7606,9 @@ function print_help(prog, vers)
 ## # wrote file Salmonella_enterica_33676_pIncAC.fsa
 ## # wrote file Salmonella_enterica_33676_pIncAC_proteome.faa
 ## 
-## real 0m0.081s
-## user 0m0.081s
-## sys  0m0.000s</code></pre>
+## real 0m0.080s
+## user 0m0.075s
+## sys  0m0.006s</code></pre>
 <ul>
 <li>Veamos las primeras líneas de cada archivo
 <ul>
@@ -8171,7 +8189,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 00:04 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 11:07 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -8357,14 +8375,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 dic 27 00:04 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 dic 27 00:04 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 dic 27 00:04 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 dic 27 00:04 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 dic 27 00:04 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 dic 27 00:04 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 dic 27 00:04 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 dic 27 00:04 recA_B_yuanmingense.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  2222 dic 27 11:07 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  1131 dic 27 11:07 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 dic 27 11:07 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 dic 27 11:07 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 dic 27 11:07 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 dic 27 11:07 recA_B_yuanmingense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 dic 27 11:07 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 dic 27 11:07 recA_B_liaoningense.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -8495,9 +8513,9 @@ echo &quot;$contador líneas contienen el patrón $patron&quot;
 <pre class="bash"><code>while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 30514
-## 29784
-## 21892</code></pre>
+<pre><code>## 5378
+## 25138
+## 3872</code></pre>
 <p>Los bucles <span class="math inline">\(until\)</span> son útiles para ejecutar un bucle hasta que se cumpla o no una determinada condición.</p>
 <p>Su sintaxis es idéntica al del bucle <span class="math inline">\(while\)</span>.</p>
 <p><code>until TEST-COMMAND; do CONSEQUENT-COMMANDS; done</code></p>
@@ -8505,9 +8523,9 @@ while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; bre
 <pre class="bash"><code>until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 31045
-## 22985
-## 8149</code></pre>
+<pre><code>## 5155
+## 27029
+## 31317</code></pre>
 </div>
 </div>
 <div id="estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" class="section level2">
