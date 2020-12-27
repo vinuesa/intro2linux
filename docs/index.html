@@ -412,7 +412,7 @@ summary {
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="https://www.ccg.unam.mx/~vinuesa/" class="uri">https://www.ccg.unam.mx/~vinuesa/</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
-<h4 class="date">Versión: Sat Dec 26 13:20:07 2020</h4>
+<h4 class="date">Versión: Sun Dec 27 00:04:42 2020</h4>
 
 </div>
 
@@ -574,17 +574,17 @@ summary {
 <li><a href="#notación-posix-estándar-de-clases-de-caracteres-bre-frecuentemente-usados"><span class="toc-section-number">11.4.3</span> Notación POSIX estándar de <strong>clases de caracteres</strong> BRE frecuentemente usados</a></li>
 <li><a href="#notación-posix-de-clases-de-caracteres-ere-frecuentemente-usados"><span class="toc-section-number">11.4.4</span> Notación POSIX de <strong>clases de caracteres</strong> ERE frecuentemente usados</a></li>
 <li><a href="#un-ejemplo-de-expresión-regular-compleja-validación-de-un-correo-electrónico"><span class="toc-section-number">11.4.5</span> Un ejemplo de expresión regular compleja: validación de un correo electrónico</a></li>
-<li><a href="#manipulación-de-cadenas-de-caracteres-con-las-funciones-sub-gsub-substr-y-expresiones-regulares"><span class="toc-section-number">11.4.6</span> Manipulación de cadenas de caracteres con las funciones <strong>sub()</strong>, <strong>gsub()</strong>, <strong>substr()</strong> y expresiones regulares</a></li>
+<li><a href="#manipulación-de-cadenas-de-caracteres-con-las-funciones-sub-gsub-substr-match-split-y-expresiones-regulares"><span class="toc-section-number">11.4.6</span> Manipulación de cadenas de caracteres con las funciones <strong>sub()</strong>, <strong>gsub()</strong>, <strong>substr()</strong>, <strong>match()</strong>, <strong>split()</strong> y expresiones regulares</a></li>
 <li><a href="#otras-funciones-para-la-manipulación-de-cadenas-de-caracteres"><span class="toc-section-number">11.4.7</span> Otras funciones para la manipulación de cadenas de caracteres</a></li>
 </ul></li>
 <li><a href="#ejemplos-integrativos-básicos-para-entender-cómo-funciona-awk"><span class="toc-section-number">11.5</span> Ejemplos integrativos básicos para entender cómo funciona <span class="math inline">\(AWK\)</span></a><ul>
-<li><a href="#contar-longitud-de-una-cadena-oligonucleótido-de-dna"><span class="toc-section-number">11.5.1</span> Contar longitud de una cadena (oligonucleótido de DNA)</a></li>
+<li><a href="#determinar-la-longitud-de-una-cadena-de-oligonucleótido-de-dna-con-length"><span class="toc-section-number">11.5.1</span> Determinar la longitud de una cadena (de oligonucleótido de DNA) con <strong>length()</strong></a></li>
 <li><a href="#eliminar-filas-en-blanco-de-un-archivo"><span class="toc-section-number">11.5.2</span> Eliminar filas en blanco de un archivo</a></li>
 <li><a href="#imprime-sólo-ciertas-líneas-del-archivo"><span class="toc-section-number">11.5.3</span> Imprime sólo ciertas líneas del archivo</a></li>
 <li><a href="#filtra-la-salida-de-ls--l-para-ver-sólo-los-permisos-asociados-a-archivos-y-directorios-selectos"><span class="toc-section-number">11.5.4</span> filtra la salida de <span class="math inline">\(ls\ -l\)</span> para ver sólo los permisos asociados a archivos y directorios selectos</a></li>
 <li><a href="#filtrado-de-archivos-con-awk---procesadores-en-proccpuinfo"><span class="toc-section-number">11.5.5</span> filtrado de archivos con AWK - procesadores en /proc/cpuinfo</a></li>
 <li><a href="#filtrado-de-archivos-con-awk---suma-de-tamaños-de-archivos-en-mb"><span class="toc-section-number">11.5.6</span> filtrado de archivos con AWK - suma de tamaños de archivos en Mb</a></li>
-<li><a href="#uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla"><span class="toc-section-number">11.5.7</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</a></li>
+<li><a href="#uso-de-función-de-autoincremento-para-contar-ocurrencias-de-un-patrón"><span class="toc-section-number">11.5.7</span> uso de función de <strong>autoincremento</strong> <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón</a></li>
 <li><a href="#transforma-la-salida-del-comando-uniq--c-en-un-formato-de-campos-separados-por-comas-archivo-csv-con-cabecera"><span class="toc-section-number">11.5.8</span> Transforma la salida del comando <span class="math inline">\(uniq\ -c\)</span> en un formato de campos separados por comas (archivo <span class="math inline">\(csv\)</span>) con cabecera</a></li>
 <li><a href="#trabajando-con-archivo-fasta-cuenta-el-número-de-secuencias-en-reca_bradyrhizobium_vinuesa.fna"><span class="toc-section-number">11.5.9</span> Trabajando con archivo FASTA: cuenta el número de secuencias en recA_Bradyrhizobium_vinuesa.fna</a></li>
 <li><a href="#trabajando-con-archivo-fasta-cuántos-nucleótidos-hay-en-reca_bradyrhizobium_vinuesa.fna"><span class="toc-section-number">11.5.10</span> Trabajando con archivo FASTA: ¿cuántos nucleótidos hay en recA_Bradyrhizobium_vinuesa.fna?</a></li>
@@ -598,22 +598,26 @@ summary {
 <li><a href="#fusión-completa-de-dos-tablas-mediante-un-outer-full-join"><span class="toc-section-number">11.6.6</span> Fusión completa de dos tablas mediante un <em>outer full-join</em></a></li>
 <li><a href="#uso-de-hashes-para-concatenar-secuencias-en-dos-o-más-archivos-fasta"><span class="toc-section-number">11.6.7</span> Uso de <span class="math inline">\(hashes\)</span> para concatenar secuencias en dos o más archivos FASTA</a></li>
 </ul></li>
-<li><a href="#awk-scripts---aspectos-básicos"><span class="toc-section-number">11.7</span> <strong><span class="math inline">\(awk\)</span> scripts</strong> - aspectos básicos</a><ul>
-<li><a href="#paso-de-variables-argumentos-y-archivos-a-scripts-de-awk-y-uso-de-los-arreglos-argc-y-argv"><span class="toc-section-number">11.7.1</span> Paso de variables, argumentos y archivos a <span class="math inline">\(scripts\)</span> de <span class="math inline">\(awk\)</span> y uso de los arreglos <span class="math inline">\(ARGC\)</span> y <span class="math inline">\(ARGV\)</span></a></li>
-<li><a href="#el-script-count_genome_features_for_taxon.awk"><span class="toc-section-number">11.7.2</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></a></li>
-<li><a href="#shebang-line-usrbinawk-y-scripts-autocontenidos-el-script-filter_fasta_sequences.awk"><span class="toc-section-number">11.7.3</span> Shebang line <strong>#!/usr/bin/awk</strong> y scripts autocontenidos: el <span class="math inline">\(script\)</span> <strong>filter_fasta_sequences.awk</strong></a></li>
-<li><a href="#filtra-un-archivo-multifasta-usando-un-hash-y-una-lista-de-etiquetas-con-get_sequences_from_list.awk"><span class="toc-section-number">11.7.4</span> Filtra un archivo multifasta usando un <span class="math inline">\(hash\)</span> y una lista de etiquetas con <strong>get_sequences_from_list.awk</strong></a></li>
-<li><a href="#el-script-translate_dna.awk-integración-de-condicionales-bucles-y-funciones"><span class="toc-section-number">11.7.5</span> El script <strong>translate_dna.awk</strong>: integración de condicionales, bucles y funciones</a></li>
+<li><a href="#estructuras-de-datos-complejas"><span class="toc-section-number">11.7</span> Estructuras de datos complejas</a><ul>
+<li><a href="#arreglos-multidimensionales"><span class="toc-section-number">11.7.1</span> Arreglos multidimensionales</a></li>
+<li><a href="#arreglos-de-arreglos"><span class="toc-section-number">11.7.2</span> <strong>Arreglos de arreglos</strong></a></li>
 </ul></li>
-<li><a href="#modularización-de-código-mediante-funciones-definidas-por-el-usuario-function-my_function_name"><span class="toc-section-number">11.8</span> Modularización de código mediante funciones definidas por el usuario: <strong>function my_function_name(){ … }</strong></a><ul>
-<li><a href="#ejemplos-de-definición-y-llamadas-de-funciones-definidas-por-el-usuario"><span class="toc-section-number">11.8.1</span> Ejemplos de definición y llamadas de funciones definidas por el usuario</a></li>
+<li><a href="#awk-scripts---aspectos-básicos"><span class="toc-section-number">11.8</span> <strong><span class="math inline">\(awk\)</span> scripts</strong> - aspectos básicos</a><ul>
+<li><a href="#paso-de-variables-argumentos-y-archivos-a-scripts-de-awk-y-uso-de-los-arreglos-argc-y-argv"><span class="toc-section-number">11.8.1</span> Paso de variables, argumentos y archivos a <span class="math inline">\(scripts\)</span> de <span class="math inline">\(awk\)</span> y uso de los arreglos <span class="math inline">\(ARGC\)</span> y <span class="math inline">\(ARGV\)</span></a></li>
+<li><a href="#el-script-count_genome_features_for_taxon.awk"><span class="toc-section-number">11.8.2</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></a></li>
+<li><a href="#shebang-line-usrbinawk-y-scripts-autocontenidos-el-script-filter_fasta_sequences.awk"><span class="toc-section-number">11.8.3</span> Shebang line <strong>#!/usr/bin/awk</strong> y scripts autocontenidos: el <span class="math inline">\(script\)</span> <strong>filter_fasta_sequences.awk</strong></a></li>
+<li><a href="#filtra-un-archivo-multifasta-usando-un-hash-y-una-lista-de-etiquetas-con-get_sequences_from_list.awk"><span class="toc-section-number">11.8.4</span> Filtra un archivo multifasta usando un <span class="math inline">\(hash\)</span> y una lista de etiquetas con <strong>get_sequences_from_list.awk</strong></a></li>
+<li><a href="#el-script-translate_dna.awk-integración-de-condicionales-bucles-y-funciones"><span class="toc-section-number">11.8.5</span> El script <strong>translate_dna.awk</strong>: integración de condicionales, bucles y funciones</a></li>
 </ul></li>
-<li><a href="#awk-scripts---ejemplos-avanzados"><span class="toc-section-number">11.9</span> <strong><span class="math inline">\(awk\)</span> scripts</strong> - ejemplos avanzados</a><ul>
-<li><a href="#fasta_toolkit.awk-un-script-multifuncional-para-mainpular-archivo-fasta-que-hace-uso-de-getopt"><span class="toc-section-number">11.9.1</span> <strong>fasta_toolkit.awk</strong>, un <em>script</em> multifuncional para mainpular archivo FASTA que hace uso de <strong>getopt()</strong></a></li>
-<li><a href="#extract_cdss_from_genbank.awk-un-script-hace-uso-avanzado-de-hashes-de-hashes-regexps-banderas-estructuras-de-control-y-funciones-para-el-parseo-y-transformación-de-archivos-genbank"><span class="toc-section-number">11.9.2</span> <strong>extract_CDSs_from_GenBank.awk</strong>, un <em>script</em> hace uso avanzado de <strong>hashes de hashes</strong>, <strong>regexps</strong>, <strong>banderas</strong>, <strong>estructuras de control</strong> y <strong>funciones</strong> para el parseo y transformación de archivos GenBank</a></li>
+<li><a href="#modularización-de-código-mediante-funciones-definidas-por-el-usuario-function-my_function_name"><span class="toc-section-number">11.9</span> Modularización de código mediante funciones definidas por el usuario: <strong>function my_function_name(){ … }</strong></a><ul>
+<li><a href="#ejemplos-de-definición-y-llamadas-de-funciones-definidas-por-el-usuario"><span class="toc-section-number">11.9.1</span> Ejemplos de definición y llamadas de funciones definidas por el usuario</a></li>
 </ul></li>
-<li><a href="#retos-de-programación-awk"><span class="toc-section-number">11.10</span> Retos de programación <span class="math inline">\(awk\)</span></a></li>
-<li><a href="#tutoriales-recomendados-para-profundizar-en-awk"><span class="toc-section-number">11.11</span> Tutoriales recomendados para profundizar en AWK</a></li>
+<li><a href="#awk-scripts---ejemplos-avanzados"><span class="toc-section-number">11.10</span> <strong><span class="math inline">\(awk\)</span> scripts</strong> - ejemplos avanzados</a><ul>
+<li><a href="#fasta_toolkit.awk-un-script-multifuncional-para-mainpular-archivo-fasta-que-hace-uso-de-getopt"><span class="toc-section-number">11.10.1</span> <strong>fasta_toolkit.awk</strong>, un <em>script</em> multifuncional para mainpular archivo FASTA que hace uso de <strong>getopt()</strong></a></li>
+<li><a href="#extract_cdss_from_genbank.awk-un-script-hace-uso-avanzado-de-hashes-de-hashes-regexps-banderas-estructuras-de-control-y-funciones-para-el-parseo-y-transformación-de-archivos-genbank"><span class="toc-section-number">11.10.2</span> <strong>extract_CDSs_from_GenBank.awk</strong>, un <em>script</em> hace uso avanzado de <strong>hashes de hashes</strong>, <strong>regexps</strong>, <strong>banderas</strong>, <strong>estructuras de control</strong> y <strong>funciones</strong> para el parseo y transformación de archivos GenBank</a></li>
+</ul></li>
+<li><a href="#retos-de-programación-awk"><span class="toc-section-number">11.11</span> Retos de programación <span class="math inline">\(awk\)</span></a></li>
+<li><a href="#tutoriales-recomendados-para-profundizar-en-awk"><span class="toc-section-number">11.12</span> Tutoriales recomendados para profundizar en AWK</a></li>
 </ul></li>
 <li><a href="#ejercicios-integrativos-de-uso-de-herramientas-de-filtrado-del-shell"><span class="toc-section-number">12</span> Ejercicios integrativos de uso de herramientas de filtrado del <span class="math inline">\(Shell\)</span></a><ul>
 <li><a href="#filtrado-de-archivos-separados-por-tabuladores-tablas-con-awk-y-su-graficado-con-r"><span class="toc-section-number">12.1</span> Filtrado de archivos separados por tabuladores (tablas) con AWK y su graficado con R</a><ul>
@@ -673,7 +677,7 @@ summary {
 <li><a href="#scripts-que-reciben-argumentosparámetros-posicionales-con-interfaz-de-usario-simple"><span class="toc-section-number">14.5</span> <span class="math inline">\(Scripts\)</span> que reciben argumentos|parámetros posicionales con interfaz de usario simple</a></li>
 <li><a href="#scripts-con-interfaz-de-usuario-paso-de-opciones-y-su-parseo-con-getopts"><span class="toc-section-number">14.6</span> <span class="math inline">\(Scripts\)</span> con interfaz de usuario, paso de opciones y su <em>parseo</em> con <strong>getopts</strong></a></li>
 </ul></li>
-<li><a href="#programando-un-pipeline-en-bash-en-construcción"><span class="toc-section-number">15</span> Programando un pipeline en <span class="math inline">\(Bash\)</span> (en construcción …)</a><ul>
+<li><a href="#programando-un-pipeline-en-bash"><span class="toc-section-number">15</span> Programando un pipeline en <span class="math inline">\(Bash\)</span></a><ul>
 <li><a href="#construcción-de-filogenias-njupgma-con-bootstrapping-y-modelos-de-dnaprot-definidos-por-el-usuario-usando-programas-del-paquete-phylip"><span class="toc-section-number">15.1</span> Construcción de filogenias NJ|UPGMA con bootstrapping y modelos de DNA|PROT definidos por el usuario, usando programas del paquete PHYLIP</a><ul>
 <li><a href="#cómo-puedo-saber-cuáles-son-los-parámetros-que-recibe-un-programa-de-phylip"><span class="toc-section-number">15.1.1</span> Cómo puedo saber cuáles son los parámetros que recibe un programa de phylip?</a></li>
 <li><a href="#tutorial-de-uso-de-phylip-desde-la-línea-de-comandos-de-linux"><span class="toc-section-number">15.1.2</span> Tutorial de uso de PHYLIP desde la línea de comandos de Linux</a></li>
@@ -705,7 +709,7 @@ summary {
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
 <p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2020-12-26) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
+<p>Las versión actual (v.2020-12-27) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
 <div id="licencia-y-términos-de-uso" class="section level2">
 <h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
@@ -958,6 +962,7 @@ pwd</code></pre>
 #           Por ahora ignóralo y teclea simplemente ls
 ls | head</code></pre>
 <pre><code>## align_seqs_with_clustal_or_muscle.sh
+## aoa.awk
 ## assembly_summary.txt.gz
 ## awkvars.out
 ## bash_script_template_with_getopts.sh
@@ -965,14 +970,14 @@ ls | head</code></pre>
 ## blast-imager.pl
 ## clases_avance.txt
 ## compute_DNA_seq_stats.awk
-## consensus_tre.nwk
-## count_genome_features_for_taxon.awk</code></pre>
+## consensus_tre.nwk</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 102392
-## drwxr-xr-x 12 vinuesa vinuesa    20480 dic 26 13:18 .
+<pre><code>## total 102416
+## drwxr-xr-x 12 vinuesa vinuesa    20480 dic 27 00:04 .
 ## drwxr-xr-x  4 vinuesa vinuesa     4096 nov 11 22:55 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
+## -rw-rw-r--  1 vinuesa vinuesa      242 dic 26 23:45 aoa.awk
 ## -rw-r--r--  1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-rw-r--  1 vinuesa vinuesa      895 dic 21 10:41 awkvars.out
 ## -rw-r--r--  1 vinuesa vinuesa     5505 nov  7 22:55 bash_script_template_with_getopts.sh
@@ -986,9 +991,8 @@ ls -al | head -20</code></pre>
 ## drwxrwxr-x  2 vinuesa vinuesa     4096 dic 26 12:55 data
 ## -rw-rw-r--  1 vinuesa vinuesa       43 nov  4 19:20 dna_string.txt
 ## drwxr-xr-x  2 vinuesa vinuesa     4096 nov 26 17:48 docs
-## -rwxr-xr-x  1 vinuesa vinuesa    18699 dic 26 12:23 extract_CDSs_from_GenBank.awk
-## -rwxr-xr-x  1 vinuesa vinuesa     1699 nov 28 21:00 extract_DNA_string_from_genbank.awk
-## -rwxr-xr-x  1 vinuesa vinuesa     2401 dic 19 18:01 extract_sequence_strings_by_coords.awk</code></pre>
+## -rwxr-xr-x  1 vinuesa vinuesa    18724 dic 26 19:11 extract_CDSs_from_GenBank.awk
+## -rwxr-xr-x  1 vinuesa vinuesa     1699 nov 28 21:00 extract_DNA_string_from_genbank.awk</code></pre>
 <div id="veamos-el-contenido-del-directorio-raíz" class="section level4">
 <h4><span class="header-section-number">2.2.3.1</span> Veamos el contenido del <strong>directorio raíz /</strong></h4>
 <ul>
@@ -1441,6 +1445,7 @@ pwd</code></pre>
 </ul>
 <pre class="bash"><code>ls | head</code></pre>
 <pre><code>## align_seqs_with_clustal_or_muscle.sh
+## aoa.awk
 ## assembly_summary.txt.gz
 ## awkvars.out
 ## bash_script_template_with_getopts.sh
@@ -1448,8 +1453,7 @@ pwd</code></pre>
 ## blast-imager.pl
 ## clases_avance.txt
 ## compute_DNA_seq_stats.awk
-## consensus_tre.nwk
-## count_genome_features_for_taxon.awk</code></pre>
+## consensus_tre.nwk</code></pre>
 </div>
 </div>
 </div>
@@ -1832,16 +1836,16 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 102364
+<pre><code>## total 102388
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
+## -rw-rw-r-- 1 vinuesa vinuesa      242 dic 26 23:45 aoa.awk
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
 ## -rw-rw-r-- 1 vinuesa vinuesa      895 dic 21 10:41 awkvars.out
 ## -rw-r--r-- 1 vinuesa vinuesa     5505 nov  7 22:55 bash_script_template_with_getopts.sh
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 nov 16 17:37 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 dic 26 13:20 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab
-## -rwxr-xr-x 1 vinuesa vinuesa     1245 dic 19 18:01 compute_DNA_seq_stats.awk</code></pre>
+## lrwxrwxrwx 1 vinuesa vinuesa       78 dic 27 00:04 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
 </ul>
@@ -2227,7 +2231,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 dic 26 13:20 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 dic 27 00:04 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2246,7 +2250,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 26 13:20 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 00:04 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2375,15 +2379,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 26 13:20 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 26 13:20 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 00:04 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 27 00:04 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 26 13:20 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 27 00:04 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2478,10 +2482,10 @@ echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 26 13:18 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 26 13:17 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 00:03 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 00:03 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 47918 dic 26 13:20 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 47916 dic 27 00:04 fna_files.tgz
 ## ----------------------------
 ## mini_CDS.fna
 ## recA_Bradyrhizobium_vinuesa.fna
@@ -2507,10 +2511,10 @@ echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 26 13:18 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 26 13:17 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 00:03 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 00:03 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 47918 dic 26 13:20 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 47916 dic 27 00:04 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2521,13 +2525,13 @@ echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 26 13:18 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 26 13:17 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 00:03 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 00:03 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
 ## -rw-rw-r-- 1 vinuesa vinuesa   104 dic 21 17:41 mini_CDS.fna.gz
 ## -rw-r--r-- 1 vinuesa vinuesa  3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa   882 dic 26 13:18 recA_Byuanmingense.fna.gz
-## -rw-rw-r-- 1 vinuesa vinuesa 42351 dic 26 13:17 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa   882 dic 27 00:03 recA_Byuanmingense.fna.gz
+## -rw-rw-r-- 1 vinuesa vinuesa 42351 dic 27 00:03 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2538,14 +2542,14 @@ echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa   104 dic 21 17:41 mini_CDS.fna.gz
 ## -rw-r--r-- 1 vinuesa vinuesa  3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa   882 dic 26 13:18 recA_Byuanmingense.fna.gz
-## -rw-rw-r-- 1 vinuesa vinuesa 42351 dic 26 13:17 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa   882 dic 27 00:03 recA_Byuanmingense.fna.gz
+## -rw-rw-r-- 1 vinuesa vinuesa 42351 dic 27 00:03 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 26 13:18 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 26 13:17 Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 00:03 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 00:03 Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-mlocate-y-find" class="section level1">
@@ -2595,8 +2599,8 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 <pre><code>## Filesystem      1K-blocks      Used  Available Use% Mounted on
 ## udev             16381120         0   16381120   0% /dev
 ## tmpfs             3281912      2004    3279908   1% /run
-## /dev/nvme0n1p3  465889936  19352236  422802048   5% /
-## tmpfs            16409540      4192   16405348   1% /dev/shm
+## /dev/nvme0n1p3  465889936  19351128  422803156   5% /
+## tmpfs            16409540      3880   16405660   1% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409540         0   16409540   0% /sys/fs/cgroup
 ## /dev/loop1         165376    165376          0 100% /snap/gnome-3-28-1804/128
@@ -2610,17 +2614,17 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 ## /dev/loop8          56704     56704          0 100% /snap/core18/1932
 ## /dev/loop7          52352     52352          0 100% /snap/snap-store/518
 ## /dev/loop9          65792     65792          0 100% /snap/standard-notes/27
-## /dev/sda1      1921802432 429797944 1394312432  24% /home
+## /dev/sda1      1921802432 429804312 1394306064  24% /home
 ## /dev/loop10         65792     65792          0 100% /snap/standard-notes/26
 ## /dev/loop11         31872     31872          0 100% /snap/snapd/10492
 ## /dev/loop12         52352     52352          0 100% /snap/snap-store/498
 ## /dev/loop13         31872     31872          0 100% /snap/snapd/10238
 ## tmpfs             3281908        20    3281888   1% /run/user/125
-## tmpfs             3281908        40    3281868   1% /run/user/1000</code></pre>
+## tmpfs             3281908        68    3281840   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465889936 19352236 422802048   5% /</code></pre>
+## /dev/nvme0n1p3 465889936 19351128 422803156   5% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></h3>
 <p>Como cualquier comando, le podemos pasar opciones para adecuar mejor la salida a nuestra necesidad.</p>
@@ -2651,8 +2655,8 @@ df -h /home</code></pre>
 <pre><code>## Filesystem     1M-blocks    Used Available Use% Mounted on
 ## udev              15998M      0M    15998M   0% /dev
 ## tmpfs              3205M      2M     3204M   1% /run
-## /dev/nvme0n1p3   454971M  18899M   412893M   5% /
-## tmpfs             16025M      5M    16021M   1% /dev/shm
+## /dev/nvme0n1p3   454971M  18898M   412894M   5% /
+## tmpfs             16025M      4M    16022M   1% /dev/shm
 ## tmpfs                 5M      1M        5M   1% /run/lock
 ## tmpfs             16025M      0M    16025M   0% /sys/fs/cgroup
 ## /dev/loop1          162M    162M        0M 100% /snap/gnome-3-28-1804/128
@@ -2666,14 +2670,14 @@ df -h /home</code></pre>
 ## /dev/loop8           56M     56M        0M 100% /snap/core18/1932
 ## /dev/loop7           52M     52M        0M 100% /snap/snap-store/518
 ## /dev/loop9           65M     65M        0M 100% /snap/standard-notes/27
-## /dev/sda1       1876761M 419725M  1361634M  24% /home
+## /dev/sda1       1876761M 419731M  1361628M  24% /home
 ## /dev/loop10          65M     65M        0M 100% /snap/standard-notes/26
 ## /dev/loop11          32M     32M        0M 100% /snap/snapd/10492
 ## /dev/loop12          52M     52M        0M 100% /snap/snap-store/498
 ## /dev/loop13          32M     32M        0M 100% /snap/snapd/10238
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392678M 439969M  1834128M  20% -
+## total           2392678M 439974M  1834123M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2693,8 +2697,8 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 261028   .
-## 255M .</code></pre>
+<pre><code>## 262304   .
+## 257M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
 </ul>
@@ -4088,13 +4092,14 @@ ORS      (Output Return Separator) separador de registro de la salida (\n por de
 <pre class="bash"><code>echo &quot;usuario@entidad.unam.mx&quot; | awk &#39;/^([a-zA-Z0-9_\-\.\+]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/&#39;</code></pre>
 <pre><code>## usuario@entidad.unam.mx</code></pre>
 </div>
-<div id="manipulación-de-cadenas-de-caracteres-con-las-funciones-sub-gsub-substr-y-expresiones-regulares" class="section level3">
-<h3><span class="header-section-number">11.4.6</span> Manipulación de cadenas de caracteres con las funciones <strong>sub()</strong>, <strong>gsub()</strong>, <strong>substr()</strong> y expresiones regulares</h3>
+<div id="manipulación-de-cadenas-de-caracteres-con-las-funciones-sub-gsub-substr-match-split-y-expresiones-regulares" class="section level3">
+<h3><span class="header-section-number">11.4.6</span> Manipulación de cadenas de caracteres con las funciones <strong>sub()</strong>, <strong>gsub()</strong>, <strong>substr()</strong>, <strong>match()</strong>, <strong>split()</strong> y expresiones regulares</h3>
 <p><span class="math inline">\(AWK\)</span> provee de diversas funciones para la manipulación de cadenas de caracteres. Para empezar, les voy a mostrar tres funciones muy sencillas de usar que se implementan con frecuencia en código AWK.</p>
 <ul>
 <li><strong>sub()</strong> <code>/regexp/, “reemplazo”, [, diana] </code></li>
 <li><strong>gsub()</strong> <code>/regexp/, “reemplazo”, [, diana]</code></li>
 <li><strong>substr()</strong> <code>cadena, inicio, [, longitud]</code></li>
+<li><strong>match()</strong> <code>match(cadena, regexp [, array])</code></li>
 </ul>
 <p><span class="math inline">\(sub()\)</span> busca la instancia más larga en la cadena diana de la <span class="math inline">\(regexp\)</span>, sustituyéndola por la cadena reemplazo. La cadena diana así modificada pasa a ser el nuevo valor de diana. Es importante resaltar que <em>la cadena diana</em> tiene que estar guardada en una variable.</p>
 <p><span class="math inline">\(sub()\)</span> sólo reemplaza la primera instancia de <span class="math inline">\(regexp\)</span>, mientras que <span class="math inline">\(gsub()\)</span> realiza reemplazos globales (tipo: <em>s/foo/bar/g</em>)</p>
@@ -4123,30 +4128,59 @@ awk &#39;BEGIN { str = &quot;esta es una cadena de caracteres: cadena&quot;; fin
 <pre><code>## esta es una cadena de caracteres: cadena
 ## esta es una
 ##  cadena de caracteres: cadena</code></pre>
-<p>Noten que <span class="math inline">\(substr()\)</span> regresa la subcadena correspondiente.</p>
+<p>Noten que <span class="math inline">\(substr()\)</span> regresa la subcadena correspondiente. Usaremos <em>substr()</em> en la función <em>translate_dna()</em> y <em>extract_sequence_by_coordinates()</em> implementadas en los <em>scripts</em> avanzados <strong>fasta_toolkit.awk</strong> y <strong>extract_CDSs_from_GenBank.awk</strong> que veremos al final de la sección de <em>awk</em>.</p>
+<ul>
+<li>Veamos <em>match()</em> en acción, usando una <em>regexp</em> para capturar en paréntesis las coordenadas de un CDS como se representan en un archivo GenBank, como hace el <em>script</em> <strong>extract_CDSs_from_GenBank.awk</strong>.</li>
+</ul>
+<pre class="bash"><code>echo &quot;     CDS           295..861&quot; | \
+  awk &#39;END { 
+             print
+             m = match($0, /^\s{4,}CDS\s{4,}([[:digit:]]+)\.\.([[:digit:]]+)/, c_arr) 
+             s=c_arr[1]; e=c_arr[2] 
+             print(&quot;m=&quot;m, &quot;\nstart=&quot; s, &quot;\nend=&quot;e) }&#39;</code></pre>
+<pre><code>##      CDS           295..861
+## m=1 
+## start=295 
+## end=861</code></pre>
+<p>Noten que los dígitos son capturados en los paréntesis <code>([[:digit:]]+)\.\.([[:digit:]]+)</code> y los <em>matches</em> guardados en el arreglo <em>c_arr</em>. Veremos <strong>arreglos</strong> de <em>awk</em> más adelante. por ahora baste saber que podemos recuperar los valores o elementos del arreglo indexando numéricamente <code>s=c_arr[1]; e=c_arr[2]</code></p>
+<ul>
+<li>Veamos ahora <em>sub()</em>, <em>gsub()</em> y <em>split()</em> en acción, para capturar las coordenadas de un CDS como se representan en un archivo GenBank, como hace el <em>script</em> <strong>extract_CDSs_from_GenBank.awk</strong>.</li>
+</ul>
+<pre class="bash"><code>echo &#39;     CDS        complement(3633769..3634107)&#39; | \
+  awk &#39;{ print
+        coord = $0
+        sub(/^\s{4,}CDS\s{4,}complement\(/, &quot;&quot;, coord)
+        gsub(/[\)]/, &quot;&quot;, coord)
+        m = split(coord, c_arr, /\.\./) 
+        start = c_arr[1]; end = c_arr[2] 
+        print(&quot;m=&quot;m, &quot;\nstart=&quot;start, &quot;\nend=&quot;end)
+  }&#39;</code></pre>
+<pre><code>##      CDS        complement(3633769..3634107)
+## m=2 
+## start=3633769 
+## end=3634107</code></pre>
+<p>En este ejemplo la línea guardada en <em>coord</em> se va procesando sucesivamente por <em>sub()</em>, <em>gsub()</em> y <em>split()</em>, para finalmente imprimir las coordenadas de inicio y fin del CDS. En la función <em>split()</em> cada campo delimitado por ‘..’, es guardado en el arreglo <em>c_arr</em>. La variable <em>m</em> guarda el número de campos.</p>
 </div>
 <div id="otras-funciones-para-la-manipulación-de-cadenas-de-caracteres" class="section level3">
 <h3><span class="header-section-number">11.4.7</span> Otras funciones para la manipulación de cadenas de caracteres</h3>
-<p><span class="math inline">\(AWK\)</span> implementa muchas más funciones para manipulación de cadenas de caracteres como las siguietes</p>
+<p><span class="math inline">\(AWK\)</span> implementa muchas más funciones para manipulación de cadenas de caracteres como las siguientes</p>
 <ul>
 <li>asort(source [, dest [, how ] ])</li>
 <li>asorti(source [, dest [, how ] ])</li>
 <li>gensub(regexp, replacement, how [, target])</li>
 <li>index(in, find)</li>
 <li>length([string])</li>
-<li>match(string, regexp [, array])</li>
-<li>split(string, array [, fieldsep [, seps ] ])</li>
 <li>tolower(string)</li>
 <li>toupper(string)</li>
 </ul>
-<p>Veremos el uso de varias de ellas en ejemplos subsiguientes. Consulten la <a href="https://www.gnu.org/software/gawk/manual/gawk.html#String-Functions">guía de usuario de AWK</a> para los detalles y más ejemplos.</p>
+<p>Veremos el uso de varias de ellas en ejemplos subsiguientes, notablemente en el <em>script</em> avanzado <strong>extract_CDSs_from_GenBank.awk</strong> que hace uso extensivo de ellas en combinación con <em>regexps</em> para parsear archivos GenBank. Consulten la <a href="https://www.gnu.org/software/gawk/manual/gawk.html#String-Functions">guía de usuario de AWK</a> para los detalles y más ejemplos.</p>
 </div>
 </div>
 <div id="ejemplos-integrativos-básicos-para-entender-cómo-funciona-awk" class="section level2">
 <h2><span class="header-section-number">11.5</span> Ejemplos integrativos básicos para entender cómo funciona <span class="math inline">\(AWK\)</span></h2>
 <p>En esta sección aprenderemos algunos idiomas de <span class="math inline">\(AWK\)</span> muy útiles, que muestran cómo implementar conjuntamente algunas de las variables y elementos de sintaxis listados arriba. Con ellos podrán apreciar mejor la lógica, simpleza y utilidad de <span class="math inline">\(AWK\)</span>.</p>
-<div id="contar-longitud-de-una-cadena-oligonucleótido-de-dna" class="section level3">
-<h3><span class="header-section-number">11.5.1</span> Contar longitud de una cadena (oligonucleótido de DNA)</h3>
+<div id="determinar-la-longitud-de-una-cadena-de-oligonucleótido-de-dna-con-length" class="section level3">
+<h3><span class="header-section-number">11.5.1</span> Determinar la longitud de una cadena (de oligonucleótido de DNA) con <strong>length()</strong></h3>
 <ul>
 <li>Fíjate en las diferencias y entiende porqué los dos comandos que muestro seguidamente no dan el mismo resultado</li>
 </ul>
@@ -4233,6 +4267,7 @@ ls -ld working_with* *.awk *.sh docs pics | awk &#39;{print $1, $NF}&#39; </code
 <pre><code>## 9
 ## -----------------------------------
 ## -rwxr-xr-x align_seqs_with_clustal_or_muscle.sh
+## -rw-rw-r-- aoa.awk
 ## -rw-r--r-- bash_script_template_with_getopts.sh
 ## -rwxr-xr-x compute_DNA_seq_stats.awk
 ## -rw-rw-r-- count_genome_features_for_taxon.awk
@@ -4253,6 +4288,7 @@ ls -ld working_with* *.awk *.sh docs pics | awk &#39;{print $1, $NF}&#39; </code
 ## -rw-rw-r-- translate_codons.awk
 ## -rwxr-xr-x translate_dna.awk
 ## -rwxr-xr-x translate_fasta.awk
+## -rwxr-xr-x transpose_matrix.awk
 ## -rw-r--r-- working_with_linux_commands.html
 ## -rw-rw-r-- working_with_linux_commands.log
 ## -rw-r--r-- working_with_linux_commands.Rmd
@@ -4330,20 +4366,20 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 2408982 dic 26 13:18 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 2420234 dic 27 00:04 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   68106 nov 15 20:16 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  401845 dic 26 13:19 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  408972 dic 27 00:04 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  499749 nov 15 20:16 working_with_linux_commands.tex
-## total size of working_with_linux_commands.* files is: 3.22 Mb</code></pre>
+## total size of working_with_linux_commands.* files is: 3.24 Mb</code></pre>
 <ul>
 <li>comparen y entiendan la diferencia del comando anterior con el del siguiente:</li>
 </ul>
 <pre class="bash"><code>ls -l working_with_linux_commands.* | \
  awk &#39;{s+=$5}; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## total size of working_with_linux_commands.* files is: 3.22 Mb</code></pre>
+<pre><code>## total size of working_with_linux_commands.* files is: 3.24 Mb</code></pre>
 </div>
-<div id="uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla" class="section level3">
-<h3><span class="header-section-number">11.5.7</span> uso de función <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón en una tabla</h3>
+<div id="uso-de-función-de-autoincremento-para-contar-ocurrencias-de-un-patrón" class="section level3">
+<h3><span class="header-section-number">11.5.7</span> uso de función de <strong>autoincremento</strong> <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón</h3>
 <ul>
 <li>Cuenta las entradas para el género <em>Stenotrophomonas</em> en la tabla <em>assembly_summary.txt.gz</em></li>
 </ul>
@@ -4473,17 +4509,20 @@ awk &#39;BEGIN{print &quot;species,count&quot;; OFS=&quot;,&quot;} {print $2 &qu
 </ul>
 <pre class="bash"><code>awk &#39;! /(^&gt;|^$)/ {l+=length($1)} END{print FILENAME, &quot;has&quot;, l, &quot;nts or&quot;, l/1000, &quot;kb&quot;}&#39; recA_Bradyrhizobium_vinuesa.fna</code></pre>
 <pre><code>## recA_Bradyrhizobium_vinuesa.fna has 63795 nts or 63.795 kb</code></pre>
-<p>Notas: 1. También pudimos haber usado <span class="math inline">\(l+=length(\$0)\)</span>, ya que cada registro (línea en este caso) tiene un solo campo: la cadena de nucleótidos correspondiente. 2. El código <span class="math inline">\(awk\)</span> del ejemplo de arriba no cuenta los saltos de línea ni líneas en blanco, ya que la función <span class="math inline">\(length()\)</span> sólo contabiliza caracteres</p>
+<p>Notas: 1. También pudimos haber usado <code>l += length($0)</code>, ya que cada registro (línea en este caso) tiene un solo campo: la cadena de nucleótidos correspondiente. 2. El código <span class="math inline">\(awk\)</span> del ejemplo de arriba no cuenta los saltos de línea ni líneas en blanco, ya que la función <span class="math inline">\(length()\)</span> sólo contabiliza caracteres</p>
 </div>
 </div>
 <div id="arreglos-asociativos-hashes-en-awk---una-estructura-de-datos-muy-poderosa-y-versátil" class="section level2">
 <h2><span class="header-section-number">11.6</span> <strong>Arreglos asociativos (hashes)</strong> en <span class="math inline">\(awk\)</span> - una estructura de datos muy poderosa y versátil</h2>
-<p>Los arreglos son un tipo de variable que permite guardar a uno o varios elementos. Al arreglo (o <span class="math inline">\(array\)</span>), como a cualquier otra variable, la nombramos con un nombre corto pero informativo, y accedemos a los valores almacenados en él mediante un <strong>índice</strong>. Éste puede ser numérico o una cadena de caracteres. Es decir, <strong>en <span class="math inline">\(awk\)</span> todos los arreglos son <em>asociativos</em>!</strong>. PUedes imaginarlos como una tabla no rígida de <strong>asociaciones llave-valor</strong>.</p>
+<p>Los arreglos son un tipo de variable que permite guardar a uno o varios elementos. En <em>AWK</em> se pueden construir <strong>arreglos de arreglos</strong> de profundidad arbitraria, como mostraremos más adelante.</p>
+<p>Al arreglo (o <span class="math inline">\(array\)</span>), como a cualquier otra variable, la nombramos con un nombre corto pero informativo, que no puede iniciar con un dígito.</p>
+<p>Accedemos a los valores almacenados en un arreglo mediante un <strong>índice</strong>: <code>arreglo[índice]</code></p>
+<p>El <strong>índice</strong> puede ser numérico o una cadena de caracteres. Es decir, <strong>en <span class="math inline">\(awk\)</span> todos los arreglos son <em>asociativos</em>!</strong>. PUedes imaginarlos como una tabla no rígida de <strong>asociaciones llave-valor</strong>.</p>
 <ul>
 <li>Sintaxis de asignación, recuperación y eliminación de valores de un <strong>arreglo</strong> de <span class="math inline">\(awk\)</span></li>
 </ul>
 <pre><code># 1. asignación
-nombre_arreglo[índice] = value
+nombre_arreglo[índice] = valor
 
 # 2. recuperación de un valor particular
 print nombre_arreglo[índice]
@@ -4957,14 +4996,113 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 </div>
 </div>
 </div>
+<div id="estructuras-de-datos-complejas" class="section level2">
+<h2><span class="header-section-number">11.7</span> Estructuras de datos complejas</h2>
+<p>Uno de los atributos que hacen muy poderoso a <strong>AWK</strong> como lenguaje es su implementación de estructuras complejas de datos. <strong>AWK</strong> POSIX estándar implementa los <em>arreglos multidimensionales</em> y <strong>GAWK</strong> implmententa verderos <em>arreglos de arreglos</em></p>
+<div id="arreglos-multidimensionales" class="section level3">
+<h3><span class="header-section-number">11.7.1</span> Arreglos multidimensionales</h3>
+<p>En los arreglos multidimensionales de <strong>AWK</strong> estándar cada elemento es identificado por una secuencia de índices, los cuales son concatenados como una cadena usando el separador “\034”, que codifica para un caracter no imprimible y guardado en la variable <strong>SUBSEP</strong></p>
+<p>Así por ejemplo, el arreglo multidimensional <em>amd</em> <code>amd[1,2]=“valor12”</code> tiene los índices 1 y 2, y podemos accesar su valor con <code>amd[1,2]</code> o <code>amd[1 SUBSEP 2]</code> o <code>amd[1 “\034” 2]</code>, o usando un bucle for, como de costumbre.</p>
+<pre class="bash"><code>awk &#39;BEGIN {
+  amd[1,2]=&quot;valor12&quot;
+  print &quot;using 1, 2:&quot;, amd[1, 2]
+  print &quot;using SUBSEP:&quot;, amd[1 SUBSEP 2]
+  print &quot;using \\034:&quot;, amd[1 &quot;\034&quot; 2]
+  for (k in amd) print &quot;k=&lt;&quot;k&quot;&gt;&quot;, &quot;valor=&quot;amd[k]
+}&#39;</code></pre>
+<pre><code>## using 1, 2: valor12
+## using SUBSEP: valor12
+## using \034: valor12
+## k=&lt;12&gt; valor=valor12</code></pre>
+<p>Veamos ahora cómo leer una matriz en un arreglo bidimensional y cómo transponerla</p>
+<pre><code>{
+     # true only in the first line, when max_nf = 0; 
+     # don&#39;t need to repeat on each row|record, to speed up
+     if (max_nf &lt; NF)
+          max_nf = NF
+     max_nr = NR
+     
+     # read the original matrix into a 1-dimensional vector
+     # indexed by NF and NR
+     for (x = 1; x &lt;= NF; x++)
+     # read each col-value, row by row, into 
+       # the vector array, indexed by row/record
+           vector[x, NR] = $x
+}
+
+END {
+        # for each original col-value (x), print them out
+        # using row indices (y) as the matrix row-dimension, 
+        # to transpose the matrix
+      for (x = 1; x &lt;= max_nf; x++) {
+          for (y = 1; y &lt;= max_nr; y++)
+                printf(&quot;%s &quot;, vector[x, y])
+          printf(&quot;\n&quot;)
+      }
+}</code></pre>
+dada la siguiente matriz:
+<pre>
+1 2 3 4
+5 6 7 8
+9 10 11 12
+</pre>
+imprime su transpuesta como:
+<pre>
+1 5 9 
+2 6 10 
+3 7 11 
+4 8 12
+</pre>
+<ul>
+<li><b>Retos de programación</b>
+<ul>
+<li>¿Qué modificarías del código para que imprima la tabla original?</li>
+<li>¿y cómo para que rote la tabla original 90° en sentido horario?</li>
+</ul></li>
+</ul>
+</div>
+<div id="arreglos-de-arreglos" class="section level3">
+<h3><span class="header-section-number">11.7.2</span> <strong>Arreglos de arreglos</strong></h3>
+<p><em>gawk</em> implementa verdaderos <strong>arreglos de arreglos</strong>. Es decir, un arreglo puede contener como valores a otros arreglos. Los elementos de un sub-arreglo contenido en el arreglo principal son accesados con sus propios índices, encerrados igualmente en corchetes.</p>
+<pre class="bash"><code>awk &#39;BEGIN {
+    # asignamos valores a un arreglo de arreglos
+    a[&quot;gen1&quot;][&quot;codones&quot;]=&quot;ATG CCG TGT TAA&quot;
+    a[&quot;gen1&quot;][&quot;prot&quot;]=&quot; M   P   C   *&quot;
+    a[&quot;gen2&quot;][&quot;codones&quot;]=&quot;GTG TCG TGT TGA&quot;
+    a[&quot;gen2&quot;][&quot;prot&quot;]=&quot; V   S   C   *&quot;
+
+    # imprimimos los valores
+    for (g in a) {
+       print a[g][&quot;codones&quot;]
+       print a[g][&quot;prot&quot;]
+    }
+}&#39;</code></pre>
+<pre><code>## ATG CCG TGT TAA
+##  M   P   C   *
+## GTG TCG TGT TGA
+##  V   S   C   *</code></pre>
+<p>Veremos el uso de <strong>hashes de hashes</strong> para guardar valores extraídos de la anotación de CDSs a partir de archivos GenBank en el <em>script</em> <strong>extract_CDSs_from_GenBank.awk</strong>, como muestra el siguiente fragmento de código</p>
+<pre><code>     # All the CDS&#39;s-relevant information parsed from the annotations 
+     #   will be stored in the CDSs_AoA (Array of Arrays)
+     CDSs_AoA[geneID][&quot;l&quot;] = locus_tag
+     CDSs_AoA[geneID][&quot;LOCUS&quot;] = locus_id
+     CDSs_AoA[geneID][&quot;s&quot;] = start
+     CDSs_AoA[geneID][&quot;e&quot;] = end
+     CDSs_AoA[geneID][&quot;c&quot;] = complflag
+     CDSs_AoA[geneID][&quot;pseudo&quot;] = pseudoflag</code></pre>
+<p>Los arreglos de arreglos de <em>gawk</em> pueden tener una profundidad arbitraria y cada sub-arreglo y el arreglo principal pueden ser de longitud diferente. Es más, los elementos de un arreglo y/o sub-arreglo no tienen que ser todos del mismo tipo.</p>
+<p>En resumen, el arreglo principal y cualquiera de sus sub-arreglos pueden o no tener una estructura rectangular y contener elementos de diferentes tipos.</p>
+<p>Los arreglos de arreglos de <em>gawk</em> son por tanto estructuras de datos muy versátiles y útiles, como demostraremos en el <em>script</em> <strong>extract_CDSs_from_GenBank.awk</strong> al final de la sección de <em>awk</em></p>
+</div>
+</div>
 <div id="awk-scripts---aspectos-básicos" class="section level2">
-<h2><span class="header-section-number">11.7</span> <strong><span class="math inline">\(awk\)</span> scripts</strong> - aspectos básicos</h2>
+<h2><span class="header-section-number">11.8</span> <strong><span class="math inline">\(awk\)</span> scripts</strong> - aspectos básicos</h2>
 <p>Cuando el programa que escribimos es un poco largo y/o de interés general, es decir, que se vaya a usar regularmente, conviene guardarlo en un archivo. En este bloque les presentaré un primer <span class="math inline">\(script\)</span> que integra múltiples aspectos presentados anteriormente y varios elementos nuevos del lenguaje. Pero más importante aún, el <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> es un primer ejemplo de los detalles que como programadores debemos cuidar para que el código sea robusto y amigable con el usuario, para facilitarle su uso.</p>
 <p>Para que un programa sea útil, debe resolver eficientemente una clase o tipo de problemas o acciones que se realicen rutinariamente. En secciones anteriores hemos mostrado múltiples ejemplos de uso de <span class="math inline">\(awk\)</span> para <em>parsear</em> la tabla assembly_summary.txt.gz. Dado que esta tabla provee información clave sobre los ensambles disponibles en la división RefSeq de GenBank, podría ser útil tener un <span class="math inline">\(script\)</span> que nos provea de estadísticas de resumen (conteos) para campos específicos de la misma y para un taxon de nuestro interés particular.</p>
 <p>En la sección sobre <a href="#uso-de-función-para-contar-ocurrencias-de-un-patrón-en-una-tabla">uso del operador ++ para contar ocurrencias de un patrón</a> vimos dos ejemplos muy parecidos, uno para contar el número de ensambles liberados por año para un taxon y otro para contar el número de genomas para un taxon por nivel del ensamble. No sería una buena práctica guardarlos como <span class="math inline">\(scripts\)</span> individuales. Más bien debemos pensar en cómo escribir el código para que un solo <em>script</em> puedan calcular estas estadísticas de resumen sobre cualquier campo relevante de la tabla. El <span class="math inline">\(script\)</span> lo llamaremos <em>count_genome_features_for_taxon.awk</em> y haremos su uso flexible y práctico al pasarle dos argumentos desde la línea de comandos: <em>&lt;tax=TAXON&gt; &lt;f=numero_de_columna&gt;</em>.</p>
 <p>El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> implementa una gama de elementos sintácticos, como funciones integradas y variables reservadas, la mayoría de las cuales hemos descrito en secciones previas. Las siguientes subsecciones explican brevemente los que no hemos visto en detalle aún, como estructuras de control.</p>
 <div id="paso-de-variables-argumentos-y-archivos-a-scripts-de-awk-y-uso-de-los-arreglos-argc-y-argv" class="section level3">
-<h3><span class="header-section-number">11.7.1</span> Paso de variables, argumentos y archivos a <span class="math inline">\(scripts\)</span> de <span class="math inline">\(awk\)</span> y uso de los arreglos <span class="math inline">\(ARGC\)</span> y <span class="math inline">\(ARGV\)</span></h3>
+<h3><span class="header-section-number">11.8.1</span> Paso de variables, argumentos y archivos a <span class="math inline">\(scripts\)</span> de <span class="math inline">\(awk\)</span> y uso de los arreglos <span class="math inline">\(ARGC\)</span> y <span class="math inline">\(ARGV\)</span></h3>
 <p><span class="math inline">\(awk\)</span> define automáticamente las variables <strong>ARGC</strong> y <strong>ARGV</strong> para proveer al programa información sobre los argumentos pasados al mismo.</p>
 <ul>
 <li>Los argumentos pasados al programa desde la línea de comandos después del ‘bloque de código’ se guardan en <span class="math inline">\(ARGV\)</span></li>
@@ -4986,7 +5124,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 </ul></li>
 </ul>
 <div id="paso-de-variables-argumentos-y-archivos-a-scripts-de-awk" class="section level4">
-<h4><span class="header-section-number">11.7.1.1</span> Paso de variables, argumentos y archivos a <span class="math inline">\(scripts\)</span> de <span class="math inline">\(awk\)</span></h4>
+<h4><span class="header-section-number">11.8.1.1</span> Paso de variables, argumentos y archivos a <span class="math inline">\(scripts\)</span> de <span class="math inline">\(awk\)</span></h4>
 <p>Veamos el siguiente ejemplo muy similar al anterior, pero pasándole al <span class="math inline">\(script\)</span> variables y argumentos, además de los dos archivos.</p>
 <ul>
 <li>Noten que:
@@ -5005,7 +5143,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) == 5 
 ## ARGC = 5
-## [] [] [123] [20487]</code></pre>
+## [] [] [123] [4336]</code></pre>
 <ul>
 <li>Comentarios y preguntas
 <ul>
@@ -5017,7 +5155,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 </ul></li>
 </ul>
 <div id="el-script-print_vars_and_params.awk-y-su-lladada-con-awk--f-script" class="section level5">
-<h5><span class="header-section-number">11.7.1.1.1</span> El <span class="math inline">\(script\)</span> <em>print_vars_and_params.awk</em> y su lladada con <code>awk -f script</code></h5>
+<h5><span class="header-section-number">11.8.1.1.1</span> El <span class="math inline">\(script\)</span> <em>print_vars_and_params.awk</em> y su lladada con <code>awk -f script</code></h5>
 <p>Como el <span class="math inline">\(script\)</span> anterior empieza a hacerse un poco largo, podemos escribirlo en un archivo que llamaremos <em>print_vars_and_params.awk</em>, lo que nos permite comentarlo y escribir las sentencias en líneas individuales para una mejor legibilidad.</p>
 <pre><code>BEGIN { 
     print &quot;# ARGV contiene:&quot;
@@ -5049,7 +5187,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 3 
 ## ARGC = 3
-## [] [] [6791] []</code></pre>
+## [] [] [7941] []</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -5068,7 +5206,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 6 
 ## ARGC = 6
-## [] [] [123] [2424]</code></pre>
+## [] [] [123] [32738]</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -5078,7 +5216,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 </div>
 </div>
 <div id="otro-ejemplo-de-paso-de-variables-argumentos-y-archivos-el-script-showargs.awk" class="section level4">
-<h4><span class="header-section-number">11.7.1.2</span> Otro ejemplo de paso de variables, argumentos y archivos: el <span class="math inline">\(script\)</span> <em>showargs.awk</em></h4>
+<h4><span class="header-section-number">11.8.1.2</span> Otro ejemplo de paso de variables, argumentos y archivos: el <span class="math inline">\(script\)</span> <em>showargs.awk</em></h4>
 <p>Veamos el contenido del <span class="math inline">\(script\)</span> <em>showargs.awk</em> que consta de 3 secciones:</p>
 <ol style="list-style-type: decimal">
 <li>bloque BEGIN{}</li>
@@ -5197,7 +5335,7 @@ awk &#39;BEGIN{RS=&quot;&gt;&quot;; FS=&quot;\n&quot;; OFS=&quot;\n&quot;} NR &g
 </ul>
 </div>
 <div id="condicionales-if-if-else-if-if-else-if-else" class="section level4">
-<h4><span class="header-section-number">11.7.1.3</span> Condicionales: if; if-else if; if-else if-else</h4>
+<h4><span class="header-section-number">11.8.1.3</span> Condicionales: if; if-else if; if-else if-else</h4>
 <p>Los <em>condicionales</em> son estructuras de control fundamentales para controlar el flujo de un programa en función de si son ciertas o falsas determinadas condiciones. Sólo si una condición es cierta, se ejecuta la acción subsiguiente, según la siguiente sintaxis:</p>
 <ul>
 <li><code>if(condición){acción}</code></li>
@@ -5224,7 +5362,7 @@ awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == ar
 </div>
 </div>
 <div id="el-script-count_genome_features_for_taxon.awk" class="section level3">
-<h3><span class="header-section-number">11.7.2</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></h3>
+<h3><span class="header-section-number">11.8.2</span> El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em></h3>
 <p>El <span class="math inline">\(script\)</span> <em>count_genome_features_for_taxon.awk</em> tiene por finalidad mostrarles un ejemplo de código un poco más complejo y extenso con el fin de:</p>
 <ol style="list-style-type: decimal">
 <li>integrar y revisar los diferentes aspectos sintácticos del lenguaje discutidos hasta ahora</li>
@@ -5406,7 +5544,7 @@ awk &#39;BEGIN { n = 3; arg=ARGV[1]; gsub(/n=/, &quot;&quot;, arg);  if (n == ar
 ## Pseudomonas  2018    3833</code></pre>
 </div>
 <div id="shebang-line-usrbinawk-y-scripts-autocontenidos-el-script-filter_fasta_sequences.awk" class="section level3">
-<h3><span class="header-section-number">11.7.3</span> Shebang line <strong>#!/usr/bin/awk</strong> y scripts autocontenidos: el <span class="math inline">\(script\)</span> <strong>filter_fasta_sequences.awk</strong></h3>
+<h3><span class="header-section-number">11.8.3</span> Shebang line <strong>#!/usr/bin/awk</strong> y scripts autocontenidos: el <span class="math inline">\(script\)</span> <strong>filter_fasta_sequences.awk</strong></h3>
 <p>Si colocas la sentencia <strong>#!/usr/bin/awk</strong> al inicio del archivo (conocida como línea <em>shebang</em>) que contiene tu programa de <span class="math inline">\(awk\)</span> y lo haces ejecutable con <span class="math inline">\(chmod\ 755\ script.awk\)</span>, podrás ejecutarlo como un programa o <span class="math inline">\(script\)</span> <em>autocontenido</em>.</p>
 <p>La línea <em>shebang</em> indica al <span class="math inline">\(shell\)</span> con qué <strong>intérprete de comandos</strong> ha de interpretar los comandos contenidos en el archivo.</p>
 <p>Si el <span class="math inline">\(script\)</span> autocontenido y ejecutable está en uno de los directorios incluidos en <em>$PATH</em>, entonces puedes ejecutarlo simplemente tecleando su nombre, como cualquier otro comando del sistema, desde cualquier directorio del mismo.</p>
@@ -5530,7 +5668,7 @@ cat recA_Bradyrhizobium_vinuesa.fna | ./filter_fasta_sequences.awk MAM  | grep &
 ## &gt;AY591546.1 Bradyrhizobium canariense bv. genistearum strain BC-MAM1 recombination protein A (recA) gene, partial cds</code></pre>
 </div>
 <div id="filtra-un-archivo-multifasta-usando-un-hash-y-una-lista-de-etiquetas-con-get_sequences_from_list.awk" class="section level3">
-<h3><span class="header-section-number">11.7.4</span> Filtra un archivo multifasta usando un <span class="math inline">\(hash\)</span> y una lista de etiquetas con <strong>get_sequences_from_list.awk</strong></h3>
+<h3><span class="header-section-number">11.8.4</span> Filtra un archivo multifasta usando un <span class="math inline">\(hash\)</span> y una lista de etiquetas con <strong>get_sequences_from_list.awk</strong></h3>
 <p>Este problema es una variante del anterior. En este caso queremos filtrar el multifasta usando un archivo que contiene la lista de etiquetas de nuestro interés.</p>
 <p>Para ello vamos a usar el script <em>get_sequences_from_list.awk</em>, que recibe dos argumentos:</p>
 <p><code>get_sequences_from_list.awk <lista_de_etiquetas> <archivo_fasta></code></p>
@@ -5572,7 +5710,7 @@ El archivo de etiquetas debe tener el siguiente formato:
 ## CCCCCCCTTTTTAT</code></pre>
 <p>Noten que ¡el orden de las secuencias en la salida del <span class="math inline">\(script\)</span> <em>get_sequences_from_list.awk</em> no coincide con el de la lista! Ello se debe a que, como indicamos en la sección de introducción de <span class="math inline">\(arreglos\)</span>, los <span class="math inline">\(hashes\)</span> o <span class="math inline">\(arreglos\ asociativos\)</span> no guardan los índices o llaves en un orden particular.</p>
 <div id="ordenar-las-secuencias-de-un-archivo-en-formato-fastab-según-las-entradas-de-una-lista-en-un-bucle-while" class="section level4">
-<h4><span class="header-section-number">11.7.4.1</span> Ordenar las secuencias de un archivo en formato <strong>FASTAB</strong> según las entradas de una lista en un bucle <span class="math inline">\(while\)</span></h4>
+<h4><span class="header-section-number">11.8.4.1</span> Ordenar las secuencias de un archivo en formato <strong>FASTAB</strong> según las entradas de una lista en un bucle <span class="math inline">\(while\)</span></h4>
 <p>Si necesitan ordenar las secuencias siguiendo un orden particular, indicado en una lista, una opción es filtrar un archivo <strong>FASTAB</strong> con un bucle <span class="math inline">\(while\)</span> de <span class="math inline">\(Bash\)</span> como se muestra a continuación. Veremos la sintaxis de <em>bucles while</em> de <span class="math inline">\(Bash\)</span> en una sección posterior.</p>
 <pre class="bash"><code>while read seq; do grep &quot;$seq&quot; mini_fasta.fastab; done &lt; seq.list</code></pre>
 <pre><code>## &gt;especie5    GGGGTACCCATTTACCCCCCCTTTTTAT
@@ -5582,7 +5720,7 @@ El archivo de etiquetas debe tener el siguiente formato:
 </div>
 </div>
 <div id="el-script-translate_dna.awk-integración-de-condicionales-bucles-y-funciones" class="section level3">
-<h3><span class="header-section-number">11.7.5</span> El script <strong>translate_dna.awk</strong>: integración de condicionales, bucles y funciones</h3>
+<h3><span class="header-section-number">11.8.5</span> El script <strong>translate_dna.awk</strong>: integración de condicionales, bucles y funciones</h3>
 <p>Les presento ahora el <em>script</em> <strong>translate_dna.awk</strong> como ejercicio integrativo.</p>
 <p>El programa recibe una cadena secuencia de nucleótidos y la traduce a aminoácidos usando el código genético universal. La conversión entre tripletes (codones) y aminoácidos se hace usando un <span class="math inline">\(hash\)</span> que guarda las parejas <em>triplete-aminoácido</em>, inicializado en un bloque <span class="math inline">\(BEGIN{}\)</span>.</p>
 <p>En el bloque principal el código revisa que la cadena de DNA pasada al <span class="math inline">\(script\)</span> no esté vacía, contenga sólo caracteres válidos mediante la <em>regexp</em> ‘/[agctAGCT]+/’ y sea divisible por 3, imprimiendo mensajes de error adecuados si no pasa los tests.</p>
@@ -5742,7 +5880,7 @@ ATG GGG TGT TGT GGG TTG AAA GTG CCC GGG AAA TTA ATA ERROR: input triplet 14 = CA
 </div>
 </div>
 <div id="modularización-de-código-mediante-funciones-definidas-por-el-usuario-function-my_function_name" class="section level2">
-<h2><span class="header-section-number">11.8</span> Modularización de código mediante funciones definidas por el usuario: <strong>function my_function_name(){ … }</strong></h2>
+<h2><span class="header-section-number">11.9</span> Modularización de código mediante funciones definidas por el usuario: <strong>function my_function_name(){ … }</strong></h2>
 <p>En la sección anterior vimos varios ejemplos de <em>scripts</em> relativamente cortos y sencillos. Cuando los programas se hacen más largos y complejos, es fundamental escribir <strong>funciones definidas por el usuario</strong> para que el código sea más fácil de leer y mantener, contribuyendo a la modularidad y re-uso de código entre programas y dentro del mismo.</p>
 <ul>
 <li>Sintaxis para definición de una función (my_function_name) <code> function my_function_name([param1, param2, local_var1, local_var2 …]) { body-of-function } </code></li>
@@ -5759,7 +5897,7 @@ ATG GGG TGT TGT GGG TTG AAA GTG CCC GGG AAA TTA ATA ERROR: input triplet 14 = CA
 <li>Las funciones se pueden definir en cualquier punto del <em>script</em>, sea cerca de la cabecera o al final del mismo.</li>
 </ol>
 <div id="ejemplos-de-definición-y-llamadas-de-funciones-definidas-por-el-usuario" class="section level3">
-<h3><span class="header-section-number">11.8.1</span> Ejemplos de definición y llamadas de funciones definidas por el usuario</h3>
+<h3><span class="header-section-number">11.9.1</span> Ejemplos de definición y llamadas de funciones definidas por el usuario</h3>
 <ul>
 <li>La función <strong>delarray()</strong> elimina todos los elementos de un arreglo. Si bien en versiones recientes de <em>gawk</em> se puede usar <code>delete arr</code> para vaciar todo un arreglo, la función delarray() es más portable y nos evita tener que escribir el bucle cada vez que queremos vaciar un arreglo.</li>
 </ul>
@@ -5824,11 +5962,15 @@ BEGIN {
 </div>
 </div>
 <div id="awk-scripts---ejemplos-avanzados" class="section level2">
-<h2><span class="header-section-number">11.9</span> <strong><span class="math inline">\(awk\)</span> scripts</strong> - ejemplos avanzados</h2>
-<p>En esta sección les presentaré dos <em>scripts</em> más largos y complejos, que servirán para: 1. repasar todos los elementos sintácticos vistos anteriormente e introducir algunos nuevos 2. para mostrar cómo se estructura y modulariza código de AWK y cómo se usan estructuras de datos junto con estructuras de control, regexps y banderas para <em>parsear</em> archivos de estructura compleja</p>
-<p>Para aprender a programar, no basta con conocer los elementos sintácticos y algunos idiomas de los lenguajes. La manera más eficiente es estudiando código de programas significativos de cierta complejidad, modificándolo e incluso extendiendo su funcionalidad.</p>
+<h2><span class="header-section-number">11.10</span> <strong><span class="math inline">\(awk\)</span> scripts</strong> - ejemplos avanzados</h2>
+<p>En esta sección les presentaré dos <em>scripts</em> más largos y complejos, que servirán para:</p>
+<ol style="list-style-type: decimal">
+<li>repasar todos los elementos sintácticos vistos anteriormente e introducir algunos nuevos</li>
+<li>mostrar cómo se estructura y modulariza código de AWK y cómo se usan <strong>estructuras de datos complejas</strong> junto con estructuras de control, regexps y banderas para <em>parsear</em> archivos de estructura más compleja como son los de formato GenBank.</li>
+</ol>
+<p>Para aprender a programar, no basta con conocer los elementos sintácticos y algunos idiomas de los lenguajes. La manera más eficiente es estudiando código de programas significativos de cierta complejidad, modificándolos e incluso extendiendo su funcionalidad. Espero que <strong>fasta_toolkit.awk</strong> y <strong>extract_CDSs_from_GenBank.awk</strong> te sean de utilidad en este sentido, además de servirte como herramientas para el trabajo rutinario en bioinformática.</p>
 <div id="fasta_toolkit.awk-un-script-multifuncional-para-mainpular-archivo-fasta-que-hace-uso-de-getopt" class="section level3">
-<h3><span class="header-section-number">11.9.1</span> <strong>fasta_toolkit.awk</strong>, un <em>script</em> multifuncional para mainpular archivo FASTA que hace uso de <strong>getopt()</strong></h3>
+<h3><span class="header-section-number">11.10.1</span> <strong>fasta_toolkit.awk</strong>, un <em>script</em> multifuncional para mainpular archivo FASTA que hace uso de <strong>getopt()</strong></h3>
 <p>Les presento el <em>script</em> <code>fasta_toolkit.awk</code>. Es más largo que los anteriores, pero aún relativamente sencillo. Integra múltiples funciones para manipular archivos multi-FASTA de DNA. Este <em>script</em> les será de utilidad en su trabajo rutinario con secuencias (lo usaremos por ejemplo en las prácticas de BLAST de la LCG y en secciones posteriores de este tutorial).</p>
 <p>En particular, el <em>script</em> tiene por objetivo enseñarles cómo <strong>modularizar el código</strong> mediante el uso de <strong>funciones definidas por el usuario</strong></p>
 <p>El <em>script</em> <strong>fasta_toolkit.awk</strong> implementa funciones para realizar las siguientes operaciones sobre archivos multi-FASTA de DNA:</p>
@@ -5879,7 +6021,7 @@ BEGIN {
     2. prints results to STDOUT</code></pre>
 <p>Veamos ahora las secciones del <em>script</em> <strong>fasta_toolkit.awk</strong></p>
 <div id="cabecera-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.9.1.1</span> Cabecera de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.10.1.1</span> Cabecera de fasta_toolkit.awk</h4>
 <p>Simplemente describe la funcionalidad y opciones del <em>script</em></p>
 <pre><code>#!/usr/bin/awk -f
 
@@ -5901,7 +6043,7 @@ BEGIN {
 </code></pre>
 </div>
 <div id="funciones-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.9.1.2</span> Funciones de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.10.1.2</span> Funciones de fasta_toolkit.awk</h4>
 <p>Las funciones pueden ser definidas en cualquier parte del programa. En este caso las he puesto hacia la cabecera del <em>script</em>, en el orden asignado a los “runmodes” definidos con la opción -R <int>. La función getopts() la he puesto junto con la de print_help() hacia el final del bloque de funciones para tenerlas más cerca del bloque BEGIN{}, donde se procesan las opciones.</p>
 <pre><code>#---------------------------------------------------------------------------------------------------------#
 # &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; FUNCTION DEFINITIONS &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; #
@@ -6119,7 +6261,7 @@ function print_help(prog, vers) # (prog, vers)
 </code></pre>
 </div>
 <div id="bloque-de-inicialización-begin-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.9.1.3</span> Bloque de inicialización BEGIN{} de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.10.1.3</span> Bloque de inicialización BEGIN{} de fasta_toolkit.awk</h4>
 <p>Este es un bloque BEGIN{} bastante más largo que otros mostrados en ejemplos anteriores.</p>
 <ol style="list-style-type: decimal">
 <li>Una primera sección define <code>PROCINFO[“sorted_in”] = “<span class="citation">@ind_num_asc</span>”</code> para que los fastas almacenados en hashes salgan ordenados por su índice numérico</li>
@@ -6239,7 +6381,7 @@ function print_help(prog, vers) # (prog, vers)
 </code></pre>
 </div>
 <div id="bloque-de-patronesacciones-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.9.1.4</span> Bloque de patrones/acciones de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.10.1.4</span> Bloque de patrones/acciones de fasta_toolkit.awk</h4>
 <p>El bloque de código que hace las llamadas a las funciones es relativamente corto, haciendo muy fácil y clara su lectura.</p>
 <p>1.Como hemos visto en múltiples ejemplos anteriores de <em>scripts</em> que procesan archivos FASTA modelando su estructura con <code>BEGIN{RS=“&gt;”; FS=OFS=“”}</code>, iniciamos el bloque de código principal con el patrón <code>NR &gt; 1</code> para eliminar el primer registro que está vacío. 2. Sigue un condicional que asegura que el usuario ha pasado al <em>script</em> un “runmode” definido en el mismo (-R <int> [1-5]). De ser así lee el FASTA mediante la función <strong>read_fasta()</strong>, capturando los registros en el <strong>hash global seqs</strong>. 3. Sigue un <strong>bloque END{}</strong> que llama a las funciones según el “runmode” que se le ha pasado al <em>script</em> (-R <int> [1-5]), siempre y cuando las secuencias no sean ridículamente cortas.</p>
 <pre><code># -------------------- # 
@@ -6280,7 +6422,7 @@ END {
 </code></pre>
 </div>
 <div id="ejemplos-de-uso-de-fasta_toolkit.awk" class="section level4">
-<h4><span class="header-section-number">11.9.1.5</span> Ejemplos de uso de fasta_toolkit.awk</h4>
+<h4><span class="header-section-number">11.10.1.5</span> Ejemplos de uso de fasta_toolkit.awk</h4>
 <p>Usaremos para los ejemplos el archivo <em>mini_CDS.fna</em></p>
 <pre class="bash"><code>cat mini_CDS.fna</code></pre>
 <pre><code>## &gt;mini_CDS1
@@ -6334,7 +6476,7 @@ END {
 </div>
 </div>
 <div id="extract_cdss_from_genbank.awk-un-script-hace-uso-avanzado-de-hashes-de-hashes-regexps-banderas-estructuras-de-control-y-funciones-para-el-parseo-y-transformación-de-archivos-genbank" class="section level3">
-<h3><span class="header-section-number">11.9.2</span> <strong>extract_CDSs_from_GenBank.awk</strong>, un <em>script</em> hace uso avanzado de <strong>hashes de hashes</strong>, <strong>regexps</strong>, <strong>banderas</strong>, <strong>estructuras de control</strong> y <strong>funciones</strong> para el parseo y transformación de archivos GenBank</h3>
+<h3><span class="header-section-number">11.10.2</span> <strong>extract_CDSs_from_GenBank.awk</strong>, un <em>script</em> hace uso avanzado de <strong>hashes de hashes</strong>, <strong>regexps</strong>, <strong>banderas</strong>, <strong>estructuras de control</strong> y <strong>funciones</strong> para el parseo y transformación de archivos GenBank</h3>
 <p>El <em>script</em> lee un archivo GenBank genera varios archivos a partir de él:</p>
 <ul>
 <li>una tabla con las coordenadas y cadena de cada CDS, indicando además su LOCUS, locus_tag, producto y si es un pseudogen</li>
@@ -6349,7 +6491,7 @@ END {
 <li>hace uso extensivo de <strong>banderas</strong>, <strong>estructuras de control</strong> y <strong>funciones</strong>, incluyendo funciones anidadas, para el <em>parseo</em> y transformación de archivos GenBank</li>
 </ol>
 <div id="cabecera-de-extract_cdss_from_genbank.awk" class="section level4">
-<h4><span class="header-section-number">11.9.2.1</span> Cabecera de <strong>extract_CDSs_from_GenBank.awk</strong></h4>
+<h4><span class="header-section-number">11.10.2.1</span> Cabecera de <strong>extract_CDSs_from_GenBank.awk</strong></h4>
 <p>Como de costumbre, da una sinopsis de uso del <em>script</em></p>
 <pre><code>#!/usr/bin/awk -f
 
@@ -6370,7 +6512,7 @@ END {
 #=========================================================================================================</code></pre>
 </div>
 <div id="bloque-begin-de-inicialización" class="section level4">
-<h4><span class="header-section-number">11.9.2.2</span> Bloque BEGIN{} de inicialización</h4>
+<h4><span class="header-section-number">11.10.2.2</span> Bloque BEGIN{} de inicialización</h4>
 <pre><code>BEGIN {   
     # Initializations
     DEBUG = 0  # set to 1 if debugging messages should be activated (prints to &quot;/dev/stderr&quot;)
@@ -6441,7 +6583,7 @@ END {
 <p>Los hashes <em>compl_nucl</em> y <em>codons</em> ya los vimos en <strong>fasta_toolkit.awk</strong></p>
 </div>
 <div id="el-bloque-de-patrón-acción" class="section level4">
-<h4><span class="header-section-number">11.9.2.3</span> El bloque de patrón-acción</h4>
+<h4><span class="header-section-number">11.10.2.3</span> El bloque de patrón-acción</h4>
 <p>Este bloque es relativamente largo y está dominado por el uso de <strong>expresiones regulares</strong> combinado con <strong>condicionales</strong> y el uso de <strong>flags</strong> o <strong>banderas</strong> para hacer el <em>parseo</em> de la información relevante sobre coordenadas, cadena y producto de los CDSs anotados un GenBank.</p>
 <p>Noten que toda la información extraída del GenBank se almacena en la estructura de datos compleja <code>CDSs_AoA</code>. Es un <strong>arreglo de arreglos</strong> (o si lo prefieren, <strong>hash de hashes</strong>) a medida que se van leyendo el o los registros de un archivo GenBank. El arreglo principal <code>CDSs_AoA</code> está indexado con un índice numérico guardado en geneID, el cual contiene como valor a 7 sub-arreglos o hashes, que guardan los elementos de anotación relevantes como <em>locus_tag</em>, <em>locus_id</em> … El campo <code>CDSs_AoA[geneID][“p”] = product</code> captura incluso texto que a veces se encuentra distribuido en dos líneas, como se muestra más abajo.</p>
 <pre><code>     # All the CDS&#39;s-relevant information parsed from the annotations 
@@ -6549,7 +6691,8 @@ $0 ~ /^LOCUS/, /^\s{4,}source\s{4,}/ { next }
         product = product &quot; &quot; prod_2cnd_line
         
         if(DEBUG)
-           print &quot;FNR=&quot; FNR, &quot;line_no=&quot;line_no, &quot;locus_tag=&quot;locus_tag, &quot;prod_2cnd_line=&quot;prod_2cnd_line &gt; &quot;/dev/stderr&quot;
+           print &quot;FNR=&quot; FNR, &quot;line_no=&quot;line_no, &quot;locus_tag=&quot;locus_tag, 
+                    &quot;prod_2cnd_line=&quot;prod_2cnd_line &gt; &quot;/dev/stderr&quot;
 
         if (pseudoflag) product = product &quot; [pseudogene]&quot;
 
@@ -7026,7 +7169,7 @@ ORIGIN
 </ul>
 </div>
 <div id="bloque-de-procesamiento-de-datos-capturados-en-el-arreglo-dna-y-el-hash-de-hashes-cdss_aoa-mediante-llamada-a-funciones" class="section level4">
-<h4><span class="header-section-number">11.9.2.4</span> Bloque de procesamiento de datos capturados en el arreglo <strong>dna</strong> y el <strong>hash de hashes CDSs_AoA</strong> mediante llamada a funciones</h4>
+<h4><span class="header-section-number">11.10.2.4</span> Bloque de procesamiento de datos capturados en el arreglo <strong>dna</strong> y el <strong>hash de hashes CDSs_AoA</strong> mediante llamada a funciones</h4>
 <p>Una vez terminado el parseo de datos, al terminar de leer el último registro del archivo GenBank, se comienza a procesar los datos almacenados en las estructuras de datos <strong>dna</strong> y <strong>CDSs_AoA</strong>. Esta última se procesa mediante múltiples funciones anidadas.</p>
 <p>Veamos el bloque:</p>
 <pre><code>END {
@@ -7060,8 +7203,9 @@ ORIGIN
        for (k in CDSs_AoA)
        {
            # 1. print the GBK file in tabular format to file gbk_tsv
-           printf &quot;%d\t%s\t%s\t%s\t%d\t%d\t%d\t%d\n&quot;, k, CDSs_AoA[k][&quot;LOCUS&quot;], CDSs_AoA[k][&quot;l&quot;], CDSs_AoA[k][&quot;p&quot;], 
-              CDSs_AoA[k][&quot;s&quot;], CDSs_AoA[k][&quot;e&quot;], CDSs_AoA[k][&quot;c&quot;], CDSs_AoA[k][&quot;pseudo&quot;] &gt;&gt; gbk_tsv
+           printf &quot;%d\t%s\t%s\t%s\t%d\t%d\t%d\t%d\n&quot;, k, CDSs_AoA[k][&quot;LOCUS&quot;], CDSs_AoA[k][&quot;l&quot;], 
+                     CDSs_AoA[k][&quot;p&quot;], CDSs_AoA[k][&quot;s&quot;], CDSs_AoA[k][&quot;e&quot;], CDSs_AoA[k][&quot;c&quot;], 
+                        CDSs_AoA[k][&quot;pseudo&quot;] &gt;&gt; gbk_tsv
     
            # 2. extract_sequence_by_coordinates, write CDSs.fna, translate CDSs and write proteome.faa
            extract_sequence_by_coordinates(CDSs_AoA[k][&quot;l&quot;]&quot; &quot;CDSs_AoA[k][&quot;p&quot;], seq, CDSs_AoA[k][&quot;s&quot;], 
@@ -7160,8 +7304,9 @@ ORIGIN
        for (k in CDSs_AoA)
        {
            # 1. print the GBK file in tabular format to file gbk_tsv
-           printf &quot;%d\t%s\t%s\t%s\t%d\t%d\t%d\t%d\n&quot;, k, CDSs_AoA[k][&quot;LOCUS&quot;], CDSs_AoA[k][&quot;l&quot;], CDSs_AoA[k][&quot;p&quot;], 
-              CDSs_AoA[k][&quot;s&quot;], CDSs_AoA[k][&quot;e&quot;], CDSs_AoA[k][&quot;c&quot;], CDSs_AoA[k][&quot;pseudo&quot;] &gt;&gt; gbk_tsv
+           printf &quot;%d\t%s\t%s\t%s\t%d\t%d\t%d\t%d\n&quot;, k, CDSs_AoA[k][&quot;LOCUS&quot;], CDSs_AoA[k][&quot;l&quot;], 
+                     CDSs_AoA[k][&quot;p&quot;], CDSs_AoA[k][&quot;s&quot;], CDSs_AoA[k][&quot;e&quot;], CDSs_AoA[k][&quot;c&quot;], 
+                        CDSs_AoA[k][&quot;pseudo&quot;] &gt;&gt; gbk_tsv
     
            # 2. extract_sequence_by_coordinates, write CDSs.fna, translate CDSs and write proteome.faa
            extract_sequence_by_coordinates(CDSs_AoA[k][&quot;l&quot;]&quot; &quot;CDSs_AoA[k][&quot;p&quot;], seq, CDSs_AoA[k][&quot;s&quot;], 
@@ -7227,7 +7372,7 @@ ORIGIN
 ... TRUNCATED</code></pre>
 </div>
 <div id="bloque-de-funciones-de-extract_cdss_from_genbank.awk" class="section level4">
-<h4><span class="header-section-number">11.9.2.5</span> Bloque de funciones de <strong>extract_CDSs_from_GenBank.awk</strong></h4>
+<h4><span class="header-section-number">11.10.2.5</span> Bloque de funciones de <strong>extract_CDSs_from_GenBank.awk</strong></h4>
 <p>Se trata de funciones sencillas, la mayoría de las cuales conocemos de <em>scripts</em> anteriores, pero tal vez valga la pena resaltar lo siguiente:</p>
 <ol style="list-style-type: decimal">
 <li><strong>extract_sequence_by_coordinates()</strong> hace la mayor parte del trabajo, escribiendo a disco los CDSs en formato FASTA, después de recortar con <code>substr()</code> la secuencia de la cadena de DNA usando las coordenadas correspondientes <code>print “&gt;”header“”substr(dna_seq, start, end) &gt;&gt; outfile</code>, siempre y cuando no se trate de secuencias para las que haya que calcular la reversa-complementaria.</li>
@@ -7404,7 +7549,7 @@ function print_help(prog, vers)
 #---------------------------------------------------------------------------------------------------------</code></pre>
 </div>
 <div id="llamada-al-script-extract_cdss_from_genbank.awk" class="section level4">
-<h4><span class="header-section-number">11.9.2.6</span> Llamada al script <strong>extract_CDSs_from_GenBank.awk</strong></h4>
+<h4><span class="header-section-number">11.10.2.6</span> Llamada al script <strong>extract_CDSs_from_GenBank.awk</strong></h4>
 <p>Como vimos en <em>scipts</em> anteriores, llamando a <strong>extract_CDSs_from_GenBank.awk</strong> sin argumentos nos imprime su ayuda.</p>
 <code>./extract_CDSs_from_GenBank.awk</code>
 <pre>
@@ -7444,8 +7589,8 @@ function print_help(prog, vers)
 ## # wrote file Salmonella_enterica_33676_pIncAC_proteome.faa
 ## 
 ## real 0m0.081s
-## user 0m0.077s
-## sys  0m0.005s</code></pre>
+## user 0m0.081s
+## sys  0m0.000s</code></pre>
 <ul>
 <li>Veamos las primeras líneas de cada archivo
 <ul>
@@ -7552,7 +7697,7 @@ grep &#39;&gt;&#39; data/_Shigella_boydii_CDC_3083_94_uid15637.fsa</code></pre>
 </div>
 </div>
 <div id="retos-de-programación-awk" class="section level2">
-<h2><span class="header-section-number">11.10</span> Retos de programación <span class="math inline">\(awk\)</span></h2>
+<h2><span class="header-section-number">11.11</span> Retos de programación <span class="math inline">\(awk\)</span></h2>
 <ol style="list-style-type: decimal">
 <li>Transforma en funciones a los <em>oneliners</em> mostrados más arriba que convierten un archivo fasta a formato FASTAB (nómbrala <em>fas2tab</em>) y a su contraparte, el que lo regresa a formato FASTA, nómbralo <em>tab2fas</em>, y agrégalos al <em>script</em> <strong>fasta_toolkit.awk</strong></li>
 <li>Modifica el <em>one-liner</em> que concatena múltiples archivos FASTA para que corra como un <span class="math inline">\(script\)</span> autocontenido, que puedas invocar como <em>concat_fastas.awk</em></li>
@@ -7561,7 +7706,8 @@ grep &#39;&gt;&#39; data/_Shigella_boydii_CDC_3083_94_uid15637.fsa</code></pre>
 <p>En todos los casos, los <span class="math inline">\(scripts\)</span> deben imprimir información sobre su uso y morir grácilmente si hubiera algún error. Trata de usar la función <em>getopt()</em> en los casos que creas adecuado.</p>
 </div>
 <div id="tutoriales-recomendados-para-profundizar-en-awk" class="section level2">
-<h2><span class="header-section-number">11.11</span> Tutoriales recomendados para profundizar en AWK</h2>
+<h2><span class="header-section-number">11.12</span> Tutoriales recomendados para profundizar en AWK</h2>
+<p>¡¡¡Enhorabuena, ya has aprendido a programar en <strong>AWK</strong>, desde sencillos <em>1liners</em> a <em>scripts</em> complejos!!!</p>
 <p>Espero haberles convencido de que aprender <span class="math inline">\(AWK\)</span> es muy valioso, fácil y redituable. Es un lenguaje compacto que puedes aprender en un fin de semana dedicado a ello. No sólo te convertirá rápidamente en un usuario avanzado del <span class="math inline">\(Shell\)</span>, sino que te permitirá apreciar y aprovechar mucho mejor su poder, versatilidad y belleza.</p>
 <ul>
 <li><a href="https://ferd.ca/awk-in-20-minutes.html">tutorial de unos 20 min</a></li>
@@ -7925,7 +8071,7 @@ ubicación=CDMX
 dat=$(date | awk &#39;{print $2&quot;-&quot;$3&quot;-&quot;$4}&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in &lt;$wkdir&gt; at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;26-dic-2020&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;27-dic-2020&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2">
 <h2><span class="header-section-number">13.3</span> Modificación de variables y operaciones con ellas</h2>
@@ -8025,7 +8171,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 26 13:20 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 00:04 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -8211,14 +8357,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  2222 dic 26 13:20 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  1131 dic 26 13:20 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 dic 26 13:20 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 dic 26 13:20 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 dic 26 13:20 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 dic 26 13:20 recA_B_yuanmingense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 dic 26 13:20 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 dic 26 13:20 recA_B_liaoningense.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 dic 27 00:04 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 dic 27 00:04 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 dic 27 00:04 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 dic 27 00:04 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 dic 27 00:04 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 dic 27 00:04 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 dic 27 00:04 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 dic 27 00:04 recA_B_yuanmingense.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -8349,9 +8495,9 @@ echo &quot;$contador líneas contienen el patrón $patron&quot;
 <pre class="bash"><code>while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 23104
-## 8044
-## 19824</code></pre>
+<pre><code>## 30514
+## 29784
+## 21892</code></pre>
 <p>Los bucles <span class="math inline">\(until\)</span> son útiles para ejecutar un bucle hasta que se cumpla o no una determinada condición.</p>
 <p>Su sintaxis es idéntica al del bucle <span class="math inline">\(while\)</span>.</p>
 <p><code>until TEST-COMMAND; do CONSEQUENT-COMMANDS; done</code></p>
@@ -8359,9 +8505,9 @@ while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; bre
 <pre class="bash"><code>until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 22127
-## 5569
-## 12505</code></pre>
+<pre><code>## 31045
+## 22985
+## 8149</code></pre>
 </div>
 </div>
 <div id="estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" class="section level2">
@@ -9045,8 +9191,8 @@ fi
 </ol>
 </div>
 </div>
-<div id="programando-un-pipeline-en-bash-en-construcción" class="section level1">
-<h1><span class="header-section-number">15</span> Programando un pipeline en <span class="math inline">\(Bash\)</span> (en construcción …)</h1>
+<div id="programando-un-pipeline-en-bash" class="section level1">
+<h1><span class="header-section-number">15</span> Programando un pipeline en <span class="math inline">\(Bash\)</span></h1>
 <p>Para finalizar este tutorial, revisaremos el <span class="math inline">\(script\)</span> <em>run_phylip.sh</em>. Es un poco más largo y complejo que los anteriores e integra muchos de los aspectos mostrados en secciones anteriores.</p>
 <p>Cuando estamos aprendiendo a programar, es muy importante leer mucho código bien escrito. No se aprende a programar bien sólo conociendo la sintaxis y generalidades, sino viendo cómo se pueden escribir programas completos de manera limpia, fácil de leer, mantener y modificar. Estos atributos, junto con el buen juicio y principios de programación, incluyendo la modularización en funciones, documentación adecuada de cada componente, incluyendo la interfaz de usuario, son los que debemos desarrollar. El estudio detallado e imitación de buenos programas es lo que más rápidamente nos lleva a escribir mejores programas.</p>
 <p>El <span class="math inline">\(script\)</span> <em>run_phylip.sh</em>, además de útil para hacer análisis filogenéticos basados en matrices de distancias, te presenta código que implementa buenas prácticas de programación <span class="math inline">\(Bash\)</span>.</p>
@@ -11234,6 +11380,7 @@ Y
 <h1><span class="header-section-number">16</span> Consideraciones finales y referencias recomendadas para continuar aprendiendo programación <span class="math inline">\(Shell\)</span></h1>
 <p>Llegamos al final de este tutorial, ¡¡¡enhorabuena!!! Has aprendido mucho, pero lo bueno es que todavía queda un largo camino por andar.</p>
 <p><span class="math inline">\(Bash\)</span> sin duda es muy útil si vas a usarlo como <em>lenguaje pegamento</em> para conectar múltiples utilerías o programas como demuestra el <span class="math inline">\(script\)</span> <em>run_phylp.sh</em> que presentamos en la sección anterior, pero no es el apropiado para escribir programas complejos que tienen que hacer procesamiento numérico, gráfico, estadístico de datos, interactuar con bases de datos, <em>parsear</em> archivos de estructura compleja, etc. Para ello deberás aprender otros lenguajes más poderosos, capaces de manejar estructuras de datos complejas (multidimensionales como hashes de hashes, arreglos de hashes, etc.) y que disponen de repositorios gigantescos de librerías o paquetes especializados de código para todo lo que puedas imaginar. Pero aprender primero <span class="math inline">\(Shell\)</span> y <span class="math inline">\(AWK\)</span> es sin duda lo mejor que puedes hacer para iniciarte en la programación en sistemas UNIX o GNU/Linux. Te facilitará el camino posterior y te permitirá dominar el sistema operativo, ya que el <span class="math inline">\(Shell\)</span> es su interfaz programática.</p>
+<p>Sabiendo <span class="math inline">\(Bash\)</span> y <span class="math inline">\(AWK\)</span> te será muy fácil entender <a href="https://www.perl.org/"><span class="math inline">\(Perl\)</span></a>, que con sus <a href="https://www.cpan.org/">25,000 paquetes en el repositorio CPAN</a>, sería una excelente elección como siguiente lenguaje a aprender. Sin duda <a href="https://www.python.org/">python</a> y <a href="https://cran.r-project.org/">R</a> hay que añadirlos a la lista también.</p>
 <p>Recomiendo las siguientes guías para apoyarte en tu proceso de aprendizaje del <span class="math inline">\(Shell\)</span>. Disfruta el camino, saludos!</p>
 <ul>
 <li><a href="https://www.gnu.org/software/gawk/manual/gawk.html">The GNU Awk User’s Guide</a></li>
