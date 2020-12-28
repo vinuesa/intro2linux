@@ -19,14 +19,14 @@
 BEGIN {   
     # Initializations
     DEBUG = 0  # set to 1 if debugging messages should be activated (prints to "/dev/stderr")
-    start=end=complflag=pseudoflag=line_no=0
-    product=locus_tag=locus_id=seq=""
     
     # print the FASTA sequences stored in hashes in ascending order by locus_tag number 
     PROCINFO["sorted_in"] = "@ind_num_asc"
     
     progname="extract_CDSs_from_GenBank.awk"
-    VERSION=0.4 # v0.4 Dec 26, 2020; prints also the CDS's translation products to file
+    VERSION=0.5 # v0.5 Dec 28, 2020; slightly more streamlined (awkish) code, by using more awk defaults (avoid $0 ~ /regexp/, etc)
+                #    prints LOCUS_length to *tsv file using a nested AoA as the 1ary dna AoA key: dna[CDSs_AoA[k]["LOCUS"]]["len"]
+                # v0.4 Dec 26, 2020; prints also the CDS's translation products to file
                 # v0.3 Dec 25, 2020; correctly appends the [pseudogene] label to the end of the product line
                 # v0.2 Dec 24, 2020; now captures full product name, even when split over two lines
                 # v0.1 Dec 23, 2020; first commit
@@ -82,14 +82,14 @@ BEGIN {
 # Capture the locus ID on the first line to add to the FASTA header
 # Then skip all lines, from the first record (line) to the source FEATURE,
 # Note the use of an expr-REGEXP range: expr, /regexp/
-FNR == 1 || $0 ~ /^LOCUS/ { 
+FNR == 1 || /^LOCUS/ { 
    locus_id = $2 
    
    printf(">>> Processing LOCUS %s of %s ...\n", locus_id, FILENAME) > "/dev/stderr"
 }
 
 # skip lines until the source attribute of the FEATURES block is reached
-$0 ~ /^LOCUS/, /^\s{4,}source\s{4,}/ { next }
+/^LOCUS/, /^\s{4,}source\s{4,}/ { next }
 
 {
   # Exclude pseudogenes, indicated by truncated gene coordinates with [<>], 
@@ -145,11 +145,11 @@ $0 ~ /^LOCUS/, /^\s{4,}source\s{4,}/ { next }
      
      # All the CDS's-relevant information parsed from the annotations 
      #   will be stored in the CDSs_AoA (Array of Arrays)
-     CDSs_AoA[geneID]["l"] = locus_tag
-     CDSs_AoA[geneID]["LOCUS"] = locus_id
-     CDSs_AoA[geneID]["s"] = start
-     CDSs_AoA[geneID]["e"] = end
-     CDSs_AoA[geneID]["c"] = complflag
+     CDSs_AoA[geneID]["l"]      = locus_tag
+     CDSs_AoA[geneID]["LOCUS"]  = locus_id
+     CDSs_AoA[geneID]["s"]      = start
+     CDSs_AoA[geneID]["e"]      = end
+     CDSs_AoA[geneID]["c"]      = complflag
      CDSs_AoA[geneID]["pseudo"] = pseudoflag
 
      flag=complflag=0
@@ -164,7 +164,7 @@ $0 ~ /^LOCUS/, /^\s{4,}source\s{4,}/ { next }
      # Set DEBUG = 1 at the beginning of the BEGIN{} block
      #   to print all the second lines for producut names to "/dev/stderr"
      #if($0 ~/^\s+[[:alnum:] ]+\"$/)
-     if($0 ~/^\s+[a-zA-Z0-9\(\)\'\-,;: ]+"$/) # <== matches patterns like 'gene, ANT(3'')-Ia'
+     if( /^\s+[a-zA-Z0-9\(\)\'\-,;: ]+"$/ ) # <== matches patterns like 'gene, ANT(3'')-Ia'
      {
      	prod_2cnd_line = $0
      	gsub(/^\s+/, "", prod_2cnd_line)
@@ -172,7 +172,8 @@ $0 ~ /^LOCUS/, /^\s{4,}source\s{4,}/ { next }
      	product = product " " prod_2cnd_line
      	
      	if(DEBUG)
-     	   print "FNR=" FNR, "line_no="line_no, "locus_tag="locus_tag, "prod_2cnd_line="prod_2cnd_line > "/dev/stderr"
+     	   print "FNR=" FNR, "line_no="line_no, "locus_tag="locus_tag, 
+	          "prod_2cnd_line="prod_2cnd_line > "/dev/stderr"
 
      	if (pseudoflag) product = product " [pseudogene]"
 
@@ -198,28 +199,27 @@ $0 ~ /^LOCUS/, /^\s{4,}source\s{4,}/ { next }
   #  remove also the single spaces between 10 bp sequence strings
   if (/^ORIGIN/) { flag = 1; seq = ""; next }
   
-  if(flag && $0 ~ /^\s+[[:digit:]]+\s+[AGCTNagctn\s]+/)
+  if(flag && /^\s+[[:digit:]]+\s+[AGCTNagctn\s]+/)
   {   
-     sub(/^\s+[[:digit:]]+\s+/, "", $0)
-     gsub(/\/\//, "", $0)
-     gsub(/[[:space:]]/, "", $0)
+     sub(/^\s+[[:digit:]]+\s+/, "")
+     gsub(/\/\//, "")
+     gsub(/[[:space:]]/, "")
 
      seq = seq $0
   }
 
   # fill the dna hash, once we have reached the end of record mark '//'
-  if(flag && $0 ~ /^\/\/$/)
+  if(flag && /^\/\/$/)
   {
-     # save the genbank's DNA string in the dna array, indexed by LOCUS
+     # save the genbank's DNA string and lenght in the dna array of arrays, 
+     # indexed by [locus_id]["seq"] and [locus_id]["len"], respectively
      seq = toupper(seq)
-     dna[locus_id] = seq
-     
+     dna[locus_id]["seq"] = seq
+     dna[locus_id]["len"] = length(seq)
      flag = 0
      locus_id=""
   }
 }
-
-
 # ------------------------------- END OF PATTERN-ACTION BLOCK -----------------------------------#
 
 END {
@@ -241,8 +241,7 @@ END {
        rm_if_exists(gbk_tsv)
     
        # print GBK table header for gbk_tsv
-       print "CDS_no\tLOCUS\tlocus_tag\tproduct_description\tstart\tend\tcomplement\tpseudogene" > gbk_tsv
-    
+       print "CDS_no\tLOCUS\tLOCUS_length\tlocus_tag\tproduct_description\tstart\tend\tcomplement\tpseudogene" > gbk_tsv
     
        # if exists, rm the FASTA file holding CDSS, since the script appends to it
        #     (print stuff >> gbk_CDSs)
@@ -253,9 +252,10 @@ END {
        #      ii) and the CDSs to STDOUT
        for (k in CDSs_AoA)
        {
-           # 1. print the GBK file in tabular format to file gbk_tsv
-           printf "%d\t%s\t%s\t%s\t%d\t%d\t%d\t%d\n", k, CDSs_AoA[k]["LOCUS"], CDSs_AoA[k]["l"], CDSs_AoA[k]["p"], 
-        	  CDSs_AoA[k]["s"], CDSs_AoA[k]["e"], CDSs_AoA[k]["c"], CDSs_AoA[k]["pseudo"] >> gbk_tsv
+           # 1. print the GBK file in tabular format to file gbk_tsv; Nothe the use of an AoA as 1ary key to the dna AoA
+           printf "%d\t%s\t%d\t%s\t%s\t%d\t%d\t%d\t%d\n", k, CDSs_AoA[k]["LOCUS"], dna[CDSs_AoA[k]["LOCUS"]]["len"],
+	            CDSs_AoA[k]["l"], CDSs_AoA[k]["p"], CDSs_AoA[k]["s"], CDSs_AoA[k]["e"], 
+		      CDSs_AoA[k]["c"], CDSs_AoA[k]["pseudo"] >> gbk_tsv
     
            # 2. extract_sequence_by_coordinates, write CDSs.fna, translate CDSs and write proteome.faa
            extract_sequence_by_coordinates(CDSs_AoA[k]["l"]" "CDSs_AoA[k]["p"], seq, CDSs_AoA[k]["s"], 
@@ -269,10 +269,11 @@ END {
        #     (print stuff >> gbk_fsa)
        rm_if_exists(gbk_fsa)
 
-       # print the complete DNA sequence string of the input GenBank to file gbk_fsa
+       # print the complete DNA sequence strings for each LOCUS/record 
+       #  in the input GenBank to file gbk_fsa
        for (h in dna)
        {
-            printf ">%s\n%s\n", h, dna[h] >> gbk_fsa
+            printf ">%s\n%s\n", h, dna[h]["seq"] >> gbk_fsa
        }
        # report if the file was successfully written to disk
        print_if_exists(gbk_fsa)
@@ -302,6 +303,8 @@ END {
 function rm_if_exists(file,       cmd)
 {
     cmd="[ -s " file " ] && rm "file
+    #print cmd | "/bin/sh" # <-- symbolic link: bin/sh -> dash
+    #close("/bin/sh")
     print cmd | "/usr/bin/env bash"
     close("/usr/bin/env bash")
 }
