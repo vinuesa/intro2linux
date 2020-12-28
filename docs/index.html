@@ -412,20 +412,23 @@ summary {
 
 <h1 class="title toc-ignore">Tutorial de introducción al biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM; <a href="https://www.ccg.unam.mx/~vinuesa/" class="uri">https://www.ccg.unam.mx/~vinuesa/</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
-<h4 class="date">Versión: Sun Dec 27 13:29:12 2020</h4>
+<h4 class="date">Versión: Sun Dec 27 18:10:23 2020</h4>
 
 </div>
 
 <div id="TOC">
 <ul>
 <li><a href="#presentación"><span class="toc-section-number">1</span> Presentación</a><ul>
-<li><a href="#licencia-y-términos-de-uso"><span class="toc-section-number">1.1</span> Licencia y términos de uso</a></li>
-<li><a href="#el-proyecto-de-software-libre-gnu"><span class="toc-section-number">1.2</span> El Proyecto de Software Libre GNU</a><ul>
-<li><a href="#la-controversia-sobre-el-nombre-gnulinux-o-sólo-linux"><span class="toc-section-number">1.2.1</span> La controversia sobre el nombre: ¿GNU/Linux o sólo Linux?</a></li>
-<li><a href="#nota-de-agradecimiento-y-postura-personal"><span class="toc-section-number">1.2.2</span> Nota de agradecimiento y postura personal</a></li>
-<li><a href="#gnu---documentación-y-recursos"><span class="toc-section-number">1.2.3</span> GNU - Documentación y recursos <a rel="GNU.org" href="https://www.gnu.org/"><img alt="GNU" style="border-width:0" src="data:image/png;base64,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" /></a></a></li>
+<li><a href="#objetivos"><span class="toc-section-number">1.1</span> Objetivos</a></li>
+<li><a href="#licencia-y-términos-de-uso"><span class="toc-section-number">1.2</span> Licencia y términos de uso</a></li>
+<li><a href="#cómo-correr-los-ejemplos-de-este-manual"><span class="toc-section-number">1.3</span> ¿Cómo correr los ejemplos de este manual?</a></li>
+<li><a href="#cómo-obtener-la-última-versión-de-este-documento"><span class="toc-section-number">1.4</span> ¿Cómo obtener la última versión de este documento?</a></li>
+<li><a href="#el-proyecto-de-software-libre-gnu"><span class="toc-section-number">1.5</span> El Proyecto de Software Libre GNU</a><ul>
+<li><a href="#la-controversia-sobre-el-nombre-gnulinux-o-sólo-linux"><span class="toc-section-number">1.5.1</span> La controversia sobre el nombre: ¿GNU/Linux o sólo Linux?</a></li>
+<li><a href="#nota-de-agradecimiento-y-postura-personal"><span class="toc-section-number">1.5.2</span> Nota de agradecimiento y postura personal</a></li>
+<li><a href="#gnu---documentación-y-recursos"><span class="toc-section-number">1.5.3</span> GNU - Documentación y recursos <a rel="GNU.org" href="https://www.gnu.org/"><img alt="GNU" style="border-width:0" src="data:image/png;base64,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" /></a></a></li>
 </ul></li>
-<li><a href="#referencias-adicionales"><span class="toc-section-number">1.3</span> Referencias adicionales</a></li>
+<li><a href="#referencias-adicionales"><span class="toc-section-number">1.6</span> Referencias adicionales</a></li>
 </ul></li>
 <li><a href="#primer-contacto-con-un-sistema-linux---navegación-del-sistema"><span class="toc-section-number">2</span> Primer contacto con un sistema Linux - navegación del sistema</a><ul>
 <li><a href="#conexión-a-un-servidor-y-exploración-de-sus-características-básicas"><span class="toc-section-number">2.1</span> Conexión a un servidor y exploración de sus características básicas</a><ul>
@@ -708,17 +711,35 @@ summary {
 
 <div id="presentación" class="section level1">
 <h1><span class="header-section-number">1</span> Presentación</h1>
-<p>Este apunte fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) para diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
+<p>Este documento fue creado por <a href="http://www.ccg.unan.mx/~vinuesa/">Pablo Vinuesa, CCG-UNAM</a> (<a href="https://twitter.com/pvinmex">twitter: @pvinmex</a>) a partir de material previo, presentado en diversos cursos y talleres, como <a href="http://congresos.nnb.unam.mx/TIB2019/t3-analisis-comparativo-de-genomas-microbianos-pangenomica-y-filoinformatica/">Taller 3 - Análisis comparativo de genomas microbianos: Pangenómica y filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de México</a>, del 29 de julio al 2 de agosto de 2019.</p>
 <p>Las versión actual (v.2020-12-27) contiene extensiones y adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>, así como para el curso de introducción a Linux que imparto en la <a href="https://www.lcg.unam.mx/">Licenciatura en Ciencias Genómicas - LCG de la UNAM</a>.</p>
 <p>Si éste es tu primer contacto con Linux, te recomiendo que leas primero esta <a href="https://github.com/vinuesa/intro2linux/blob/master/docs/intro_biocomputo_Linux.pdf">presentación sobre introducción al biocómputo en sistemas Linux - PDF</a>.</p>
+<div id="objetivos" class="section level2">
+<h2><span class="header-section-number">1.1</span> Objetivos</h2>
+<p>Este documento sirve tanto como un <strong>tutorial completo de iniciación a la programación en <span class="math inline">\(awk\)</span> y <span class="math inline">\(shell\)</span> para bioinformática</strong> para los que no han tenido contacto previo con un sistema UNIX o GNU/Linux, así como <strong>referencia para usuarios avanzados</strong>.</p>
+<p>Como muestra el <a href="https://vinuesa.github.io/intro2linux/index.html">índice</a>, el tutorial avanza desde los aspectos más elementales de navegación del sistema y tuberías de filtrado de texto, a los avanzados. Contiene muchísimos ejemplos prácticos que abarcan programas simples pero siempre útiles para ejecutar en la consola de comandos (<em>1liners</em>) a <em>scripts</em> aptos para el trabajo de investigación en el área como <a href="https://vinuesa.github.io/intro2linux/index.html#fasta_toolkit.awk-un-script-multifuncional-para-mainpular-archivo-fasta-que-hace-uso-de-getopt"><strong>fasta_toolkit.awk</strong></a>, <a href="https://vinuesa.github.io/intro2linux/index.html#extract_cdss_from_genbank.awk-un-script-hace-uso-avanzado-de-hashes-de-hashes-regexps-banderas-estructuras-de-control-y-funciones-para-el-parseo-y-transformaci%C3%B3n-de-archivos-genbank"><strong>extract_CDSs_from_GenBank.awk</strong></a> y <a href="https://vinuesa.github.io/intro2linux/index.html#el-script-run_phylip.sh"><strong>run_phylip.sh</strong></a>, que hacen uso de funciones, banderas y estructuras de control de flujo, estrucuturas de datos complejas, menús de usuario, y muchos otros atributos propios de programas profesionales. Estos ejemplos te servirán para aprender a programar herramientas bioinformáticas robustas y modulares, siguiendo mejores prácticas. El tutorial te enseña el uso práctico de todos los elementos sintácticos implementados en dichos <em>scripts</em>, los cuales puedes descargar de este <a href="https://github.com/vinuesa/intro2linux">repositorio GitHub</a>. Estos programas están detalladamente descritos en este documento.</p>
+</div>
 <div id="licencia-y-términos-de-uso" class="section level2">
-<h2><span class="header-section-number">1.1</span> Licencia y términos de uso</h2>
+<h2><span class="header-section-number">1.2</span> Licencia y términos de uso</h2>
 <p>Este material didáctico lo distribuyo públicamente a través de este <a href="https://github.com/vinuesa/intro2linux">repositorio GitHub intro2linux</a> bajo la <a href="https://creativecommons.org/licenses/by-nc/4.0/"><strong>Licencia No Comercial Creative Commons 4.0</strong></a></p>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAAAfCAMAAABUFvrSAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAEZ0FNQQAAsY58+1GTAAAAAXNSR0IB2cksfwAAAblQTFRF////////////////8fHx7+/v4+Pj39/f1tXV09bS0tXS0tXR0dTR0dTQ0NTQ0NPPz9PPztLOztHNzdHNzdHMz8/PzdDMzNDMzNDLzM/Ly8/Ly8/Ky87Kys3Jyc3Jyc3IyMzIyMzHx8vHxsrGxsrFxcnFyMfHxcnExMnExMjDw8jDxMfDw8fCwsfCwcXAwMXAwMW/wMS/v8S+v8O+vsO+vsK9vcK9vcK8v7+/vMG8vMG7vMC8u8C7u8C6ur+6ur+5ub65ub64uL23t7y2urm5tru1tbq0tLqztLmzs7iysrixsrexsbewsbawsLavsLWvr7Wur7SusLOvrrStrrOtr7KvrbOsrLKrr6+vq7GqrKurn6OenqCdn5+fnp2dmpiZlpmWk5iTkZSRkZORkY+Pj4+PiYyJjIqLh4aHhIaEhIWEgoWChIGCgICAfX98fH98fnt8eXx5eHV2dnN0dXJzcHJvcHBwaGVmYGBgXV5dWldYUFFQUFBQQ0RDQEBAPj8+Pzs8NTY1MjMxMjExMDAwMS0uKSkpKCkoKCUmIx8gICAgHxscGxsbGRkZEBAQDg4ODQ4NDQwNAAAABjFVaAAAAAN0Uk5TAAoO5yEBUwAAA5NJREFUeNq1lo930lYUx7NdaUprjKZzQIlFHJtSGVarg+E6Slmx2OpwOihqt1mqm27oGJNh+VG3pbCwGvH7F+8kAUpC6Jl4+g4575xveJ933/e+d1+Y93EojWGARDwWuRyc9XlnRJfD4XKf8vr8wfnIYjyRXPv6djqdyb59Axgk4tHQxYDP4xZ4bsJunzjKC9MeX2AuFFXJqdvpzEhkBvFo6IL/jChwT2ptdRHt2mPuhNt7LvhZNJ64fjN1pxtyoaG+bhTMDEsdDGKhC36vk8/t7Ru0t8k7PGeDocX4yurNTsgPmkC9VKoDzQf9hCE6GEQu+r0OrgJAKefD4XxZAVA5/4Hn3Fwktpxc00O+9xpVloiIreJ1H2GYDgaXA2ecKlfJ20hvGwrQPO/wBuYXlhJayNlsE2UiAtTXaO4DdH1r26yDQdAn8hVAYqnXbBJQ4d2+YCi2nLxxK53JFFAd74Kpip6fBfz9PdHWqzfFMYOugmdPCzlAshEZyZsnPP5LC/Frq6k7mUwDffOyaHTHN/CP/PIP5H/CXYOugn1ubg/KSTI0m4I9btoX/DyWuK56gbqqlqEtnOroja///pssy8WxcaOugr1TT4A8mdoG8FjwBq5El5M3VHCJNCd0L0r74BLRJ0UAxXGDroJnjteg2IjC1Xo9r3cPiUhBjT+lerGydutgMNFYcVeWt78ygUWurS4wrO3g+rrWldVlt4+6z859sXRtLXWQFUR05Dsal2VZfmm0wjUJPCSS0GLDrQ0JErve2tC8mHD5gpGlxGoq3U2eHrAheSzRtry7i+LdX/81Js9pB8LqmLw+tGN3GLA7PuqCC6iS9XarEo398urN1pGB7fa/wP0HpDR4QH7cNusGK2wnW3kJktqZrRjlSHeS18laL3kltDmxl7xs9l4TkMolyVyEhujadqtAod52W69rHbVQ42f8l77Ut9soZdM7ldO8sDogn15ZXE7qVejtC/3H2pFmDz7So4BnTwv3rYpQTvDMzi/EV7QiNAoYz0T+BSD1lSFWK5viz+90TQN47jrWX+hteQX4k3M+w7uC8dRx7IXpauI+/MH0T/18QH/6df0hsgDjqYu/33+Z5ninmQvq/Ghgwo5KFmA8FwUu173+NzlBHPShWzYHJySL6bpg/PWte+o4N2m3T3K8MP3NzqBp1kZ0bRgWMYCdR1dFl9PpEq8+2rHKxvCID/D4ML4K3zsk7n9pO/RNngRtJQAAAABJRU5ErkJggg==" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0</a></p>
 <p><a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html"><img alt="GNU General Public License v3" style="border-width:0" src="data:image/png;base64,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" /></a><br /> El código se distribuye bajo la licencia <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a></p>
 </div>
+<div id="cómo-correr-los-ejemplos-de-este-manual" class="section level2">
+<h2><span class="header-section-number">1.3</span> ¿Cómo correr los ejemplos de este manual?</h2>
+<p>Idealmente debes tener acceso local o remoto a una máquina UNIX o GNU/Linux. Si tienes una máquina Windows, otra opción es instalar <a href="https://mobaxterm.mobatek.net/download-home-edition.html">mobaXterm home edition</a>, como se explica en el esta <a href="https://github.com/vinuesa/intro2linux#instalaci%C3%B3n-de-mobaxterm-en-m%C3%A1quinas-windows-para-poder-establecer-sesiones-ssh-a-un-servidor">sección README del repositorio</a></p>
+</div>
+<div id="cómo-obtener-la-última-versión-de-este-documento" class="section level2">
+<h2><span class="header-section-number">1.4</span> ¿Cómo obtener la última versión de este documento?</h2>
+<p>Tienes básicamente 2 opciones:</p>
+<ol style="list-style-type: decimal">
+<li>clonar el <a href="https://github.com/vinuesa/intro2linux">repositorio intro2linux</a> y correr con frecuencia el comando <code>git pull</code>, como se explica en el <a href="https://github.com/vinuesa/intro2linux">REAEME del repo</a></li>
+<li>navegar y/o descargar directamente el <a href="https://vinuesa.github.io/intro2linux/index.html">archivo html del manual</a></li>
+</ol>
+<p>La primera es la más conveniente, ya que no sólo descargas el <a href="https://vinuesa.github.io/intro2linux/index.html">archivo html del manual</a> sino todos los <em>scripts</em> y datos asociados para que puedas seguir cada ejemplo.</p>
+</div>
 <div id="el-proyecto-de-software-libre-gnu" class="section level2">
-<h2><span class="header-section-number">1.2</span> El Proyecto de Software Libre GNU</h2>
+<h2><span class="header-section-number">1.5</span> El Proyecto de Software Libre GNU</h2>
 <p><a href="mailto:Bienvenid@s" class="email">Bienvenid@s</a> al mundo de cómputo y software libre del <a href="https://www.gnu.org/">proyecto GNU</a>. Antes de empezar este tutorial, sugiero que te informes sobre lo que es el proyecto <a href="https://www.gnu.org/">GNU</a>, iniciado por <a href="https://en.wikipedia.org/wiki/Richard_Stallman">Richard Stallman (<em>rms</em>)</a> en 1983 y desarrollado por una enorme comunidad de programadores, y su relación con Linux, para formar el sistema de cómputo libre <a href="https://www.gnu.org/gnu/linux-and-gnu.html">GNU/Linux</a>.</p>
 <p>Así lo explica <em>rms</em> en su artículo <a href="https://www.gnu.org/gnu/linux-and-gnu.es.html">Linux y el sistema GNU</a>, del que cito los primeros dos párrafos abajo:</p>
 <p><em> Muchos usuarios de ordenadores ejecutan a diario, sin saberlo, una versión modificada del sistema GNU. Debido a un peculiar giro de los acontecimientos, a la versión de GNU ampliamente utilizada hoy en día se la llama a menudo «Linux», y muchos de quienes la usan no se dan cuenta de que básicamente se trata del sistema GNU, desarrollado por el proyecto GNU.</p>
@@ -732,7 +753,7 @@ summary {
 <li><a href="https://www.gnu.org/gnu/linux-and-gnu.html">la relación entre GNU y Linux</a></li>
 </ul>
 <div id="la-controversia-sobre-el-nombre-gnulinux-o-sólo-linux" class="section level3">
-<h3><span class="header-section-number">1.2.1</span> La controversia sobre el nombre: ¿GNU/Linux o sólo Linux?</h3>
+<h3><span class="header-section-number">1.5.1</span> La controversia sobre el nombre: ¿GNU/Linux o sólo Linux?</h3>
 <p>Hay que aclarar que destacados miembros de la comunidad de desarrolladores de software libre esgrimen diversos argumentos por los que consideran que el sistema no se debe llamar <a href="https://en.wikipedia.org/wiki/GNU/Linux_naming_controversy">GNU/Linux</a>, favoreciendo el nombre de <em>Linux</em>.</p>
 <p>Sirva de ejemplo uno de los comentario de <a href="https://es.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a>:</p>
 <p><em> Umm, this discussion has gone on quite long enough, thank you very much. It doesn’t really matter what people call Linux, as long as credit is given where credit is due (on both sides). Personally, I’ll very much continue to call it “Linux”, …</p>
@@ -742,13 +763,13 @@ summary {
 <p>Es importante notar que muchas de las <a href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_Linux">distribuciones de Linux</a>, incluyendo <a href="https://ubuntu.com/">Ubuntu</a>, no siguen estrictamente el principio de software libre de GNU. Ubuntu, por ejemplo, incluye el repositorio <span class="math inline">\(restricted\)</span>, que contiene paquetes soportados por los desarrolladores de <a href="https://es.wikipedia.org/wiki/Ubuntu">Ubuntu</a> debido a su importancia, pero que no está disponible bajo ningún tipo de licencia libre. Ejemplos notables son los controladores propietarios de algunas tarjetas gráficas, como los de ATI y NVIDIA. Ello ha permitido que Ubuntu sea una de las distribuciones de Linux con mayor compatibilidad de <em>hardware</em> y facilidad de instalación. Por ello recomiendo y uso esta <em>distro</em>.</p>
 </div>
 <div id="nota-de-agradecimiento-y-postura-personal" class="section level3">
-<h3><span class="header-section-number">1.2.2</span> Nota de agradecimiento y postura personal</h3>
+<h3><span class="header-section-number">1.5.2</span> Nota de agradecimiento y postura personal</h3>
 <p>En lo personal, soy pragmático y agnóstico en lo que respecta a la controversia. Estoy muy agradecido a toda la comunidad por haber desarrollado, integrado y puesto a nuestra disposición esta maravilla de entorno de cómputo libre: <em>kernel</em>, sistema operativo y software. Por ello gustosamente doy crédito al proyecto <a href="https://www.gnu.org/">GNU</a> y al el núcleo o <a href="https://es.wikipedia.org/wiki/N%C3%BAcleo_Linux"><em>kernel</em></a>, desarrollado originalmente por <a href="https://es.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a> y conocido actualmente como <a href="https://www.kernel.org/">núcleo Linux</a>. Desde el año 2004 realizo todo mi trabajo en este entorno.</p>
 <p>Como académico coincido plenamente con la visión de <em>rms</em> en que <a href="https://audio-video.gnu.org/video/rms-education-es-high-sub.en.ogv">los centros de educación pública deberían de usar el entorno GNU/Linux</a>, idealmente desde la secundaria. En diversos lugares, notablemente en India, este mensaje de <em>rms</em> ha calado hondo. El estado de Kerala fue pionero: <a href="https://web.archive.org/web/20061208075556/http://www.financialexpress.com/fe_full_story.php?content_id=138464">desde 2006 toda la educación pública de Kerala se hace en en el entorno GNU/Linux</a>, habiendo eliminado Windows y software privativo de las escuelas estatales. Otros estados como Karnataka, Gujarat, Assam, West Bengal siguieron rápidamente el ejemplo, incorporando <a href="https://www.gnu.org/home.es.html#mission-statement">software libre y código fuente abierto - OSS´</a> como una clave de sus sistemas educativos. Es una tendencia respaldada actualmente por el gobierno Indio, como pueden leer aquí: <a href="https://www.ripublication.com/ijaer18/ijaerv13n16_44.pdf">Adoption of Free and Open Source Software in India</a>. El resultado es contundente - la India es actualmente una potencia mundial en cómputo y matemáticas.</p>
 <p>Mi modesta pero activa manera de contribuir a la promoción del uso de <a href="https://es.wikipedia.org/wiki/Software_libre_y_de_c%C3%B3digo_abierto">software libre y código fuente abierto</a> en México y Latinoamérica es <a href="https://www.ccg.unam.mx/~vinuesa/cursos.html">divulgando el uso del ambiente de cómputo GNU/Linux a alumnos universitarios mediante cursos en diversos países de habla hispana</a>, y promoviendo su implementación en la universidad, particularmente en la <a href="https://www.lcg.unam.mx/">LCG-UNAM</a>. Me referiré a este ambiente de cómputo con ambos nombres (GNU/Linux y Linux), para expresar mi neutralidad al respecto de la controversia arriba mencionada, aunque tiendo a preferir el uso de GNU/Linux para remarcar el crédito a todos los componentes de esta extraordinaria “simbiosis”.</p>
 </div>
 <div id="gnu---documentación-y-recursos" class="section level3">
-<h3><span class="header-section-number">1.2.3</span> GNU - Documentación y recursos <a rel="GNU.org" href="https://www.gnu.org/"><img alt="GNU" style="border-width:0" src="data:image/png;base64,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" /></a></h3>
+<h3><span class="header-section-number">1.5.3</span> GNU - Documentación y recursos <a rel="GNU.org" href="https://www.gnu.org/"><img alt="GNU" style="border-width:0" src="data:image/png;base64,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" /></a></h3>
 <p>Todo software de calidad debe de estar bien documentado. Sin duda la <a href="https://www.gnu.org/manual/manual.html">documentación del software GNU</a> es extraordinaria. No dejes de visitar al menos estos recursos:</p>
 <ul>
 <li><a href="https://www.gnu.org/software/gawk/manual/gawk.html">GNU - awk manual</a></li>
@@ -757,7 +778,7 @@ summary {
 </div>
 </div>
 <div id="referencias-adicionales" class="section level2">
-<h2><span class="header-section-number">1.3</span> Referencias adicionales</h2>
+<h2><span class="header-section-number">1.6</span> Referencias adicionales</h2>
 <p>Una vez que domines los comandos básicos que se presentarán en este documento, recomiendo revisar tutoriales más detallados y completos como los siguientes:</p>
 <ul>
 <li><a href="http://linuxcommand.org/lc3_learning_the_shell.php#contents">The Linux Command Line - a complete introduction. William E. Shotts, Jr. No Starch Press</a></li>
@@ -973,8 +994,8 @@ ls | head</code></pre>
 ## consensus_tre.nwk</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 102424
-## drwxr-xr-x 12 vinuesa vinuesa    20480 dic 27 11:07 .
+<pre><code>## total 102428
+## drwxr-xr-x 12 vinuesa vinuesa    20480 dic 27 14:36 .
 ## drwxr-xr-x  4 vinuesa vinuesa     4096 nov 11 22:55 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-rw-r--  1 vinuesa vinuesa      244 dic 27 00:05 aoa.awk
@@ -1836,7 +1857,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 102396
+<pre><code>## total 102400
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14 22:43 align_seqs_with_clustal_or_muscle.sh
 ## -rw-rw-r-- 1 vinuesa vinuesa      244 dic 27 00:05 aoa.awk
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20 19:48 assembly_summary.txt.gz
@@ -1845,7 +1866,7 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 nov 16 17:37 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14 22:43 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4 10:56 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 dic 27 13:29 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
+## lrwxrwxrwx 1 vinuesa vinuesa       78 dic 27 18:10 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
 </ul>
@@ -2225,7 +2246,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 dic 27 13:29 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 dic 27 18:10 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador <span class="math inline">\(less\)</span></li>
 </ul>
@@ -2244,7 +2265,7 @@ cat  tmp1.txt</code></pre>
 <p>En este caso, como el comando <span class="math inline">\(cat\)</span> primero genera el archivo tmp1.txt vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 13:29 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 18:10 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2">
@@ -2373,15 +2394,15 @@ ls: cannot access &#39;no_existo.txt&#39;: No such file or directory</code></pre
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 13:29 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 27 13:29 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 18:10 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 27 18:10 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u otros programas, debemos manejar adecuadamente los descriptores de archivos para imprimir resultados y mensajes de error a sus archivos correspondientes. Si los queremos unir en uno solo, usaremos la sintaxis <strong>&amp;&gt;</strong></p>
 <pre class="bash"><code>ls no_existo.txt &amp;&gt; stdout_y_stderr_no_existo.txt
 ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 27 13:29 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 dic 27 18:10 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2">
 <h2><span class="header-section-number">6.2</span> Eliminar mensajes impresos por un programa a STDERR con <strong>2&gt; /dev/null</strong></h2>
@@ -2476,10 +2497,10 @@ echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 11:07 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 11:07 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 14:36 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 14:36 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 47917 dic 27 13:29 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 47916 dic 27 18:10 fna_files.tgz
 ## ----------------------------
 ## mini_CDS.fna
 ## recA_Bradyrhizobium_vinuesa.fna
@@ -2505,10 +2526,10 @@ echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 11:07 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 11:07 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 14:36 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 14:36 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 47917 dic 27 13:29 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 47916 dic 27 18:10 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -2519,13 +2540,13 @@ echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 11:07 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 11:07 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 14:36 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 14:36 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
 ## -rw-rw-r-- 1 vinuesa vinuesa   104 dic 21 17:41 mini_CDS.fna.gz
 ## -rw-r--r-- 1 vinuesa vinuesa  3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa   882 dic 27 11:07 recA_Byuanmingense.fna.gz
-## -rw-rw-r-- 1 vinuesa vinuesa 42351 dic 27 11:07 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa   882 dic 27 14:36 recA_Byuanmingense.fna.gz
+## -rw-rw-r-- 1 vinuesa vinuesa 42351 dic 27 14:36 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -2536,14 +2557,14 @@ echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa   104 dic 21 17:41 mini_CDS.fna.gz
 ## -rw-r--r-- 1 vinuesa vinuesa  3936 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa   882 dic 27 11:07 recA_Byuanmingense.fna.gz
-## -rw-rw-r-- 1 vinuesa vinuesa 42351 dic 27 11:07 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa   882 dic 27 14:36 recA_Byuanmingense.fna.gz
+## -rw-rw-r-- 1 vinuesa vinuesa 42351 dic 27 14:36 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21 17:41 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29 22:18 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 11:07 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 11:07 Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  17736 dic 27 14:36 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 146115 dic 27 14:36 Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-mlocate-y-find" class="section level1">
@@ -2593,8 +2614,8 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 <pre><code>## Filesystem      1K-blocks      Used  Available Use% Mounted on
 ## udev             16381120         0   16381120   0% /dev
 ## tmpfs             3281912      2004    3279908   1% /run
-## /dev/nvme0n1p3  465889936  19351508  422802776   5% /
-## tmpfs            16409540      3392   16406148   1% /dev/shm
+## /dev/nvme0n1p3  465889936  19351528  422802756   5% /
+## tmpfs            16409540     28092   16381448   1% /dev/shm
 ## tmpfs                5120         4       5116   1% /run/lock
 ## tmpfs            16409540         0   16409540   0% /sys/fs/cgroup
 ## /dev/loop1         165376    165376          0 100% /snap/gnome-3-28-1804/128
@@ -2612,13 +2633,13 @@ ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, so
 ## /dev/loop11         65792     65792          0 100% /snap/standard-notes/26
 ## /dev/loop12         52352     52352          0 100% /snap/snap-store/518
 ## /dev/loop13         52352     52352          0 100% /snap/snap-store/498
-## /dev/sda1      1921802432 429799272 1394311104  24% /home
+## /dev/sda1      1921802432 429800396 1394309980  24% /home
 ## tmpfs             3281908        20    3281888   1% /run/user/125
-## tmpfs             3281908        36    3281872   1% /run/user/1000</code></pre>
+## tmpfs             3281908        40    3281868   1% /run/user/1000</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465889936 19351508 422802776   5% /</code></pre>
+## /dev/nvme0n1p3 465889936 19351528 422802756   5% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Opciones más comunes de <strong>df</strong></h3>
 <p>Como cualquier comando, le podemos pasar opciones para adecuar mejor la salida a nuestra necesidad.</p>
@@ -2650,7 +2671,7 @@ df -h /home</code></pre>
 ## udev              15998M      0M    15998M   0% /dev
 ## tmpfs              3205M      2M     3204M   1% /run
 ## /dev/nvme0n1p3   454971M  18898M   412894M   5% /
-## tmpfs             16025M      4M    16022M   1% /dev/shm
+## tmpfs             16025M     28M    15998M   1% /dev/shm
 ## tmpfs                 5M      1M        5M   1% /run/lock
 ## tmpfs             16025M      0M    16025M   0% /sys/fs/cgroup
 ## /dev/loop1          162M    162M        0M 100% /snap/gnome-3-28-1804/128
@@ -2668,10 +2689,10 @@ df -h /home</code></pre>
 ## /dev/loop11          65M     65M        0M 100% /snap/standard-notes/26
 ## /dev/loop12          52M     52M        0M 100% /snap/snap-store/518
 ## /dev/loop13          52M     52M        0M 100% /snap/snap-store/498
-## /dev/sda1       1876761M 419726M  1361632M  24% /home
+## /dev/sda1       1876761M 419727M  1361631M  24% /home
 ## tmpfs              3205M      1M     3205M   1% /run/user/125
 ## tmpfs              3205M      1M     3205M   1% /run/user/1000
-## total           2392678M 439969M  1834128M  20% -
+## total           2392678M 439994M  1834103M  20% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -2691,8 +2712,8 @@ df -h /home</code></pre>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 264832   .
-## 259M .</code></pre>
+<pre><code>## 266088   .
+## 260M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y /usr/local/*</li>
 </ul>
@@ -4136,21 +4157,25 @@ awk &#39;BEGIN { str = &quot;esta es una cadena de caracteres: cadena&quot;; fin
 <ul>
 <li><span class="math inline">\(index()\)</span> y <span class="math inline">\(substr()\)</span> con frecuencia se usan juntos</li>
 </ul>
-<pre class="bash"><code>echo &quot;CCATCCATGCCGTGCTAA&quot; | awk &#39;{ idx = index($0, &quot;ATG&quot;); gene = substr($0, idx); print $0; print gene }&#39;</code></pre>
-<pre><code>## CCATCCATGCCGTGCTAA
-## ATGCCGTGCTAA</code></pre>
-<p>Nota: en <em>gawk</em> no podemos usar una constante como <em>regexp</em> en la función <em>index()</em>, es decir <code>index($0, /ATG/)</code> evalúa como error fatal.</p>
+<pre class="bash"><code>echo &quot;CCATCCATGCCGTGCTAA&quot; | awk &#39;{ idx = index($0, &quot;ATG&quot;); gene = substr($0, idx); print idx, &quot;\n&quot;$0, &quot;\n      &quot; gene }&#39;</code></pre>
+<pre><code>## 7 
+## CCATCCATGCCGTGCTAA 
+##       ATGCCGTGCTAA</code></pre>
+<p>Notas:</p>
+<ol style="list-style-type: decimal">
+<li>en <em>gawk</em> no podemos usar una constante como <em>regexp</em> en la función <em>index()</em>, es decir <code>index($0, /ATG/)</code> evalúa como error fatal.</li>
+<li>vean que <span class="math inline">\(\$0\)</span> no se modifica con la acción de <span class="math inline">\(substr()\)</span>, función que regresa la cadena modificada, que debemos guardar en una variable. En cambio <span class="math inline">\(sub()\)</span> o <span class="math inline">\(gsub()\)</span> sí modifican <span class="math inline">\(\$0\)</span>, como vimos en el primer ejemplo de esta sección.</li>
+</ol>
 <ul>
 <li>Veamos <em>match()</em> en acción, usando una <em>regexp</em> para capturar en paréntesis las coordenadas de un CDS como se representan en un archivo GenBank, como hace el <em>script</em> <strong>extract_CDSs_from_GenBank.awk</strong>.</li>
 </ul>
 <pre class="bash"><code>echo &quot;     CDS           295..861&quot; | \
   awk &#39;END { 
-             print
              m = match($0, /^\s{4,}CDS\s{4,}([[:digit:]]+)\.\.([[:digit:]]+)/, c_arr) 
              s=c_arr[1]; e=c_arr[2] 
-             print(&quot;m=&quot;m, &quot;\nstart=&quot; s, &quot;\nend=&quot;e) }&#39;</code></pre>
-<pre><code>##      CDS           295..861
-## m=1 
+             print(&quot;m=&quot;m, &quot;\nstart=&quot; s, &quot;\nend=&quot;e) 
+      }&#39;</code></pre>
+<pre><code>## m=1 
 ## start=295 
 ## end=861</code></pre>
 <p>Noten que los dígitos son capturados en los paréntesis <code>([[:digit:]]+)\.\.([[:digit:]]+)</code> y los <em>matches</em> guardados en el arreglo <em>c_arr</em>. Veremos <strong>arreglos</strong> de <em>awk</em> más adelante. por ahora baste saber que podemos recuperar los valores o elementos del arreglo indexando numéricamente <code>s=c_arr[1]; e=c_arr[2]</code></p>
@@ -4158,7 +4183,7 @@ awk &#39;BEGIN { str = &quot;esta es una cadena de caracteres: cadena&quot;; fin
 <li>Veamos ahora <em>sub()</em>, <em>gsub()</em> y <em>split()</em> en acción, para capturar las coordenadas de un CDS como se representan en un archivo GenBank, como hace el <em>script</em> <strong>extract_CDSs_from_GenBank.awk</strong>.</li>
 </ul>
 <pre class="bash"><code>echo &#39;     CDS        complement(3633769..3634107)&#39; | \
-  awk &#39;{ print
+  awk &#39;{
         coord = $0
         sub(/^\s{4,}CDS\s{4,}complement\(/, &quot;&quot;, coord)
         gsub(/[\)]/, &quot;&quot;, coord)
@@ -4166,8 +4191,7 @@ awk &#39;BEGIN { str = &quot;esta es una cadena de caracteres: cadena&quot;; fin
         start = c_arr[1]; end = c_arr[2] 
         print(&quot;m=&quot;m, &quot;\nstart=&quot;start, &quot;\nend=&quot;end)
   }&#39;</code></pre>
-<pre><code>##      CDS        complement(3633769..3634107)
-## m=2 
+<pre><code>## m=2 
 ## start=3633769 
 ## end=3634107</code></pre>
 <p>En este ejemplo la línea guardada en <em>coord</em> se va procesando sucesivamente por <em>sub()</em>, <em>gsub()</em> y <em>split()</em>, para finalmente imprimir las coordenadas de inicio y fin del CDS. En la función <em>split()</em> cada campo delimitado por ‘..’, es guardado en el arreglo <em>c_arr</em>. La variable <em>m</em> guarda el número de campos.</p>
@@ -4377,17 +4401,17 @@ awk &#39;/cache size/ {size+=$4} END{print &quot;total chache size: &quot;, size
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 2420973 dic 27 11:07 working_with_linux_commands.html
+<pre><code>## -rw-r--r-- 1 vinuesa vinuesa 2423625 dic 27 14:36 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   68106 nov 15 20:16 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  410459 dic 27 13:29 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  413754 dic 27 18:10 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  499749 nov 15 20:16 working_with_linux_commands.tex
-## total size of working_with_linux_commands.* files is: 3.24 Mb</code></pre>
+## total size of working_with_linux_commands.* files is: 3.25 Mb</code></pre>
 <ul>
 <li>comparen y entiendan la diferencia del comando anterior con el del siguiente:</li>
 </ul>
 <pre class="bash"><code>ls -l working_with_linux_commands.* | \
  awk &#39;{s+=$5}; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## total size of working_with_linux_commands.* files is: 3.24 Mb</code></pre>
+<pre><code>## total size of working_with_linux_commands.* files is: 3.25 Mb</code></pre>
 </div>
 <div id="uso-de-función-de-autoincremento-para-contar-ocurrencias-de-un-patrón" class="section level3">
 <h3><span class="header-section-number">11.5.7</span> uso de función de <strong>autoincremento</strong> <span class="math inline">\(++\)</span> para contar ocurrencias de un patrón</h3>
@@ -5172,7 +5196,7 @@ for (i in array) {
 ## 
 ## # ARGC == lenght(ARGV) == 5 
 ## ARGC = 5
-## [] [] [123] [8894]</code></pre>
+## [] [] [123] [17460]</code></pre>
 <ul>
 <li>Comentarios y preguntas
 <ul>
@@ -5216,7 +5240,7 @@ for (i in array) {
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 3 
 ## ARGC = 3
-## [] [] [18050] []</code></pre>
+## [] [] [3441] []</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -5235,7 +5259,7 @@ for (i in array) {
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 6 
 ## ARGC = 6
-## [] [] [123] [13593]</code></pre>
+## [] [] [123] [23636]</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -7617,9 +7641,9 @@ function print_help(prog, vers)
 ## # wrote file Salmonella_enterica_33676_pIncAC.fsa
 ## # wrote file Salmonella_enterica_33676_pIncAC_proteome.faa
 ## 
-## real 0m0.082s
-## user 0m0.080s
-## sys  0m0.002s</code></pre>
+## real 0m0.081s
+## user 0m0.076s
+## sys  0m0.005s</code></pre>
 <ul>
 <li>Veamos las primeras líneas de cada archivo
 <ul>
@@ -8200,7 +8224,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 13:29 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 dic 27 18:10 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20 19:48 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -8386,14 +8410,14 @@ done</code></pre>
 <li>como siempre, revisemos la salida, asegurándonos primero que los archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 10279 dic 27 13:29 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 dic 27 13:29 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  1131 dic 27 13:29 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 dic 27 13:29 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 dic 27 13:29 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 dic 27 13:29 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 dic 27 13:29 recA_B_yuanmingense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 dic 27 13:29 recA_B_sp..fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 10279 dic 27 18:10 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 dic 27 18:10 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  1131 dic 27 18:10 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 dic 27 18:10 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 dic 27 18:10 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 dic 27 18:10 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 dic 27 18:10 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 dic 27 18:10 recA_B_yuanmingense.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -8524,9 +8548,9 @@ echo &quot;$contador líneas contienen el patrón $patron&quot;
 <pre class="bash"><code>while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 7064
-## 2046
-## 16718</code></pre>
+<pre><code>## 10472
+## 25868
+## 16510</code></pre>
 <p>Los bucles <span class="math inline">\(until\)</span> son útiles para ejecutar un bucle hasta que se cumpla o no una determinada condición.</p>
 <p>Su sintaxis es idéntica al del bucle <span class="math inline">\(while\)</span>.</p>
 <p><code>until TEST-COMMAND; do CONSEQUENT-COMMANDS; done</code></p>
@@ -8534,9 +8558,9 @@ while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; bre
 <pre class="bash"><code>until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 5751
-## 7275
-## 23181</code></pre>
+<pre><code>## 30791
+## 2201
+## 17151</code></pre>
 </div>
 </div>
 <div id="estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" class="section level2">
@@ -11403,7 +11427,7 @@ Y
 <h1><span class="header-section-number">16</span> Consideraciones finales y referencias recomendadas para continuar aprendiendo programación <span class="math inline">\(Shell\)</span></h1>
 <p>Llegamos al final de este tutorial, ¡¡¡enhorabuena!!! Has aprendido mucho, pero lo bueno es que todavía queda un largo camino por andar.</p>
 <p><span class="math inline">\(Bash\)</span> sin duda es muy útil si vas a usarlo como <em>lenguaje pegamento</em> para conectar múltiples utilerías o programas como demuestra el <span class="math inline">\(script\)</span> <em>run_phylp.sh</em> que presentamos en la sección anterior, pero no es el apropiado para escribir programas complejos que tienen que hacer procesamiento numérico, gráfico, estadístico de datos, interactuar con bases de datos, <em>parsear</em> archivos de estructura compleja, etc. Para ello deberás aprender otros lenguajes más poderosos, capaces de manejar estructuras de datos complejas (multidimensionales como hashes de hashes, arreglos de hashes, etc.) y que disponen de repositorios gigantescos de librerías o paquetes especializados de código para todo lo que puedas imaginar. Pero aprender primero <span class="math inline">\(Shell\)</span> y <span class="math inline">\(AWK\)</span> es sin duda lo mejor que puedes hacer para iniciarte en la programación en sistemas UNIX o GNU/Linux. Te facilitará el camino posterior y te permitirá dominar el sistema operativo, ya que el <span class="math inline">\(Shell\)</span> es su interfaz programática.</p>
-<p>Sabiendo <span class="math inline">\(Bash\)</span> y <span class="math inline">\(AWK\)</span> te será muy fácil entender <a href="https://www.perl.org/"><span class="math inline">\(Perl\)</span></a>, que con sus <a href="https://www.cpan.org/">25,000 paquetes en el repositorio CPAN</a>, sería una excelente elección como siguiente lenguaje a aprender. Sin duda <a href="https://www.python.org/">python</a> y <a href="https://cran.r-project.org/">R</a> hay que añadirlos a la lista también.</p>
+<p>Sabiendo <span class="math inline">\(Bash\)</span> y <span class="math inline">\(AWK\)</span> te será muy fácil entender <a href="https://www.perl.org/"><span class="math inline">\(Perl\)</span></a>, que con sus <a href="https://www.cpan.org/">42,000 paquetes y 197,000 módulos en el repositorio CPAN</a>, sería una excelente elección como siguiente lenguaje a aprender. Sin duda <a href="https://www.python.org/">Python</a> y <a href="https://cran.r-project.org/">R</a> hay que añadirlos también a la lista de lenguajes interpretados a aprender.</p>
 <p>Recomiendo las siguientes guías para apoyarte en tu proceso de aprendizaje del <span class="math inline">\(Shell\)</span>. Disfruta el camino, saludos!</p>
 <ul>
 <li><a href="https://www.gnu.org/software/gawk/manual/gawk.html">The GNU Awk User’s Guide</a></li>
