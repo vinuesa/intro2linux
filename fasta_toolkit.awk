@@ -143,7 +143,8 @@ function print_help(prog, vers) # (program, version)
    print "         5 [print basic sequence stats]" > "/dev/stderr" 
 
    print "\n # Runmode-specific options" > "/dev/stderr" 
-   print "     -m <string> [match string] for -R 1" > "/dev/stderr" 
+   print "     -m <string> [match 'string'] for -R 1" > "/dev/stderr" 
+   print "     -M <string> [reverse match 'string'] for -R 1" > "/dev/stderr" 
    print "     -s <int> [start coord] for -R 3" > "/dev/stderr" 
    print "     -e <int> [end coord] for -R 3" > "/dev/stderr" 
 
@@ -152,6 +153,7 @@ function print_help(prog, vers) # (program, version)
   
    print "\n # Usage examples:"
    print "    ./" prog " -R 1 -m match_string input.fasta" > "/dev/stderr" 
+   print "    ./" prog " -R 1 -M RevMatch_string input.fasta" > "/dev/stderr" 
    print "    ./" prog " -R 2 input.fasta" > "/dev/stderr" 
    print "    ./" prog " -R 3 -s 2 -e 5 input.fasta" > "/dev/stderr" 
    print "    ./" prog " -R 4 input.fasta" > "/dev/stderr" 
@@ -240,7 +242,8 @@ BEGIN {
     Optind = 1    # skip ARGV[0]
     
     progname = "fasta_toolkit.awk"
-    version  = 0.4  # v0.4 dec 23, 2020. added PROCINFO["sorted_in"] = "@ind_num_asc" to print sorted results
+    version  = 0.5  # v0.5 dec 30, 2020, added -M string for -R 1, to select sequences not matching string (revMatch)
+                    # v0.4 dec 25, 2020. added PROCINFO["sorted_in"] = "@ind_num_asc" to print sorted results
                     # v0.3 dec 23, 2020. Prints warning and does not exit, if dna_seq not divisible by 3
                     # v0.2 dec 22, 2020, improved layout; fixed typos
                     # v0.1 dec 21, 2020, first commit
@@ -251,16 +254,23 @@ BEGIN {
     # check that the script receives input either from file or pipe
     if ( ARGC < 2 ) print_help(progname, version)
 
-    while ((c = getopt(ARGC, ARGV, "dm:e:R:s:")) != -1) {
+    while ((c = getopt(ARGC, ARGV, "dm:M:e:R:s:")) != -1) {
         if (c == "R") {
 	    runmode = Optarg
-	} else if (c == "m") {
+	} 
+	else if (c == "m") {
 	    string = Optarg
-	} else if (c == "s") {
+	} 
+	else if (c == "M") {
+	    RevMatch = Optarg
+	} 
+	else if (c == "s") {
 	    start = Optarg
-	} else if (c == "e") {
+	} 
+	else if (c == "e") {
 	    end = Optarg
-	} else if (c == "d") {
+	} 
+	else if (c == "d") {
 	    Debug = 1
 	}
 	else {
@@ -296,7 +306,7 @@ BEGIN {
   #-----------------------  END MODEL FASTA  ---------------------#
    
     # check that the user provided the required options and arguments, depending on runmode
-    if (runmode == 1 && length(string) == 0) {
+    if (runmode == 1 && ( ! string && ! RevMatch)) {
         print "ERROR: -R 1 requires -m match_string to filter the input FASTA" > "/dev/stderr"
         print_help(progname, version)
     }   
@@ -366,7 +376,17 @@ NR > 1 {
 
 END { 
     for (h in seqs) { 
-	if( length(seqs[h] >= 2) && runmode == 1 ) { if(h ~ string) print ">"h, seqs[h] }
+	if( length(seqs[h] >= 2) && runmode == 1 && string) 
+	{ 
+	    if(h ~ string) print ">"h, seqs[h] 
+	
+	}
+
+	if( length(seqs[h] >= 2) && runmode == 1 && RevMatch) 
+	{ 
+	    if(h !~ RevMatch) print ">"h, seqs[h] 
+	}
+
 	if( length(seqs[h] >= 2) && runmode == 2 ) { rev_compl(h, seqs[h]) }
         if( length(seqs[h] >= 3) && runmode == 3 ) { extract_sequence_by_coordinates(h, seqs[h], start, end) }
         if( length(seqs[h] >= 3) && runmode == 4 ) 
