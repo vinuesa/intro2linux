@@ -18,13 +18,16 @@
 
 BEGIN {   
     # Initializations
-    DEBUG = 1  # set to 1 if debugging messages should be activated (prints to "/dev/stderr")
+    DEBUG = 0  # set to 1 if debugging messages should be activated (prints to "/dev/stderr")
     
     # print the FASTA sequences stored in hashes in ascending order by locus_tag number 
     PROCINFO["sorted_in"] = "@ind_num_asc"
     
     progname="extract_CDSs_from_GenBank.awk"
-    VERSION=0.6 # Dec 29, 2020; 
+    VERSION=0.7 # Dec 29, 2020; 
+                #  * captures also the gene_name, adding it to the table after locus_tag and
+                #    appending it to product [gene_name] as such or as [NONAME] if not available
+                # v0.6 Dec 29, 2020; 
                 #  * now also captures the protein_id to label prots in *faa files; it is added to tsv outfile
                 #  * Only CDSs are labeled with locus_tag
                 #  * Manages input gbks like E. coli MT559985 that do not have locus_tag attributes,
@@ -135,7 +138,13 @@ FNR == 1 || /^LOCUS/ {
      match($0, /^\s{8,}\/locus_tag="([[:alnum:]_]+)"/, lt_arr)
      locus_tag = lt_arr[1]
   } 
-    
+  
+  if( flag && /^\s+\/gene=/ )
+  {
+     match($0, /^\s{8,}\/gene="(\S+)"/, g_arr)
+     gene_name = g_arr[1]
+  } 
+  
   # mark pseudogenes
   if( flag && /^\s{8,}\/pseudo/ ) pseudoflag = 1
 
@@ -156,6 +165,10 @@ FNR == 1 || /^LOCUS/ {
      
      # some GenBank files like Escherichia_coli MT559985 do not have a locus_tag!
      if (!locus_tag) CDSs_AoA[geneID]["l"] = locus_id"_CDS"geneID
+     
+     if(gene_name) CDSs_AoA[geneID]["gene"] = gene_name
+     if(!gene_name) CDSs_AoA[geneID]["gene"] = "NONAME"
+     
      CDSs_AoA[geneID]["LOCUS"]  = locus_id
      CDSs_AoA[geneID]["s"]      = start
      CDSs_AoA[geneID]["e"]      = end
@@ -163,6 +176,7 @@ FNR == 1 || /^LOCUS/ {
      CDSs_AoA[geneID]["pseudo"] = pseudoflag
 
      complflag=0
+     gene_name = ""
   }
 
   # if the product description is split in two lines, 
@@ -189,14 +203,14 @@ FNR == 1 || /^LOCUS/ {
 
      	if (pseudoflag) product = product " [pseudogene]"
 
-     	CDSs_AoA[geneID]["p"] = product
+     	CDSs_AoA[geneID]["p"] = product #" ["CDSs_AoA[geneID]["gene"]"]"
      	line_no=pseudoflag=0
      }
      else
      {
      	if (pseudoflag) product = product " [pseudogene]"
 
-     	CDSs_AoA[geneID]["p"] = product
+     	CDSs_AoA[geneID]["p"] = product #" ["CDSs_AoA[geneID]["gene"]"]"
      	line_no=pseudoflag=0
      }
   }
@@ -260,7 +274,7 @@ END {
        rm_if_exists(gbk_tsv)
     
        # print GBK table header for gbk_tsv
-       print "CDS_no\tLOCUS\tLOCUS_length\tlocus_tag\tprotein_id\tproduct_description\tstart\tend\tcomplement\tpseudogene" > gbk_tsv
+       print "CDS_no\tLOCUS\tLOCUS_length\tlocus_tag\tgene_name\tprotein_id\tproduct_description\tstart\tend\tcomplement\tpseudogene" > gbk_tsv
     
        # if exists, rm the FASTA file holding CDSS, since the script appends to it
        #     (print stuff >> gbk_CDSs)
@@ -272,13 +286,13 @@ END {
        for (k in CDSs_AoA)
        {
            # 1. print the GBK file in tabular format to file gbk_tsv; Nothe the use of an AoA as 1ary key to the dna AoA
-           printf "%d\t%s\t%d\t%s\t%s\t%s\t%d\t%d\t%d\t%d\n", k, CDSs_AoA[k]["LOCUS"], dna[CDSs_AoA[k]["LOCUS"]]["len"],
-	            CDSs_AoA[k]["l"], CDSs_AoA[k]["pid"], CDSs_AoA[k]["p"], CDSs_AoA[k]["s"], CDSs_AoA[k]["e"], 
+           printf "%d\t%s\t%d\t%s\t%s\t%s\t%s\t%d\t%d\t%d\t%d\n", k, CDSs_AoA[k]["LOCUS"], dna[CDSs_AoA[k]["LOCUS"]]["len"],
+	            CDSs_AoA[k]["l"],CDSs_AoA[k]["gene"], CDSs_AoA[k]["pid"], CDSs_AoA[k]["p"], CDSs_AoA[k]["s"], CDSs_AoA[k]["e"], 
 		      CDSs_AoA[k]["c"], CDSs_AoA[k]["pseudo"] >> gbk_tsv
     
-           # 2. extract_sequence_by_coordinates, write CDSs.fna, translate CDSs and write proteome.faa
-           extract_sequence_by_coordinates(CDSs_AoA[k]["l"], CDSs_AoA[k]["pid"], CDSs_AoA[k]["p"], seq, CDSs_AoA[k]["s"], 
-        	 CDSs_AoA[k]["e"], CDSs_AoA[k]["c"], gbk_CDSs, CDSs_AoA[k]["pseudo"]) 
+           # 2. extract_sequence_by_coordinates, write CDSs.fna, translate CDSs and write proteome.faa; add gene name to product
+           extract_sequence_by_coordinates(CDSs_AoA[k]["l"], CDSs_AoA[k]["pid"], CDSs_AoA[k]["p"] " ["CDSs_AoA[k]["gene"]"]",
+	           seq, CDSs_AoA[k]["s"], CDSs_AoA[k]["e"], CDSs_AoA[k]["c"], gbk_CDSs, CDSs_AoA[k]["pseudo"]) 
        }
        # report if the files were successfully written to disk
        print_if_exists(gbk_tsv)
