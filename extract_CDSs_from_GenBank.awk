@@ -24,7 +24,8 @@ BEGIN {
     PROCINFO["sorted_in"] = "@ind_num_asc"
     
     progname="extract_CDSs_from_GenBank.awk"
-    VERSION=0.7 # Dec 29, 2020; 
+    VERSION=0.8 # v0.8 Jan 1, 2021; prints the CDS and product lengths to the table 
+                # v0.7 Dec 29, 2020; 
                 #  * captures also the gene_name, adding it to the table after locus_tag and
                 #    appending it to product [gene_name] as such or as [NONAME] if not available
                 # v0.6 Dec 29, 2020; 
@@ -274,7 +275,7 @@ END {
        rm_if_exists(gbk_tsv)
     
        # print GBK table header for gbk_tsv
-       print "CDS_no\tLOCUS\tLOCUS_length\tlocus_tag\tgene_name\tprotein_id\tproduct_description\tstart\tend\tcomplement\tpseudogene" > gbk_tsv
+       print "CDS_no\tLOCUS\tLOCUS_length\tlocus_tag\tgene_name\tprotein_id\tproduct_description\tstart\tend\tCDS_l\tprod_l\tcomplement\tpseudogene" > gbk_tsv
     
        # if exists, rm the FASTA file holding CDSS, since the script appends to it
        #     (print stuff >> gbk_CDSs)
@@ -286,9 +287,10 @@ END {
        for (k in CDSs_AoA)
        {
            # 1. print the GBK file in tabular format to file gbk_tsv; Nothe the use of an AoA as 1ary key to the dna AoA
-           printf "%d\t%s\t%d\t%s\t%s\t%s\t%s\t%d\t%d\t%d\t%d\n", k, CDSs_AoA[k]["LOCUS"], dna[CDSs_AoA[k]["LOCUS"]]["len"],
+           printf "%d\t%s\t%d\t%s\t%s\t%s\t%s\t%d\t%d\t%d\t%d\t%d\t%d\n", k, CDSs_AoA[k]["LOCUS"], dna[CDSs_AoA[k]["LOCUS"]]["len"],
 	            CDSs_AoA[k]["l"],CDSs_AoA[k]["gene"], CDSs_AoA[k]["pid"], CDSs_AoA[k]["p"], CDSs_AoA[k]["s"], CDSs_AoA[k]["e"], 
-		      CDSs_AoA[k]["c"], CDSs_AoA[k]["pseudo"] >> gbk_tsv
+		      CDSs_AoA[k]["e"] - CDSs_AoA[k]["s"] + 1 ,  (CDSs_AoA[k]["e"] - CDSs_AoA[k]["s"] +1 )/3, 
+		        CDSs_AoA[k]["c"], CDSs_AoA[k]["pseudo"] >> gbk_tsv
     
            # 2. extract_sequence_by_coordinates, write CDSs.fna, translate CDSs and write proteome.faa; add gene name to product
            extract_sequence_by_coordinates(CDSs_AoA[k]["l"], CDSs_AoA[k]["pid"], CDSs_AoA[k]["p"] " ["CDSs_AoA[k]["gene"]"]",
