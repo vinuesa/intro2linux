@@ -366,7 +366,7 @@ pre code {
 para bioinformática y biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM;
 <a href="https://www.ccg.unam.mx/~vinuesa/" class="uri">https://www.ccg.unam.mx/~vinuesa/</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
-<h4 class="date">Versión: Wed Aug 31 19:21:27 2022</h4>
+<h4 class="date">Versión: Wed Sep 7 14:09:59 2022</h4>
 
 </div>
 
@@ -598,6 +598,8 @@ archivos en el sistema con los comandos <strong>[ml]ocate</strong> y
 <li><a href="#find---operadores" id="toc-find---operadores"><span class="toc-section-number">9.2.2</span> <span class="math inline">\(find\)</span> - operadores</a></li>
 <li><a href="#find--exec-o-find--xargs-y-acciones-definidas-por-el-usuario" id="toc-find--exec-o-find--xargs-y-acciones-definidas-por-el-usuario"><span class="toc-section-number">9.2.3</span> <span class="math inline">\(find\ -exec\)</span> o <span class="math inline">\(find\ -xargs\)</span> y acciones definidas por el
 usuario</a></li>
+<li><a href="#find-combinado-con-expansión-de-caracteres" id="toc-find-combinado-con-expansión-de-caracteres"><span class="toc-section-number">9.2.4</span> <span class="math inline">\(find\)</span> combinado con expansión de
+caracteres</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#cuánto-espacio-queda-en-disco---comandos-df-y-du" id="toc-cuánto-espacio-queda-en-disco---comandos-df-y-du"><span class="toc-section-number">10</span> ¿Cuánto espacio queda en disco? -
@@ -822,8 +824,11 @@ de parseo de archivos FASTA</a></li>
 <li><a href="#fundamentos-de-programación-en-bash" id="toc-fundamentos-de-programación-en-bash"><span class="toc-section-number">13</span> Fundamentos de programación en
 <span class="math inline">\(Bash\)</span></a>
 <ul>
-<li><a href="#asignación-y-uso-de-variables" id="toc-asignación-y-uso-de-variables"><span class="toc-section-number">13.1</span> Asignación y uso de
-<strong>variables</strong></a></li>
+<li><a href="#tipos-asignación-y-uso-de-variables" id="toc-tipos-asignación-y-uso-de-variables"><span class="toc-section-number">13.1</span> Tipos, asignación y uso de
+<strong>variables</strong></a>
+<ul>
+<li><a href="#variables-escalares" id="toc-variables-escalares"><span class="toc-section-number">13.1.1</span> Variables escalares</a></li>
+</ul></li>
 <li><a href="#captura-en-una-varialbe-de-la-salida-de-un-comando-con-varcomando" id="toc-captura-en-una-varialbe-de-la-salida-de-un-comando-con-varcomando"><span class="toc-section-number">13.2</span> Captura en una varialbe de la
 salida de un comando con <b>var=$(comando)</b></a></li>
 <li><a href="#modificación-de-variables-y-operaciones-con-ellas" id="toc-modificación-de-variables-y-operaciones-con-ellas"><span class="toc-section-number">13.3</span> Modificación de variables y
@@ -882,8 +887,6 @@ saliendo del mismo con <span class="math inline">\(break\)</span></a></li>
 </ul></li>
 <li><a href="#estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" id="toc-estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción"><span class="toc-section-number">13.10</span> Estructuras de datos en <span class="math inline">\(Bash\)</span> - <strong>arreglos</strong> y
 <strong>hashes</strong> (en construcción)</a></li>
-<li><a href="#funciones-escritas-por-el-usuario-en-construcción" id="toc-funciones-escritas-por-el-usuario-en-construcción"><span class="toc-section-number">13.11</span> Funciones escritas por el
-usuario (en construcción)</a></li>
 </ul></li>
 <li><a href="#bash-scripting---siguientes-pasos-en-construcción" id="toc-bash-scripting---siguientes-pasos-en-construcción"><span class="toc-section-number">14</span> <strong><span class="math inline">\(Bash\)</span> scripting</strong> - siguientes
 pasos (en construcción …)</a>
@@ -912,6 +915,14 @@ script <em>find_dir</em></a></li>
 posicionales con interfaz de usario simple</a></li>
 <li><a href="#scripts-con-interfaz-de-usuario-paso-de-opciones-y-su-parseo-con-getopts" id="toc-scripts-con-interfaz-de-usuario-paso-de-opciones-y-su-parseo-con-getopts"><span class="toc-section-number">14.6</span> <span class="math inline">\(Scripts\)</span> con interfaz de usuario, paso de
 opciones y su <em>parseo</em> con <strong>getopts</strong></a></li>
+<li><a href="#funciones-y-modularización-de-código" id="toc-funciones-y-modularización-de-código"><span class="toc-section-number">14.7</span> Funciones y modularización de
+código</a>
+<ul>
+<li><a href="#llamada-a-la-función-print_numbered_table_header_fields-con-uno-o-dos-argumentos-posicionales" id="toc-llamada-a-la-función-print_numbered_table_header_fields-con-uno-o-dos-argumentos-posicionales"><span class="toc-section-number">14.7.1</span> Llamada a la función <span class="math inline">\(print\_numbered\_table\_header\_fields\)</span>
+con uno o dos argumentos posicionales</a></li>
+</ul></li>
+<li><a href="#machote-de-un-bash-script-que-llama-a-una-librería-de-funciones-y-define-otras-en-la-cabecera-del-script-principal" id="toc-machote-de-un-bash-script-que-llama-a-una-librería-de-funciones-y-define-otras-en-la-cabecera-del-script-principal"><span class="toc-section-number">14.8</span> Machote de un <span class="math inline">\(Bash\)</span> script que llama a una librería de
+funciones y define otras en la cabecera del script principal</a></li>
 </ul></li>
 <li><a href="#programando-un-pipeline-en-bash" id="toc-programando-un-pipeline-en-bash"><span class="toc-section-number">15</span> Programando un pipeline en <span class="math inline">\(Bash\)</span></a>
 <ul>
@@ -987,7 +998,7 @@ material previo, presentado en diversos cursos y talleres, como <a href="http://
 filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de
 Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de
 México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2022-08-31) contiene extensiones significativas
+<p>Las versión actual (v.2022-09-07) contiene extensiones significativas
 con respecto a cursos anteriores, así como adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller
 de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos
 investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>,
@@ -1454,8 +1465,8 @@ ls | head</code></pre>
 ## consensus_tre.nwk</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
-<pre><code>## total 100116
-## drwxr-xr-x 12 vinuesa vinuesa    20480 ago 31 19:19 .
+<pre><code>## total 102140
+## drwxr-xr-x 12 vinuesa vinuesa    20480 sep  7 13:47 .
 ## drwxr-xr-x  4 vinuesa vinuesa     4096 nov 11  2020 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14  2020 align_seqs_with_clustal_or_muscle.sh
 ## -rw-rw-r--  1 vinuesa vinuesa      244 dic 27  2020 aoa.awk
@@ -1500,8 +1511,8 @@ argumentos</li>
 ## lrwxrwxrwx   1 root root     7 oct  4  2020 bin -&gt; usr/bin
 ## drwxr-xr-x   4 root root  4096 ago 25 16:44 boot
 ## drwxr-xr-x   2 root root  4096 oct  4  2020 cdrom
-## drwxr-xr-x  21 root root  4840 ago 31 15:55 dev
-## drwxr-xr-x 163 root root 12288 ago 25 16:44 etc
+## drwxr-xr-x  21 root root  4920 sep  7 10:39 dev
+## drwxr-xr-x 163 root root 12288 sep  7 10:33 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4  2020 lib -&gt; usr/lib
 ## lrwxrwxrwx   1 root root     9 oct  4  2020 lib32 -&gt; usr/lib32
@@ -1946,8 +1957,8 @@ en la jerarquía de directorios usando RUTA RELATIVA: <b>cd
 directorio en el que estabas justo antes con <b>cd -</b></h4>
 <pre class="bash"><code>cd -
 pwd</code></pre>
-<pre><code>## /home/vinuesa/cursos
-## /home/vinuesa/cursos</code></pre>
+<pre><code>## /home/vinuesa/Cursos/intro_biocomp4genomics_TFC
+## /home/vinuesa/Cursos/intro_biocomp4genomics_TFC</code></pre>
 </div>
 <div id="regresa-a-tu-home-desde-cualquier-punto-del-sistema-de-archivos-con-cd" class="section level4" number="3.4.2.5">
 <h4><span class="header-section-number">3.4.2.5</span> regresa a tu home
@@ -1972,8 +1983,8 @@ pwd</code></pre>
 </ul>
 <pre class="bash"><code>cd -
 pwd</code></pre>
-<pre><code>## /home/vinuesa/cursos
-## /home/vinuesa/cursos</code></pre>
+<pre><code>## /home/vinuesa/Cursos/intro_biocomp4genomics_TFC
+## /home/vinuesa/Cursos/intro_biocomp4genomics_TFC</code></pre>
 <ul>
 <li>sube al directorio home/ usando la ruta relativa</li>
 </ul>
@@ -2136,7 +2147,7 @@ formato estandarizado de documentación que se despliega en la consola
 usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                                                                          User Commands                                                                          CUT(1)
+<pre><code>## CUT(1)                                                     User Commands                                                     CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -2161,11 +2172,10 @@ man cut | head -30</code></pre>
 ##               use DELIM instead of TAB for field delimiter
 ## 
 ##        -f, --fields=LIST
-##               select only these fields;  also print any line that contains no delimiter character, unless the -s option is specified
+##               select  only  these fields;  also print any line that contains no delimiter character, unless the -s option is speci‐
+##               fied
 ## 
-##        -n     (ignored)
-## 
-##        --complement</code></pre>
+##        -n     (ignored)</code></pre>
 </div>
 <div id="ayuda-de-cada-comando-integrado-en-el-shell-help-shell_builtin-para-shell-builtins" class="section level3" number="3.6.5">
 <h3><span class="header-section-number">3.6.5</span> Ayuda de cada
@@ -2482,7 +2492,7 @@ fi
 
 # confirmamos que se generaron las ligas
 ls -l | head</code></pre>
-<pre><code>## total 100088
+<pre><code>## total 102112
 ## -rwxr-xr-x 1 vinuesa vinuesa     2135 oct 14  2020 align_seqs_with_clustal_or_muscle.sh
 ## -rw-rw-r-- 1 vinuesa vinuesa      244 dic 27  2020 aoa.awk
 ## -rw-r--r-- 1 vinuesa vinuesa  6780296 oct 20  2020 assembly_summary.txt.gz
@@ -2491,7 +2501,7 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 nov 16  2020 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14  2020 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4  2020 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 ago 31 19:21 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
+## lrwxrwxrwx 1 vinuesa vinuesa       78 sep  7 14:09 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
 </ul>
@@ -3006,7 +3016,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 ago 31 19:21 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 sep  7 14:09 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador
 <span class="math inline">\(less\)</span></li>
@@ -3034,7 +3044,7 @@ vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un
 archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:09 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2" number="6.3">
@@ -3198,8 +3208,8 @@ un archivo.</p>
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 ago 31 19:21 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 sep  7 14:10 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u
 otros programas, debemos manejar adecuadamente los descriptores de
 archivos para imprimir resultados y mensajes de error a sus archivos
@@ -3210,7 +3220,7 @@ ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 ago 31 19:21 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 sep  7 14:10 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Eliminar mensajes
@@ -3352,10 +3362,10 @@ echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21  2020 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29  2020 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 ago 31 19:17 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 164638 ago 31 19:17 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 sep  7 13:47 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 164638 sep  7 13:47 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 48434 ago 31 19:21 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 48437 sep  7 14:10 fna_files.tgz
 ## ----------------------------
 ## mini_CDS.fna
 ## recA_Bradyrhizobium_vinuesa.fna
@@ -3381,10 +3391,10 @@ echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21  2020 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29  2020 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 ago 31 19:17 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 164638 ago 31 19:17 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 sep  7 13:47 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 164638 sep  7 13:47 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 48434 ago 31 19:21 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 48437 sep  7 14:10 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -3395,13 +3405,13 @@ echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21  2020 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29  2020 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 ago 31 19:17 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 164638 ago 31 19:17 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 sep  7 13:47 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 164638 sep  7 13:47 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
 ## -rw-rw-r-- 1 vinuesa vinuesa   104 dic 21  2020 mini_CDS.fna.gz
 ## -rw-r--r-- 1 vinuesa vinuesa  3936 sep 29  2020 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa   882 ago 31 19:17 recA_Byuanmingense.fna.gz
-## -rw-rw-r-- 1 vinuesa vinuesa 42881 ago 31 19:17 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa   882 sep  7 13:47 recA_Byuanmingense.fna.gz
+## -rw-rw-r-- 1 vinuesa vinuesa 42881 sep  7 13:47 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -3412,14 +3422,14 @@ echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa   104 dic 21  2020 mini_CDS.fna.gz
 ## -rw-r--r-- 1 vinuesa vinuesa  3936 sep 29  2020 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa   882 ago 31 19:17 recA_Byuanmingense.fna.gz
-## -rw-rw-r-- 1 vinuesa vinuesa 42881 ago 31 19:17 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa   882 sep  7 13:47 recA_Byuanmingense.fna.gz
+## -rw-rw-r-- 1 vinuesa vinuesa 42881 sep  7 13:47 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21  2020 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29  2020 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 ago 31 19:17 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 164638 ago 31 19:17 Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  17736 sep  7 13:47 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 164638 sep  7 13:47 Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-mlocate-y-find" class="section level1" number="9">
@@ -3731,36 +3741,51 @@ find borrame/ -type f -name &#39;arch-A&#39; | wc -l</code></pre>
 de <code>-exec ls -l</code></li>
 </ul>
 <pre class="bash"><code>find borrame/ -type f -name arch-B -exec ls -l &#39;{}&#39; + | head -5</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 borrame/dir-001/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 borrame/dir-002/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 borrame/dir-003/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 borrame/dir-004/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 borrame/dir-005/arch-B</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-001/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-002/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-003/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-004/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-005/arch-B</code></pre>
 <ul>
 <li>lista en formato largo los primeros 5 archivos arch-B haciendo uso
 de <code>xargs ls -l</code></li>
 </ul>
 <pre class="bash"><code>find borrame/ -type f -name arch-B | xargs ls -l | head -5</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 borrame/dir-001/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 borrame/dir-002/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 borrame/dir-003/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 borrame/dir-004/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 borrame/dir-005/arch-B</code></pre>
-<p>-¿qué hace este comando?</p>
-<pre><code>find borrame/ -type f -name &#39;arch-*&#39; | xargs ls -l | tail -3</code></pre>
-<p>-¿qué hace este comando?</p>
-<pre><code>find borrame/ -type f -name &#39;dir-??9&#39; | xargs ls -l | tail -3</code></pre>
-<p>-¿qué hace este comando?</p>
-<pre><code>find borrame/ -maxdepth 1 -type d -name &#39;dir-00*&#39;</code></pre>
-<ul>
-<li>$find# combinado con expresiones regulares</li>
-</ul>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-001/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-002/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-003/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-004/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-005/arch-B</code></pre>
+</div>
+<div id="find-combinado-con-expansión-de-caracteres" class="section level3" number="9.2.4">
+<h3><span class="header-section-number">9.2.4</span> <span class="math inline">\(find\)</span> combinado con expansión de
+caracteres</h3>
 <pre class="bash"><code>find borrame/ -maxdepth 1 -type d -name &#39;dir-001&#39; -or -name &#39;dir-01[1-3]&#39;</code></pre>
 <pre><code>## borrame/dir-012
 ## borrame/dir-011
 ## borrame/dir-013
 ## borrame/dir-001</code></pre>
+<pre class="bash"><code>find borrame/ -maxdepth 1 -type d -name &#39;dir-0?1&#39;</code></pre>
+<pre><code>## borrame/dir-061
+## borrame/dir-091
+## borrame/dir-051
+## borrame/dir-031
+## borrame/dir-071
+## borrame/dir-041
+## borrame/dir-011
+## borrame/dir-021
+## borrame/dir-081
+## borrame/dir-001</code></pre>
+<ul>
+<li>borremos el directorio de prácticas</li>
+</ul>
 <pre class="bash"><code>rm -rf borrame</code></pre>
+<p>-¿qué hace este comando?</p>
+<pre><code>find borrame/ -type f -name &#39;arch-*&#39; | xargs ls -l | tail -3</code></pre>
+<p>-¿qué hace este comando?</p>
+<pre><code>find borrame/ -type d -name &#39;dir-??9&#39; | xargs ls -l | tail -3</code></pre>
+<p>-¿qué hace este comando?</p>
+<pre><code>find borrame/ -maxdepth 1 -type d -name &#39;dir-00*&#39;</code></pre>
 </div>
 </div>
 </div>
@@ -3775,47 +3800,48 @@ disco está ocupado y cuánto queda libre. Las utilidades <span class="math inli
 disponible en el sistema y en cada partición o dispositivo montados en
 el sistema de archivos.</p>
 <pre class="bash"><code>df        </code></pre>
-<pre><code>## Filesystem      1K-blocks      Used Available Use% Mounted on
-## udev             16364748         0  16364748   0% /dev
-## tmpfs             3280648      2224   3278424   1% /run
-## /dev/nvme0n1p3  465816208  79839856 362240700  19% /
-## tmpfs            16403224      4688  16398536   1% /dev/shm
-## tmpfs                5120         4      5116   1% /run/lock
-## tmpfs            16403224         0  16403224   0% /sys/fs/cgroup
-## /dev/loop0            128       128         0 100% /snap/bare/5
-## /dev/loop2          56960     56960         0 100% /snap/core18/2409
-## /dev/loop3          56960     56960         0 100% /snap/core18/2538
-## /dev/loop1         144512    144512         0 100% /snap/chromium/2064
-## /dev/loop4          63488     63488         0 100% /snap/core20/1611
-## /dev/loop11        106880    106880         0 100% /snap/standard-notes/224
-## /dev/loop9          48128     48128         0 100% /snap/snapd/16292
-## /dev/loop8          48128     48128         0 100% /snap/snapd/16010
-## /dev/loop5         224256    224256         0 100% /snap/gnome-3-34-1804/72
-## /dev/loop7         153856    153856         0 100% /snap/okular/109
-## /dev/loop6          83328     83328         0 100% /snap/gtk-common-themes/1534
-## /dev/loop12         55552     55552         0 100% /snap/snap-store/558
-## /dev/loop15        224256    224256         0 100% /snap/gnome-3-34-1804/77
-## /dev/loop13        166784    166784         0 100% /snap/gnome-3-28-1804/145
-## /dev/loop14        168832    168832         0 100% /snap/gnome-3-28-1804/161
-## /dev/loop19         93952     93952         0 100% /snap/gtk-common-themes/1535
-## /dev/loop16        354688    354688         0 100% /snap/gnome-3-38-2004/115
-## /dev/loop21         63488     63488         0 100% /snap/core20/1593
-## /dev/loop17        331392    331392         0 100% /snap/kde-frameworks-5-qt-5-15-core20/14
-## /dev/loop18         52224     52224         0 100% /snap/snap-store/547
-## /dev/loop20        192256    192256         0 100% /snap/okular/115
-## /dev/loop23        446848    446848         0 100% /snap/kde-frameworks-5-96-qt-5-15-5-core20/7
-## /dev/loop24        410496    410496         0 100% /snap/gnome-3-38-2004/112
-## /dev/nvme0n1p1    1994928      5356   1989572   1% /boot/efi
-## /dev/sda1      1921724608 888955708 935076844  49% /home
-## tmpfs             3280644        20   3280624   1% /run/user/125
-## tmpfs             3280644        68   3280576   1% /run/user/1000
-## /dev/loop25        106880    106880         0 100% /snap/standard-notes/226
-## /dev/loop10        145664    145664         0 100% /snap/chromium/2076</code></pre>
+<pre><code>## Filesystem      1K-blocks       Used  Available Use% Mounted on
+## udev             16364748          0   16364748   0% /dev
+## tmpfs             3280648       2196    3278452   1% /run
+## /dev/nvme0n1p3  465816208   79655092  362425464  19% /
+## tmpfs            16403224       6152   16397072   1% /dev/shm
+## tmpfs                5120          4       5116   1% /run/lock
+## tmpfs            16403224          0   16403224   0% /sys/fs/cgroup
+## /dev/loop0            128        128          0 100% /snap/bare/5
+## /dev/loop2          63488      63488          0 100% /snap/core20/1593
+## /dev/loop1         168832     168832          0 100% /snap/gnome-3-28-1804/161
+## /dev/loop3          48128      48128          0 100% /snap/snapd/16292
+## /dev/loop7          83328      83328          0 100% /snap/gtk-common-themes/1534
+## /dev/loop6          56960      56960          0 100% /snap/core18/2538
+## /dev/loop4         354688     354688          0 100% /snap/gnome-3-38-2004/115
+## /dev/loop5         166784     166784          0 100% /snap/gnome-3-28-1804/145
+## /dev/loop18        145664     145664          0 100% /snap/chromium/2076
+## /dev/loop14        224256     224256          0 100% /snap/gnome-3-34-1804/77
+## /dev/loop10        192256     192256          0 100% /snap/okular/115
+## /dev/loop12         55552      55552          0 100% /snap/snap-store/558
+## /dev/loop21        153856     153856          0 100% /snap/okular/109
+## /dev/loop19         48128      48128          0 100% /snap/snapd/16010
+## /dev/loop8          93952      93952          0 100% /snap/gtk-common-themes/1535
+## /dev/loop20        331392     331392          0 100% /snap/kde-frameworks-5-qt-5-15-core20/14
+## /dev/loop11        446848     446848          0 100% /snap/kde-frameworks-5-96-qt-5-15-5-core20/7
+## /dev/loop24        106880     106880          0 100% /snap/standard-notes/227
+## /dev/loop13        410496     410496          0 100% /snap/gnome-3-38-2004/112
+## /dev/loop16        224256     224256          0 100% /snap/gnome-3-34-1804/72
+## /dev/loop22         63488      63488          0 100% /snap/core20/1611
+## /dev/loop17        144512     144512          0 100% /snap/chromium/2064
+## /dev/loop23         52224      52224          0 100% /snap/snap-store/547
+## /dev/nvme0n1p1    1994928       5356    1989572   1% /boot/efi
+## /dev/sda1      1921724608  889068068  934964484  49% /home
+## tmpfs             3280644         20    3280624   1% /run/user/125
+## tmpfs             3280644         48    3280596   1% /run/user/1000
+## /dev/loop25         56960      56960          0 100% /snap/core18/2560
+## /dev/loop9         106880     106880          0 100% /snap/standard-notes/229
+## /dev/sdb2      3844420600 1941338704 1707721232  54% /media/vinuesa/Seagate_4T</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la
 información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465816208 79839856 362240700  19% /</code></pre>
+## /dev/nvme0n1p3 465816208 79655092 362425464  19% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3" number="10.1.1">
 <h3><span class="header-section-number">10.1.1</span> Opciones más
 comunes de <strong>df</strong></h3>
@@ -3845,43 +3871,44 @@ la salida a nuestra necesidad.</p>
 echo
 echo
 df -h /home</code></pre>
-<pre><code>## Filesystem     1M-blocks    Used Available Use% Mounted on
-## udev              15982M      0M    15982M   0% /dev
-## tmpfs              3204M      3M     3202M   1% /run
-## /dev/nvme0n1p3   454899M  77969M   353751M  19% /
-## tmpfs             16019M      5M    16015M   1% /dev/shm
-## tmpfs                 5M      1M        5M   1% /run/lock
-## tmpfs             16019M      0M    16019M   0% /sys/fs/cgroup
-## /dev/loop0            1M      1M        0M 100% /snap/bare/5
-## /dev/loop2           56M     56M        0M 100% /snap/core18/2409
-## /dev/loop3           56M     56M        0M 100% /snap/core18/2538
-## /dev/loop1          142M    142M        0M 100% /snap/chromium/2064
-## /dev/loop4           62M     62M        0M 100% /snap/core20/1611
-## /dev/loop11         105M    105M        0M 100% /snap/standard-notes/224
-## /dev/loop9           47M     47M        0M 100% /snap/snapd/16292
-## /dev/loop8           47M     47M        0M 100% /snap/snapd/16010
-## /dev/loop5          219M    219M        0M 100% /snap/gnome-3-34-1804/72
-## /dev/loop7          151M    151M        0M 100% /snap/okular/109
-## /dev/loop6           82M     82M        0M 100% /snap/gtk-common-themes/1534
-## /dev/loop12          55M     55M        0M 100% /snap/snap-store/558
-## /dev/loop15         219M    219M        0M 100% /snap/gnome-3-34-1804/77
-## /dev/loop13         163M    163M        0M 100% /snap/gnome-3-28-1804/145
-## /dev/loop14         165M    165M        0M 100% /snap/gnome-3-28-1804/161
-## /dev/loop19          92M     92M        0M 100% /snap/gtk-common-themes/1535
-## /dev/loop16         347M    347M        0M 100% /snap/gnome-3-38-2004/115
-## /dev/loop21          62M     62M        0M 100% /snap/core20/1593
-## /dev/loop17         324M    324M        0M 100% /snap/kde-frameworks-5-qt-5-15-core20/14
-## /dev/loop18          51M     51M        0M 100% /snap/snap-store/547
-## /dev/loop20         188M    188M        0M 100% /snap/okular/115
-## /dev/loop23         437M    437M        0M 100% /snap/kde-frameworks-5-96-qt-5-15-5-core20/7
-## /dev/loop24         401M    401M        0M 100% /snap/gnome-3-38-2004/112
-## /dev/nvme0n1p1     1949M      6M     1943M   1% /boot/efi
-## /dev/sda1       1876685M 868121M   913161M  49% /home
-## tmpfs              3204M      1M     3204M   1% /run/user/125
-## tmpfs              3204M      1M     3204M   1% /run/user/1000
-## /dev/loop25         105M    105M        0M 100% /snap/standard-notes/226
-## /dev/loop10         143M    143M        0M 100% /snap/chromium/2076
-## total           2394877M 949813M  1326483M  42% -
+<pre><code>## Filesystem     1M-blocks     Used Available Use% Mounted on
+## udev              15982M       0M    15982M   0% /dev
+## tmpfs              3204M       3M     3202M   1% /run
+## /dev/nvme0n1p3   454899M   77789M   353932M  19% /
+## tmpfs             16019M       7M    16013M   1% /dev/shm
+## tmpfs                 5M       1M        5M   1% /run/lock
+## tmpfs             16019M       0M    16019M   0% /sys/fs/cgroup
+## /dev/loop0            1M       1M        0M 100% /snap/bare/5
+## /dev/loop2           62M      62M        0M 100% /snap/core20/1593
+## /dev/loop1          165M     165M        0M 100% /snap/gnome-3-28-1804/161
+## /dev/loop3           47M      47M        0M 100% /snap/snapd/16292
+## /dev/loop7           82M      82M        0M 100% /snap/gtk-common-themes/1534
+## /dev/loop6           56M      56M        0M 100% /snap/core18/2538
+## /dev/loop4          347M     347M        0M 100% /snap/gnome-3-38-2004/115
+## /dev/loop5          163M     163M        0M 100% /snap/gnome-3-28-1804/145
+## /dev/loop18         143M     143M        0M 100% /snap/chromium/2076
+## /dev/loop14         219M     219M        0M 100% /snap/gnome-3-34-1804/77
+## /dev/loop10         188M     188M        0M 100% /snap/okular/115
+## /dev/loop12          55M      55M        0M 100% /snap/snap-store/558
+## /dev/loop21         151M     151M        0M 100% /snap/okular/109
+## /dev/loop19          47M      47M        0M 100% /snap/snapd/16010
+## /dev/loop8           92M      92M        0M 100% /snap/gtk-common-themes/1535
+## /dev/loop20         324M     324M        0M 100% /snap/kde-frameworks-5-qt-5-15-core20/14
+## /dev/loop11         437M     437M        0M 100% /snap/kde-frameworks-5-96-qt-5-15-5-core20/7
+## /dev/loop24         105M     105M        0M 100% /snap/standard-notes/227
+## /dev/loop13         401M     401M        0M 100% /snap/gnome-3-38-2004/112
+## /dev/loop16         219M     219M        0M 100% /snap/gnome-3-34-1804/72
+## /dev/loop22          62M      62M        0M 100% /snap/core20/1611
+## /dev/loop17         142M     142M        0M 100% /snap/chromium/2064
+## /dev/loop23          51M      51M        0M 100% /snap/snap-store/547
+## /dev/nvme0n1p1     1949M       6M     1943M   1% /boot/efi
+## /dev/sda1       1876685M  868231M   913052M  49% /home
+## tmpfs              3204M       1M     3204M   1% /run/user/125
+## tmpfs              3204M       1M     3204M   1% /run/user/1000
+## /dev/loop25          56M      56M        0M 100% /snap/core18/2560
+## /dev/loop9          105M     105M        0M 100% /snap/standard-notes/229
+## /dev/sdb2       3754317M 1895839M  1667697M  54% /media/vinuesa/Seagate_4T
+## total           6149194M 2845582M  2994249M  49% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
@@ -3909,8 +3936,8 @@ formato <em>human readable</em></p></li>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 268872   .
-## 263M .</code></pre>
+<pre><code>## 271876   .
+## 266M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y
 /usr/local/*</li>
@@ -5999,6 +6026,7 @@ ls -ld working_with* *.awk *.sh docs pics | awk &#39;{print $1, $NF}&#39; </code
 ## -rwxr-xr-x translate_dna.awk
 ## -rwxr-xr-x translate_fasta.awk
 ## -rwxr-xr-x transpose_matrix.awk
+## -rw-rw-r-- working_with_linux_commands.html
 ## -rw-rw-r-- working_with_linux_commands.log
 ## -rw-r--r-- working_with_linux_commands.Rmd
 ## -rw-rw-r-- working_with_linux_commands.tex</code></pre>
@@ -6081,17 +6109,18 @@ en el directorio actual</li>
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  68106 nov 15  2020 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa 426026 ago 31 19:17 working_with_linux_commands.Rmd
-## -rw-rw-r-- 1 vinuesa vinuesa 499749 nov 15  2020 working_with_linux_commands.tex
-## total size of working_with_linux_commands.* files is: 0.95 Mb</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 2063685 sep  7 13:47 working_with_linux_commands.html
+## -rw-rw-r-- 1 vinuesa vinuesa   68106 nov 15  2020 working_with_linux_commands.log
+## -rw-r--r-- 1 vinuesa vinuesa  436301 sep  7 14:08 working_with_linux_commands.Rmd
+## -rw-rw-r-- 1 vinuesa vinuesa  499749 nov 15  2020 working_with_linux_commands.tex
+## total size of working_with_linux_commands.* files is: 2.93 Mb</code></pre>
 <ul>
 <li>comparen y entiendan la diferencia del comando anterior con el del
 siguiente:</li>
 </ul>
 <pre class="bash"><code>ls -l working_with_linux_commands.* | \
  awk &#39;{s+=$5}; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## total size of working_with_linux_commands.* files is: 0.95 Mb</code></pre>
+<pre><code>## total size of working_with_linux_commands.* files is: 2.93 Mb</code></pre>
 </div>
 <div id="uso-de-función-de-autoincremento-para-contar-ocurrencias-de-un-patrón" class="section level3" number="12.5.7">
 <h3><span class="header-section-number">12.5.7</span> uso de función de
@@ -7172,7 +7201,7 @@ leer argumentos</li>
 ## 
 ## # ARGC == lenght(ARGV) == 5 
 ## ARGC = 5
-## [] [] [123] [21435]</code></pre>
+## [] [] [123] [15932]</code></pre>
 <ul>
 <li>Comentarios y preguntas
 <ul>
@@ -7228,7 +7257,7 @@ sentencia; éstas van separadas por saltos de línea</li>
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 3 
 ## ARGC = 3
-## [] [] [11756] []</code></pre>
+## [] [] [5026] []</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -7249,7 +7278,7 @@ comandos <span class="math inline">\(awk\)</span></li>
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 6 
 ## ARGC = 6
-## [] [] [123] [28584]</code></pre>
+## [] [] [123] [28433]</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -9765,27 +9794,71 @@ elementos esenciales del lenguaje <span class="math inline">\(Bash\)</span>, el 
 <p>Revisa la <a href="https://www.gnu.org/software/bash/manual/bash.html">manual GNU de
 referencia de Bash</a> para cualquier aspecto adicional que necesites
 consultar.</p>
-<div id="asignación-y-uso-de-variables" class="section level2" number="13.1">
-<h2><span class="header-section-number">13.1</span> Asignación y uso de
-<strong>variables</strong></h2>
-<p>Las variables permiten guardar un valor bajo una etiqueta o nombre
-para su uso posterior en un programa. Recuerden que el <span class="math inline">\(Shell\)</span> define una cantidad importante de
-<em>variables de ambiente</em> que revisaremos en una siguiente
-sección.</p>
-<ul>
-<li>La sintaxis básica de asignación es:</li>
-</ul>
+<div id="tipos-asignación-y-uso-de-variables" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> Tipos, asignación y
+uso de <strong>variables</strong></h2>
+<p>El primer paso es la asignación de <b>variables</b>. Todos los
+lenguajes hacen uso de ellas. Se usan para guardar valores sencillos
+(variables escalares) numéricos o de cadenas de caracteres, o listas y
+estructuras de datos más complejas, como <span class="math inline">\(arreglos\)</span> indexados por índices
+posicionales, o <span class="math inline">\(hashes\)</span>, que son
+arreglos indexados por llaves especificas.</p>
+Independientemente del tipo de variable, los nombres que les damos deben
+inciar con un caracter alfabético o guión bajo, y el resto de caracteres
+deben ser alfanuméricos, es decir de la clase
+<pre>[a-zA-Z0-9_]</pre>
+<p>y no contener espacios.</p>
+<p>Las variables de <span class="math inline">\(Shell\)</span> (<span class="math inline">\(Bash\)</span> inclusive) son globales y no
+necesitan ser declaradas (salvo <span class="math inline">\(hashes\)</span>).</p>
+<p>Según su uso, las variables temporales que se usan como aliases
+temporales por ejemplo en bucles, suelen ser nombradas con una sola
+letra, por conveniencia y por ser obvio lo que contienen</p>
+<pre><code>for f in *.fna; do echo $f; done</code></pre>
+<p>Para otras variables que se usan en diferentes puntos de un programa,
+conviene hacer uso de nombres cortos pero informativos, como</p>
+<pre><code>formato_de_entrada=&#39;&#39;
+formato_de_salida=&#39;&#39;
+runmode=&#39;&#39;</code></pre>
+<p>Es una buena práctica mantener un estilo consistente para los nombres
+de variables, evitando usar variables en puras mayúsculas, para
+minimizar el riesgo de interferencia con variables de ambiente, como
+USER, HOME, SHELL, PATH, que por convención se nombran en
+mayúsculas.</p>
+<div id="variables-escalares" class="section level3" number="13.1.1">
+<h3><span class="header-section-number">13.1.1</span> Variables
+escalares</h3>
+<p>La sintaxis básica de asignación de un valor simple a una variable
+escalar y uso de comillas</p>
 <pre><code>varName=VALUE</code></pre>
 <p>Noten que <strong>no puede haber un espacio entre el nombre de la
 variable, el ‘=’ y el valor</strong>.</p>
 <ul>
-<li>para recuperar el valor de una variable, le añadimos el prefijo
+<li>para recuperar el valor de una varialbe, le añadimos el prefijo
 <b>$</b>. Para imprimir el valor asignado a la variable, usamos <b>echo
 $varName</b></li>
 </ul>
-<pre class="bash"><code>usuario=&quot;Juan&quot;
-echo &quot;el usuario guardado en la variable &#39;usuario&#39; es: $usuario&quot;</code></pre>
-<pre><code>## el usuario guardado en la variable &#39;usuario&#39; es: Juan</code></pre>
+<pre class="bash"><code>archivo_de_comandos_linux=linux_commands.tab
+echo &quot;$archivo_de_comandos_linux&quot;
+
+# asignación de cadena de texto, con espacios y otros símbolos, entre comillas sencillas
+var2=&#39;Cadena con espacios, entre comillas sencillas&#39;
+echo &quot;var2: $var2&quot;
+
+# asignación de cadena de texto, con espacios y otros símbolos, incluyendo variables (en este caso de ambiente) entre comillas dobles, para interpolación de variables
+saludo_inicial=&quot;Bienvenido a $HOSTNAME, $USER! Te recuerdo que hoy es $(date)&quot;
+echo &quot;$saludo_inicial&quot;
+
+# Llamado a variable entre comillas sencillas NO INTERPOLA!!!
+echo &#39; &gt;&gt;&gt; Ojo, VARIABLE ENTRE COMILLAS SENCILLAS NO INTERPOLA: $saludo_inicial; se imprime literalmente&#39;
+
+echo</code></pre>
+<pre><code>## linux_commands.tab
+## var2: Cadena con espacios, entre comillas sencillas
+## Bienvenido a alisio, vinuesa! Te recuerdo que hoy es mié 07 sep 2022 14:10:09 CDT
+##  &gt;&gt;&gt; Ojo, VARIABLE ENTRE COMILLAS SENCILLAS NO INTERPOLA: $saludo_inicial; se imprime literalmente</code></pre>
+<p>No es necesario hacer llamados a las variables entre comillas dobles,
+pero es una buena práctica, como se muestra en los ejemplos del bloque
+anterior.</p>
 <ul>
 <li>para <strong>concatenar los valores</strong> de dos variables,
 intercalando otros caracteres, debemos proteger el nombre de la variable
@@ -9797,9 +9870,9 @@ n_a=&quot;${nombre}_${apellido}&quot;
 echo &quot;Nombe y Apellido: $n_a&quot;</code></pre>
 <pre><code>## Nombe y Apellido: Juan_Aguirre</code></pre>
 <ul>
-<li>los nombres de las variables no pueden empezar con un dígito, ni
-contener caracteres más que los alfanuméricos estándar del idioma
-inglés: [a-zA-Z0-9_]</li>
+<li>Recuerda: los nombres de las variables no pueden empezar con un
+dígito, ni contener caracteres más que los alfanuméricos estándar del
+idioma inglés: [a-zA-Z0-9_]</li>
 </ul>
 <pre><code># Nombres válidos de variables
 user_name=$USER
@@ -9809,6 +9882,7 @@ user1=&quot;María López&quot;  &quot; # noten que los valores a asignar que co
 ubicación=CDMX
 1_argumento=1</code></pre>
 </div>
+</div>
 <div id="captura-en-una-varialbe-de-la-salida-de-un-comando-con-varcomando" class="section level2" number="13.2">
 <h2><span class="header-section-number">13.2</span> Captura en una
 varialbe de la salida de un comando con <b>var=$(comando)</b></h2>
@@ -9816,7 +9890,7 @@ varialbe de la salida de un comando con <b>var=$(comando)</b></h2>
 dat=$(date | awk &#39;{print $2&quot;-&quot;$3&quot;-&quot;$4}&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in &lt;$wkdir&gt; at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;31-ago-2022&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;07-sep-2022&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2" number="13.3">
 <h2><span class="header-section-number">13.3</span> Modificación de
@@ -9927,7 +10001,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 ago 31 19:21 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20  2020 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -10077,6 +10151,7 @@ de bucle for en una línea</h3>
 <pre class="bash"><code># sintaxis de bucle for en una línea, combinado con if [[ &quot;$var&quot; =~ $regexp ]]
 regexp=&#39;[a-zA-Z_]+\.html$&#39;
 for file in *; do if [[ &quot;$file&quot; =~ $regexp ]]; then echo &quot;found html file &lt;$file&gt;&quot;; fi;  done</code></pre>
+<pre><code>## found html file &lt;working_with_linux_commands.html&gt;</code></pre>
 </div>
 <div id="sintaxis-y-ejemplo-de-bucle-for-en-múltiples-líneas-con-indentación" class="section level3" number="13.8.2">
 <h3><span class="header-section-number">13.8.2</span> Sintaxis y ejemplo
@@ -10162,14 +10237,14 @@ done</code></pre>
 archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 ago 31 19:21 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 ago 31 19:21 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 ago 31 19:21 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 ago 31 19:21 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 ago 31 19:21 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 ago 31 19:21 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 ago 31 19:21 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 ago 31 19:21 recA_B_yuanmingense.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 sep  7 14:10 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10279 sep  7 14:10 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 sep  7 14:10 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 sep  7 14:10 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 sep  7 14:10 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 sep  7 14:10 recA_B_sp..fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 sep  7 14:10 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 sep  7 14:10 recA_B_yuanmingense.fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -10317,9 +10392,9 @@ satisfecha la condición.</p>
 <pre class="bash"><code>while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 27874
-## 14836
-## 13950</code></pre>
+<pre><code>## 16646
+## 10150
+## 28710</code></pre>
 <p>Los bucles <span class="math inline">\(until\)</span> son útiles para
 ejecutar un bucle hasta que se cumpla o no una determinada
 condición.</p>
@@ -10331,9 +10406,9 @@ con un <span class="math inline">\(break\)</span>.</p>
 <pre class="bash"><code>until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 31113
-## 3885
-## 27289</code></pre>
+<pre><code>## 15051
+## 23575
+## 6921</code></pre>
 </div>
 </div>
 <div id="estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" class="section level2" number="13.10">
@@ -10341,11 +10416,6 @@ until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; bre
 datos en <span class="math inline">\(Bash\)</span> -
 <strong>arreglos</strong> y <strong>hashes</strong> (en
 construcción)</h2>
-<p>TODO</p>
-</div>
-<div id="funciones-escritas-por-el-usuario-en-construcción" class="section level2" number="13.11">
-<h2><span class="header-section-number">13.11</span> Funciones escritas
-por el usuario (en construcción)</h2>
 <p>TODO</p>
 <!--
 
@@ -11140,13 +11210,260 @@ arranque.</p>
 añadiéndole una interfaz de usuario.</li>
 </ol>
 </div>
+<div id="funciones-y-modularización-de-código" class="section level2" number="14.7">
+<h2><span class="header-section-number">14.7</span> Funciones y
+modularización de código</h2>
+<p>A medida que los programas se hacen más grandes y complejos, se
+vuelven más difíciles de diseñar, escribir y mantener.</p>
+<p>Escribir <b>funciones</b> permite reducir la extensión, redundancia y
+complejidad de un programa grande, facilitando su mantenimiento. Los
+programas extensos típicamente tienen que ejecutar múltiples veces una
+misma acción, como por ejemplo verificar que se ha escrito a disco un
+archivo con resultados generados por el programa. Escribir una función
+que verifique la existencia de un archivo, pasado a la misma como
+argumento, permite reducir redundancia y extensión del código, ya que en
+el lugar apropiado del script principal, se llama a la función, en vez
+de repetir el cógido encapsulado en la misma. Si hubiera un error en la
+función, sólo hay que corregirlo en un bloque de código correspondiente,
+y no en múltiples secciones del script principal.</p>
+<p>Para evitar el copiar y pegar funciones frecuentemente usadas entre
+scripts, conviene generar <b>librerías de funciones relacionadas</b>.
+Estas son simplemente archivos que contienen a diversas funciones. Las
+funciones de una o más librerías se hacen accesibles a un script
+mediante el comando <span class="math inline">\(source\)</span>, como se
+muestra en el siguiente bloque y en el machote de script mostrado más
+abajo.</p>
+<pre>
+# import functions defined in the aux_fun_lib file
+source $HOME/bin/lib/aux_fun_lib
+</pre>
+<p>De nuevo, tener a las funciones reunidas en una o más librerías
+facilita su uso y mantenimiento.</p>
+<p>Por tanto, una práctica fundamental en programación, es la
+modularización del cógido en funciones y librerías de funciones
+relacionadas.</p>
+<p>La sintaxis básica de una función es la siguiente:</p>
+<pre>
+function fun_name1 {
+    local posvar1=$1
+    local posvar2=$2
+    ...
+    command1
+    command2
+    ...
+    return
+}
+</pre>
+<p>La llamada a la función, desde el script principal, se hace
+llamándola como si fuera un comando más, pudiendo pasarle argumentos
+posicionales</p>
+<pre>
+fun_name1 arg1 arg2
+</pre>
+<p>Una buena función debe estar especializada en realizar una sola
+tarea, eso sí, bajo diferentes condiciones u opciones, que se le pasan
+como argumentos posicionales.</p>
+<p>La llamada a librería de funciones y la definición de funciones
+dentro del script princial típicamente deben ir al inicio del script,
+antes de que sean llamadas por el mismo, como se muestra en el “machote”
+de script que se presenta más adelante.</p>
+<div id="llamada-a-la-función-print_numbered_table_header_fields-con-uno-o-dos-argumentos-posicionales" class="section level3" number="14.7.1">
+<h3><span class="header-section-number">14.7.1</span> Llamada a la
+función <span class="math inline">\(print\_numbered\_table\_header\_fields\)</span>
+con uno o dos argumentos posicionales</h3>
+<p>Si usas con frecuencia algunas funciones, puedes ponerlas también el
+archivo de inicialización <span class="math inline">\(\$HOME/.bashrc\)</span> para sesiones locales en
+tu máquina, o en <span class="math inline">\(\$HOME/.bash\_profile\)</span>, en una máquina
+remota. De esta manera, cada vez que inicias una sesión local o remota,
+las funciones serán exportadas al ambiente y las podrás usar como si
+fuera cualquier otro comando de Linux.</p>
+<p>Como ejemplo, veamos la función <span class="math inline">\(print\_numbered\_table\_header\_fields\)</span>,
+que tengo en mi <span class="math inline">\(\$HOME/.bashrc\)</span>.</p>
+<ul>
+<li><p>Los argumentos posicionales <code>$1, $2 …</code> son capturados
+en la función como variables localizadas o locales usando
+<code>local</code>. Localizar una variable a una función quiere decir
+que sólo es visible dentro de ésta. Esto es importante para evitar que
+interfieran con otras variables definidas en el script
+principal</p></li>
+<li><p>El número total de argumentos recibidos queda guardado en la
+variable <code>$#</code></p></li>
+<li><p>Examina la función ¿Qué crees que hace?</p></li>
+</ul>
+<pre><code>function print_numbered_table_header_fields()
+{
+   #: AUTHOR: Pablo Vinuesa, @pvinmex, CCG-UNAM
+   # provide table name to parse (tsv format expected; can skip a certain number of comment lines)
+   local table=$1
+   local skip_lines=$2
+   
+   [ $# -lt 1 ] &amp;&amp; echo &quot;$FUNCNAME usage: &lt;table_name&gt; [&lt;number_of_top_comment_lines_to_skip&gt;]&quot;
+   
+   if [ $# -eq 1 ]; then
+       head -1 &quot;$table&quot; | sed &#39;s/\t/\n/g&#39; | nl
+   elif [ $# -eq 2 ]; then
+       tail -n +&quot;$((skip_lines+1))&quot; &quot;$table&quot; | sed &#39;s/\t/\n/g&#39; | nl
+   fi
+}</code></pre>
+<ul>
+<li><p>Copia la función al archivo <span class="math inline">\(\$HOME/.bash\_profile\)</span> en <i>buluc</i> y
+ejecuta <code>source $HOME/.bash_profile</code> para releer el archivo y
+que se exporte la función al ambiente.</p></li>
+<li><p>llamado a la función sin argumentos, imprime la ayuda</p></li>
+</ul>
+<pre><code>print_numbered_table_header_fields</code></pre>
+<pre><code>print_numbered_table_header_fields usage: &lt;table_name&gt; [&lt;number_of_top_comment_lines_to_skip&gt;]</code></pre>
+<ul>
+<li>llamado a la función con el nombre de la tabla a procesar como único
+argumento</li>
+</ul>
+<pre><code>print_numbered_table_header_fields linux_basic_commands.tab 
+     1  IEEE Std 1003.1-2008 utilities Name 
+     2  Category 
+     3  Description 
+     4  First appeared</code></pre>
+</div>
+</div>
+<div id="machote-de-un-bash-script-que-llama-a-una-librería-de-funciones-y-define-otras-en-la-cabecera-del-script-principal" class="section level2" number="14.8">
+<h2><span class="header-section-number">14.8</span> Machote de un <span class="math inline">\(Bash\)</span> script que llama a una librería de
+funciones y define otras en la cabecera del script principal</h2>
+<p>El siguiente bloque muestra un machote para un <span class="math inline">\(script\)</span> básico, que llama una librería de
+funciones y define otras en la cabecera del script principal, y que
+recibe argumentos posicionales desde la línea de comandos. Puedes usarlo
+para facilitarte la escritura de tus propios scripts.</p>
+<pre>
+#!/usr/bin/env bash
+
+#: PROGRAM: <progname>
+#: AUTHOR:  <author name>
+#
+#: PROJECT START: <yyyy-mm-dd>
+#
+#: AIM: <description>
+
+progname=${0##*/}     # nombre_del_programa
+vers=&#39;0.1&#39; 
+
+# GLOBALS
+#DATEFORMAT_SHORT=&quot;%d%b%y&quot;
+#TIMESTAMP_SHORT=$(date +${DATEFORMAT_SHORT})
+
+#date_F=$(date +%F |sed &#39;s/-/_/g&#39;)-
+#date_T=$(date +%T |sed &#39;s/:/./g&#39;)
+#start_time=&quot;$date_F$date_T&quot;
+#current_year=$(date +%Y)
+
+#----------------------------------------------------------------------------#
+#&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; FUNCTION DEFINITIONS &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;#
+#----------------------------------------------------------------------------#
+
+# import functions defined in the aux_fun_lib file
+source $HOME/bin/lib/aux_fun_lib
+
+function check_dependencies()
+{
+    for programname in prog1 prog2
+    do
+       bin=$(type -P $programname)
+       if [ -z &quot;$bin&quot; ]; then
+          echo
+          echo &quot;# ERROR: $programname not in place!&quot;
+          echo &quot;# ... you will need to install \&quot;$programname\&quot; first or include it in \$PATH&quot;
+          echo &quot;# ... exiting&quot;
+          exit 1
+       fi
+    done
+
+    echo
+    echo &#39;# Run check_dependencies() ... looks good: all required binaries and perl scripts are in place.&#39;
+    echo
+}
+#----------------------------------------------------------------------------------------- 
+
+function print_help()
+{
+  cat &lt;&lt; HELP
+
+    $progname v$vers usage synopsis:
+    
+    $progname <string> <int [optional positional argument2; def:$var2]> 
+
+    AIM: <description>
+     
+    OUTPUT: <description>
+
+HELP
+    check_dependencies
+    
+    exit 0
+}
+#----------------------------------------------------------------------------------------- 
+
+function check_output()
+{
+    #&gt;&gt;&gt; set color in bash 
+    #  SEE: echo http://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+    #  And very detailed: http://misc.flogisoft.com/bash/tip_colors_and_formatting
+    # ANSI escape codes
+    # Black        0;30     Dark Gray     1;30
+    # Red          0;31     Light Red     1;31
+    # Green        0;32     Light Green   1;32
+    # Brown/Orange 0;33     Yellow        1;33
+    # Blue         0;34     Light Blue    1;34
+    # Purple       0;35     Light Purple  1;35
+    # Cyan         0;36     Light Cyan    1;36
+    # Light Gray   0;37     White         1;37
+    RED=&#39;\033[0;31m&#39;
+    GREEN=&#39;\033[0;32m&#39;
+    #YELLOW=&#39;\033[1;33m&#39;
+    #BLUE=&#39;\033[0;34m&#39;
+    #CYAN=&#39;\033[0;36m&#39;
+    NC=&#39;\033[0m&#39; # No Color =&gt; end color
+    #printf &quot;I ${RED}love${NC} ${GREEN}Stack Overflow${NC}\n&quot;
+
+    outfile=$1
+    
+    if [ -s &quot;$outfile&quot; ]
+    then
+         echo -e &quot;${GREEN} &gt;&gt;&gt; wrote file $outfile ...${NC}&quot;
+    else
+        echo
+    echo -e &quot;${RED} &gt;&gt;&gt; ERROR! The expected output file $outfile was not produced, will exit now!${NC}&quot;
+        echo
+    exit 1
+    fi
+}
+#----------------------------------------------------------------------------------------- 
+
+#
+# &gt;&gt;&gt;&gt; MAIN CODE &lt;&lt;&lt;&lt;
+#
+
+var1=$1
+var2=${2:-10}
+
+
+[ -z &quot;$var1&quot; ] &amp;&amp; print_help
+
+cat &lt;&lt; PARAMS
+   
+    $progname $var1 $var2 
+    
+PARAMS
+
+
+prog1 $var1 $var2
+
+
+</pre>
+</div>
 </div>
 <div id="programando-un-pipeline-en-bash" class="section level1" number="15">
 <h1><span class="header-section-number">15</span> Programando un
 pipeline en <span class="math inline">\(Bash\)</span></h1>
 <p>Para finalizar este tutorial, revisaremos el <span class="math inline">\(script\)</span> <em>run_phylip.sh</em>. Es un poco
-más largo y complejo que los anteriores e integra muchos de los aspectos
-mostrados en secciones anteriores.</p>
+más largo y complejo que los anteriores, e integra muchos de los
+aspectos mostrados en secciones anteriores.</p>
 <p>Cuando estamos aprendiendo a programar, es muy importante leer mucho
 código bien escrito. No se aprende a programar bien sólo conociendo la
 sintaxis y generalidades, sino viendo cómo se pueden escribir programas
