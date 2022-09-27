@@ -366,7 +366,7 @@ pre code {
 para bioinformática y biocómputo en sistemas GNU/Linux</h1>
 <h4 class="author">Pablo Vinuesa, Centro de Ciencias Genómicas - UNAM;
 <a href="https://www.ccg.unam.mx/~vinuesa/" class="uri">https://www.ccg.unam.mx/~vinuesa/</a> | <span class="citation">@pvinmex</span>: <a href="https://twitter.com/pvinmex" class="uri">https://twitter.com/pvinmex</a></h4>
-<h4 class="date">Versión: Wed Sep 7 14:09:59 2022</h4>
+<h4 class="date">Versión: Mon Sep 26 22:11:44 2022</h4>
 
 </div>
 
@@ -998,7 +998,7 @@ material previo, presentado en diversos cursos y talleres, como <a href="http://
 filoinformática</a> de los <a href="http://congresos.nnb.unam.mx/TIB2019">Talleres Internacionales de
 Bioinformática - TIB2019</a>, celebrados en el <a href="http://www.ccg.unam.mx">Centro de Ciencias Genómicas</a> de la <a href="http://www.ccg.unam.mx">Universidad Nacional Autónoma de
 México</a>, del 29 de julio al 2 de agosto de 2019.</p>
-<p>Las versión actual (v.2022-09-07) contiene extensiones significativas
+<p>Las versión actual (v.2022-09-26) contiene extensiones significativas
 con respecto a cursos anteriores, así como adaptaciones para el <a href="http://www.ccg.unam.mx/noticias/academicas/taller-de-ciencias-genomicas-de-moleculas-a-ecosistemas/">Taller
 de Ciencias Genómicas: de Moléculas a Ecosistemas</a>, que impartimos
 investigadores del <a href="http://www.ccg.unam.mx">CCG-UNAM</a> para <a href="mailto:alumn@s" class="email">alumn@s</a> de la <a href="http://www.fciencias.unam.mx/">Facultad de Ciencias - UNAM</a>,
@@ -1267,7 +1267,7 @@ del <em>kernel</em> o núcleo</h3>
 <pre class="bash"><code>uname
 uname -a</code></pre>
 <pre><code>## Linux
-## Linux alisio 5.15.0-46-generic #49~20.04.1-Ubuntu SMP Thu Aug 4 19:15:44 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
+## Linux alisio 5.15.0-48-generic #54~20.04.1-Ubuntu SMP Thu Sep 1 16:17:26 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
 </div>
 <div id="lsb_release-muestra-información-sobre-la-distribución-instalada" class="section level3" number="3.1.4">
 <h3><span class="header-section-number">3.1.4</span>
@@ -1466,7 +1466,7 @@ ls | head</code></pre>
 <pre class="bash"><code># mostrar todos (-a all) los archivos, incluidos los ocultos, y sus propiedades
 ls -al | head -20</code></pre>
 <pre><code>## total 102140
-## drwxr-xr-x 12 vinuesa vinuesa    20480 sep  7 13:47 .
+## drwxr-xr-x 12 vinuesa vinuesa    20480 sep  7 14:10 .
 ## drwxr-xr-x  4 vinuesa vinuesa     4096 nov 11  2020 ..
 ## -rwxr-xr-x  1 vinuesa vinuesa     2135 oct 14  2020 align_seqs_with_clustal_or_muscle.sh
 ## -rw-rw-r--  1 vinuesa vinuesa      244 dic 27  2020 aoa.awk
@@ -1509,10 +1509,10 @@ argumentos</li>
 <pre class="bash"><code>ls -l / | head</code></pre>
 <pre><code>## total 128
 ## lrwxrwxrwx   1 root root     7 oct  4  2020 bin -&gt; usr/bin
-## drwxr-xr-x   4 root root  4096 ago 25 16:44 boot
+## drwxr-xr-x   4 root root  4096 sep 23 17:12 boot
 ## drwxr-xr-x   2 root root  4096 oct  4  2020 cdrom
-## drwxr-xr-x  21 root root  4920 sep  7 10:39 dev
-## drwxr-xr-x 163 root root 12288 sep  7 10:33 etc
+## drwxr-xr-x  21 root root  4840 sep 26 17:07 dev
+## drwxr-xr-x 163 root root 12288 sep 26 17:31 etc
 ## drwxr-xr-x   5 root root  4096 abr 15  2020 home
 ## lrwxrwxrwx   1 root root     7 oct  4  2020 lib -&gt; usr/lib
 ## lrwxrwxrwx   1 root root     9 oct  4  2020 lib32 -&gt; usr/lib32
@@ -2027,6 +2027,7 @@ fi</code></pre>
 crear:</li>
 </ul>
 <pre class="bash"><code>mkdir -p intro2linux/sesion1 &amp;&amp; cd intro2linux/sesion1</code></pre>
+<pre><code>## /home/vinuesa/intro2linux/sesion1</code></pre>
 <ul>
 <li>cambiamos a /home/vinuesa e intenta crear estos mismos directorios
 ahí</li>
@@ -2147,7 +2148,7 @@ formato estandarizado de documentación que se despliega en la consola
 usando la línea de comandos</p>
 <pre class="bash"><code># mira las opciones de cut y sort en la manpage
 man cut | head -30</code></pre>
-<pre><code>## CUT(1)                                                     User Commands                                                     CUT(1)
+<pre><code>## CUT(1)                                                                                    User Commands                                                                                    CUT(1)
 ## 
 ## NAME
 ##        cut - remove sections from each line of files
@@ -2172,10 +2173,11 @@ man cut | head -30</code></pre>
 ##               use DELIM instead of TAB for field delimiter
 ## 
 ##        -f, --fields=LIST
-##               select  only  these fields;  also print any line that contains no delimiter character, unless the -s option is speci‐
-##               fied
+##               select only these fields;  also print any line that contains no delimiter character, unless the -s option is specified
 ## 
-##        -n     (ignored)</code></pre>
+##        -n     (ignored)
+## 
+##        --complement</code></pre>
 </div>
 <div id="ayuda-de-cada-comando-integrado-en-el-shell-help-shell_builtin-para-shell-builtins" class="section level3" number="3.6.5">
 <h3><span class="header-section-number">3.6.5</span> Ayuda de cada
@@ -2331,6 +2333,7 @@ command\)</span></p>
 archivos: copiar, mover, renombrar y borrar archivos</h1>
 <pre class="bash"><code># cambia a tu home, y luego a intro2linux/sesion1
 cd &amp;&amp; cd intro2linux/sesion1</code></pre>
+<pre><code>## /home/vinuesa/intro2linux/sesion1</code></pre>
 <div id="copia-de-archivo-simple-cp-pathtofile-." class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> copia de archivo
 simple: <b> cp /path/to/file .</b></h2>
@@ -2501,7 +2504,7 @@ ls -l | head</code></pre>
 ## drwxrwxr-x 2 vinuesa vinuesa     4096 nov 16  2020 bin
 ## -rwxr-xr-x 1 vinuesa vinuesa     5406 oct 14  2020 blast-imager.pl
 ## -rw-rw-r-- 1 vinuesa vinuesa      933 nov  4  2020 clases_avance.txt
-## lrwxrwxrwx 1 vinuesa vinuesa       78 sep  7 14:09 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
+## lrwxrwxrwx 1 vinuesa vinuesa       78 sep 26 22:11 comandos_de_linux.tab -&gt; /home/vinuesa/Cursos/TIB/TIB19-T3/sesion1_intro2linux/linux_basic_commands.tab</code></pre>
 <ul>
 <li>renombramos la liga (o cualquier archivo o directorio)</li>
 </ul>
@@ -3016,7 +3019,7 @@ echo &#39;-------------------&#39;
 ls -l tmp1.txt</code></pre>
 <pre><code>## tmp1.txt: ASCII text
 ## -------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 9 sep  7 14:09 tmp1.txt</code></pre>
+## -rw-rw-r-- 1 vinuesa vinuesa 9 sep 26 22:11 tmp1.txt</code></pre>
 <ul>
 <li>podemos desplegar el archivo con <span class="math inline">\(cat\)</span> u otros comandos como el paginador
 <span class="math inline">\(less\)</span></li>
@@ -3044,7 +3047,7 @@ vacío, antes de leerlo. En el siguiente paso lee tmp1.txt, que es un
 archivo vacío, como demuestran los siguientes comandos</p>
 <pre class="bash"><code>cat  tmp1.txt
 ls -l tmp1.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:09 tmp1.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 tmp1.txt</code></pre>
 </div>
 </div>
 <div id="cómo-indicar-a-un-comando-o-programa-que-lea-de-un-archivo-y-escriba-a-otro---combinación-de-y" class="section level2" number="6.3">
@@ -3208,8 +3211,8 @@ un archivo.</p>
 <pre class="bash"><code>ls no_existo.txt 1&gt; stdout_no_existo.txt 2&gt; stderr_no_existo.txt
 ls -l stdout_no_existo.txt 
 ls -l stderr_no_existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 stdout_no_existo.txt
-## -rw-rw-r-- 1 vinuesa vinuesa 61 sep  7 14:10 stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 stdout_no_existo.txt
+## -rw-rw-r-- 1 vinuesa vinuesa 61 sep 26 22:11 stderr_no_existo.txt</code></pre>
 <p>Cuando escribamos <span class="math inline">\(scripts\)</span> u
 otros programas, debemos manejar adecuadamente los descriptores de
 archivos para imprimir resultados y mensajes de error a sus archivos
@@ -3220,7 +3223,7 @@ ls -l stdout_y_stderr_no_existo.txt
 
 # limpiemos la basura
 rm *existo.txt</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 sep  7 14:10 stdout_y_stderr_no_existo.txt</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 61 sep 26 22:11 stdout_y_stderr_no_existo.txt</code></pre>
 </div>
 <div id="eliminar-mensajes-impresos-por-un-programa-a-stderr-con-2-devnull" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Eliminar mensajes
@@ -3362,10 +3365,10 @@ echo &#39;----------------------------&#39;
 rm *fna                      # por ello los eliminamos con rm</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21  2020 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29  2020 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 sep  7 13:47 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 164638 sep  7 13:47 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 sep  7 14:10 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 164638 sep  7 14:10 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 48437 sep  7 14:10 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 48437 sep 26 22:11 fna_files.tgz
 ## ----------------------------
 ## mini_CDS.fna
 ## recA_Bradyrhizobium_vinuesa.fna
@@ -3391,10 +3394,10 @@ echo &#39;----------------------------&#39;
 rm fna_files.tgz              # lo eliminamos</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21  2020 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29  2020 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 sep  7 13:47 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 164638 sep  7 13:47 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 sep  7 14:10 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 164638 sep  7 14:10 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
-## -rw-rw-r-- 1 vinuesa vinuesa 48437 sep  7 14:10 fna_files.tgz
+## -rw-rw-r-- 1 vinuesa vinuesa 48437 sep 26 22:11 fna_files.tgz
 ## ----------------------------</code></pre>
 <ul>
 <li>generación de archivos con compresión gnuzip con <span class="math inline">\(gzip\)</span></li>
@@ -3405,13 +3408,13 @@ echo &#39;----------------------------&#39;
 ls -l *fna*                    # vemos que ya no existen *fna, solo los *fna.gz, con compresión</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21  2020 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29  2020 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 sep  7 13:47 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 164638 sep  7 13:47 Salmonella_enterica_33676_pIncAC_CDSs.fna
+## -rw-r--r-- 1 vinuesa vinuesa  17736 sep  7 14:10 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 164638 sep  7 14:10 Salmonella_enterica_33676_pIncAC_CDSs.fna
 ## ----------------------------
 ## -rw-rw-r-- 1 vinuesa vinuesa   104 dic 21  2020 mini_CDS.fna.gz
 ## -rw-r--r-- 1 vinuesa vinuesa  3936 sep 29  2020 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa   882 sep  7 13:47 recA_Byuanmingense.fna.gz
-## -rw-rw-r-- 1 vinuesa vinuesa 42881 sep  7 13:47 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa   882 sep  7 14:10 recA_Byuanmingense.fna.gz
+## -rw-rw-r-- 1 vinuesa vinuesa 42881 sep  7 14:10 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz</code></pre>
 <ul>
 <li>descompresión de archivos *.gz con <span class="math inline">\(gunzip\)</span></li>
 </ul>
@@ -3422,14 +3425,14 @@ echo &#39;----------------------------&#39;
 ls -l *fna*                   # vemos que ya no existen los archivos *fna.gz, solo los descomprimidos (*fna)</code></pre>
 <pre><code>## -rw-rw-r-- 1 vinuesa vinuesa   104 dic 21  2020 mini_CDS.fna.gz
 ## -rw-r--r-- 1 vinuesa vinuesa  3936 sep 29  2020 recA_Bradyrhizobium_vinuesa.fna.gz
-## -rw-r--r-- 1 vinuesa vinuesa   882 sep  7 13:47 recA_Byuanmingense.fna.gz
-## -rw-rw-r-- 1 vinuesa vinuesa 42881 sep  7 13:47 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz
+## -rw-r--r-- 1 vinuesa vinuesa   882 sep  7 14:10 recA_Byuanmingense.fna.gz
+## -rw-rw-r-- 1 vinuesa vinuesa 42881 sep  7 14:10 Salmonella_enterica_33676_pIncAC_CDSs.fna.gz
 ## ----------------------------
 ## ----------------------------
 ## -rw-rw-r-- 1 vinuesa vinuesa    114 dic 21  2020 mini_CDS.fna
 ## -rw-r--r-- 1 vinuesa vinuesa  77803 sep 29  2020 recA_Bradyrhizobium_vinuesa.fna
-## -rw-r--r-- 1 vinuesa vinuesa  17736 sep  7 13:47 recA_Byuanmingense.fna
-## -rw-rw-r-- 1 vinuesa vinuesa 164638 sep  7 13:47 Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
+## -rw-r--r-- 1 vinuesa vinuesa  17736 sep  7 14:10 recA_Byuanmingense.fna
+## -rw-rw-r-- 1 vinuesa vinuesa 164638 sep  7 14:10 Salmonella_enterica_33676_pIncAC_CDSs.fna</code></pre>
 </div>
 </div>
 <div id="trabajando-con-archivos---buscando-archivos-en-el-sistema-con-los-comandos-mlocate-y-find" class="section level1" number="9">
@@ -3741,21 +3744,21 @@ find borrame/ -type f -name &#39;arch-A&#39; | wc -l</code></pre>
 de <code>-exec ls -l</code></li>
 </ul>
 <pre class="bash"><code>find borrame/ -type f -name arch-B -exec ls -l &#39;{}&#39; + | head -5</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-001/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-002/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-003/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-004/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-005/arch-B</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 borrame/dir-001/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 borrame/dir-002/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 borrame/dir-003/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 borrame/dir-004/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 borrame/dir-005/arch-B</code></pre>
 <ul>
 <li>lista en formato largo los primeros 5 archivos arch-B haciendo uso
 de <code>xargs ls -l</code></li>
 </ul>
 <pre class="bash"><code>find borrame/ -type f -name arch-B | xargs ls -l | head -5</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-001/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-002/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-003/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-004/arch-B
-## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 borrame/dir-005/arch-B</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 borrame/dir-001/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 borrame/dir-002/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 borrame/dir-003/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 borrame/dir-004/arch-B
+## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 borrame/dir-005/arch-B</code></pre>
 </div>
 <div id="find-combinado-con-expansión-de-caracteres" class="section level3" number="9.2.4">
 <h3><span class="header-section-number">9.2.4</span> <span class="math inline">\(find\)</span> combinado con expansión de
@@ -3800,48 +3803,47 @@ disco está ocupado y cuánto queda libre. Las utilidades <span class="math inli
 disponible en el sistema y en cada partición o dispositivo montados en
 el sistema de archivos.</p>
 <pre class="bash"><code>df        </code></pre>
-<pre><code>## Filesystem      1K-blocks       Used  Available Use% Mounted on
-## udev             16364748          0   16364748   0% /dev
-## tmpfs             3280648       2196    3278452   1% /run
-## /dev/nvme0n1p3  465816208   79655092  362425464  19% /
-## tmpfs            16403224       6152   16397072   1% /dev/shm
-## tmpfs                5120          4       5116   1% /run/lock
-## tmpfs            16403224          0   16403224   0% /sys/fs/cgroup
-## /dev/loop0            128        128          0 100% /snap/bare/5
-## /dev/loop2          63488      63488          0 100% /snap/core20/1593
-## /dev/loop1         168832     168832          0 100% /snap/gnome-3-28-1804/161
-## /dev/loop3          48128      48128          0 100% /snap/snapd/16292
-## /dev/loop7          83328      83328          0 100% /snap/gtk-common-themes/1534
-## /dev/loop6          56960      56960          0 100% /snap/core18/2538
-## /dev/loop4         354688     354688          0 100% /snap/gnome-3-38-2004/115
-## /dev/loop5         166784     166784          0 100% /snap/gnome-3-28-1804/145
-## /dev/loop18        145664     145664          0 100% /snap/chromium/2076
-## /dev/loop14        224256     224256          0 100% /snap/gnome-3-34-1804/77
-## /dev/loop10        192256     192256          0 100% /snap/okular/115
-## /dev/loop12         55552      55552          0 100% /snap/snap-store/558
-## /dev/loop21        153856     153856          0 100% /snap/okular/109
-## /dev/loop19         48128      48128          0 100% /snap/snapd/16010
-## /dev/loop8          93952      93952          0 100% /snap/gtk-common-themes/1535
-## /dev/loop20        331392     331392          0 100% /snap/kde-frameworks-5-qt-5-15-core20/14
-## /dev/loop11        446848     446848          0 100% /snap/kde-frameworks-5-96-qt-5-15-5-core20/7
-## /dev/loop24        106880     106880          0 100% /snap/standard-notes/227
-## /dev/loop13        410496     410496          0 100% /snap/gnome-3-38-2004/112
-## /dev/loop16        224256     224256          0 100% /snap/gnome-3-34-1804/72
-## /dev/loop22         63488      63488          0 100% /snap/core20/1611
-## /dev/loop17        144512     144512          0 100% /snap/chromium/2064
-## /dev/loop23         52224      52224          0 100% /snap/snap-store/547
-## /dev/nvme0n1p1    1994928       5356    1989572   1% /boot/efi
-## /dev/sda1      1921724608  889068068  934964484  49% /home
-## tmpfs             3280644         20    3280624   1% /run/user/125
-## tmpfs             3280644         48    3280596   1% /run/user/1000
-## /dev/loop25         56960      56960          0 100% /snap/core18/2560
-## /dev/loop9         106880     106880          0 100% /snap/standard-notes/229
-## /dev/sdb2      3844420600 1941338704 1707721232  54% /media/vinuesa/Seagate_4T</code></pre>
+<pre><code>## Filesystem      1K-blocks      Used Available Use% Mounted on
+## udev             16364740         0  16364740   0% /dev
+## tmpfs             3280648      2196   3278452   1% /run
+## /dev/nvme0n1p3  465816208  80226228 361854328  19% /
+## tmpfs            16403228      5072  16398156   1% /dev/shm
+## tmpfs                5120         4      5116   1% /run/lock
+## tmpfs            16403228         0  16403228   0% /sys/fs/cgroup
+## /dev/loop0            128       128         0 100% /snap/bare/5
+## /dev/loop1         145792    145792         0 100% /snap/chromium/2105
+## /dev/loop2          64768     64768         0 100% /snap/core20/1623
+## /dev/loop4          56960     56960         0 100% /snap/core18/2566
+## /dev/loop10        446848    446848         0 100% /snap/kde-frameworks-5-96-qt-5-15-5-core20/7
+## /dev/loop7          83328     83328         0 100% /snap/gtk-common-themes/1534
+## /dev/loop8         192256    192256         0 100% /snap/okular/115
+## /dev/loop3         145664    145664         0 100% /snap/chromium/2082
+## /dev/loop5         166784    166784         0 100% /snap/gnome-3-28-1804/145
+## /dev/loop6          48128     48128         0 100% /snap/snapd/16292
+## /dev/loop9          56960     56960         0 100% /snap/core18/2560
+## /dev/loop17        331392    331392         0 100% /snap/kde-frameworks-5-qt-5-15-core20/14
+## /dev/loop20         93952     93952         0 100% /snap/gtk-common-themes/1535
+## /dev/loop11         47104     47104         0 100% /snap/snap-store/592
+## /dev/loop13        224256    224256         0 100% /snap/gnome-3-34-1804/77
+## /dev/loop18        354688    354688         0 100% /snap/gnome-3-38-2004/115
+## /dev/loop19        224256    224256         0 100% /snap/gnome-3-34-1804/72
+## /dev/loop14         47104     47104         0 100% /snap/snap-store/599
+## /dev/loop16        168832    168832         0 100% /snap/gnome-3-28-1804/161
+## /dev/loop12         63488     63488         0 100% /snap/core20/1611
+## /dev/loop15        153856    153856         0 100% /snap/okular/109
+## /dev/loop23         49152     49152         0 100% /snap/snapd/16778
+## /dev/loop22        106880    106880         0 100% /snap/standard-notes/278
+## /dev/loop21        410496    410496         0 100% /snap/gnome-3-38-2004/112
+## /dev/nvme0n1p1    1994928      5356   1989572   1% /boot/efi
+## /dev/sda1      1921724608 891404800 932627752  49% /home
+## tmpfs             3280644        20   3280624   1% /run/user/125
+## tmpfs             3280644        88   3280556   1% /run/user/1000
+## /dev/loop25        106880    106880         0 100% /snap/standard-notes/279</code></pre>
 <p>Si le pasamos como argumento un directorio o partición, nos da la
 información correspondiente al espacio disponible.</p>
 <pre class="bash"><code>df /</code></pre>
 <pre><code>## Filesystem     1K-blocks     Used Available Use% Mounted on
-## /dev/nvme0n1p3 465816208 79655092 362425464  19% /</code></pre>
+## /dev/nvme0n1p3 465816208 80226228 361854328  19% /</code></pre>
 <div id="opciones-más-comunes-de-df" class="section level3" number="10.1.1">
 <h3><span class="header-section-number">10.1.1</span> Opciones más
 comunes de <strong>df</strong></h3>
@@ -3871,48 +3873,47 @@ la salida a nuestra necesidad.</p>
 echo
 echo
 df -h /home</code></pre>
-<pre><code>## Filesystem     1M-blocks     Used Available Use% Mounted on
-## udev              15982M       0M    15982M   0% /dev
-## tmpfs              3204M       3M     3202M   1% /run
-## /dev/nvme0n1p3   454899M   77789M   353932M  19% /
-## tmpfs             16019M       7M    16013M   1% /dev/shm
-## tmpfs                 5M       1M        5M   1% /run/lock
-## tmpfs             16019M       0M    16019M   0% /sys/fs/cgroup
-## /dev/loop0            1M       1M        0M 100% /snap/bare/5
-## /dev/loop2           62M      62M        0M 100% /snap/core20/1593
-## /dev/loop1          165M     165M        0M 100% /snap/gnome-3-28-1804/161
-## /dev/loop3           47M      47M        0M 100% /snap/snapd/16292
-## /dev/loop7           82M      82M        0M 100% /snap/gtk-common-themes/1534
-## /dev/loop6           56M      56M        0M 100% /snap/core18/2538
-## /dev/loop4          347M     347M        0M 100% /snap/gnome-3-38-2004/115
-## /dev/loop5          163M     163M        0M 100% /snap/gnome-3-28-1804/145
-## /dev/loop18         143M     143M        0M 100% /snap/chromium/2076
-## /dev/loop14         219M     219M        0M 100% /snap/gnome-3-34-1804/77
-## /dev/loop10         188M     188M        0M 100% /snap/okular/115
-## /dev/loop12          55M      55M        0M 100% /snap/snap-store/558
-## /dev/loop21         151M     151M        0M 100% /snap/okular/109
-## /dev/loop19          47M      47M        0M 100% /snap/snapd/16010
-## /dev/loop8           92M      92M        0M 100% /snap/gtk-common-themes/1535
-## /dev/loop20         324M     324M        0M 100% /snap/kde-frameworks-5-qt-5-15-core20/14
-## /dev/loop11         437M     437M        0M 100% /snap/kde-frameworks-5-96-qt-5-15-5-core20/7
-## /dev/loop24         105M     105M        0M 100% /snap/standard-notes/227
-## /dev/loop13         401M     401M        0M 100% /snap/gnome-3-38-2004/112
-## /dev/loop16         219M     219M        0M 100% /snap/gnome-3-34-1804/72
-## /dev/loop22          62M      62M        0M 100% /snap/core20/1611
-## /dev/loop17         142M     142M        0M 100% /snap/chromium/2064
-## /dev/loop23          51M      51M        0M 100% /snap/snap-store/547
-## /dev/nvme0n1p1     1949M       6M     1943M   1% /boot/efi
-## /dev/sda1       1876685M  868231M   913052M  49% /home
-## tmpfs              3204M       1M     3204M   1% /run/user/125
-## tmpfs              3204M       1M     3204M   1% /run/user/1000
-## /dev/loop25          56M      56M        0M 100% /snap/core18/2560
-## /dev/loop9          105M     105M        0M 100% /snap/standard-notes/229
-## /dev/sdb2       3754317M 1895839M  1667697M  54% /media/vinuesa/Seagate_4T
-## total           6149194M 2845582M  2994249M  49% -
+<pre><code>## Filesystem     1M-blocks    Used Available Use% Mounted on
+## udev              15982M      0M    15982M   0% /dev
+## tmpfs              3204M      3M     3202M   1% /run
+## /dev/nvme0n1p3   454899M  78346M   353374M  19% /
+## tmpfs             16019M      5M    16014M   1% /dev/shm
+## tmpfs                 5M      1M        5M   1% /run/lock
+## tmpfs             16019M      0M    16019M   0% /sys/fs/cgroup
+## /dev/loop0            1M      1M        0M 100% /snap/bare/5
+## /dev/loop1          143M    143M        0M 100% /snap/chromium/2105
+## /dev/loop2           64M     64M        0M 100% /snap/core20/1623
+## /dev/loop4           56M     56M        0M 100% /snap/core18/2566
+## /dev/loop10         437M    437M        0M 100% /snap/kde-frameworks-5-96-qt-5-15-5-core20/7
+## /dev/loop7           82M     82M        0M 100% /snap/gtk-common-themes/1534
+## /dev/loop8          188M    188M        0M 100% /snap/okular/115
+## /dev/loop3          143M    143M        0M 100% /snap/chromium/2082
+## /dev/loop5          163M    163M        0M 100% /snap/gnome-3-28-1804/145
+## /dev/loop6           47M     47M        0M 100% /snap/snapd/16292
+## /dev/loop9           56M     56M        0M 100% /snap/core18/2560
+## /dev/loop17         324M    324M        0M 100% /snap/kde-frameworks-5-qt-5-15-core20/14
+## /dev/loop20          92M     92M        0M 100% /snap/gtk-common-themes/1535
+## /dev/loop11          46M     46M        0M 100% /snap/snap-store/592
+## /dev/loop13         219M    219M        0M 100% /snap/gnome-3-34-1804/77
+## /dev/loop18         347M    347M        0M 100% /snap/gnome-3-38-2004/115
+## /dev/loop19         219M    219M        0M 100% /snap/gnome-3-34-1804/72
+## /dev/loop14          46M     46M        0M 100% /snap/snap-store/599
+## /dev/loop16         165M    165M        0M 100% /snap/gnome-3-28-1804/161
+## /dev/loop12          62M     62M        0M 100% /snap/core20/1611
+## /dev/loop15         151M    151M        0M 100% /snap/okular/109
+## /dev/loop23          48M     48M        0M 100% /snap/snapd/16778
+## /dev/loop22         105M    105M        0M 100% /snap/standard-notes/278
+## /dev/loop21         401M    401M        0M 100% /snap/gnome-3-38-2004/112
+## /dev/nvme0n1p1     1949M      6M     1943M   1% /boot/efi
+## /dev/sda1       1876685M 870513M   910770M  49% /home
+## tmpfs              3204M      1M     3204M   1% /run/user/125
+## tmpfs              3204M      1M     3204M   1% /run/user/1000
+## /dev/loop25         105M    105M        0M 100% /snap/standard-notes/279
+## total           2394868M 952572M  1323714M  42% -
 ## 
 ## 
 ## Filesystem      Size  Used Avail Use% Mounted on
-## /dev/sda1       1.8T  848G  892G  49% /home</code></pre>
+## /dev/sda1       1.8T  851G  890G  49% /home</code></pre>
 </div>
 </div>
 <div id="la-utilidad-du-disc-usage" class="section level2" number="10.2">
@@ -3936,8 +3937,8 @@ formato <em>human readable</em></p></li>
 </ul>
 <pre class="bash"><code>du -s
 du -sh</code></pre>
-<pre><code>## 271876   .
-## 266M .</code></pre>
+<pre><code>## 273124   .
+## 267M .</code></pre>
 <ul>
 <li>imprime resumen de uso de disco por archivos en /usr/local/ y
 /usr/local/*</li>
@@ -4375,7 +4376,7 @@ assembly_level?</li>
 </ul>
 <pre class="bash"><code># ¿cuántos genomas hay por nivel de la variable categórica assembly_level?
 #   noten que en este ejemplo usamos tail -n +2 para evitar la primera línea
-#   sed &#39;1d&#39; hubiese funcionado igualmente y es el comando más corto que conozco para ello
+#   sed &#39;2q&#39; hubiese funcionado igualmente y es el comando más corto que conozco para ello
 zcat assembly_summary.txt.gz | tail -n +2 | cut -f 12 | sort | uniq -c</code></pre>
 <pre><code>##       1 assembly_level
 ##    2018 Chromosome
@@ -4387,29 +4388,30 @@ zcat assembly_summary.txt.gz | tail -n +2 | cut -f 12 | sort | uniq -c</code></p
 columna correspondiente</li>
 </ul>
 <pre class="bash"><code># asocia cada nombre de columna de la cabecera con el número de la columna correspondiente
-zcat assembly_summary.txt.gz | head -2 | sed &#39;1d; s/\t/\n/g&#39; | cat -n</code></pre>
-<pre><code>##      1   # assembly_accession
-##      2   bioproject
-##      3   biosample
-##      4   wgs_master
-##      5   refseq_category
-##      6   taxid
-##      7   species_taxid
-##      8   organism_name
-##      9   infraspecific_name
-##     10   isolate
-##     11   version_status
-##     12   assembly_level
-##     13   release_type
-##     14   genome_rep
-##     15   seq_rel_date
-##     16   asm_name
-##     17   submitter
-##     18   gbrs_paired_asm
-##     19   paired_asm_comp
-##     20   ftp_path
-##     21   excluded_from_refseq
-##     22   relation_to_type_material</code></pre>
+zcat assembly_summary.txt.gz | sed 2q | tr &#39;\t&#39; &#39;\n&#39; | nl</code></pre>
+<pre><code>##      1   #   See ftp://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt for a description of the columns in this file.
+##      2   # assembly_accession
+##      3   bioproject
+##      4   biosample
+##      5   wgs_master
+##      6   refseq_category
+##      7   taxid
+##      8   species_taxid
+##      9   organism_name
+##     10   infraspecific_name
+##     11   isolate
+##     12   version_status
+##     13   assembly_level
+##     14   release_type
+##     15   genome_rep
+##     16   seq_rel_date
+##     17   asm_name
+##     18   submitter
+##     19   gbrs_paired_asm
+##     20   paired_asm_comp
+##     21   ftp_path
+##     22   excluded_from_refseq
+##     23   relation_to_type_material</code></pre>
 <ul>
 <li>genera una estadística del número de genomas por especie (columna #
 8), y muestra sólo las 10 especies con más genomas secuenciados!</li>
@@ -4514,7 +4516,7 @@ deriva de las iniciales de los apellidos de sus autores: Alfred
 <b>A</b>ho, Peter <b>W</b>einberger, y Brian <b>K</b>ernighan. <b><span class="math inline">\(awk\)</span></b>, cuando está escrito todo en
 minúsculas, hace referencia al programa de UNIX que interpreta programas
 escritos en el lenguaje de programación AWK. Es decir, <b>AWK</b> es un
-lenguaje interpretado por el intérprete de comando <b><span class="math inline">\(awk\)</span></b>.</p>
+lenguaje interpretado por el intérprete de comandos <b><span class="math inline">\(awk\)</span></b>.</p>
 <p><b>AWK</b> fue creado como un reemplazo a los algoritmos escritos en
 C para análisis de texto. Fue una de las primeras herramientas en
 aparecer en UNIX (en la versión 3). Ganó popularidad rápidamente por la
@@ -5436,13 +5438,14 @@ variables internas más usadas:</h3>
 explicamos y vimos en acción en ejemplos precedentes. Las presento abajo
 en un solo bloque para facilitar su localización y repaso.</p>
 <pre>
-$0       guarda el valor de la fila actual en memoria de un archivo de entrada
+$0       guarda el valor del registro (por defecto fila) actual en memoria de un archivo de entrada
 $1-$n    guarda los contenidos de los campos de una fila
 ARGC     variable que guarda el número de argumentos (+1) pasados al script desde la línea de comandos, después del bloque de código
          NOTA: ARGC contiene siempre un valor más que argumentos pasados al script debido a  que implícitamente define ARGV[0]=awk 
 ARGV     arreglo que guarda los argumentos pasados al script desde la línea de comandos, después del bloque de código. ARGV[0] contiene awk
 FILENAME nombre del archivo de entrada actualmente en procesamiento
 FS       (Field Separator) separador de campos (por defecto SPACE or TAB)
+NF       (Number of fields) número de campos delimitados por FS en un registro
 NR       (Number or Records) guarda el número de campos delimitados por FS en registro o fila actual
 OFS      (Output Field Separator) separador de campo de la salida (SPACE por defecto)
 ORS      (Output Return Separator) separador de registro de la salida (\n por defecto)
@@ -6109,9 +6112,9 @@ en el directorio actual</li>
 # usamos además printf &quot;formatting-string&quot;, var1, var2 ... para imprimir las variables con formato: string = %s, número flotante=%.2f
 ls -l working_with_linux_commands.* | \
  awk &#39;s+=$5; END{Mb=s/1024^2; s1=&quot;total size of working_with_linux_commands.* files is:&quot;; s2=&quot;Mb&quot;; printf &quot;%s %.2f %s\n&quot;, s1, Mb, s2}&#39;</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 2063685 sep  7 13:47 working_with_linux_commands.html
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 2063490 sep  7 14:10 working_with_linux_commands.html
 ## -rw-rw-r-- 1 vinuesa vinuesa   68106 nov 15  2020 working_with_linux_commands.log
-## -rw-r--r-- 1 vinuesa vinuesa  436301 sep  7 14:08 working_with_linux_commands.Rmd
+## -rw-r--r-- 1 vinuesa vinuesa  436391 sep 26 22:11 working_with_linux_commands.Rmd
 ## -rw-rw-r-- 1 vinuesa vinuesa  499749 nov 15  2020 working_with_linux_commands.tex
 ## total size of working_with_linux_commands.* files is: 2.93 Mb</code></pre>
 <ul>
@@ -7201,7 +7204,7 @@ leer argumentos</li>
 ## 
 ## # ARGC == lenght(ARGV) == 5 
 ## ARGC = 5
-## [] [] [123] [15932]</code></pre>
+## [] [] [123] [23150]</code></pre>
 <ul>
 <li>Comentarios y preguntas
 <ul>
@@ -7257,7 +7260,7 @@ sentencia; éstas van separadas por saltos de línea</li>
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 3 
 ## ARGC = 3
-## [] [] [5026] []</code></pre>
+## [] [] [20746] []</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -7278,7 +7281,7 @@ comandos <span class="math inline">\(awk\)</span></li>
 ## 
 ## # ARGC == lenght(ARGV) =&gt; 6 
 ## ARGC = 6
-## [] [] [123] [28433]</code></pre>
+## [] [] [123] [29431]</code></pre>
 <ul>
 <li>Comentario
 <ul>
@@ -9854,7 +9857,7 @@ echo &#39; &gt;&gt;&gt; Ojo, VARIABLE ENTRE COMILLAS SENCILLAS NO INTERPOLA: $sa
 echo</code></pre>
 <pre><code>## linux_commands.tab
 ## var2: Cadena con espacios, entre comillas sencillas
-## Bienvenido a alisio, vinuesa! Te recuerdo que hoy es mié 07 sep 2022 14:10:09 CDT
+## Bienvenido a alisio, vinuesa! Te recuerdo que hoy es lun 26 sep 2022 22:11:58 CDT
 ##  &gt;&gt;&gt; Ojo, VARIABLE ENTRE COMILLAS SENCILLAS NO INTERPOLA: $saludo_inicial; se imprime literalmente</code></pre>
 <p>No es necesario hacer llamados a las variables entre comillas dobles,
 pero es una buena práctica, como se muestra en los ejemplos del bloque
@@ -9890,7 +9893,7 @@ varialbe de la salida de un comando con <b>var=$(comando)</b></h2>
 dat=$(date | awk &#39;{print $2&quot;-&quot;$3&quot;-&quot;$4}&#39;)
 h=$(hostname)
 echo &quot;&gt;&gt;&gt; working in &lt;$wkdir&gt; at &lt;$h&gt; on &lt;$dat&gt;&quot;</code></pre>
-<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;07-sep-2022&gt;</code></pre>
+<pre><code>## &gt;&gt;&gt; working in &lt;/home/vinuesa/cursos/intro2linux&gt; at &lt;alisio&gt; on &lt;26-sep-2022&gt;</code></pre>
 </div>
 <div id="modificación-de-variables-y-operaciones-con-ellas" class="section level2" number="13.3">
 <h2><span class="header-section-number">13.3</span> Modificación de
@@ -10001,7 +10004,7 @@ if [ -s &quot;$f&quot; ]; then
    # size=$(ls -hs assembly_summary.txt.gz | cut -d&#39; &#39; -f1)
    echo &quot;$f exists and has size: $size&quot;
 fi</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep  7 14:10 empty_file
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 0 sep 26 22:11 empty_file
 ## -rw-r--r-- 1 vinuesa vinuesa 6780296 oct 20  2020 assembly_summary.txt.gz
 ## empty_file file exists
 ## empty_file file exists but is empty
@@ -10237,14 +10240,14 @@ done</code></pre>
 archivos existen y no están vacíos</li>
 </ul>
 <pre class="bash"><code>ls -ltr *fasta</code></pre>
-<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa  1131 sep  7 14:10 recA_B_alpha.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10279 sep  7 14:10 recA_B_canariense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  2222 sep  7 14:10 recA_B_beta.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 15830 sep  7 14:10 recA_B_japonicum.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 10047 sep  7 14:10 recA_B_elkanii.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  4382 sep  7 14:10 recA_B_sp..fasta
-## -rw-rw-r-- 1 vinuesa vinuesa  8465 sep  7 14:10 recA_B_liaoningense.fasta
-## -rw-rw-r-- 1 vinuesa vinuesa 18024 sep  7 14:10 recA_B_yuanmingense.fasta</code></pre>
+<pre><code>## -rw-rw-r-- 1 vinuesa vinuesa 10279 sep 26 22:11 recA_B_canariense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  2222 sep 26 22:11 recA_B_beta.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  1131 sep 26 22:11 recA_B_alpha.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  8465 sep 26 22:11 recA_B_liaoningense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 15830 sep 26 22:11 recA_B_japonicum.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 10047 sep 26 22:11 recA_B_elkanii.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa 18024 sep 26 22:11 recA_B_yuanmingense.fasta
+## -rw-rw-r-- 1 vinuesa vinuesa  4382 sep 26 22:11 recA_B_sp..fasta</code></pre>
 <ul>
 <li>ahora nos aseguramos que son especie-específicos</li>
 </ul>
@@ -10392,9 +10395,9 @@ satisfecha la condición.</p>
 <pre class="bash"><code>while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 while true; do i=$(echo $RANDOM); if ! (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 16646
-## 10150
-## 28710</code></pre>
+<pre><code>## 20140
+## 29904
+## 12080</code></pre>
 <p>Los bucles <span class="math inline">\(until\)</span> son útiles para
 ejecutar un bucle hasta que se cumpla o no una determinada
 condición.</p>
@@ -10406,9 +10409,9 @@ con un <span class="math inline">\(break\)</span>.</p>
 <pre class="bash"><code>until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;
 until ! true; do i=$(echo $RANDOM); if (( $i % 2 )); then echo $i &amp;&amp; break; fi; done;</code></pre>
-<pre><code>## 15051
-## 23575
-## 6921</code></pre>
+<pre><code>## 30829
+## 32301
+## 30551</code></pre>
 </div>
 </div>
 <div id="estructuras-de-datos-en-bash---arreglos-y-hashes-en-construcción" class="section level2" number="13.10">
